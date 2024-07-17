@@ -121,14 +121,14 @@ const ContentPage = () => {
                         className="flex"
                     >
                         <li
-                            className="w-[150px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            className="w-[250px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
-                            Mon Day
+                            Originals by Trending
                         </li>
                         <li
-                            className="w-[120px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            className="w-[250px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
-                            Tue Day
+                            Videos by Trending
                         </li>
                     </ul>
                 </div>
