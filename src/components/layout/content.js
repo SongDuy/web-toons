@@ -56,8 +56,29 @@ const ContentPage = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="w-full h-[500px]">
-                    hhhh
+                <div className="w-full h-[500px] flex items-center justify-center">
+                    <div className="grid grid-cols-5 gap-5">
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+                    </div>
                 </div>
             </div>
 
@@ -71,11 +92,32 @@ const ContentPage = () => {
                         >
                             New to Originals
                         </li>
-                        
+
                     </ul>
                 </div>
-                <div className="w-full h-[500px]">
-                    hhhh
+                <div className="w-full h-[500px] flex items-center justify-center">
+                    <div className="grid grid-cols-5 gap-5">
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+                    </div>
                 </div>
             </div>
 
@@ -89,11 +131,32 @@ const ContentPage = () => {
                         >
                             New to Videos
                         </li>
-                       
+
                     </ul>
                 </div>
-                <div className="w-full h-[500px]">
-                    hhhh
+                <div className="w-full h-[500px] flex items-center justify-center">
+                    <div className="grid grid-cols-5 gap-5">
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+                    </div>
                 </div>
             </div>
 
@@ -105,13 +168,34 @@ const ContentPage = () => {
                         <li
                             className="w-full h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
-                            GENRES 
+                            GENRES
                         </li>
-                        
+
                     </ul>
                 </div>
-                <div className="w-full h-[500px]">
-                    hhhh
+                <div className="w-full h-[500px] flex items-center justify-center">
+                    <div className="grid grid-cols-5 gap-5">
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+                    </div>
                 </div>
             </div>
 
@@ -121,19 +205,40 @@ const ContentPage = () => {
                         className="flex"
                     >
                         <li
-                            className="w-[250px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            className="w-[650px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
                             Originals by Trending
                         </li>
                         <li
-                            className="w-[250px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            className="w-[650px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
                             Videos by Trending
                         </li>
                     </ul>
                 </div>
-                <div className="w-full h-[500px]">
-                    hhhh
+                <div className="w-full h-[500px] flex items-center justify-center">
+                    <div className="grid grid-cols-5 gap-5">
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+                    </div>
                 </div>
             </div>
         </div>
