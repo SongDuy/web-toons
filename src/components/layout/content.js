@@ -57,7 +57,7 @@ const ContentPage = () => {
                     </ul>
                 </div>
                 <div className="w-full h-[500px] flex items-center justify-center">
-                    <div className="grid grid-cols-5 gap-5">
+                    <div className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
                         <div className="w-[210px] h-[210px] bg-white"></div>
 
@@ -76,6 +76,15 @@ const ContentPage = () => {
                         {/* khung nội dung */}
                         <div className="w-[210px] h-[210px] bg-white"></div>
 
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+
+                        {/* khung nội dung */}
+                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        
                         {/* khung nội dung */}
                         <div className="w-[210px] h-[210px] bg-white"></div>
                     </div>
@@ -96,7 +105,7 @@ const ContentPage = () => {
                     </ul>
                 </div>
                 <div className="w-full h-[500px] flex items-center justify-center">
-                    <div className="grid grid-cols-5 gap-5">
+                    <div className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
                         <div className="w-[210px] h-[210px] bg-white"></div>
 
@@ -135,7 +144,7 @@ const ContentPage = () => {
                     </ul>
                 </div>
                 <div className="w-full h-[500px] flex items-center justify-center">
-                    <div className="grid grid-cols-5 gap-5">
+                    <div className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
                         <div className="w-[210px] h-[210px] bg-white"></div>
 
@@ -174,7 +183,7 @@ const ContentPage = () => {
                     </ul>
                 </div>
                 <div className="w-full h-[500px] flex items-center justify-center">
-                    <div className="grid grid-cols-5 gap-5">
+                    <div className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
                         <div className="w-[210px] h-[210px] bg-white"></div>
 
@@ -217,7 +226,7 @@ const ContentPage = () => {
                     </ul>
                 </div>
                 <div className="w-full h-[500px] flex items-center justify-center">
-                    <div className="grid grid-cols-5 gap-5">
+                    <div className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
                         <div className="w-[210px] h-[210px] bg-white"></div>
 
