@@ -32,7 +32,7 @@ const HeaderPage = () => {
                     <li
                         className="uppercase font-semibold text-lg hover:text-green-500 cursor-pointer"
                     >
-                        Video
+                        Videos
                     </li>
 
                     <li
