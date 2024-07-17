@@ -59,34 +59,94 @@ const ContentPage = () => {
                 <div className="w-full h-[500px] flex items-center justify-center">
                     <div className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
-                        
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
+
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -107,25 +167,67 @@ const ContentPage = () => {
                 <div className="w-full h-[500px] flex items-center justify-center">
                     <div className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -146,25 +248,67 @@ const ContentPage = () => {
                 <div className="w-full h-[500px] flex items-center justify-center">
                     <div className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -185,25 +329,67 @@ const ContentPage = () => {
                 <div className="w-full h-[500px] flex items-center justify-center">
                     <div className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -216,37 +402,79 @@ const ContentPage = () => {
                         <li
                             className="w-[650px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
-                            Originals by Trending
+                            Originals Trending
                         </li>
                         <li
                             className="w-[650px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
-                            Videos by Trending
+                            Videos Trending
                         </li>
                     </ul>
                 </div>
                 <div className="w-full h-[500px] flex items-center justify-center">
                     <div className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
 
                         {/* khung nội dung */}
-                        <div className="w-[210px] h-[210px] bg-white"></div>
+                        <div className="w-[210px] h-[210px] bg-white">
+                            <img
+                                src="https://inkythuatso.com/uploads/thumbnails/800/2022/04/hinh-anh-anime-ngau-loi-16-29-15-02-33.jpg"
+                                alt="Description of the image"
+                                className="object-fill w-full h-full"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
