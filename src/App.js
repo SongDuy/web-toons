@@ -9,7 +9,7 @@ import HomePage from './components/layout/index';
 function App() {
 
   useEffect(() => {
-    document.title = 'WEBTOON';
+    document.title = 'Rison 입니다';
   }, []);
 
   return (
