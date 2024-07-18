@@ -54,6 +54,12 @@ const ContentPage = () => {
                         >
                             Sun Day
                         </li>
+
+                        <li
+                            className="w-[120px] h-[60px] uppercase font-semibold text-lg text-gray-400 border-l-2 border-gray-200 hover:text-green-500 cursor-pointer flex items-center justify-center"
+                        >
+                            More
+                        </li>
                     </ul>
                 </div>
                 <div className="w-full h-[500px] flex items-center justify-center">

@@ -8,10 +8,10 @@ const OriginalsPage = () => {
         <div>
             <HeaderPage />
 
-            <div>
-
+            <div className="">
+                
             </div>
-            
+
             <FooterPage />
         </div>
     );
