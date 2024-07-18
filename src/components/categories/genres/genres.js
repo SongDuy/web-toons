@@ -3,6 +3,19 @@ import React from 'react';
 import HeaderPage from '../../layout/header';
 import FooterPage from '../../layout/footer';
 
+const data = [
+    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
+    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
+    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
+    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
+    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
+    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
+    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
+    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
+    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
+    { id: 10, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
+];
+
 const GenresPage = () => {
     return (
         <div>
@@ -96,11 +109,15 @@ const GenresPage = () => {
                         <div className="grid grid-cols-5 gap-4">
 
                             {/* khung nội dung */}
-                            <div className="w-[210px] h-[210px] bg-white relative">
+                        {data.map(item => (
+                            <div
+                                className="w-[210px] h-[210px] bg-white relative"
+                                key={item.id}
+                            >
 
                                 <img
-                                    src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                    alt="Description of the image"
+                                    src={item.img}
+                                    alt="img"
                                     className="object-fill w-full h-full"
                                 />
 
@@ -109,170 +126,8 @@ const GenresPage = () => {
                                     <span className="text-white text-sm font-semibold mt-auto mr-auto">Fantasy</span>
                                 </div>
                             </div>
-
-                            {/* khung nội dung */}
-                            <div className="w-[210px] h-[210px] bg-white relative">
-
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                    alt="Description of the image"
-                                    className="object-fill w-full h-full"
-                                />
-
-                                <div className="absolute inset-0 flex flex-wrap items-center justify-center px-3 py-3">
-                                    <span className="text-black text-lg font-semibold mb-auto mr-auto">Peace Restaurant</span>
-                                    <span className="text-white text-sm font-semibold mt-auto mr-auto">Fantasy</span>
-                                </div>
-                            </div>
-
-                            {/* khung nội dung */}
-                            <div className="w-[210px] h-[210px] bg-white relative">
-
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                    alt="Description of the image"
-                                    className="object-fill w-full h-full"
-                                />
-
-                                <div className="absolute inset-0 flex flex-wrap items-center justify-center px-3 py-3">
-                                    <span className="text-black text-lg font-semibold mb-auto mr-auto">Peace Restaurant</span>
-                                    <span className="text-white text-sm font-semibold mt-auto mr-auto">Fantasy</span>
-                                </div>
-                            </div>
-
-                            {/* khung nội dung */}
-                            <div className="w-[210px] h-[210px] bg-white relative">
-
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                    alt="Description of the image"
-                                    className="object-fill w-full h-full"
-                                />
-
-                                <div className="absolute inset-0 flex flex-wrap items-center justify-center px-3 py-3">
-                                    <span className="text-black text-lg font-semibold mb-auto mr-auto">Peace Restaurant</span>
-                                    <span className="text-white text-sm font-semibold mt-auto mr-auto">Fantasy</span>
-                                </div>
-                            </div>
-
-                            {/* khung nội dung */}
-                            <div className="w-[210px] h-[210px] bg-white relative">
-
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                    alt="Description of the image"
-                                    className="object-fill w-full h-full"
-                                />
-
-                                <div className="absolute inset-0 flex flex-wrap items-center justify-center px-3 py-3">
-                                    <span className="text-black text-lg font-semibold mb-auto mr-auto">Peace Restaurant</span>
-                                    <span className="text-white text-sm font-semibold mt-auto mr-auto">Fantasy</span>
-                                </div>
-                            </div>
-
-                            {/* khung nội dung */}
-                            <div className="w-[210px] h-[210px] bg-white relative">
-
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                    alt="Description of the image"
-                                    className="object-fill w-full h-full"
-                                />
-
-                                <div className="absolute inset-0 flex flex-wrap items-center justify-center px-3 py-3">
-                                    <span className="text-black text-lg font-semibold mb-auto mr-auto">Peace Restaurant</span>
-                                    <span className="text-white text-sm font-semibold mt-auto mr-auto">Fantasy</span>
-                                </div>
-                            </div>
-
-                            {/* khung nội dung */}
-                            <div className="w-[210px] h-[210px] bg-white relative">
-
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                    alt="Description of the image"
-                                    className="object-fill w-full h-full"
-                                />
-
-                                <div className="absolute inset-0 flex flex-wrap items-center justify-center px-3 py-3">
-                                    <span className="text-black text-lg font-semibold mb-auto mr-auto">Peace Restaurant</span>
-                                    <span className="text-white text-sm font-semibold mt-auto mr-auto">Fantasy</span>
-                                </div>
-                            </div>
-
-                            {/* khung nội dung */}
-                            <div className="w-[210px] h-[210px] bg-white relative">
-
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                    alt="Description of the image"
-                                    className="object-fill w-full h-full"
-                                />
-
-                                <div className="absolute inset-0 flex flex-wrap items-center justify-center px-3 py-3">
-                                    <span className="text-black text-lg font-semibold mb-auto mr-auto">Peace Restaurant</span>
-                                    <span className="text-white text-sm font-semibold mt-auto mr-auto">Fantasy</span>
-                                </div>
-                            </div>
-
-                            {/* khung nội dung */}
-                            <div className="w-[210px] h-[210px] bg-white relative">
-
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                    alt="Description of the image"
-                                    className="object-fill w-full h-full"
-                                />
-
-                                <div className="absolute inset-0 flex flex-wrap items-center justify-center px-3 py-3">
-                                    <span className="text-black text-lg font-semibold mb-auto mr-auto">Peace Restaurant</span>
-                                    <span className="text-white text-sm font-semibold mt-auto mr-auto">Fantasy</span>
-                                </div>
-                            </div>
-
-                            {/* khung nội dung */}
-                            <div className="w-[210px] h-[210px] bg-white relative">
-
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                    alt="Description of the image"
-                                    className="object-fill w-full h-full"
-                                />
-
-                                <div className="absolute inset-0 flex flex-wrap items-center justify-center px-3 py-3">
-                                    <span className="text-black text-lg font-semibold mb-auto mr-auto">Peace Restaurant</span>
-                                    <span className="text-white text-sm font-semibold mt-auto mr-auto">Fantasy</span>
-                                </div>
-                            </div>
-
-                            {/* khung nội dung */}
-                            <div className="w-[210px] h-[210px] bg-white relative">
-
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                    alt="Description of the image"
-                                    className="object-fill w-full h-full"
-                                />
-
-                                <div className="absolute inset-0 flex flex-wrap items-center justify-center px-3 py-3">
-                                    <span className="text-black text-lg font-semibold mb-auto mr-auto">Peace Restaurant</span>
-                                    <span className="text-white text-sm font-semibold mt-auto mr-auto">Fantasy</span>
-                                </div>
-                            </div>
-                            {/* khung nội dung */}
-                            <div className="w-[210px] h-[210px] bg-white relative">
-
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                    alt="Description of the image"
-                                    className="object-fill w-full h-full"
-                                />
-
-                                <div className="absolute inset-0 flex flex-wrap items-center justify-center px-3 py-3">
-                                    <span className="text-black text-lg font-semibold mb-auto mr-auto">Peace Restaurant</span>
-                                    <span className="text-white text-sm font-semibold mt-auto mr-auto">Fantasy</span>
-                                </div>
-                            </div>
+                        ))}
+                        
                         </div>
                     </div>
                 </div>
