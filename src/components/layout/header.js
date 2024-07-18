@@ -3,6 +3,26 @@ import React from 'react';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 
+const handleHomeClick = () => {
+    window.location.href = '/';
+};
+
+const handleOriginalsClick = () => {
+    window.location.href = '/originals';
+};
+
+const handleVideosClick = () => {
+    window.location.href = '/videos';
+};
+
+const handleGenresClick = () => {
+    window.location.href = '/genres';
+};
+
+const handlePopularClick = () => {
+    window.location.href = '/popular';
+};
+
 const HeaderPage = () => {
     return (
         <div
@@ -11,7 +31,8 @@ const HeaderPage = () => {
 
             {/* logo */}
             <div
-                className="w-[90px] flex items-center justify-center "
+                className="w-[90px] flex items-center justify-center cursor-pointer"
+                onClick={handleHomeClick}
             >
                 <p>LOGO</p>
             </div>
@@ -25,24 +46,28 @@ const HeaderPage = () => {
                 >
                     <li
                         className="uppercase font-semibold text-lg hover:text-green-500 cursor-pointer"
+                        onClick={handleOriginalsClick}
                     >
                         Originals
                     </li>
 
                     <li
                         className="uppercase font-semibold text-lg hover:text-green-500 cursor-pointer"
+                        onClick={handleVideosClick}
                     >
                         Videos
                     </li>
 
                     <li
                         className="uppercase font-semibold text-lg hover:text-green-500 cursor-pointer"
+                        onClick={handleGenresClick}
                     >
                         Genres
                     </li>
 
                     <li
                         className="uppercase font-semibold text-lg hover:text-green-500 cursor-pointer"
+                        onClick={handlePopularClick}
                     >
                         Popular
                     </li>

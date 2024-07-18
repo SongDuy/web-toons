@@ -1,9 +1,18 @@
 import React from 'react';
 
-const PopularPage  = () => {
+import HeaderPage from '../../layout/header';
+import FooterPage from '../../layout/footer';
+
+const PopularPage = () => {
     return (
-        <div className="">
-           <p>Popular</p>
+        <div>
+            <HeaderPage />
+
+            <div>
+
+            </div>
+
+            <FooterPage />
         </div>
     );
 }

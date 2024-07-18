@@ -1,9 +1,18 @@
 import React from 'react';
 
-const VideosPage  = () => {
+import HeaderPage from '../../layout/header';
+import FooterPage from '../../layout/footer';
+
+const VideosPage = () => {
     return (
-        <div className="">
-           <p>Video</p>
+        <div>
+            <HeaderPage />
+
+            <div>
+
+            </div>
+
+            <FooterPage />
         </div>
     );
 }

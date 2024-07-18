@@ -1,9 +1,17 @@
 import React from 'react';
 
-const GenresPage  = () => {
+import HeaderPage from '../../layout/header';
+import FooterPage from '../../layout/footer';
+
+const GenresPage = () => {
     return (
-        <div className="">
-           <p>Genres</p>
+        <div>
+            <HeaderPage />
+
+            <div>
+            </div>
+
+            <FooterPage />
         </div>
     );
 }

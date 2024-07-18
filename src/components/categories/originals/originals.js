@@ -1,9 +1,18 @@
 import React from 'react';
 
-const OriginalsPage  = () => {
+import HeaderPage from '../../layout/header';
+import FooterPage from '../../layout/footer';
+
+const OriginalsPage = () => {
     return (
-        <div className="">
-           <p>Originals</p>
+        <div>
+            <HeaderPage />
+
+            <div>
+
+            </div>
+            
+            <FooterPage />
         </div>
     );
 }
