@@ -791,7 +791,7 @@ const ContentPage = () => {
                                             Fantasy
                                         </span>
                                         <span className="text-md font-semibold line-clamp-1">
-                                            Peace Restaurant k k k kkk k k k k k k k  kk
+                                            Peace Restaurant
                                         </span>
                                         <span className="text-sm line-clamp-1">
                                             Lee Nakeum , seewater
