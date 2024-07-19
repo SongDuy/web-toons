@@ -131,7 +131,7 @@ const ContentPage = () => {
                         <li
                             className="w-full h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
-                            New to Originals
+                            New to Originals Series
                         </li>
 
                     </ul>
@@ -188,7 +188,7 @@ const ContentPage = () => {
                         <li
                             className="w-full h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
-                            New to Videos
+                            New to Videos Series
                         </li>
 
                     </ul>
@@ -337,13 +337,13 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             1
                                         </span>
                                     </div>
 
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
@@ -367,12 +367,12 @@ const ContentPage = () => {
                                             className="object-fill w-full h-full"
                                         />
                                     </div>
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             2
                                         </span>
                                     </div>
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
@@ -397,13 +397,13 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             3
                                         </span>
                                     </div>
 
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
@@ -428,13 +428,13 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             4
                                         </span>
                                     </div>
 
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
@@ -460,13 +460,13 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             5
                                         </span>
                                     </div>
 
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
@@ -496,13 +496,13 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             1
                                         </span>
                                     </div>
 
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
@@ -527,13 +527,13 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             2
                                         </span>
                                     </div>
 
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
@@ -558,13 +558,13 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             3
                                         </span>
                                     </div>
 
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
@@ -589,13 +589,13 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             4
                                         </span>
                                     </div>
 
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
@@ -620,13 +620,13 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             5
                                         </span>
                                     </div>
 
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
@@ -656,13 +656,13 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             1
                                         </span>
                                     </div>
 
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
@@ -687,13 +687,13 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             2
                                         </span>
                                     </div>
 
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
@@ -718,13 +718,13 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             3
                                         </span>
                                     </div>
 
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
@@ -749,13 +749,13 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             4
                                         </span>
                                     </div>
 
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
@@ -780,13 +780,13 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div>
-                                        <span className="mx-3 text-xl font-bold">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                        <span className="mx-3 text-xl text-white font-bold">
                                             5
                                         </span>
                                     </div>
 
-                                    <div className="w-[240px] mt-auto mb-auto overflow-hidden">
+                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                         <span className="text-gray-400 text-sm">
                                             Fantasy
                                         </span>
