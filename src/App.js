@@ -11,7 +11,7 @@ import PopularPage from './components/categories/popular/popular'
 
 import NotFoundPage from './components/layout/notFoundPage';
 
-import './App.css';
+//import './App.css';
 
 function App() {
 

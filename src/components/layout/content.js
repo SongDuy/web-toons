@@ -1,5 +1,8 @@
 import React from 'react';
 
+import CheckIcon from '@mui/icons-material/Check';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+
 const handleOriginalsClick = () => {
     window.location.href = '/originals';
 };
@@ -194,7 +197,7 @@ const ContentPage = () => {
                 </div>
                 <div className="w-full h-[500px] flex items-center justify-center">
                     <div className="grid grid-cols-5 gap-4">
-                       {/* khung nội dung */}
+                        {/* khung nội dung */}
                         {data.map(item => (
                             <div
                                 className="w-[210px] h-[210px] bg-white relative"
@@ -219,32 +222,30 @@ const ContentPage = () => {
             </div>
 
             <div className="w-full h-[560px]">
-                <div className="w-full h-[60px] bg-white shadow flex items-center justify-center">
-                    <ul
-                        className="flex"
-                    >
-                        <li
-                            className="w-[350px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
-                        >
-                            New & Trending
+                <div className="w-full h-[60px] bg-white shadow px-[160px] ">
+                    <ul className="w-full h-full flex">
+                        <li className="flex-auto w-1/3 h-[60px] flex items-center border-b mx-3">
+                            <span className="font-semibold text-lg hover:text-green-500 cursor-pointer"> New & Trending <NavigateNextIcon/></span>
                         </li>
-
-                        <li
-                            className="w-[350px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
-                        >
-                            Originals by Genre
+                        <li className="flex-auto w-1/3 h-[60px] flex items-center border-b mx-3">
+                            <span className="mr-auto font-semibold text-lg hover:text-green-500 cursor-pointer">ORIGINALS by Genre <NavigateNextIcon/></span>
+                            <span className="ml-auto text-green-500 text-md cursor-pointer mr-2">ALL </span>
+                            <span className="text-green-500 text-sm cursor-pointer">
+                                <CheckIcon />
+                            </span>
                         </li>
-
-                        <li
-                            className="w-[350px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
-                        >
-                            Videos by Genre
+                        <li className="flex-auto w-1/3 h-[60px] flex items-center border-b mx-3">
+                            <span className="mr-auto font-semibold text-lg hover:text-green-500 cursor-pointer">VIDEOS by Genre <NavigateNextIcon/></span>
+                            <span className="ml-auto text-green-500 text-md cursor-pointer mr-2">ALL </span>
+                            <span className="text-green-500 text-sm cursor-pointer">
+                                <CheckIcon />
+                            </span>
                         </li>
                     </ul>
                 </div>
-                <div className="w-full h-[500px] flex items-center justify-center">
+                <div className="w-full h-[500px] bg-white flex items-center justify-center">
                     <div className="grid grid-cols-5 gap-4">
-                       {/* khung nội dung */}
+                        {/* khung nội dung */}
                         {data.map(item => (
                             <div
                                 className="w-[210px] h-[210px] bg-white relative"
