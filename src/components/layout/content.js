@@ -71,10 +71,11 @@ const ContentPage = () => {
                         </li>
 
                         <li
-                            className="w-[120px] h-[60px] uppercase font-semibold text-lg text-gray-400 border-l-2 border-gray-200 hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            className="w-[150px] h-[60px] uppercase font-semibold text-lg text-gray-400 border-l-2 border-gray-200 hover:text-green-500 cursor-pointer flex items-center justify-center"
                             onClick={handleOriginalsClick}
                         >
-                            More
+                            More 
+                            <NavigateNextIcon />
                         </li>
                     </ul>
                 </div>
@@ -337,7 +338,7 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             1
                                         </span>
@@ -367,7 +368,7 @@ const ContentPage = () => {
                                             className="object-fill w-full h-full"
                                         />
                                     </div>
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             2
                                         </span>
@@ -397,7 +398,7 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             3
                                         </span>
@@ -428,7 +429,7 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             4
                                         </span>
@@ -460,7 +461,7 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             5
                                         </span>
@@ -496,7 +497,7 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             1
                                         </span>
@@ -527,7 +528,7 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             2
                                         </span>
@@ -558,7 +559,7 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             3
                                         </span>
@@ -589,7 +590,7 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             4
                                         </span>
@@ -620,7 +621,7 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             5
                                         </span>
@@ -656,7 +657,7 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             1
                                         </span>
@@ -687,7 +688,7 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             2
                                         </span>
@@ -718,7 +719,7 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             3
                                         </span>
@@ -749,7 +750,7 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             4
                                         </span>
@@ -780,7 +781,7 @@ const ContentPage = () => {
                                         />
                                     </div>
 
-                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full flex items-center justify-center mx-2 shadow-xl">
+                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
                                         <span className="mx-3 text-xl text-white font-bold">
                                             5
                                         </span>
