@@ -253,27 +253,241 @@ const ContentPage = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="w-full h-[500px] bg-white flex items-center justify-center">
-                    <div className="grid grid-cols-5 gap-4">
-                        {/* khung nội dung */}
-                        {data.map(item => (
-                            <div
-                                className="w-[210px] h-[210px] bg-white relative"
-                                key={item.id}
-                            >
+                <div className="w-full h-[500px] bg-white flex items-center justify-center px-[160px]">
 
-                                <img
-                                    src={item.img}
-                                    alt="img"
-                                    className="object-fill w-full h-full"
-                                />
+                    <div className="flex-auto w-1/3 mx-3">
+                        <ul className="w-full h-full ">
+                            <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px] flex">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
 
-                                <div className="absolute inset-0 flex flex-wrap items-center justify-center px-3 py-3">
-                                    <span className="text-black text-lg font-semibold mb-auto mr-auto">Peace Restaurant</span>
-                                    <span className="text-white text-sm font-semibold mt-auto mr-auto">Fantasy</span>
+                                    <div>
+                                        <span className="mx-3 text-xl font-bold">
+                                            1
+                                        </span>
+                                    </div>
+
+                                    <div>
+
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+
+                            </li>
+                            <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px]">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
+                                    <div>
+                                        <span className="mx-3 text-xl font-bold">
+                                            2
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px]">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
+                                    <div>
+                                        <span className="mx-3 text-xl font-bold">
+                                            3
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px]">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
+                                    <div>
+                                        <span className="mx-3 text-xl font-bold">
+                                            4
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px]">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
+                                    <div>
+                                        <span className="mx-3 text-xl font-bold">
+                                            5
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div className="flex-auto w-1/3 mx-3">
+                        <ul className="w-full h-full">
+                        <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px]">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px]">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+
+                            </li>
+
+                           <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px]">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px]">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px]">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div className="flex-auto w-1/3 mx-3">
+                        <ul className="w-full h-full">
+                            <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px]">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px]">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px]">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px]">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li className="w-full h-[95px] border-b ">
+                                <div className="w-full h-full flex items-center">
+                                    <div className="w-[80px] h-[80px]">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+
+                            </li>
+
+                        </ul>
                     </div>
                 </div>
             </div>
