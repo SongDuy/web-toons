@@ -141,7 +141,7 @@ const OriginalsPage = () => {
                                                 <FavoriteIcon />
                                                 200k
                                             </span>
-                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-black text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-white text-green-500 text-xs font-semibold rounded-full flex items-center justify-center">
                                                 End
                                             </span>
                                         </div>
