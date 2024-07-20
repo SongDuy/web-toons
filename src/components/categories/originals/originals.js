@@ -1,6 +1,7 @@
 import React from 'react';
 
 import CheckIcon from '@mui/icons-material/Check';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import HeaderPage from '../../layout/header';
 import FooterPage from '../../layout/footer';
@@ -72,14 +73,33 @@ const OriginalsPage = () => {
                                         className="object-fill w-full h-full"
                                     />
 
-                                    <div className="absolute inset-0 flex flex-wrap items-center justify-center px-3 py-3">
-                                        <span className="text-black text-lg font-semibold mb-auto mr-auto">Peace Restaurant</span>
-                                        <span className="text-white text-sm font-semibold mt-auto mr-auto">Fantasy</span>
+                                    <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                        <div className="w-full h-[40px] mb-auto overflow-hidden">
+                                            <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                Peace Restaurant
+                                            </span>
+                                        </div>
+
+                                        <div className="w-full mt-2 mb-[50px]">
+                                            <span className="text-red-800 text-sm font-semibold flex items-center gap-1">
+                                                <FavoriteIcon />
+                                                200k
+                                            </span>
+                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                Up
+                                            </span>
+                                        </div>
+
+                                        <div className="w-full h-full">
+                                            <span className="bg-gray-800 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">Fantasy</span>
+                                        </div>
                                     </div>
+
                                 </div>
                             ))}
 
                         </div>
+
                     </div>
                 </div>
             </div>
