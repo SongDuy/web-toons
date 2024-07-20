@@ -74,7 +74,7 @@ const ContentPage = () => {
                             className="w-[150px] h-[60px] uppercase font-semibold text-lg text-gray-400 border-l-2 border-gray-200 hover:text-green-500 cursor-pointer flex items-center justify-center"
                             onClick={handleOriginalsClick}
                         >
-                            More 
+                            More
                             <NavigateNextIcon />
                         </li>
                     </ul>
@@ -103,7 +103,7 @@ const ContentPage = () => {
                                     </div>
 
                                     <div className="w-full mt-2 mb-[50px]">
-                                        <span className="text-red-800 text-sm font-semibold flex items-center gap-1">
+                                        <span className="text-red-600 text-sm font-semibold flex items-center gap-1">
                                             <FavoriteIcon />
                                             200k
                                         </span>
@@ -113,7 +113,9 @@ const ContentPage = () => {
                                     </div>
 
                                     <div className="w-full h-full">
-                                        <span className="bg-gray-800 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">Fantasy</span>
+                                        <span className="bg-gray-800 bg-opacity-80 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">
+                                            Fantasy
+                                        </span>
                                     </div>
                                 </div>
 
@@ -160,7 +162,7 @@ const ContentPage = () => {
                                     </div>
 
                                     <div className="w-full mt-2 mb-[50px]">
-                                        <span className="text-red-800 text-sm font-semibold flex items-center gap-1">
+                                        <span className="text-red-600 text-sm font-semibold flex items-center gap-1">
                                             <FavoriteIcon />
                                             200k
                                         </span>
@@ -170,7 +172,9 @@ const ContentPage = () => {
                                     </div>
 
                                     <div className="w-full h-full">
-                                        <span className="bg-gray-800 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">Fantasy</span>
+                                        <span className="bg-gray-800 bg-opacity-80 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">
+                                            Fantasy
+                                        </span>
                                     </div>
                                 </div>
 
@@ -217,7 +221,7 @@ const ContentPage = () => {
                                     </div>
 
                                     <div className="w-full mt-2 mb-[50px]">
-                                        <span className="text-red-800 text-sm font-semibold flex items-center gap-1">
+                                        <span className="text-red-600 text-sm font-semibold flex items-center gap-1">
                                             <FavoriteIcon />
                                             200k
                                         </span>
@@ -227,7 +231,9 @@ const ContentPage = () => {
                                     </div>
 
                                     <div className="w-full h-full">
-                                        <span className="bg-gray-800 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">Fantasy</span>
+                                        <span className="bg-gray-800 bg-opacity-80 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">
+                                            Fantasy
+                                        </span>
                                     </div>
                                 </div>
 
@@ -275,14 +281,16 @@ const ContentPage = () => {
                                     </div>
 
                                     <div className="w-full mt-2 mb-[90px]">
-                                        <span className="text-red-800 text-sm font-semibold flex items-center gap-1">
+                                        <span className="text-red-600 text-sm font-semibold flex items-center gap-1">
                                             <FavoriteIcon />
                                             200k
                                         </span>
                                     </div>
 
                                     <div className="w-full h-full">
-                                        <span className="bg-gray-800 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">Fantasy</span>
+                                        <span className="bg-gray-800 bg-opacity-80 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">
+                                            Fantasy
+                                        </span>
                                     </div>
                                 </div>
 
