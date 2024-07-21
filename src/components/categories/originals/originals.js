@@ -190,7 +190,7 @@ const OriginalsPage = () => {
                                         </div>
 
                                         <div className="w-full mb-[40px]">
-                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-white text-green-500 text-xs font-semibold rounded-full shadow-xl flex items-center justify-center">
+                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-gray-300 bg-opacity-80 text-green-500 text-xs font-semibold rounded-full shadow-xl flex items-center justify-center">
                                                 End
                                             </span>
                                         </div>
