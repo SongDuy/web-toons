@@ -108,10 +108,6 @@ const GenresPage = () => {
 
                     <div className="w-full h-full py-5 flex items-center justify-center">
 
-                        <div>
-
-                        </div>
-
                         <div className="grid grid-cols-5 gap-[8px]">
 
                             {/* khung nội dung */}
