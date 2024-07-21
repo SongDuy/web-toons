@@ -123,7 +123,7 @@ const PopularPage = () => {
                                                         2
                                                     </span>
                                                 </div>
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -154,7 +154,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -185,7 +185,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -217,7 +217,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -248,7 +248,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -279,7 +279,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -310,7 +310,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -341,7 +341,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -372,7 +372,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -482,7 +482,7 @@ const PopularPage = () => {
                                                         2
                                                     </span>
                                                 </div>
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -513,7 +513,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -544,7 +544,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -576,7 +576,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -607,7 +607,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -638,7 +638,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -669,7 +669,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -700,7 +700,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -731,7 +731,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -841,7 +841,7 @@ const PopularPage = () => {
                                                         2
                                                     </span>
                                                 </div>
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -872,7 +872,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -903,7 +903,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -935,7 +935,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -966,7 +966,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -997,7 +997,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -1028,7 +1028,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -1059,7 +1059,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
@@ -1090,7 +1090,7 @@ const PopularPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
                                                         Fantasy
                                                     </span>
