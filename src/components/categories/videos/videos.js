@@ -32,7 +32,7 @@ const VideosPage = () => {
                         className="flex gap-[70px]"
                     >
                         <li
-                            className="h-[60px] uppercase font-semibold text-md text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                            className="h-[60px] uppercase font-semibold text-md text-black hover:text-black cursor-pointer flex items-center justify-center"
                         >
                             ONGOING
                         </li>
@@ -52,12 +52,50 @@ const VideosPage = () => {
                         <span className="ml-auto text-md flex items-center justify-center gap-2"> by Popularity <CheckIcon /> </span>
                     </div>
 
-                    <div className="w-full h-full py-5 flex items-center justify-center">
+                    <div className="h-[70px] mx-[160px] my-3 flex items-center justify-center">
+                        <ul
+                            className="flex gap-2"
+                        >
+                            <li
+                                className="w-[150px] h-[60px] uppercase bg-green-500 rounded-xl font-semibold text-md text-white cursor-pointer flex items-center justify-center"
+                            >
+                                Mon Day
+                            </li>
+                            <li
+                                className="w-[150px] h-[60px] uppercase rounded-xl font-semibold text-md hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            >
+                                Tue Day
+                            </li>
+                            <li
+                                className="w-[150px] h-[60px] uppercase rounded-xl font-semibold text-md hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            >
+                                Wed Day
+                            </li>
+                            <li
+                                className="w-[150px] h-[60px] uppercase rounded-xl font-semibold text-md hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            >
+                                Thu Day
+                            </li>
+                            <li
+                                className="w-[150px] h-[60px] uppercase rounded-xl font-semibold text-md hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            >
+                                Fri Day
+                            </li>
+                            <li
+                                className="w-[150px] h-[60px] uppercase rounded-xl font-semibold text-md hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            >
+                                Sat Day
+                            </li>
+                            <li
+                                className="w-[150px] h-[60px] uppercase rounded-xl font-semibold text-md hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            >
+                                Sun Day
+                            </li>
 
-                        <div>
+                        </ul>
+                    </div>
 
-                        </div>
-
+                    <div className="w-full h-full py-3 flex items-center justify-center">
                         <div className="grid grid-cols-5 gap-[8px]">
 
                             {/* khung nội dung */}
@@ -95,8 +133,8 @@ const VideosPage = () => {
                                             </span>
                                         </div>
 
-                                        <div className="w-full">
-                                            <span className="rounded-full px-2 py-1 text-red-300 text-sm font-semibold shadow-xl flex items-center">
+                                        <div className="w-[70px]">
+                                            <span className="rounded-full gap-1 px-2 py-1 text-red-300 text-sm font-semibold shadow-xl flex items-center justify-center">
                                                 <FavoriteIcon />
                                                 200k
                                             </span>
@@ -112,16 +150,12 @@ const VideosPage = () => {
                     </div>
                 </div>
 
-                <div className="w-full h-full">
+                <div className="w-full h-full py-5">
                     <div className="h-[70px] mx-[160px] border-b-2 flex items-center">
                         <span className="font-semibold text-md">Completed Series</span>
                     </div>
 
                     <div className="w-full h-full py-5 flex items-center justify-center">
-
-                        <div>
-
-                        </div>
 
                         <div className="grid grid-cols-5 gap-[8px]">
 
@@ -161,8 +195,8 @@ const VideosPage = () => {
                                             </span>
                                         </div>
 
-                                        <div className="w-auto">
-                                            <span className="rounded-full px-2 text-red-300 text-sm font-semibold shadow-xl flex items-center">
+                                        <div className="w-[70px]">
+                                            <span className="rounded-full gap-1 px-2 py-1 text-red-300 text-sm font-semibold shadow-xl flex items-center justify-center">
                                                 <FavoriteIcon />
                                                 200k
                                             </span>

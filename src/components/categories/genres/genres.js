@@ -29,7 +29,7 @@ const GenresPage = () => {
                         className="flex gap-10"
                     >
                         <li
-                            className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                            className="h-[60px] uppercase font-semibold text-sm text-black hover:text-black cursor-pointer flex items-center justify-center"
                         >
                             DRAMA
                         </li>
@@ -103,7 +103,7 @@ const GenresPage = () => {
 
                 <div className="w-full h-full">
                     <div className="h-[70px] mx-[160px] border-b-2 flex items-center">
-                        <span className="font-semibold text-md">Ongoing Series</span>
+                        <span className="font-semibold text-md">Drama</span>
                     </div>
 
                     <div className="w-full h-full py-5 flex items-center justify-center">
@@ -149,8 +149,8 @@ const GenresPage = () => {
                                             </span>
                                         </div>
 
-                                        <div className="w-full">
-                                            <span className="rounded-full px-2 py-1 text-red-300 text-sm font-semibold shadow-xl flex items-center">
+                                        <div className="w-[70px]">
+                                            <span className="rounded-full gap-1 px-2 py-1 text-red-300 text-sm font-semibold shadow-xl flex items-center justify-center">
                                                 <FavoriteIcon />
                                                 200k
                                             </span>

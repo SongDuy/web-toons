@@ -35,7 +35,7 @@ const ContentPage = () => {
                         className="flex"
                     >
                         <li
-                            className="w-[150px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            className="w-[120px] h-[60px] bg-green-500 text-white uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
                             Mon Day
                         </li>

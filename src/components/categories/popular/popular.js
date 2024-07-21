@@ -95,8 +95,8 @@ const PopularPage = () => {
                                             </span>
                                         </div>
 
-                                        <div className="w-full">
-                                            <span className="rounded-full px-2 py-1 text-red-300 text-sm font-semibold shadow-xl flex items-center">
+                                        <div className="w-[70px]">
+                                            <span className="rounded-full gap-1 px-2 py-1 text-red-300 text-sm font-semibold shadow-xl flex items-center justify-center">
                                                 <FavoriteIcon />
                                                 200k
                                             </span>
