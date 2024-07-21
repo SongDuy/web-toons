@@ -128,14 +128,9 @@ const GenresPage = () => {
                                     />
 
                                     <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                        <div className="w-full py-1">
-                                            <span className="bg-gray-300 bg-opacity-50 rounded-full px-2 py-1 text-yellow-600 text-xs font-semibold shadow-xl">
-                                                Fantasy
-                                            </span>
-                                        </div>
 
                                         <div className="w-full mb-auto overflow-hidden">
-                                            <span className="text-lg font-semibold line-clamp-1">
+                                            <span className="text-lg h-[40px] font-semibold leading-[1.2] line-clamp-2">
                                                 Peace Restaurant
                                             </span>
                                             <span className="text-md leading-[1.2] line-clamp-1">
@@ -143,17 +138,22 @@ const GenresPage = () => {
                                             </span>
                                         </div>
 
-                                        <div className="w-full mb-[40px]">
-                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-green-500 text-white text-xs font-semibold rounded-full shadow-xl flex items-center justify-center">
-                                                Up
-                                            </span>
-                                        </div>
 
-                                        <div className="w-[70px]">
-                                            <span className="rounded-full gap-1 px-2 py-1 text-red-300 text-sm font-semibold shadow-xl flex items-center justify-center">
+
+                                        <div className="w-full mb-[50px] mr-auto">
+                                            <span className="gap-1 text-red-600 text-sm font-semibold flex items-center">
                                                 <FavoriteIcon />
                                                 200k
                                             </span>
+                                            <div className="flex mt-2 gap-1">
+                                                <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                    Up
+                                                </span>
+                                                <span className="w-[35px] h-[35px] uppercase bg-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                    New
+                                                </span>
+                                            </div>
+
                                         </div>
 
                                     </div>
