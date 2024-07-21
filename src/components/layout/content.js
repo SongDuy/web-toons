@@ -112,7 +112,7 @@ const ContentPage = () => {
                                         </span>
                                     </div>
 
-                                    <div className="w-full h-full">
+                                    <div className="w-full">
                                         <span className="bg-gray-800 bg-opacity-80 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">
                                             Fantasy
                                         </span>
@@ -171,7 +171,7 @@ const ContentPage = () => {
                                         </span>
                                     </div>
 
-                                    <div className="w-full h-full">
+                                    <div className="w-full">
                                         <span className="bg-gray-800 bg-opacity-80 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">
                                             Fantasy
                                         </span>
@@ -230,7 +230,7 @@ const ContentPage = () => {
                                         </span>
                                     </div>
 
-                                    <div className="w-full h-full">
+                                    <div className="w-full">
                                         <span className="bg-gray-800 bg-opacity-80 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">
                                             Fantasy
                                         </span>
@@ -287,7 +287,7 @@ const ContentPage = () => {
                                         </span>
                                     </div>
 
-                                    <div className="w-full h-full">
+                                    <div className="w-full">
                                         <span className="bg-gray-800 bg-opacity-80 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">
                                             Fantasy
                                         </span>
