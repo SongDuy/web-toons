@@ -119,7 +119,7 @@ const VideosPage = () => {
                                         </div>
 
                                         <div className="w-full mb-auto overflow-hidden">
-                                            <span className="text-lg font-semibold line-clamp-1">
+                                            <span className="text-lg h-[40px] font-semibold leading-[1.2] line-clamp-2">
                                                 Peace Restaurant
                                             </span>
                                             <span className="text-md leading-[1.2] line-clamp-1">
@@ -127,7 +127,7 @@ const VideosPage = () => {
                                             </span>
                                         </div>
 
-                                        <div className="w-full mb-[40px]">
+                                        <div className="w-full mb-[25px]">
                                             <span className="w-[35px] h-[35px] mt-2 uppercase bg-green-500 text-white text-xs font-semibold rounded-full shadow-xl flex items-center justify-center">
                                                 Up
                                             </span>
@@ -181,7 +181,7 @@ const VideosPage = () => {
                                         </div>
 
                                         <div className="w-full mb-auto overflow-hidden">
-                                            <span className="text-lg font-semibold line-clamp-1">
+                                            <span className="text-lg h-[40px] font-semibold leading-[1.2] line-clamp-2">
                                                 Peace Restaurant
                                             </span>
                                             <span className="text-md leading-[1.2] line-clamp-1">
@@ -189,7 +189,7 @@ const VideosPage = () => {
                                             </span>
                                         </div>
 
-                                        <div className="w-full mb-[40px]">
+                                        <div className="w-full mb-[25px]">
                                             <span className="w-[35px] h-[35px] mt-2 uppercase bg-white text-green-500 text-xs font-semibold rounded-full shadow-xl flex items-center justify-center">
                                                 End
                                             </span>

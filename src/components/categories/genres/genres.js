@@ -141,7 +141,7 @@ const GenresPage = () => {
 
 
                                         <div className="w-full mb-[50px] mr-auto">
-                                            <span className="gap-1 text-red-600 text-sm font-semibold flex items-center">
+                                            <span className="w-[70px] rounded-full gap-1 text-red-300 text-sm font-semibold shadow-xl flex items-center">
                                                 <FavoriteIcon />
                                                 200k
                                             </span>
