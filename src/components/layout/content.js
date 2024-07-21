@@ -96,13 +96,16 @@ const ContentPage = () => {
                                 />
 
                                 <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                    <div className="w-full h-[40px] mb-auto overflow-hidden">
+                                    <div className="w-full h-[60px] mb-auto overflow-hidden">
                                         <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
                                             Peace Restaurant
                                         </span>
+                                        <span className="text-md leading-[1.2] line-clamp-1">
+                                            Lee Nakeum , seewater
+                                        </span>
                                     </div>
 
-                                    <div className="w-full mt-2 mb-[50px]">
+                                    <div className="w-full mt-2 mb-[25px]">
                                         <span className="text-red-600 text-sm font-semibold flex items-center gap-1">
                                             <FavoriteIcon />
                                             200k
@@ -134,7 +137,7 @@ const ContentPage = () => {
                         <li
                             className="w-full h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
-                            New to Originals Series
+                            New to Originals
                         </li>
 
                     </ul>
@@ -155,13 +158,16 @@ const ContentPage = () => {
                                 />
 
                                 <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                    <div className="w-full h-[40px] mb-auto overflow-hidden">
+                                    <div className="w-full h-[60px] mb-auto overflow-hidden">
                                         <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
                                             Peace Restaurant
                                         </span>
+                                        <span className="text-md leading-[1.2] line-clamp-1">
+                                            Lee Nakeum , seewater
+                                        </span>
                                     </div>
 
-                                    <div className="w-full mt-2 mb-[50px]">
+                                    <div className="w-full mt-2 mb-[25px]">
                                         <span className="text-red-600 text-sm font-semibold flex items-center gap-1">
                                             <FavoriteIcon />
                                             200k
@@ -193,7 +199,7 @@ const ContentPage = () => {
                         <li
                             className="w-full h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
-                            New to Videos Series
+                            New to Videos
                         </li>
 
                     </ul>
@@ -214,13 +220,16 @@ const ContentPage = () => {
                                 />
 
                                 <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                    <div className="w-full h-[40px] mb-auto overflow-hidden">
+                                    <div className="w-full h-[60px] mb-auto overflow-hidden">
                                         <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
                                             Peace Restaurant
                                         </span>
+                                        <span className="text-md leading-[1.2] line-clamp-1">
+                                            Lee Nakeum , seewater
+                                        </span>
                                     </div>
 
-                                    <div className="w-full mt-2 mb-[50px]">
+                                    <div className="w-full mt-2 mb-[25px]">
                                         <span className="text-red-600 text-sm font-semibold flex items-center gap-1">
                                             <FavoriteIcon />
                                             200k
@@ -247,7 +256,7 @@ const ContentPage = () => {
             <div className="w-full h-[560px]">
                 <div className="w-full h-[60px] bg-white shadow flex items-center justify-center">
                     <ul
-                        className="flex"
+                        className="flex gap-[150px]"
                     >
                         <li
                             className="w-full h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
@@ -255,7 +264,12 @@ const ContentPage = () => {
                             GENRES
                             <NavigateNextIcon />
                         </li>
-
+                        <li
+                            className="w-full h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+                        >
+                            ALL
+                            <CheckIcon />
+                        </li>
                     </ul>
                 </div>
                 <div className="w-full h-[500px] flex items-center justify-center">
@@ -274,17 +288,28 @@ const ContentPage = () => {
                                 />
 
                                 <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                    <div className="w-full h-[40px] mb-auto overflow-hidden">
+                                    <div className="w-full h-[60px] mb-auto overflow-hidden">
                                         <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
                                             Peace Restaurant
                                         </span>
+                                        <span className="text-md leading-[1.2] line-clamp-1">
+                                            Lee Nakeum , seewater
+                                        </span>
                                     </div>
 
-                                    <div className="w-full mt-2 mb-[90px]">
-                                        <span className="text-red-600 text-sm font-semibold flex items-center gap-1">
+                                    <div className="w-full mb-[25px] mr-auto">
+                                        <span className="rounded-full gap-1 text-red-600 text-sm font-semibold flex items-center">
                                             <FavoriteIcon />
                                             200k
                                         </span>
+                                        <div className="flex mt-2 gap-1">
+                                            <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                Up
+                                            </span>
+                                            <span className="w-[35px] h-[35px] uppercase bg-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                New
+                                            </span>
+                                        </div>
                                     </div>
 
                                     <div className="w-full">
@@ -292,6 +317,7 @@ const ContentPage = () => {
                                             Fantasy
                                         </span>
                                     </div>
+
                                 </div>
 
                             </div>

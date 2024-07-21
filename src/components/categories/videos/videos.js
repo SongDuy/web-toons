@@ -118,8 +118,8 @@ const VideosPage = () => {
                                             </span>
                                         </div>
 
-                                        <div className="w-full mb-auto overflow-hidden">
-                                            <span className="text-lg h-[40px] font-semibold leading-[1.2] line-clamp-2">
+                                        <div className="w-full h-[60px] mb-auto overflow-hidden">
+                                            <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
                                                 Peace Restaurant
                                             </span>
                                             <span className="text-md leading-[1.2] line-clamp-1">
@@ -180,8 +180,8 @@ const VideosPage = () => {
                                             </span>
                                         </div>
 
-                                        <div className="w-full mb-auto overflow-hidden">
-                                            <span className="text-lg h-[40px] font-semibold leading-[1.2] line-clamp-2">
+                                        <div className="w-full h-[60px] mb-auto overflow-hidden">
+                                            <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
                                                 Peace Restaurant
                                             </span>
                                             <span className="text-md leading-[1.2] line-clamp-1">
