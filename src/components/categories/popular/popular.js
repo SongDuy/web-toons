@@ -398,6 +398,82 @@ const PopularPage = () => {
                             <span className="uppercase font-semibold text-xl">ORIGINALS BY GENRE</span>
                         </div>
 
+                        <div className="h-[50px] ml-[200px] mr-[150px] mb-5 bg-white flex items-center justify-center border-t border-b">
+                            <ul
+                                className="flex gap-10"
+                            >
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+                                    DRAMA
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-black hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+                                    FANTASY
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+                                    COMEDY
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+                                    ACTION
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+                                    SLICE OF LIFE
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+                                    ROMANCE
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+                                    SUPERHERO
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+
+                                    SCI-FI
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+
+                                    THRILLER
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+
+                                    SUPERNATURAL
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+
+                                    OTHERS v
+                                </li>
+
+                            </ul>
+                        </div>
                         <div className="h-full mx-[160px] gap-5 flex items-center justify-center">
 
                             <div className="w-1/2 h-[815px] bg-white py-1">
@@ -755,6 +831,83 @@ const PopularPage = () => {
                     <div className="w-full h-full mb-[100px]">
                         <div className="h-[70px] mx-[200px] flex items-center">
                             <span className="uppercase font-semibold text-xl">VIDEOS BY GENRE</span>
+                        </div>
+
+                        <div className="h-[50px] ml-[200px] mr-[150px] mb-5 bg-white flex items-center justify-center border-t border-b">
+                            <ul
+                                className="flex gap-10"
+                            >
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+                                    DRAMA
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-black hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+                                    FANTASY
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+                                    COMEDY
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+                                    ACTION
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+                                    SLICE OF LIFE
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+                                    ROMANCE
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+                                    SUPERHERO
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+
+                                    SCI-FI
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+
+                                    THRILLER
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+
+                                    SUPERNATURAL
+                                </li>
+
+                                <li
+                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                >
+
+                                    OTHERS v
+                                </li>
+
+                            </ul>
                         </div>
 
                         <div className="h-full mx-[160px] gap-5 flex items-center justify-center">
