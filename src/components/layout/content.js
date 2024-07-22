@@ -24,7 +24,7 @@ const data = [
 const ContentPage = () => {
 
     return (
-        <div className="w-full h-full bg-gray-100">
+        <div className="w-full h-full bg-gray-100 mb-[50px]">
             <div className="w-full h-[500px] bg-green-200">
 
             </div>
