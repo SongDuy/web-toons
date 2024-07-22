@@ -95,7 +95,7 @@ const ContentPage = () => {
                                     className="object-fill w-full h-full"
                                 />
 
-                                <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
                                     <div className="w-full h-[60px] mb-auto overflow-hidden">
                                         <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
                                             Peace Restaurant
@@ -106,7 +106,7 @@ const ContentPage = () => {
                                     </div>
 
                                     <div className="w-full mt-2 mb-[25px]">
-                                        <span className="text-red-600 text-sm font-semibold flex items-center gap-1">
+                                        <span className="text-red-300 text-sm font-semibold flex items-center gap-1">
                                             <FavoriteIcon />
                                             200k
                                         </span>
@@ -115,8 +115,8 @@ const ContentPage = () => {
                                         </span>
                                     </div>
 
-                                    <div className="w-full">
-                                        <span className="bg-gray-800 bg-opacity-80 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">
+                                    <div className="w-full h-[30px] bg-gray-800 bg-opacity-80 rounded-md">
+                                        <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
                                             Fantasy
                                         </span>
                                     </div>
@@ -168,7 +168,7 @@ const ContentPage = () => {
                                     </div>
 
                                     <div className="w-full mt-2 mb-[25px]">
-                                        <span className="text-red-600 text-sm font-semibold flex items-center gap-1">
+                                        <span className="text-red-300 text-sm font-semibold flex items-center gap-1">
                                             <FavoriteIcon />
                                             200k
                                         </span>
@@ -177,8 +177,8 @@ const ContentPage = () => {
                                         </span>
                                     </div>
 
-                                    <div className="w-full">
-                                        <span className="bg-gray-800 bg-opacity-80 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">
+                                    <div className="w-full h-[30px] bg-gray-800 bg-opacity-80 rounded-md">
+                                        <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
                                             Fantasy
                                         </span>
                                     </div>
@@ -230,7 +230,7 @@ const ContentPage = () => {
                                     </div>
 
                                     <div className="w-full mt-2 mb-[25px]">
-                                        <span className="text-red-600 text-sm font-semibold flex items-center gap-1">
+                                        <span className="text-red-300 text-sm font-semibold flex items-center gap-1">
                                             <FavoriteIcon />
                                             200k
                                         </span>
@@ -239,8 +239,8 @@ const ContentPage = () => {
                                         </span>
                                     </div>
 
-                                    <div className="w-full">
-                                        <span className="bg-gray-800 bg-opacity-80 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">
+                                    <div className="w-full h-[30px] bg-gray-800 bg-opacity-80 rounded-md">
+                                        <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
                                             Fantasy
                                         </span>
                                     </div>
@@ -297,8 +297,8 @@ const ContentPage = () => {
                                         </span>
                                     </div>
 
-                                    <div className="w-full mb-[25px] mr-auto">
-                                        <span className="rounded-full gap-1 text-red-600 text-sm font-semibold flex items-center">
+                                    <div className="w-full mb-[20px] mr-auto">
+                                        <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
                                             <FavoriteIcon />
                                             200k
                                         </span>
@@ -312,8 +312,8 @@ const ContentPage = () => {
                                         </div>
                                     </div>
 
-                                    <div className="w-full">
-                                        <span className="bg-gray-800 bg-opacity-80 rounded-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl">
+                                    <div className="w-full h-[30px] bg-gray-800 bg-opacity-80 rounded-md">
+                                        <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
                                             Fantasy
                                         </span>
                                     </div>
