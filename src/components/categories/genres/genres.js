@@ -18,6 +18,10 @@ const data = [
     { id: 10, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
 ];
 
+const handleOriginalSeriesClick = () => {
+    window.location.href = '/original/series';
+};
+
 const GenresPage = () => {
     return (
         <div>
@@ -113,8 +117,9 @@ const GenresPage = () => {
                             {/* khung nội dung */}
                             {data.map(item => (
                                 <div
-                                    className="w-[235px] h-[210px] bg-white relative"
+                                    className="w-[235px] h-[210px] bg-white relative cursor-pointer"
                                     key={item.id}
+                                    onClick={handleOriginalSeriesClick}
                                 >
 
                                     <img
