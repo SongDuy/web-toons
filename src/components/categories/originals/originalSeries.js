@@ -35,7 +35,9 @@ const OriginalSeriesPage = () => {
                     <div className="w-[1200px] h-full flex bg-white">
                         <div className="w-8/12 h-full border-r-2 px-5 pt-5 pb-10">
                             {/* danh sach series */}
+
                             <ul className="w-full h-full ">
+                                
                                 {/* khung danh sách */}
                                 {dataSeries.map(item => (
                                     <li className="w-full h-[90px] border-b ">
