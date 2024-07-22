@@ -120,7 +120,7 @@ const ContentPage = () => {
                                         </span>
                                     </div>
 
-                                    <div className="w-full h-[30px] bg-gray-800 bg-opacity-80 rounded-md">
+                                    <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
                                         <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
                                             Fantasy
                                         </span>
@@ -183,7 +183,7 @@ const ContentPage = () => {
                                         </span>
                                     </div>
 
-                                    <div className="w-full h-[30px] bg-gray-800 bg-opacity-80 rounded-md">
+                                    <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
                                         <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
                                             Fantasy
                                         </span>
@@ -246,7 +246,7 @@ const ContentPage = () => {
                                         </span>
                                     </div>
 
-                                    <div className="w-full h-[30px] bg-gray-800 bg-opacity-80 rounded-md">
+                                    <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
                                         <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
                                             Fantasy
                                         </span>
@@ -320,7 +320,7 @@ const ContentPage = () => {
                                         </div>
                                     </div>
 
-                                    <div className="w-full h-[30px] bg-gray-800 bg-opacity-80 rounded-md">
+                                    <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
                                         <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
                                             Fantasy
                                         </span>
