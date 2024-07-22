@@ -42,7 +42,7 @@ const HeaderPage = () => {
                 className="w-[400px] flex items-center"
             >
                 <ul
-                    className="flex gap-4"
+                    className="flex gap-5"
                 >
                     <li
                         className="uppercase font-semibold text-lg hover:text-green-500 cursor-pointer"
