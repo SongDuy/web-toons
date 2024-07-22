@@ -4,9 +4,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-const handleOriginalsClick = () => {
-    window.location.href = '/originals';
-};
+
 
 const data = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
@@ -20,6 +18,14 @@ const data = [
     { id: 9, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
     { id: 10, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
 ];
+
+const handleOriginalsClick = () => {
+    window.location.href = '/originals';
+};
+
+const handleOriginalSeriesClick = () => {
+    window.location.href = '/original/series';
+};
 
 const ContentPage = () => {
 
@@ -85,8 +91,9 @@ const ContentPage = () => {
                         {/* khung nội dung */}
                         {data.map(item => (
                             <div
-                                className="w-[210px] h-[210px] bg-white relative"
+                                className="w-[210px] h-[210px] bg-white relative cursor-pointer"
                                 key={item.id}
+                                onClick={handleOriginalSeriesClick}
                             >
 
                                 <img
@@ -147,8 +154,9 @@ const ContentPage = () => {
                         {/* khung nội dung */}
                         {data.map(item => (
                             <div
-                                className="w-[210px] h-[210px] bg-white relative"
+                                className="w-[210px] h-[210px] bg-white relative cursor-pointer"
                                 key={item.id}
+                                onClick={handleOriginalSeriesClick}
                             >
 
                                 <img
@@ -209,8 +217,9 @@ const ContentPage = () => {
                         {/* khung nội dung */}
                         {data.map(item => (
                             <div
-                                className="w-[210px] h-[210px] bg-white relative"
+                                className="w-[210px] h-[210px] bg-white relative cursor-pointer"
                                 key={item.id}
+                                onClick={handleOriginalSeriesClick}
                             >
 
                                 <img
@@ -277,8 +286,9 @@ const ContentPage = () => {
                         {/* khung nội dung */}
                         {data.map(item => (
                             <div
-                                className="w-[210px] h-[210px] bg-white relative"
+                                className="w-[210px] h-[210px] bg-white relative cursor-pointer"
                                 key={item.id}
+                                onClick={handleOriginalSeriesClick}
                             >
 
                                 <img

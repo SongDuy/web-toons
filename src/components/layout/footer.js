@@ -4,7 +4,7 @@ const FooterPage = () => {
     return (
         <div className="w-full h-[300px] bg-gray-100">
             <div className="w-full h-[60px] border-b-2 flex items-center justify-center">
-                <p>footer</p>
+                <p>Footer page</p>
             </div>
 
             <div className="">
