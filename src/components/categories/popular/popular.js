@@ -3,6 +3,18 @@ import React from 'react';
 import HeaderPage from '../../layout/header';
 import FooterPage from '../../layout/footer';
 
+const dataPopular = [
+    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "2", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "3", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "4", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "5", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "6", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "7", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "8", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "9", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "10", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+];
+
 const PopularPage = () => {
     return (
         <div>
@@ -109,284 +121,38 @@ const PopularPage = () => {
                             <div className="w-1/2 h-[815px] bg-white">
                                 <div className="w-full h-full">
                                     <ul className="w-full h-full ">
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
+
+                                        {/* khung nội dung */}
+                                        {dataPopular.map(item => (
+                                            <li className="w-full h-[90px] border-b" key={item.id}>
+                                                <div className="w-full h-full flex items-center">
+                                                    <div className="w-[80px] h-[80px]">
+                                                        <img
+                                                            src={item.img}
+                                                            alt="img"
+                                                            className="object-fill w-full h-full rounded-md"
+                                                        />
+                                                    </div>
+                                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
+                                                        <span className="mx-3 text-xl text-white font-bold">
+                                                            {item.number}
+                                                        </span>
+                                                    </div>
+                                                    <div className="w-[450px] mt-auto mb-auto overflow-hidden">
+                                                        <span className="text-gray-400 text-sm">
+                                                            {item.genre}
+                                                        </span>
+                                                        <span className="text-md font-semibold line-clamp-1">
+                                                            {item.name}
+                                                        </span>
+                                                        <span className="text-sm line-clamp-1">
+                                                            {item.auth}
+                                                        </span>
+                                                    </div>
+
                                                 </div>
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        2
-                                                    </span>
-                                                </div>
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-
-                                        </li>
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        3
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-
-                                        </li>
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        4
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        5
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        6
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        7
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        8
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        9
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[95px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        10
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
+                                            </li>
+                                        ))}
                                     </ul>
                                 </div>
                             </div>
@@ -544,283 +310,38 @@ const PopularPage = () => {
                             <div className="w-1/2 h-[815px] bg-white">
                                 <div className="w-full h-full">
                                     <ul className="w-full h-full ">
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
+
+                                        {/* khung nội dung */}
+                                        {dataPopular.map(item => (
+                                            <li className="w-full h-[90px] border-b" key={item.id}>
+                                                <div className="w-full h-full flex items-center">
+                                                    <div className="w-[80px] h-[80px]">
+                                                        <img
+                                                            src={item.img}
+                                                            alt="img"
+                                                            className="object-fill w-full h-full rounded-md"
+                                                        />
+                                                    </div>
+                                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
+                                                        <span className="mx-3 text-xl text-white font-bold">
+                                                            {item.number}
+                                                        </span>
+                                                    </div>
+                                                    <div className="w-[450px] mt-auto mb-auto overflow-hidden">
+                                                        <span className="text-gray-400 text-sm">
+                                                            {item.genre}
+                                                        </span>
+                                                        <span className="text-md font-semibold line-clamp-1">
+                                                            {item.name}
+                                                        </span>
+                                                        <span className="text-sm line-clamp-1">
+                                                            {item.auth}
+                                                        </span>
+                                                    </div>
+
                                                 </div>
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        2
-                                                    </span>
-                                                </div>
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-
-                                        </li>
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        3
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-
-                                        </li>
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        4
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        5
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        6
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        7
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        8
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        9
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[95px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        10
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
+                                            </li>
+                                        ))}
 
                                     </ul>
                                 </div>
@@ -980,283 +501,38 @@ const PopularPage = () => {
                             <div className="w-1/2 h-[815px] bg-white">
                                 <div className="w-full h-full">
                                     <ul className="w-full h-full ">
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
+
+                                        {/* khung nội dung */}
+                                        {dataPopular.map(item => (
+                                            <li className="w-full h-[90px] border-b" key={item.id}>
+                                                <div className="w-full h-full flex items-center">
+                                                    <div className="w-[80px] h-[80px]">
+                                                        <img
+                                                            src={item.img}
+                                                            alt="img"
+                                                            className="object-fill w-full h-full rounded-md"
+                                                        />
+                                                    </div>
+                                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
+                                                        <span className="mx-3 text-xl text-white font-bold">
+                                                            {item.number}
+                                                        </span>
+                                                    </div>
+                                                    <div className="w-[450px] mt-auto mb-auto overflow-hidden">
+                                                        <span className="text-gray-400 text-sm">
+                                                            {item.genre}
+                                                        </span>
+                                                        <span className="text-md font-semibold line-clamp-1">
+                                                            {item.name}
+                                                        </span>
+                                                        <span className="text-sm line-clamp-1">
+                                                            {item.auth}
+                                                        </span>
+                                                    </div>
+
                                                 </div>
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        2
-                                                    </span>
-                                                </div>
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-
-                                        </li>
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        3
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-
-                                        </li>
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        4
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        5
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        6
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        7
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        8
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[90px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        9
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-
-                                        <li className="w-full h-[95px] border-b ">
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        10
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[450px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        Fantasy
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        Peace Restaurant
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
+                                            </li>
+                                        ))}
 
                                     </ul>
                                 </div>
