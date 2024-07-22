@@ -44,11 +44,11 @@ const PopularPage = () => {
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div className="w-full h-full flex justify-center">
                                     <div className="px-[45px]">
-                                        <div className="w-[500px] h-[450px] bg-green-500 flex items-center justify-center relative">
+                                        <div className="w-[500px] h-[450px] rounded-xl bg-green-500 flex items-center justify-center relative">
                                             <img
                                                 src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                 alt="img"
-                                                className="object-fill w-full h-full"
+                                                className="object-fill w-full h-full rounded-xl"
                                             />
 
                                             <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
@@ -115,7 +115,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
                                                 <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
@@ -144,7 +144,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -175,7 +175,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -207,7 +207,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -238,7 +238,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -269,7 +269,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -300,7 +300,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -331,7 +331,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -362,7 +362,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -479,11 +479,11 @@ const PopularPage = () => {
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div className="w-full h-full flex justify-center">
                                     <div className="px-[45px]">
-                                        <div className="w-[500px] h-[450px] bg-green-500 flex items-center justify-center relative">
+                                        <div className="w-[500px] h-[450px] rounded-xl bg-green-500 flex items-center justify-center relative">
                                             <img
                                                 src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                 alt="img"
-                                                className="object-fill w-full h-full"
+                                                className="object-fill w-full h-full rounded-xl"
                                             />
 
                                             <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
@@ -550,7 +550,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
                                                 <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
@@ -579,7 +579,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -610,7 +610,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -642,7 +642,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -673,7 +673,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -704,7 +704,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -735,7 +735,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -766,7 +766,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -797,7 +797,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -915,11 +915,11 @@ const PopularPage = () => {
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div className="w-full h-full flex justify-center">
                                     <div className="px-[45px]">
-                                        <div className="w-[500px] h-[450px] bg-green-500 flex items-center justify-center relative">
+                                        <div className="w-[500px] h-[450px] rounded-xl bg-green-500 flex items-center justify-center relative">
                                             <img
                                                 src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                 alt="img"
-                                                className="object-fill w-full h-full"
+                                                className="object-fill w-full h-full rounded-xl"
                                             />
 
                                             <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
@@ -986,7 +986,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
                                                 <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
@@ -1015,7 +1015,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -1046,7 +1046,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -1078,7 +1078,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -1109,7 +1109,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -1140,7 +1140,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -1171,7 +1171,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -1202,7 +1202,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
@@ -1233,7 +1233,7 @@ const PopularPage = () => {
                                                     <img
                                                         src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                         alt="img"
-                                                        className="object-fill w-full h-full"
+                                                        className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 

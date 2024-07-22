@@ -89,7 +89,7 @@ const ContentPage = () => {
                         {/* khung nội dung */}
                         {data.map(item => (
                             <div
-                                className="w-[210px] h-[210px] bg-white relative cursor-pointer"
+                                className="w-[210px] h-[210px] rounded-xl bg-white relative cursor-pointer"
                                 key={item.id}
                                 onClick={handleOriginalSeriesClick}
                             >
@@ -97,7 +97,7 @@ const ContentPage = () => {
                                 <img
                                     src={item.img}
                                     alt="img"
-                                    className="object-fill w-full h-full"
+                                    className="object-fill w-full h-full rounded-md"
                                 />
 
                                 <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
@@ -152,7 +152,7 @@ const ContentPage = () => {
                         {/* khung nội dung */}
                         {data.map(item => (
                             <div
-                                className="w-[210px] h-[210px] bg-white relative cursor-pointer"
+                                className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
                                 key={item.id}
                                 onClick={handleOriginalSeriesClick}
                             >
@@ -160,7 +160,7 @@ const ContentPage = () => {
                                 <img
                                     src={item.img}
                                     alt="img"
-                                    className="object-fill w-full h-full"
+                                    className="object-fill w-full h-full rounded-md"
                                 />
 
                                 <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
@@ -215,7 +215,7 @@ const ContentPage = () => {
                         {/* khung nội dung */}
                         {data.map(item => (
                             <div
-                                className="w-[210px] h-[210px] bg-white relative cursor-pointer"
+                                className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
                                 key={item.id}
                                 onClick={handleOriginalSeriesClick}
                             >
@@ -223,7 +223,7 @@ const ContentPage = () => {
                                 <img
                                     src={item.img}
                                     alt="img"
-                                    className="object-fill w-full h-full"
+                                    className="object-fill w-full h-full rounded-md"
                                 />
 
                                 <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
@@ -284,7 +284,7 @@ const ContentPage = () => {
                         {/* khung nội dung */}
                         {data.map(item => (
                             <div
-                                className="w-[210px] h-[210px] bg-white relative cursor-pointer"
+                                className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
                                 key={item.id}
                                 onClick={handleOriginalSeriesClick}
                             >
@@ -292,7 +292,7 @@ const ContentPage = () => {
                                 <img
                                     src={item.img}
                                     alt="img"
-                                    className="object-fill w-full h-full"
+                                    className="object-fill w-full h-full rounded-md"
                                 />
 
                                 <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
@@ -376,7 +376,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
 
@@ -407,7 +407,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
                                     <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
@@ -436,7 +436,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
 
@@ -467,7 +467,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
 
@@ -499,7 +499,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
 
@@ -535,7 +535,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
 
@@ -566,7 +566,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
 
@@ -597,7 +597,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
 
@@ -628,7 +628,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
 
@@ -659,7 +659,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
 
@@ -695,7 +695,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
 
@@ -726,7 +726,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
 
@@ -757,7 +757,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
 
@@ -788,7 +788,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
 
@@ -819,7 +819,7 @@ const ContentPage = () => {
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
-                                            className="object-fill w-full h-full"
+                                            className="object-fill w-full h-full rounded-md"
                                         />
                                     </div>
 
