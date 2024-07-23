@@ -3,6 +3,7 @@ import React from 'react';
 import StarIcon from '@mui/icons-material/Star';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import GroupAddSharpIcon from '@mui/icons-material/GroupAddSharp';
+import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
 
 import HeaderPage from '../../layout/header';
 import FooterPage from '../../layout/footer';
@@ -55,7 +56,7 @@ const OriginalSeriesPage = () => {
                                                 />
                                             </div>
 
-                                            <div className="mr-auto ml-3">
+                                            <div className="w-[350px] mr-auto ml-3">
                                                 <span className="text-black text-md">
                                                     {item.name}
                                                 </span>
@@ -67,9 +68,12 @@ const OriginalSeriesPage = () => {
                                                 </span>
                                             </div>
 
-                                            <div className="ml-auto">
+                                            <div className="ml-auto flex gap-1">
+                                                <span className="text-gray-400">
+                                                     <FavoriteBorderSharpIcon /> 
+                                                </span>
                                                 <span className="text-gray-400 text-md line-clamp-1">
-                                                    {item.like}
+                                                {item.like}
                                                 </span>
                                             </div>
 
