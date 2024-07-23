@@ -163,10 +163,10 @@ const OriginalSeriesPage = () => {
                                 You may also like
                             </span>
                         </div>
-                        <div className="w-full h-[200px] bg-white my-5 px-5 py-5">
+                        <div className="w-full h-[160px] bg-white my-5 px-5 py-5 rounded-xl">
                             <ul className="flex gap-3">
-                                <li className="w-1/3 h-[150px] flex bg-red-50 rounded-xl">
-                                    <div className="w-[150px] h-[150px] bg-green-200 rounded-xl">
+                                <li className="w-1/3 h-[120px] flex bg-red-50 rounded-xl">
+                                    <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
@@ -185,8 +185,8 @@ const OriginalSeriesPage = () => {
                                         </div>
                                     </div>
                                 </li>
-                                <li className="w-1/3 h-[150px] flex bg-red-50 rounded-xl">
-                                    <div className="w-[150px] h-[150px] bg-green-200 rounded-xl">
+                                <li className="w-1/3 h-[120px] flex bg-red-50 rounded-xl">
+                                    <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
@@ -205,8 +205,8 @@ const OriginalSeriesPage = () => {
                                         </div>
                                     </div>
                                 </li>
-                                <li className="w-1/3 h-[150px] flex  bg-red-50 rounded-xl">
-                                    <div className="w-[150px] h-[150px] bg-green-200 rounded-xl">
+                                <li className="w-1/3 h-[120px] flex  bg-red-50 rounded-xl">
+                                    <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                             alt="img"
