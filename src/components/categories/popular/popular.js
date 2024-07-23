@@ -15,6 +15,10 @@ const dataPopular = [
     { id: 9, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "10", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
 ];
 
+const handleOriginalSeriesClick = () => {
+    window.location.href = '/original/series';
+};
+
 const PopularPage = () => {
     return (
         <div>
@@ -124,7 +128,10 @@ const PopularPage = () => {
 
                                         {/* khung nội dung */}
                                         {dataPopular.map(item => (
-                                            <li className="w-full h-[90px] border-b" key={item.id}>
+                                            <li className="w-full h-[90px] border-b cursor-pointer hover:bg-gray-100"
+                                                key={item.id}
+                                                onClick={handleOriginalSeriesClick}
+                                            >
                                                 <div className="w-full h-full flex items-center">
                                                     <div className="w-[80px] h-[80px]">
                                                         <img
@@ -313,7 +320,11 @@ const PopularPage = () => {
 
                                         {/* khung nội dung */}
                                         {dataPopular.map(item => (
-                                            <li className="w-full h-[90px] border-b" key={item.id}>
+                                            <li
+                                                className="w-full h-[90px] border-b cursor-pointer hover:bg-gray-100"
+                                                key={item.id}
+                                                onClick={handleOriginalSeriesClick}
+                                            >
                                                 <div className="w-full h-full flex items-center">
                                                     <div className="w-[80px] h-[80px]">
                                                         <img
@@ -504,7 +515,11 @@ const PopularPage = () => {
 
                                         {/* khung nội dung */}
                                         {dataPopular.map(item => (
-                                            <li className="w-full h-[90px] border-b" key={item.id}>
+                                            <li
+                                                className="w-full h-[90px] border-b cursor-pointer hover:bg-gray-100"
+                                                key={item.id}
+                                                onClick={handleOriginalSeriesClick}
+                                            >
                                                 <div className="w-full h-full flex items-center">
                                                     <div className="w-[80px] h-[80px]">
                                                         <img
