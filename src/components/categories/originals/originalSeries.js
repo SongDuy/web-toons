@@ -125,13 +125,29 @@ const OriginalSeriesPage = () => {
                             </div>
 
                             <div className="w-full h-full">
-                                <div className="">
 
+                                <div className="flex gap-3 pt-10 pb-5">
+                                    <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                        Up
+                                    </span>
+                                    <span className="text-xl font-semibold flex items-center">
+                                        EVERY MONDAY
+                                    </span>
+                                </div>
+                                <div className="">
+                                    <span className="">
+                                        The Etruscan Kingdom is stained with blood when the king’s illegitimate 
+                                        son Cesare conspires with his fiancée Ariadne to usurp the throne from 
+                                        his half-brother Alfonso. Despite Ariadne’s devotion to the new king, 
+                                        her faith is shattered when she is betrayed by him and eventually murdered 
+                                        by her own sister, who wishes to be queen. To her surprise, Ariadne finds 
+                                        herself sent back in time to her 17-year-old self. As she navigates the 
+                                        perils and opportunities of palace intrigue, Ariadne must make the most 
+                                        of her guile and grit to ensure that her tragic future does not repeat itself.
+                                    </span>
                                 </div>
 
-                                <div className="">
 
-                                </div>
                             </div>
                         </div>
                     </div>
