@@ -35,12 +35,11 @@ const OriginalSeriesPage = () => {
 
                 </div>
 
-                <div className="w-full h-full flex items-center justify-center">
-                    <div className="w-[1200px] h-full flex bg-white">
+                <div className="w-full h-full flex items-center justify-center ">
+                    <div className="w-[1200px] h-full flex bg-white pt-5 pb-10">
 
-                        <div className="w-8/12 h-full border-r-2 px-5 pt-5 pb-10">
+                        <div className="w-8/12 h-[900px] px-5 overflow-y-scroll">
                             {/* danh sach series */}
-
                             <ul className="w-full h-full ">
 
                                 {/* khung danh sách */}
@@ -86,9 +85,9 @@ const OriginalSeriesPage = () => {
                             </ul>
                         </div>
 
-                        <div className="w-4/12 h-full py-10 px-5">
+                        <div className="w-4/12 h-[900px] py-5 px-5">
 
-                            <div className="w-full h-full">
+                            <div className="w-full mb-auto">
                                 <ul className="flex">
                                     <li className="mr-auto mt-auto mb-auto">
                                         <span className="mx-1 text-green-500">
