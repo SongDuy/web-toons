@@ -26,6 +26,10 @@ const dataSeries = [
     { id: 15, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 1", date: "jun 10, 2024", like: "23,789", number: "#1" },
 ];
 
+const handleOriginalSeriesClick = () => {
+    window.location.href = '/original/series';
+};
+
 const OriginalSeriesPage = () => {
     return (
         <div>
@@ -164,8 +168,11 @@ const OriginalSeriesPage = () => {
                             </span>
                         </div>
                         <div className="w-full h-[160px] bg-white my-5 px-5 py-5 rounded-xl">
-                            <ul className="flex gap-3">
-                                <li className="w-1/3 h-[120px] flex bg-red-50 rounded-xl">
+                            <ul className="flex items-center justify-center gap-3">
+                                <li
+                                    className="w-1/3 h-[120px] flex bg-red-50 rounded-xl cursor-pointer"
+                                    onClick={handleOriginalSeriesClick}
+                                >
                                     <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
@@ -191,7 +198,10 @@ const OriginalSeriesPage = () => {
                                         </div>
                                     </div>
                                 </li>
-                                <li className="w-1/3 h-[120px] flex bg-red-50 rounded-xl">
+                                <li
+                                    className="w-1/3 h-[120px] flex bg-red-50 rounded-xl cursor-pointer"
+                                    onClick={handleOriginalSeriesClick}
+                                >
                                     <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
@@ -217,7 +227,10 @@ const OriginalSeriesPage = () => {
                                         </div>
                                     </div>
                                 </li>
-                                <li className="w-1/3 h-[120px] flex  bg-red-50 rounded-xl">
+                                <li
+                                    className="w-1/3 h-[120px] flex bg-red-50 rounded-xl cursor-pointer"
+                                    onClick={handleOriginalSeriesClick}
+                                >
                                     <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
                                         <img
                                             src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
