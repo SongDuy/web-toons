@@ -86,9 +86,9 @@ const OriginalSeriesPage = () => {
                             </ul>
                         </div>
 
-                        <div className="w-4/12 h-full bg-red-200">
+                        <div className="w-4/12 h-full py-10 px-5">
 
-                            <div className="w-full h-full py-10 px-5">
+                            <div className="w-full h-full">
                                 <ul className="flex">
                                     <li className="mr-auto mt-auto mb-auto">
                                         <span className="mx-1 text-green-500">
