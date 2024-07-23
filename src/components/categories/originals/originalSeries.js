@@ -135,13 +135,13 @@ const OriginalSeriesPage = () => {
                                 </div>
                                 <div className="">
                                     <span className="">
-                                        The Etruscan Kingdom is stained with blood when the king’s illegitimate 
-                                        son Cesare conspires with his fiancée Ariadne to usurp the throne from 
-                                        his half-brother Alfonso. Despite Ariadne’s devotion to the new king, 
-                                        her faith is shattered when she is betrayed by him and eventually murdered 
-                                        by her own sister, who wishes to be queen. To her surprise, Ariadne finds 
-                                        herself sent back in time to her 17-year-old self. As she navigates the 
-                                        perils and opportunities of palace intrigue, Ariadne must make the most 
+                                        The Etruscan Kingdom is stained with blood when the king’s illegitimate
+                                        son Cesare conspires with his fiancée Ariadne to usurp the throne from
+                                        his half-brother Alfonso. Despite Ariadne’s devotion to the new king,
+                                        her faith is shattered when she is betrayed by him and eventually murdered
+                                        by her own sister, who wishes to be queen. To her surprise, Ariadne finds
+                                        herself sent back in time to her 17-year-old self. As she navigates the
+                                        perils and opportunities of palace intrigue, Ariadne must make the most
                                         of her guile and grit to ensure that her tragic future does not repeat itself.
                                     </span>
                                 </div>
@@ -149,6 +149,20 @@ const OriginalSeriesPage = () => {
 
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div className="w-full h-full  py-10 flex items-center justify-center">
+                    <div className="w-[1200px] h-[300px] ">
+                        <div className="">
+                            <span className="text-xl font-semibold">
+                                You may also like
+                            </span>
+                        </div>
+                        <div className="w-full h-[300px] bg-white my-5">
+                            kk
+                        </div>
+
                     </div>
                 </div>
             </div>
