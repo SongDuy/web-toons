@@ -1,5 +1,9 @@
 import React from 'react';
 
+import StarIcon from '@mui/icons-material/Star';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import GroupAddSharpIcon from '@mui/icons-material/GroupAddSharp';
+
 import HeaderPage from '../../layout/header';
 import FooterPage from '../../layout/footer';
 
@@ -33,6 +37,7 @@ const OriginalSeriesPage = () => {
 
                 <div className="w-full h-full flex items-center justify-center">
                     <div className="w-[1200px] h-full flex bg-white">
+
                         <div className="w-8/12 h-full border-r-2 px-5 pt-5 pb-10">
                             {/* danh sach series */}
 
@@ -81,12 +86,45 @@ const OriginalSeriesPage = () => {
                             </ul>
                         </div>
 
-                        <div className="w-4/12 h-full">
-                            <div className="">
+                        <div className="w-4/12 h-full bg-red-200">
 
+                            <div className="w-full h-full py-10 px-5">
+                                <ul className="flex">
+                                    <li className="mr-auto mt-auto mb-auto">
+                                        <span className="mx-1 text-green-500">
+                                            <VisibilityIcon />
+                                        </span>
+                                        <span className="mx-1">
+                                            8.5M
+                                        </span>
+                                    </li>
+                                    <li className="ml-auto" >
+                                        <span className="mx-1 text-green-500">
+                                            <GroupAddSharpIcon />
+                                        </span>
+                                        <span className="mx-1">
+                                            450,229
+                                        </span>
+                                    </li>
+                                    <li className="ml-auto" >
+                                        <span className="mx-1 text-green-500">
+                                            <StarIcon />
+                                        </span>
+                                        <span className="mx-1">
+                                            9.74
+                                        </span>
+
+                                    </li>
+                                    <li className="ml-auto">
+                                        <span className="w-full h-[35px] px-2 py-[1px] rounded-full text-white bg-green-500">
+                                            RATE
+                                        </span>
+                                    </li>
+
+                                </ul>
                             </div>
 
-                            <div className="">
+                            <div className="w-full h-full">
                                 <div className="">
 
                                 </div>
