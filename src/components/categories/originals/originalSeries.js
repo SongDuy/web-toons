@@ -161,14 +161,66 @@ const OriginalSeriesPage = () => {
                         </div>
                         <div className="w-full h-[200px] bg-white my-5 px-5 py-5">
                             <ul className="flex gap-3">
-                                <li className="w-1/3 h-[150px] bg-red-200">
-
+                                <li className="w-1/3 h-[150px] flex bg-red-50 rounded-xl">
+                                    <div className="w-[150px] h-[150px] bg-green-200 rounded-xl">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full rounded-xl"
+                                        />
+                                    </div>
+                                    <div className="h-full rounded-xl px-3 py-3">
+                                        <div className="">
+                                            kk
+                                        </div>
+                                        <div className="">
+                                            kk
+                                        </div>
+                                        <div className="">
+                                            kk
+                                        </div>
+                                    </div>
                                 </li>
-                                <li className="w-1/3 h-[150px] bg-red-200">
-
+                                <li className="w-1/3 h-[150px] flex bg-red-50 rounded-xl">
+                                    <div className="w-[150px] h-[150px] bg-green-200 rounded-xl">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full rounded-xl"
+                                        />
+                                    </div>
+                                    <div className="h-full rounded-xl px-3 py-3">
+                                        <div className="">
+                                            kk
+                                        </div>
+                                        <div className="">
+                                            kk
+                                        </div>
+                                        <div className="">
+                                            kk
+                                        </div>
+                                    </div>
                                 </li>
-                                <li className="w-1/3 h-[150px] bg-red-200">
+                                <li className="w-1/3 h-[150px] flex  bg-red-50 rounded-xl">
+                                    <div className="w-[150px] h-[150px] bg-green-200 rounded-xl">
+                                        <img
+                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            alt="img"
+                                            className="object-fill w-full h-full rounded-xl"
+                                        />
+                                    </div>
 
+                                    <div className="h-full rounded-xl px-3 py-3">
+                                        <div className="">
+                                            kk
+                                        </div>
+                                        <div className="">
+                                            kk
+                                        </div>
+                                        <div className="">
+                                            kk
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
