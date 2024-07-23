@@ -160,7 +160,17 @@ const OriginalSeriesPage = () => {
                             </span>
                         </div>
                         <div className="w-full h-[200px] bg-white my-5 px-5 py-5">
-                            kk
+                            <ul className="flex gap-3">
+                                <li className="w-1/3 h-[150px] bg-red-200">
+
+                                </li>
+                                <li className="w-1/3 h-[150px] bg-red-200">
+
+                                </li>
+                                <li className="w-1/3 h-[150px] bg-red-200">
+
+                                </li>
+                            </ul>
                         </div>
 
                     </div>
