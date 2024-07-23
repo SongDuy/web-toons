@@ -153,13 +153,13 @@ const OriginalSeriesPage = () => {
                 </div>
 
                 <div className="w-full h-full  py-10 flex items-center justify-center">
-                    <div className="w-[1200px] h-[300px] ">
+                    <div className="w-[1200px] h-full ">
                         <div className="">
                             <span className="text-xl font-semibold">
                                 You may also like
                             </span>
                         </div>
-                        <div className="w-full h-[300px] bg-white my-5">
+                        <div className="w-full h-[200px] bg-white my-5 px-5 py-5">
                             kk
                         </div>
 
