@@ -70,10 +70,10 @@ const OriginalSeriesPage = () => {
 
                                             <div className="ml-auto flex gap-1">
                                                 <span className="text-gray-400">
-                                                     <FavoriteBorderSharpIcon /> 
+                                                    <FavoriteBorderSharpIcon />
                                                 </span>
                                                 <span className="text-gray-400 text-md line-clamp-1">
-                                                {item.like}
+                                                    {item.like}
                                                 </span>
                                             </div>
 
@@ -168,61 +168,79 @@ const OriginalSeriesPage = () => {
                                 <li className="w-1/3 h-[120px] flex bg-red-50 rounded-xl">
                                     <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
                                         <img
-                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
                                             alt="img"
                                             className="object-fill w-full h-full rounded-xl"
                                         />
                                     </div>
                                     <div className="h-full rounded-xl px-3 py-3">
-                                        <div className="">
-                                            kk
+                                        <div className="w-[210px] h-[75px] overflow-hidden">
+                                            <span className="w-full text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                The Mafia Nanny
+                                            </span>
+                                            <span className="w-full line-clamp-1">
+                                                sh00 , Violet Matter
+                                            </span>
                                         </div>
-                                        <div className="">
-                                            kk
-                                        </div>
-                                        <div className="">
-                                            kk
+
+                                        <div className="w-full">
+                                            <span className=" flex gap-1 text-green-500">
+                                                <VisibilityIcon />
+                                                88.8M
+                                            </span>
                                         </div>
                                     </div>
                                 </li>
                                 <li className="w-1/3 h-[120px] flex bg-red-50 rounded-xl">
                                     <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
                                         <img
-                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
                                             alt="img"
                                             className="object-fill w-full h-full rounded-xl"
                                         />
                                     </div>
                                     <div className="h-full rounded-xl px-3 py-3">
-                                        <div className="">
-                                            kk
+                                        <div className="w-[210px] h-[75px] overflow-hidden">
+                                            <span className="w-full text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                The Mafia Nanny
+                                            </span>
+                                            <span className="w-full line-clamp-1">
+                                                sh00 , Violet Matter
+                                            </span>
                                         </div>
-                                        <div className="">
-                                            kk
-                                        </div>
-                                        <div className="">
-                                            kk
+
+                                        <div className="w-full">
+                                            <span className=" flex gap-1 text-green-500">
+                                                <VisibilityIcon />
+                                                88.8M
+                                            </span>
                                         </div>
                                     </div>
                                 </li>
                                 <li className="w-1/3 h-[120px] flex  bg-red-50 rounded-xl">
                                     <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
                                         <img
-                                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                            src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
                                             alt="img"
                                             className="object-fill w-full h-full rounded-xl"
                                         />
                                     </div>
 
                                     <div className="h-full rounded-xl px-3 py-3">
-                                        <div className="">
-                                            kk
+                                        <div className="w-[210px] h-[75px] overflow-hidden">
+                                            <span className="w-full text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                The Mafia Nanny
+                                            </span>
+                                            <span className="w-full line-clamp-1">
+                                                sh00 , Violet Matter
+                                            </span>
                                         </div>
-                                        <div className="">
-                                            kk
-                                        </div>
-                                        <div className="">
-                                            kk
+
+                                        <div className="w-full">
+                                            <span className=" flex gap-1 text-green-500">
+                                                <VisibilityIcon />
+                                                88.8M
+                                            </span>
                                         </div>
                                     </div>
                                 </li>
