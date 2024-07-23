@@ -380,7 +380,11 @@ const ContentPage = () => {
                         <ul className="w-full h-full ">
                             {/* khung nội dung */}
                             {dataPopular.map(item => (
-                                <li className="w-full h-[95px] border-b " key={item.key}>
+                                <li
+                                    className="w-full h-[95px] border-b cursor-pointer hover:bg-gray-100"
+                                    key={item.key}
+                                    onClick={handleOriginalSeriesClick}
+                                >
                                     <div className="w-full h-full flex items-center">
                                         <div className="w-[80px] h-[80px] flex">
                                             <img
@@ -418,7 +422,11 @@ const ContentPage = () => {
                         <ul className="w-full h-full">
                             {/* khung nội dung */}
                             {dataPopular.map(item => (
-                                <li className="w-full h-[95px] border-b " key={item.key}>
+                                <li
+                                    className="w-full h-[95px] border-b cursor-pointer hover:bg-gray-100"
+                                    key={item.key}
+                                    onClick={handleOriginalSeriesClick}
+                                >
                                     <div className="w-full h-full flex items-center">
                                         <div className="w-[80px] h-[80px] flex">
                                             <img
@@ -457,13 +465,17 @@ const ContentPage = () => {
                         <ul className="w-full h-full">
                             {/* khung nội dung */}
                             {dataPopular.map(item => (
-                                <li className="w-full h-[95px] border-b" key={item.key}>
+                                <li
+                                    className="w-full h-[95px] border-b cursor-pointer hover:bg-gray-100"
+                                    key={item.key}
+                                    onClick={handleOriginalSeriesClick}
+                                >
                                     <div className="w-full h-full flex items-center">
                                         <div className="w-[80px] h-[80px] flex">
                                             <img
                                                 src={item.img}
                                                 alt="img"
-                                                
+
                                                 className="object-fill w-full h-full rounded-md"
                                             />
                                         </div>
