@@ -48,8 +48,8 @@ const VideoSeriesPage  = () => {
             <div className="w-full h-full flex items-center justify-center ">
                 <div className="w-[1200px] h-full flex bg-white pt-5 pb-10">
 
-                    <div className="w-8/12 h-full px-3 ">
-                        <div className="w-full h-[900px] overflow-y-scroll">
+                    <div className="w-8/12 h-full">
+                        <div className="w-full h-[900px] px-3 overflow-y-scroll">
                             {/* danh sach series */}
                             <ul className="w-full h-full ">
 
