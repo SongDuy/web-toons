@@ -40,6 +40,7 @@ const OriginalSeriesPage = () => {
             <HeaderPage />
 
             <div className="w-full h-full bg-gray-100">
+                {/* Hiển thị ảnh  */}
                 <div className="w-full h-[320px] bg-green-200">
 
                 </div>
@@ -175,10 +176,10 @@ const OriginalSeriesPage = () => {
                                 You may also like
                             </span>
                         </div>
-                        <div className="w-full h-[160px] bg-white my-5 px-5 py-5 rounded-xl">
+                        <div className="w-full h-[160px] bg-white my-5 px-5 py-5 rounded-md">
                             <ul className="flex items-center justify-center gap-3">
                                 <li
-                                    className="w-1/3 h-[120px] flex bg-red-50 rounded-xl cursor-pointer hover:bg-red-100"
+                                    className="w-1/3 h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
                                     onClick={handleOriginalSeriesClick}
                                 >
                                     <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
@@ -207,7 +208,7 @@ const OriginalSeriesPage = () => {
                                     </div>
                                 </li>
                                 <li
-                                    className="w-1/3 h-[120px] flex bg-red-50 rounded-xl cursor-pointer hover:bg-red-100"
+                                    className="w-1/3 h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
                                     onClick={handleOriginalSeriesClick}
                                 >
                                     <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
@@ -236,7 +237,7 @@ const OriginalSeriesPage = () => {
                                     </div>
                                 </li>
                                 <li
-                                    className="w-1/3 h-[120px] flex bg-red-50 rounded-xl cursor-pointer hover:bg-red-100"
+                                    className="w-1/3 h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
                                     onClick={handleOriginalSeriesClick}
                                 >
                                     <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
