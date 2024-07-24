@@ -114,7 +114,6 @@ const GenresPage = () => {
 
                             OTHERS v
                         </li>
-
                     </ul>
                 </div>
 
@@ -130,7 +129,7 @@ const GenresPage = () => {
                             {/* khung nội dung */}
                             {data.map(item => (
                                 <div
-                                    className="w-[235px] h-[210px] bg-white rounded-md relative cursor-pointer"
+                                    className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer"
                                     key={item.id}
                                     onClick={handleOriginalSeriesClick}
                                 >
