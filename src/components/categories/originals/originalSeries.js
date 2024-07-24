@@ -48,61 +48,64 @@ const OriginalSeriesPage = () => {
                 <div className="w-full h-full flex items-center justify-center ">
                     <div className="w-[1200px] h-full flex bg-white pt-5 pb-10">
 
-                        <div className="w-8/12 h-[900px] px-3 overflow-y-scroll">
-                            {/* danh sach series */}
-                            <ul className="w-full h-full ">
+                        <div className="w-8/12 h-full px-3 ">
+                            <div className="w-full h-[900px] overflow-y-scroll">
+                                {/* danh sach series */}
+                                <ul className="w-full h-full ">
 
-                                {/* khung danh sách */}
-                                {dataSeries.map(item => (
-                                    <li
-                                        className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
-                                        key={item.id}
-                                        onClick={handleDisplayOriginalClick}
-                                    >
-                                        <div className="w-full h-full flex items-center">
-                                            <div className="w-[80px] h-[80px]">
-                                                <img
-                                                    src={item.img}
-                                                    alt="img"
+                                    {/* khung danh sách */}
+                                    {dataSeries.map(item => (
+                                        <li
+                                            className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
+                                            key={item.id}
+                                            onClick={handleDisplayOriginalClick}
+                                        >
+                                            <div className="w-full h-full flex items-center">
+                                                <div className="w-[80px] h-[80px]">
+                                                    <img
+                                                        src={item.img}
+                                                        alt="img"
 
-                                                    className="object-fill w-full h-full rounded-md"
-                                                />
+                                                        className="object-fill w-full h-full rounded-md"
+                                                    />
+                                                </div>
+
+                                                <div className="w-[350px] mr-auto ml-3 overflow-hidden">
+                                                    <span className="text-black text-md leading-[1.2] line-clamp-2">
+                                                        {item.name}
+                                                    </span>
+                                                </div>
+
+                                                <div className="ml-auto">
+                                                    <span className="text-gray-400 text-md">
+                                                        {item.date}
+                                                    </span>
+                                                </div>
+
+                                                <div className="ml-auto flex gap-1">
+                                                    <span className="text-gray-400">
+                                                        <FavoriteBorderSharpIcon />
+                                                    </span>
+                                                    <span className="text-gray-400 text-md line-clamp-1">
+                                                        {item.like}
+                                                    </span>
+                                                </div>
+
+                                                <div className="ml-auto">
+                                                    <span className="text-gray-400 text-md line-clamp-1">
+                                                        {item.number}
+                                                    </span>
+                                                </div>
                                             </div>
 
-                                            <div className="w-[350px] mr-auto ml-3 overflow-hidden">
-                                                <span className="text-black text-md leading-[1.2] line-clamp-2">
-                                                    {item.name}
-                                                </span>
-                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
 
-                                            <div className="ml-auto">
-                                                <span className="text-gray-400 text-md">
-                                                    {item.date}
-                                                </span>
-                                            </div>
-
-                                            <div className="ml-auto flex gap-1">
-                                                <span className="text-gray-400">
-                                                    <FavoriteBorderSharpIcon />
-                                                </span>
-                                                <span className="text-gray-400 text-md line-clamp-1">
-                                                    {item.like}
-                                                </span>
-                                            </div>
-
-                                            <div className="ml-auto">
-                                                <span className="text-gray-400 text-md line-clamp-1">
-                                                    {item.number}
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                    </li>
-                                ))}
-                            </ul>
                         </div>
 
-                        <div className="w-4/12 h-[900px] py-5 px-5">
+                        <div className="w-4/12 h-full py-5 px-5">
 
                             <div className="w-full mb-auto">
                                 <ul className="flex">
@@ -150,7 +153,7 @@ const OriginalSeriesPage = () => {
                                         EVERY MONDAY
                                     </span>
                                 </div>
-                                <div className="">
+                                <div className="w-full">
                                     <span className="">
                                         The Etruscan Kingdom is stained with blood when the king’s illegitimate
                                         son Cesare conspires with his fiancée Ariadne to usurp the throne from
@@ -160,6 +163,7 @@ const OriginalSeriesPage = () => {
                                         herself sent back in time to her 17-year-old self. As she navigates the
                                         perils and opportunities of palace intrigue, Ariadne must make the most
                                         of her guile and grit to ensure that her tragic future does not repeat itself.
+                                        
                                     </span>
                                 </div>
 
