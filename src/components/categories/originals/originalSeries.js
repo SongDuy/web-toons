@@ -69,7 +69,7 @@ const OriginalSeriesPage = () => {
                                                 />
                                             </div>
 
-                                            <div className="w-[350px] h-[50px] mr-auto ml-3 flex items-center overflow-hidden">
+                                            <div className="w-[350px] mr-auto ml-3 overflow-hidden">
                                                 <span className="text-black text-md leading-[1.2] line-clamp-2">
                                                     {item.name}
                                                 </span>

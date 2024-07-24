@@ -26,7 +26,6 @@ const DisplayOriginalPage = () => {
 
                         <li className="ml-auto">
                             <span className="text-white">jjjjjjjjjjk k k kk k k k k jjjjj</span>
-
                         </li>
 
                     </ul>
