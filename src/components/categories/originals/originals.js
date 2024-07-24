@@ -131,7 +131,7 @@ const OriginalsPage = () => {
 
                                     <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
                                         <div className="w-full py-1">
-                                            <span className="bg-gray-300 bg-opacity-50 rounded-full px-2 py-1 text-yellow-600 text-xs font-semibold shadow-xl">
+                                            <span className="bg-gray-50 bg-opacity-50 rounded-md px-2 py-1 text-yellow-600 text-xs font-semibold shadow-xl">
                                                 Fantasy
                                             </span>
                                         </div>
@@ -194,7 +194,7 @@ const OriginalsPage = () => {
                                     <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
 
                                         <div className="w-full py-1">
-                                            <span className="bg-gray-300 bg-opacity-50 rounded-full px-2 py-1 text-yellow-600 text-xs font-semibold shadow-xl">
+                                            <span className="bg-gray-50 bg-opacity-50 rounded-md px-2 py-1 text-yellow-600 text-xs font-semibold shadow-xl">
                                                 Fantasy
                                             </span>
                                         </div>
