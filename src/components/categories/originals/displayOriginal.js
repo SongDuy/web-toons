@@ -24,8 +24,8 @@ const DisplayOriginalPage = () => {
                             <span className="text-white">kk</span>
                         </li>
 
-                        <li className="bg-white ml-auto">
-                            <span className="ml-auto">jjjjjjjjjjk k k kk k k k k jjjjj</span>
+                        <li className="ml-auto">
+                            <span className="text-white">jjjjjjjjjjk k k kk k k k k jjjjj</span>
 
                         </li>
 
