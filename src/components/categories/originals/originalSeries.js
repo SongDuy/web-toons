@@ -30,6 +30,10 @@ const handleOriginalSeriesClick = () => {
     window.location.href = '/original/series';
 };
 
+const handleDisplayOriginalClick = () => {
+    window.location.href = '/original/series/display';
+};
+
 const OriginalSeriesPage = () => {
     return (
         <div>
@@ -43,19 +47,23 @@ const OriginalSeriesPage = () => {
                 <div className="w-full h-full flex items-center justify-center ">
                     <div className="w-[1200px] h-full flex bg-white pt-5 pb-10">
 
-                        <div className="w-8/12 h-[900px] px-5 overflow-y-scroll">
+                        <div className="w-8/12 h-[900px] px-3 overflow-y-scroll">
                             {/* danh sach series */}
                             <ul className="w-full h-full ">
 
                                 {/* khung danh sách */}
                                 {dataSeries.map(item => (
-                                    <li className="w-full h-[90px] border-b ">
+                                    <li
+                                        className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
+                                        key={item.id}
+                                        onClick={handleDisplayOriginalClick}
+                                    >
                                         <div className="w-full h-full flex items-center">
                                             <div className="w-[80px] h-[80px]">
                                                 <img
                                                     src={item.img}
                                                     alt="img"
-                                                    key={item.id}
+
                                                     className="object-fill w-full h-full rounded-md"
                                                 />
                                             </div>
