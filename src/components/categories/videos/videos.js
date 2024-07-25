@@ -9,29 +9,29 @@ import FooterPage from '../../layout/footer';
 
 
 const data = [
-    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 10, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 11, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 12, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 13, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 14, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 15, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 16, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 17, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 18, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 19, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 20, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 21, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 22, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 23, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
+    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 10, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 11, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 12, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 13, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 14, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 15, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 16, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 17, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 18, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 19, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 20, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 21, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 22, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
+    { id: 23, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater"},
 ];
 const handleOriginalSeriesClick = () => {
     window.location.href = '/video/series';
@@ -131,16 +131,16 @@ const VideosPage = () => {
                                     <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
                                         <div className="w-full py-1">
                                             <span className="bg-gray-50 bg-opacity-50 rounded-md px-2 py-1 text-yellow-600 text-xs font-semibold shadow-xl">
-                                                Fantasy
+                                                {item.genre}
                                             </span>
                                         </div>
 
                                         <div className="w-full h-[60px] mb-auto overflow-hidden">
                                             <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                Peace Restaurant
+                                               {item.name}
                                             </span>
                                             <span className="text-md leading-[1.2] line-clamp-1">
-                                                Lee Nakeum , seewater
+                                                {item.auth}
                                             </span>
                                         </div>
 
@@ -194,16 +194,16 @@ const VideosPage = () => {
 
                                         <div className="w-full py-1">
                                             <span className="bg-gray-50 bg-opacity-50 rounded-md px-2 py-1 text-yellow-600 text-xs font-semibold shadow-xl">
-                                                Fantasy
+                                                {item.genre}
                                             </span>
                                         </div>
 
                                         <div className="w-full h-[60px] mb-auto overflow-hidden">
                                             <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                Peace Restaurant
+                                                {item.name}
                                             </span>
                                             <span className="text-md leading-[1.2] line-clamp-1">
-                                                Lee Nakeum , seewater
+                                                {item.auth}
                                             </span>
                                         </div>
 
