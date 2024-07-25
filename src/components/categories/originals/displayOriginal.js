@@ -95,116 +95,116 @@ const DisplayOriginalPage = () => {
                 </div>
 
                 <div className="w-full h-[200px] bg-red-50 flex items-center justify-center">
-                    <div className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:bg-red-200 rounded-md mx-3 flex items-center justify-center">
-                        <span className="ml-2">
+                    <div className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center">
+                        <span className="ml-2 hover:text-white">
                             <ArrowBackIosIcon />
                         </span>
 
                     </div>
 
                     <ul className="flex">
-                        <li className="w-[120px] h-[120px] flex items-center justify-center overflow-hidden">
+                        <li className="w-[120px] h-[150px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
                             <div className="w-[100px] h-[100px] mb-auto">
                                 <img
                                     src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
                                     alt="img"
                                     className="object-fill w-full h-full rounded-md"
                                 />
-                                <span className="line-clamp-1">Episode 7</span>
+                                <span className="leading-[1.2] line-clamp-2">Episode 7 kk  k kk k k k k k  kk k k k k </span>
                             </div>
                         </li>
 
-                        <li className="w-[120px] h-[120px] flex items-center justify-center">
+                        <li className="w-[120px] h-[150px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
                             <div className="w-[100px] h-[100px] mb-auto">
                                 <img
                                     src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
                                     alt="img"
                                     className="object-fill w-full h-full rounded-md"
                                 />
-                                <span className="line-clamp-1">Episode 8</span>
+                                <span className="leading-[1.2] line-clamp-2">Episode 8</span>
                             </div>
                         </li>
 
-                        <li className="w-[120px] h-[120px] flex items-center justify-center">
+                        <li className="w-[120px] h-[150px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
                             <div className="w-[100px] h-[100px] mb-auto">
                                 <img
                                     src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
                                     alt="img"
                                     className="object-fill w-full h-full rounded-md"
                                 />
-                                <span className="line-clamp-1">Episode 9</span>
+                                <span className="leading-[1.2] line-clamp-2">Episode 9</span>
                             </div>
                         </li>
 
-                        <li className="w-[120px] h-[120px] flex items-center justify-center">
+                        <li className="w-[120px] h-[150px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
                             <div className="w-[100px] h-[100px] mb-auto">
                                 <img
                                     src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
                                     alt="img"
                                     className="object-fill w-full h-full rounded-md"
                                 />
-                                <span className="line-clamp-1">Episode 10</span>
+                                <span className="leading-[1.2] line-clamp-2">Episode 10</span>
                             </div>
                         </li>
 
-                        <li className="w-[120px] h-[120px] flex items-center justify-center">
+                        <li className="w-[120px] h-[150px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
                             <div className="w-[100px] h-[100px] mb-auto">
                                 <img
                                     src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
                                     alt="img"
                                     className="object-fill w-full h-full rounded-md"
                                 />
-                                <span className="line-clamp-1">Episode 11</span>
+                                <span className="leading-[1.2] line-clamp-2">Episode 11</span>
                             </div>
                         </li>
 
-                        <li className="w-[120px] h-[120px] flex items-center justify-center">
+                        <li className="w-[120px] h-[150px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
                             <div className="w-[100px] h-[100px] mb-auto">
                                 <img
                                     src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
                                     alt="img"
                                     className="object-fill w-full h-full rounded-md"
                                 />
-                                <span className="line-clamp-1">Episode 12</span>
+                                <span className="leading-[1.2] line-clamp-2">Episode 12</span>
                             </div>
                         </li>
 
-                        <li className="w-[120px] h-[120px] flex items-center justify-center">
+                        <li className="w-[120px] h-[150px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
                             <div className="w-[100px] h-[100px] mb-auto">
                                 <img
                                     src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
                                     alt="img"
                                     className="object-fill w-full h-full rounded-md"
                                 />
-                                <span className="line-clamp-1">Episode 13</span>
+                                <span className="leading-[1.2] line-clamp-2">Episode 13</span>
                             </div>
                         </li>
 
-                        <li className="w-[120px] h-[120px] flex items-center justify-center">
+                        <li className="w-[120px] h-[150px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
                             <div className="w-[100px] h-[100px] mb-auto">
                                 <img
                                     src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
                                     alt="img"
                                     className="object-fill w-full h-full rounded-md"
                                 />
-                                <span className="line-clamp-1">Episode 14</span>
+                                <span className="leading-[1.2] line-clamp-2">Episode 14</span>
                             </div>
                         </li>
 
-                        <li className="w-[120px] h-[120px] flex items-center justify-center">
+                        <li className="w-[120px] h-[150px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
                             <div className="w-[100px] h-[100px] mb-auto">
                                 <img
                                     src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
                                     alt="img"
                                     className="object-fill w-full h-full rounded-md"
                                 />
-                                <span className="line-clamp-1">Episode 15</span>
+                                <span className="leading-[1.2] line-clamp-2">Episode 15</span>
                             </div>
                         </li>
                     </ul>
 
-                    <div className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:bg-red-200 rounded-md mx-3 flex items-center justify-center">
-                        <span className="">
+                    <div className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center">
+                        <span className="hover:text-white">
                             <ArrowForwardIosIcon />
                         </span>
                     </div>
