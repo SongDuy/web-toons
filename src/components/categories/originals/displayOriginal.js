@@ -237,10 +237,12 @@ const DisplayOriginalPage = () => {
                 <div className="w-full h-full flex items-center justify-center ">
                     <div className="w-[1200px] h-full flex bg-white pt-5 pb-10">
 
+                        {/* Bảng hiện thị bình luận */}
                         <div className="w-8/12 h-full bg-green-300 px-2">
                             kkk
                         </div>
 
+                        {/* Bảng danh sách đề xuất */}
                         <div className="w-4/12 h-full bg-white px-2">
                             <div className="w-full h-full mb-8">
                                 <div className="flex items-center pb-2">

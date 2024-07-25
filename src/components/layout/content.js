@@ -383,7 +383,7 @@ const ContentPage = () => {
                             {/* khung nội dung */}
                             {dataPopular.map(item => (
                                 <li
-                                    className="w-full h-[95px] border-b cursor-pointer hover:bg-gray-100"
+                                    className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                     key={item.key}
                                     onClick={handleOriginalSeriesClick}
                                 >
@@ -425,7 +425,7 @@ const ContentPage = () => {
                             {/* khung nội dung */}
                             {dataPopular.map(item => (
                                 <li
-                                    className="w-full h-[95px] border-b cursor-pointer hover:bg-gray-100"
+                                    className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                     key={item.key}
                                     onClick={handleOriginalSeriesClick}
                                 >
@@ -468,7 +468,7 @@ const ContentPage = () => {
                             {/* khung nội dung */}
                             {dataPopular.map(item => (
                                 <li
-                                    className="w-full h-[95px] border-b cursor-pointer hover:bg-gray-100"
+                                    className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                     key={item.key}
                                     onClick={handleOriginalSeriesClick}
                                 >
