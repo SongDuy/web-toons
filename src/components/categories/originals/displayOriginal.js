@@ -32,7 +32,7 @@ const DisplayOriginalPage = () => {
                 </div>
 
                 {/* Hiển thị nội dung truyện */}
-                <div className="w-full h-[500px] bg-white">
+                <div className="w-full h-full bg-white">
 
                 </div>
 
@@ -60,7 +60,7 @@ const DisplayOriginalPage = () => {
                 </div>
 
                 {/* Hiển thị bình luận và danh sách truyện nổi bật */}
-                <div className="w-full h-[500px] bg-white">
+                <div className="w-full h-full bg-white">
 
                 </div>
             </div>
