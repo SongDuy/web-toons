@@ -1,5 +1,8 @@
 import React from 'react';
 
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import AddIcon from '@mui/icons-material/Add';
+
 import FooterPage from '../../layout/footer';
 
 const DisplayOriginalPage = () => {
@@ -8,24 +11,32 @@ const DisplayOriginalPage = () => {
             <div className="w-full h-full bg-white">
                 {/* Thanh công cụ */}
                 <div className="w-full h-[50px] px-5 bg-black flex items-center">
-                    <ul className="w-full flex">
+                    <ul className="w-full h-[30px] flex">
 
-                        <li className="mr-auto">
+                        <li className="w-[550px] flex gap-2 items-center overflow-hidden">
                             <div className="">
                                 <span className="text-white">Logo</span>
+
+
                             </div>
 
                             <div className="">
-
+                                <span className="text-white line-clamp-1">
+                                    Peace Restaurant
+                                    <NavigateNextIcon />
+                                    Episode 15
+                                </span>
                             </div>
                         </li>
 
-                        <li className="">
+                        <li className="w-[150px] flex items-center justify-center bg-green-500 mx-[125px]">
                             <span className="text-white">kk</span>
                         </li>
 
                         <li className="ml-auto">
-                            <span className="text-white">jjjjjjjjjjk k k kk k k k k jjjjj</span>
+                            <div className="w-[30px] h-[30px] rounded-full bg-gray-900 flex items-center justify-center">
+                                <span className=" text-white"><AddIcon /></span>
+                            </div>
                         </li>
 
                     </ul>
@@ -60,7 +71,7 @@ const DisplayOriginalPage = () => {
                 </div>
 
                 {/* Hiển thị bình luận và danh sách truyện nổi bật */}
-                <div className="w-full h-full bg-white">
+                <div className="w-full h-full">
 
                 </div>
             </div>
