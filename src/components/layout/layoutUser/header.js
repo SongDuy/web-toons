@@ -2,10 +2,7 @@ import React from 'react';
 
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import SearchIcon from '@mui/icons-material/Search';
-
-const handleHomeClick = () => {
-    window.location.href = '/';
-};
+import {Link  } from 'react-router-dom';
 
 const handleOriginalsClick = () => {
     window.location.href = '/originals';
@@ -30,12 +27,12 @@ const HeaderPage = () => {
         >
 
             {/* logo */}
-            <div
+            <Link
                 className="w-[90px] flex items-center justify-center cursor-pointer"
-                onClick={handleHomeClick}
+                to={`/`}
             >
                 <p>LOGO</p>
-            </div>
+            </Link>
 
             {/* danh mục */}
             <div

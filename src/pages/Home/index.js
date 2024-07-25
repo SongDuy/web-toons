@@ -1,17 +1,13 @@
 import React from 'react';
 
-import HeaderPage from './header'
-import ContentPage from './content'
-import FooterPage from './footer'
+import ContentPage from '../../components/Home/content'
 
 const HomePage = () => {
     return (
         <div>
-            <HeaderPage />
 
             <ContentPage />
             
-            <FooterPage />
         </div>
     );
 }

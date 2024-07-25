@@ -2,17 +2,27 @@ import React, { useEffect } from 'react';
 
 import { BrowserRouter, Route, Routes, Navigate  } from 'react-router-dom';
 
-import HomePage from './components/layout/index';
+import HomePage from './pages/Home/index';
 
-import OriginalsPage from './components/categories/originals/originals'
-import VideosPage from './components/categories/videos/videos'
-import GenresPage from './components/categories/genres/genres'
-import PopularPage from './components/categories/popular/popular'
+import OriginalsPage from './pages/categories/originals/originals'
+import VideosPage from './pages/categories/videos/videos'
+import GenresPage from './pages/categories/genres/genres'
+import PopularPage from './pages/categories/popular/popular'
 
-import NotFoundPage from './components/layout/notFoundPage';
+import NotFoundPage from './pages/notFoundPage';
 
 import './App.css';
-
+import Layout from './components/layout/layoutUser';
+import Account from './pages/account/Account';
+import Comment from './pages/account/Comment';
+import Subscribed from './pages/account/Subscribed';
+import Creators from './pages/account/Creators';
+import TermsOfUse from './pages/Policys/TermsOfUse';
+import PrivacyPolicy from './pages/Policys/PrivacyPolicy';
+import CommunityPolicy from './pages/Policys/CommunityPolicy';
+import CanvasTermsOfUse from './pages/Policys/CanvasTermsOfUse';
+import AdRevenueSharingTerms from './pages/Policys/AdRevenueSharingTerms';
+import SuperLikeTerms from './pages/Policys/SuperLikeTerms';
 function App() {
 
   useEffect(() => {
@@ -22,18 +32,27 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Layout/>}>
+        <Route index element={<HomePage />} />
 
         <Route path="/originals" element={<OriginalsPage />} />
         <Route path="/videos" element={<VideosPage />} />
         <Route path="/genres" element={<GenresPage />} />
         <Route path="/popular" element={<PopularPage />} />
+        <Route path="/account" element={<Account/>}/>
+        <Route path="/comment" element={<Comment/>}/>
+        <Route path="/Subscribed" element={<Subscribed/>}/>
+        <Route path="/Creators" element={<Creators/>}/>
+        <Route path="/terms" element={<TermsOfUse/>}/>
+        <Route path="/terms/privacyPolicy" element={<PrivacyPolicy/>}/>
+        <Route path="/terms/canvasPolicy" element={<CommunityPolicy/>}/>
+        <Route path="/terms/canvasTermsOfUsePolicy" element={<CanvasTermsOfUse/>}/>
+        <Route path="/terms/adRevenueSharingPolicy" element={<AdRevenueSharingTerms/>}/>
+        <Route path="/terms/superLikePolicy" element={<SuperLikeTerms/>}/>
 
-        {/* Xử lý trang lỗi */}
+        </Route>
         <Route path="*" element={<Navigate to="/404" />} />
         <Route path="/404" element={<NotFoundPage />} />
-
       </Routes>
     </BrowserRouter>
   );

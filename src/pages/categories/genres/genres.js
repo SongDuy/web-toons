@@ -1,8 +1,4 @@
 import React from 'react';
-
-import HeaderPage from '../../layout/header';
-import FooterPage from '../../layout/footer';
-
 const data = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
     { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
@@ -19,7 +15,6 @@ const data = [
 const GenresPage = () => {
     return (
         <div>
-            <HeaderPage />
 
             <div className="w-full h-full bg-gray-100">
                 <div className="w-full h-[60px] bg-white shadow flex items-center justify-center border-t">
@@ -133,7 +128,6 @@ const GenresPage = () => {
                 </div>
             </div>
 
-            <FooterPage />
         </div>
     );
 }
