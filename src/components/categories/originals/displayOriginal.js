@@ -234,12 +234,27 @@ const DisplayOriginalPage = () => {
                 </div>
 
                 {/* Hiển thị bình luận và danh sách truyện nổi bật */}
-                <div className="w-full h-full flex items-center justify-center ">
+                <div className="w-full h-full flex items-center justify-center my-5">
                     <div className="w-[1200px] h-full flex bg-white pt-5 pb-10">
 
                         {/* Bảng hiện thị bình luận */}
                         <div className="w-8/12 h-full bg-green-300 px-2">
-                            kkk
+                            <div className="w-full px-2 pr-5 border">
+                                <div className="flex items-center pb-2 border">
+                                    <span className="w-full font-semibold text-lg hover:text-green-500 cursor-pointer">
+                                        Comments
+                                    </span>
+                                </div>
+
+                                <div className="w-full h-full bg-gray-100">
+ll
+                                </div>
+
+                                <div className="w-full h-full bg-red-100">
+kk
+                                </div>
+                            </div>
+
                         </div>
 
                         {/* Bảng danh sách đề xuất */}

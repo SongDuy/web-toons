@@ -128,7 +128,7 @@ const PopularPage = () => {
 
                                         {/* khung nội dung */}
                                         {dataPopular.map(item => (
-                                            <li className="w-full h-[90px] border-b cursor-pointer hover:bg-gray-100"
+                                            <li className="w-full h-[90px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                                 key={item.id}
                                                 onClick={handleOriginalSeriesClick}
                                             >
@@ -321,7 +321,7 @@ const PopularPage = () => {
                                         {/* khung nội dung */}
                                         {dataPopular.map(item => (
                                             <li
-                                                className="w-full h-[90px] border-b cursor-pointer hover:bg-gray-100"
+                                                className="w-full h-[90px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                                 key={item.id}
                                                 onClick={handleOriginalSeriesClick}
                                             >
@@ -516,7 +516,7 @@ const PopularPage = () => {
                                         {/* khung nội dung */}
                                         {dataPopular.map(item => (
                                             <li
-                                                className="w-full h-[90px] border-b cursor-pointer hover:bg-gray-100"
+                                                className="w-full h-[90px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                                 key={item.id}
                                                 onClick={handleOriginalSeriesClick}
                                             >
