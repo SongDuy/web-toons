@@ -2,7 +2,8 @@ import React from 'react';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import AddIcon from '@mui/icons-material/Add';
-
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import FooterPage from '../../layout/footer';
 
 const DisplayOriginalPage = () => {
@@ -29,8 +30,19 @@ const DisplayOriginalPage = () => {
                             </div>
                         </li>
 
-                        <li className="w-[150px] flex items-center justify-center bg-green-500 mx-[125px]">
-                            <span className="text-white">kk</span>
+                        <li className="w-[150px] flex items-center justify-center mx-[125px]">
+                            <div className="mr-auto cursor-pointer">
+                                <span className="text-white bg-gray-800 pl-3 py-1 rounded-md flex items-center justify-center"><ArrowBackIosIcon /></span>
+                            </div>
+                            <div className="w-full ml-auto mr-auto">
+                                <span className="w-full flex items-center justify-center text-white">#15</span>
+                            </div>
+                            <div className="ml-auto cursor-pointer">
+                                <span className="text-white bg-gray-800 px-2 py-1 rounded-md flex items-center justify-center"><ArrowForwardIosIcon /></span>
+                            </div>
+
+
+
                         </li>
 
                         <li className="ml-auto">
@@ -47,7 +59,7 @@ const DisplayOriginalPage = () => {
 
                 </div>
 
-                {/* Hiển thị yêu thích theo dõi */}
+                {/* Hiển thị yêu thích, theo dõi */}
                 <div className="w-full h-[250px] bg-green-200 flex items-center justify-center">
                     <div>
                         <div className="flex gap-3 pt-10 pb-5">
