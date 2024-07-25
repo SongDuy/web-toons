@@ -32,7 +32,7 @@ const DisplayOriginalPage = () => {
                             </div>
                         </li>
 
-                        <li className="w-[150px] flex items-center justify-center mx-[125px]">
+                        <li className="w-[150px] flex items-center justify-center mx-[100px]">
                             <div className="mr-auto cursor-pointer">
                                 <span className="text-white bg-gray-800 hover:bg-gray-700 pl-3 py-1 rounded-md flex items-center justify-center">
                                     <ArrowBackIosIcon />
