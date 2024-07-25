@@ -32,12 +32,30 @@ const DisplayOriginalPage = () => {
                 </div>
 
                 {/* Hiển thị nội dung truyện */}
-                <div className="w-full h-[1000px] bg-white">
+                <div className="w-full h-[500px] bg-white">
 
                 </div>
 
                 {/* Hiển thị yêu thích theo dõi */}
-                <div className="w-full h-[250px] bg-green-200">
+                <div className="w-full h-[250px] bg-green-200 flex items-center justify-center">
+                    <div>
+                        <div className="flex gap-3 pt-10 pb-5">
+                            <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                Up
+                            </span>
+                            <span className="text-xl font-semibold flex items-center">
+                                EVERY MONDAY
+                            </span>
+                        </div>
+                        <div className="flex gap-3">
+                            <div className="w-[100px] h-[35px] rounded-full bg-gray-300 flex items-center justify-center px-2 py-2">
+                                lll
+                            </div>
+                            <div className="w-[100px] h-[35px] rounded-full bg-gray-300 flex items-center justify-center px-2 py-2">
+                                kkk
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 
