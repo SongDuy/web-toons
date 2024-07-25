@@ -352,7 +352,7 @@ const ContentPage = () => {
                                 <NavigateNextIcon />
                             </span>
                         </li>
-                        <li className="flex-auto w-1/3 h-[60px] flex items-center border-b mx-3">
+                        <li className="w-1/3 h-[60px] flex items-center border-b mx-3">
                             <span className="mr-auto font-semibold text-lg hover:text-green-500 cursor-pointer">
                                 ORIGINALS by Genre
                                 <NavigateNextIcon />
@@ -362,12 +362,14 @@ const ContentPage = () => {
                                 <CheckIcon />
                             </span>
                         </li>
-                        <li className="flex-auto w-1/3 h-[60px] flex items-center border-b mx-3">
+                        <li className="w-1/3 h-[60px] flex items-center border-b mx-3">
                             <span className="mr-auto font-semibold text-lg hover:text-green-500 cursor-pointer">
                                 VIDEOS by Genre
                                 <NavigateNextIcon />
                             </span>
-                            <span className="ml-auto text-green-500 cursor-pointer mr-2">ALL </span>
+                            <span className="ml-auto text-green-500 cursor-pointer mr-2">
+                                ALL
+                            </span>
                             <span className="text-green-500 cursor-pointer">
                                 <CheckIcon />
                             </span>

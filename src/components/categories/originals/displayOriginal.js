@@ -5,8 +5,21 @@ import AddIcon from '@mui/icons-material/Add';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import CheckIcon from '@mui/icons-material/Check';
 
 import FooterPage from '../../layout/footer';
+
+const dataPopular = [
+    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "1", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "2", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "3", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "4", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "5", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+];
+
+const handleOriginalSeriesClick = () => {
+    window.location.href = '/original/series';
+};
 
 const DisplayOriginalPage = () => {
     return (
@@ -225,11 +238,117 @@ const DisplayOriginalPage = () => {
                     <div className="w-[1200px] h-full flex bg-white pt-5 pb-10">
 
                         <div className="w-8/12 h-full bg-green-300 px-2">
-kkk
+                            kkk
                         </div>
 
-                        <div className="w-4/12 h-full bg-green-200 px-2">
-kkk
+                        <div className="w-4/12 h-full bg-white px-2">
+                            <div className="w-full h-full mb-8">
+                                <div className="flex items-center pb-2">
+                                    <span className="px-2 font-semibold text-lg hover:text-green-500 cursor-pointer">
+                                        New & Trending
+                                        <NavigateNextIcon />
+                                    </span>
+                                </div>
+
+                                <ul className="w-full h-full py-2">
+                                    {/* khung nội dung */}
+                                    {dataPopular.map(item => (
+                                        <li
+                                            className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
+                                            key={item.key}
+                                            onClick={handleOriginalSeriesClick}
+                                        >
+                                            <div className="w-full h-full flex items-center">
+                                                <div className="w-[80px] h-[80px] flex">
+                                                    <img
+                                                        src={item.img}
+                                                        alt="img"
+
+                                                        className="object-fill w-full h-full rounded-md"
+                                                    />
+                                                </div>
+
+                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
+                                                    <span className="mx-3 text-xl text-white font-bold">
+                                                        {item.number}
+                                                    </span>
+                                                </div>
+
+                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                    <span className="text-gray-400 text-sm">
+                                                        {item.genre}
+                                                    </span>
+                                                    <span className="text-md font-semibold line-clamp-1">
+                                                        {item.name}
+                                                    </span>
+                                                    <span className="text-sm line-clamp-1">
+                                                        {item.auth}
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    ))}
+
+                                </ul>
+                            </div>
+
+                            <div className="w-full h-full mt-8">
+                                <div className="flex items-center pb-2">
+                                    <span className="px-2 font-semibold text-lg hover:text-green-500 cursor-pointer">
+                                        ORIGINALS by Genre
+                                        <NavigateNextIcon />
+                                    </span>
+                                    <span className="ml-auto text-green-500 cursor-pointer mr-2">
+                                        ALL
+                                    </span>
+                                    <span className="text-green-500 cursor-pointer">
+                                        <CheckIcon />
+                                    </span>
+                                </div>
+
+                                <ul className="w-full h-full py-2">
+                                    {/* khung nội dung */}
+                                    {dataPopular.map(item => (
+                                        <li
+                                            className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
+                                            key={item.key}
+                                            onClick={handleOriginalSeriesClick}
+                                        >
+                                            <div className="w-full h-full flex items-center">
+                                                <div className="w-[80px] h-[80px] flex">
+                                                    <img
+                                                        src={item.img}
+                                                        alt="img"
+
+                                                        className="object-fill w-full h-full rounded-md"
+                                                    />
+                                                </div>
+
+                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
+                                                    <span className="mx-3 text-xl text-white font-bold">
+                                                        {item.number}
+                                                    </span>
+                                                </div>
+
+                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                    <span className="text-gray-400 text-sm">
+                                                        {item.genre}
+                                                    </span>
+                                                    <span className="text-md font-semibold line-clamp-1">
+                                                        {item.name}
+                                                    </span>
+                                                    <span className="text-sm line-clamp-1">
+                                                        {item.auth}
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    ))}
+
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
