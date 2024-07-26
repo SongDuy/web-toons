@@ -28,6 +28,7 @@ import CommunityPolicy from './pages/Policys/CommunityPolicy';
 import CanvasTermsOfUse from './pages/Policys/CanvasTermsOfUse';
 import AdRevenueSharingTerms from './pages/Policys/AdRevenueSharingTerms';
 import SuperLikeTerms from './pages/Policys/SuperLikeTerms';
+
 function App() {
 
   useEffect(() => {
