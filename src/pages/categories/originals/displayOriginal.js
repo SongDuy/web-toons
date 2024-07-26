@@ -98,8 +98,8 @@ const DisplayOriginalPage = () => {
                 </div>
 
                 {/* Hiển thị nội dung truyện */}
-                <div className="w-full h-full bg-white">
-
+                <div className="w-full h-[700px] bg-white border-2 flex items-center justify-center">
+                    Original
                 </div>
 
                 {/* Hiển thị yêu thích, theo dõi */}
