@@ -20,14 +20,14 @@ const dataPopular = [
 
 const dataFavorite = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 7" },
-    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 8" },
-    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 9" },
-    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 10" },
-    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 11" },
-    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 12" },
-    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 13" },
-    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 14" },
-    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 15" },
+    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 8" },
+    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 9" },
+    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 10" },
+    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 11" },
+    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 12" },
+    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 13" },
+    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 14" },
+    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 15" },
 ]
 
 const dataComment = [
@@ -189,8 +189,9 @@ const DisplayOriginalPage = () => {
                                         placeholder="Leave a comment"
                                         className="w-full h-[160px] rounded-md px-3 py-3 border-2"
                                     />
-                                    <button className="w-[35px] h-[35px] px-5 py-5 ml-auto bg-green-500 hover:shadow-md text-white rounded-full flex items-center justify-center">
+                                    <button className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-full flex gap-2 items-center justify-center">
                                         <SendRoundedIcon className="transform rotate-200" />
+                                        Send
                                     </button>
                                 </div>
 
@@ -202,7 +203,7 @@ const DisplayOriginalPage = () => {
                                         <ul>
                                             {dataComment.map(item => (
                                                 <li
-                                                    className="w-full h-[200px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2"
+                                                    className="w-full h-[180px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2"
                                                     key={item.id}
                                                 >
                                                     <div className="w-full h-full">
@@ -216,7 +217,7 @@ const DisplayOriginalPage = () => {
                                                             </span>
                                                         </div>
 
-                                                        <div className="h-[120px] px-2 overflow-y-scroll">
+                                                        <div className="h-[100px] px-2 overflow-y-scroll">
                                                             {item.content}
                                                         </div>
 
@@ -229,7 +230,7 @@ const DisplayOriginalPage = () => {
                                                                 226
                                                             </span>
                                                             <span className="px-2 py-1 px-1 border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center cursor-pointer">
-                                                                <ThumbDownIcon className="text-gray-400"/>
+                                                                <ThumbDownIcon className="text-gray-400" />
                                                                 0
                                                             </span>
                                                         </div>
