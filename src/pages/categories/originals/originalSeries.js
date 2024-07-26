@@ -163,7 +163,7 @@ const OriginalSeriesPage = () => {
                                         herself sent back in time to her 17-year-old self. As she navigates the
                                         perils and opportunities of palace intrigue, Ariadne must make the most
                                         of her guile and grit to ensure that her tragic future does not repeat itself.
-                                        
+
                                     </span>
                                 </div>
 

@@ -1,8 +1,5 @@
 import React from 'react';
 
-import HeaderPage from '../../layout/header';
-import FooterPage from '../../layout/footer';
-
 const dataPopular = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "2", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
     { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "3", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
@@ -22,7 +19,6 @@ const handleOriginalSeriesClick = () => {
 const PopularPage = () => {
     return (
         <div>
-            <HeaderPage />
 
             <div className="w-full h-full bg-white">
                 <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
@@ -558,7 +554,6 @@ const PopularPage = () => {
 
             </div>
 
-            <FooterPage />
         </div>
     );
 }

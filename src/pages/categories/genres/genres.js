@@ -38,7 +38,6 @@ const handleOriginalSeriesClick = () => {
 const GenresPage = () => {
     return (
         <div>
-            <HeaderPage />
 
             <div className="w-full h-full bg-gray-100">
                 <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
@@ -177,7 +176,6 @@ const GenresPage = () => {
                 </div>
             </div>
 
-            <FooterPage />
         </div>
     );
 }

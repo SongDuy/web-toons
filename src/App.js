@@ -1,25 +1,31 @@
 import React, { useEffect } from 'react';
 
-import { BrowserRouter, Route, Routes, Navigate  } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 
-import HomePage from './components/layout/index';
+import HomePage from './pages/Home/index';
 
-import OriginalsPage from './components/categories/originals/originals'
-import OriginalSeriesPage from './components/categories/originals/originalSeries';
+import OriginalsPage from './pages/categories/originals/originals';
+import VideosPage from './pages/categories/videos/videos';
+import GenresPage from './pages/categories/genres/genres';
+import PopularPage from './pages/categories/popular/popular';
+import OriginalSeriesPage from './pages/categories/original/original';
 import DisplayOriginalPage from './components/categories/originals/displayOriginal';
-import VideosPage from './components/categories/videos/videos'
-import VideoSeriesPage from './components/categories/videos/videoSeries';
 import DisplayVideoPage from './components/categories/videos/displayVideo';
-import GenresPage from './components/categories/genres/genres'
-import PopularPage from './components/categories/popular/popular'
+import VideoSeriesPage from './components/categories/videos/videoSeries';
+import NotFoundPage from './pages/notFoundPage';
 
-import CreateOriginalPage from './components/create/createOriginal';
-import CreateVideoPage from './components/create/createVideo';
-
-import NotFoundPage from './components/layout/notFoundPage';
-
-//import './App.css';
-
+import './App.css';
+import Layout from './components/layout/layoutUser';
+import Account from './pages/account/Account';
+import Comment from './pages/account/Comment';
+import Subscribed from './pages/account/Subscribed';
+import Creators from './pages/account/Creators';
+import TermsOfUse from './pages/Policys/TermsOfUse';
+import PrivacyPolicy from './pages/Policys/PrivacyPolicy';
+import CommunityPolicy from './pages/Policys/CommunityPolicy';
+import CanvasTermsOfUse from './pages/Policys/CanvasTermsOfUse';
+import AdRevenueSharingTerms from './pages/Policys/AdRevenueSharingTerms';
+import SuperLikeTerms from './pages/Policys/SuperLikeTerms';
 function App() {
 
   useEffect(() => {
@@ -29,28 +35,38 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
 
-        <Route path="/" element={<HomePage />} />
+          <Route path="/originals" element={<OriginalsPage />} />
+          <Route path="/original/series" element={<OriginalSeriesPage />} />
+          <Route path="/original/series/display" element={<DisplayOriginalPage />} />
 
-        <Route path="/originals" element={<OriginalsPage />} />
-        <Route path="/original/series" element={<OriginalSeriesPage />} />
-        <Route path="/original/series/display" element={<DisplayOriginalPage />} />
+          <Route path="/videos" element={<VideosPage />} />
+          <Route path="/video/series" element={<VideoSeriesPage />} />
+          <Route path="/video/series/display" element={<DisplayVideoPage />} />
 
-        <Route path="/videos" element={<VideosPage />} />
-        <Route path="/video/series" element={<VideoSeriesPage/>} />
-        <Route path="/video/series/display" element={<DisplayVideoPage />} />
+          <Route path="/genres" element={<GenresPage />} />
 
-        <Route path="/genres" element={<GenresPage />} />
+          <Route path="/popular" element={<PopularPage />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/comment" element={<Comment />} />
+          <Route path="/Subscribed" element={<Subscribed />} />
+          <Route path="/Creators" element={<Creators />} />
+          <Route path="/terms" element={<TermsOfUse />} />
+          <Route path="/terms/privacyPolicy" element={<PrivacyPolicy />} />
+          <Route path="/terms/canvasPolicy" element={<CommunityPolicy />} />
+          <Route path="/terms/canvasTermsOfUsePolicy" element={<CanvasTermsOfUse />} />
+          <Route path="/terms/adRevenueSharingPolicy" element={<AdRevenueSharingTerms />} />
+          <Route path="/terms/superLikePolicy" element={<SuperLikeTerms />} />
 
-        <Route path="/popular" element={<PopularPage />} />
+          <Route path="/creact/original" element={<CreateOriginalPage />} />
+          <Route path="/cearct/video" element={<CreateVideoPage />} />
 
-        <Route path="/creact/original" element={<CreateOriginalPage />} />
-        <Route path="/cearct/video" element={<CreateVideoPage />} />
-
-        {/* Xử lý trang lỗi */}
+          {/* Xử lý trang lỗi */}
+        </Route>
         <Route path="*" element={<Navigate to="/404" />} />
         <Route path="/404" element={<NotFoundPage />} />
-
       </Routes>
     </BrowserRouter>
   );
