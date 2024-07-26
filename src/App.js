@@ -48,6 +48,7 @@ function App() {
         <Route path="/videos" element={<VideosPage />} />
         <Route path="/video/series" element={<VideoSeriesPage/>} />
         <Route path="/genres" element={<GenresPage />} />
+
         <Route path="/popular" element={<PopularPage />} />
         <Route path="/creact/original" element={<CreateOriginalPage/>} />
         <Route path="/cearct/video" element={<CreateVideoPage/>} />
