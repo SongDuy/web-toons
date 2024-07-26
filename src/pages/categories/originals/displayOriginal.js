@@ -177,6 +177,7 @@ const DisplayOriginalPage = () => {
                         {/* Bảng hiện thị bình luận */}
                         <div className="w-8/12 h-full px-2">
                             <div className="w-full px-2 pr-5">
+
                                 <div className="flex items-center pb-2">
                                     <span className="font-semibold text-lg">
                                         Comments
@@ -184,22 +185,35 @@ const DisplayOriginalPage = () => {
                                     <span className="px-2 text-gray-400">2,907</span>
                                 </div>
 
+                                {/* Ô nhập bình luận */}
                                 <div className="w-full h-full my-3">
                                     <textarea
                                         placeholder="Leave a comment"
                                         className="w-full h-[160px] rounded-md px-3 py-3 border-2"
                                     />
-                                    <button className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-full flex gap-2 items-center justify-center">
+                                    <button className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                         <SendRoundedIcon className="transform rotate-200" />
                                         Send
                                     </button>
                                 </div>
 
+                                {/* Hiển thị danh sách các bình luận truyện */}
                                 <div className="w-full h-full my-5 ">
                                     <div className="px-3">
-                                        kk
+                                        <ul className="flex gap-2">
+                                            <li className="px-5 py-5 cursor-pointer hover:text-green-500 border-b-2">
+                                                <span className="font-semibold">
+                                                    TOP
+                                                </span>
+                                            </li>
+                                            <li className="px-5 py-5 cursor-pointer hover:text-green-500">
+                                                <span className="font-semibold">
+                                                    NEWEST
+                                                </span>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <div className="">
+                                    <div className="w-full py-3">
                                         <ul>
                                             {dataComment.map(item => (
                                                 <li
@@ -207,7 +221,7 @@ const DisplayOriginalPage = () => {
                                                     key={item.id}
                                                 >
                                                     <div className="w-full h-full">
-                                                        
+
                                                         {/* Hiển thị tên user và ngày đăng bình luận */}
                                                         <div className="w-full py-1 flex overflow-hidden">
                                                             <span className="max-w-[500px] font-semibold line-clamp-1">
@@ -226,7 +240,7 @@ const DisplayOriginalPage = () => {
                                                         {/* Nút bình luận, thích, không thích */}
                                                         <div className="w-full flex gap-2 py-1">
                                                             <span className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center cursor-pointer">
-                                                                Reply
+                                                                Replies {item.replies}
                                                             </span>
                                                             <span className="px-2 py-1 px-1 ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center cursor-pointer">
                                                                 <ThumbUpIcon className="text-gray-400" />
