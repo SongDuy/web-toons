@@ -20,6 +20,7 @@ const useShowNavRView = () => {
       "/terms",
       '/videos',
       '/genres',
+      '/originals',
       '/popular',
       '/original/series'
     ];

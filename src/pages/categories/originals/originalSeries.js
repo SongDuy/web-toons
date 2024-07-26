@@ -162,7 +162,6 @@ const OriginalSeriesPage = () => {
                                     </span>
                                 </div>
 
-
                             </div>
                         </div>
                     </div>
