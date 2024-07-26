@@ -23,6 +23,12 @@ import CommunityPolicy from './pages/Policys/CommunityPolicy';
 import CanvasTermsOfUse from './pages/Policys/CanvasTermsOfUse';
 import AdRevenueSharingTerms from './pages/Policys/AdRevenueSharingTerms';
 import SuperLikeTerms from './pages/Policys/SuperLikeTerms';
+import OriginalSeriesPage from './pages/categories/originals/originalSeries';
+import DisplayOriginalPage from './pages/categories/originals/displayOriginal';
+import VideoSeriesPage from './pages/categories/videos/videoSeries';
+import DisplayVideoPage from './pages/categories/videos/displayVideo';
+import CreateVideoPage from './pages/create/createVideo';
+import CreateOriginalPage from './pages/create/createOriginal';
 function App() {
 
   useEffect(() => {
@@ -35,10 +41,16 @@ function App() {
         <Route path="/" element={<Layout/>}>
         <Route index element={<HomePage />} />
 
+        
         <Route path="/originals" element={<OriginalsPage />} />
+        <Route path="/original/series" element={<OriginalSeriesPage/>} />
+        <Route path="/video/series/display" element={<DisplayVideoPage/>} />
         <Route path="/videos" element={<VideosPage />} />
+        <Route path="/video/series" element={<VideoSeriesPage/>} />
         <Route path="/genres" element={<GenresPage />} />
         <Route path="/popular" element={<PopularPage />} />
+        <Route path="/creact/original" element={<CreateOriginalPage/>} />
+        <Route path="/cearct/video" element={<CreateVideoPage/>} />
         <Route path="/account" element={<Account/>}/>
         <Route path="/comment" element={<Comment/>}/>
         <Route path="/Subscribed" element={<Subscribed/>}/>
@@ -51,6 +63,8 @@ function App() {
         <Route path="/terms/superLikePolicy" element={<SuperLikeTerms/>}/>
 
         </Route>
+        <Route path="/original/series/display" element={<DisplayOriginalPage/>} />
+
         <Route path="*" element={<Navigate to="/404" />} />
         <Route path="/404" element={<NotFoundPage />} />
       </Routes>

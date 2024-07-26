@@ -17,7 +17,11 @@ const useShowNavRView = () => {
       "/terms/canvasTermsOfUsePolicy",
       "/terms/canvasPolicy",
       "/terms/privacyPolicy",
-      "/terms"
+      "/terms",
+      '/videos',
+      '/genres',
+      '/popular',
+      '/original/series'
     ];
 
     setShowNavRView(NavRView.includes(location.pathname));
