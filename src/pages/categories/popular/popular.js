@@ -87,7 +87,7 @@ const PopularPage = () => {
 
                                             <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
                                                 <div className="w-full h-[120px] mb-auto overflow-hidden">
-                                                    <div className="w-[80px] h-[80px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
+                                                    <div className="w-[80px] h-[80px] bg-yellow-500 rounded-xl flex items-center justify-center mx-2">
                                                         <span className="mx-3 text-[60px] text-white font-bold">
                                                             1
                                                         </span>
@@ -223,7 +223,7 @@ const PopularPage = () => {
 
                                             <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
                                                 <div className="w-full h-[120px] mb-auto overflow-hidden">
-                                                    <div className="w-[80px] h-[80px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
+                                                    <div className="w-[80px] h-[80px] bg-yellow-500 rounded-xl flex items-center justify-center mx-2">
                                                         <span className="mx-3 text-[60px] text-white font-bold">
                                                             1
                                                         </span>
@@ -360,7 +360,7 @@ const PopularPage = () => {
 
                                             <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
                                                 <div className="w-full h-[120px] mb-auto overflow-hidden">
-                                                    <div className="w-[80px] h-[80px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
+                                                    <div className="w-[80px] h-[80px] bg-yellow-500 rounded-xl flex items-center justify-center mx-2">
                                                         <span className="mx-3 text-[60px] text-white font-bold">
                                                             1
                                                         </span>
