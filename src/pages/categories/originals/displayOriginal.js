@@ -7,6 +7,8 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CheckIcon from '@mui/icons-material/Check';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 
 const dataPopular = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "1", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
@@ -198,103 +200,44 @@ const DisplayOriginalPage = () => {
                                     </div>
                                     <div className="">
                                         <ul>
-                                            <li className="w-full h-[200px] rounded-md px-3 py-2 border-b bg-red-50 bg-opacity-50 my-2">
-                                                <div className="w-full h-full">
-                                                    <div>
-                                                        kkk
-                                                    </div>
-                                                    <div className="h-[140px] overflow-y-scroll">
-                                                        kkk
-                                                    </div>
-                                                    <div>
-                                                        kkk
-                                                    </div>
-                                                </div>
-                                            </li>
+                                            {dataComment.map(item => (
+                                                <li
+                                                    className="w-full h-[200px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2"
+                                                    key={item.id}
+                                                >
+                                                    <div className="w-full h-full">
 
-                                            <li className="w-full h-[200px] rounded-md px-3 py-2 border-b bg-red-50 bg-opacity-50 my-2">
-                                                <div className="w-full h-full">
-                                                    <div>
-                                                        kkk
-                                                    </div>
-                                                    <div className="h-[140px] overflow-y-scroll">
-                                                        kkk
-                                                    </div>
-                                                    <div>
+                                                        <div className="w-full py-1 flex overflow-hidden">
+                                                            <span className="max-w-[500px] font-semibold line-clamp-1">
+                                                                {item.nameUser}
+                                                            </span>
+                                                            <span className="text-gray-400 mx-2 line-clamp-1">
+                                                                {item.date}
+                                                            </span>
+                                                        </div>
 
-                                                    </div>
-                                                </div>
-                                            </li>
+                                                        <div className="h-[120px] px-2 overflow-y-scroll">
+                                                            {item.content}
+                                                        </div>
 
-                                            <li className="w-full h-[200px] rounded-md px-3 py-2 border-b bg-red-50 bg-opacity-50 my-2">
-                                                <div className="w-full h-full">
-                                                    <div>
-                                                        kkk
-                                                    </div>
-                                                    <div className="h-[140px] overflow-y-scroll">
-                                                        kkk
-                                                    </div>
-                                                    <div>
+                                                        <div className="w-full flex gap-2 py-1">
+                                                            <span className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center cursor-pointer">
+                                                                Reply
+                                                            </span>
+                                                            <span className="px-2 py-1 px-1 ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center cursor-pointer">
+                                                                <ThumbUpIcon className="text-gray-400" />
+                                                                226
+                                                            </span>
+                                                            <span className="px-2 py-1 px-1 border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center cursor-pointer">
+                                                                <ThumbDownIcon className="text-gray-400"/>
+                                                                0
+                                                            </span>
+                                                        </div>
 
                                                     </div>
-                                                </div>
-                                            </li>
+                                                </li>
+                                            ))}
 
-                                            <li className="w-full h-[200px] rounded-md px-3 py-2 border-b bg-red-50 bg-opacity-50 my-2">
-                                                <div className="w-full h-full">
-                                                    <div>
-                                                        kkk
-                                                    </div>
-                                                    <div className="h-[140px] overflow-y-scroll">
-                                                        kkk
-                                                    </div>
-                                                    <div>
-
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li className="w-full h-[200px] rounded-md px-3 py-2 border-b bg-red-50 bg-opacity-50 my-2">
-                                                <div className="w-full h-full">
-                                                    <div>
-                                                        kkk
-                                                    </div>
-                                                    <div className="h-[140px] overflow-y-scroll">
-                                                        kkk
-                                                    </div>
-                                                    <div>
-
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li className="w-full h-[200px] rounded-md px-3 py-2 border-b bg-red-50 bg-opacity-50 my-2">
-                                                <div className="w-full h-full">
-                                                    <div>
-                                                        kkk
-                                                    </div>
-                                                    <div className="h-[140px] overflow-y-scroll">
-                                                        kkk
-                                                    </div>
-                                                    <div>
-
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li className="w-full h-[200px] rounded-md px-3 py-2 border-b bg-red-50 bg-opacity-50 my-2">
-                                                <div className="w-full h-full">
-                                                    <div>
-                                                        kkk
-                                                    </div>
-                                                    <div className="h-[140px] overflow-y-scroll">
-                                                        kkk
-                                                    </div>
-                                                    <div>
-
-                                                    </div>
-                                                </div>
-                                            </li>
 
                                         </ul>
 
