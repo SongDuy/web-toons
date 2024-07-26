@@ -12,6 +12,25 @@ const dataPopular = [
     { id: 9, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "10", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
 ];
 
+const dataListGenre = [
+    { id: 1, name: "DRAMA" },
+    { id: 2, name: "FANTASY" },
+    { id: 3, name: "COMEDY" },
+    { id: 4, name: "ACTION" },
+    { id: 5, name: "SLICE OF LIFE" },
+    { id: 6, name: "ROMANCE" },
+    { id: 7, name: "SUPERHERO" },
+    { id: 8, name: "SCI-FI" },
+    { id: 9, name: "THRILLER" },
+    { id: 10, name: "SUPERNATURAL" },
+    { id: 11, name: "MYSTERY" },
+    { id: 12, name: "SPORTS" },
+    { id: 13, name: "HISTORICAL" },
+    { id: 14, name: "HEARTWARMING" },
+    { id: 15, name: "HORROR" },
+    { id: 16, name: "INFORMATIVE" },
+];
+
 const handleOriginalSeriesClick = () => {
     window.location.href = '/original/series';
 };
@@ -47,7 +66,7 @@ const PopularPage = () => {
                 </div>
                 <div className="mt-5">
                     <div className="w-full h-full mb-[100px]">
-                        <div className="h-[70px] mx-[200px] flex items-center">
+                        <div className="h-[70px] mx-[160px] flex items-center">
                             <span className="uppercase font-semibold text-xl">NEW & TRENDING</span>
                         </div>
 
@@ -168,83 +187,22 @@ const PopularPage = () => {
                     </div>
 
                     <div className="w-full h-full mb-[100px]">
-                        <div className="h-[70px] mx-[200px] flex items-center">
+                        <div className="h-[70px] mx-[160px] flex items-center">
                             <span className="uppercase font-semibold text-xl">ORIGINALS BY GENRE</span>
                         </div>
 
-                        <div className="h-[50px] ml-[200px] mr-[150px] mb-5 bg-white flex items-center justify-center border-t border-b">
+                        <div className="h-[70px] ml-[160px] mr-[150px] mb-5 bg-white flex items-center justify-center border-t border-b">
                             <ul
-                                className="flex gap-10"
+                                class="grid grid-cols-10 gap-4"
                             >
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-                                    DRAMA
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-black hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-                                    FANTASY
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-                                    COMEDY
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-                                    ACTION
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-                                    SLICE OF LIFE
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-                                    ROMANCE
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-                                    SUPERHERO
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-
-                                    SCI-FI
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-
-                                    THRILLER
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-
-                                    SUPERNATURAL
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-
-                                    OTHERS v
-                                </li>
+                                {/* khung nội dung */}
+                                {dataListGenre.map(item => (
+                                    <li
+                                        className="uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                    >
+                                        {item.name}
+                                    </li>
+                                ))}
 
                             </ul>
                         </div>
@@ -365,83 +323,22 @@ const PopularPage = () => {
                     </div>
 
                     <div className="w-full h-full mb-[100px]">
-                        <div className="h-[70px] mx-[200px] flex items-center">
+                        <div className="h-[70px] mx-[160px] flex items-center">
                             <span className="uppercase font-semibold text-xl">VIDEOS BY GENRE</span>
                         </div>
 
-                        <div className="h-[50px] ml-[200px] mr-[150px] mb-5 bg-white flex items-center justify-center border-t border-b">
+                        <div className="h-[70px] ml-[160px] mr-[150px] mb-5 bg-white flex items-center justify-center border-t border-b">
                             <ul
-                                className="flex gap-10"
+                                class="grid grid-cols-10 gap-4"
                             >
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-                                    DRAMA
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-black hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-                                    FANTASY
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-                                    COMEDY
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-                                    ACTION
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-                                    SLICE OF LIFE
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-                                    ROMANCE
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-                                    SUPERHERO
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-
-                                    SCI-FI
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-
-                                    THRILLER
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-
-                                    SUPERNATURAL
-                                </li>
-
-                                <li
-                                    className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                                >
-
-                                    OTHERS v
-                                </li>
+                                {/* khung nội dung */}
+                                {dataListGenre.map(item => (
+                                    <li
+                                        className="uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                    >
+                                        {item.name}
+                                    </li>
+                                ))}
 
                             </ul>
                         </div>

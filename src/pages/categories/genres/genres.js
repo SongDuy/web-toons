@@ -28,6 +28,25 @@ const data = [
     { id: 23, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
 ];
 
+const dataListGenre = [
+    { id: 1, name: "DRAMA" },
+    { id: 2, name: "FANTASY" },
+    { id: 3, name: "COMEDY" },
+    { id: 4, name: "ACTION" },
+    { id: 5, name: "SLICE OF LIFE" },
+    { id: 6, name: "ROMANCE" },
+    { id: 7, name: "SUPERHERO" },
+    { id: 8, name: "SCI-FI" },
+    { id: 9, name: "THRILLER" },
+    { id: 10, name: "SUPERNATURAL" },
+    { id: 11, name: "MYSTERY" },
+    { id: 12, name: "SPORTS" },
+    { id: 13, name: "HISTORICAL" },
+    { id: 14, name: "HEARTWARMING" },
+    { id: 15, name: "HORROR" },
+    { id: 16, name: "INFORMATIVE" },
+];
+
 const handleOriginalSeriesClick = () => {
     window.location.href = '/original/series';
 };
@@ -38,77 +57,17 @@ const GenresPage = () => {
             <div className="w-full h-full bg-gray-100">
                 <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
                     <ul
-                        className="flex gap-10"
+                        class="grid grid-cols-10 gap-4"
                     >
-                        <li
-                            className="h-[60px] uppercase font-semibold text-sm text-black hover:text-black cursor-pointer flex items-center justify-center"
-                        >
-                            DRAMA
-                        </li>
+                        {/* khung nội dung */}
+                        {dataListGenre.map(item => (
+                            <li
+                                className="uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                            >
+                                {item.name}
+                            </li>
+                        ))}
 
-                        <li
-                            className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                        >
-                            FANTASY
-                        </li>
-
-                        <li
-                            className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                        >
-                            COMEDY
-                        </li>
-
-                        <li
-                            className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                        >
-                            ACTION
-                        </li>
-
-                        <li
-                            className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                        >
-                            SLICE OF LIFE
-                        </li>
-
-                        <li
-                            className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                        >
-                            ROMANCE
-                        </li>
-
-                        <li
-                            className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                        >
-                            SUPERHERO
-                        </li>
-
-                        <li
-                            className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                        >
-
-                            SCI-FI
-                        </li>
-
-                        <li
-                            className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                        >
-
-                            THRILLER
-                        </li>
-
-                        <li
-                            className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                        >
-
-                            SUPERNATURAL
-                        </li>
-
-                        <li
-                            className="h-[60px] uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                        >
-
-                            OTHERS v
-                        </li>
                     </ul>
                 </div>
 
