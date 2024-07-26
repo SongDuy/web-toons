@@ -64,9 +64,6 @@ function App() {
           <Route path="/terms/adRevenueSharingPolicy" element={<AdRevenueSharingTerms />} />
           <Route path="/terms/superLikePolicy" element={<SuperLikeTerms />} />
 
-          <Route path="/creact/original" element={<CreateOriginalPage />} />
-          <Route path="/cearct/video" element={<CreateVideoPage />} />
-
         </Route>
 
         {/* Trang hiển thị truyện và video */}
