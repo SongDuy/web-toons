@@ -207,7 +207,8 @@ const DisplayOriginalPage = () => {
                                                     key={item.id}
                                                 >
                                                     <div className="w-full h-full">
-
+                                                        
+                                                        {/* Hiển thị tên user và ngày đăng bình luận */}
                                                         <div className="w-full py-1 flex overflow-hidden">
                                                             <span className="max-w-[500px] font-semibold line-clamp-1">
                                                                 {item.nameUser}
@@ -217,10 +218,12 @@ const DisplayOriginalPage = () => {
                                                             </span>
                                                         </div>
 
+                                                        {/* Hiển thị nội dung bình luận */}
                                                         <div className="h-[100px] px-2 overflow-y-scroll">
                                                             {item.content}
                                                         </div>
 
+                                                        {/* Nút bình luận, thích, không thích */}
                                                         <div className="w-full flex gap-2 py-1">
                                                             <span className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center cursor-pointer">
                                                                 Reply
