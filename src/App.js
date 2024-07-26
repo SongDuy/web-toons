@@ -8,12 +8,12 @@ import OriginalsPage from './pages/categories/originals/originals';
 import VideosPage from './pages/categories/videos/videos';
 import GenresPage from './pages/categories/genres/genres';
 import PopularPage from './pages/categories/popular/popular';
+import CreateVideoPage from './pages/create/createVideo';
+import VideoSeriesPage from './pages/categories/videos/videoSeries';
+import DisplayVideoPage from './pages/categories/videos/displayVideo';
+import CreateOriginalPage from './pages/create/createOriginal';
 import OriginalSeriesPage from './pages/categories/originals/originalSeries';
 import DisplayOriginalPage from './pages/categories/originals/displayOriginal';
-import DisplayVideoPage from './pages/categories/videos/displayVideo';
-import VideoSeriesPage from './pages/categories/videos/videoSeries';
-import CreateOriginalPage from './pages/create/createOriginal';
-import CreateVideoPage from './pages/create/createVideo';
 import NotFoundPage from './pages/notFoundPage';
 
 import './App.css';
