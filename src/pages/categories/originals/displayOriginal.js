@@ -185,20 +185,121 @@ const DisplayOriginalPage = () => {
                                 <div className="w-full h-full my-3">
                                     <textarea
                                         placeholder="Leave a comment"
-                                        className="w-full h-[150px] rounded-md px-3 py-3 border-2"
+                                        className="w-full h-[160px] rounded-md px-3 py-3 border-2"
                                     />
                                     <button className="w-[35px] h-[35px] px-5 py-5 ml-auto bg-green-500 hover:shadow-md text-white rounded-full flex items-center justify-center">
                                         <SendRoundedIcon className="transform rotate-200" />
                                     </button>
                                 </div>
 
-                                <div className="w-full h-full my-5 bg-red-100">
-                                    <div>
+                                <div className="w-full h-full my-5 ">
+                                    <div className="px-3">
+                                        kk
+                                    </div>
+                                    <div className="">
+                                        <ul>
+                                            <li className="w-full h-[200px] rounded-md px-3 py-2 border-b bg-red-50 bg-opacity-50 my-2">
+                                                <div className="w-full h-full">
+                                                    <div>
+                                                        kkk
+                                                    </div>
+                                                    <div className="h-[140px] overflow-y-scroll">
+                                                        kkk
+                                                    </div>
+                                                    <div>
+                                                        kkk
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li className="w-full h-[200px] rounded-md px-3 py-2 border-b bg-red-50 bg-opacity-50 my-2">
+                                                <div className="w-full h-full">
+                                                    <div>
+                                                        kkk
+                                                    </div>
+                                                    <div className="h-[140px] overflow-y-scroll">
+                                                        kkk
+                                                    </div>
+                                                    <div>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li className="w-full h-[200px] rounded-md px-3 py-2 border-b bg-red-50 bg-opacity-50 my-2">
+                                                <div className="w-full h-full">
+                                                    <div>
+                                                        kkk
+                                                    </div>
+                                                    <div className="h-[140px] overflow-y-scroll">
+                                                        kkk
+                                                    </div>
+                                                    <div>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li className="w-full h-[200px] rounded-md px-3 py-2 border-b bg-red-50 bg-opacity-50 my-2">
+                                                <div className="w-full h-full">
+                                                    <div>
+                                                        kkk
+                                                    </div>
+                                                    <div className="h-[140px] overflow-y-scroll">
+                                                        kkk
+                                                    </div>
+                                                    <div>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li className="w-full h-[200px] rounded-md px-3 py-2 border-b bg-red-50 bg-opacity-50 my-2">
+                                                <div className="w-full h-full">
+                                                    <div>
+                                                        kkk
+                                                    </div>
+                                                    <div className="h-[140px] overflow-y-scroll">
+                                                        kkk
+                                                    </div>
+                                                    <div>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li className="w-full h-[200px] rounded-md px-3 py-2 border-b bg-red-50 bg-opacity-50 my-2">
+                                                <div className="w-full h-full">
+                                                    <div>
+                                                        kkk
+                                                    </div>
+                                                    <div className="h-[140px] overflow-y-scroll">
+                                                        kkk
+                                                    </div>
+                                                    <div>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li className="w-full h-[200px] rounded-md px-3 py-2 border-b bg-red-50 bg-opacity-50 my-2">
+                                                <div className="w-full h-full">
+                                                    <div>
+                                                        kkk
+                                                    </div>
+                                                    <div className="h-[140px] overflow-y-scroll">
+                                                        kkk
+                                                    </div>
+                                                    <div>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        </ul>
 
                                     </div>
-                                    <div>
 
-                                    </div>
                                 </div>
                             </div>
 
