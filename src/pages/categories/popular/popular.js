@@ -74,15 +74,15 @@ const PopularPage = () => {
 
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div
-                                    className="w-full h-full flex justify-center shadow pt-10 rounded-xl cursor-pointer hover:bg-gray-100"
+                                    className="w-full h-full flex justify-center pt-10 rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100"
                                     onClick={handleOriginalSeriesClick}
                                 >
                                     <div className="px-[45px]">
-                                        <div className="w-[500px] h-[450px] rounded-xl bg-green-500 flex items-center justify-center relative">
+                                        <div className="w-[500px] h-[450px] rounded-md bg-green-500 flex items-center justify-center relative">
                                             <img
                                                 src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                 alt="img"
-                                                className="object-fill w-full h-full rounded-xl"
+                                                className="object-fill w-full h-full rounded-md"
                                             />
 
                                             <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
@@ -210,15 +210,15 @@ const PopularPage = () => {
 
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div
-                                    className="w-full h-full flex justify-center shadow pt-10 rounded-xl cursor-pointer hover:bg-gray-100"
+                                    className="w-full h-full flex justify-center pt-10 rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100"
                                     onClick={handleOriginalSeriesClick}
                                 >
                                     <div className="px-[45px]">
-                                        <div className="w-[500px] h-[450px] rounded-xl bg-green-500 flex items-center justify-center relative">
+                                        <div className="w-[500px] h-[450px] rounded-md bg-green-500 flex items-center justify-center relative">
                                             <img
                                                 src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                 alt="img"
-                                                className="object-fill w-full h-full rounded-xl"
+                                                className="object-fill w-full h-full rounded-md"
                                             />
 
                                             <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
@@ -347,7 +347,7 @@ const PopularPage = () => {
 
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div
-                                    className="w-full h-full flex justify-center shadow pt-10 rounded-xl cursor-pointer hover:bg-gray-100"
+                                    className="w-full h-full flex justify-center pt-10 rounded-md cursor-pointer bg-gray-50 hover:bg-gray-100"
                                     onClick={handleOriginalSeriesClick}
                                 >
                                     <div className="px-[45px]">
@@ -355,7 +355,7 @@ const PopularPage = () => {
                                             <img
                                                 src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                                 alt="img"
-                                                className="object-fill w-full h-full rounded-xl"
+                                                className="object-fill w-full h-full rounded-md"
                                             />
 
                                             <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
