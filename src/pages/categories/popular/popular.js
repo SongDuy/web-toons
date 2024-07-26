@@ -65,6 +65,7 @@ const PopularPage = () => {
                     </ul>
                 </div>
                 <div className="mt-5">
+                    {/* Hiển thị NEW & TRENDING */}
                     <div className="w-full h-full mb-[100px]">
                         <div className="h-[70px] mx-[160px] flex items-center">
                             <span className="uppercase font-semibold text-xl">NEW & TRENDING</span>
@@ -72,6 +73,7 @@ const PopularPage = () => {
 
                         <div className="h-full mx-[160px] gap-5 flex items-center justify-center">
 
+                            {/* Hien thị top 1 */}
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div
                                     className="w-full h-full flex justify-center pt-10 rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100"
@@ -140,6 +142,7 @@ const PopularPage = () => {
                                 </div>
                             </div>
 
+                            {/* Hien thị danh sách */}
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div className="w-full h-full">
                                     <ul className="w-full h-full ">
@@ -186,6 +189,7 @@ const PopularPage = () => {
                         </div>
                     </div>
 
+                    {/* Hiển thị ORIGINALS BY GENRE */}
                     <div className="w-full h-full mb-[100px]">
                         <div className="h-[70px] mx-[160px] flex items-center">
                             <span className="uppercase font-semibold text-xl">ORIGINALS BY GENRE</span>
@@ -207,7 +211,7 @@ const PopularPage = () => {
                             </ul>
                         </div>
                         <div className="h-full mx-[160px] gap-5 flex items-center justify-center">
-
+                            {/* Hien thị top 1 */}
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div
                                     className="w-full h-full flex justify-center pt-10 rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100"
@@ -276,6 +280,7 @@ const PopularPage = () => {
                                 </div>
                             </div>
 
+                            {/* Hiển thị danh sách */}
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div className="w-full h-full">
                                     <ul className="w-full h-full ">
@@ -322,6 +327,7 @@ const PopularPage = () => {
                         </div>
                     </div>
 
+                    {/* Hiển thị VIDEOS BY GENRE */}
                     <div className="w-full h-full mb-[100px]">
                         <div className="h-[70px] mx-[160px] flex items-center">
                             <span className="uppercase font-semibold text-xl">VIDEOS BY GENRE</span>
@@ -345,6 +351,7 @@ const PopularPage = () => {
 
                         <div className="h-full mx-[160px] gap-5 flex items-center justify-center">
 
+                            {/* Hiển thị top 1 */}
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div
                                     className="w-full h-full flex justify-center pt-10 rounded-md cursor-pointer bg-gray-50 hover:bg-gray-100"
@@ -413,6 +420,7 @@ const PopularPage = () => {
                                 </div>
                             </div>
 
+                            {/* Hiển thị Danh sách */}
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div className="w-full h-full">
                                     <ul className="w-full h-full ">
