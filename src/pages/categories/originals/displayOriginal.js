@@ -16,6 +16,30 @@ const dataPopular = [
     { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "5", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
 ];
 
+const dataFavorite = [
+    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 7" },
+    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 8" },
+    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 9" },
+    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 10" },
+    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 11" },
+    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 12" },
+    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 13" },
+    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 14" },
+    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 15" },
+]
+
+const dataComment = [
+    { id: 1, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 2, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 3, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 4, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 5, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 6, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 7, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 8, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 9, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+]
+
 const handleOriginalSeriesClick = () => {
     window.location.href = '/original/series';
 };
@@ -31,8 +55,6 @@ const DisplayOriginalPage = () => {
                         <li className="w-[550px] flex gap-2 items-center overflow-hidden">
                             <div className="">
                                 <span className="text-white">Logo</span>
-
-
                             </div>
 
                             <div className="">
@@ -60,9 +82,6 @@ const DisplayOriginalPage = () => {
                                     <ArrowForwardIosIcon />
                                 </span>
                             </div>
-
-
-
                         </li>
 
                         <li className="ml-auto">
@@ -125,104 +144,21 @@ const DisplayOriginalPage = () => {
                     </div>
 
                     <ul className="flex">
-                        <li className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
-                            <div className="w-[100px] h-[100px] mb-auto">
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
-                                <span className="leading-[1.2] line-clamp-2 py-1">Episode 7</span>
-                            </div>
-                        </li>
-
-                        <li className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
-                            <div className="w-[100px] h-[100px] mb-auto">
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
-                                <span className="leading-[1.2] line-clamp-2 py-1">Episode 8</span>
-                            </div>
-                        </li>
-
-                        <li className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
-                            <div className="w-[100px] h-[100px] mb-auto">
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
-                                <span className="leading-[1.2] line-clamp-2 py-1">Episode 9</span>
-                            </div>
-                        </li>
-
-                        <li className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
-                            <div className="w-[100px] h-[100px] mb-auto">
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
-                                <span className="leading-[1.2] line-clamp-2 py-1">Episode 10</span>
-                            </div>
-                        </li>
-
-                        <li className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
-                            <div className="w-[100px] h-[100px] mb-auto">
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
-                                <span className="leading-[1.2] line-clamp-2 py-1">Episode 11</span>
-                            </div>
-                        </li>
-
-                        <li className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
-                            <div className="w-[100px] h-[100px] mb-auto">
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
-                                <span className="leading-[1.2] line-clamp-2 py-1">Episode 12</span>
-                            </div>
-                        </li>
-
-                        <li className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
-                            <div className="w-[100px] h-[100px] mb-auto">
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
-                                <span className="leading-[1.2] line-clamp-2 py-1">Episode 13</span>
-                            </div>
-                        </li>
-
-                        <li className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
-                            <div className="w-[100px] h-[100px] mb-auto">
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
-                                <span className="leading-[1.2] line-clamp-2 py-1">Episode 14</span>
-                            </div>
-                        </li>
-
-                        <li className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden">
-                            <div className="w-[100px] h-[100px] mb-auto">
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
-                                <span className="leading-[1.2] line-clamp-2 py-1">Episode 15</span>
-                            </div>
-                        </li>
+                        {dataFavorite.map(item => (
+                            <li
+                                className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
+                                key={item.key}
+                            >
+                                <div className="w-[100px] h-[100px] mb-auto">
+                                    <img
+                                        src={item.img}
+                                        alt="img"
+                                        className="object-fill w-full h-full rounded-md"
+                                    />
+                                    <span className="leading-[1.2] line-clamp-2 py-1">{item.name}</span>
+                                </div>
+                            </li>
+                        ))}
                     </ul>
 
                     <div className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center">
@@ -237,26 +173,32 @@ const DisplayOriginalPage = () => {
                     <div className="w-[1200px] h-full flex bg-white pt-5 pb-10">
 
                         {/* Bảng hiện thị bình luận */}
-                        <div className="w-8/12 h-full bg-green-300 px-2">
-                            <div className="w-full px-2 pr-5 border">
-                                <div className="flex items-center pb-2 border">
-                                    <span className="w-full font-semibold text-lg">
+                        <div className="w-8/12 h-full px-2">
+                            <div className="w-full px-2 pr-5">
+                                <div className="flex items-center pb-2">
+                                    <span className="font-semibold text-lg">
                                         Comments
                                     </span>
+                                    <span className="px-2 text-gray-400">2,907</span>
                                 </div>
 
                                 <div className="w-full h-full my-3">
                                     <textarea
                                         placeholder="Leave a comment"
-                                        className="w-full h-[150px] rounded-md px-3 py-3"
+                                        className="w-full h-[150px] rounded-md px-3 py-3 border-2"
                                     />
                                     <button className="w-[35px] h-[35px] px-5 py-5 ml-auto bg-green-500 hover:shadow-md text-white rounded-full flex items-center justify-center">
                                         <SendRoundedIcon className="transform rotate-200" />
                                     </button>
                                 </div>
 
-                                <div className="w-full h-full bg-red-100">
-                                    kk
+                                <div className="w-full h-full my-5 bg-red-100">
+                                    <div>
+
+                                    </div>
+                                    <div>
+
+                                    </div>
                                 </div>
                             </div>
 
