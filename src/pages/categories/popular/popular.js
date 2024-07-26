@@ -54,7 +54,10 @@ const PopularPage = () => {
                         <div className="h-full mx-[160px] gap-5 flex items-center justify-center">
 
                             <div className="w-1/2 h-[815px] bg-white py-1">
-                                <div className="w-full h-full flex justify-center">
+                                <div
+                                    className="w-full h-full flex justify-center shadow pt-10 rounded-xl cursor-pointer hover:bg-gray-100"
+                                    onClick={handleOriginalSeriesClick}
+                                >
                                     <div className="px-[45px]">
                                         <div className="w-[500px] h-[450px] rounded-xl bg-green-500 flex items-center justify-center relative">
                                             <img
@@ -95,7 +98,7 @@ const PopularPage = () => {
                                             </div>
 
                                             <div className=" w-full h-full mt-5 overflow-hidden">
-                                                <span className="w-full h-full line-clamp-6">
+                                                <span className="w-full line-clamp-5">
                                                     Valerie Beloff, a princess in exile, decides to take her
                                                     own life on her 19th birthday. Abused by her own mother
                                                     and exiled for her mother’s crimes, she had to live in
@@ -118,13 +121,14 @@ const PopularPage = () => {
                                 </div>
                             </div>
 
-                            <div className="w-1/2 h-[815px] bg-white">
+                            <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div className="w-full h-full">
                                     <ul className="w-full h-full ">
 
                                         {/* khung nội dung */}
                                         {dataPopular.map(item => (
-                                            <li className="w-full h-[90px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
+                                            <li
+                                                className="w-full h-[90px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                                 key={item.id}
                                                 onClick={handleOriginalSeriesClick}
                                             >
@@ -156,6 +160,7 @@ const PopularPage = () => {
                                                 </div>
                                             </li>
                                         ))}
+
                                     </ul>
                                 </div>
                             </div>
@@ -246,7 +251,10 @@ const PopularPage = () => {
                         <div className="h-full mx-[160px] gap-5 flex items-center justify-center">
 
                             <div className="w-1/2 h-[815px] bg-white py-1">
-                                <div className="w-full h-full flex justify-center">
+                                <div
+                                    className="w-full h-full flex justify-center shadow pt-10 rounded-xl cursor-pointer hover:bg-gray-100"
+                                    onClick={handleOriginalSeriesClick}
+                                >
                                     <div className="px-[45px]">
                                         <div className="w-[500px] h-[450px] rounded-xl bg-green-500 flex items-center justify-center relative">
                                             <img
@@ -287,7 +295,7 @@ const PopularPage = () => {
                                             </div>
 
                                             <div className=" w-full h-full mt-5 overflow-hidden">
-                                                <span className="w-full h-full line-clamp-6">
+                                                <span className="w-full line-clamp-5">
                                                     Valerie Beloff, a princess in exile, decides to take her
                                                     own life on her 19th birthday. Abused by her own mother
                                                     and exiled for her mother’s crimes, she had to live in
@@ -310,7 +318,7 @@ const PopularPage = () => {
                                 </div>
                             </div>
 
-                            <div className="w-1/2 h-[815px] bg-white">
+                            <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div className="w-full h-full">
                                     <ul className="w-full h-full ">
 
@@ -441,7 +449,10 @@ const PopularPage = () => {
                         <div className="h-full mx-[160px] gap-5 flex items-center justify-center">
 
                             <div className="w-1/2 h-[815px] bg-white py-1">
-                                <div className="w-full h-full flex justify-center">
+                                <div
+                                    className="w-full h-full flex justify-center shadow pt-10 rounded-xl cursor-pointer hover:bg-gray-100"
+                                    onClick={handleOriginalSeriesClick}
+                                >
                                     <div className="px-[45px]">
                                         <div className="w-[500px] h-[450px] rounded-xl bg-green-500 flex items-center justify-center relative">
                                             <img
@@ -482,7 +493,7 @@ const PopularPage = () => {
                                             </div>
 
                                             <div className=" w-full h-full mt-5 overflow-hidden">
-                                                <span className="w-full h-full line-clamp-6">
+                                                <span className="w-full line-clamp-5">
                                                     Valerie Beloff, a princess in exile, decides to take her
                                                     own life on her 19th birthday. Abused by her own mother
                                                     and exiled for her mother’s crimes, she had to live in
@@ -505,7 +516,7 @@ const PopularPage = () => {
                                 </div>
                             </div>
 
-                            <div className="w-1/2 h-[815px] bg-white">
+                            <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div className="w-full h-full">
                                     <ul className="w-full h-full ">
 
