@@ -8,10 +8,12 @@ import OriginalsPage from './pages/categories/originals/originals';
 import VideosPage from './pages/categories/videos/videos';
 import GenresPage from './pages/categories/genres/genres';
 import PopularPage from './pages/categories/popular/popular';
-import OriginalSeriesPage from './pages/categories/original/original';
-import DisplayOriginalPage from './components/categories/originals/displayOriginal';
-import DisplayVideoPage from './components/categories/videos/displayVideo';
-import VideoSeriesPage from './components/categories/videos/videoSeries';
+import OriginalSeriesPage from './pages/categories/originals/originalSeries';
+import DisplayOriginalPage from './pages/categories/originals/displayOriginal';
+import DisplayVideoPage from './pages/categories/videos/displayVideo';
+import VideoSeriesPage from './pages/categories/videos/videoSeries';
+import CreateOriginalPage from './pages/create/createOriginal';
+import CreateVideoPage from './pages/create/createVideo';
 import NotFoundPage from './pages/notFoundPage';
 
 import './App.css';
@@ -26,6 +28,7 @@ import CommunityPolicy from './pages/Policys/CommunityPolicy';
 import CanvasTermsOfUse from './pages/Policys/CanvasTermsOfUse';
 import AdRevenueSharingTerms from './pages/Policys/AdRevenueSharingTerms';
 import SuperLikeTerms from './pages/Policys/SuperLikeTerms';
+
 function App() {
 
   useEffect(() => {
@@ -35,20 +38,22 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
 
           <Route path="/originals" element={<OriginalsPage />} />
           <Route path="/original/series" element={<OriginalSeriesPage />} />
-          <Route path="/original/series/display" element={<DisplayOriginalPage />} />
 
           <Route path="/videos" element={<VideosPage />} />
           <Route path="/video/series" element={<VideoSeriesPage />} />
-          <Route path="/video/series/display" element={<DisplayVideoPage />} />
 
           <Route path="/genres" element={<GenresPage />} />
-
           <Route path="/popular" element={<PopularPage />} />
+
+          <Route path="/create/original" element={<CreateOriginalPage />} />
+          <Route path="/create/video" element={<CreateVideoPage />} />
+
           <Route path="/account" element={<Account />} />
           <Route path="/comment" element={<Comment />} />
           <Route path="/Subscribed" element={<Subscribed />} />
@@ -63,10 +68,16 @@ function App() {
           <Route path="/creact/original" element={<CreateOriginalPage />} />
           <Route path="/cearct/video" element={<CreateVideoPage />} />
 
-          {/* Xử lý trang lỗi */}
         </Route>
+
+        {/* Trang hiển thị truyện và video */}
+        <Route path="/original/series/display" element={<DisplayOriginalPage />} />
+        <Route path="/video/series/display" element={<DisplayVideoPage />} />
+
+        {/* Xử lý trang lỗi */}
         <Route path="*" element={<Navigate to="/404" />} />
         <Route path="/404" element={<NotFoundPage />} />
+
       </Routes>
     </BrowserRouter>
   );

@@ -5,9 +5,6 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import GroupAddSharpIcon from '@mui/icons-material/GroupAddSharp';
 import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
 
-import HeaderPage from '../../layout/header';
-import FooterPage from '../../layout/footer';
-
 const dataSeries = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 15", date: "jun 10, 2024", like: "23,789", number: "#15" },
     { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 14", date: "jun 10, 2024", like: "23,789", number: "#14" },
@@ -36,8 +33,6 @@ const handleDisplayVideoClick = () => {
 
 const VideoSeriesPage  = () => {
     return (
-        <div>
-        <HeaderPage />
 
         <div className="w-full h-full bg-gray-100">
             {/* Hiển thị ảnh  */}
@@ -276,9 +271,6 @@ const VideoSeriesPage  = () => {
                 </div>
             </div>
         </div>
-
-        <FooterPage />
-    </div>
 
     );
 }
