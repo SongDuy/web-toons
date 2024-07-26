@@ -6,6 +6,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CheckIcon from '@mui/icons-material/Check';
+import SendRoundedIcon from '@mui/icons-material/SendRounded';
 
 import FooterPage from '../../layout/footer';
 
@@ -241,17 +242,23 @@ const DisplayOriginalPage = () => {
                         <div className="w-8/12 h-full bg-green-300 px-2">
                             <div className="w-full px-2 pr-5 border">
                                 <div className="flex items-center pb-2 border">
-                                    <span className="w-full font-semibold text-lg hover:text-green-500 cursor-pointer">
+                                    <span className="w-full font-semibold text-lg">
                                         Comments
                                     </span>
                                 </div>
 
-                                <div className="w-full h-full bg-gray-100">
-ll
+                                <div className="w-full h-full my-3">
+                                    <textarea
+                                        placeholder="Leave a comment"
+                                        className="w-full h-[150px] rounded-md px-3 py-3"
+                                    />
+                                    <button className="w-[35px] h-[35px] px-5 py-5 ml-auto bg-green-500 hover:shadow-md text-white rounded-full flex items-center justify-center">
+                                        <SendRoundedIcon className="transform rotate-200" />
+                                    </button>
                                 </div>
 
                                 <div className="w-full h-full bg-red-100">
-kk
+                                    kk
                                 </div>
                             </div>
 
