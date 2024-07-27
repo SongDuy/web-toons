@@ -217,7 +217,7 @@ const DisplayOriginalPage = () => {
                                         <ul>
                                             {dataComment.map(item => (
                                                 <li
-                                                    className="w-full h-[180px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2"
+                                                    className="w-full h-[200px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2"
                                                     key={item.id}
                                                 >
                                                     <div className="w-full h-full">
@@ -233,7 +233,7 @@ const DisplayOriginalPage = () => {
                                                         </div>
 
                                                         {/* Hiển thị nội dung bình luận */}
-                                                        <div className="h-[100px] px-2 custom-scrollbar">
+                                                        <div className="h-[120px] px-2 overflow-y-scroll">
                                                             <span className="">
                                                                 {item.content}
                                                             </span>
