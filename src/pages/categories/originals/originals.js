@@ -29,6 +29,16 @@ const data = [
     { id: 23, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
 ];
 
+const dataDay = [
+    { id: 1, day: "Mon Day" },
+    { id: 2, day: "Tue Day" },
+    { id: 3, day: "Wed Day" },
+    { id: 4, day: "Thu Day" },
+    { id: 5, day: " Fri Day" },
+    { id: 6, day: "Sat Day" },
+    { id: 7, day: "Sun Day" },
+];
+
 const OriginalsPage = () => {
 
     const [isSticky, setIsSticky] = useState(false);
@@ -81,41 +91,14 @@ const OriginalsPage = () => {
                         <ul
                             className="flex gap-2"
                         >
-                            <li
-                                className="w-[150px] h-[60px] uppercase bg-green-500 rounded-xl font-semibold text-md text-white cursor-pointer flex items-center justify-center"
-                            >
-                                Mon Day
-                            </li>
-                            <li
-                                className="w-[150px] h-[60px] uppercase rounded-xl font-semibold text-md hover:text-green-500 cursor-pointer flex items-center justify-center"
-                            >
-                                Tue Day
-                            </li>
-                            <li
-                                className="w-[150px] h-[60px] uppercase rounded-xl font-semibold text-md hover:text-green-500 cursor-pointer flex items-center justify-center"
-                            >
-                                Wed Day
-                            </li>
-                            <li
-                                className="w-[150px] h-[60px] uppercase rounded-xl font-semibold text-md hover:text-green-500 cursor-pointer flex items-center justify-center"
-                            >
-                                Thu Day
-                            </li>
-                            <li
-                                className="w-[150px] h-[60px] uppercase rounded-xl font-semibold text-md hover:text-green-500 cursor-pointer flex items-center justify-center"
-                            >
-                                Fri Day
-                            </li>
-                            <li
-                                className="w-[150px] h-[60px] uppercase rounded-xl font-semibold text-md hover:text-green-500 cursor-pointer flex items-center justify-center"
-                            >
-                                Sat Day
-                            </li>
-                            <li
-                                className="w-[150px] h-[60px] uppercase rounded-xl font-semibold text-md hover:text-green-500 cursor-pointer flex items-center justify-center"
-                            >
-                                Sun Day
-                            </li>
+                            {dataDay.map(item => (
+                                <li
+                                    className="w-[150px] h-[60px] uppercase bg-green-500 rounded-xl font-semibold text-md text-white cursor-pointer flex items-center justify-center"
+                                    key={item.id}
+                                >
+                                    {item.day}
+                                </li>
+                            ))}
 
                         </ul>
                     </div>
