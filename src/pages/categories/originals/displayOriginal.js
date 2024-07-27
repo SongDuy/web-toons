@@ -233,8 +233,10 @@ const DisplayOriginalPage = () => {
                                                         </div>
 
                                                         {/* Hiển thị nội dung bình luận */}
-                                                        <div className="h-[100px] px-2 overflow-y-scroll">
-                                                            {item.content}
+                                                        <div className="h-[100px] px-2 custom-scrollbar">
+                                                            <span className="">
+                                                                {item.content}
+                                                            </span>
                                                         </div>
 
                                                         {/* Nút bình luận, thích, không thích */}

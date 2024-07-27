@@ -25,15 +25,38 @@ const dataPopular = [
     { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "5", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
 ];
 
-const handleOriginalsClick = () => {
-    window.location.href = '/originals';
-};
-
-const handleOriginalSeriesClick = () => {
-    window.location.href = '/original/series';
-};
+const dataListGenre = [
+    { id: 1, name: "DRAMA" },
+    { id: 2, name: "FANTASY" },
+    { id: 3, name: "COMEDY" },
+    { id: 4, name: "ACTION" },
+    { id: 5, name: "SLICE OF LIFE" },
+    { id: 6, name: "ROMANCE" },
+    { id: 7, name: "SUPERHERO" },
+    { id: 8, name: "SCI-FI" },
+    { id: 9, name: "THRILLER" },
+    { id: 10, name: "SUPERNATURAL" },
+    { id: 11, name: "MYSTERY" },
+    { id: 12, name: "SPORTS" },
+    { id: 13, name: "HISTORICAL" },
+    { id: 14, name: "HEARTWARMING" },
+    { id: 15, name: "HORROR" },
+    { id: 16, name: "INFORMATIVE" },
+];
 
 const ContentPage = () => {
+
+    const handleOriginalsClick = () => {
+        window.location.href = '/originals';
+    };
+
+    const handleOriginalSeriesClick = () => {
+        window.location.href = '/original/series';
+    };
+
+    const handleVideoSeriesClick = () => {
+        window.location.href = '/video/series';
+    };
 
     return (
         <div className="w-full h-full bg-gray-100 mb-[50px]">
@@ -225,7 +248,7 @@ const ContentPage = () => {
                             <div
                                 className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
                                 key={item.id}
-                                onClick={handleOriginalSeriesClick}
+                                onClick={handleVideoSeriesClick}
                             >
 
                                 <img
@@ -268,22 +291,35 @@ const ContentPage = () => {
                 </div>
             </div>
 
-            <div className="w-full h-[560px]">
-                <div className="w-full h-[60px] bg-white shadow flex items-center justify-center">
+            <div className="w-full h-[630px]">
+                <div className="w-full h-[130px] bg-gray-100 shadow flex items-center justify-center">
                     <ul
-                        className="flex gap-[150px]"
+                        className="w-full gap-[150px] bg-gray-100"
                     >
                         <li
-                            className="w-full h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            className="w-full h-[60px] bg-white shadow uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
                             GENRES
                             <NavigateNextIcon />
                         </li>
                         <li
-                            className="w-full h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            className="w-full h-[70px] bg-gray-100 shadow border-t-2 uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
-                            ALL
-                            <CheckIcon />
+                            <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+                                <ul
+                                    class="grid grid-cols-9 gap-x-4 gap-y-2"
+                                >
+                                    {/* khung nội dung */}
+                                    {dataListGenre.map(item => (
+                                        <li
+                                            className="uppercase font-semibold text-sm text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
+                                        >
+                                            {item.name}
+                                        </li>
+                                    ))}
+
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -470,7 +506,7 @@ const ContentPage = () => {
                                 <li
                                     className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                     key={item.key}
-                                    onClick={handleOriginalSeriesClick}
+                                    onClick={handleVideoSeriesClick}
                                 >
                                     <div className="w-full h-full flex items-center">
                                         <div className="w-[80px] h-[80px] flex">
