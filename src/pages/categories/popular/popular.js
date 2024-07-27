@@ -100,7 +100,7 @@ const PopularPage = () => {
                             {/* Hien thị top 1 */}
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div
-                                    className="w-full h-full flex justify-center pt-10 rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100"
+                                    className="w-full h-full flex justify-center pt-10 rounded-xl cursor-pointer bg-gray-100 hover:bg-red-50"
                                     onClick={handleOriginalSeriesClick}
                                 >
                                     <div className="px-[45px]">
@@ -238,7 +238,7 @@ const PopularPage = () => {
                             {/* Hien thị top 1 */}
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div
-                                    className="w-full h-full flex justify-center pt-10 rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100"
+                                    className="w-full h-full flex justify-center pt-10 rounded-xl cursor-pointer bg-gray-100 hover:bg-red-50"
                                     onClick={handleOriginalSeriesClick}
                                 >
                                     <div className="px-[45px]">
@@ -378,7 +378,7 @@ const PopularPage = () => {
                             {/* Hiển thị top 1 */}
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div
-                                    className="w-full h-full flex justify-center pt-10 rounded-md cursor-pointer bg-gray-50 hover:bg-gray-100"
+                                    className="w-full h-full flex justify-center pt-10 rounded-md cursor-pointer bg-gray-100 hover:bg-red-50"
                                     onClick={handleVideoSeriesClick}
                                 >
                                     <div className="px-[45px]">
