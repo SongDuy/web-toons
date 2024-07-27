@@ -149,7 +149,7 @@ const DisplayOriginalPage = () => {
                         {dataFavorite.map(item => (
                             <li
                                 className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
-                                key={item.key}
+                                key={item.id}
                             >
                                 <div className="w-[100px] h-[100px] mb-auto">
                                     <img
@@ -281,7 +281,7 @@ const DisplayOriginalPage = () => {
                                     {dataPopular.map(item => (
                                         <li
                                             className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
-                                            key={item.key}
+                                            key={item.id}
                                             onClick={handleOriginalSeriesClick}
                                         >
                                             <div className="w-full h-full flex items-center">
@@ -338,7 +338,7 @@ const DisplayOriginalPage = () => {
                                     {dataPopular.map(item => (
                                         <li
                                             className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
-                                            key={item.key}
+                                            key={item.id}
                                             onClick={handleOriginalSeriesClick}
                                         >
                                             <div className="w-full h-full flex items-center">

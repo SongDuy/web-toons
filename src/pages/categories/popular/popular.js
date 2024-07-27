@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const dataPopular = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "2", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
@@ -31,16 +31,40 @@ const dataListGenre = [
     { id: 16, name: "INFORMATIVE" },
 ];
 
-const handleOriginalSeriesClick = () => {
-    window.location.href = '/original/series';
-};
-
 const PopularPage = () => {
+
+    const [isSticky, setIsSticky] = useState(false);
+
+    useEffect(() => {
+        const threshold = 100; // Ngưỡng để kích hoạt dính vào trên cùng
+
+        const handleScroll = () => {
+            if (window.scrollY > threshold) {
+                setIsSticky(true);
+            } else {
+                setIsSticky(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const handleOriginalSeriesClick = () => {
+        window.location.href = '/original/series';
+    };
+
+    const handleVideoSeriesClick = () => {
+        window.location.href = '/video/series';
+    };
     return (
         <div>
 
             <div className="w-full h-full bg-white">
-                <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
+                <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'fixed top-0 z-50' : ''}`}>
                     <ul
                         className="flex gap-[70px]"
                     >
@@ -51,13 +75,13 @@ const PopularPage = () => {
                         </li>
 
                         <li
-                            className="h-[60px] uppercase font-semibold text-md text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                            className="h-[60px] uppercase font-semibold text-md text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
                         >
                             ORIGINALS BY GENRE
                         </li>
 
                         <li
-                            className="h-[60px] uppercase font-semibold text-md text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                            className="h-[60px] uppercase font-semibold text-md text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
                         >
                             VIDEOS BY GENRE
                         </li>
@@ -197,12 +221,12 @@ const PopularPage = () => {
 
                         <div className="h-[70px] ml-[160px] mr-[150px] mb-5 bg-white flex items-center justify-center border-t border-b">
                             <ul
-                                class="grid grid-cols-10 gap-4"
+                                class="grid grid-cols-10 gap-x-4 gap-y-2"
                             >
                                 {/* khung nội dung */}
                                 {dataListGenre.map(item => (
                                     <li
-                                        className="uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                        className="uppercase font-semibold text-sm text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
                                     >
                                         {item.name}
                                     </li>
@@ -335,12 +359,12 @@ const PopularPage = () => {
 
                         <div className="h-[70px] ml-[160px] mr-[150px] mb-5 bg-white flex items-center justify-center border-t border-b">
                             <ul
-                                class="grid grid-cols-10 gap-4"
+                                class="grid grid-cols-10 gap-x-4 gap-y-2"
                             >
                                 {/* khung nội dung */}
                                 {dataListGenre.map(item => (
                                     <li
-                                        className="uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                        className="uppercase font-semibold text-sm text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
                                     >
                                         {item.name}
                                     </li>
@@ -355,7 +379,7 @@ const PopularPage = () => {
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div
                                     className="w-full h-full flex justify-center pt-10 rounded-md cursor-pointer bg-gray-50 hover:bg-gray-100"
-                                    onClick={handleOriginalSeriesClick}
+                                    onClick={handleVideoSeriesClick}
                                 >
                                     <div className="px-[45px]">
                                         <div className="w-[500px] h-[450px] rounded-xl bg-green-500 flex items-center justify-center relative">
@@ -423,14 +447,14 @@ const PopularPage = () => {
                             {/* Hiển thị Danh sách */}
                             <div className="w-1/2 h-[815px] bg-white py-1">
                                 <div className="w-full h-full">
-                                    <ul className="w-full h-full ">
+                                    <ul className="w-full h-full">
 
                                         {/* khung nội dung */}
                                         {dataPopular.map(item => (
                                             <li
                                                 className="w-full h-[90px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                                 key={item.id}
-                                                onClick={handleOriginalSeriesClick}
+                                                onClick={handleVideoSeriesClick}
                                             >
                                                 <div className="w-full h-full flex items-center">
                                                     <div className="w-[80px] h-[80px]">

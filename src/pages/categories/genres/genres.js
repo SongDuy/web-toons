@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
@@ -47,22 +47,44 @@ const dataListGenre = [
     { id: 16, name: "INFORMATIVE" },
 ];
 
-const handleOriginalSeriesClick = () => {
-    window.location.href = '/original/series';
-};
-
 const GenresPage = () => {
+
+    const [isSticky, setIsSticky] = useState(false);
+
+    useEffect(() => {
+        const threshold = 100; // Ngưỡng để kích hoạt dính vào trên cùng
+
+        const handleScroll = () => {
+            if (window.scrollY > threshold) {
+                setIsSticky(true);
+            } else {
+                setIsSticky(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const handleOriginalSeriesClick = () => {
+        window.location.href = '/original/series';
+    };
+
     return (
         <div>
             <div className="w-full h-full bg-gray-100">
-                <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
+
+                <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'fixed top-0 z-50' : ''}`}>
                     <ul
-                        class="grid grid-cols-10 gap-4"
+                        class="grid grid-cols-10 gap-x-4 gap-y-2"
                     >
                         {/* khung nội dung */}
                         {dataListGenre.map(item => (
                             <li
-                                className="uppercase font-semibold text-sm text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
+                                className="uppercase font-semibold text-sm text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
                             >
                                 {item.name}
                             </li>

@@ -31,7 +31,7 @@ const dataFavorite = [
 ]
 
 const dataComment = [
-    { id: 1, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 1, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute ", replies: "10", like: "61665", dislike: "56" },
     { id: 2, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
     { id: 3, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
     { id: 4, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
@@ -42,11 +42,12 @@ const dataComment = [
     { id: 9, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
 ]
 
-const handleVideoSeriesClick = () => {
-    window.location.href = '/video/series';
-};
-
 const DisplayVideoPage = () => {
+
+    const handleVideoSeriesClick = () => {
+        window.location.href = '/video/series';
+    };
+
     return (
         <div>
             <div className="w-full h-full bg-white">
@@ -149,7 +150,7 @@ const DisplayVideoPage = () => {
                         {dataFavorite.map(item => (
                             <li
                                 className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
-                                key={item.key}
+                                key={item.id}
                             >
                                 <div className="w-[100px] h-[100px] mb-auto">
                                     <img
@@ -281,7 +282,7 @@ const DisplayVideoPage = () => {
                                     {dataPopular.map(item => (
                                         <li
                                             className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
-                                            key={item.key}
+                                            key={item.id}
                                             onClick={handleVideoSeriesClick}
                                         >
                                             <div className="w-full h-full flex items-center">
@@ -338,7 +339,7 @@ const DisplayVideoPage = () => {
                                     {dataPopular.map(item => (
                                         <li
                                             className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
-                                            key={item.key}
+                                            key={item.id}
                                             onClick={handleVideoSeriesClick}
                                         >
                                             <div className="w-full h-full flex items-center">

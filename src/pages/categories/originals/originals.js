@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import CheckIcon from '@mui/icons-material/Check';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -29,31 +29,45 @@ const data = [
     { id: 23, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
 ];
 
-const handleOriginalSeriesClick = () => {
-    window.location.href = '/original/series';
-};
-
 const OriginalsPage = () => {
+
+    const [isSticky, setIsSticky] = useState(false);
+
+    useEffect(() => {
+        const threshold = 100; // Ngưỡng để kích hoạt dính vào trên cùng
+
+        const handleScroll = () => {
+            if (window.scrollY > threshold) {
+                setIsSticky(true);
+            } else {
+                setIsSticky(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const handleOriginalSeriesClick = () => {
+        window.location.href = '/original/series';
+    };
+
     return (
         <div>
 
             <div className="w-full h-full bg-gray-100">
-                <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
-                    <ul
-                        className="flex gap-[70px]"
-                    >
-                        <li
-                            className="h-[60px] uppercase font-semibold text-md text-black hover:text-black cursor-pointer flex items-center justify-center"
-                        >
+
+                <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'fixed top-0 z-50' : ''}`}>
+                    <ul className="flex gap-8">
+                        <li className="uppercase font-semibold text-md text-black hover:text-black cursor-pointer flex items-center justify-center">
                             ONGOING
                         </li>
-
-                        <li
-                            className="h-[60px] uppercase font-semibold text-md text-gray-300 hover:text-black cursor-pointer flex items-center justify-center"
-                        >
+                        <li className="uppercase font-semibold text-md text-gray-400 hover:text-black cursor-pointer flex items-center justify-center">
                             COMPLETED
                         </li>
-
                     </ul>
                 </div>
 
