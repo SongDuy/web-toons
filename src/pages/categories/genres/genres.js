@@ -45,7 +45,14 @@ const dataListGenre = [
     { id: 14, name: "HEARTWARMING" },
     { id: 15, name: "HORROR" },
     { id: 16, name: "INFORMATIVE" },
+    { id: 17, name: "SCHOOL" },
+    { id: 18, name: "ANIMALS" },
+    { id: 19, name: "ZOMBIES" },
+    { id: 20, name: "SHORT STORY" },
+
 ];
+// Sắp xếp mảng theo tên thể loại theo bảng chữ cái
+dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 
 const GenresPage = () => {
 
