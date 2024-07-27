@@ -307,12 +307,12 @@ const ContentPage = () => {
                         >
                             <div className="w-full h-full bg-gray-100 flex items-center justify-center">
                                 <ul
-                                    class="grid grid-cols-9 gap-x-2 gap-y-2 pt-8"
+                                    class="grid grid-cols-10 gap-x-2 gap-y-2 pt-8"
                                 >
                                     {/* khung nội dung */}
                                     {dataListGenre.map(item => (
                                         <li
-                                            className="uppercase font-semibold shadow rounded px-2 py-2 text-sm text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
+                                            className="uppercase font-semibold shadow rounded px-2 py-2 text-xs text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
                                         >
                                             {item.name}
                                         </li>
