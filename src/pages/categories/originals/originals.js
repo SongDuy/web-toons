@@ -61,7 +61,7 @@ const OriginalsPage = () => {
             <div className="w-full h-full pb-10 bg-gray-100">
 
                 <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'fixed top-0 z-50' : ''}`}>
-                    <ul className="flex gap-8">
+                    <ul className="flex gap-10">
                         <li className="uppercase font-semibold text-md text-black hover:text-black cursor-pointer flex items-center justify-center">
                             ONGOING
                         </li>

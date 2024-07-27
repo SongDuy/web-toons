@@ -292,27 +292,27 @@ const ContentPage = () => {
             </div>
 
             <div className="w-full h-[630px]">
-                <div className="w-full h-[130px] bg-gray-100 shadow flex items-center justify-center">
+                <div className="w-full h-[130px] bg-gray-100 flex items-center justify-center">
                     <ul
                         className="w-full gap-[150px] bg-gray-100"
                     >
                         <li
-                            className="w-full h-[60px] bg-white shadow uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            className="w-full h-[60px] bg-white border-b-2 uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
                             GENRES
                             <NavigateNextIcon />
                         </li>
                         <li
-                            className="w-full h-[70px] bg-gray-100 shadow border-t-2 uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            className="w-full h-[70px] bg-gray-100 uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
                             <div className="w-full h-full bg-gray-100 flex items-center justify-center">
                                 <ul
-                                    class="grid grid-cols-9 gap-x-4 gap-y-2"
+                                    class="grid grid-cols-9 gap-x-2 gap-y-2"
                                 >
                                     {/* khung nội dung */}
                                     {dataListGenre.map(item => (
                                         <li
-                                            className="uppercase font-semibold text-sm text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
+                                            className="uppercase font-semibold shadow rounded px-2 text-sm text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
                                         >
                                             {item.name}
                                         </li>

@@ -20,6 +20,10 @@ const handlePopularClick = () => {
     window.location.href = '/popular';
 };
 
+const handleCreateClick = () => {
+    window.location.href = '/create/original';
+};
+
 const HeaderPage = () => {
     return (
         <div
@@ -85,6 +89,8 @@ const HeaderPage = () => {
 
                 <button
                     className="w-[100px] h-[35px] bg-black rounded-full font-semibold text-white"
+                    onClick={handleCreateClick}
+
                 >
                     Publish
                 </button>
