@@ -75,7 +75,7 @@ const GenresPage = () => {
 
     return (
         <div>
-            <div className="w-full h-full bg-gray-100">
+            <div className="w-full h-full pb-[60px] bg-gray-100">
 
                 <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'fixed top-0 z-50' : ''}`}>
                     <ul
