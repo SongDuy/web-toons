@@ -90,36 +90,62 @@ const CreateOriginalPage = () => {
                             </div>
                         </div>
 
-                        <div className="w-9/12 h-full bg-blue-200 px-5">
+                        <div className="w-9/12 h-full border ">
 
-                            <div className="w-full py-3 flex ">
+                            <div className="w-full py-3 pl-5 flex border">
+                                <div className="w-full">
+                                    <span className="w-full font-semibold text-xl">
+                                        Genre
+                                    </span>
+                                    <div className="w-full h-[40px] bg-white mt-3">
+                                        hh
+                                    </div>
+                                </div>
+
+                                <div className="w-full ml-5">
+                                    <span className="w-full font-semibold text-xl">
+                                        Age
+                                    </span>
+                                    <div className="w-full h-[40px] bg-white mt-3">
+                                        hh
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div className="w-full py-3 pl-5">
                                 <span className="w-full font-semibold text-xl">
-                                    Genre
+                                    Series title
+                                </span>
+                                <div className="w-full h-[40px] mt-3 bg-white">
+                                    kk
+                                </div>
+                            </div>
+
+                            <div className="w-full py-3 pl-5">
+                                <span className="w-full font-semibold text-xl">
+                                    Summary
+                                </span>
+                                <div className="w-full h-[40px] mt-3 bg-white">
+                                    kk
+                                </div>
+                            </div>
+
+                            <div className="w-full py-3 pl-5">
+                                <span className="w-full font-semibold text-xl">
+                                    Email
+                                </span>
+                                <div className="w-full h-[40px] mt-3 bg-white">
+                                    kk
+                                </div>
+                            </div>
+
+                            <div className="w-full py-3 pl-5 flex border-t-2 border-gray-200">
+                                <span className="w-full font-semibold text-sm text-green-500">
+                                    KEEP IN MIND
                                 </span>
 
-                                <span className="w-full font-semibold text-xl">
-                                    Age
-                                </span>
                             </div>
-
-
-                            <div className="">
-
-                            </div>
-
-                            <div className="">
-
-                            </div>
-
-                            <div className="">
-
-                            </div>
-
-                            <div className="">
-
-                            </div>
-
-
                         </div>
                     </div>
 
