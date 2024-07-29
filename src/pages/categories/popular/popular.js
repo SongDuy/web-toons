@@ -71,7 +71,7 @@ const PopularPage = () => {
         <div>
 
             <div className="w-full h-full bg-white">
-                <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'fixed top-0 z-50' : ''}`}>
+                <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-50' : ''}`}>
                     <ul
                         className="flex gap-[70px]"
                     >
