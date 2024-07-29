@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import CheckIcon from '@mui/icons-material/Check';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
+const days = ['Mon day', 'Tue day', 'Wed day', 'Thu day', 'Fri day', 'Sat day', 'Sun day'];
+const genres = ['DRAMA', 'FANTASY', 'COMEDY', 'ACTION', 'SLICE OF LIFE', 'ROMANCE', 'SUPERHERO', 'SCI-FI', 'THRILLER', 'SUPERNATURAL', 'MYSTERY', 'SPORTS', 'HISTORICAL', 'HEARTWARMING', 'HORROR', 'INFORMATIVE', 'SCHOOL', 'ANIMALS', 'ZOMBIES', 'SHORT STORY',];
+genres.sort((a, b) => a.localeCompare(b));
+
 const data = [
-    { id: 1, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg" },
-    { id: 2, img: "https://img.wattpad.com/721a6e37a916949236171d1d1a35115aeedb42f9/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f6a476532674b3766494c764239413d3d2d3639383533393033302e313538366133663636313334373463663335313033383939323936362e6a7067" },
-    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
-    { id: 10, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540" },
+    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Mon day' },
+    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Tue day' },
+    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Wed day' },
+    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Thu day' },
+    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Fri day' },
+    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Sat day' },
+    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Sun day' },
+    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Sun day' },
+    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Sun day' },
+    { id: 10, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Sun day' },
+    { id: 11, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Mon day' },
+    { id: 12, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Mon day' },
+    { id: 13, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Mon day' },
+    { id: 14, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Mon day' },
+    { id: 15, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Mon day' },
 ];
 
 const dataPopular = [
@@ -24,32 +33,6 @@ const dataPopular = [
     { id: 4, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "4", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
     { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "5", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
 ];
-
-const dataListGenre = [
-    { id: 1, name: "DRAMA" },
-    { id: 2, name: "FANTASY" },
-    { id: 3, name: "COMEDY" },
-    { id: 4, name: "ACTION" },
-    { id: 5, name: "SLICE OF LIFE" },
-    { id: 6, name: "ROMANCE" },
-    { id: 7, name: "SUPERHERO" },
-    { id: 8, name: "SCI-FI" },
-    { id: 9, name: "THRILLER" },
-    { id: 10, name: "SUPERNATURAL" },
-    { id: 11, name: "MYSTERY" },
-    { id: 12, name: "SPORTS" },
-    { id: 13, name: "HISTORICAL" },
-    { id: 14, name: "HEARTWARMING" },
-    { id: 15, name: "HORROR" },
-    { id: 16, name: "INFORMATIVE" },
-    { id: 17, name: "SCHOOL" },
-    { id: 18, name: "ANIMALS" },
-    { id: 19, name: "ZOMBIES" },
-    { id: 20, name: "SHORT STORY" },
-
-];
-// Sắp xếp mảng theo tên thể loại theo bảng chữ cái
-dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 
 const ContentPage = () => {
 
@@ -65,6 +48,12 @@ const ContentPage = () => {
         window.location.href = '/video/series';
     };
 
+    //Chọn nội dung theo thứ
+    const [selectedDay, setSelectedDay] = useState('Mon day');
+    const filteredData = data.filter(data => data.dayOfWeek === selectedDay);
+
+    //Chọn nội dung theo thể loại
+
     return (
         <div className="w-full h-full bg-gray-100 mb-[50px]">
             <div className="w-full h-[500px] bg-green-200">
@@ -76,57 +65,31 @@ const ContentPage = () => {
                     <ul
                         className="flex"
                     >
-                        <li
-                            className="w-[120px] h-[60px] bg-green-500 text-white uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
-                        >
-                            Mon Day
-                        </li>
-                        <li
-                            className="w-[120px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
-                        >
-                            Tue Day
-                        </li>
-                        <li
-                            className="w-[120px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
-                        >
-                            Wed Day
-                        </li>
-                        <li
-                            className="w-[120px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
-                        >
-                            Thu Day
-                        </li>
-                        <li
-                            className="w-[120px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
-                        >
-                            Fri Day
-                        </li>
-                        <li
-                            className="w-[120px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
-                        >
-                            Sat Day
-                        </li>
-                        <li
-                            className="w-[120px] h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
-                        >
-                            Sun Day
-                        </li>
+                        {days.map(day => (
+                            <li
+                                key={day}
+                                onClick={() => setSelectedDay(day)}
+                                className={`w-[120px] h-[60px] bg-white text-black uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center ${selectedDay === day ? 'bg-green-600 text-white hover:text-white' : ''}`}
+                            >
+                                {day}
+                            </li>
+                        ))}
 
-                        <li
-                            className="w-[150px] h-[60px] uppercase font-semibold text-lg text-gray-400 border-l-2 border-gray-200 hover:text-green-500 cursor-pointer flex items-center justify-center"
-                            onClick={handleOriginalsClick}
-                        >
-                            More
-                            <NavigateNextIcon />
-                        </li>
                     </ul>
+                    <div
+                        className="w-[150px] h-[60px] px-5 uppercase font-semibold text-lg text-gray-400 border-l-2 border-gray-200 hover:text-green-500 cursor-pointer flex items-center justify-center"
+                        onClick={handleOriginalsClick}
+                    >
+                        More
+                        <NavigateNextIcon />
+                    </div>
                 </div>
-                <div className="w-full h-[500px] flex items-center justify-center">
-                    <div className="grid grid-cols-5 gap-4">
+                <div className="w-full h-[500px] py-[30px] flex justify-center">
+                    <ul className="grid grid-cols-5 gap-4">
 
                         {/* khung nội dung */}
-                        {data.map(item => (
-                            <div
+                        {filteredData.slice(0, 10).map((item) => (
+                            <li
                                 className="w-[210px] h-[210px] rounded-xl bg-white relative cursor-pointer"
                                 key={item.id}
                                 onClick={handleOriginalSeriesClick}
@@ -165,10 +128,10 @@ const ContentPage = () => {
                                     </div>
                                 </div>
 
-                            </div>
+                            </li>
                         ))}
 
-                    </div>
+                    </ul>
                 </div>
             </div>
 
@@ -186,10 +149,10 @@ const ContentPage = () => {
                     </ul>
                 </div>
                 <div className="w-full h-[500px] flex items-center justify-center">
-                    <div className="grid grid-cols-5 gap-4">
+                    <ul className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
-                        {data.map(item => (
-                            <div
+                        {data.slice(0, 10).map((item) => (
+                            <li
                                 className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
                                 key={item.id}
                                 onClick={handleOriginalSeriesClick}
@@ -228,10 +191,10 @@ const ContentPage = () => {
                                     </div>
                                 </div>
 
-                            </div>
+                            </li>
                         ))}
 
-                    </div>
+                    </ul>
                 </div>
             </div>
 
@@ -249,10 +212,10 @@ const ContentPage = () => {
                     </ul>
                 </div>
                 <div className="w-full h-[500px] flex items-center justify-center">
-                    <div className="grid grid-cols-5 gap-4">
+                    <ul className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
-                        {data.map(item => (
-                            <div
+                        {data.slice(0, 10).map((item) => (
+                            <li
                                 className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
                                 key={item.id}
                                 onClick={handleVideoSeriesClick}
@@ -291,17 +254,17 @@ const ContentPage = () => {
                                     </div>
                                 </div>
 
-                            </div>
+                            </li>
                         ))}
 
-                    </div>
+                    </ul>
                 </div>
             </div>
 
-            <div className="w-full h-[660px]">
-                <div className="w-full h-[160px] bg-gray-100 flex items-center justify-center">
+            <div className="w-full h-[630px]">
+                <div className="w-full h-[130px] bg-gray-100 flex items-center justify-center">
                     <ul
-                        className="w-full gap-[150px] bg-gray-100"
+                        className="w-full gap-[120px] bg-gray-100"
                     >
                         <li
                             className="w-full h-[60px] bg-white border-b-2 uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
@@ -310,18 +273,19 @@ const ContentPage = () => {
                             <NavigateNextIcon />
                         </li>
                         <li
-                            className="w-full h-[100px] bg-gray-100 uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            className="w-full h-[70px] bg-gray-100 uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
                             <div className="w-full h-full bg-gray-100 flex items-center justify-center">
                                 <ul
                                     class="grid grid-cols-10 gap-x-2 gap-y-2 pt-8"
                                 >
                                     {/* khung nội dung */}
-                                    {dataListGenre.map(item => (
+                                    {genres.map(genre => (
                                         <li
+                                            key={genre}
                                             className="uppercase font-semibold shadow rounded px-2 py-2 text-xs text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
                                         >
-                                            {item.name}
+                                            {genre}
                                         </li>
                                     ))}
 
@@ -331,10 +295,10 @@ const ContentPage = () => {
                     </ul>
                 </div>
                 <div className="w-full h-[500px] flex items-center justify-center">
-                    <div className="grid grid-cols-5 gap-4">
+                    <ul className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
-                        {data.map(item => (
-                            <div
+                        {data.slice(0, 10).map((item) => (
+                            <li
                                 className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
                                 key={item.id}
                                 onClick={handleOriginalSeriesClick}
@@ -379,10 +343,10 @@ const ContentPage = () => {
 
                                 </div>
 
-                            </div>
+                            </li>
                         ))}
 
-                    </div>
+                    </ul>
                 </div>
             </div>
 
