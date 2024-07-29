@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { format } from 'date-fns';
+import { enUS } from 'date-fns/locale';
 
 import CheckIcon from '@mui/icons-material/Check';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const days = ['Mon day', 'Tue day', 'Wed day', 'Thu day', 'Fri day', 'Sat day', 'Sun day'];
+
 const genres = ['DRAMA', 'FANTASY', 'COMEDY', 'ACTION', 'SLICE OF LIFE', 'ROMANCE', 'SUPERHERO', 'SCI-FI', 'THRILLER', 'SUPERNATURAL', 'MYSTERY', 'SPORTS', 'HISTORICAL', 'HEARTWARMING', 'HORROR', 'INFORMATIVE', 'SCHOOL', 'ANIMALS', 'ZOMBIES', 'SHORT STORY',];
 genres.sort((a, b) => a.localeCompare(b));
 
@@ -48,9 +51,22 @@ const ContentPage = () => {
         window.location.href = '/video/series';
     };
 
-    //Chọn nội dung theo thứ
-    const [selectedDay, setSelectedDay] = useState('Mon day');
-    const filteredData = data.filter(data => data.dayOfWeek === selectedDay);
+     //Chọn nội dung theo thứ
+     const [currentDay, setCurrentDay] = useState('');
+
+     useEffect(() => {
+         const today = new Date();
+         const dayString = format(today, 'EEEE', { locale: enUS }); // Lấy ngày trong tuần dựa trên locale
+         const spacedDay = dayString.slice(0, 3) + ' ' + dayString.slice(3); // Thêm khoảng trắng sau 3 ký tự đầu tiên
+         setCurrentDay(spacedDay);
+     }, []);
+ 
+
+    const handleSelectDay = (day) => {
+        setCurrentDay(day);
+    };
+
+    const filteredData = data.filter(data => data.dayOfWeek === currentDay);
 
     //Chọn nội dung theo thể loại
 
@@ -68,8 +84,8 @@ const ContentPage = () => {
                         {days.map(day => (
                             <li
                                 key={day}
-                                onClick={() => setSelectedDay(day)}
-                                className={`w-[120px] h-[60px] bg-white text-black uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center ${selectedDay === day ? 'bg-green-600 text-white hover:text-white' : ''}`}
+                               onClick={() => handleSelectDay(day)}
+                                className={`w-[120px] h-[60px] bg-white text-black uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center  ${currentDay  === day ? 'bg-green-600 text-white hover:text-white' : ''}`}
                             >
                                 {day}
                             </li>
@@ -148,7 +164,7 @@ const ContentPage = () => {
 
                     </ul>
                 </div>
-                <div className="w-full h-[500px] flex items-center justify-center">
+                <div className="w-full h-[500px] py-[30px] flex justify-center">
                     <ul className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
                         {data.slice(0, 10).map((item) => (
@@ -211,7 +227,7 @@ const ContentPage = () => {
 
                     </ul>
                 </div>
-                <div className="w-full h-[500px] flex items-center justify-center">
+                <div className="w-full h-[500px] py-[30px] flex justify-center">
                     <ul className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
                         {data.slice(0, 10).map((item) => (
@@ -294,7 +310,7 @@ const ContentPage = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="w-full h-[500px] flex items-center justify-center">
+                <div className="w-full h-[500px] py-[30px] flex justify-center">
                     <ul className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
                         {data.slice(0, 10).map((item) => (

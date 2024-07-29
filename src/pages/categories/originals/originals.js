@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { format } from 'date-fns';
+import { enUS } from 'date-fns/locale';
 
 import CheckIcon from '@mui/icons-material/Check';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+
+const days = ['Mon day', 'Tue day', 'Wed day', 'Thu day', 'Fri day', 'Sat day', 'Sun day'];
 
 const data = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
@@ -27,16 +31,6 @@ const data = [
     { id: 21, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
     { id: 22, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
     { id: 23, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
-];
-
-const dataDay = [
-    { id: 1, day: "Mon Day" },
-    { id: 2, day: "Tue Day" },
-    { id: 3, day: "Wed Day" },
-    { id: 4, day: "Thu Day" },
-    { id: 5, day: " Fri Day" },
-    { id: 6, day: "Sat Day" },
-    { id: 7, day: "Sun Day" },
 ];
 
 const OriginalsPage = () => {
@@ -65,6 +59,22 @@ const OriginalsPage = () => {
         window.location.href = '/original/series';
     };
 
+     //Chọn nội dung theo thứ
+     const [currentDay, setCurrentDay] = useState('');
+
+     useEffect(() => {
+         const today = new Date();
+         const dayString = format(today, 'EEEE', { locale: enUS }); // Lấy ngày trong tuần dựa trên locale
+         const spacedDay = dayString.slice(0, 3) + ' ' + dayString.slice(3); // Thêm khoảng trắng sau 3 ký tự đầu tiên
+         setCurrentDay(spacedDay);
+     }, []); 
+
+    const handleSelectDay = (day) => {
+        setCurrentDay(day);
+    };
+
+
+
     return (
         <div>
 
@@ -91,12 +101,14 @@ const OriginalsPage = () => {
                         <ul
                             className="flex gap-2"
                         >
-                            {dataDay.map(item => (
+                            {days.map(day => (
                                 <li
-                                    className="w-[150px] h-[60px] uppercase bg-green-500 rounded-xl font-semibold text-md text-white cursor-pointer flex items-center justify-center"
-                                    key={item.id}
+                                    key={day}
+                                    onClick={() => handleSelectDay(day)}
+                                    className={`w-[150px] h-[60px] uppercase shadow rounded-xl font-semibold text-md text-black cursor-pointer flex items-center justify-center ${currentDay  === day ? 'bg-green-600 text-white hover:text-white' : ''}`}
+
                                 >
-                                    {item.day}
+                                    {day}
                                 </li>
                             ))}
 
