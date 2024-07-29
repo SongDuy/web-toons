@@ -10,10 +10,10 @@ import GenresPage from './pages/categories/genres/genres';
 import PopularPage from './pages/categories/popular/popular';
 import VideoSeriesPage from './pages/categories/videos/videoSeries';
 import DisplayVideoPage from './pages/categories/videos/displayVideo';
-import CreateVideoPage from './pages/create/createVideo';
+import CreateVideoPage from './pages/create/video/createVideo';
 import OriginalSeriesPage from './pages/categories/originals/originalSeries';
 import DisplayOriginalPage from './pages/categories/originals/displayOriginal';
-import CreateOriginalPage from './pages/create/createOriginal';
+import CreateOriginalPage from './pages/create/original/createOriginal';
 import NotFoundPage from './pages/notFoundPage';
 
 import './App.css';

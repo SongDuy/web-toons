@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -48,6 +48,22 @@ const CreateOriginalPage = () => {
     const [age, setAge] = React.useState('');
     const handleChangeAge = (event) => {
         setAge(event.target.value);
+    };
+
+    const [valueTitle, setValueTile] = useState('');
+    const handleTitle = (event) => {
+        const inputValueTitle = event.target.value;
+        if (inputValueTitle.length <= 50) { // Giới hạn số ký tự nhập vào là 10
+            setValueTile(inputValueTitle);
+        }
+    };
+
+    const [valueSummary, setValueSummary] = useState('');
+    const handleSummary = (event) => {
+        const inputValueSummary = event.target.value;
+        if (inputValueSummary.length <= 1000) { // Giới hạn số ký tự nhập vào là 10
+            setValueSummary(inputValueSummary);
+        }
     };
 
     return (
@@ -173,7 +189,7 @@ const CreateOriginalPage = () => {
                                             className="w-full h-[40px] bg-white mt-3 rounded-md"
                                         >
                                             <MenuItem value="">
-                                                <em>Select</em>
+                                                Select Genre
                                             </MenuItem>
                                             {/* khung nội dung */}
                                             {dataListGenre.map(item => (
@@ -202,7 +218,7 @@ const CreateOriginalPage = () => {
                                             className="w-full h-[40px] bg-white mt-3 rounded-md"
                                         >
                                             <MenuItem value="">
-                                                <em>Select</em>
+                                                Select Age
                                             </MenuItem>
                                             {dataListAge.map(item => (
                                                 <MenuItem
@@ -223,7 +239,10 @@ const CreateOriginalPage = () => {
                                     Series title
                                 </span>
                                 <input
-                                    className="w-full h-[40px] mt-3 bg-white px-2"
+                                    className="w-full h-[40px] mt-3 bg-white px-3"
+                                    placeholder="Less than 50 characters"
+                                    value={valueTitle}
+                                    onChange={handleTitle}
                                 />
                             </div>
 
@@ -232,7 +251,10 @@ const CreateOriginalPage = () => {
                                     Summary
                                 </span>
                                 <textarea
-                                    className="w-full h-[300px] mt-3 bg-white px-2 py-2"
+                                    className="w-full h-[300px] mt-3 bg-white px-3 py-2"
+                                    placeholder="Less than 1000 characters"
+                                    value={valueSummary}
+                                    onChange={handleSummary}
                                 />
 
                             </div>
