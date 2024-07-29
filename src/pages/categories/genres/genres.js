@@ -35,6 +35,7 @@ genres.sort((a, b) => a.localeCompare(b));
 
 const GenresPage = () => {
 
+    //kích hoạt dính vào trên cùng
     const [isSticky, setIsSticky] = useState(false);
 
     useEffect(() => {
@@ -55,6 +56,7 @@ const GenresPage = () => {
         };
     }, []);
 
+    //Đến trang series original
     const handleOriginalSeriesClick = () => {
         window.location.href = '/original/series';
     };

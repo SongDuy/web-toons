@@ -40,6 +40,7 @@ dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 
 const PopularPage = () => {
 
+    //kích hoạt dính vào trên cùng
     const [isSticky, setIsSticky] = useState(false);
 
     useEffect(() => {
@@ -60,13 +61,16 @@ const PopularPage = () => {
         };
     }, []);
 
+    //Đến trang series original
     const handleOriginalSeriesClick = () => {
         window.location.href = '/original/series';
     };
 
+    //Đến trang series video
     const handleVideoSeriesClick = () => {
         window.location.href = '/video/series';
     };
+
     return (
         <div>
 
