@@ -1,30 +1,49 @@
 import React from 'react';
 
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import SearchIcon from '@mui/icons-material/Search';
-import {Link  } from 'react-router-dom';
-
-const handleOriginalsClick = () => {
-    window.location.href = '/originals';
-};
-
-const handleVideosClick = () => {
-    window.location.href = '/videos';
-};
-
-const handleGenresClick = () => {
-    window.location.href = '/genres';
-};
-
-const handlePopularClick = () => {
-    window.location.href = '/popular';
-};
-
-const handleCreateClick = () => {
-    window.location.href = '/create/original';
-};
+import { Link } from 'react-router-dom';
 
 const HeaderPage = () => {
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleOriginalsClick = () => {
+        window.location.href = '/originals';
+    };
+
+    const handleVideosClick = () => {
+        window.location.href = '/videos';
+    };
+
+    const handleGenresClick = () => {
+        window.location.href = '/genres';
+    };
+
+    const handlePopularClick = () => {
+        window.location.href = '/popular';
+    };
+
+    const handleCreateOriginalClick = () => {
+        window.location.href = '/create/original';
+    };
+
+    const handleCreateVideoClick = () => {
+        window.location.href = '/create/video';
+    };
+
     return (
         <div
             className=" w-full h-[100px] bg-white flex px-[30px]"
@@ -87,13 +106,39 @@ const HeaderPage = () => {
                     Creators 101
                 </button>
 
-                <button
-                    className="w-[100px] h-[35px] bg-black rounded-full font-semibold text-white"
-                    onClick={handleCreateClick}
+                <div>
+                    <button
+                        id="basic-button"
+                        className="w-[100px] h-[35px] bg-black rounded-full font-semibold text-white"
+                        aria-controls={open ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}
+                    >
+                        Publish
+                    </button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem onClick={handleCreateOriginalClick}>
+                            <span className="px-2">
+                                Original
+                            </span>
+                        </MenuItem>
 
-                >
-                    Publish
-                </button>
+                        <MenuItem onClick={handleCreateVideoClick}>
+                            <span className="px-2">
+                                Video
+                            </span>
+                        </MenuItem>
+                    </Menu>
+                </div>
 
                 <button
                     className="w-[100px] h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold text-gray-500"
