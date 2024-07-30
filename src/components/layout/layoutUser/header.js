@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -20,28 +20,10 @@ const HeaderPage = () => {
         setAnchorEl(null);
     };
 
-    const handleOriginalsClick = () => {
-        window.location.href = '/originals';
-    };
+    const [selectedItem, setSelectedItem] = useState(null);
 
-    const handleVideosClick = () => {
-        window.location.href = '/videos';
-    };
-
-    const handleGenresClick = () => {
-        window.location.href = '/genres';
-    };
-
-    const handlePopularClick = () => {
-        window.location.href = '/popular';
-    };
-
-    const handleCreateOriginalClick = () => {
-        window.location.href = '/create/original';
-    };
-
-    const handleCreateVideoClick = () => {
-        window.location.href = '/create/video';
+    const handleItemClick = (item) => {
+        setSelectedItem(item);
     };
 
     return (
@@ -58,39 +40,43 @@ const HeaderPage = () => {
             </Link>
 
             {/* danh mục */}
-            <div
-                className="w-[400px] flex items-center"
-            >
-                <ul
-                    className="flex gap-5"
-                >
-                    <li
-                        className="uppercase font-semibold text-lg hover:text-green-500 cursor-pointer"
-                        onClick={handleOriginalsClick}
-                    >
-                        Originals
-                    </li>
+            <div className="w-[400px] flex items-center">
+                <ul className="flex gap-5">
+                    <Link to={`/originals`}>
+                        <li
+                            className={`uppercase font-semibold text-lg cursor-pointer ${selectedItem === 'Originals' ? 'text-green-500' : ''}`}
+                            onClick={() => handleItemClick('Originals')}
+                        >
+                            <span>
+                                Originals
+                            </span>
 
-                    <li
-                        className="uppercase font-semibold text-lg hover:text-green-500 cursor-pointer"
-                        onClick={handleVideosClick}
-                    >
-                        Videos
-                    </li>
-
-                    <li
-                        className="uppercase font-semibold text-lg hover:text-green-500 cursor-pointer"
-                        onClick={handleGenresClick}
-                    >
-                        Genres
-                    </li>
-
-                    <li
-                        className="uppercase font-semibold text-lg hover:text-green-500 cursor-pointer"
-                        onClick={handlePopularClick}
-                    >
-                        Popular
-                    </li>
+                        </li>
+                    </Link>
+                    <Link to={`/videos`}>
+                        <li
+                            className={`uppercase font-semibold text-lg cursor-pointer ${selectedItem === 'Videos' ? 'text-green-500' : ''}`}
+                            onClick={() => handleItemClick('Videos')}
+                        >
+                            Videos
+                        </li>
+                    </Link>
+                    <Link to={`/genres`}>
+                        <li
+                            className={`uppercase font-semibold text-lg cursor-pointer ${selectedItem === 'Genres' ? 'text-green-500' : ''}`}
+                            onClick={() => handleItemClick('Genres')}
+                        >
+                            Genres
+                        </li>
+                    </Link>
+                    <Link to={`/popular`}>
+                        <li
+                            className={`uppercase font-semibold text-lg cursor-pointer ${selectedItem === 'Popular' ? 'text-green-500' : ''}`}
+                            onClick={() => handleItemClick('Popular')}
+                        >
+                            Popular
+                        </li>
+                    </Link>
                 </ul>
             </div>
 
@@ -126,17 +112,26 @@ const HeaderPage = () => {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={handleCreateOriginalClick}>
-                            <span className="px-2">
-                                Original
-                            </span>
-                        </MenuItem>
+                        <Link to={`/create/original`}>
+                            <MenuItem
+                                onClose={handleClose}
+                            >
+                                <span className="px-2">
+                                    Original
+                                </span>
+                            </MenuItem>
+                        </Link>
 
-                        <MenuItem onClick={handleCreateVideoClick}>
-                            <span className="px-2">
-                                Video
-                            </span>
-                        </MenuItem>
+                        <Link to={`/create/video`}>
+                            <MenuItem
+                                onClose={handleClose}
+                            >
+                                <span className="px-2">
+                                    Video
+                                </span>
+                            </MenuItem>
+                        </Link>
+
                     </Menu>
                 </div>
 

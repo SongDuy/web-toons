@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "date-fns": "^3.6.0"
+    "date-fns": "^3.6.0",
+    "react-player": "^2.16.0"
   }
 }

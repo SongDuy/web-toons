@@ -5,6 +5,8 @@ import { enUS } from 'date-fns/locale';
 import CheckIcon from '@mui/icons-material/Check';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
+import { Link } from 'react-router-dom';
+
 const data = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Mon day', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
     { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Tue day', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
@@ -57,10 +59,6 @@ const OriginalsPage = () => {
         };
     }, []);
 
-    const handleOriginalSeriesClick = () => {
-        window.location.href = '/original/series';
-    };
-
     //Chọn nội dung theo thứ
     const [currentDay, setCurrentDay] = useState('');
 
@@ -76,7 +74,7 @@ const OriginalsPage = () => {
     };
 
     const filteredData = data.filter(data => data.dayOfWeek === currentDay);
-    
+
     //new
 
     return (
@@ -84,7 +82,7 @@ const OriginalsPage = () => {
 
             <div className="w-full h-full pb-10 bg-gray-100">
 
-            <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-50' : ''}`}>
+                <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-50' : ''}`}>
                     <ul className="flex gap-10">
                         <li className="uppercase font-semibold text-md text-black hover:text-black cursor-pointer flex items-center justify-center">
                             ONGOING
@@ -120,57 +118,58 @@ const OriginalsPage = () => {
                     </div>
 
                     <div className="w-full h-full py-3 flex items-center justify-center">
-                        <div className="grid grid-cols-5 gap-[8px]">
+                        <ul className="grid grid-cols-5 gap-[8px]">
 
                             {/* khung nội dung */}
                             {filteredData.map(item => (
-                                <div
-                                    className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer"
-                                    key={item.id}
-                                    onClick={handleOriginalSeriesClick}
-                                >
+                                <Link to={`/original/series`}>
+                                    <li
+                                        className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer"
+                                        key={item.id}
+                                    >
 
-                                    <img
-                                        src={item.img}
-                                        alt="img"
-                                        className="object-fill w-full h-full rounded-md"
-                                    />
+                                        <img
+                                            src={item.img}
+                                            alt="img"
+                                            className="object-fill w-full h-full rounded-md"
+                                        />
 
-                                    <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                        <div className="w-full py-1">
-                                            <span className="bg-gray-50 bg-opacity-50 rounded-md px-2 py-1 text-yellow-600 text-xs font-semibold shadow-xl">
-                                                {item.genre}
-                                            </span>
+                                        <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                            <div className="w-full py-1">
+                                                <span className="bg-gray-50 bg-opacity-50 rounded-md px-2 py-1 text-yellow-600 text-xs font-semibold shadow-xl">
+                                                    {item.genre}
+                                                </span>
+                                            </div>
+
+                                            <div className="w-full h-[60px] mb-auto overflow-hidden">
+                                                <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                    {item.name}
+                                                </span>
+                                                <span className="text-md leading-[1.2] line-clamp-1">
+                                                    {item.auth}
+                                                </span>
+                                            </div>
+
+                                            <div className="w-full mb-[25px]">
+                                                <span className="w-[35px] h-[35px] mt-2 uppercase bg-green-500 text-white text-xs font-semibold rounded-full shadow-xl flex items-center justify-center">
+                                                    Up
+                                                </span>
+                                            </div>
+
+                                            <div className="w-[70px]">
+                                                <span className="rounded-full gap-1 px-2 py-1 text-red-300 text-sm font-semibold flex items-center justify-center">
+                                                    <FavoriteIcon />
+                                                    200k
+                                                </span>
+                                            </div>
+
                                         </div>
 
-                                        <div className="w-full h-[60px] mb-auto overflow-hidden">
-                                            <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                {item.name}
-                                            </span>
-                                            <span className="text-md leading-[1.2] line-clamp-1">
-                                                {item.auth}
-                                            </span>
-                                        </div>
-
-                                        <div className="w-full mb-[25px]">
-                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-green-500 text-white text-xs font-semibold rounded-full shadow-xl flex items-center justify-center">
-                                                Up
-                                            </span>
-                                        </div>
-
-                                        <div className="w-[70px]">
-                                            <span className="rounded-full gap-1 px-2 py-1 text-red-300 text-sm font-semibold flex items-center justify-center">
-                                                <FavoriteIcon />
-                                                200k
-                                            </span>
-                                        </div>
-
-                                    </div>
-
-                                </div>
+                                    </li>
+                                </Link>
                             ))}
 
-                        </div>
+                        </ul>
 
                     </div>
                 </div>
@@ -182,58 +181,59 @@ const OriginalsPage = () => {
 
                     <div className="w-full h-full py-5 flex items-center justify-center">
 
-                        <div className="grid grid-cols-5 gap-[8px]">
+                        <ul className="grid grid-cols-5 gap-[8px]">
 
                             {/* khung nội dung */}
                             {data.map(item => (
-                                <div
-                                    className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer"
-                                    key={item.id}
-                                    onClick={handleOriginalSeriesClick}
-                                >
+                                <Link to={`/original/series`}>
+                                    <li
+                                        className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer"
+                                        key={item.id}
+                                    >
 
-                                    <img
-                                        src={item.img}
-                                        alt="img"
-                                        className="object-fill w-full h-full rounded-md"
-                                    />
+                                        <img
+                                            src={item.img}
+                                            alt="img"
+                                            className="object-fill w-full h-full rounded-md"
+                                        />
 
-                                    <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                        <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
 
-                                        <div className="w-full py-1">
-                                            <span className="bg-gray-50 bg-opacity-50 rounded-md px-2 py-1 text-yellow-600 text-xs font-semibold shadow-xl">
-                                                {item.genre}
-                                            </span>
+                                            <div className="w-full py-1">
+                                                <span className="bg-gray-50 bg-opacity-50 rounded-md px-2 py-1 text-yellow-600 text-xs font-semibold shadow-xl">
+                                                    {item.genre}
+                                                </span>
+                                            </div>
+
+                                            <div className="w-full h-[60px] mb-auto overflow-hidden">
+                                                <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                    {item.name}
+                                                </span>
+                                                <span className="text-md leading-[1.2] line-clamp-1">
+                                                    {item.auth}
+                                                </span>
+                                            </div>
+
+                                            <div className="w-full mb-[25px]">
+                                                <span className="w-[35px] h-[35px] mt-2 uppercase bg-white text-green-500 text-xs font-semibold rounded-full shadow-xl flex items-center justify-center">
+                                                    End
+                                                </span>
+                                            </div>
+
+                                            <div className="w-[70px]">
+                                                <span className="rounded-full gap-1 px-2 py-1 text-red-300 text-sm font-semibold flex items-center justify-center">
+                                                    <FavoriteIcon />
+                                                    200k
+                                                </span>
+                                            </div>
+
                                         </div>
 
-                                        <div className="w-full h-[60px] mb-auto overflow-hidden">
-                                            <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                {item.name}
-                                            </span>
-                                            <span className="text-md leading-[1.2] line-clamp-1">
-                                                {item.auth}
-                                            </span>
-                                        </div>
-
-                                        <div className="w-full mb-[25px]">
-                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-white text-green-500 text-xs font-semibold rounded-full shadow-xl flex items-center justify-center">
-                                                End
-                                            </span>
-                                        </div>
-
-                                        <div className="w-[70px]">
-                                            <span className="rounded-full gap-1 px-2 py-1 text-red-300 text-sm font-semibold flex items-center justify-center">
-                                                <FavoriteIcon />
-                                                200k
-                                            </span>
-                                        </div>
-
-                                    </div>
-
-                                </div>
+                                    </li>
+                                </Link>
                             ))}
 
-                        </div>
+                        </ul>
 
                     </div>
                 </div>

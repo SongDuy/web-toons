@@ -99,7 +99,10 @@ const DisplayOriginalPage = () => {
 
                 {/* Hiển thị nội dung truyện */}
                 <div className="w-full h-[700px] bg-white border-2 flex items-center justify-center">
-                    Original
+                    <img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/65411224/original/cedb0af1b1717c1ca8d0ffc4dabfb0150ab585a4/create-manga-or-comic-page-for-you-in-my-style.jpg"
+                        className="object-contain w-full h-full rounded-md"
+                        alt="img"
+                    />
                 </div>
 
                 {/* Hiển thị yêu thích, theo dõi */}

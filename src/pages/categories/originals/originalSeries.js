@@ -38,7 +38,9 @@ const OriginalSeriesPage = () => {
             <div className="w-full h-full bg-gray-100">
                 {/* Hiển thị ảnh  */}
                 <div className="w-full h-[320px] bg-green-200">
-
+                    <img src="https://c.wallhere.com/photos/8c/9d/forest_fantasy_art-47466.jpg!d"
+                        className="object-cover w-full h-full rounded-md" alt="img"
+                    />
                 </div>
 
                 <div className="w-full h-full flex items-center justify-center ">

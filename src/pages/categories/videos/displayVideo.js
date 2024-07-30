@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactPlayer from 'react-player';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import AddIcon from '@mui/icons-material/Add';
@@ -11,23 +12,23 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 
 const dataPopular = [
-    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "1", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
-    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "2", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
-    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "3", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
-    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "4", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
-    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "5", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
+    { id: 1, img: "https://sudospaces.com/babycuatoi/2022/10/zk1029-xe-choi-chan-con-sau-tinh-nghich-larva-2.jpg", number: "1", genre: "Fantasy", name: "Larva", auth: "Lee Nakeum , seewater" },
+    { id: 2, img: "https://sudospaces.com/babycuatoi/2022/10/zk1029-xe-choi-chan-con-sau-tinh-nghich-larva-2.jpg", number: "2", genre: "Fantasy", name: "Larva", auth: "Lee Nakeum , seewater" },
+    { id: 3, img: "https://sudospaces.com/babycuatoi/2022/10/zk1029-xe-choi-chan-con-sau-tinh-nghich-larva-2.jpg", number: "3", genre: "Fantasy", name: "Larva", auth: "Lee Nakeum , seewater" },
+    { id: 4, img: "https://sudospaces.com/babycuatoi/2022/10/zk1029-xe-choi-chan-con-sau-tinh-nghich-larva-2.jpg", number: "4", genre: "Fantasy", name: "Larva", auth: "Lee Nakeum , seewater" },
+    { id: 5, img: "https://sudospaces.com/babycuatoi/2022/10/zk1029-xe-choi-chan-con-sau-tinh-nghich-larva-2.jpg", number: "5", genre: "Fantasy", name: "Larva", auth: "Lee Nakeum , seewater" },
 ];
 
 const dataFavorite = [
-    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 7" },
-    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 8" },
-    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 9" },
-    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 10" },
-    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 11" },
-    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 12" },
-    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 13" },
-    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 14" },
-    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 15" },
+    { id: 1, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 7" },
+    { id: 2, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 8" },
+    { id: 3, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 9" },
+    { id: 4, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 10" },
+    { id: 5, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 11" },
+    { id: 6, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 12" },
+    { id: 7, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 13" },
+    { id: 8, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 14" },
+    { id: 9, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 15" },
 ]
 
 const dataComment = [
@@ -62,7 +63,7 @@ const DisplayVideoPage = () => {
 
                             <div className="">
                                 <span className="text-white line-clamp-1">
-                                    Peace Restaurant
+                                    The Witcher 3
                                     <NavigateNextIcon />
                                     Episode 15
                                 </span>
@@ -99,8 +100,13 @@ const DisplayVideoPage = () => {
                 </div>
 
                 {/* Hiển thị nội dung truyện */}
-                <div className="w-full h-[700px] bg-white border-2 flex items-center justify-center">
-                    Video
+                <div className="w-full h-[700px] bg-black flex items-center justify-center">
+                    <ReactPlayer
+                        url="https://youtu.be/-uF9NA5vhko?si=QrgoU83XhkLJsWej"
+                        controls={true}
+                        width="80%"
+                        height="auto%"
+                    />
                 </div>
 
                 {/* Hiển thị yêu thích, theo dõi */}

@@ -84,7 +84,9 @@ const ContentPage = () => {
     return (
         <div className="w-full h-full bg-gray-100 mb-[50px]">
             <div className="w-full h-[500px] bg-green-200">
-
+                <img src="https://image.baophapluat.vn/1200x630/Uploaded/2024/gznrxgmabianhgzmath/2022_05_30/doraemon-9528.jpg" 
+                className="object-contain w-full h-full rounded-md" alt="img" 
+                />
             </div>
 
             <div className="w-full h-[560px]">
@@ -96,7 +98,7 @@ const ContentPage = () => {
                             <li
                                 key={day}
                                 onClick={() => handleSelectDay(day)}
-                                    className={`w-[120px] h-[60px] uppercase font-semibold text-md text-black hover:text-green-500 cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-green-500 text-white hover:text-white' : ''}`}
+                                className={`w-[120px] h-[60px] uppercase font-semibold text-md text-black hover:text-green-500 cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-green-500 text-white hover:text-white' : ''}`}
                             >
                                 {day}
                             </li>
