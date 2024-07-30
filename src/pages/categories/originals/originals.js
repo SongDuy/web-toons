@@ -67,7 +67,7 @@ const OriginalsPage = () => {
     useEffect(() => {
         const today = new Date();
         const dayString = format(today, 'EEEE', { locale: enUS }); // Lấy ngày trong tuần dựa trên locale
-        const spacedDay = dayString.slice(0, 3) + ' ' + dayString.slice(3); // Thêm khoảng trắng sau 3 ký tự đầu tiên
+        const spacedDay = dayString.slice(0, 3) + ' ' + dayString.slice(-3); // Thêm khoảng trắng sau 3 ký tự đầu tiên
         setCurrentDay(spacedDay);
     }, []);
 
@@ -76,7 +76,7 @@ const OriginalsPage = () => {
     };
 
     const filteredData = data.filter(data => data.dayOfWeek === currentDay);
-
+    
     //new
 
     return (
@@ -84,7 +84,7 @@ const OriginalsPage = () => {
 
             <div className="w-full h-full pb-10 bg-gray-100">
 
-                <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-50' : ''}`}>
+            <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-50' : ''}`}>
                     <ul className="flex gap-10">
                         <li className="uppercase font-semibold text-md text-black hover:text-black cursor-pointer flex items-center justify-center">
                             ONGOING
@@ -109,7 +109,7 @@ const OriginalsPage = () => {
                                 <li
                                     key={day}
                                     onClick={() => handleSelectDay(day)}
-                                    className={`w-[150px] h-[60px] uppercase shadow rounded-xl font-semibold text-md text-black cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-green-600 text-white hover:text-white' : ''}`}
+                                    className={`w-[150px] h-[60px] uppercase shadow rounded-xl font-semibold text-md text-black hover:text-green-500 cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-green-500 text-white hover:text-white' : ''}`}
 
                                 >
                                     {day}
