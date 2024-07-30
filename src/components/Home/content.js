@@ -6,6 +6,8 @@ import CheckIcon from '@mui/icons-material/Check';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
+import { Link } from 'react-router-dom';
+
 const data = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Mon day', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k" },
     { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Tue day', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k" },
@@ -48,18 +50,6 @@ genres.sort((a, b) => a.localeCompare(b));
 
 const ContentPage = () => {
 
-    const handleOriginalsClick = () => {
-        window.location.href = '/originals';
-    };
-
-    const handleOriginalSeriesClick = () => {
-        window.location.href = '/original/series';
-    };
-
-    const handleVideoSeriesClick = () => {
-        window.location.href = '/video/series';
-    };
-
     //Chọn nội dung theo thứ
     const [currentDay, setCurrentDay] = useState('');
 
@@ -84,8 +74,8 @@ const ContentPage = () => {
     return (
         <div className="w-full h-full bg-gray-100 mb-[50px]">
             <div className="w-full h-[500px] bg-green-200">
-                <img src="https://image.baophapluat.vn/1200x630/Uploaded/2024/gznrxgmabianhgzmath/2022_05_30/doraemon-9528.jpg" 
-                className="object-contain w-full h-full rounded-md" alt="img" 
+                <img src="https://image.baophapluat.vn/1200x630/Uploaded/2024/gznrxgmabianhgzmath/2022_05_30/doraemon-9528.jpg"
+                    className="object-contain w-full h-full rounded-md" alt="img"
                 />
             </div>
 
@@ -105,59 +95,61 @@ const ContentPage = () => {
                         ))}
 
                     </ul>
-                    <div
-                        className="w-[150px] h-[60px] px-5 uppercase font-semibold text-lg text-gray-400 border-l-2 border-gray-200 hover:text-green-500 cursor-pointer flex items-center justify-center"
-                        onClick={handleOriginalsClick}
-                    >
-                        More
-                        <NavigateNextIcon />
-                    </div>
+                    <Link to={`/originals`}>
+                        <div
+                            className="w-[150px] h-[60px] px-5 uppercase font-semibold text-lg text-gray-400 border-l-2 border-gray-200 hover:text-green-500 cursor-pointer flex items-center justify-center"
+                        >
+                            More
+                            <NavigateNextIcon />
+                        </div>
+                    </Link>
                 </div>
                 <div className="w-full h-[500px] py-[30px] flex justify-center">
                     <ul className="grid grid-cols-5 gap-4">
 
                         {/* khung nội dung */}
                         {filteredData.slice(0, 10).map((item) => (
-                            <li
-                                className="w-[210px] h-[210px] rounded-xl bg-white relative cursor-pointer"
-                                key={item.id}
-                                onClick={handleOriginalSeriesClick}
-                            >
+                            <Link to={`/original/series`}>
+                                <li
+                                    className="w-[210px] h-[210px] rounded-xl bg-white relative cursor-pointer"
+                                    key={item.id}
+                                >
 
-                                <img
-                                    src={item.img}
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
+                                    <img
+                                        src={item.img}
+                                        alt="img"
+                                        className="object-fill w-full h-full rounded-md"
+                                    />
 
-                                <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                    <div className="w-full h-[60px] mb-auto overflow-hidden">
-                                        <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
-                                            Peace Restaurant
-                                        </span>
-                                        <span className="text-md leading-[1.2] line-clamp-1">
-                                            Lee Nakeum , seewater
-                                        </span>
+                                    <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                        <div className="w-full h-[60px] mb-auto overflow-hidden">
+                                            <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                Peace Restaurant
+                                            </span>
+                                            <span className="text-md leading-[1.2] line-clamp-1">
+                                                Lee Nakeum , seewater
+                                            </span>
+                                        </div>
+
+                                        <div className="w-full mt-2 mb-[25px]">
+                                            <span className="text-red-300 text-sm font-semibold flex items-center gap-1">
+                                                <FavoriteIcon />
+                                                {item.like}
+                                            </span>
+                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                Up
+                                            </span>
+                                        </div>
+
+                                        <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
+                                            <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
+                                                Fantasy
+                                            </span>
+                                        </div>
                                     </div>
 
-                                    <div className="w-full mt-2 mb-[25px]">
-                                        <span className="text-red-300 text-sm font-semibold flex items-center gap-1">
-                                            <FavoriteIcon />
-                                            {item.like}
-                                        </span>
-                                        <span className="w-[35px] h-[35px] mt-2 uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                            Up
-                                        </span>
-                                    </div>
-
-                                    <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
-                                        <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
-                                            Fantasy
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </li>
+                                </li>
+                            </Link>
                         ))}
 
                     </ul>
@@ -181,46 +173,47 @@ const ContentPage = () => {
                     <ul className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
                         {data.slice(0, 10).map((item) => (
-                            <li
-                                className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
-                                key={item.id}
-                                onClick={handleOriginalSeriesClick}
-                            >
+                            <Link to={`/original/series`}>
+                                <li
+                                    className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
+                                    key={item.id}
+                                >
 
-                                <img
-                                    src={item.img}
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
+                                    <img
+                                        src={item.img}
+                                        alt="img"
+                                        className="object-fill w-full h-full rounded-md"
+                                    />
 
-                                <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                    <div className="w-full h-[60px] mb-auto overflow-hidden">
-                                        <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
-                                            Peace Restaurant
-                                        </span>
-                                        <span className="text-md leading-[1.2] line-clamp-1">
-                                            Lee Nakeum , seewater
-                                        </span>
+                                    <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                        <div className="w-full h-[60px] mb-auto overflow-hidden">
+                                            <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                Peace Restaurant
+                                            </span>
+                                            <span className="text-md leading-[1.2] line-clamp-1">
+                                                Lee Nakeum , seewater
+                                            </span>
+                                        </div>
+
+                                        <div className="w-full mt-2 mb-[25px]">
+                                            <span className="text-red-300 text-sm font-semibold flex items-center gap-1">
+                                                <FavoriteIcon />
+                                                {item.like}
+                                            </span>
+                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-black text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                New
+                                            </span>
+                                        </div>
+
+                                        <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
+                                            <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
+                                                Fantasy
+                                            </span>
+                                        </div>
                                     </div>
 
-                                    <div className="w-full mt-2 mb-[25px]">
-                                        <span className="text-red-300 text-sm font-semibold flex items-center gap-1">
-                                            <FavoriteIcon />
-                                            {item.like}
-                                        </span>
-                                        <span className="w-[35px] h-[35px] mt-2 uppercase bg-black text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                            New
-                                        </span>
-                                    </div>
-
-                                    <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
-                                        <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
-                                            Fantasy
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </li>
+                                </li>
+                            </Link>
                         ))}
 
                     </ul>
@@ -244,46 +237,47 @@ const ContentPage = () => {
                     <ul className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
                         {data.slice(0, 10).map((item) => (
-                            <li
-                                className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
-                                key={item.id}
-                                onClick={handleVideoSeriesClick}
-                            >
+                            <Link to={`/video/series`}>
+                                <li
+                                    className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
+                                    key={item.id}
+                                >
 
-                                <img
-                                    src={item.img}
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
+                                    <img
+                                        src={item.img}
+                                        alt="img"
+                                        className="object-fill w-full h-full rounded-md"
+                                    />
 
-                                <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                    <div className="w-full h-[60px] mb-auto overflow-hidden">
-                                        <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
-                                            Peace Restaurant
-                                        </span>
-                                        <span className="text-md leading-[1.2] line-clamp-1">
-                                            Lee Nakeum , seewater
-                                        </span>
+                                    <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                        <div className="w-full h-[60px] mb-auto overflow-hidden">
+                                            <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                Peace Restaurant
+                                            </span>
+                                            <span className="text-md leading-[1.2] line-clamp-1">
+                                                Lee Nakeum , seewater
+                                            </span>
+                                        </div>
+
+                                        <div className="w-full mt-2 mb-[25px]">
+                                            <span className="text-red-300 text-sm font-semibold flex items-center gap-1">
+                                                <FavoriteIcon />
+                                                {item.like}
+                                            </span>
+                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-black text-white font-semibold text-xs rounded-full flex items-center justify-center">
+                                                New
+                                            </span>
+                                        </div>
+
+                                        <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
+                                            <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
+                                                Fantasy
+                                            </span>
+                                        </div>
                                     </div>
 
-                                    <div className="w-full mt-2 mb-[25px]">
-                                        <span className="text-red-300 text-sm font-semibold flex items-center gap-1">
-                                            <FavoriteIcon />
-                                            {item.like}
-                                        </span>
-                                        <span className="w-[35px] h-[35px] mt-2 uppercase bg-black text-white font-semibold text-xs rounded-full flex items-center justify-center">
-                                            New
-                                        </span>
-                                    </div>
-
-                                    <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
-                                        <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
-                                            Fantasy
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </li>
+                                </li>
+                            </Link>
                         ))}
 
                     </ul>
@@ -328,52 +322,53 @@ const ContentPage = () => {
                     <ul className="grid grid-cols-5 gap-4">
                         {/* khung nội dung */}
                         {filteredGenreData.slice(0, 10).map((item) => (
-                            <li
-                                className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
-                                key={item.id}
-                                onClick={handleOriginalSeriesClick}
-                            >
+                            <Link to={`/original/series`}>
+                                <li
+                                    className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
+                                    key={item.id}
+                                >
 
-                                <img
-                                    src={item.img}
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
+                                    <img
+                                        src={item.img}
+                                        alt="img"
+                                        className="object-fill w-full h-full rounded-md"
+                                    />
 
-                                <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                    <div className="w-full h-[60px] mb-auto overflow-hidden">
-                                        <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
-                                            {item.name}
-                                        </span>
-                                        <span className="text-md leading-[1.2] line-clamp-1">
-                                            {item.auth}
-                                        </span>
-                                    </div>
-
-                                    <div className="w-full mb-[20px] mr-auto">
-                                        <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
-                                            <FavoriteIcon />
-                                            {item.like}
-                                        </span>
-                                        <div className="flex mt-2 gap-1">
-                                            <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                Up
+                                    <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                        <div className="w-full h-[60px] mb-auto overflow-hidden">
+                                            <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                {item.name}
                                             </span>
-                                            <span className="w-[35px] h-[35px] uppercase bg-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                New
+                                            <span className="text-md leading-[1.2] line-clamp-1">
+                                                {item.auth}
                                             </span>
                                         </div>
+
+                                        <div className="w-full mb-[20px] mr-auto">
+                                            <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
+                                                <FavoriteIcon />
+                                                {item.like}
+                                            </span>
+                                            <div className="flex mt-2 gap-1">
+                                                <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                    Up
+                                                </span>
+                                                <span className="w-[35px] h-[35px] uppercase bg-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                    New
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
+                                            <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
+                                                {item.genre}
+                                            </span>
+                                        </div>
+
                                     </div>
 
-                                    <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
-                                        <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
-                                            {item.genre}
-                                        </span>
-                                    </div>
-
-                                </div>
-
-                            </li>
+                                </li>
+                            </Link>
                         ))}
 
                     </ul>
@@ -419,40 +414,41 @@ const ContentPage = () => {
                         <ul className="w-full h-full ">
                             {/* khung nội dung */}
                             {dataPopular.map(item => (
-                                <li
-                                    className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
-                                    key={item.key}
-                                    onClick={handleOriginalSeriesClick}
-                                >
-                                    <div className="w-full h-full flex items-center">
-                                        <div className="w-[80px] h-[80px] flex">
-                                            <img
-                                                src={item.img}
-                                                alt="img"
-                                                className="object-fill w-full h-full rounded-md"
-                                            />
-                                        </div>
+                                <Link to={`/original/series`}>
+                                    <li
+                                        className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
+                                        key={item.key}
+                                    >
+                                        <div className="w-full h-full flex items-center">
+                                            <div className="w-[80px] h-[80px] flex">
+                                                <img
+                                                    src={item.img}
+                                                    alt="img"
+                                                    className="object-fill w-full h-full rounded-md"
+                                                />
+                                            </div>
 
-                                        <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                            <span className="mx-3 text-xl text-white font-bold">
-                                                {item.number}
-                                            </span>
-                                        </div>
+                                            <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
+                                                <span className="mx-3 text-xl text-white font-bold">
+                                                    {item.number}
+                                                </span>
+                                            </div>
 
-                                        <div className="w-[230px] mt-auto mb-auto overflow-hidden">
-                                            <span className="text-gray-400 text-sm">
-                                                {item.genre}
-                                            </span>
-                                            <span className="text-md font-semibold line-clamp-1">
-                                                {item.name}
-                                            </span>
-                                            <span className="text-sm line-clamp-1">
-                                                {item.auth}
-                                            </span>
-                                        </div>
+                                            <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <span className="text-gray-400 text-sm">
+                                                    {item.genre}
+                                                </span>
+                                                <span className="text-md font-semibold line-clamp-1">
+                                                    {item.name}
+                                                </span>
+                                                <span className="text-sm line-clamp-1">
+                                                    {item.auth}
+                                                </span>
+                                            </div>
 
-                                    </div>
-                                </li>
+                                        </div>
+                                    </li>
+                                </Link>
                             ))}
                         </ul>
                     </div>
@@ -461,40 +457,41 @@ const ContentPage = () => {
                         <ul className="w-full h-full">
                             {/* khung nội dung */}
                             {dataPopular.map(item => (
-                                <li
-                                    className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
-                                    key={item.key}
-                                    onClick={handleOriginalSeriesClick}
-                                >
-                                    <div className="w-full h-full flex items-center">
-                                        <div className="w-[80px] h-[80px] flex">
-                                            <img
-                                                src={item.img}
-                                                alt="img"
-                                                className="object-fill w-full h-full rounded-md"
-                                            />
-                                        </div>
+                                <Link to={`/original/series`}>
+                                    <li
+                                        className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
+                                        key={item.key}
+                                    >
+                                        <div className="w-full h-full flex items-center">
+                                            <div className="w-[80px] h-[80px] flex">
+                                                <img
+                                                    src={item.img}
+                                                    alt="img"
+                                                    className="object-fill w-full h-full rounded-md"
+                                                />
+                                            </div>
 
-                                        <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                            <span className="mx-3 text-xl text-white font-bold">
-                                                {item.number}
-                                            </span>
-                                        </div>
+                                            <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
+                                                <span className="mx-3 text-xl text-white font-bold">
+                                                    {item.number}
+                                                </span>
+                                            </div>
 
-                                        <div className="w-[230px] mt-auto mb-auto overflow-hidden">
-                                            <span className="text-gray-400 text-sm">
-                                                {item.genre}
-                                            </span>
-                                            <span className="text-md font-semibold line-clamp-1">
-                                                {item.name}
-                                            </span>
-                                            <span className="text-sm line-clamp-1">
-                                                {item.auth}
-                                            </span>
-                                        </div>
+                                            <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <span className="text-gray-400 text-sm">
+                                                    {item.genre}
+                                                </span>
+                                                <span className="text-md font-semibold line-clamp-1">
+                                                    {item.name}
+                                                </span>
+                                                <span className="text-sm line-clamp-1">
+                                                    {item.auth}
+                                                </span>
+                                            </div>
 
-                                    </div>
-                                </li>
+                                        </div>
+                                    </li>
+                                </Link>
                             ))}
 
                         </ul>
@@ -504,41 +501,42 @@ const ContentPage = () => {
                         <ul className="w-full h-full">
                             {/* khung nội dung */}
                             {dataPopular.map(item => (
-                                <li
-                                    className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
-                                    key={item.key}
-                                    onClick={handleVideoSeriesClick}
-                                >
-                                    <div className="w-full h-full flex items-center">
-                                        <div className="w-[80px] h-[80px] flex">
-                                            <img
-                                                src={item.img}
-                                                alt="img"
+                                <Link to={`/video/series`}>
+                                    <li
+                                        className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
+                                        key={item.key}
+                                    >
+                                        <div className="w-full h-full flex items-center">
+                                            <div className="w-[80px] h-[80px] flex">
+                                                <img
+                                                    src={item.img}
+                                                    alt="img"
 
-                                                className="object-fill w-full h-full rounded-md"
-                                            />
+                                                    className="object-fill w-full h-full rounded-md"
+                                                />
+                                            </div>
+
+                                            <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
+                                                <span className="mx-3 text-xl text-white font-bold">
+                                                    {item.number}
+                                                </span>
+                                            </div>
+
+                                            <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                <span className="text-gray-400 text-sm">
+                                                    {item.genre}
+                                                </span>
+                                                <span className="text-md font-semibold line-clamp-1">
+                                                    {item.name}
+                                                </span>
+                                                <span className="text-sm line-clamp-1">
+                                                    {item.auth}
+                                                </span>
+                                            </div>
+
                                         </div>
-
-                                        <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                            <span className="mx-3 text-xl text-white font-bold">
-                                                {item.number}
-                                            </span>
-                                        </div>
-
-                                        <div className="w-[230px] mt-auto mb-auto overflow-hidden">
-                                            <span className="text-gray-400 text-sm">
-                                                {item.genre}
-                                            </span>
-                                            <span className="text-md font-semibold line-clamp-1">
-                                                {item.name}
-                                            </span>
-                                            <span className="text-sm line-clamp-1">
-                                                {item.auth}
-                                            </span>
-                                        </div>
-
-                                    </div>
-                                </li>
+                                    </li>
+                                </Link>
                             ))}
 
                         </ul>

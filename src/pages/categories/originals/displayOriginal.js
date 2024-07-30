@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import AddIcon from '@mui/icons-material/Add';
@@ -19,15 +20,21 @@ const dataPopular = [
 ];
 
 const dataFavorite = [
-    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 7" },
-    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 8" },
-    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 9" },
-    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 10" },
-    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 11" },
-    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 12" },
-    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 13" },
-    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 14" },
-    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 15" },
+    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 1" },
+    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 2" },
+    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 3" },
+    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 4" },
+    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 5" },
+    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 6" },
+    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 7" },
+    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 8" },
+    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 9" },
+    { id: 10, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 10" },
+    { id: 11, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 11" },
+    { id: 12, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 12" },
+    { id: 13, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 13" },
+    { id: 14, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 14" },
+    { id: 15, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 15" },
 ]
 
 const dataComment = [
@@ -42,14 +49,34 @@ const dataComment = [
     { id: 9, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
 ]
 
-const handleOriginalSeriesClick = () => {
-    window.location.href = '/original/series';
-};
-
 const DisplayOriginalPage = () => {
+
+    //Xem các tập tiếp theo trong series
+    const [currentPage, setCurrentPage] = useState(0);
+    const itemsPerPage = 9;
+    const totalItems = dataFavorite.length;
+
+    const handleNextPage = () => {
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+        const nextPage = currentPage + 1;
+        setCurrentPage(nextPage < totalPages ? nextPage : currentPage);
+    };
+
+    const handlePreviousPage = () => {
+        const previousPage = currentPage - 1;
+        setCurrentPage(previousPage >= 0 ? previousPage : 0);
+    };
+
+    const startIndex = currentPage * itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+    const currentItems = dataFavorite.slice(startIndex, endIndex);
+
+    //new
+
     return (
         <div>
             <div className="w-full h-full bg-white">
+
                 {/* Thanh công cụ */}
                 <div className="w-full h-[50px] px-5 bg-black flex items-center">
                     <ul className="w-full h-[30px] flex">
@@ -140,16 +167,20 @@ const DisplayOriginalPage = () => {
 
                 </div>
 
+                {/* Hiển thị các tập trong series */}
                 <div className="w-full h-[200px] bg-red-50 flex items-center justify-center">
-                    <div className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center">
+                    <div
+                        className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center"
+                        onClick={handlePreviousPage}
+                    >
                         <span className="ml-2 hover:text-white">
                             <ArrowBackIosIcon />
                         </span>
 
                     </div>
 
-                    <ul className="flex">
-                        {dataFavorite.map(item => (
+                    <ul className="grid grid-cols-9">
+                        {currentItems.map(item => (
                             <li
                                 className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
                                 key={item.id}
@@ -166,7 +197,10 @@ const DisplayOriginalPage = () => {
                         ))}
                     </ul>
 
-                    <div className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center">
+                    <div
+                        className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center"
+                        onClick={handleNextPage}
+                    >
                         <span className="hover:text-white">
                             <ArrowForwardIosIcon />
                         </span>
@@ -284,41 +318,42 @@ const DisplayOriginalPage = () => {
                                 <ul className="w-full h-full py-2">
                                     {/* khung nội dung */}
                                     {dataPopular.map(item => (
-                                        <li
-                                            className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
-                                            key={item.id}
-                                            onClick={handleOriginalSeriesClick}
-                                        >
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px] flex">
-                                                    <img
-                                                        src={item.img}
-                                                        alt="img"
+                                        <Link to={`/original/series`}>
+                                            <li
+                                                className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
+                                                key={item.id}
+                                            >
+                                                <div className="w-full h-full flex items-center">
+                                                    <div className="w-[80px] h-[80px] flex">
+                                                        <img
+                                                            src={item.img}
+                                                            alt="img"
 
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
+                                                            className="object-fill w-full h-full rounded-md"
+                                                        />
+                                                    </div>
+
+                                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
+                                                        <span className="mx-3 text-xl text-white font-bold">
+                                                            {item.number}
+                                                        </span>
+                                                    </div>
+
+                                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                        <span className="text-gray-400 text-sm">
+                                                            {item.genre}
+                                                        </span>
+                                                        <span className="text-md font-semibold line-clamp-1">
+                                                            {item.name}
+                                                        </span>
+                                                        <span className="text-sm line-clamp-1">
+                                                            {item.auth}
+                                                        </span>
+                                                    </div>
+
                                                 </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        {item.number}
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        {item.genre}
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        {item.name}
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        {item.auth}
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
+                                            </li>
+                                        </Link>
                                     ))}
 
                                 </ul>
@@ -341,41 +376,42 @@ const DisplayOriginalPage = () => {
                                 <ul className="w-full h-full py-2">
                                     {/* khung nội dung */}
                                     {dataPopular.map(item => (
-                                        <li
-                                            className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
-                                            key={item.id}
-                                            onClick={handleOriginalSeriesClick}
-                                        >
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px] flex">
-                                                    <img
-                                                        src={item.img}
-                                                        alt="img"
+                                        <Link to={`/original/series`}>
+                                            <li
+                                                className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
+                                                key={item.id}
+                                            >
+                                                <div className="w-full h-full flex items-center">
+                                                    <div className="w-[80px] h-[80px] flex">
+                                                        <img
+                                                            src={item.img}
+                                                            alt="img"
 
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
+                                                            className="object-fill w-full h-full rounded-md"
+                                                        />
+                                                    </div>
+
+                                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
+                                                        <span className="mx-3 text-xl text-white font-bold">
+                                                            {item.number}
+                                                        </span>
+                                                    </div>
+
+                                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                        <span className="text-gray-400 text-sm">
+                                                            {item.genre}
+                                                        </span>
+                                                        <span className="text-md font-semibold line-clamp-1">
+                                                            {item.name}
+                                                        </span>
+                                                        <span className="text-sm line-clamp-1">
+                                                            {item.auth}
+                                                        </span>
+                                                    </div>
+
                                                 </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        {item.number}
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        {item.genre}
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        {item.name}
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        {item.auth}
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
+                                            </li>
+                                        </Link>
                                     ))}
 
                                 </ul>

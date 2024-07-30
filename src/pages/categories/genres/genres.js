@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
@@ -56,11 +57,6 @@ const GenresPage = () => {
         };
     }, []);
 
-    //Đến trang series original
-    const handleOriginalSeriesClick = () => {
-        window.location.href = '/original/series';
-    };
-
     //Chọn nội dung theo thể loại
     const [selectedGenre, setSelectedGenre] = useState('Action');
     const filteredGenreData = data.filter(data => data.genre === selectedGenre);
@@ -99,47 +95,49 @@ const GenresPage = () => {
 
                             {/* khung nội dung */}
                             {filteredGenreData.map(item => (
-                                <li
-                                    className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer"
-                                    key={item.id}
-                                    onClick={handleOriginalSeriesClick}
-                                >
+                                <Link to={`/video/series`}>
 
-                                    <img
-                                        src={item.img}
-                                        alt="img"
-                                        className="object-fill w-full h-full rounded-md"
-                                    />
+                                    <li
+                                        className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer"
+                                        key={item.id}
+                                    >
 
-                                    <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                        <img
+                                            src={item.img}
+                                            alt="img"
+                                            className="object-fill w-full h-full rounded-md"
+                                        />
 
-                                        <div className="w-full h-[60px] mb-auto overflow-hidden">
-                                            <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                {item.name}
-                                            </span>
-                                            <span className="text-md leading-[1.2] line-clamp-1">
-                                                {item.auth}
-                                            </span>
-                                        </div>
+                                        <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
 
-                                        <div className="w-full mb-[50px] mr-auto">
-                                            <span className="w-[70px] rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
-                                                <FavoriteIcon />
-                                                {item.like}
-                                            </span>
-                                            <div className="flex mt-2 gap-1">
-                                                <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                    Up
+                                            <div className="w-full h-[60px] mb-auto overflow-hidden">
+                                                <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                    {item.name}
                                                 </span>
-                                                <span className="w-[35px] h-[35px] uppercase bg-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                    New
+                                                <span className="text-md leading-[1.2] line-clamp-1">
+                                                    {item.auth}
                                                 </span>
                                             </div>
+
+                                            <div className="w-full mb-[50px] mr-auto">
+                                                <span className="w-[70px] rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
+                                                    <FavoriteIcon />
+                                                    {item.like}
+                                                </span>
+                                                <div className="flex mt-2 gap-1">
+                                                    <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                        Up
+                                                    </span>
+                                                    <span className="w-[35px] h-[35px] uppercase bg-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                        New
+                                                    </span>
+                                                </div>
+                                            </div>
+
                                         </div>
 
-                                    </div>
-
-                                </li>
+                                    </li>
+                                </Link>
                             ))}
 
                         </ul>

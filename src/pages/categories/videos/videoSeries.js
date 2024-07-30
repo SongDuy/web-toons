@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import StarIcon from '@mui/icons-material/Star';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -23,14 +24,6 @@ const dataSeries = [
     { id: 15, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 1", date: "jun 10, 2024", like: "23,789", number: "#1" },
 ];
 
-const handleVideoSeriesClick = () => {
-    window.location.href = '/video/series';
-};
-
-const handleDisplayVideoClick = () => {
-    window.location.href = '/video/series/display';
-};
-
 const VideoSeriesPage = () => {
     return (
         <div>
@@ -54,50 +47,51 @@ const VideoSeriesPage = () => {
 
                                     {/* khung danh sách */}
                                     {dataSeries.map(item => (
-                                        <li
-                                            className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
-                                            key={item.id}
-                                            onClick={handleDisplayVideoClick}
-                                        >
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px]">
-                                                    <img
-                                                        src={item.img}
-                                                        alt="img"
+                                        <Link to={`/video/series/display`}>
+                                            <li
+                                                className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
+                                                key={item.id}
+                                            >
+                                                <div className="w-full h-full flex items-center">
+                                                    <div className="w-[80px] h-[80px]">
+                                                        <img
+                                                            src={item.img}
+                                                            alt="img"
 
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
+                                                            className="object-fill w-full h-full rounded-md"
+                                                        />
+                                                    </div>
+
+                                                    <div className="w-[350px] mr-auto ml-3 overflow-hidden">
+                                                        <span className="text-black text-md leading-[1.2] line-clamp-2">
+                                                            {item.name}
+                                                        </span>
+                                                    </div>
+
+                                                    <div className="ml-auto">
+                                                        <span className="text-gray-400 text-md">
+                                                            {item.date}
+                                                        </span>
+                                                    </div>
+
+                                                    <div className="ml-auto flex gap-1">
+                                                        <span className="text-gray-400">
+                                                            <FavoriteBorderSharpIcon />
+                                                        </span>
+                                                        <span className="text-gray-400 text-md line-clamp-1">
+                                                            {item.like}
+                                                        </span>
+                                                    </div>
+
+                                                    <div className="ml-auto">
+                                                        <span className="text-gray-400 text-md line-clamp-1">
+                                                            {item.number}
+                                                        </span>
+                                                    </div>
                                                 </div>
 
-                                                <div className="w-[350px] mr-auto ml-3 overflow-hidden">
-                                                    <span className="text-black text-md leading-[1.2] line-clamp-2">
-                                                        {item.name}
-                                                    </span>
-                                                </div>
-
-                                                <div className="ml-auto">
-                                                    <span className="text-gray-400 text-md">
-                                                        {item.date}
-                                                    </span>
-                                                </div>
-
-                                                <div className="ml-auto flex gap-1">
-                                                    <span className="text-gray-400">
-                                                        <FavoriteBorderSharpIcon />
-                                                    </span>
-                                                    <span className="text-gray-400 text-md line-clamp-1">
-                                                        {item.like}
-                                                    </span>
-                                                </div>
-
-                                                <div className="ml-auto">
-                                                    <span className="text-gray-400 text-md line-clamp-1">
-                                                        {item.number}
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                        </li>
+                                            </li>
+                                        </Link>
                                     ))}
                                 </ul>
                             </div>
@@ -181,9 +175,9 @@ const VideoSeriesPage = () => {
                         </div>
                         <div className="w-full h-[160px] bg-white my-5 px-5 py-5 rounded-md">
                             <ul className="flex items-center justify-center gap-3">
+                                
                                 <li
                                     className="w-1/3 h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
-                                    onClick={handleVideoSeriesClick}
                                 >
                                     <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
                                         <img
@@ -210,9 +204,9 @@ const VideoSeriesPage = () => {
                                         </div>
                                     </div>
                                 </li>
+
                                 <li
                                     className="w-1/3 h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
-                                    onClick={handleVideoSeriesClick}
                                 >
                                     <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
                                         <img
@@ -239,9 +233,9 @@ const VideoSeriesPage = () => {
                                         </div>
                                     </div>
                                 </li>
+
                                 <li
                                     className="w-1/3 h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
-                                    onClick={handleVideoSeriesClick}
                                 >
                                     <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
                                         <img
@@ -269,6 +263,7 @@ const VideoSeriesPage = () => {
                                         </div>
                                     </div>
                                 </li>
+
                             </ul>
                         </div>
 
