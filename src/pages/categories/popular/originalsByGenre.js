@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-scroll';
+import { Link } from 'react-router-dom';
 
 const dataPopular = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "2", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
@@ -41,13 +41,13 @@ dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 
 const OriginalsByGenrePage = () => {
     return (
-        <div className="w-full h-full pt-[70px]">
+        <div className="w-full h-full pt-[80px]">
 
-            <div className="h-[70px] mx-[200px] flex items-center">
+            <div className="mx-[200px] pb-5 flex items-center">
                 <span className="uppercase font-semibold text-xl">ORIGINALS BY GENRE</span>
             </div>
 
-            <div className="h-[70px] mx-[160px] mb-5 bg-white flex items-center justify-center border-t border-b">
+            <div className="h-[70px] mx-[200px] mb-5 bg-white flex items-center justify-center border-t border-b">
                 <ul
                     class="grid grid-cols-10 gap-x-4 gap-y-2"
                 >

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-scroll';
+import { Link } from 'react-router-dom';
 
 const dataPopular = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "2", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
@@ -15,9 +15,9 @@ const dataPopular = [
 
 const NewTrendingPage = () => {
     return (
-        <div className="w-full h-full pt-[70px]">
+        <div className="w-full h-full pt-[80px]">
 
-            <div className="h-[70px] mx-[200px] flex items-center">
+            <div className="mx-[200px] pb-5 flex items-center">
                 <span className="uppercase font-semibold text-xl">NEW & TRENDING</span>
             </div>
 

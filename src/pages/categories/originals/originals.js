@@ -5,7 +5,8 @@ import { enUS } from 'date-fns/locale';
 import CheckIcon from '@mui/icons-material/Check';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import { Link as ScrollLink, Element as ScrollElement } from 'react-scroll';
 
 const data = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Mon day', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", status: "original" },
@@ -78,23 +79,27 @@ const OriginalsPage = () => {
     //new
 
     return (
-        <div>
+        <div className="w-full h-full pb-10 bg-gray-100">
 
-            <div className="w-full h-full pb-10 bg-gray-100">
-
-                <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-50' : ''}`}>
-                    <ul className="flex gap-10">
+            <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-50' : ''}`}>
+                <ul className="flex gap-10">
+                    <ScrollLink to="section1" smooth={true} duration={500}>
                         <li className="uppercase font-semibold text-md text-black hover:text-black cursor-pointer flex items-center justify-center">
                             ONGOING
                         </li>
+                    </ScrollLink >
+
+                    <ScrollLink to="section2" smooth={true} duration={500}>
                         <li className="uppercase font-semibold text-md text-gray-400 hover:text-black cursor-pointer flex items-center justify-center">
                             COMPLETED
                         </li>
-                    </ul>
-                </div>
+                    </ScrollLink >
+                </ul>
+            </div>
 
-                <div className="w-full h-full">
-                    <div className="h-[70px] mx-[160px] border-b-2 flex items-center">
+            <ScrollElement name="section1" >
+                <div className="w-full h-full pt-[80px]">
+                    <div className="mx-[160px] pb-5 border-b-2 flex items-center">
                         <span className="font-semibold text-md">Ongoing Series</span>
                         <span className="ml-auto text-md flex items-center justify-center gap-2"> by Popularity <CheckIcon /> </span>
                     </div>
@@ -121,7 +126,7 @@ const OriginalsPage = () => {
 
                             {/* khung nội dung */}
                             {filteredData.map(item => (
-                                <Link to={`/original/series`}>
+                                <RouterLink to={`/original/series`}>
                                     <li
                                         className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                         key={item.id}
@@ -168,16 +173,18 @@ const OriginalsPage = () => {
                                         </div>
 
                                     </li>
-                                </Link>
+                                </RouterLink >
                             ))}
 
                         </ul>
 
                     </div>
                 </div>
+            </ScrollElement >
 
-                <div className="w-full h-full py-5">
-                    <div className="h-[70px] mx-[160px] border-b-2 flex items-center">
+            <ScrollElement name="section2" >
+                <div className="w-full h-full pt-[80px]">
+                    <div className="mx-[160px] pb-5 border-b-2 flex items-center">
                         <span className="font-semibold text-md">Completed Series</span>
                     </div>
 
@@ -187,7 +194,7 @@ const OriginalsPage = () => {
 
                             {/* khung nội dung */}
                             {data.map(item => (
-                                <Link to={`/original/series`}>
+                                <RouterLink to={`/original/series`}>
                                     <li
                                         className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                         key={item.id}
@@ -232,15 +239,14 @@ const OriginalsPage = () => {
                                         </div>
 
                                     </li>
-                                </Link>
+                                </RouterLink >
                             ))}
 
                         </ul>
 
                     </div>
                 </div>
-            </div>
-
+            </ScrollElement>
         </div>
     );
 }
