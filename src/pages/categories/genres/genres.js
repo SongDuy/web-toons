@@ -91,14 +91,14 @@ const GenresPage = () => {
 
                     <div className="w-full h-full py-5 flex items-center justify-center">
 
-                        <ul className="grid grid-cols-5 gap-[8px]">
+                        <ul className="grid grid-cols-5 gap-2">
 
                             {/* khung nội dung */}
                             {filteredGenreData.map(item => (
                                 <Link to={`/video/series`}>
 
                                     <li
-                                        className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer"
+                                        className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                         key={item.id}
                                     >
 
@@ -134,19 +134,22 @@ const GenresPage = () => {
                                                 </div>
                                             </div>
 
-                                            {item.status === "original" ? (
-                                                <div className="w-full h-[30px] bg-white bg-opacity-80 rounded-md">
-                                                    <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
-                                                        {item.genre}
-                                                    </span>
-                                                </div>
-                                            ) : item.status === "video" ? (
-                                                <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
-                                                    <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
-                                                        {item.genre}
-                                                    </span>
-                                                </div>
-                                            ) : null}
+                                            {/*Trong component React của bạn */}
+                                            <div className="w-full h-[30px]">
+                                                {item.status === "original" ? (
+                                                    <div className="w-full h-full bg-white bg-opacity-80 rounded-md">
+                                                        <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
+                                                            {item.genre}
+                                                        </span>
+                                                    </div>
+                                                ) : item.status === "video" ? (
+                                                    <div className="w-full h-full bg-gray-300 bg-opacity-80 rounded-md">
+                                                        <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
+                                                            {item.genre}
+                                                        </span>
+                                                    </div>
+                                                ) : null}
+                                            </div>
 
                                         </div>
 

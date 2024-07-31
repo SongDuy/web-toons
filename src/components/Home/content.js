@@ -114,15 +114,17 @@ const ContentPage = () => {
                         {filteredData.slice(0, 10).map((item) => (
                             <Link to={`/original/series`}>
                                 <li
-                                    className="w-[210px] h-[210px] rounded-xl bg-white relative cursor-pointer"
+                                    className="w-[210px] h-[210px] rounded-xl bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                     key={item.id}
                                 >
 
-                                    <img
-                                        src={item.img}
-                                        alt="img"
-                                        className="object-fill w-full h-full rounded-md"
-                                    />
+                                    <div className="w-full h-full">
+                                        <img
+                                            src={item.img}
+                                            alt="img"
+                                            className="object-fill w-full h-full rounded-md"
+                                        />
+                                    </div>
 
                                     <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
                                         <div className="w-full h-[60px] mb-auto overflow-hidden">
@@ -145,19 +147,21 @@ const ContentPage = () => {
                                         </div>
 
                                         {/*Trong component React của bạn */}
-                                        {item.status === "original" ? (
-                                            <div className="w-full h-[30px] bg-white bg-opacity-80 rounded-md">
-                                                <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
-                                                    {item.genre}
-                                                </span>
-                                            </div>
-                                        ) : item.status === "video" ? (
-                                            <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
-                                                <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
-                                                    {item.genre}
-                                                </span>
-                                            </div>
-                                        ) : null}
+                                        <div className="w-full h-[30px]">
+                                            {item.status === "original" ? (
+                                                <div className="w-full h-full bg-white bg-opacity-80 rounded-md">
+                                                    <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
+                                                        {item.genre}
+                                                    </span>
+                                                </div>
+                                            ) : item.status === "video" ? (
+                                                <div className="w-full h-full bg-gray-300 bg-opacity-80 rounded-md">
+                                                    <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
+                                                        {item.genre}
+                                                    </span>
+                                                </div>
+                                            ) : null}
+                                        </div>
 
                                     </div>
 
@@ -189,7 +193,7 @@ const ContentPage = () => {
                         {data.slice(0, 10).map((item) => (
                             <Link to={`/original/series`}>
                                 <li
-                                    className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
+                                    className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                     key={item.id}
                                 >
 
@@ -254,7 +258,7 @@ const ContentPage = () => {
                         {data.slice(0, 10).map((item) => (
                             <Link to={`/video/series`}>
                                 <li
-                                    className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
+                                    className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                     key={item.id}
                                 >
 
@@ -305,12 +309,15 @@ const ContentPage = () => {
                     <ul
                         className="w-full gap-[120px] bg-gray-100"
                     >
-                        <li
-                            className="w-full h-[60px] bg-white border-b-2 uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
-                        >
-                            GENRES
-                            <NavigateNextIcon />
-                        </li>
+                        <Link to={`/genres`}>
+                            <li
+                                className="w-full h-[60px] bg-white border-b-2 uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+                            >
+                                GENRES
+                                <NavigateNextIcon />
+                            </li>
+                        </Link>
+
                         <li
                             className="w-full h-[70px] bg-gray-100 uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                         >
@@ -340,7 +347,7 @@ const ContentPage = () => {
                         {filteredGenreData.slice(0, 10).map((item) => (
                             <Link to={`/original/series`}>
                                 <li
-                                    className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer"
+                                    className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                     key={item.id}
                                 >
 
@@ -375,19 +382,22 @@ const ContentPage = () => {
                                             </div>
                                         </div>
 
-                                        {item.status === "original" ? (
-                                            <div className="w-full h-[30px] bg-white bg-opacity-80 rounded-md">
-                                                <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
-                                                    {item.genre}
-                                                </span>
-                                            </div>
-                                        ) : item.status === "video" ? (
-                                            <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
-                                                <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
-                                                    {item.genre}
-                                                </span>
-                                            </div>
-                                        ) : null}
+                                        {/*Trong component React của bạn */}
+                                        <div className="w-full h-[30px]">
+                                            {item.status === "original" ? (
+                                                <div className="w-full h-full bg-white bg-opacity-80 rounded-md">
+                                                    <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
+                                                        {item.genre}
+                                                    </span>
+                                                </div>
+                                            ) : item.status === "video" ? (
+                                                <div className="w-full h-full bg-gray-300 bg-opacity-80 rounded-md">
+                                                    <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
+                                                        {item.genre}
+                                                    </span>
+                                                </div>
+                                            ) : null}
+                                        </div>
 
                                     </div>
 

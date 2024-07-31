@@ -117,13 +117,13 @@ const VideosPage = () => {
                     </div>
 
                     <div className="w-full h-full py-3 flex items-center justify-center">
-                        <ul className="grid grid-cols-5 gap-[8px]">
+                        <ul className="grid grid-cols-5 gap-2">
 
                             {/* khung nội dung */}
                             {filteredData.map(item => (
                                 <Link to={`/video/series`}>
                                     <li
-                                        className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer"
+                                        className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                         key={item.id}
                                     >
 
@@ -183,13 +183,13 @@ const VideosPage = () => {
 
                     <div className="w-full h-full py-5 flex items-center justify-center">
 
-                        <ul className="grid grid-cols-5 gap-[8px]">
+                        <ul className="grid grid-cols-5 gap-2">
 
                             {/* khung nội dung */}
                             {data.map(item => (
                                 <Link to={`/video/series`}>
                                     <li
-                                        className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer"
+                                        className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                         key={item.id}
                                     >
 
