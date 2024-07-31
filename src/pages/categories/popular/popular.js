@@ -34,6 +34,8 @@ const PopularPage = () => {
         <div>
 
             <div className="w-full h-full bg-white">
+
+                {/* Hiển thị tiêu đề */}
                 <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-50' : ''}`}>
                     <ul
                         className="flex gap-[70px]"
@@ -61,6 +63,8 @@ const PopularPage = () => {
                         </Link>
                     </ul>
                 </div>
+
+                {/* Hiển thị nội dung */}
                 <div className="w-full h-full pb-[100px]">
 
                     {/* Hiển thị NEW & TRENDING */}
@@ -75,7 +79,7 @@ const PopularPage = () => {
 
                     {/* Hiển thị VIDEOS BY GENRE */}
                     <Element name="section3" className="element">
-                       <VideosByGenrePage />
+                        <VideosByGenrePage />
                     </Element>
 
                 </div>

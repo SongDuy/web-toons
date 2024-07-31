@@ -43,7 +43,7 @@ const OriginalsByGenrePage = () => {
     return (
         <div className="w-full h-full pt-[70px]">
 
-            <div className="h-[70px] mx-[160px] flex items-center">
+            <div className="h-[70px] mx-[200px] flex items-center">
                 <span className="uppercase font-semibold text-xl">ORIGINALS BY GENRE</span>
             </div>
 
@@ -70,7 +70,7 @@ const OriginalsByGenrePage = () => {
                     className="w-1/2 h-[815px] bg-white py-1"
                 >
                     <div
-                        className="w-full h-full flex justify-center pt-10 shadow-lg border rounded-xl cursor-pointer bg-gray-100 hover:bg-red-50"
+                        className="w-full h-full flex justify-center cursor-pointer"
                     >
                         <div className="px-[45px]">
                             <div className="w-[500px] h-[450px] rounded-md bg-green-500 flex items-center justify-center relative">
@@ -112,7 +112,7 @@ const OriginalsByGenrePage = () => {
                                 </div>
 
                                 <div className=" w-full h-full mt-5 overflow-hidden">
-                                    <span className="w-full line-clamp-5">
+                                    <span className="w-full line-clamp-6">
                                         Valerie Beloff, a princess in exile, decides to take her
                                         own life on her 19th birthday. Abused by her own mother
                                         and exiled for her mother’s crimes, she had to live in
@@ -136,7 +136,7 @@ const OriginalsByGenrePage = () => {
                 </Link>
 
                 {/* Hiển thị danh sách */}
-                <div className="w-1/2 h-[815px] bg-white py-1">
+                <div className="w-1/2 h-[815px] bg-white">
                     <div className="w-full h-full">
                         <ul className="w-full h-full ">
 
