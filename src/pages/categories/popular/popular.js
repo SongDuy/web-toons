@@ -102,72 +102,73 @@ const PopularPage = () => {
                         <div className="h-full mx-[160px] gap-5 flex items-center justify-center">
 
                             {/* Hien thị top 1 */}
-                            <Link to={`/original/series`}>
-                                <div className="w-1/2 h-[815px] bg-white py-1">
-                                    <div
-                                        className="w-full h-full flex justify-center pt-10 shadow-lg border rounded-xl cursor-pointer bg-gray-100 hover:bg-red-50"
-                                    >
-                                        <div className="px-[45px]">
-                                            <div className="w-[500px] h-[450px] rounded-md bg-green-500 flex items-center justify-center relative">
-                                                <img
-                                                    src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                                    alt="img"
-                                                    className="object-fill w-full h-full rounded-md"
-                                                />
+                            <Link
+                                to={`/original/series`}
+                                className="w-1/2 h-[815px] bg-white py-1"
+                            >
+                                <div
+                                    className="w-full h-full flex justify-center pt-10 shadow-lg border rounded-xl cursor-pointer bg-gray-100 hover:bg-red-50"
+                                >
+                                    <div className="px-[45px]">
+                                        <div className="w-[500px] h-[450px] rounded-md bg-green-500 flex items-center justify-center relative">
+                                            <img
+                                                src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                                alt="img"
+                                                className="object-fill w-full h-full rounded-md"
+                                            />
 
-                                                <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                                    <div className="w-full h-[120px] mb-auto overflow-hidden">
-                                                        <div className="w-[80px] h-[80px] bg-yellow-500 rounded-xl flex items-center justify-center mx-2">
-                                                            <span className="mx-3 text-[60px] text-white font-bold">
-                                                                1
-                                                            </span>
-                                                        </div>
+                                            <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                                <div className="w-full h-[120px] mb-auto overflow-hidden">
+                                                    <div className="w-[80px] h-[80px] bg-yellow-500 rounded-xl flex items-center justify-center mx-2">
+                                                        <span className="mx-3 text-[60px] text-white font-bold">
+                                                            1
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div className="w-full h-[150px] mt-3">
-                                                <div className="w-full">
-                                                    <span className="block text-gray-400">
-                                                        Fantasy
-                                                    </span>
-                                                </div>
-
-
-                                                <div className="w-full h-[75px] overflow-hidden">
-                                                    <span className="text-[30px] font-semibold leading-[1.2] line-clamp-2">
-                                                        Monster Princess of the Snowy Mountain
-                                                    </span>
-                                                </div>
-
-                                                <div>
-                                                    <span className="block">
-                                                        Lee Nakeum , seewater
-                                                    </span>
-                                                </div>
-
-                                                <div className=" w-full h-full mt-5 overflow-hidden">
-                                                    <span className="w-full line-clamp-5">
-                                                        Valerie Beloff, a princess in exile, decides to take her
-                                                        own life on her 19th birthday. Abused by her own mother
-                                                        and exiled for her mother’s crimes, she had to live in
-                                                        the freezing Makleroad palace by herself, and she somehow
-                                                        acquired the powers of an ancient monster - the power to
-                                                        freeze things. Hopeless, she seeks an escape in death… only
-                                                        to find herself before her cruel mother, yelling at her once
-                                                        again. Is she dead? Is she reliving a memory? When her mother
-                                                        strikes her, the throbbing pain lets her know that this is neither
-                                                        a dream nor a memory! This series contains themes regarding child
-                                                        abuse that may not be suitable for all readers. Viewer discretion
-                                                        is advised. If you or someone you know is struggling or in crisis,
-                                                        please reach out for help at Crisis Text Line
-                                                    </span>
-                                                </div>
-
-                                            </div>
                                         </div>
 
+                                        <div className="w-full h-[150px] mt-3">
+                                            <div className="w-full">
+                                                <span className="block text-gray-400">
+                                                    Fantasy
+                                                </span>
+                                            </div>
+
+
+                                            <div className="w-full h-[75px] overflow-hidden">
+                                                <span className="text-[30px] font-semibold leading-[1.2] line-clamp-2">
+                                                    Monster Princess of the Snowy Mountain
+                                                </span>
+                                            </div>
+
+                                            <div>
+                                                <span className="block">
+                                                    Lee Nakeum , seewater
+                                                </span>
+                                            </div>
+
+                                            <div className=" w-full h-full mt-5 overflow-hidden">
+                                                <span className="w-full line-clamp-5">
+                                                    Valerie Beloff, a princess in exile, decides to take her
+                                                    own life on her 19th birthday. Abused by her own mother
+                                                    and exiled for her mother’s crimes, she had to live in
+                                                    the freezing Makleroad palace by herself, and she somehow
+                                                    acquired the powers of an ancient monster - the power to
+                                                    freeze things. Hopeless, she seeks an escape in death… only
+                                                    to find herself before her cruel mother, yelling at her once
+                                                    again. Is she dead? Is she reliving a memory? When her mother
+                                                    strikes her, the throbbing pain lets her know that this is neither
+                                                    a dream nor a memory! This series contains themes regarding child
+                                                    abuse that may not be suitable for all readers. Viewer discretion
+                                                    is advised. If you or someone you know is struggling or in crisis,
+                                                    please reach out for help at Crisis Text Line
+                                                </span>
+                                            </div>
+
+                                        </div>
                                     </div>
+
                                 </div>
                             </Link>
 
@@ -241,10 +242,12 @@ const PopularPage = () => {
                             </ul>
                         </div>
                         <div className="h-full mx-[160px] gap-5 flex items-center justify-center">
-
-                            <Link to={`/original/series`}>
-                                {/* Hien thị top 1 */}
-                                <div className="w-1/2 h-[815px] bg-white py-1">
+                           
+                            {/* Hien thị top 1 */}
+                            <Link
+                                to={`/original/series`}
+                                className="w-1/2 h-[815px] bg-white py-1"
+                            >
                                     <div
                                         className="w-full h-full flex justify-center pt-10 shadow-lg border rounded-xl cursor-pointer bg-gray-100 hover:bg-red-50"
                                     >
@@ -309,8 +312,7 @@ const PopularPage = () => {
                                         </div>
 
                                     </div>
-                                </div>
-                            </Link>
+                                </Link>
 
                             {/* Hiển thị danh sách */}
                             <div className="w-1/2 h-[815px] bg-white py-1">
@@ -385,8 +387,10 @@ const PopularPage = () => {
                         <div className="h-full mx-[160px] gap-5 flex items-center justify-center">
 
                             {/* Hiển thị top 1 */}
-                            <Link to={`/video/series`}>
-                                <div className="w-1/2 h-[815px] bg-white py-1">
+                            <Link
+                                to={`/original/series`}
+                                className="w-1/2 h-[815px] bg-white py-1"
+                            >
                                     <div
                                         className="w-full h-full flex justify-center pt-10 shadow-lg border rounded-md cursor-pointer bg-gray-100 hover:bg-red-50"
                                     >
@@ -451,8 +455,7 @@ const PopularPage = () => {
                                         </div>
 
                                     </div>
-                                </div>
-                            </Link>
+                                </Link>
 
                             {/* Hiển thị Danh sách */}
                             <div className="w-1/2 h-[815px] bg-white py-1">

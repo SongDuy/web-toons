@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import SearchIcon from '@mui/icons-material/Search';
+import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
+import VideoCallOutlinedIcon from '@mui/icons-material/VideoCallOutlined';
+
 import { Link } from 'react-router-dom';
 
 const HeaderPage = () => {
@@ -33,8 +35,9 @@ const HeaderPage = () => {
 
             {/* logo */}
             <Link
-                className="w-[90px] flex items-center justify-center cursor-pointer"
                 to={`/`}
+                className="w-[90px] flex items-center justify-center cursor-pointer"
+                onClick={() => handleItemClick('')}
             >
                 <p>LOGO</p>
             </Link>
@@ -115,20 +118,20 @@ const HeaderPage = () => {
                         <Link to={`/create/original`}>
                             <MenuItem
                                 onClose={handleClose}
+                                className="flex gap-x-1"
                             >
-                                <span className="px-2">
-                                    Original
-                                </span>
+                                <PictureAsPdfOutlinedIcon />
+                                Original
                             </MenuItem>
                         </Link>
 
                         <Link to={`/create/video`}>
                             <MenuItem
                                 onClose={handleClose}
+                                className="flex gap-x-1"
                             >
-                                <span className="px-2">
-                                    Video
-                                </span>
+                                <VideoCallOutlinedIcon />
+                                Video
                             </MenuItem>
                         </Link>
 
