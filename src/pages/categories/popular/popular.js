@@ -226,7 +226,7 @@ const PopularPage = () => {
                             <span className="uppercase font-semibold text-xl">ORIGINALS BY GENRE</span>
                         </div>
 
-                        <div className="h-[70px] ml-[160px] mr-[150px] mb-5 bg-white flex items-center justify-center border-t border-b">
+                        <div className="h-[70px] mx-[160px] mb-5 bg-white flex items-center justify-center border-t border-b">
                             <ul
                                 class="grid grid-cols-10 gap-x-4 gap-y-2"
                             >
@@ -368,7 +368,7 @@ const PopularPage = () => {
                             <span className="uppercase font-semibold text-xl">VIDEOS BY GENRE</span>
                         </div>
 
-                        <div className="h-[70px] ml-[160px] mr-[150px] mb-5 bg-white flex items-center justify-center border-t border-b">
+                        <div className="h-[70px] mx-[160px] mb-5 bg-white flex items-center justify-center border-t border-b">
                             <ul
                                 class="grid grid-cols-10 gap-x-4 gap-y-2"
                             >
