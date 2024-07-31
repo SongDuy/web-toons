@@ -127,7 +127,7 @@ const VideosPage = () => {
 
                             {/* khung nội dung */}
                             {filteredData.map(item => (
-                                <RouterLink to={`/original/series`}>
+                                <RouterLink to={`/video/series`}>
                                     <li
                                         className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                         key={item.id}
@@ -165,8 +165,8 @@ const VideosPage = () => {
                                                 </div>
                                             </div>
 
-                                            <div className="w-full h-[30px] bg-white bg-opacity-80 rounded-md">
-                                                <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
+                                            <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
+                                                <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
                                                     {item.genre}
                                                 </span>
                                             </div>
@@ -195,7 +195,7 @@ const VideosPage = () => {
 
                             {/* khung nội dung */}
                             {data.map(item => (
-                                <RouterLink to={`/original/series`}>
+                                <RouterLink to={`/video/series`}>
                                     <li
                                         className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                         key={item.id}
@@ -231,8 +231,8 @@ const VideosPage = () => {
                                                 </div>
                                             </div>
 
-                                            <div className="w-full h-[30px] bg-white bg-opacity-80 rounded-md">
-                                                <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
+                                            <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
+                                                <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
                                                     {item.genre}
                                                 </span>
                                             </div>
