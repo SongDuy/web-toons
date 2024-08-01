@@ -18,13 +18,12 @@ const PopularOriginalsAndVideosPage = () => {
 
     return (
         <div className="w-full h-[560px]">
-
-            {/* Phần hiển thị nội dung */}
+ {/* Phần hiển thị các series truyện và video mới hạn cao */}
+            
             <div className="w-full h-full bg-white flex gap-5 items-center justify-center px-[210px]">
 
-                {/* Phần hiển thị các series truyện và video mới hạn cao */}
+               {/* Phần hiển thị nội dung */}
                 <div className="w-1/3 flex flex-wrap ">
-
                     {/* Phần tiêu đề */}
                     <div className="w-full px-2 py-5 flex items-center border-b">
                         <div className="mr-auto">
@@ -38,7 +37,7 @@ const PopularOriginalsAndVideosPage = () => {
                             <button className="w-[80px] h-[30px] px-5 bg-green-500 text-white font-semibold rounded-md flex items-center justify-center">
                                 Originals
                             </button>
-                            <button className="w-[80px] h-[30px] bg-gray-100 font-semibold rounded-md flex items-center justify-center">
+                            <button className="w-[80px] h-[30px] bg-gray-100 font-semibold rounded-md hover:text-green-500 flex items-center justify-center">
                                 Videos
                             </button>
                         </div>
@@ -87,7 +86,6 @@ const PopularOriginalsAndVideosPage = () => {
                             ))}
                         </ul>
                     </div>
-
                 </div>
 
                 {/* Phần hiển thị các series truyện mới hạn cao theo thể loại */}
