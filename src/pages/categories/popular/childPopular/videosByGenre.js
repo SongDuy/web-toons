@@ -63,7 +63,7 @@ const VideosByGenrePage = () => {
                 </ul>
             </div>
 
-            <div className="h-full mx-[160px] gap-5 flex items-center justify-center">
+            <div className="h-full ml-[160px] mr-[200px] flex items-center justify-center">
 
                 {/* Hiển thị top 1 */}
                 <Link
