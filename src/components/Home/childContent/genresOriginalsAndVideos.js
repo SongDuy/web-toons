@@ -6,7 +6,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import { Link } from 'react-router-dom';
 
-const GenresPage = () => {
+const GenresOriginalsAndVideosPage = () => {
 
     const genres = ['Drama', 'Fantasy', 'Comedy', 'Action', 'Slice Of Life', 'Romance', 'Superhero', 'Sci-Fi', 'Thriller', 'Supernatural', 'Mystery', 'Sports', 'Historical', 'Heartwarming', 'Horror', 'Informative', 'School', 'Animals', 'Zombies', 'Short Story',];
     genres.sort((a, b) => a.localeCompare(b));
@@ -150,4 +150,4 @@ const GenresPage = () => {
     );
 }
 
-export default GenresPage;
+export default GenresOriginalsAndVideosPage;

@@ -3,8 +3,8 @@ import React from 'react';
 import WeekdayOriginalsAndVideosPage from './childContent/weekdayOriginalsAndVideos';
 import NewToOriginalsPage from './childContent/newToOriginals';
 import NewToVideosPage from './childContent/newToVideos';
-import GenresPage from './childContent/genres';
-import PopularPage from './childContent/popular';
+import GenresOriginalsAndVideosPage from './childContent/genresOriginalsAndVideos';
+import PopularOriginalsAndVideosPage from './childContent/popularOriginalsAndVideos';
 
 const ContentPage = () => {
 
@@ -28,10 +28,10 @@ const ContentPage = () => {
             <NewToVideosPage />
 
             {/* Phần hiển thị các series truyện và video theo thể loại mới */}
-            <GenresPage />
+            <GenresOriginalsAndVideosPage />
 
             {/* Phần hiển thị các series truyện và video phổ biến*/}
-            <PopularPage />
+            <PopularOriginalsAndVideosPage />
 
         </div >
     );
