@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Element } from 'react-scroll';
 
-import NewTrendingPage from './newTrending';
-import OriginalsByGenrePage from './originalsByGenre';
-import VideosByGenrePage from './videosByGenre';
+import NewTrendingPage from './childPopular/newTrending';
+import OriginalsByGenrePage from './childPopular/originalsByGenre';
+import VideosByGenrePage from './childPopular/videosByGenre';
 
 const PopularPage = () => {
 

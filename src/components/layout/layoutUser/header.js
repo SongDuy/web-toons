@@ -117,7 +117,7 @@ const HeaderPage = () => {
                     >
                         <Link to={`/create/original`}>
                             <MenuItem
-                                onClose={handleClose}
+                                onClick={handleClose}
                                 className="flex gap-x-1"
                             >
                                 <PictureAsPdfOutlinedIcon />
@@ -127,7 +127,7 @@ const HeaderPage = () => {
 
                         <Link to={`/create/video`}>
                             <MenuItem
-                                onClose={handleClose}
+                                onClick={handleClose}
                                 className="flex gap-x-1"
                             >
                                 <VideoCallOutlinedIcon />
