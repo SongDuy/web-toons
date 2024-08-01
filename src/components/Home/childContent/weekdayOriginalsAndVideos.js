@@ -5,6 +5,9 @@ import { enUS } from 'date-fns/locale';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 import { Link } from 'react-router-dom';
 
@@ -56,6 +59,17 @@ const WeekdayOriginalsAndVideosPage = () => {
 
     const filteredData = data.filter(data => data.dayOfWeek === currentDay);
 
+    // Điều hướng đến trang truyện và videos
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+
     return (
         <div className="w-full h-[560px]">
             {/* Phần hiển thị nội dung theo thứ trong tuần */}
@@ -74,14 +88,39 @@ const WeekdayOriginalsAndVideosPage = () => {
                     ))}
 
                 </ul>
-                <Link to={`/originals`}>
-                    <div
-                        className="w-[150px] h-[60px] px-5 uppercase font-semibold text-lg text-gray-400 border-l-2 border-gray-200 hover:text-green-500 cursor-pointer flex items-center justify-center"
+                <div className="h-full pl-10 flex items-center justify-center">
+                    <Button
+                        id="basic-button"
+                        aria-controls={open ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}
                     >
-                        More
-                        <NavigateNextIcon />
-                    </div>
-                </Link>
+                        <span className='w-full h-full uppercase font-semibold text-md text-gray-400 hover:text-green-500 flex items-center justify-center'>
+                            More
+                            <NavigateNextIcon />
+                        </span>
+
+                    </Button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <Link to={`/originals`}>
+                            <MenuItem onClick={handleClose}>Originals</MenuItem>
+                        </Link>
+
+                        <Link to={`/videos`}>
+                            <MenuItem onClick={handleClose}>Videos</MenuItem>
+                        </Link>
+
+                    </Menu>
+                </div>
             </div>
             <div className="w-full h-[500px] py-[30px] flex justify-center">
                 <ul className="grid grid-cols-5 gap-4">
