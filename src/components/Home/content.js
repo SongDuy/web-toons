@@ -1,8 +1,8 @@
 import React from 'react';
 
 import WeekdayOriginalsAndVideosPage from './childContent/weekdayOriginalsAndVideos';
-import NewToOriginalsPage from './childContent/newToVideos';
-import NewToVideosPage from './childContent/newToOriginals';
+import NewToOriginalsPage from './childContent/newToOriginals';
+import NewToVideosPage from './childContent/newToVideos';
 import GenresPage from './childContent/genres';
 import PopularPage from './childContent/popular';
 
@@ -32,7 +32,7 @@ const ContentPage = () => {
 
             {/* Phần hiển thị các series truyện và video phổ biến*/}
             <PopularPage />
-            
+
         </div >
     );
 }

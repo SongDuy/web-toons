@@ -4,7 +4,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import { Link } from 'react-router-dom';
 
-const NewToOriginalsPage = () => {
+const NewToVideosPage = () => {
 
     const data = [
         { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Mon day', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", status: "original" },
@@ -100,4 +100,4 @@ const NewToOriginalsPage = () => {
     );
 }
 
-export default NewToOriginalsPage;
+export default NewToVideosPage;
