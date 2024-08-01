@@ -28,7 +28,8 @@ const PopularPage = () => {
         };
     }, []);
 
-    //new 
+    //Chọn nội dung theo tiêu đề
+    const [selectedTitle, setSelectedTitle] = useState("new & trending");
 
     return (
         <div>
@@ -38,25 +39,28 @@ const PopularPage = () => {
                 {/* Hiển thị tiêu đề */}
                 <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-50' : ''}`}>
                     <ul
-                        className="flex gap-[70px]"
+                        className="h-full flex gap-[70px]"
                     >
                         <Link to="section1" smooth={true} duration={500}>
                             <li
-                                className="h-[60px] uppercase font-semibold text-md text-black hover:text-black cursor-pointer flex items-center justify-center"
+                                onClick={() => setSelectedTitle("new & trending")}
+                                className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "new & trending" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                             >
                                 NEW & TRENDING
                             </li>
                         </Link>
                         <Link to="section2" smooth={true} duration={500}>
                             <li
-                                className="h-[60px] uppercase font-semibold text-md text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
+                                onClick={() => setSelectedTitle("originals by genre")}
+                                className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "originals by genre" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                             >
                                 ORIGINALS BY GENRE
                             </li>
                         </Link>
                         <Link to="section3" smooth={true} duration={500}>
                             <li
-                                className="h-[60px] uppercase font-semibold text-md text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
+                                onClick={() => setSelectedTitle("videos by genre")}
+                                className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "videos by genre" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                             >
                                 VIDEOS BY GENRE
                             </li>

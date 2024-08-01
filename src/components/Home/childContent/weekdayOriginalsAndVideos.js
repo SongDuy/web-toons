@@ -67,7 +67,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                         <li
                             key={day}
                             onClick={() => handleSelectDay(day)}
-                            className={`w-[120px] h-[60px] uppercase font-semibold text-md text-black hover:text-green-500 cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-green-500 text-white hover:text-white' : ''}`}
+                            className={`w-[120px] h-[60px] uppercase font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-green-500 text-white hover:text-white' : 'bg-white text-black hover:text-green-500 '}`}
                         >
                             {day}
                         </li>

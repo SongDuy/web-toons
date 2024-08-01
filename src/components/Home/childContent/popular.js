@@ -75,7 +75,7 @@ const PopularPage = () => {
                                             />
                                         </div>
 
-                                        <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
+                                        <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
                                             <span className="mx-3 text-xl text-white font-bold">
                                                 {item.number}
                                             </span>
@@ -119,7 +119,7 @@ const PopularPage = () => {
                                             />
                                         </div>
 
-                                        <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
+                                        <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
                                             <span className="mx-3 text-xl text-white font-bold">
                                                 {item.number}
                                             </span>
@@ -165,7 +165,7 @@ const PopularPage = () => {
                                             />
                                         </div>
 
-                                        <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
+                                        <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
                                             <span className="mx-3 text-xl text-white font-bold">
                                                 {item.number}
                                             </span>

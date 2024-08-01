@@ -77,21 +77,28 @@ const VideosPage = () => {
 
     const filteredData = data.filter(data => data.dayOfWeek === currentDay);
 
-    //new
+    //Chọn nội dung theo tiêu đề
+    const [selectedTitle, setSelectedTitle] = useState("ongoing");
 
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
 
             <div className={`w-full h-[70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-50' : ''}`}>
-                <ul className="flex gap-10">
+                <ul className="h-full flex gap-10">
                     <ScrollLink to="section1" smooth={true} duration={500}>
-                        <li className="uppercase font-semibold text-md text-black hover:text-black cursor-pointer flex items-center justify-center">
+                        <li
+                            onClick={() => setSelectedTitle("ongoing")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "ongoing" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                        >
                             ONGOING
                         </li>
                     </ScrollLink >
 
                     <ScrollLink to="section2" smooth={true} duration={500}>
-                        <li className="uppercase font-semibold text-md text-gray-400 hover:text-black cursor-pointer flex items-center justify-center">
+                        <li
+                            onClick={() => setSelectedTitle("completed")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "completed" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                        >
                             COMPLETED
                         </li>
                     </ScrollLink >
@@ -113,7 +120,7 @@ const VideosPage = () => {
                                 <li
                                     key={day}
                                     onClick={() => handleSelectDay(day)}
-                                    className={`w-[150px] h-[60px] uppercase shadow rounded-xl font-semibold text-md text-black hover:text-green-500 cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-green-500 text-white hover:text-white' : ''}`}
+                                    className={`w-[150px] h-[60px] uppercase shadow rounded-xl font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-green-500 text-white hover:text-white' : 'bg-white text-black hover:text-green-500'}`}
                                 >
                                     {day}
                                 </li>
