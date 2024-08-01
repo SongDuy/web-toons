@@ -44,42 +44,45 @@ const GenresOriginalsAndVideosPage = () => {
 
     return (
         <div className="w-full h-[630px]">
-            <div className="w-full h-[130px] bg-gray-100 flex items-center justify-center">
-                <ul
-                    className="w-full gap-[120px] bg-gray-100"
-                >
-                    <Link to={`/genres`}>
-                        <li
-                            className="w-full h-[60px] bg-white border-b-2 uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
-                        >
-                            GENRES
-                            <NavigateNextIcon />
-                        </li>
-                    </Link>
 
-                    <li
-                        className="w-full h-[70px] bg-gray-100 uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+            <div className="w-full h-[130px] bg-gray-100 flex flex-wrap items-center justify-center">
+                {/* Hiển thị tiêu đề */}
+                <div className="w-full h-[60px]">
+                    <ul
+                        className="w-full h-full bg-gray-100"
                     >
-                        <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                            <ul
-                                class="grid grid-cols-10 gap-x-2 gap-y-2 pt-8"
+                        <Link to={`/genres`}>
+                            <li
+                                className="w-full h-[60px] bg-white border-b-2 uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
                             >
-                                {/* khung nội dung */}
-                                {genres.map(genre => (
-                                    <li
-                                        key={genre}
-                                        onClick={() => setSelectedGenre(genre)}
-                                        className={`uppercase font-semibold shadow rounded px-2 py-2 text-xs text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedGenre === genre ? 'text-gray-900' : ''}`}
-                                    >
-                                        {genre}
-                                    </li>
-                                ))}
+                                GENRES
+                                <NavigateNextIcon />
+                            </li>
+                        </Link>
+                    </ul>
+                </div>
 
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+                {/* Hiển thị thể loại */}
+                <div className="w-full h-[70px] bg-gray-100 flex items-center justify-center">
+                    <ul
+                        class="grid grid-cols-10 gap-x-2 gap-y-2 pt-8"
+                    >
+                        {/* khung nội dung */}
+                        {genres.map(genre => (
+                            <li
+                                key={genre}
+                                onClick={() => setSelectedGenre(genre)}
+                                className={`uppercase font-semibold shadow rounded px-2 py-2 text-[11px] text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedGenre === genre ? 'text-gray-900' : ''}`}
+                            >
+                                {genre}
+                            </li>
+                        ))}
+
+                    </ul>
+                </div>
             </div>
+
+            {/* Hiển thị nội dung thể loại */}
             <div className="w-full h-[500px] py-[30px] flex justify-center">
                 <ul className="grid grid-cols-5 gap-4">
                     {/* khung nội dung */}
