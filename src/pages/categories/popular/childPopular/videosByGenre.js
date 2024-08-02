@@ -41,9 +41,9 @@ dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 
 const VideosByGenrePage = () => {
     return (
-        <div className="w-full h-full pt-[80px]">
+        <div className="w-full h-full pt-[70px]">
 
-            <div className="mx-[200px] pb-5 flex items-center">
+            <div className="h-[70px] mx-[200px] flex items-center">
                 <span className="uppercase font-semibold text-xl">VIDEOS BY GENRE</span>
             </div>
 
@@ -74,7 +74,7 @@ const VideosByGenrePage = () => {
                         className="w-full h-full flex justify-center cursor-pointer"
                     >
                         <div className="px-[45px]">
-                            <div className="w-[500px] h-[450px] rounded-xl bg-green-500 flex items-center justify-center relative">
+                            <div className="w-[500px] h-[500px] rounded-xl bg-green-500 flex items-center justify-center relative">
                                 <img
                                     src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                     alt="img"
