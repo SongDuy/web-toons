@@ -108,8 +108,13 @@ const VideosPage = () => {
             <ScrollElement name="section1" >
                 <div className="w-full h-full pt-[80px]">
                     <div className="mx-[160px] pb-5 border-b-2 flex items-center">
-                        <span className="font-semibold text-md">Ongoing Series</span>
-                        <span className="ml-auto text-md flex items-center justify-center gap-2"> by Popularity <CheckIcon /> </span>
+                        <span className="font-semibold text-md">
+                            Ongoing Series
+                        </span>
+                        <span className="ml-auto text-md flex items-center justify-center gap-1">
+                            by Popularity
+                            <CheckIcon />
+                        </span>
                     </div>
 
                     <div className="h-[70px] mx-[160px] my-3 flex items-center justify-center">

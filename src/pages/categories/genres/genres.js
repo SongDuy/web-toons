@@ -85,8 +85,13 @@ const GenresPage = () => {
 
                 <div className="w-full h-full">
                     <div className="h-[70px] mx-[160px] border-b-2 flex items-center">
-                        <span className="font-semibold text-md">{selectedGenre}</span>
-                        <span className="ml-auto text-md flex items-center justify-center gap-2"> All <CheckIcon /> </span>
+                        <span className="font-semibold text-md">
+                            {selectedGenre}
+                        </span>
+                        <span className="ml-auto text-md flex items-center justify-center gap-1">
+                            All
+                            <CheckIcon />
+                        </span>
                     </div>
 
                     <div className="w-full h-full py-5 flex items-center justify-center">

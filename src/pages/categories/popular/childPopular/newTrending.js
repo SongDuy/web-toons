@@ -1,7 +1,5 @@
 import React from 'react';
 
-import CheckIcon from '@mui/icons-material/Check';
-
 import { Link } from 'react-router-dom';
 
 const dataPopular = [
@@ -22,12 +20,14 @@ const NewTrendingPage = () => {
 
             <div className="mx-[200px] pb-5 flex items-center">
                 <span className="uppercase font-semibold text-xl">NEW & TRENDING</span>
-                <span className="ml-auto text-green-500 cursor-pointer mr-2">
-                            ALL
-                        </span>
-                        <span className="text-green-500 cursor-pointer">
-                            <CheckIcon />
-                        </span>
+                <div className="ml-auto flex gap-2 cursor-pointer">
+                    <button className="w-[80px] h-[30px] px-5 bg-green-500 text-white font-semibold rounded-md flex items-center justify-center">
+                        Originals
+                    </button>
+                    <button className="w-[80px] h-[30px] bg-gray-100 font-semibold rounded-md hover:text-green-500 flex items-center justify-center">
+                        Videos
+                    </button>
+                </div>
             </div>
 
             <div className="h-full ml-[160px] mr-[200px] flex items-center justify-center">
