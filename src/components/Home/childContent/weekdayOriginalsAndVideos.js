@@ -52,7 +52,6 @@ const WeekdayOriginalsAndVideosPage = () => {
         setCurrentDay(spacedDay);
     }, []);
 
-
     const handleSelectDay = (day) => {
         setCurrentDay(day);
     };
@@ -127,7 +126,7 @@ const WeekdayOriginalsAndVideosPage = () => {
 
                     {/* khung nội dung */}
                     {filteredData.slice(0, 10).map((item) => (
-                        <Link to={`/original/series`}>
+                        <Link to={`/original/series`} className="w-[210px] h-[210px]" >
                             <li
                                 className="w-[210px] h-[210px] rounded-xl bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                 key={item.id}

@@ -51,7 +51,7 @@ const NewToVideosPage = () => {
                 <ul className="grid grid-cols-5 gap-4">
                     {/* khung nội dung */}
                     {data.slice(0, 10).map((item) => (
-                        <Link to={`/video/series`}>
+                        <Link to={`/video/series`} className="w-[210px] h-[210px]" >
                             <li
                                 className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                 key={item.id}
