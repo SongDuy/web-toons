@@ -73,7 +73,7 @@ const GenresPage = () => {
                         <li
                             key={genre}
                             onClick={() => setSelectedGenre(genre)}
-                            className={`uppercase font-semibold xs:text-[7px] sm:text-[10px] md:text-[10px] lg:text-sm xl:text-sm 2xl:text-sm 3xl:text-sm text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedGenre === genre ? 'text-gray-900' : ''}`}
+                            className={`uppercase font-semibold xs:text-[7px] sm:text-[10px] md:text-[12px] lg:text-sm xl:text-sm 2xl:text-sm 3xl:text-sm text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedGenre === genre ? 'text-gray-900' : ''}`}
                         >
                             {genre}
                         </li>
