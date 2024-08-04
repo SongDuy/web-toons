@@ -18,7 +18,7 @@ const NewTrendingPage = () => {
     return (
         <div className="w-full h-full pt-[70px]">
 
-            <div className="h-[70px] mx-[200px] flex items-center">
+            <div className="h-[70px] flex items-center">
                 <span className="uppercase font-semibold text-xl">NEW & TRENDING</span>
                 <div className="ml-auto flex gap-2 cursor-pointer">
                     <button className="w-[80px] h-[30px] px-5 bg-green-500 text-white font-semibold rounded-md flex items-center justify-center">
@@ -30,19 +30,20 @@ const NewTrendingPage = () => {
                 </div>
             </div>
 
-            <div className="h-full ml-[160px] mr-[200px] flex items-center justify-center">
+            <div className="w-full flex grid grid-cols-2">
 
                 {/* Hien thị top 1 */}
                 <Link
                     to={`/original/series`}
-                    className="w-1/2 h-[815px] bg-white py-1"
+                    className="h-[815px] bg-white py-1"
                     title="Visit"
                 >
                     <div
-                        className="w-full h-full flex justify-center cursor-pointer ">
+                        className="w-[500px] h-full"
+                    >
 
-                        <div className="px-[45px]">
-                            <div className="w-[500px] h-[500px] rounded-md bg-green-500 flex items-center justify-center relative">
+                        <div className="w-full h-full">
+                            <div className="w-[500px] mr-auto h-[500px] rounded-md bg-green-500 flex items-center justify-center relative">
                                 <img
                                     src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                     alt="img"
@@ -104,7 +105,7 @@ const NewTrendingPage = () => {
                 </Link>
 
                 {/* Hien thị danh sách */}
-                <div className="w-1/2 h-[815px] bg-white">
+                <div className="w-full h-[815px] bg-white">
                     <div className="w-full h-full">
                         <ul className="w-full h-full ">
 

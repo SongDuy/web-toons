@@ -105,10 +105,10 @@ const VideosPage = () => {
                 </ul>
             </div>
 
-            <div className="w-full h-full">
+            <div className="h-full px-[160px]">
                 <ScrollElement name="section1" >
                     <div className="w-full h-full pt-[70px]">
-                        <div className="h-[70px] mx-[160px] border-b-2 flex items-center">
+                        <div className="h-[70px] border-b-2 flex items-center">
                             <span className="font-semibold text-md">
                                 Ongoing Series
                             </span>
@@ -118,7 +118,7 @@ const VideosPage = () => {
                             </span>
                         </div>
 
-                        <div className="h-[70px] mx-[160px] my-3 flex items-center justify-center">
+                        <div className="h-[70px] my-3 flex items-center justify-center">
                             <ul
                                 className="flex gap-2"
                             >
@@ -199,7 +199,7 @@ const VideosPage = () => {
 
                 <ScrollElement name="section2" >
                     <div className="w-full h-full pt-[70px]">
-                        <div className="h-[70px] mx-[160px] border-b-2 flex items-center">
+                        <div className="h-[70px] border-b-2 flex items-center">
                             <span className="font-semibold text-md">Completed Series</span>
                         </div>
 

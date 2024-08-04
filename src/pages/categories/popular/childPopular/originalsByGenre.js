@@ -43,11 +43,11 @@ const OriginalsByGenrePage = () => {
     return (
         <div className="w-full h-full pt-[70px]">
 
-            <div className="h-[70px] mx-[200px] flex items-center">
+            <div className="h-[70px] flex items-center">
                 <span className="uppercase font-semibold text-xl">ORIGINALS BY GENRE</span>
             </div>
 
-            <div className="h-[70px] mx-[200px] mb-5 bg-white flex items-center justify-center border-t border-b">
+            <div className="h-[70px] mb-5 bg-white flex items-center justify-center border-t border-b">
                 <ul
                     class="grid grid-cols-10 gap-x-4 gap-y-2"
                 >
@@ -62,18 +62,21 @@ const OriginalsByGenrePage = () => {
 
                 </ul>
             </div>
-            <div className="h-full ml-[160px] mr-[200px] flex items-center justify-center">
+
+            <div className="w-full flex grid grid-cols-2">
 
                 {/* Hien thị top 1 */}
                 <Link
                     to={`/original/series`}
-                    className="w-1/2 h-[815px] bg-white py-1"
+                    className="h-[815px] bg-white py-1"
+                    title="Visit"
                 >
                     <div
-                        className="w-full h-full flex justify-center cursor-pointer"
+                        className="w-[500px] h-full"
                     >
-                        <div className="px-[45px]">
-                            <div className="w-[500px] h-[500px] rounded-md bg-green-500 flex items-center justify-center relative">
+
+                        <div className="w-full h-full">
+                            <div className="w-[500px] mr-auto h-[500px] rounded-md bg-green-500 flex items-center justify-center relative">
                                 <img
                                     src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
                                     alt="img"
@@ -131,12 +134,11 @@ const OriginalsByGenrePage = () => {
 
                             </div>
                         </div>
-
                     </div>
                 </Link>
 
-                {/* Hiển thị danh sách */}
-                <div className="w-1/2 h-[815px] bg-white">
+                {/* Hien thị danh sách */}
+                <div className="w-full h-[815px] bg-white">
                     <div className="w-full h-full">
                         <ul className="w-full h-full ">
 
