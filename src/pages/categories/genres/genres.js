@@ -66,7 +66,7 @@ const GenresPage = () => {
         <div className="w-full h-full pb-10 bg-gray-100">
 
             <div className={`w-full min-h-[70px] border bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-50' : ''}`}>
-                <ul class="grid xs:grid-cols-5 sm:grid-cols-7 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-10 2xl:grid-cols-10 3xl:grid-cols-10 gap-x-4 gap-y-2">
+                <ul class="grid xs:grid-cols-5 sm:grid-cols-7 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-10 2xl:grid-cols-10 3xl:grid-cols-12 gap-x-4 gap-y-2">
 
                     {/* khung nội dung */}
                     {genres.map(genre => (
@@ -82,7 +82,7 @@ const GenresPage = () => {
                 </ul>
             </div>
 
-            <div className="h-full xs:px-[10px] sm:px-[20px] md:px-[30px] lg:px-[10px] xl:px-[160px] 2xl:px-[160px] 3xl:px-[160px]">
+            <div className="h-full xs:px-[10px] sm:px-[60px] md:px-[80px] lg:px-[100px] xl:px-[135px] 2xl:px-[160px] 3xl:px-[200px]">
                 <div className="h-[70px] border-b-2 flex items-center">
                     <span className="font-semibold text-md">
                         {selectedGenre}
@@ -95,7 +95,7 @@ const GenresPage = () => {
 
                 <div className="w-full h-full py-5 flex items-center justify-center">
 
-                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-5 gap-2">
+                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-2">
 
                         {/* khung nội dung */}
                         {filteredGenreData.map(item => (
