@@ -123,7 +123,7 @@ const GenresPage = () => {
                                             </span>
                                         </div>
 
-                                        <div className="w-full mb-[45px] mr-auto">
+                                        <div className="w-full mb-[40px] mr-auto">
                                             <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
                                                 <FavoriteIcon />
                                                 {item.like}

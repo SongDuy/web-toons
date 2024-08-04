@@ -117,7 +117,7 @@ const OriginalsPage = () => {
                             </span>
                         </div>
 
-                        <div className="h-[70px] my-3 flex items-center justify-center">
+                        <div className="h-[70px] pt-5 flex items-center justify-center">
                             <ul
                                 className="flex gap-2"
                             >
@@ -134,7 +134,7 @@ const OriginalsPage = () => {
                             </ul>
                         </div>
 
-                        <div className="w-full h-full py-3 flex items-center justify-center">
+                        <div className="w-full h-full py-5 flex items-center justify-center">
                             <ul className="grid grid-cols-5 gap-2">
 
                                 {/* khung nội dung */}
@@ -162,7 +162,7 @@ const OriginalsPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-full mb-[45px] mr-auto">
+                                                <div className="w-full mb-[40px] mr-auto">
                                                     <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
                                                         <FavoriteIcon />
                                                         {item.like}
@@ -177,7 +177,7 @@ const OriginalsPage = () => {
                                                     </div>
                                                 </div>
 
-                                                <div className="w-full h-[30px] bg-white bg-opacity-80 rounded-md">
+                                                <div className="w-full h-[30px] mt-auto bg-white bg-opacity-80 rounded-md">
                                                     <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
                                                         {item.genre}
                                                     </span>
@@ -230,7 +230,7 @@ const OriginalsPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-full mb-[45px] mr-auto">
+                                                <div className="w-full mb-[40px] mr-auto">
                                                     <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
                                                         <FavoriteIcon />
                                                         {item.like}
@@ -243,7 +243,7 @@ const OriginalsPage = () => {
                                                     </div>
                                                 </div>
 
-                                                <div className="w-full h-[30px] bg-white bg-opacity-80 rounded-md">
+                                                <div className="w-full h-[30px] mt-auto bg-white bg-opacity-80 rounded-md">
                                                     <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
                                                         {item.genre}
                                                     </span>

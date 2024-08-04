@@ -118,7 +118,7 @@ const VideosPage = () => {
                             </span>
                         </div>
 
-                        <div className="h-[70px] my-3 flex items-center justify-center">
+                        <div className="h-[70px] pt-5 flex items-center justify-center">
                             <ul
                                 className="flex gap-2"
                             >
@@ -135,16 +135,15 @@ const VideosPage = () => {
                             </ul>
                         </div>
 
-                        <div className="w-full h-full py-3 flex items-center justify-center">
+                        <div className="w-full h-full py-5 flex items-center justify-center">
                             <ul className="grid grid-cols-5 gap-2">
 
                                 {/* khung nội dung */}
                                 {filteredData.map(item => (
                                     <RouterLink to={`/video/series`}>
                                         <li
-                                            key={item.id}
                                             className="w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
-
+                                            key={item.id}
                                         >
 
                                             <img
@@ -164,7 +163,7 @@ const VideosPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-full mb-[45px] mr-auto">
+                                                <div className="w-full mb-[40px] mr-auto">
                                                     <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
                                                         <FavoriteIcon />
                                                         {item.like}
@@ -179,7 +178,7 @@ const VideosPage = () => {
                                                     </div>
                                                 </div>
 
-                                                <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
+                                                <div className="w-full h-[30px] mt-auto bg-gray-300 bg-opacity-80 rounded-md">
                                                     <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
                                                         {item.genre}
                                                     </span>
@@ -232,7 +231,7 @@ const VideosPage = () => {
                                                     </span>
                                                 </div>
 
-                                                <div className="w-full mb-[45px] mr-auto">
+                                                <div className="w-full mb-[40px] mr-auto">
                                                     <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
                                                         <FavoriteIcon />
                                                         {item.like}
@@ -245,7 +244,7 @@ const VideosPage = () => {
                                                     </div>
                                                 </div>
 
-                                                <div className="w-full h-[30px] bg-gray-300 bg-opacity-80 rounded-md">
+                                                <div className="w-full h-[30px] mt-auto bg-gray-300 bg-opacity-80 rounded-md">
                                                     <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
                                                         {item.genre}
                                                     </span>
