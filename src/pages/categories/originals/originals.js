@@ -104,8 +104,8 @@ const OriginalsPage = () => {
                 </ul>
             </div>
 
-            <div className="w-full h-full flex justify-center">
-                <div className="max-w-full h-full">
+            <div className="w-full h-full ">
+                <div className="max-w-[1200px] h-full ml-auto mr-auto">
 
                     <ScrollElement name="section1">
                         <div className="max-w-full h-full pt-[70px]">

@@ -66,8 +66,8 @@ const PopularPage = () => {
                 </ul>
             </div>
 
-            <div className="w-full h-full flex justify-center">
-                <div className="max-w-[1120px] h-full ">
+            <div className="w-full h-full ">
+            <div className="max-w-[1120px] h-full border ml-auto mr-auto">
 
                     {/* Hiển thị NEW & TRENDING */}
                     <Element name="section1" className="element">

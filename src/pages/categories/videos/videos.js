@@ -105,165 +105,165 @@ const VideosPage = () => {
                 </ul>
             </div>
 
-            <div className="w-full h-full flex justify-center">
-            <div className="max-w-full h-full ">
-                <ScrollElement name="section1" >
-                    <div className="w-full h-full pt-[70px]">
-                        <div className="h-[70px] border-b-2 flex items-center">
-                            <span className="font-semibold text-md">
-                                Ongoing Series
-                            </span>
-                            <span className="ml-auto text-md flex items-center justify-center gap-1">
-                                by Popularity
-                                <CheckIcon />
-                            </span>
-                        </div>
+            <div className="w-full h-full ">
+                <div className="max-w-[1200px] h-full ml-auto mr-auto">
+                    <ScrollElement name="section1" >
+                        <div className="w-full h-full pt-[70px]">
+                            <div className="h-[70px] border-b-2 flex items-center">
+                                <span className="font-semibold text-md">
+                                    Ongoing Series
+                                </span>
+                                <span className="ml-auto text-md flex items-center justify-center gap-1">
+                                    by Popularity
+                                    <CheckIcon />
+                                </span>
+                            </div>
 
-                        <div className="h-[70px] mt-5 flex items-center justify-center">
-                            <ul
-                                className="w-11/12 grid grid-cols-7 gap-2"
-                            >
-                                {days.map(day => (
-                                    <li
-                                        key={day}
-                                        onClick={() => handleSelectDay(day)}
-                                        className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded-xl font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-green-500 text-white hover:text-white' : 'bg-white text-black hover:text-green-500'}`}
-                                    >
-                                        {day}
-                                    </li>
-                                ))}
-
-                            </ul>
-                        </div>
-
-                        <div className="w-full h-full py-5 flex items-center justify-center">
-                            <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
-
-                                {/* khung nội dung */}
-                                {filteredData.map(item => (
-                                    <RouterLink to={`/video/series`}>
+                            <div className="h-[70px] mt-5 flex items-center justify-center">
+                                <ul
+                                    className="w-11/12 grid grid-cols-7 gap-2"
+                                >
+                                    {days.map(day => (
                                         <li
-                                            className="max-w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
-                                            key={item.id}
+                                            key={day}
+                                            onClick={() => handleSelectDay(day)}
+                                            className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded-xl font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-green-500 text-white hover:text-white' : 'bg-white text-black hover:text-green-500'}`}
                                         >
+                                            {day}
+                                        </li>
+                                    ))}
 
-                                            <img
-                                                src={item.img}
-                                                alt="img"
-                                                className="object-fill w-full h-full rounded-md"
-                                            />
+                                </ul>
+                            </div>
 
-                                            <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                            <div className="w-full h-full py-5 flex items-center justify-center">
+                                <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
-                                                <div className="w-full h-[65px] mb-auto overflow-hidden">
-                                                    <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                        {item.name}
-                                                    </span>
-                                                    <span className="text-md leading-[1.2] line-clamp-1">
-                                                        {item.auth}
-                                                    </span>
-                                                </div>
+                                    {/* khung nội dung */}
+                                    {filteredData.map(item => (
+                                        <RouterLink to={`/video/series`}>
+                                            <li
+                                                className="max-w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                                key={item.id}
+                                            >
 
-                                                <div className="w-full mb-[40px] mr-auto">
-                                                    <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
-                                                        <FavoriteIcon />
-                                                        {item.like}
-                                                    </span>
-                                                    <div className="flex mt-2 gap-1">
-                                                        <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                            Up
+                                                <img
+                                                    src={item.img}
+                                                    alt="img"
+                                                    className="object-fill w-full h-full rounded-md"
+                                                />
+
+                                                <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+
+                                                    <div className="w-full h-[65px] mb-auto overflow-hidden">
+                                                        <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                            {item.name}
                                                         </span>
-                                                        <span className="w-[35px] h-[35px] uppercase bg-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                            New
+                                                        <span className="text-md leading-[1.2] line-clamp-1">
+                                                            {item.auth}
                                                         </span>
                                                     </div>
-                                                </div>
 
-                                                <div className="w-full h-[30px] mt-auto bg-gray-300 bg-opacity-80 rounded-md">
-                                                    <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
-                                                        {item.genre}
-                                                    </span>
-                                                </div>
-
-                                            </div>
-
-                                        </li>
-                                    </RouterLink >
-                                ))}
-
-                            </ul>
-
-                        </div>
-                    </div>
-                </ScrollElement >
-
-                <ScrollElement name="section2" >
-                    <div className="w-full h-full pt-[70px]">
-                        <div className="h-[70px] border-b-2 flex items-center">
-                            <span className="font-semibold text-md">Completed Series</span>
-                        </div>
-
-                        <div className="w-full h-full mt-[25px] flex items-center justify-center">
-
-                            <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
-
-                                {/* khung nội dung */}
-                                {data.map(item => (
-                                    <RouterLink to={`/video/series`}>
-                                        <li
-                                            className="max-w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
-                                            key={item.id}
-                                        >
-
-                                            <img
-                                                src={item.img}
-                                                alt="img"
-                                                className="object-fill w-full h-full rounded-md"
-                                            />
-
-                                            <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-
-                                                <div className="w-full h-[65px] mb-auto overflow-hidden">
-                                                    <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                        {item.name}
-                                                    </span>
-                                                    <span className="text-md leading-[1.2] line-clamp-1">
-                                                        {item.auth}
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-full mb-[40px] mr-auto">
-                                                    <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
-                                                        <FavoriteIcon />
-                                                        {item.like}
-                                                    </span>
-                                                    <div className="flex mt-2 gap-1">
-                                                        <span className="w-[35px] h-[35px] uppercase bg-white text-green-500 text-xs font-semibold rounded-full flex items-center justify-center">
-                                                            End
+                                                    <div className="w-full mb-[40px] mr-auto">
+                                                        <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
+                                                            <FavoriteIcon />
+                                                            {item.like}
                                                         </span>
-
+                                                        <div className="flex mt-2 gap-1">
+                                                            <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                                Up
+                                                            </span>
+                                                            <span className="w-[35px] h-[35px] uppercase bg-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                                New
+                                                            </span>
+                                                        </div>
                                                     </div>
+
+                                                    <div className="w-full h-[30px] mt-auto bg-gray-300 bg-opacity-80 rounded-md">
+                                                        <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
+                                                            {item.genre}
+                                                        </span>
+                                                    </div>
+
                                                 </div>
 
-                                                <div className="w-full h-[30px] mt-auto bg-gray-300 bg-opacity-80 rounded-md">
-                                                    <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
-                                                        {item.genre}
-                                                    </span>
-                                                </div>
+                                            </li>
+                                        </RouterLink >
+                                    ))}
 
-                                            </div>
+                                </ul>
 
-                                        </li>
-                                    </RouterLink >
-                                ))}
-
-                            </ul>
-
+                            </div>
                         </div>
-                    </div>
-                </ScrollElement>
+                    </ScrollElement >
+
+                    <ScrollElement name="section2" >
+                        <div className="w-full h-full pt-[70px]">
+                            <div className="h-[70px] border-b-2 flex items-center">
+                                <span className="font-semibold text-md">Completed Series</span>
+                            </div>
+
+                            <div className="w-full h-full mt-[25px] flex items-center justify-center">
+
+                                <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
+
+                                    {/* khung nội dung */}
+                                    {data.map(item => (
+                                        <RouterLink to={`/video/series`}>
+                                            <li
+                                                className="max-w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                                key={item.id}
+                                            >
+
+                                                <img
+                                                    src={item.img}
+                                                    alt="img"
+                                                    className="object-fill w-full h-full rounded-md"
+                                                />
+
+                                                <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+
+                                                    <div className="w-full h-[65px] mb-auto overflow-hidden">
+                                                        <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                            {item.name}
+                                                        </span>
+                                                        <span className="text-md leading-[1.2] line-clamp-1">
+                                                            {item.auth}
+                                                        </span>
+                                                    </div>
+
+                                                    <div className="w-full mb-[40px] mr-auto">
+                                                        <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
+                                                            <FavoriteIcon />
+                                                            {item.like}
+                                                        </span>
+                                                        <div className="flex mt-2 gap-1">
+                                                            <span className="w-[35px] h-[35px] uppercase bg-white text-green-500 text-xs font-semibold rounded-full flex items-center justify-center">
+                                                                End
+                                                            </span>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="w-full h-[30px] mt-auto bg-gray-300 bg-opacity-80 rounded-md">
+                                                        <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
+                                                            {item.genre}
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+
+                                            </li>
+                                        </RouterLink >
+                                    ))}
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </ScrollElement>
+                </div>
             </div>
-</div>
         </div>
     );
 }

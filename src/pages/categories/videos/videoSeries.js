@@ -38,9 +38,9 @@ const VideoSeriesPage = () => {
                 </div>
 
                 <div className="w-full h-full flex items-center justify-center ">
-                    <div className="w-[1200px] h-full flex bg-white pt-5 pb-10">
+                    <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-5 pb-10">
 
-                        <div className="w-8/12 h-full">
+                        <div className="col-span-2 h-full pt-5">
                             <div className="w-full h-[900px] px-3 overflow-y-scroll">
                                 {/* danh sach series */}
                                 <ul className="w-full h-full ">
@@ -98,7 +98,7 @@ const VideoSeriesPage = () => {
 
                         </div>
 
-                        <div className="w-4/12 h-full py-5 px-5">
+                        <div className="h-full py-5 px-5">
 
                             <div className="w-full mb-auto">
                                 <ul className="flex">
@@ -156,13 +156,12 @@ const VideoSeriesPage = () => {
                                         herself sent back in time to her 17-year-old self. As she navigates the
                                         perils and opportunities of palace intrigue, Ariadne must make the most
                                         of her guile and grit to ensure that her tragic future does not repeat itself.
-
                                     </span>
                                 </div>
 
-
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -175,7 +174,7 @@ const VideoSeriesPage = () => {
                         </div>
                         <div className="w-full h-[160px] bg-white my-5 px-5 py-5 rounded-md">
                             <ul className="flex items-center justify-center gap-3">
-                                
+
                                 <li
                                     className="w-1/3 h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
                                 >
