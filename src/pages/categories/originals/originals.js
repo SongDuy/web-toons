@@ -135,7 +135,7 @@ const OriginalsPage = () => {
                         </div>
 
                         <div className="w-full h-full py-5 flex items-center justify-center">
-                            <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-2">
+                            <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-2">
 
                                 {/* khung nội dung */}
                                 {filteredData.map(item => (
@@ -204,7 +204,7 @@ const OriginalsPage = () => {
 
                         <div className="w-full h-full mt-[25px] flex items-center justify-center">
 
-                            <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-2">
+                            <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-2">
 
                                 {/* khung nội dung */}
                                 {data.map(item => (
