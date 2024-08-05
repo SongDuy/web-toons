@@ -38,9 +38,9 @@ const OriginalSeriesPage = () => {
                 </div>
 
                 <div className="w-full h-full flex items-center justify-center ">
-                    <div className="w-[1200px] h-full flex bg-white pt-5 pb-10">
+                    <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-5 pb-10">
 
-                        <div className="w-8/12 h-full">
+                        <div className="col-span-2 h-full pt-5">
                             <div className="w-full h-[900px] px-3 overflow-y-scroll">
                                 {/* danh sach series */}
                                 <ul className="w-full h-full ">
@@ -98,7 +98,7 @@ const OriginalSeriesPage = () => {
 
                         </div>
 
-                        <div className="w-4/12 h-full py-5 px-5">
+                        <div className="h-full py-5 px-5">
 
                             <div className="w-full mb-auto">
                                 <ul className="flex">
@@ -161,6 +161,7 @@ const OriginalSeriesPage = () => {
 
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -178,7 +179,7 @@ const OriginalSeriesPage = () => {
                                     <li
                                         className="w-[380px] h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
                                     >
-                                        
+
                                         <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
                                             <img
                                                 src="https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540"
