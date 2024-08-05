@@ -66,26 +66,27 @@ const PopularPage = () => {
                 </ul>
             </div>
 
-            {/* Hiển thị nội dung */}
-            <div className="h-full px-[200px]">
+            <div className="w-full h-full flex justify-center">
+                <div className="max-w-[1120px] h-full ">
 
-                {/* Hiển thị NEW & TRENDING */}
-                <Element name="section1" className="element">
-                    <NewTrendingPage />
-                </Element>
+                    {/* Hiển thị NEW & TRENDING */}
+                    <Element name="section1" className="element">
+                        <NewTrendingPage />
+                    </Element>
 
-                {/* Hiển thị ORIGINALS BY GENRE */}
-                <Element name="section2" className="element">
-                    <OriginalsByGenrePage />
-                </Element>
+                    {/* Hiển thị ORIGINALS BY GENRE */}
+                    <Element name="section2" className="element">
+                        <OriginalsByGenrePage />
+                    </Element>
 
-                {/* Hiển thị VIDEOS BY GENRE */}
-                <Element name="section3" className="element">
-                    <VideosByGenrePage />
-                </Element>
+                    {/* Hiển thị VIDEOS BY GENRE */}
+                    <Element name="section3" className="element">
+                        <VideosByGenrePage />
+                    </Element>
 
+                </div>
             </div>
-
+            
         </div>
     );
 }

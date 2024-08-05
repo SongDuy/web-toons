@@ -87,87 +87,89 @@ const GenresPage = () => {
                 </ul>
             </div>
 
-            <div className="h-full xs:px-[10px] sm:px-[60px] md:px-[80px] lg:px-[100px] xl:px-[135px] 2xl:px-[160px] 3xl:px-[200px]">
-                <div className="h-[70px] border-b-2 flex items-center">
-                    <span className="font-semibold text-md">
-                        {selectedGenre}
-                    </span>
-                    <span className="ml-auto text-md flex items-center justify-center gap-1">
-                        All
-                        <CheckIcon />
-                    </span>
-                </div>
+            <div className="w-full h-full flex justify-center">
+                <div className="max-w-full h-full ">
+                    <div className="h-[70px] border-b-2 flex items-center">
+                        <span className="font-semibold text-md">
+                            {selectedGenre}
+                        </span>
+                        <span className="ml-auto text-md flex items-center justify-center gap-1">
+                            All
+                            <CheckIcon />
+                        </span>
+                    </div>
 
-                <div className="w-full h-full py-5 flex items-center justify-center">
+                    <div className="w-full h-full py-5 flex items-center justify-center">
 
-                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-2">
+                        <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
-                        {/* khung nội dung */}
-                        {filteredGenreData.map(item => (
-                            <Link to={`/video/series`}>
+                            {/* khung nội dung */}
+                            {filteredGenreData.map(item => (
+                                <Link to={`/video/series`}>
 
-                                <li
-                                    className="max-w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
-                                    key={item.id}
-                                >
+                                    <li
+                                        className="max-w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                        key={item.id}
+                                    >
 
-                                    <img
-                                        src={item.img}
-                                        alt="img"
-                                        className="object-fill w-full h-full rounded-md"
-                                    />
+                                        <img
+                                            src={item.img}
+                                            alt="img"
+                                            className="object-fill w-full h-full rounded-md"
+                                        />
 
-                                    <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                        <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
 
-                                        <div className="w-full h-[65px] mb-auto overflow-hidden">
-                                            <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                {item.name}
-                                            </span>
-                                            <span className="text-md leading-[1.2] line-clamp-1">
-                                                {item.auth}
-                                            </span>
-                                        </div>
-
-                                        <div className="w-full mb-[40px] mr-auto">
-                                            <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
-                                                <FavoriteIcon />
-                                                {item.like}
-                                            </span>
-                                            <div className="flex mt-2 gap-1">
-                                                <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                    Up
+                                            <div className="w-full h-[65px] mb-auto overflow-hidden">
+                                                <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                    {item.name}
                                                 </span>
-                                                <span className="w-[35px] h-[35px] uppercase bg-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                    New
+                                                <span className="text-md leading-[1.2] line-clamp-1">
+                                                    {item.auth}
                                                 </span>
                                             </div>
-                                        </div>
 
-                                        {/*Trong component React của bạn */}
-                                        <div className="w-full h-[30px]">
-                                            {item.status === "original" ? (
-                                                <div className="w-full h-full bg-white bg-opacity-80 rounded-md">
-                                                    <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
-                                                        {item.genre}
+                                            <div className="w-full mb-[40px] mr-auto">
+                                                <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
+                                                    <FavoriteIcon />
+                                                    {item.like}
+                                                </span>
+                                                <div className="flex mt-2 gap-1">
+                                                    <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                        Up
+                                                    </span>
+                                                    <span className="w-[35px] h-[35px] uppercase bg-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                        New
                                                     </span>
                                                 </div>
-                                            ) : item.status === "video" ? (
-                                                <div className="w-full h-full bg-gray-300 bg-opacity-80 rounded-md">
-                                                    <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
-                                                        {item.genre}
-                                                    </span>
-                                                </div>
-                                            ) : null}
+                                            </div>
+
+                                            {/*Trong component React của bạn */}
+                                            <div className="w-full h-[30px]">
+                                                {item.status === "original" ? (
+                                                    <div className="w-full h-full bg-white bg-opacity-80 rounded-md">
+                                                        <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center">
+                                                            {item.genre}
+                                                        </span>
+                                                    </div>
+                                                ) : item.status === "video" ? (
+                                                    <div className="w-full h-full bg-gray-300 bg-opacity-80 rounded-md">
+                                                        <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center">
+                                                            {item.genre}
+                                                        </span>
+                                                    </div>
+                                                ) : null}
+                                            </div>
+
                                         </div>
 
-                                    </div>
+                                    </li>
+                                </Link>
+                            ))}
 
-                                </li>
-                            </Link>
-                        ))}
+                        </ul>
 
-                    </ul>
-
+                    </div>
                 </div>
             </div>
         </div>

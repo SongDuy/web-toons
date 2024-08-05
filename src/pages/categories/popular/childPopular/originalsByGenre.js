@@ -63,7 +63,7 @@ const OriginalsByGenrePage = () => {
                 </ul>
             </div>
 
-            <div className="w-full flex grid grid-cols-2">
+            <div className="w-full grid grid-cols-2">
 
                 {/* Hien thị top 1 */}
                 <Link

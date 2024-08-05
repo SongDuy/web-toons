@@ -65,7 +65,7 @@ const GenresOriginalsAndVideosPage = () => {
                 {/* Hiển thị thể loại */}
                 <div className="w-full min-h-[70px] bg-gray-100 flex items-center justify-center">
                     <ul
-                        class="grid xs:grid-cols-3 sm:grid-cols-7 px-2 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-10 2xl:grid-cols-10 3xl:grid-cols-10 gap-x-2 gap-y-2 pt-8"
+                        class="grid xs:grid-cols-3 sm:grid-cols-7 px-2 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-10 2xl:grid-cols-10 3xl:grid-cols-12 gap-x-2 gap-y-2 pt-8"
                     >
                         {/* khung nội dung */}
                         {genres.map(genre => (

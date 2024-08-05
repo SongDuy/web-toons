@@ -105,7 +105,8 @@ const VideosPage = () => {
                 </ul>
             </div>
 
-            <div className="h-full xs:px-[10px] sm:px-[60px] md:px-[80px] lg:px-[100px] xl:px-[135px] 2xl:px-[160px] 3xl:px-[200px]">
+            <div className="w-full h-full flex justify-center">
+            <div className="max-w-full h-full ">
                 <ScrollElement name="section1" >
                     <div className="w-full h-full pt-[70px]">
                         <div className="h-[70px] border-b-2 flex items-center">
@@ -136,7 +137,7 @@ const VideosPage = () => {
                         </div>
 
                         <div className="w-full h-full py-5 flex items-center justify-center">
-                            <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-2">
+                            <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                 {/* khung nội dung */}
                                 {filteredData.map(item => (
@@ -204,7 +205,7 @@ const VideosPage = () => {
 
                         <div className="w-full h-full mt-[25px] flex items-center justify-center">
 
-                            <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-2">
+                            <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                 {/* khung nội dung */}
                                 {data.map(item => (
@@ -262,7 +263,7 @@ const VideosPage = () => {
                     </div>
                 </ScrollElement>
             </div>
-
+</div>
         </div>
     );
 }
