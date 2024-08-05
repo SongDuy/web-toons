@@ -105,9 +105,9 @@ const OriginalsPage = () => {
             </div>
 
             <div className="w-full h-full flex justify-center">
-                <div className="max-w-full h-full ">
+                <div className="max-w-full h-full">
                     <ScrollElement name="section1">
-                        <div className="w-full h-full pt-[70px]">
+                        <div className="max-w-full h-full pt-[70px]">
                             <div className="h-[70px] border-b-2 flex items-center">
                                 <span className="font-semibold text-md">
                                     Ongoing Series
@@ -262,9 +262,9 @@ const OriginalsPage = () => {
                             </div>
                         </div>
                     </ScrollElement>
+
                 </div>
             </div>
-
 
         </div>
     );
