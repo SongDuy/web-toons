@@ -12,7 +12,7 @@ const ContentPage = () => {
         <div className="w-full h-full bg-gray-100 mb-[50px]">
 
             {/* Phần hiển thị hình quảng cáo */}
-            <div className="w-full h-[500px] bg-green-200">
+            <div className="w-full max-h-[500px] bg-green-200">
                 <img src="https://image.baophapluat.vn/1200x630/Uploaded/2024/gznrxgmabianhgzmath/2022_05_30/doraemon-9528.jpg"
                     className="object-contain w-full h-full rounded-md" alt="img"
                 />

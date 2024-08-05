@@ -34,7 +34,7 @@ const NewToOriginalsPage = () => {
     ];
 
     return (
-        <div className="w-full h-[560px]">
+        <div className="w-full min-h-[560px]">
             <div className="w-full h-[60px] bg-white shadow flex items-center justify-center">
                 <ul
                     className="flex"
@@ -47,13 +47,13 @@ const NewToOriginalsPage = () => {
 
                 </ul>
             </div>
-            <div className="w-full h-[500px] py-[30px] flex justify-center">
-                <ul className="grid grid-cols-5 gap-4">
+            <div className="w-full min-h-[500px] py-[30px] flex justify-center">
+                <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
                     {/* khung nội dung */}
                     {data.slice(0, 10).map((item) => (
-                        <Link to={`/original/series`} className="w-[210px] h-[210px]" >
+                        <Link to={`/original/series`} className="max-w-[210px] h-[210px]" >
                             <li
-                                className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                className="max-w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                 key={item.id}
                             >
 

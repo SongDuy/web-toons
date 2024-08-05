@@ -43,9 +43,9 @@ const GenresOriginalsAndVideosPage = () => {
     const filteredGenreData = data.filter(data => data.genre === selectedGenre);
 
     return (
-        <div className="w-full h-[630px]">
+        <div className="w-full min-h-[630px]">
 
-            <div className="w-full h-[130px] bg-gray-100 flex flex-wrap items-center justify-center">
+            <div className="w-full min-h-[130px] bg-gray-100 flex flex-wrap items-center justify-center">
                 {/* Hiển thị tiêu đề */}
                 <div className="w-full h-[60px]">
                     <ul
@@ -63,9 +63,9 @@ const GenresOriginalsAndVideosPage = () => {
                 </div>
 
                 {/* Hiển thị thể loại */}
-                <div className="w-full h-[70px] bg-gray-100 flex items-center justify-center">
+                <div className="w-full min-h-[70px] bg-gray-100 flex items-center justify-center">
                     <ul
-                        class="grid grid-cols-10 gap-x-2 gap-y-2 pt-8"
+                        class="grid xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-x-2 gap-y-2 pt-8"
                     >
                         {/* khung nội dung */}
                         {genres.map(genre => (
@@ -83,13 +83,13 @@ const GenresOriginalsAndVideosPage = () => {
             </div>
 
             {/* Hiển thị nội dung thể loại */}
-            <div className="w-full h-[500px] py-[30px] flex justify-center">
-                <ul className="grid grid-cols-5 gap-4">
+            <div className="w-full min-h-[500px] py-[30px] flex justify-center">
+                <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
                     {/* khung nội dung */}
                     {filteredGenreData.slice(0, 10).map((item) => (
-                        <Link to={`/original/series`} className="w-[210px] h-[210px]">
+                        <Link to={`/original/series`} className="max-w-[210px] h-[210px]">
                             <li
-                                className="w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                className="max-w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                 key={item.id}
                             >
 
