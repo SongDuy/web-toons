@@ -300,7 +300,7 @@ const SeriesPage = ({ goToEposodes }) => {
                             </div>
                             <div className="w-full py-3 pl-5">
                                 <button onClick={goToEposodes} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    Tiếp theo
+                                    Next Page
                                 </button>
                             </div>
                         </div>
