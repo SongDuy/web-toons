@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
+import logo from '../../../img/logonew.png';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import AddIcon from '@mui/icons-material/Add';
@@ -80,8 +81,9 @@ const DisplayVideoPage = () => {
                     <ul className="w-full h-[30px] flex">
 
                         <li className="w-[550px] flex gap-2 items-center overflow-hidden">
-                            <div className="">
-                                <span className="text-white">Logo</span>
+                            <div>
+                                <img src={logo} alt="Logo của website" className="w-[40px] h-auto rounded-md bg-white" />
+
                             </div>
 
                             <div className="">

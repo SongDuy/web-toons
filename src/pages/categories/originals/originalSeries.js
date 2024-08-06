@@ -30,11 +30,26 @@ const OriginalSeriesPage = () => {
         <div>
 
             <div className="w-full h-full bg-gray-100">
-                {/* Hiển thị ảnh  */}
-                <div className="w-full h-[320px] bg-green-200">
-                    <img src="https://c.wallhere.com/photos/8c/9d/forest_fantasy_art-47466.jpg!d"
+                {/* Hiển thị ảnh nền */}
+                <div className="w-full h-[320px] bg-green-200 relative">
+                    <img src="https://i.redd.it/b5jec682hfk61.jpg"
                         className="object-cover w-full h-full rounded-md" alt="img"
                     />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-full">
+                            <span className="block font-semibold text-xl text-black flex items-center justify-center">
+                                Action
+                            </span>
+
+                            <span className="block font-semibold text-[50px] text-white flex items-center justify-center">
+                                Peace Restaurant
+                            </span>
+
+                            <span className="block font-semibold text-xl text-white flex items-center justify-center">
+                                Lee Nakeum , seewater
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="w-full h-full flex items-center justify-center ">

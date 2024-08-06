@@ -42,7 +42,7 @@ const HeaderPage = () => {
                 className="xs:w-[90px] sm:w-[90px] pr-1 flex items-center justify-center xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer"
                 onClick={() => handleItemClick('')}
             >
-                <img src={logo} alt="Logo của website" className="w-24 h-auto shadow-md rounded-xl hover:bg-green-100" />
+                <img src={logo} alt="Logo của website" className="w-24 h-auto shadow rounded-xl hover:bg-green-50" />
             </Link>
 
             {/* danh mục */}

@@ -29,12 +29,26 @@ const VideoSeriesPage = () => {
         <div>
 
             <div className="w-full h-full bg-gray-100">
-                {/* Hiển thị ảnh  */}
-                <div className="w-full h-[320px] bg-green-200">
-                    <img src="https://preview.redd.it/the-witcher-3-21-9-wallpaper-3440x1440-v0-12htynjbjuea1.png?auto=webp&s=d4131160d03c4feeb86882bdba7d43eca6270b9b"
-                        className="object-fill w-full h-full rounded-md"
-                        alt="img"
+                {/* Hiển thị ảnh nền */}
+                <div className="w-full h-[320px] bg-green-200 relative">
+                    <img src="https://i.redd.it/0hwfsqufm3w41.jpg"
+                        className="object-cover w-full h-full rounded-md" alt="img"
                     />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-full">
+                            <span className="block font-semibold text-xl text-black flex items-center justify-center">
+                                Action
+                            </span>
+
+                            <span className="block font-semibold text-[50px] text-white flex items-center justify-center">
+                                The Witcher 3
+                            </span>
+
+                            <span className="block font-semibold text-xl text-white flex items-center justify-center">
+                                Lee Nakeum , seewater
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="w-full h-full flex items-center justify-center ">
