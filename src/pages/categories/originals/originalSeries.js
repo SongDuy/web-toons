@@ -56,7 +56,15 @@ const OriginalSeriesPage = () => {
                     <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-5 pb-10">
 
                         <div className="col-span-2 h-full pt-5">
+
+                            <div className="w-full px-5 pb-3">
+                                <span className="font-semibold text-md">
+                                    Series Original
+                                </span>
+                            </div>
+
                             <div className="w-full h-[900px] px-3 overflow-y-scroll">
+
                                 {/* danh sach series */}
                                 <ul className="w-full h-full ">
 

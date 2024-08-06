@@ -136,7 +136,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
 
                             </div>
 
-                            <div className="w-full mb-10 ml-5 px-5 h-[440px] shadow-md bg-red-100 rounded border hover:border-green-500 hover:text-gray-500 flex items-center justify-center group cursor-pointer">
+                            <div className="w-full mb-10 mt-5 ml-5 px-5 h-[440px] shadow-md bg-red-100 rounded border hover:border-green-500 hover:text-gray-500 flex items-center justify-center group cursor-pointer">
                                 <div>
                                     <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
                                         <NorthIcon />

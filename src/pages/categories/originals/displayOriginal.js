@@ -83,12 +83,12 @@ const DisplayOriginalPage = () => {
                     <ul className="w-full h-[30px] flex">
 
                         <li className="w-[550px] flex gap-2 items-center overflow-hidden">
-                            
+
                             <div>
                                 <img src={logo} alt="Logo của website" className="w-[40px] h-auto rounded-md bg-white" />
 
                             </div>
-                            
+
                             <div className="">
                                 <span className="text-white line-clamp-1">
                                     Peace Restaurant
@@ -128,11 +128,27 @@ const DisplayOriginalPage = () => {
                 </div>
 
                 {/* Hiển thị nội dung truyện */}
-                <div className="w-full h-[700px] bg-white border-2 flex items-center justify-center">
-                    <img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/65411224/original/cedb0af1b1717c1ca8d0ffc4dabfb0150ab585a4/create-manga-or-comic-page-for-you-in-my-style.jpg"
-                        className="object-contain w-full h-full rounded-md"
-                        alt="img"
-                    />
+                <div className="w-full h-full bg-white flex items-center justify-center">
+                    <div className="w-[1200px] h-full">
+                        <img src="https://wallpaperaccess.com/full/8438929.jpg"
+                            className="object-contain w-full h-full mb-3"
+                            alt="img"
+                        />
+
+                        <img src="https://i.pinimg.com/736x/44/9b/93/449b9398ad70f783259f7b7c154e9a49.jpg"
+                            className="object-contain w-full h-full mb-3"
+                            alt="img"
+                        />
+
+                        <img src="https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs3/195156941/original/a6a2cbfcc654919071c77a20f889b09b7208ad29/create-a-manga-background-from-your-photo.jpg"
+                            className="object-contain w-full h-full mb-3"
+                            alt="img"
+                        />
+
+
+                    </div>
+
+
                 </div>
 
                 {/* Hiển thị yêu thích, theo dõi */}
@@ -273,7 +289,7 @@ const DisplayOriginalPage = () => {
                                                         </div>
 
                                                         {/* Hiển thị nội dung bình luận */}
-                                                        <div className="h-[120px] px-2 overflow-y-scroll">
+                                                        <div className="h-[120px] px-2 3xl:overflow-y-scroll">
                                                             <span className="">
                                                                 {item.content}
                                                             </span>
