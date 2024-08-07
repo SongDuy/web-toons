@@ -21,10 +21,10 @@ const NewTrendingPage = () => {
             <div className="h-[70px] flex items-center">
                 <span className="uppercase font-semibold text-xl">NEW & TRENDING</span>
                 <div className="ml-auto flex gap-2 cursor-pointer">
-                    <button className="w-[80px] h-[30px] px-5 bg-green-500 text-white font-semibold rounded-md flex items-center justify-center">
+                    <button className="w-[80px] h-[30px] px-5 bg-black text-white font-semibold rounded-md flex items-center justify-center">
                         Originals
                     </button>
-                    <button className="w-[80px] h-[30px] bg-gray-100 font-semibold rounded-md hover:text-green-500 flex items-center justify-center">
+                    <button className="w-[80px] h-[30px] bg-gray-100 font-semibold rounded-md hover:text-yellow-500 flex items-center justify-center">
                         Videos
                     </button>
                 </div>
@@ -124,17 +124,17 @@ const NewTrendingPage = () => {
                                                     className="object-fill w-full h-full rounded-md"
                                                 />
                                             </div>
-                                            <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
+                                            <div className="w-[30px] h-[30px] mx-3 bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
                                                 <span className="mx-3 text-xl text-white font-bold">
                                                     {item.number}
                                                 </span>
                                             </div>
-                                            <div className="w-[450px] mt-auto mb-auto overflow-hidden">
+                                            <div className="w-[420px] mt-auto mb-auto overflow-hidden">
                                                 <span className="text-gray-400 text-sm">
-                                                    {item.genre}
+                                                    {item.genre} 
                                                 </span>
                                                 <span className="text-md font-semibold line-clamp-1">
-                                                    {item.name}
+                                                    {item.name} 
                                                 </span>
                                                 <span className="text-sm line-clamp-1">
                                                     {item.auth}

@@ -127,7 +127,7 @@ const VideosPage = () => {
                                         <li
                                             key={day}
                                             onClick={() => handleSelectDay(day)}
-                                            className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded-xl font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-green-500 text-white hover:text-white' : 'bg-white text-black hover:text-green-500'}`}
+                                            className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded-xl font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-black text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                         >
                                             {day}
                                         </li>
@@ -143,7 +143,7 @@ const VideosPage = () => {
                                     {filteredData.map(item => (
                                         <RouterLink to={`/video/series`}>
                                             <li
-                                                className="max-w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                                 key={item.id}
                                             >
 

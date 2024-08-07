@@ -157,12 +157,12 @@ const OriginalsByGenrePage = () => {
                                                     className="object-fill w-full h-full rounded-md"
                                                 />
                                             </div>
-                                            <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
+                                            <div className="w-[30px] h-[30px] mx-3 bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
                                                 <span className="mx-3 text-xl text-white font-bold">
                                                     {item.number}
                                                 </span>
                                             </div>
-                                            <div className="w-[450px] mt-auto mb-auto overflow-hidden">
+                                            <div className="w-[420px] mt-auto mb-auto overflow-hidden">
                                                 <span className="text-gray-400 text-sm">
                                                     {item.genre}
                                                 </span>

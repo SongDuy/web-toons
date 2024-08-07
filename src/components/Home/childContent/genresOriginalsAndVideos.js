@@ -89,7 +89,7 @@ const GenresOriginalsAndVideosPage = () => {
                     {filteredGenreData.slice(0, 10).map((item) => (
                         <Link to={`/original/series`} className="max-w-[210px] h-[210px]">
                             <li
-                                className="max-w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                className="max-w-[210px] 2xl:w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                 key={item.id}
                             >
 

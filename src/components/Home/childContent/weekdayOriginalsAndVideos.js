@@ -80,7 +80,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                         <li
                             key={day}
                             onClick={() => handleSelectDay(day)}
-                            className={`max-w-[120px] h-[60px] px-2 uppercase font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-green-500 text-white hover:text-white' : 'bg-white text-black hover:text-green-500 '}`}
+                            className={`max-w-[120px] h-[60px] px-2 uppercase font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-black text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500 '}`}
                         >
                             {day}
                         </li>
@@ -95,12 +95,13 @@ const WeekdayOriginalsAndVideosPage = () => {
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}
                     >
-                        <span className='w-full h-[50px] uppercase font-semibold text-md text-gray-400 hover:text-green-500 flex items-center justify-center'>
+                        <span className='w-full h-[50px] uppercase font-semibold text-md text-gray-400 hover:text-yellow-500 flex items-center justify-center'>
                             More
                             <NavigateNextIcon />
                         </span>
 
                     </Button>
+
                     <Menu
                         id="basic-menu"
                         anchorEl={anchorEl}
@@ -128,7 +129,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                     {filteredData.slice(0, 10).map((item) => (
                         <Link to={`/original/series`} className="max-w-[210px] h-[210px]" >
                             <li
-                                className="w-[210px] h-[210px] rounded-xl bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-xl bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                 key={item.id}
                             >
 

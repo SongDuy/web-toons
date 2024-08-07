@@ -34,10 +34,10 @@ const PopularOriginalsAndVideosPage = () => {
                             </div>
 
                             <div className="ml-auto flex gap-2 cursor-pointer">
-                                <button className="w-[80px] h-[30px] px-5 bg-green-500 text-white font-semibold rounded-md flex items-center justify-center">
+                                <button className="w-[80px] h-[30px] px-5 bg-black text-white font-semibold rounded-md flex items-center justify-center">
                                     Originals
                                 </button>
-                                <button className="w-[80px] h-[30px] bg-gray-100 font-semibold rounded-md hover:text-green-500 flex items-center justify-center">
+                                <button className="w-[80px] h-[30px] bg-gray-100 font-semibold rounded-md hover:text-yellow-500 flex items-center justify-center">
                                     Videos
                                 </button>
                             </div>
