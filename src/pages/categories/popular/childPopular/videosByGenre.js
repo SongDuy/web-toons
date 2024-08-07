@@ -162,7 +162,7 @@ const VideosByGenrePage = () => {
                                                     {item.number}
                                                 </span>
                                             </div>
-                                            <div className="w-[420px] mt-auto border mb-auto overflow-hidden">
+                                            <div className="w-[420px] mt-auto mb-auto overflow-hidden">
                                                 <span className="text-gray-400 text-sm">
                                                     {item.genre}
                                                 </span>

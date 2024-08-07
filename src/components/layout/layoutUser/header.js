@@ -50,7 +50,7 @@ const HeaderPage = () => {
                 <ul className="flex xs:gap-1 sm:gap-5">
                     <Link to={`/originals`}>
                         <li
-                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === 'Originals' ? 'text-green-500' : ''}`}
+                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === 'Originals' ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                             onClick={() => handleItemClick('Originals')}
                         >
                             <span>
@@ -61,7 +61,7 @@ const HeaderPage = () => {
                     </Link>
                     <Link to={`/videos`}>
                         <li
-                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === 'Videos' ? 'text-green-500' : ''}`}
+                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === 'Videos' ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                             onClick={() => handleItemClick('Videos')}
                         >
                             Videos
@@ -69,7 +69,7 @@ const HeaderPage = () => {
                     </Link>
                     <Link to={`/genres`}>
                         <li
-                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === 'Genres' ? 'text-green-500' : ''}`}
+                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === 'Genres' ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                             onClick={() => handleItemClick('Genres')}
                         >
                             Genres
@@ -77,7 +77,7 @@ const HeaderPage = () => {
                     </Link>
                     <Link to={`/popular`}>
                         <li
-                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === 'Popular' ? 'text-green-500' : ''}`}
+                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === 'Popular' ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                             onClick={() => handleItemClick('Popular')}
                         >
                             Popular
