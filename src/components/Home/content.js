@@ -23,7 +23,7 @@ const images = [
 
 const ContentPage = () => {
 
-    // đổi hình quảng cáo sau 5 giây
+    // Đổi hình quảng cáo sau 5 giây
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {
@@ -44,7 +44,7 @@ const ContentPage = () => {
         <div className="w-full h-full bg-gray-100 pb-10">
 
             {/* Phần hiển thị hình quảng cáo */}
-            <div className="w-full h-[500px] bg-gradient-to-b from-green-200 via-gray-300 to-teal-400 overflow-hidden flex items-center justify-center">
+            <div className="w-full h-[500px] bg-gradient-to-b from-green-200 via-green-300 to-teal-400 overflow-hidden flex items-center justify-center">
                 <div className="w-[1010px] h-[500px] relative">
                     <img src={images[currentImageIndex]} alt="Ad Banner" className="object-fill w-[1200px] max-h-[500px]" />
                     <div className="absolute bottom-3 left-5 right-0">
@@ -52,7 +52,7 @@ const ContentPage = () => {
                             <button
                                 key={index}
                                 onClick={() => handleImageChange(index)}
-                                className={`w-[20px] h-[20px] mx-1 rounded-full ${index === currentImageIndex ? 'bg-white' : 'bg-gray-500'}`}
+                                className={`w-[15px] h-[15px] mx-1 rounded-full ${index === currentImageIndex ? 'bg-white' : 'bg-gray-500'}`}
                             />
                         ))}
                     </div>

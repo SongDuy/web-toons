@@ -14,20 +14,12 @@ const dataPopular = [
     { id: 9, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "10", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
 ];
 
-const NewTrendingPage = () => {
+const NewTrendingOriginalsPage = () => {
     return (
         <div className="w-full h-full pt-[70px]">
 
             <div className="h-[70px] flex items-center">
-                <span className="uppercase font-semibold text-xl">NEW & TRENDING</span>
-                <div className="ml-auto flex gap-2 cursor-pointer">
-                    <button className="w-[80px] h-[30px] px-5 bg-black bg-opacity-80 text-white font-semibold rounded-md flex items-center justify-center">
-                        Originals
-                    </button>
-                    <button className="w-[80px] h-[30px] bg-gray-100 font-semibold rounded-md text-gray-400 hover:text-black flex items-center justify-center">
-                        Videos
-                    </button>
-                </div>
+                <span className="uppercase font-semibold text-xl">NEW & TRENDING ORIGINALS</span>
             </div>
 
             <div className="w-full grid grid-cols-2">
@@ -154,4 +146,4 @@ const NewTrendingPage = () => {
     );
 }
 
-export default NewTrendingPage;
+export default NewTrendingOriginalsPage;

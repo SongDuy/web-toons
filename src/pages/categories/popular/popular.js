@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Element } from 'react-scroll';
 
-import NewTrendingPage from './childPopular/newTrending';
+import NewTrendingOriginalsPage from './childPopular/newTrendingOriginals';
+import NewTrendingVideosPage from './childPopular/newTrendingVideos';
 import OriginalsByGenrePage from './childPopular/originalsByGenre';
 import VideosByGenrePage from './childPopular/videosByGenre';
 
@@ -41,12 +42,13 @@ const PopularPage = () => {
                 >
                     <Link to="section1" smooth={true} duration={500}>
                         <li
-                            onClick={() => setSelectedTitle("new & trending")}
-                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "new & trending" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            onClick={() => setSelectedTitle("new & trending originals")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "new & trending originals" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            NEW & TRENDING
+                            NEW & TRENDING ORIGINALS
                         </li>
                     </Link>
+
                     <Link to="section2" smooth={true} duration={500}>
                         <li
                             onClick={() => setSelectedTitle("originals by genre")}
@@ -55,7 +57,17 @@ const PopularPage = () => {
                             ORIGINALS BY GENRE
                         </li>
                     </Link>
-                    <Link to="section3" smooth={true} duration={500}>
+
+                     <Link to="section3" smooth={true} duration={500}>
+                        <li
+                            onClick={() => setSelectedTitle("new & trending videos")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "new & trending videos" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                        >
+                            NEW & TRENDING VIDEOS
+                        </li>
+                    </Link>
+
+                    <Link to="section4" smooth={true} duration={500}>
                         <li
                             onClick={() => setSelectedTitle("videos by genre")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "videos by genre" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
@@ -67,11 +79,11 @@ const PopularPage = () => {
             </div>
 
             <div className="w-full h-full ">
-            <div className="max-w-[1120px] h-full ml-auto mr-auto">
+                <div className="max-w-[1120px] h-full ml-auto mr-auto">
 
-                    {/* Hiển thị NEW & TRENDING */}
+                    {/* Hiển thị NEW & TRENDING ORIGINALS*/}
                     <Element name="section1" className="element">
-                        <NewTrendingPage />
+                        <NewTrendingOriginalsPage />
                     </Element>
 
                     {/* Hiển thị ORIGINALS BY GENRE */}
@@ -79,14 +91,19 @@ const PopularPage = () => {
                         <OriginalsByGenrePage />
                     </Element>
 
-                    {/* Hiển thị VIDEOS BY GENRE */}
+                    {/* Hiển thị NEW & TRENDING VIDEOS*/}
                     <Element name="section3" className="element">
+                        <NewTrendingVideosPage />
+                    </Element>
+
+                    {/* Hiển thị VIDEOS BY GENRE */}
+                    <Element name="section4" className="element">
                         <VideosByGenrePage />
                     </Element>
 
                 </div>
             </div>
-            
+
         </div>
     );
 }
