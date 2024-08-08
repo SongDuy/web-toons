@@ -17,6 +17,8 @@ const images = [
     "https://t3.ftcdn.net/jpg/07/95/69/54/360_F_795695443_o967EZQCSMwgJ4AiGMpdBH5py4L4rA7m.jpg",
     "https://images2.alphacoders.com/740/740443.png",
     "https://static.miraheze.org/hololivewiki/8/86/Tempus_2nd_Batch_Debut_banner.webp",
+    "https://png.pngtree.com/background/20230614/original/pngtree-anime-girl-standing-alone-in-the-street-near-some-city-lights-picture-image_3480135.jpg",
+    "https://t3.ftcdn.net/jpg/07/95/69/54/360_F_795695443_o967EZQCSMwgJ4AiGMpdBH5py4L4rA7m.jpg",
 ];
 
 const ContentPage = () => {
@@ -27,7 +29,7 @@ const ContentPage = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 5000);
+        }, 8000);
 
         return () => clearInterval(interval);
     }, []);
