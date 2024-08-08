@@ -164,13 +164,13 @@ const WeekdayOriginalsAndVideosPage = () => {
                                     {/*Trong component React của bạn */}
                                     <div className="w-full h-[30px]">
                                         {item.status === "original" ? (
-                                            <div className="w-full h-full bg-white bg-opacity-80 rounded-md">
+                                            <div className="w-full h-full shadow bg-white bg-opacity-80 rounded-md">
                                                 <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
                                                     {item.genre}
                                                 </span>
                                             </div>
                                         ) : item.status === "video" ? (
-                                            <div className="w-full h-full bg-gray-300 bg-opacity-80 rounded-md">
+                                            <div className="w-full h-full shadow bg-gray-300 bg-opacity-80 rounded-md">
                                                 <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
                                                     {item.genre}
                                                 </span>
