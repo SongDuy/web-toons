@@ -42,10 +42,10 @@ const ContentPage = () => {
         <div className="w-full h-full bg-gray-100 pb-10">
 
             {/* Phần hiển thị hình quảng cáo */}
-            <div className="w-full h-[500px] bg-green-200 overflow-hidden  flex items-center justify-center">
-                <div className="w-[1000px] h-[500px] relative">
-                    <img src={images[currentImageIndex]} alt="Ad Banner" className="object-fill w-[1000px] max-h-[500px] rounded-md" />
-                    <div className="absolute bottom-4 left-5 right-0">
+            <div className="w-full h-[500px] bg-gradient-to-b from-green-200 via-gray-300 to-teal-400 overflow-hidden flex items-center justify-center">
+                <div className="w-[1010px] h-[500px] relative">
+                    <img src={images[currentImageIndex]} alt="Ad Banner" className="object-fill w-[1200px] max-h-[500px]" />
+                    <div className="absolute bottom-3 left-5 right-0">
                         {images.map((image, index) => (
                             <button
                                 key={index}
