@@ -128,7 +128,7 @@ const OriginalsPage = () => {
                                         <li
                                             key={day}
                                             onClick={() => handleSelectDay(day)}
-                                            className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded-xl font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-black text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                            className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded-xl font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-yellow-400 bg-opacity-80 text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                         >
                                             {day}
                                         </li>
