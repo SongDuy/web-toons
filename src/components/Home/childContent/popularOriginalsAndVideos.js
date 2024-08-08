@@ -34,10 +34,10 @@ const PopularOriginalsAndVideosPage = () => {
                             </div>
 
                             <div className="ml-auto flex gap-2 cursor-pointer">
-                                <button className="w-[80px] h-[30px] px-5 bg-black text-white font-semibold rounded-md flex items-center justify-center">
+                                <button className="w-[80px] h-[30px] px-5 bg-black bg-opacity-80 text-white font-semibold rounded-md flex items-center justify-center">
                                     Originals
                                 </button>
-                                <button className="w-[80px] h-[30px] bg-gray-100 font-semibold rounded-md hover:text-yellow-500 flex items-center justify-center">
+                                <button className="w-[80px] h-[30px] bg-gray-100 font-semibold rounded-md text-gray-400 hover:text-black flex items-center justify-center">
                                     Videos
                                 </button>
                             </div>
@@ -150,7 +150,7 @@ const PopularOriginalsAndVideosPage = () => {
 
                     {/* Phần hiển thị các series truyện mới hạn cao theo thể loại */}
                     <div className="w-full flex flex-wrap ">
-                        
+
                         {/* Phần tiêu đề */}
                         <div className="w-full px-2 py-5 flex items-center border-b">
                             <span className="mr-auto font-semibold text-lg hover:text-green-500 cursor-pointer">

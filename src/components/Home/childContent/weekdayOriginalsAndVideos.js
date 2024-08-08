@@ -87,7 +87,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                     ))}
 
                 </ul>
-                <div className="max-w-[120px] ml-10 h-full ">
+                <div className="max-w-[120px] h-full ml-10 h-full ">
                     <Button
                         id="basic-button"
                         aria-controls={open ? 'basic-menu' : undefined}
@@ -95,7 +95,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}
                     >
-                        <span className='w-full h-[50px] uppercase font-semibold text-md text-gray-400 hover:text-yellow-500 flex items-center justify-center'>
+                        <span className='w-full h-[48px] uppercase font-semibold text-md text-gray-400 hover:text-yellow-500 flex items-center justify-center'>
                             More
                             <NavigateNextIcon />
                         </span>

@@ -21,10 +21,10 @@ const NewTrendingPage = () => {
             <div className="h-[70px] flex items-center">
                 <span className="uppercase font-semibold text-xl">NEW & TRENDING</span>
                 <div className="ml-auto flex gap-2 cursor-pointer">
-                    <button className="w-[80px] h-[30px] px-5 bg-black text-white font-semibold rounded-md flex items-center justify-center">
+                    <button className="w-[80px] h-[30px] px-5 bg-black bg-opacity-80 text-white font-semibold rounded-md flex items-center justify-center">
                         Originals
                     </button>
-                    <button className="w-[80px] h-[30px] bg-gray-100 font-semibold rounded-md hover:text-yellow-500 flex items-center justify-center">
+                    <button className="w-[80px] h-[30px] bg-gray-100 font-semibold rounded-md text-gray-400 hover:text-black flex items-center justify-center">
                         Videos
                     </button>
                 </div>
