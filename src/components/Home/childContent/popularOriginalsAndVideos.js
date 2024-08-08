@@ -87,65 +87,6 @@ const PopularOriginalsAndVideosPage = () => {
                             </ul>
                         </div>
                     </div>
-                    {/* Phần hiển thị các series truyện mới hạn cao theo thể loại */}
-                    <div className="w-full flex flex-wrap ">
-                        {/* Phần tiêu đề */}
-                        <div className="w-full px-2 py-5 flex items-center border-b">
-                            <span className="mr-auto font-semibold text-lg hover:text-green-500 cursor-pointer">
-                                ORIGINALS by Genre
-                                <NavigateNextIcon />
-                            </span>
-                            <span className="ml-auto flex gap-1 text-yellow-500 cursor-pointer">
-                                ALL
-                                <CheckIcon />
-                            </span>
-                        </div>
-
-                        {/* Phần nội dung */}
-                        <div className="w-full h-full">
-                            <ul className="w-full h-full">
-                                {/* khung nội dung */}
-                                {dataPopular.map(item => (
-                                    <Link to={`/original/series`}>
-                                        <li
-                                            className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
-                                            key={item.key}
-                                        >
-                                            <div className="w-full h-full flex items-center">
-                                                <div className="w-[80px] h-[80px] flex">
-                                                    <img
-                                                        src={item.img}
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
-                                                </div>
-
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
-                                                    <span className="mx-3 text-xl text-white font-bold">
-                                                        {item.number}
-                                                    </span>
-                                                </div>
-
-                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
-                                                    <span className="text-gray-400 text-sm">
-                                                        {item.genre}
-                                                    </span>
-                                                    <span className="text-md font-semibold line-clamp-1">
-                                                        {item.name}
-                                                    </span>
-                                                    <span className="text-sm line-clamp-1">
-                                                        {item.auth}
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </li>
-                                    </Link>
-                                ))}
-
-                            </ul>
-                        </div>
-                    </div>
 
                     {/* Phần hiển thị nội dung new & trending videos */}
                     <div className="w-full flex flex-wrap ">
@@ -205,7 +146,65 @@ const PopularOriginalsAndVideosPage = () => {
                         </div>
                     </div>
 
+                    {/* Phần hiển thị các series truyện mới hạn cao theo thể loại */}
+                    <div className="w-full flex flex-wrap ">
+                        {/* Phần tiêu đề */}
+                        <div className="w-full px-2 py-5 flex items-center border-b">
+                            <span className="mr-auto font-semibold text-lg hover:text-green-500 cursor-pointer">
+                                ORIGINALS by Genre
+                                <NavigateNextIcon />
+                            </span>
+                            <span className="ml-auto flex gap-1 text-yellow-500 cursor-pointer">
+                                ALL
+                                <CheckIcon />
+                            </span>
+                        </div>
 
+                        {/* Phần nội dung */}
+                        <div className="w-full h-full">
+                            <ul className="w-full h-full">
+                                {/* khung nội dung */}
+                                {dataPopular.map(item => (
+                                    <Link to={`/original/series`}>
+                                        <li
+                                            className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
+                                            key={item.key}
+                                        >
+                                            <div className="w-full h-full flex items-center">
+                                                <div className="w-[80px] h-[80px] flex">
+                                                    <img
+                                                        src={item.img}
+                                                        alt="img"
+                                                        className="object-fill w-full h-full rounded-md"
+                                                    />
+                                                </div>
+
+                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
+                                                    <span className="mx-3 text-xl text-white font-bold">
+                                                        {item.number}
+                                                    </span>
+                                                </div>
+
+                                                <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                                    <span className="text-gray-400 text-sm">
+                                                        {item.genre}
+                                                    </span>
+                                                    <span className="text-md font-semibold line-clamp-1">
+                                                        {item.name}
+                                                    </span>
+                                                    <span className="text-sm line-clamp-1">
+                                                        {item.auth}
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    </Link>
+                                ))}
+
+                            </ul>
+                        </div>
+                    </div>
 
                     {/* Phần hiển thị các series truyện mới hạn cao theo thể loại */}
                     <div className="w-full flex flex-wrap ">
