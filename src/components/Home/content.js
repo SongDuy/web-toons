@@ -9,7 +9,14 @@ import PopularOriginalsAndVideosPage from './childContent/popularOriginalsAndVid
 const images = [
     "https://image.baophapluat.vn/1200x630/Uploaded/2024/gznrxgmabianhgzmath/2022_05_30/doraemon-9528.jpg",
     "https://wallpapers.com/images/hd/one-piece-pictures-bjm9tdff9yzguoup.jpg",
-    "https://wallpapers.com/images/featured/naruto-r5aa4v805ovp5cv4.jpg"
+    "https://wallpapers.com/images/featured/naruto-r5aa4v805ovp5cv4.jpg",
+    "https://mrwallpaper.com/images/hd/hd-manga-fan-art-of-jojo-eyo0mcwfinazilqw.jpg",
+    "https://png.pngtree.com/background/20230614/original/pngtree-anime-girl-standing-alone-in-the-street-near-some-city-lights-picture-image_3480135.jpg",
+    "https://t3.ftcdn.net/jpg/06/50/89/34/360_F_650893467_s4vMfhFd8LAA2Gh5ZVVF5w1gKP6TZS82.jpg",
+    "https://t3.ftcdn.net/jpg/07/48/44/58/360_F_748445857_Zpcw97p95WsnnKEPPRFRebVuGuy6hxk7.jpg",
+    "https://t3.ftcdn.net/jpg/07/95/69/54/360_F_795695443_o967EZQCSMwgJ4AiGMpdBH5py4L4rA7m.jpg",
+    "https://images2.alphacoders.com/740/740443.png",
+    "https://static.miraheze.org/hololivewiki/8/86/Tempus_2nd_Batch_Debut_banner.webp",
 ];
 
 const ContentPage = () => {
@@ -35,12 +42,18 @@ const ContentPage = () => {
         <div className="w-full h-full bg-gray-100 pb-10">
 
             {/* Phần hiển thị hình quảng cáo */}
-            <div className="w-full max-h-[500px] bg-green-200 overflow-hidden rounded-md relative">
-                <img src={images[currentImageIndex]} alt="Ad Banner" className="object-contain w-full max-h-[500px] rounded-md" />
-                <div className="absolute bottom-4 left-0 right-0">
-                    {images.map((image, index) => (
-                        <button key={index} onClick={() => handleImageChange(index)} className={`px-4 py-2 bg-blue-500 text-white rounded-md ${index === currentImageIndex ? 'font-bold' : ''}`}>{`Image ${index + 1}`}</button>
-                    ))}
+            <div className="w-full h-[500px] bg-green-200 overflow-hidden  flex items-center justify-center">
+                <div className="w-[1000px] h-[500px] relative">
+                    <img src={images[currentImageIndex]} alt="Ad Banner" className="object-fill w-[1000px] max-h-[500px] rounded-md" />
+                    <div className="absolute bottom-4 left-5 right-0">
+                        {images.map((image, index) => (
+                            <button
+                                key={index}
+                                onClick={() => handleImageChange(index)}
+                                className={`w-[20px] h-[20px] mx-1 rounded-full ${index === currentImageIndex ? 'bg-white' : 'bg-gray-500'}`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
 
