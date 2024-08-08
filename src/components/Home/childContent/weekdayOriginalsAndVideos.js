@@ -80,7 +80,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                         <li
                             key={day}
                             onClick={() => handleSelectDay(day)}
-                            className={`max-w-[120px] h-[60px] px-2 uppercase font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-yellow-400 bg-opacity-80 text-white' : 'bg-white text-black hover:text-yellow-500 '}`}
+                            className={`max-w-[120px] h-[60px] px-2 uppercase font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500 '}`}
                         >
                             {day}
                         </li>
