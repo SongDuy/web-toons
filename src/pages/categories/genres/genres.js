@@ -71,7 +71,7 @@ const GenresPage = () => {
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
 
-            <div className={`w-full min-h-[70px] border bg-white shadow flex items-center justify-center border-t ${isSticky ? 'lg:sticky top-0 z-50' : ''}`}>
+            <div className={`w-full min-h-[70px] border bg-white shadow flex items-center justify-center border-t ${isSticky ? 'lg:sticky top-0 z-10' : ''}`}>
                 <ul class=" grid xs:grid-cols-3 px-5 sm:grid-cols-5 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-10 2xl:grid-cols-10 3xl:grid-cols-12 gap-x-4 gap-y-2">
 
                     {/* khung nội dung */}

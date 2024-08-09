@@ -9,5 +9,18 @@
   }
   
   .slide-in {
-    animation: slideIn 0.9s forwards;
+    animation: slideIn 1s forwards;
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0); /* Bắt đầu từ vị trí bình thường */
+  }
+  to {
+    transform: translateX(100%); /* Di chuyển ra ngoài màn hình về bên phải */
+  }
+}
+
+.slide-out {
+  animation: slideOut 1s forwards; 
 }
