@@ -9,16 +9,16 @@ import PopularOriginalsAndVideosPage from './childContent/popularOriginalsAndVid
 const images = [
     "https://image.baophapluat.vn/1200x630/Uploaded/2024/gznrxgmabianhgzmath/2022_05_30/doraemon-9528.jpg",
     "https://wallpapers.com/images/hd/one-piece-pictures-bjm9tdff9yzguoup.jpg",
-    "https://wallpapers.com/images/featured/naruto-r5aa4v805ovp5cv4.jpg",
-    "https://mrwallpaper.com/images/hd/hd-manga-fan-art-of-jojo-eyo0mcwfinazilqw.jpg",
-    "https://png.pngtree.com/background/20230614/original/pngtree-anime-girl-standing-alone-in-the-street-near-some-city-lights-picture-image_3480135.jpg",
-    "https://t3.ftcdn.net/jpg/06/50/89/34/360_F_650893467_s4vMfhFd8LAA2Gh5ZVVF5w1gKP6TZS82.jpg",
-    "https://t3.ftcdn.net/jpg/07/48/44/58/360_F_748445857_Zpcw97p95WsnnKEPPRFRebVuGuy6hxk7.jpg",
-    "https://t3.ftcdn.net/jpg/07/95/69/54/360_F_795695443_o967EZQCSMwgJ4AiGMpdBH5py4L4rA7m.jpg",
-    "https://images2.alphacoders.com/740/740443.png",
+    "https://i.redd.it/5mqp7trvxov51.jpg",
+    "https://images.alphacoders.com/135/1353040.jpeg",
+    "https://wallpapergod.com/images/hd/anime-4k-5760X3240-wallpaper-par00nk6228xf5xm.jpeg",
+    "https://wallpapers.com/images/featured/anime-aesthetic-pictures-lqtumoq8zq18qvfs.jpg",
+    "https://images.hdqwalls.com/download/after-sunset-minimal-4k-zm-1920x1080.jpg",
+    "https://i.redd.it/b5jec682hfk61.jpg",
+    "https://images.hdqwalls.com/download/alone-standing-at-roof-ff-1920x1080.jpg",
     "https://static.miraheze.org/hololivewiki/8/86/Tempus_2nd_Batch_Debut_banner.webp",
-    "https://png.pngtree.com/background/20230614/original/pngtree-anime-girl-standing-alone-in-the-street-near-some-city-lights-picture-image_3480135.jpg",
-    "https://t3.ftcdn.net/jpg/07/95/69/54/360_F_795695443_o967EZQCSMwgJ4AiGMpdBH5py4L4rA7m.jpg",
+    "https://w.wallha.com/ws/13/ypDeq3JB.jpg",
+    "https://4kwallpapers.com/images/wallpapers/anime-girl-surreal-1920x1080-10028.jpg",
 ];
 
 const ContentPage = () => {
