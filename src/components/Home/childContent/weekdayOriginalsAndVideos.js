@@ -5,7 +5,6 @@ import { enUS } from 'date-fns/locale';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -87,8 +86,8 @@ const WeekdayOriginalsAndVideosPage = () => {
                     ))}
 
                 </ul>
-                <div className="max-w-[120px] h-full ml-[30px] h-full ">
-                    <Button
+                <div className="w-[115px] h-full h-full flex items-center justify-center">
+                    <button
                         id="basic-button"
                         aria-controls={open ? 'basic-menu' : undefined}
                         aria-haspopup="true"
@@ -100,7 +99,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                             <NavigateNextIcon />
                         </span>
 
-                    </Button>
+                    </button>
 
                     <Menu
                         id="basic-menu"

@@ -58,7 +58,7 @@ const ContentPage = () => {
             <div className="w-full h-[500px] bg-gradient-to-b from-white via-white to-green-100 overflow-hidden flex items-center justify-center">
                 <div className="w-[1000px] h-[500px] relative">
                     <img src={images[currentImageIndex]} alt="Ad Banner" className="object-fill w-[1200px] max-h-[500px]" />
-                    <div className="absolute bottom-3 left-5 right-0">
+                    <div className="absolute bottom-3 left-5 right-0 flex items-center">
                         {images.map((image, index) => (
                             <button
                                 key={index}
