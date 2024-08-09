@@ -7,6 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import VideoCallOutlinedIcon from '@mui/icons-material/VideoCallOutlined';
 
+import SearchPage from './search';
 import logo from '../../../img/logonew.png';
 import { Link } from 'react-router-dom';
 
@@ -30,7 +31,17 @@ const HeaderPage = () => {
         setSelectedItem(item);
     };
 
-    //new
+    // Mở đóng modal tìm kiếm
+    const [isSearchModal, setIsSearchModal] = useState(false);
+
+    const openSearchModal = () => {
+        setIsSearchModal(true);
+    };
+
+    const closeSearchModal = () => {
+        setIsSearchModal(false);
+    };
+
     return (
         <div
             className=" w-full xs:h-[50px] sm:h-[100px] bg-white flex xs:px-[5px] sm:px-[30px]"
@@ -147,11 +158,17 @@ const HeaderPage = () => {
                     Log In
                 </button>
 
-                <button
-                    className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full text-gray-500 flex items-center justify-center"
-                >
-                    <SearchIcon sx={{ fontSize: 18 }} />
-                </button>
+                <div>
+                    <button
+                        className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full text-gray-500 flex items-center justify-center"
+                        onClick={openSearchModal}
+                    >
+                        <SearchIcon sx={{ fontSize: 18 }} />
+
+                    </button>
+                    {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
+                </div>
+
             </div>
 
         </div>
