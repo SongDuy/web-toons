@@ -8,6 +8,7 @@ import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import VideoCallOutlinedIcon from '@mui/icons-material/VideoCallOutlined';
 
 import SearchPage from './search';
+import LoginPage from '../../../../src/pages/auth/login';
 import logo from '../../../img/logonew.png';
 import { Link } from 'react-router-dom';
 
@@ -41,6 +42,19 @@ const HeaderPage = () => {
     const closeSearchModal = () => {
         setIsSearchModal(false);
     };
+
+    // Mở đóng modal login
+    const [isLoginModal, setIsLoginModal] = useState(false);
+
+    const openLoginModal = () => {
+        setIsLoginModal(true);
+    };
+
+    const closeLoginModal = () => {
+        setIsLoginModal(false);
+    };
+
+    //new
 
     return (
         <div
@@ -152,11 +166,16 @@ const HeaderPage = () => {
                     </Menu>
                 </div>
 
-                <button
-                    className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
-                >
-                    Log In
-                </button>
+                <div>
+                    <button
+                        className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
+                        onClick={openLoginModal}
+                    >
+                        Log In
+                    </button>
+                    {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+                </div>
+
 
                 <div>
                     <button
