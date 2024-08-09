@@ -20,7 +20,7 @@ const PopularOriginalsAndVideosPage = () => {
         <div className="w-full min-h-[560px] bg-white">
             {/* Phần hiển thị các series truyện và video mới hạn cao */}
             <div className="w-full flex items-center justify-center">
-                <div className="max-w-[1120px] 3xl:max-w-[1560px] h-full grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 2xl:grid-cols-2 3xl:grid-cols-3 gap-5 pb-[70px]">
+                <div className="max-w-[1120px] 3xl:max-w-[1560px] h-full grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 2xl:grid-cols-2 3xl:grid-cols-3 gap-x-10 gap-y-5 pb-[70px]">
 
                     {/* Phần hiển thị nội dung new & trending originals */}
                     <div className="w-full flex flex-wrap ">
