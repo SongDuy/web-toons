@@ -23,19 +23,30 @@ const images = [
 
 const ContentPage = () => {
 
-    // Đổi hình quảng cáo sau 5 giây
+    // Đổi hình quảng cáo sau 5 giây khi chọn ảnh thì 10 giây chuyển tiếp
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [resetTimer, setResetTimer] = useState(false);
+    var timeInterval = 5000;
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 8000);
+            if (!resetTimer) {
+                setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+            }
+        }, timeInterval);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [timeInterval, resetTimer]);
 
     const handleImageChange = (index) => {
+        // Reset the timer
+        setResetTimer(true);
         setCurrentImageIndex(index);
+
+        // Start the interval again after 5 seconds
+        setTimeout(() => {
+            setResetTimer(false);
+        }, timeInterval);
     };
 
     //new
@@ -44,7 +55,7 @@ const ContentPage = () => {
         <div className="w-full h-full bg-gray-100 pb-10">
 
             {/* Phần hiển thị hình quảng cáo */}
-            <div className="w-full h-[500px] bg-gradient-to-b from-green-200 via-green-300 to-teal-400 overflow-hidden flex items-center justify-center">
+            <div className="w-full h-[500px] bg-gradient-to-b from-white via-gray-200 to-amber-100 overflow-hidden flex items-center justify-center">
                 <div className="w-[1000px] h-[500px] relative">
                     <img src={images[currentImageIndex]} alt="Ad Banner" className="object-fill w-[1200px] max-h-[500px]" />
                     <div className="absolute bottom-3 left-5 right-0">
