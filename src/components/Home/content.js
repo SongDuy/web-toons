@@ -26,7 +26,7 @@ const ContentPage = () => {
     // Đổi hình quảng cáo sau 5 giây khi chọn ảnh thì 10 giây chuyển tiếp
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [resetTimer, setResetTimer] = useState(false);
-    var timeInterval = 5000;
+    var timeInterval = 5000; // 5 giây
 
     useEffect(() => {
         const interval = setInterval(() => {
