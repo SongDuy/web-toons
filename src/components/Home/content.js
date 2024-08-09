@@ -45,7 +45,7 @@ const ContentPage = () => {
 
             {/* Phần hiển thị hình quảng cáo */}
             <div className="w-full h-[500px] bg-gradient-to-b from-green-200 via-green-300 to-teal-400 overflow-hidden flex items-center justify-center">
-                <div className="w-[1010px] h-[500px] relative">
+                <div className="w-[1000px] h-[500px] relative">
                     <img src={images[currentImageIndex]} alt="Ad Banner" className="object-fill w-[1200px] max-h-[500px]" />
                     <div className="absolute bottom-3 left-5 right-0">
                         {images.map((image, index) => (

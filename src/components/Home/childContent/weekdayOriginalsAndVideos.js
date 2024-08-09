@@ -87,7 +87,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                     ))}
 
                 </ul>
-                <div className="max-w-[120px] h-full ml-10 h-full ">
+                <div className="max-w-[120px] h-full ml-[30px] h-full ">
                     <Button
                         id="basic-button"
                         aria-controls={open ? 'basic-menu' : undefined}
