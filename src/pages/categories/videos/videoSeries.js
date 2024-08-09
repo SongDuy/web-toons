@@ -121,7 +121,7 @@ const VideoSeriesPage = () => {
                         <div className="h-full py-5 px-5">
 
                             <div className="w-full mb-auto">
-                                <ul className="flex">
+                                <ul className="flex items-center justify-center">
                                     <li className="mr-auto mt-auto mb-auto">
                                         <span className="mx-1 text-green-500">
                                             <VisibilityIcon />

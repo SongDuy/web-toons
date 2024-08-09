@@ -55,7 +55,7 @@ const ContentPage = () => {
         <div className="w-full h-full bg-gray-100 pb-10">
 
             {/* Phần hiển thị hình quảng cáo */}
-            <div className="w-full h-[500px] bg-gradient-to-b from-white via-gray-200 to-amber-100 overflow-hidden flex items-center justify-center">
+            <div className="w-full h-[500px] bg-gradient-to-b from-white via-white to-green-100 overflow-hidden flex items-center justify-center">
                 <div className="w-[1000px] h-[500px] relative">
                     <img src={images[currentImageIndex]} alt="Ad Banner" className="object-fill w-[1200px] max-h-[500px]" />
                     <div className="absolute bottom-3 left-5 right-0">
