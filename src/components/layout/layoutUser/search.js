@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import '../../../App.css';
 
+import CloseIcon from '@mui/icons-material/Close';
+
 const SearchPage = ({ closeModal }) => {
 
     const [isSearch, setIsSearch] = useState(false);
@@ -19,15 +21,23 @@ const SearchPage = ({ closeModal }) => {
     return (
         <div className="w-screen h-screen bg-black bg-opacity-50 flex py fixed inset-0 z-50 " onClick={handleBackdropClick}>
 
-            <div className={`w-[310px] h-screen px-5 py-5 ml-auto bg-gray-50 relative  ${!isSearch ? "slide-in" : "slide-out"} `}
+            <div className={`w-[310px] h-screen pl-3 pr-5 py-5 ml-auto bg-gray-50 relative  ${!isSearch ? "slide-in" : "slide-out"} `}
             >
-                <div className="w-[100px] h-[50px] bg-red-200"
+                {/* nút tắt tìm kiếm */}
+                <div className="w-[35px] h-[35px] bg-red-200 ml-auto hover:text-white cursor-pointer rounded-md flex items-center justify-center"
                     onClick={handleBackdropClick}
                 >
-                    <div className="w-[50px] h-[50px] bg-white">
-                        4
-                    </div>
+                    <CloseIcon onClick={handleBackdropClick} />
+                </div>
 
+                {/* Ô tìm kiếm */}
+                <div className="w-full h-[50px] bg-green-500">
+                    kkkk
+                </div>
+
+                {/* Danh sách nội dung phù hợp cần tìm */}
+                <div className="w-[50px] h-[50px]">
+                    kkkk
                 </div>
             </div>
 

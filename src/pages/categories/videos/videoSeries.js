@@ -222,6 +222,7 @@ const VideoSeriesPage = () => {
                                                     className="object-fill w-full h-full rounded-xl"
                                                 />
                                             </div>
+                                            
                                             <div className="h-full rounded-xl px-3 py-3">
                                                 <div className="w-[210px] h-[75px] overflow-hidden">
                                                     <span className="w-full text-lg font-semibold leading-[1.2] line-clamp-2">
