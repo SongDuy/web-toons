@@ -73,19 +73,19 @@ const WeekdayOriginalsAndVideosPage = () => {
             {/* Phần hiển thị nội dung theo thứ trong tuần */}
             <div className="w-full xs:min-h-[60px] sm:h-[60px] bg-white shadow flex items-center justify-center">
                 <ul
-                    className="w-7/12 grid xs:grid-cols-4 sm:grid-cols-7"
+                    className="w-[850px] grid xs:grid-cols-4 sm:grid-cols-7"
                 >
                     {days.map(day => (
                         <li
                             key={day}
                             onClick={() => handleSelectDay(day)}
-                            className={`max-w-[125px] h-[60px] uppercase font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500 '}`}
+                            className={`max-w-[120px] h-[60px] uppercase font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500 '}`}
                         >
                             {day}
                         </li>
                     ))}
                 </ul>
-                <div className="w-[115px] h-full h-full flex items-center justify-center">
+                <div className="w-[150px] h-full flex items-center justify-center">
                     <button
                         id="basic-button"
                         aria-controls={open ? 'basic-menu' : undefined}
@@ -93,7 +93,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}
                     >
-                        <span className='w-full h-[48px] uppercase font-semibold text-md text-gray-400 hover:text-yellow-500 flex items-center justify-center'>
+                        <span className='w-full h-full ml-2 uppercase font-semibold text-md text-gray-400 hover:text-yellow-500 flex items-center justify-center'>
                             More
                             <NavigateNextIcon />
                         </span>
