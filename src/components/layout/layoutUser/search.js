@@ -19,7 +19,7 @@ const SearchPage = ({ closeModal }) => {
     };
 
     return (
-        <div className="w-screen h-screen bg-black bg-opacity-50 flex py fixed inset-0 z-50 " onClick={handleBackdropClick}>
+        <div className="w-full h-full bg-black bg-opacity-50 flex py fixed inset-0 z-50 " onClick={handleBackdropClick}>
 
             <div className={`w-[310px] h-screen pl-2 pr-5 py-3 ml-auto bg-gray-50 relative  ${!isSearch ? "slide-in" : "slide-out"} `}
             >
