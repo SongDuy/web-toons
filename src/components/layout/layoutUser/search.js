@@ -21,7 +21,7 @@ const SearchPage = ({ closeModal }) => {
     return (
         <div className="w-screen h-screen bg-black bg-opacity-50 flex py fixed inset-0 z-50 " onClick={handleBackdropClick}>
 
-            <div className={`w-[310px] h-screen pl-3 pr-5 py-5 ml-auto bg-gray-50 relative  ${!isSearch ? "slide-in" : "slide-out"} `}
+            <div className={`w-[310px] h-screen pl-2 pr-5 py-3 ml-auto bg-gray-50 relative  ${!isSearch ? "slide-in" : "slide-out"} `}
             >
                 {/* nút tắt tìm kiếm */}
                 <div className="w-[35px] h-[35px] bg-red-200 ml-auto hover:text-white cursor-pointer rounded-md flex items-center justify-center"
@@ -31,12 +31,12 @@ const SearchPage = ({ closeModal }) => {
                 </div>
 
                 {/* Ô tìm kiếm */}
-                <div className="w-full h-[50px] bg-green-500">
+                <div className="w-full h-[50px] my-3 bg-green-500">
                     kkkk
                 </div>
 
                 {/* Danh sách nội dung phù hợp cần tìm */}
-                <div className="w-[50px] h-[50px]">
+                <div className="w-full h-full bg-green-200">
                     kkkk
                 </div>
             </div>
