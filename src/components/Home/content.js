@@ -60,7 +60,7 @@ const ContentPage = () => {
                     <img
                         src={images[currentImageIndex]}
                         alt="Ad Banner"
-                        className="object-fill w-[1000px] max-h-[500px] rounded-md"
+                        className="object-fill w-[1000px] max-h-[500px]"
                     />
 
                     <div className="absolute bottom-3 left-5 right-0 flex items-center">

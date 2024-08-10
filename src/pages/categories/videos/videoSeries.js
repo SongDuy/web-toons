@@ -24,6 +24,18 @@ const dataSeries = [
     { id: 15, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 1", date: "jun 10, 2024", like: "23,789", number: "#1" },
 ];
 
+const dataAlsoLike = [
+    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
+    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
+    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
+    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
+    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
+    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
+    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
+    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
+    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
+];
+
 const VideoSeriesPage = () => {
     return (
         <div>
@@ -192,97 +204,44 @@ const VideoSeriesPage = () => {
                                 You may also like
                             </span>
                         </div>
-                        <div className="w-full h-[160px] bg-white my-5 px-5 py-5 rounded-md">
-                            <ul className="flex items-center justify-center gap-3">
+                        <div className="w-full min-h-[160px] bg-white my-5 px-5 py-5 rounded-md">
+                            <ul className="w-full h-full grid grid-cols-3 gap-3">
 
-                                <li
-                                    className="w-1/3 h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
-                                >
-                                    <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
-                                        <img
-                                            src="https://www.bluedogposters.com.au/cdn/shop/products/PP34925_1400x.jpg?v=1674016516"
-                                            alt="img"
-                                            className="object-fill w-full h-full rounded-xl"
-                                        />
-                                    </div>
-                                    <div className="h-full rounded-xl px-3 py-3">
-                                        <div className="w-[210px] h-[75px] overflow-hidden">
-                                            <span className="w-full text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                Harry Potter
-                                            </span>
-                                            <span className="w-full line-clamp-1">
-                                                sh00 , Violet Matter
-                                            </span>
-                                        </div>
+                                {/* khung danh sách */}
+                                {dataAlsoLike.map(item => (
+                                    <Link to={`/original/series`}>
+                                        <li
+                                            className="w-[380px] h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
+                                            key={item.id}
+                                        >
 
-                                        <div className="w-full">
-                                            <span className=" flex gap-1 text-green-500">
-                                                <VisibilityIcon />
-                                                88.8M
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
+                                            <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
+                                                <img
+                                                    src={item.img}
+                                                    alt="img"
+                                                    className="object-fill w-full h-full rounded-xl"
+                                                />
+                                            </div>
+                                            <div className="h-full rounded-xl px-3 py-3">
+                                                <div className="w-[210px] h-[75px] overflow-hidden">
+                                                    <span className="w-full text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                        {item.name}
+                                                    </span>
+                                                    <span className="w-full line-clamp-1">
+                                                        {item.auth}
+                                                    </span>
+                                                </div>
 
-                                <li
-                                    className="w-1/3 h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
-                                >
-                                    <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
-                                        <img
-                                            src="https://baodongnai.com.vn/file/e7837c02876411cd0187645a2551379f/052024/14_3_20240530150432.jpg"
-                                            alt="img"
-                                            className="object-fill w-full h-full rounded-xl"
-                                        />
-                                    </div>
-                                    <div className="h-full rounded-xl px-3 py-3">
-                                        <div className="w-[210px] h-[75px] overflow-hidden">
-                                            <span className="w-full text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                Garfield
-                                            </span>
-                                            <span className="w-full line-clamp-1">
-                                                sh00 , Violet Matter
-                                            </span>
-                                        </div>
-
-                                        <div className="w-full">
-                                            <span className=" flex gap-1 text-green-500">
-                                                <VisibilityIcon />
-                                                88.8M
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li
-                                    className="w-1/3 h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
-                                >
-                                    <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
-                                        <img
-                                            src="https://cdn.popsww.com/blog/sites/2/2023/08/doraemon-lac-vao-xu-quy.jpg"
-                                            alt="img"
-                                            className="object-fill w-full h-full rounded-xl"
-                                        />
-                                    </div>
-
-                                    <div className="h-full rounded-xl px-3 py-3">
-                                        <div className="w-[210px] h-[75px] overflow-hidden">
-                                            <span className="w-full text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                Doraemon
-                                            </span>
-                                            <span className="w-full line-clamp-1">
-                                                sh00 , Violet Matter
-                                            </span>
-                                        </div>
-
-                                        <div className="w-full">
-                                            <span className=" flex gap-1 text-green-500">
-                                                <VisibilityIcon />
-                                                88.8M
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-
+                                                <div className="w-full">
+                                                    <span className=" flex gap-1 text-green-500">
+                                                        <VisibilityIcon />
+                                                        {item.look}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </Link>
+                                ))}
                             </ul>
                         </div>
 
