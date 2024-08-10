@@ -13,11 +13,11 @@ const images = [
     "https://images.alphacoders.com/135/1353040.jpeg",
     "https://wallpapergod.com/images/hd/anime-4k-5760X3240-wallpaper-par00nk6228xf5xm.jpeg",
     "https://i.pinimg.com/originals/52/83/59/5283594dd6b1d0dd4b8a59c723a35024.gif",
-    "https://images.hdqwalls.com/download/after-sunset-minimal-4k-zm-1920x1080.jpg",
+    "https://i.pinimg.com/originals/ef/7f/b1/ef7fb1b37078b6a2aef8e40710446bfa.jpg",
     "https://i.redd.it/b5jec682hfk61.jpg",
     "https://images.hdqwalls.com/download/alone-standing-at-roof-ff-1920x1080.jpg",
     "https://i.pinimg.com/originals/d2/ab/0f/d2ab0fe55a5ada215f7ef187c7a8677f.gif",
-    "https://w.wallha.com/ws/13/ypDeq3JB.jpg",
+    "https://i.pinimg.com/originals/82/bb/bf/82bbbffb0ee24320a2d8c4e7a35e9ea3.jpg",
     "https://4kwallpapers.com/images/wallpapers/anime-girl-surreal-1920x1080-10028.jpg",
 ];
 
@@ -55,7 +55,7 @@ const ContentPage = () => {
         <div className="w-full h-full bg-gray-100 pb-10">
 
             {/* Phần hiển thị hình quảng cáo */}
-            <div className="w-full h-[500px] bg-gradient-to-b from-white via-white to-green-100 overflow-hidden flex items-center justify-center">
+            <div className="w-full h-[500px] bg-gradient-to-b from-white via-yellow-100 to-green-100 overflow-hidden flex items-center justify-center">
                 <div className="max-w-[1000px] max-h-[500px] relative">
                     <img
                         src={images[currentImageIndex]}
