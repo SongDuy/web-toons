@@ -83,7 +83,7 @@ const SearchPage = ({ closeModal }) => {
                 {/* Ô tìm kiếm */}
                 <div className="w-full my-5">
                     <input
-                        className="w-full h-[35px] px-2 border-2"
+                        className="w-full h-[35px] px-2 border-2 rounded-md"
                         onChange={handleSearch}
                         placeholder="Search..."
                     />
