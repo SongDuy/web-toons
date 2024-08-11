@@ -88,7 +88,7 @@ const SearchPage = ({ closeModal }) => {
                 </div>
 
                 {/* Danh sách nội dung phù hợp cần tìm */}
-                <div className="w-full h-full">
+                <div className="w-full h-[630px] overflow-y-scroll">
                     <ul className="grid grid-cols-1">
                         {searchTerm !== '' ? filteredTop30Films.map(item => (
                             <Link to={`/original/series`} key={item.id}>
