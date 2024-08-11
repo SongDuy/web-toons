@@ -12,9 +12,26 @@ const LoginPage = ({ closeModal }) => {
     return (
         <div className="w-screen h-screen bg-black bg-opacity-50 flex items-center justify-center fixed inset-0 z-50" onClick={handleBackdropClick}> {/* backdrop-blur-sm */}
 
-            <div className="w-[500px] h-[500px] px-5 py-5 bg-white shadow rounded-lg flex justify-center">
+            <div className="w-[350px] h-[500px] px-5 py-5 bg-white shadow rounded-lg flex justify-center">
+                <div>
+                    <span className="text-[25px] font-semibold">Log In Now</span>
 
-                <span className="text-[20px]">Log in now and enjoy free comics</span>
+                    <ul className="w-full h-[50px] bg-red-100">
+
+                        <li className="w-full h-[50px] bg-red-100">
+
+                        </li>
+
+                        <li className="">
+
+                        </li>
+
+                        <li className="">
+
+                        </li>
+
+                    </ul>
+                </div>
 
             </div>
 
