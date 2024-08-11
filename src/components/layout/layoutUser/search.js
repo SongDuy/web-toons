@@ -90,7 +90,7 @@ const SearchPage = ({ closeModal }) => {
                 </div>
 
                 {/* Danh sách nội dung phù hợp cần tìm */}
-                <div className="w-full h-[620px] overflow-y-scroll">
+                <div className="w-full h-[620px] custom-scrollbar">
                     <ul className="grid grid-cols-1">
                         {showNoResultsMessage ? (
                             <p className="text-center text-gray-500">No relevant results found.</p>
