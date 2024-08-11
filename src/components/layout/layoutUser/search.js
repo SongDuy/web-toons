@@ -105,23 +105,22 @@ const SearchPage = ({ closeModal }) => {
                                     </div>
 
                                     <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                                        <div className="w-[270px] border overflow-hidden ">
+                                        <div className="w-[270px] overflow-hidden ">
                                             <span className="w-full text-[15px] font-semibold line-clamp-1">
                                                 {item.name}
                                             </span>
                                             <div className="flex">
-                                                <span className="w-auto line-clamp-1">
-                                                    {item.auth} | 
+                                                <span className="w-auto px-2 line-clamp-1">
+                                                    {item.auth}
                                                 </span>
-                                                <span className="w-auto line-clamp-1">
-                                                    {' '} {item.genre} | 
-                                                </span>
-                                                <span className="w-[70px] flex gap-2 line-clamp-1">
-                                                    <VisibilityIcon />
-                                                    {item.look}
+                                                <span className="w-auto px-2 border-l-2 line-clamp-1">
+                                                    {item.genre}
                                                 </span>
                                             </div>
-
+                                            <span className="w-full text-[15px] flex gap-2 font-semibold line-clamp-1">
+                                                <VisibilityIcon />
+                                                {item.look}
+                                            </span>
                                         </div>
 
                                     </div>
