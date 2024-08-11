@@ -35,9 +35,9 @@ const SearchPage = ({ closeModal }) => {
     };
 
     return (
-        <div className="w-full h-full bg-black bg-opacity-50 flex py fixed inset-0 z-50 " onClick={handleBackdropClick}>
+        <div className="w-full h-full bg-black bg-opacity-50 flex fixed inset-0 z-50 " onClick={handleBackdropClick}>
 
-            <div className={`w-[310px] h-screen pl-3 pr-3 py-3 ml-auto bg-gray-50 relative  ${!isSearch ? "slide-in" : "slide-out"} `}
+            <div className={`w-[420px] h-screen px-3 py-3 ml-auto bg-gray-50 relative  ${!isSearch ? "slide-in" : "slide-out"} `}
             >
                 {/* nút tắt tìm kiếm */}
                 <div className="w-[35px] h-[35px] bg-red-200 ml-auto hover:text-white cursor-pointer rounded-md flex items-center justify-center"
@@ -49,7 +49,7 @@ const SearchPage = ({ closeModal }) => {
                 {/* Ô tìm kiếm */}
                 <div className="w-full my-5">
                     <input
-                        className="w-full h-[35px] px-2"
+                        className="w-full h-[35px] px-2 border-2"
                     />
                 </div>
 
@@ -60,7 +60,7 @@ const SearchPage = ({ closeModal }) => {
                         {dataAlsoLike.map(item => (
                             <Link to={`/original/series`}>
                                 <li
-                                    className="w-[290px] h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer"
+                                    className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer"
                                     key={item.id}
                                 >
 
