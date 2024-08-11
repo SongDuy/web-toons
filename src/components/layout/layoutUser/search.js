@@ -69,9 +69,9 @@ const SearchPage = ({ closeModal }) => {
     const showNoResultsMessage = (searchTerm.trim() !== '' && filteredTop30Films.length === 0) || searchTerm.trim() === '';
 
     return (
-        <div className="w-full h-full bg-black bg-opacity-50 flex fixed inset-0 z-50 " onClick={handleBackdropClick}>
+        <div className="w-screen h-screen bg-black bg-opacity-50 flex fixed inset-0 z-50 " onClick={handleBackdropClick}>
 
-            <div className={`w-[420px] h-screen px-3 py-3 ml-auto bg-gray-50 relative  ${!isSearch ? "slide-in" : "slide-out"} `}
+            <div className={`w-[420px] h-screen pl-3 pr-8 py-3 ml-auto bg-gray-50 relative  ${!isSearch ? "slide-in" : "slide-out"} `}
             >
                 {/* nút tắt tìm kiếm */}
                 <div className="w-[35px] h-[35px] bg-red-200 ml-auto hover:text-white cursor-pointer rounded-md flex items-center justify-center"
@@ -99,24 +99,24 @@ const SearchPage = ({ closeModal }) => {
                                 <Link to={`/original/series`} key={item.id}>
                                     <li className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer">
 
-                                        <div className="w-[80px] h-[80px] rounded-xl">
+                                        <div className="w-[80px] h-[80px] rounded">
                                             <img
                                                 src={item.img}
                                                 alt="img"
-                                                className="object-fill w-full h-full rounded-xl"
+                                                className="object-fill w-full h-full rounded"
                                             />
                                         </div>
 
                                         <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                                            <div className="w-[275px] overflow-hidden ">
+                                            <div className="w-[260px] overflow-hidden ">
                                                 <span className="w-full text-[15px] font-semibold line-clamp-1">
                                                     {item.name}
                                                 </span>
                                                 <div className="flex">
-                                                    <span className="max-w-[200px] pr-2 border-r-2 line-clamp-1">
+                                                    <span className="max-w-[150px] pr-2 border-r-2 line-clamp-1">
                                                         {item.auth}
                                                     </span>
-                                                    <span className="max-w-[100px] px-2 border-l line-clamp-1">
+                                                    <span className="max-w-[110px] px-2 border-l line-clamp-1">
                                                         {item.genre}
                                                     </span>
                                                 </div>

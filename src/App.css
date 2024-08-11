@@ -31,7 +31,7 @@
 }
 
 .custom-scrollbar-content {
-  padding-right: 10px; /* Khoảng trống giữa nội dung và thanh cuộn */
+  padding-left: 10px; /* Khoảng trống giữa nội dung và thanh cuộn */
 }
 
 .custom-scrollbar::-webkit-scrollbar {
