@@ -47,24 +47,24 @@ const SearchPage = ({ closeModal }) => {
                 </div>
 
                 {/* Ô tìm kiếm */}
-                <div className="w-full my-3">
+                <div className="w-full my-5">
                     <input
-                        className="w-full"
+                        className="w-full h-[35px] px-2"
                     />
                 </div>
 
                 {/* Danh sách nội dung phù hợp cần tìm */}
-                <div className="w-full h-full bg-white">
-                    <ul className="grid grid-cols-1 gap-y-2">
+                <div className="w-full h-full">
+                    <ul className="grid grid-cols-1">
                        
                         {dataAlsoLike.map(item => (
                             <Link to={`/original/series`}>
                                 <li
-                                    className="w-[290px] h-[80px] flex rounded-xl cursor-pointer"
+                                    className="w-[290px] h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer"
                                     key={item.id}
                                 >
 
-                                    <div className="w-[80px] h-[80px] bg-green-200 rounded-xl">
+                                    <div className="w-[80px] h-[80px] rounded-xl">
                                         <img
                                             src={item.img}
                                             alt="img"
