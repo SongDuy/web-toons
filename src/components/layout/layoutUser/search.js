@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import VisibilityIcon from '@mui/icons-material/Visibility';
-
 import CloseIcon from '@mui/icons-material/Close';
+import StarIcon from '@mui/icons-material/Star';
 
 import '../../../App.css';
 
@@ -63,8 +62,11 @@ const SearchPage = ({ closeModal }) => {
     };
 
     const filteredTop30Films = top30Films.filter(item =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase()) //|| item.auth.toLowerCase().includes(searchTerm.toLowerCase())
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+        //|| item.auth.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    const showNoResultsMessage = (searchTerm.trim() !== '' && filteredTop30Films.length === 0) || searchTerm.trim() === '';
 
     return (
         <div className="w-full h-full bg-black bg-opacity-50 flex fixed inset-0 z-50 " onClick={handleBackdropClick}>
@@ -90,43 +92,45 @@ const SearchPage = ({ closeModal }) => {
                 {/* Danh sách nội dung phù hợp cần tìm */}
                 <div className="w-full h-[620px] overflow-y-scroll">
                     <ul className="grid grid-cols-1">
-                        {searchTerm !== '' ? filteredTop30Films.map(item => (
-                            <Link to={`/original/series`} key={item.id}>
-                                <li
-                                    className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer"
-                                >
+                        {showNoResultsMessage ? (
+                            <p className="text-center text-gray-500">No relevant results found.</p>
+                        ) : (
+                            filteredTop30Films.map(item => (
+                                <Link to={`/original/series`} key={item.id}>
+                                    <li className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer">
 
-                                    <div className="w-[80px] h-[80px] rounded-xl">
-                                        <img
-                                            src={item.img}
-                                            alt="img"
-                                            className="object-fill w-full h-full rounded-xl"
-                                        />
-                                    </div>
-
-                                    <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                                        <div className="w-[270px] overflow-hidden ">
-                                            <span className="w-full text-[15px] font-semibold line-clamp-1">
-                                                {item.name}
-                                            </span>
-                                            <div className="flex">
-                                                <span className="w-auto px-2 line-clamp-1">
-                                                    {item.auth}
-                                                </span>
-                                                <span className="w-auto px-2 border-l-2 line-clamp-1">
-                                                    {item.genre}
-                                                </span>
-                                            </div>
-                                            <span className="w-full text-[15px] flex gap-2 font-semibold line-clamp-1">
-                                                <VisibilityIcon />
-                                                {item.look}
-                                            </span>
+                                        <div className="w-[80px] h-[80px] rounded-xl">
+                                            <img
+                                                src={item.img}
+                                                alt="img"
+                                                className="object-fill w-full h-full rounded-xl"
+                                            />
                                         </div>
 
-                                    </div>
-                                </li>
-                            </Link>
-                        )) : null}
+                                        <div className="h-full rounded-xl px-3 py-3 flex items-center">
+                                            <div className="w-[275px] overflow-hidden ">
+                                                <span className="w-full text-[15px] font-semibold line-clamp-1">
+                                                    {item.name}
+                                                </span>
+                                                <div className="flex">
+                                                    <span className="max-w-[200px] pr-2 border-r-2 line-clamp-1">
+                                                        {item.auth}
+                                                    </span>
+                                                    <span className="max-w-[100px] px-2 border-l line-clamp-1">
+                                                        {item.genre}
+                                                    </span>
+                                                </div>
+                                                <span className="w-full text-[15px] text-yellow-500 flex items-center gap-1 font-semibold line-clamp-1">
+                                                    <StarIcon />
+                                                    {item.look}
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                </Link>
+                            ))
+                        )}
                     </ul>
                 </div>
             </div>
