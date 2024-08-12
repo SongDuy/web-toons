@@ -73,11 +73,11 @@ const NewToOriginalsPage = () => {
                                     </div>
 
                                     <div className="w-full mb-[25px]">
-                                        <span className="text-red-400 mix-blend-multiply text-sm font-semibold flex items-center gap-1">
+                                        <span className="text-rose-500 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
                                             <FavoriteIcon />
                                             {item.like}
                                         </span>
-                                        <span className="w-[35px] h-[35px] mt-2 uppercase bg-black text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                        <span className="w-[35px] h-[35px] mt-2 uppercase bg-gradient-to-t from-gray-500 via-black to-black text-white text-xs font-semibold rounded-full flex items-center justify-center">
                                             New
                                         </span>
                                     </div>

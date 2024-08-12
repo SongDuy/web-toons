@@ -174,7 +174,7 @@ const OriginalSeriesPage = () => {
                             <div className="w-full h-full">
 
                                 <div className="flex gap-3 pt-10 pb-5">
-                                    <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                    <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
                                         Up
                                     </span>
                                     <span className="text-xl font-semibold flex items-center">
