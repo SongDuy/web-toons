@@ -157,17 +157,17 @@ const OriginalsPage = () => {
                                                 <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
 
                                                     <div className="w-full h-[65px] mb-auto overflow-hidden">
-                                                        <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                        <span className="text-black text-lg font-semibold leading-[1.2] line-clamp-2">
                                                             {item.name}
 
                                                         </span>
-                                                        <span className="text-md leading-[1.2] line-clamp-1">
+                                                        <span className="text-black text-md leading-[1.2] line-clamp-1">
                                                             {item.auth}
                                                         </span>
                                                     </div>
 
                                                     <div className="w-full mb-[40px] mr-auto">
-                                                        <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
+                                                        <span className="text-red-400 mix-blend-multiply rounded-full gap-1 text-sm font-semibold flex items-center">
                                                             <FavoriteIcon />
                                                             {item.like}
                                                         </span>
@@ -235,7 +235,7 @@ const OriginalsPage = () => {
                                                     </div>
 
                                                     <div className="w-full mb-[40px] mr-auto">
-                                                        <span className="rounded-full gap-1 text-red-300 text-sm font-semibold flex items-center">
+                                                        <span className="text-red-400 mix-blend-multiply rounded-full gap-1 text-sm font-semibold flex items-center">
                                                             <FavoriteIcon />
                                                             {item.like}
                                                         </span>
