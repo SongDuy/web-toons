@@ -74,7 +74,7 @@ const NewToVideosPage = () => {
                                     </div>
 
                                     <div className="w-full mb-[25px]">
-                                        <span className="w-[75px] text-rose-500 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
+                                        <span className="w-[75px] text-rose-300 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
                                             <FavoriteIcon />
                                             {item.like}
                                         </span>

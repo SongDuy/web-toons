@@ -167,7 +167,7 @@ const OriginalsPage = () => {
                                                     </div>
 
                                                     <div className="w-full mb-[40px] mr-auto">
-                                                        <span className="w-[75px] text-rose-500 rounded-full px-1 gap-1 text-sm font-semibold flex items-center">
+                                                        <span className="w-[75px] text-rose-300 rounded-full px-1 gap-1 text-sm font-semibold flex items-center">
                                                             <FavoriteIcon />
                                                             {item.like}
                                                         </span>
@@ -235,7 +235,7 @@ const OriginalsPage = () => {
                                                     </div>
 
                                                     <div className="w-full mb-[40px] mr-auto">
-                                                        <span className="w-[75px] text-rose-500 rounded-full px-1 gap-1 text-sm font-semibold flex items-center">
+                                                        <span className="w-[75px] text-rose-300 rounded-full px-1 gap-1 text-sm font-semibold flex items-center">
                                                             <FavoriteIcon />
                                                             {item.like}
                                                         </span>
