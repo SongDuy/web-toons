@@ -6,6 +6,8 @@ import GroupAddSharpIcon from '@mui/icons-material/GroupAddSharp';
 import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
 import { Link } from 'react-router-dom';
 
+import '../../../App.css';
+
 const dataSeries = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 15", date: "jun 10, 2024", like: "23,789", number: "#15" },
     { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", name: "Episode 14", date: "jun 10, 2024", like: "23,789", number: "#14" },
@@ -65,9 +67,9 @@ const OriginalSeriesPage = () => {
                 </div>
 
                 <div className="w-full h-full flex items-center justify-center">
-                    <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-5 pb-10">
+                    <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-6 pb-10">
 
-                        <div className="col-span-2 h-full pt-5">
+                        <div className="col-span-2 h-full">
 
                             <div className="w-full px-5 pb-3">
                                 <span className="font-semibold text-md">
@@ -133,7 +135,7 @@ const OriginalSeriesPage = () => {
 
                         </div>
 
-                        <div className="h-full py-5 px-5">
+                        <div className="h-full px-5">
 
                             <div className="w-full mb-auto">
                                 <ul className="flex items-center justify-center">
@@ -226,6 +228,7 @@ const OriginalSeriesPage = () => {
                                                     className="object-fill w-[100px] h-[100px] rounded-xl"
                                                 />
                                             </div>
+
                                             <div className="h-full rounded-xl px-3 py-3">
                                                 <div className="w-[210px] h-[75px] overflow-hidden">
                                                     <span className="w-full text-lg font-semibold leading-[1.2] line-clamp-2">

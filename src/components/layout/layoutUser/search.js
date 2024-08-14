@@ -81,7 +81,7 @@ const SearchPage = ({ closeModal }) => {
                 </div>
 
                 {/* Ô tìm kiếm */}
-                <div className="w-full my-5">
+                <div className="w-full mt-5 mb-3">
                     <input
                         className="w-full h-[35px] px-2 border-2 rounded-md"
                         onChange={handleSearch}
@@ -90,7 +90,7 @@ const SearchPage = ({ closeModal }) => {
                 </div>
 
                 {/* Danh sách nội dung phù hợp cần tìm */}
-                <div className="w-full h-[620px] custom-scrollbar">
+                <div className="w-full h-[630px] custom-scrollbar">
                     <ul className="grid grid-cols-1">
                         {showNoResultsMessage ? (
                             <p className="text-center text-gray-500">No relevant results found.</p>

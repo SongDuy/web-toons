@@ -64,9 +64,9 @@ const VideoSeriesPage = () => {
                 </div>
 
                 <div className="w-full h-full flex items-center justify-center ">
-                    <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-5 pb-10">
+                    <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-6 pb-10">
 
-                        <div className="col-span-2 h-full pt-5">
+                        <div className="col-span-2 h-full">
                             <div className="w-full px-5 pb-3">
                                 <span className="font-semibold text-md">
                                     Series Video
@@ -85,6 +85,7 @@ const VideoSeriesPage = () => {
                                                 key={item.id}
                                             >
                                                 <div className="w-full h-full flex items-center">
+
                                                     <div className="w-[80px] h-[80px]">
                                                         <img
                                                             src={item.img}
@@ -130,7 +131,7 @@ const VideoSeriesPage = () => {
 
                         </div>
 
-                        <div className="h-full py-5 px-5">
+                        <div className="h-full px-5">
 
                             <div className="w-full mb-auto">
                                 <ul className="flex items-center justify-center">
