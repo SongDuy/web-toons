@@ -86,6 +86,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                     ))}
                 </ul>
                 <div className="w-[150px] h-full flex items-center justify-center">
+                   
                     <button
                         id="basic-button"
                         aria-controls={open ? 'basic-menu' : undefined}
@@ -116,8 +117,8 @@ const WeekdayOriginalsAndVideosPage = () => {
                         <Link to={`/videos`}>
                             <MenuItem onClick={handleClose}>Videos</MenuItem>
                         </Link>
-
                     </Menu>
+
                 </div>
             </div>
             <div className="w-full min-h-[500px] py-[30px] flex justify-center">
