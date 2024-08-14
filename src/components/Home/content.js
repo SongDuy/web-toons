@@ -68,7 +68,7 @@ const ContentPage = () => {
                             <button
                                 key={index}
                                 onClick={() => handleImageChange(index)}
-                                className={`w-[15px] h-[15px] mx-1 rounded-full ${index === currentImageIndex ? 'bg-white' : 'bg-gray-500 hover:bg-white'}`}
+                                className={`w-[15px] h-[15px] mx-1 rounded-full ${index === currentImageIndex ? 'bg-white' : 'bg-gray-500'}`}
                             />
                         ))}
                     </div>

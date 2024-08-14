@@ -93,7 +93,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}
                     >
-                        <span className='w-full h-full ml-2 uppercase font-semibold text-md text-gray-400 hover:text-yellow-500 flex items-center justify-center'>
+                        <span className='w-[100px] h-full border-l-2 pl-10 uppercase font-semibold text-md text-gray-400 hover:text-yellow-500 flex items-center justify-center'>
                             More
                             <NavigateNextIcon />
                         </span>
