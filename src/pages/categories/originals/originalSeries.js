@@ -48,16 +48,16 @@ const OriginalSeriesPage = () => {
                         className="object-cover w-full h-full" alt="img"
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-full">
-                            <span className="block font-semibold text-xl text-black flex items-center justify-center">
+                        <div className="w-[1200px] overflow-hidden">
+                            <span className="font-semibold text-xl text-black flex items-center justify-center">
                                 Action
                             </span>
 
-                            <span className="block font-semibold text-[50px] text-white flex items-center justify-center">
+                            <span className="font-semibold my-5 text-[50px] text-white leading-[1.2] line-clamp-3 flex justify-center">
                                 Peace Restaurant
                             </span>
 
-                            <span className="block font-semibold text-xl text-white flex items-center justify-center">
+                            <span className="font-semibold text-xl text-white flex items-center justify-center">
                                 Lee Nakeum , seewater
                             </span>
                         </div>
