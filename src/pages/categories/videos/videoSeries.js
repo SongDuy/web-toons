@@ -171,7 +171,7 @@ const VideoSeriesPage = () => {
 
                             <div className="w-full h-full">
 
-                                <div className="flex gap-3 pt-10 pb-5">
+                                <div className="flex gap-3 pt-5 pb-3">
                                     <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
                                         Up
                                     </span>
