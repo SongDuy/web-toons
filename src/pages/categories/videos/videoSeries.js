@@ -44,7 +44,7 @@ const VideoSeriesPage = () => {
                 {/* Hiển thị ảnh nền */}
                 <div className="w-full h-[320px] bg-green-200 relative">
                     <img src="https://i.redd.it/0hwfsqufm3w41.jpg"
-                        className="object-cover w-full h-full rounded-md" alt="img"
+                        className="object-cover w-full h-full" alt="img"
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-full">
@@ -215,11 +215,11 @@ const VideoSeriesPage = () => {
                                             key={item.id}
                                         >
 
-                                            <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
+                                            <div className="w-[120px] h-[120px] rounded-xl flex items-center justify-center">
                                                 <img
                                                     src={item.img}
                                                     alt="img"
-                                                    className="object-fill w-full h-full rounded-xl"
+                                                    className="object-fill w-[100px] h-[100px] rounded-xl"
                                                 />
                                             </div>
                                             

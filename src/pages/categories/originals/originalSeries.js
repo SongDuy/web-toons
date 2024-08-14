@@ -45,7 +45,7 @@ const OriginalSeriesPage = () => {
                 {/* Hiển thị ảnh nền */}
                 <div className="w-full h-[320px] bg-green-200 relative">
                     <img src="https://i.redd.it/b5jec682hfk61.jpg"
-                        className="object-cover w-full h-full rounded-md" alt="img"
+                        className="object-cover w-full h-full" alt="img"
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-full">
@@ -64,7 +64,7 @@ const OriginalSeriesPage = () => {
                     </div>
                 </div>
 
-                <div className="w-full h-full flex items-center justify-center ">
+                <div className="w-full h-full flex items-center justify-center">
                     <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-5 pb-10">
 
                         <div className="col-span-2 h-full pt-5">
@@ -219,11 +219,11 @@ const OriginalSeriesPage = () => {
                                             key={item.id}
                                         >
 
-                                            <div className="w-[120px] h-[120px] bg-green-200 rounded-xl">
+                                            <div className="w-[120px] h-[120px] rounded-xl flex items-center justify-center">
                                                 <img
                                                     src={item.img}
                                                     alt="img"
-                                                    className="object-fill w-full h-full rounded-xl"
+                                                    className="object-fill w-[100px] h-[100px] rounded-xl"
                                                 />
                                             </div>
                                             <div className="h-full rounded-xl px-3 py-3">
