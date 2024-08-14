@@ -212,7 +212,7 @@ const VideoSeriesPage = () => {
                                 {dataAlsoLike.map(item => (
                                     <Link to={`/original/series`}>
                                         <li
-                                            className="w-[380px] h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
+                                            className="w-[375px] h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
                                             key={item.id}
                                         >
 
@@ -225,7 +225,7 @@ const VideoSeriesPage = () => {
                                             </div>
                                             
                                             <div className="h-full rounded-xl px-3 py-3">
-                                                <div className="w-[210px] h-[75px] overflow-hidden">
+                                                <div className="w-[230px] h-[75px] overflow-hidden">
                                                     <span className="w-full text-lg font-semibold leading-[1.2] line-clamp-2">
                                                         {item.name}
                                                     </span>
