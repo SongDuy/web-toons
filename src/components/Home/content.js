@@ -56,7 +56,7 @@ const ContentPage = () => {
 
             {/* Phần hiển thị hình quảng cáo */}
             <div className="w-full h-[500px] bg-gradient-to-b from-white via-yellow-100 to-green-100 overflow-hidden flex items-center justify-center">
-                <div className="max-w-[1120px] max-h-[500px] relative">
+                <div className="max-w-[1120px] max-h-[500px] relative cursor-pointer">
                     <img
                         src={images[currentImageIndex]}
                         alt="Ad Banner"
