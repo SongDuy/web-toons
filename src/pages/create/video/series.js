@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import NorthIcon from '@mui/icons-material/North';
 
@@ -61,7 +61,7 @@ const SeriesPage = ({ goToEposodes }) => {
     const [valueSummary, setValueSummary] = useState('');
     const handleSummary = (event) => {
         const inputValueSummary = event.target.value;
-        if (inputValueSummary.length <= 1000) { // Giới hạn số ký tự nhập vào là 10
+        if (inputValueSummary.length <= 500) { // Giới hạn số ký tự nhập vào là 10
             setValueSummary(inputValueSummary);
         }
     };
@@ -252,7 +252,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                 </span>
                                 <textarea
                                     className="w-full h-[300px] mt-3 bg-white px-3 py-2"
-                                    placeholder="Less than 1000 characters"
+                                    placeholder="Less than 500 characters"
                                     value={valueSummary}
                                     onChange={handleSummary}
                                 />
@@ -300,8 +300,9 @@ const SeriesPage = ({ goToEposodes }) => {
                             </div>
 
                             <div className="w-full py-3 pl-5">
-                                <button onClick={goToEposodes} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    Tiếp theo
+                                <button onClick={goToEposodes} className="w-[200px] h-[50px] flex items-center justify-center pl-3 gap-5 bg-gradient-to-t from-green-400 via-green-500 to-green-600 text-white text-[18px] font-semibold rounded-full">
+                                    Create Series
+                                    <NavigateNextIcon />
                                 </button>
                             </div>
                             
