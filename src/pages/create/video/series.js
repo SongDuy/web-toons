@@ -147,7 +147,7 @@ const SeriesPage = ({ goToEposodes }) => {
                             <div className="w-full h-full ">
                                 <div className="w-full py-3">
                                     <span className="w-full font-semibold text-xl">
-                                        Vertical Thumbnail
+                                    Horizontal Thumbnail
                                     </span>
                                 </div>
 
