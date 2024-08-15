@@ -112,8 +112,8 @@ const SeriesPage = ({ goToEposodes }) => {
                                     </span>
                                 </div>
 
-                                <div className="w-[350px] flex items-center justify-center">
-                                    <div className="w-[250px] h-[250px] shadow-md bg-red-100 rounded border hover:border-green-500 hover:text-gray-500 flex items-center justify-center group cursor-pointer">
+                                <div className="w-[350px] border rounded shadow bg-red-100 flex items-center justify-center">
+                                    <div className="w-[200px] h-[200px] shadow border-2 bg-red-100 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group cursor-pointer">
                                         <div>
                                             <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
                                                 <NorthIcon />
