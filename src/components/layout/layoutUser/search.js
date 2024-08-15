@@ -114,7 +114,7 @@ const SearchPage = ({ closeModal }) => {
                                         </div>
 
                                         <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                                            <div className="w-[260px] overflow-hidden ">
+                                            <div className="w-[280px] overflow-hidden ">
                                                 <span className="w-full text-[15px] font-semibold line-clamp-1">
                                                     {item.name}
                                                 </span>
