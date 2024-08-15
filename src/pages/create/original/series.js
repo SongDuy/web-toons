@@ -74,7 +74,7 @@ const SeriesPage = ({ goToEposodes }) => {
                 <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
                     <ul className="flex gap-10">
                         <li className="uppercase font-semibold cursor-pointer text-md flex items-center justify-center">
-                            <div className="w-[40px] h-[40px] bg-green-500 rounded-full border flex items-center justify-center mx-2">
+                            <div className="w-[40px] h-[40px] bg-gradient-to-t from-yellow-300 via-yellow-400 to-yellow-500 rounded-full border flex items-center justify-center mx-2">
                                 <span className="mx-3 text-2xl text-white font-bold">
                                     1
                                 </span>
@@ -299,7 +299,7 @@ const SeriesPage = ({ goToEposodes }) => {
 
                             </div>
                             <div className="w-full py-3 pl-5">
-                                <button onClick={goToEposodes} className="w-[200px] h-[50px] flex items-center justify-center pl-3 gap-5 bg-gradient-to-t from-green-400 via-green-500 to-green-600 text-white text-[18px] font-semibold rounded-full">
+                                <button onClick={goToEposodes} className="w-[200px] h-[50px] flex items-center justify-center pl-3 gap-5 bg-gradient-to-t from-yellow-300 via-yellow-400 to-yellow-500 text-white text-[18px] font-semibold rounded-full">
                                     Create Series
                                     <NavigateNextIcon />
                                 </button>

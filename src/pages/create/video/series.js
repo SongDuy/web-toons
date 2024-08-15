@@ -74,7 +74,7 @@ const SeriesPage = ({ goToEposodes }) => {
                 <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
                     <ul className="flex gap-10">
                         <li className="uppercase font-semibold cursor-pointer text-md flex items-center justify-center">
-                            <div className="w-[40px] h-[40px] bg-green-500 rounded-full border flex items-center justify-center mx-2">
+                            <div className="w-[40px] h-[40px] bg-gradient-to-t from-yellow-300 via-yellow-400 to-yellow-500 rounded-full border flex items-center justify-center mx-2">
                                 <span className="mx-3 text-2xl text-white font-bold">
                                     1
                                 </span>
@@ -101,28 +101,30 @@ const SeriesPage = ({ goToEposodes }) => {
                     </ul>
                 </div>
 
-                <div className="w-full h-full px-[200px]">
+                <div className="w-full h-full px-[160px]">
                     <div className="w-full h-full py-5 flex">
-                        <div className="w-3/12 h-full">
+                        <div className="w-[380px] h-full">
 
-                            <div className="w-[220px] h-full">
+                            <div className="w-full h-full">
                                 <div className="w-full py-3">
                                     <span className="w-full font-semibold text-xl">
                                         Square Thumbnail
                                     </span>
                                 </div>
 
-                                <div className="w-full h-[220px] shadow-md bg-red-100 rounded border hover:border-green-500 hover:text-gray-500 flex items-center justify-center group cursor-pointer">
-                                    <div>
-                                        <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
-                                            <NorthIcon />
-                                        </span>
-                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                            Select an image to upload.
-                                        </span>
-                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                            Or drag the image file here.
-                                        </span>
+                                <div className="w-[350px] flex items-center justify-center">
+                                    <div className="w-[200px] h-[200px] shadow-md bg-red-100 rounded border hover:border-green-500 hover:text-gray-500 flex items-center justify-center group cursor-pointer">
+                                        <div>
+                                            <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
+                                                <NorthIcon />
+                                            </span>
+                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                Select an image to upload.
+                                            </span>
+                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                Or drag the image file here.
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -142,28 +144,30 @@ const SeriesPage = ({ goToEposodes }) => {
                                 </div>
                             </div>
 
-                            <div className="w-[220px] h-full">
+                            <div className="w-full h-full ">
                                 <div className="w-full py-3">
                                     <span className="w-full font-semibold text-xl">
                                         Vertical Thumbnail
                                     </span>
                                 </div>
 
-                                <div className="w-full h-[440px] shadow-md bg-red-100 rounded border hover:border-green-500 hover:text-gray-500 flex items-center justify-center group cursor-pointer">
-                                    <div>
-                                        <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
-                                            <NorthIcon />
-                                        </span>
-                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                            Select an image to upload.
-                                        </span>
-                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                            Or drag the image file here.
-                                        </span>
+                                <div className="w-[350px] shadow flex items-center justify-center">
+                                    <div className="w-[350px] h-[200px] shadow-md bg-red-100 rounded border hover:border-green-500 hover:text-gray-500 flex items-center justify-center group cursor-pointer">
+                                        <div>
+                                            <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
+                                                <NorthIcon />
+                                            </span>
+                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                Select an image to upload.
+                                            </span>
+                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                Or drag the image file here.
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div className="w-[230px] py-3">
+                                <div className="w-full py-3">
                                     <span className="block w-full font-semibold text-sm text-gray-500">Image size must be 1080x1920.</span>
                                     <span className="block w-full font-semibold text-sm text-gray-500">Image must be less than 700KB.</span>
                                     <span className="block w-full font-semibold text-sm text-gray-500">Only JPG, JPEG, and PNG formats are allowed.</span>
@@ -173,7 +177,7 @@ const SeriesPage = ({ goToEposodes }) => {
                             </div>
                         </div>
 
-                        <div className="w-9/12 h-full ">
+                        <div className="w-[820px] h-full ">
 
                             <div className="w-full py-3 pl-5 flex">
                                 <div className="w-full">
@@ -296,16 +300,16 @@ const SeriesPage = ({ goToEposodes }) => {
                                         of violence and gore. More details can be found <span className="text-blue-500">HERE</span>
                                     </span>
                                 </div>
-                                
+
                             </div>
 
                             <div className="w-full py-3 pl-5">
-                                <button onClick={goToEposodes} className="w-[200px] h-[50px] flex items-center justify-center pl-3 gap-5 bg-gradient-to-t from-green-400 via-green-500 to-green-600 text-white text-[18px] font-semibold rounded-full">
+                                <button onClick={goToEposodes} className="w-[200px] h-[50px] flex items-center justify-center pl-3 gap-5 bg-gradient-to-t from-yellow-300 via-yellow-400 to-yellow-500 text-white text-[18px] font-semibold rounded-full">
                                     Create Series
                                     <NavigateNextIcon />
                                 </button>
                             </div>
-                            
+
                         </div>
                     </div>
 
