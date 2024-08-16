@@ -123,7 +123,7 @@ const GenresPage = () => {
                                     {/* Danh mục thể loại */}
                                     <div className="h-[70px] mb-5 flex items-center justify-center">
                                         <ul
-                                            class="grid grid-cols-10 gap-x-4 gap-y-2"
+                                            class="grid grid-cols-10 gap-2"
                                         >
                                             {/* khung nội dung */}
                                             {genres.map(genre => (
@@ -221,7 +221,7 @@ const GenresPage = () => {
                                     {/* Danh mục thể loại */}
                                     <div className="h-[70px] mb-5 flex items-center justify-center">
                                         <ul
-                                            class="grid grid-cols-10 gap-x-4 gap-y-2"
+                                            class="grid grid-cols-10 gap-2"
                                         >
                                             {/* khung nội dung */}
                                             {genres.map(genre => (
