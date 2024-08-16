@@ -5,7 +5,7 @@ import { enUS } from 'date-fns/locale';
 import CheckIcon from '@mui/icons-material/Check';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Link as ScrollLink, Element as ScrollElement } from 'react-scroll';
 
 const data = [
@@ -141,7 +141,7 @@ const VideosPage = () => {
 
                                     {/* khung nội dung */}
                                     {filteredData.map(item => (
-                                        <RouterLink to={`/video/series`}>
+                                        <Link to={`/video/series`}>
                                             <li
                                                 className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                                 key={item.id}
@@ -188,7 +188,7 @@ const VideosPage = () => {
                                                 </div>
 
                                             </li>
-                                        </RouterLink >
+                                        </Link >
                                     ))}
 
                                 </ul>
@@ -209,7 +209,7 @@ const VideosPage = () => {
 
                                     {/* khung nội dung */}
                                     {data.map(item => (
-                                        <RouterLink to={`/video/series`}>
+                                        <Link to={`/video/series`}>
                                             <li
                                                 className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                                 key={item.id}
@@ -254,7 +254,7 @@ const VideosPage = () => {
                                                 </div>
 
                                             </li>
-                                        </RouterLink >
+                                        </Link >
                                     ))}
 
                                 </ul>
