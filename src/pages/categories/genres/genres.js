@@ -110,7 +110,7 @@ const GenresPage = () => {
                             {/* Tiêu đề */}
                             <div className="h-[70px] border-b-2 flex items-center">
                                 <span className="font-semibold text-md">
-                                    Originals
+                                    Originals Series
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
                                     All
@@ -208,7 +208,7 @@ const GenresPage = () => {
                             {/* Tiêu đề */}
                             <div className="h-[70px] border-b-2 flex items-center">
                                 <span className="font-semibold text-md">
-                                    Videos
+                                    Videos Series
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
                                     All
