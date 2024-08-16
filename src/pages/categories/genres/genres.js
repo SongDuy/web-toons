@@ -130,7 +130,7 @@ const GenresPage = () => {
                                                 <li
                                                     key={genre}
                                                     onClick={() => setSelectedOriginalsByGenre(genre)}
-                                                    className={`uppercase font-semibold shadow text-xs py-2 px-2 rounded text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre ? 'text-gray-900' : ''}`}
+                                                    className={`uppercase font-semibold shadow bg-white text-xs py-2 px-2 rounded text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre ? 'text-gray-900' : ''}`}
                                                 >
                                                     {genre}
                                                 </li>
@@ -228,7 +228,7 @@ const GenresPage = () => {
                                                 <li
                                                     key={genre}
                                                     onClick={() => setSelectedVideosByGenre(genre)}
-                                                    className={`uppercase font-semibold shadow text-xs py-2 px-2 rounded text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedVideosByGenre === genre ? 'text-gray-900' : ''}`}
+                                                    className={`uppercase font-semibold shadow bg-white text-xs py-2 px-2 rounded text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedVideosByGenre === genre ? 'text-gray-900' : ''}`}
                                                 >
                                                     {genre}
                                                 </li>
