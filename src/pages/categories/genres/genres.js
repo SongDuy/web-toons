@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import CheckIcon from '@mui/icons-material/Check';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Link as ScrollLink, Element as ScrollElement } from 'react-scroll';
 
 const data = [
@@ -67,8 +67,11 @@ const GenresPage = () => {
     }, []);
 
     //Chọn nội dung theo thể loại
-    const [selectedGenre, setSelectedGenre] = useState('Action');
-    const filteredGenreData = data.filter(data => data.genre === selectedGenre);
+    const [selectedOriginalsByGenre, setSelectedOriginalsByGenre] = useState('Action');
+    const filteredOriginalsByGenre = data.filter(data => data.genre === selectedOriginalsByGenre);
+
+    const [selectedVideosByGenre, setSelectedVideosByGenre] = useState('Action');
+    const filteredVideosByGenre = data.filter(data => data.genre === selectedVideosByGenre);
 
     //Chọn nội dung theo tiêu đề
     const [selectedTitle, setSelectedTitle] = useState("originals");
@@ -126,8 +129,8 @@ const GenresPage = () => {
                                             {genres.map(genre => (
                                                 <li
                                                     key={genre}
-                                                    onClick={() => setSelectedGenre(genre)}
-                                                    className={`uppercase font-semibold shadow text-xs py-2 px-2 rounded text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedGenre === genre ? 'text-gray-900' : ''}`}
+                                                    onClick={() => setSelectedOriginalsByGenre(genre)}
+                                                    className={`uppercase font-semibold shadow text-xs py-2 px-2 rounded text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre ? 'text-gray-900' : ''}`}
                                                 >
                                                     {genre}
                                                 </li>
@@ -140,8 +143,8 @@ const GenresPage = () => {
                                     <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                         {/* khung nội dung */}
-                                        {filteredGenreData.map(item => (
-                                            <RouterLink to={`/video/series`}>
+                                        {filteredOriginalsByGenre.map(item => (
+                                            <Link to={`/original/series`}>
 
                                                 <li
                                                     className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
@@ -190,7 +193,7 @@ const GenresPage = () => {
                                                     </div>
 
                                                 </li>
-                                            </RouterLink>
+                                            </Link>
                                         ))}
 
                                     </ul>
@@ -224,8 +227,8 @@ const GenresPage = () => {
                                             {genres.map(genre => (
                                                 <li
                                                     key={genre}
-                                                    onClick={() => setSelectedGenre(genre)}
-                                                    className={`uppercase font-semibold shadow text-xs py-2 px-2 rounded text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedGenre === genre ? 'text-gray-900' : ''}`}
+                                                    onClick={() => setSelectedVideosByGenre(genre)}
+                                                    className={`uppercase font-semibold shadow text-xs py-2 px-2 rounded text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedVideosByGenre === genre ? 'text-gray-900' : ''}`}
                                                 >
                                                     {genre}
                                                 </li>
@@ -238,8 +241,8 @@ const GenresPage = () => {
                                     <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                         {/* khung nội dung */}
-                                        {filteredGenreData.map(item => (
-                                            <RouterLink to={`/video/series`}>
+                                        {filteredVideosByGenre.map(item => (
+                                            <Link to={`/video/series`}>
 
                                                 <li
                                                     className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
@@ -288,7 +291,7 @@ const GenresPage = () => {
                                                     </div>
 
                                                 </li>
-                                            </RouterLink>
+                                            </Link>
                                         ))}
 
                                     </ul>
