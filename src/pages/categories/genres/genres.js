@@ -130,7 +130,7 @@ const GenresPage = () => {
                                                 <li
                                                     key={genre}
                                                     onClick={() => setSelectedOriginalsByGenre(genre)}
-                                                    className={`uppercase font-semibold shadow bg-white text-xs py-2 px-2 rounded text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre ? 'text-gray-900' : ''}`}
+                                                    className={`uppercase font-semibold shadow text-xs py-2 px-2 rounded hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                                 >
                                                     {genre}
                                                 </li>
@@ -228,7 +228,7 @@ const GenresPage = () => {
                                                 <li
                                                     key={genre}
                                                     onClick={() => setSelectedVideosByGenre(genre)}
-                                                    className={`uppercase font-semibold shadow bg-white text-xs py-2 px-2 rounded text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedVideosByGenre === genre ? 'text-gray-900' : ''}`}
+                                                    className={`uppercase font-semibold shadow text-xs py-2 px-2 rounded hover:text-black cursor-pointer flex items-center justify-center ${selectedVideosByGenre === genre ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                                 >
                                                     {genre}
                                                 </li>

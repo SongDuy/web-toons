@@ -72,7 +72,7 @@ const GenresOriginalsAndVideosPage = () => {
                             <li
                                 key={genre}
                                 onClick={() => setSelectedGenre(genre)}
-                                className={`uppercase font-semibold shadow bg-white rounded px-2 py-2 text-[11px] text-gray-400 hover:text-black cursor-pointer flex items-center justify-center ${selectedGenre === genre ? 'text-gray-900' : ''}`}
+                                className={`uppercase font-semibold shadow rounded px-2 py-2 text-[11px] hover:text-black cursor-pointer flex items-center justify-center ${selectedGenre === genre ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                             >
                                 {genre}
                             </li>
