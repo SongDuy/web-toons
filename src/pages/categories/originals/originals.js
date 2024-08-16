@@ -145,7 +145,7 @@ const OriginalsPage = () => {
                                     {filteredData.map(item => (
                                         <Link to={`/original/series`}>
                                             <li
-                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                                className="max-w-[230px] 2xl:w-[230px] h-[250px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                                 key={item.id}
                                             >
 
@@ -158,11 +158,10 @@ const OriginalsPage = () => {
                                                 <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
 
                                                     <div className="w-full h-[65px] mb-auto overflow-hidden">
-                                                        <span className="text-black text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                        <span className="text-lg font-semibold leading-[1.2] line-clamp-2">
                                                             {item.name}
-
                                                         </span>
-                                                        <span className="text-black text-md leading-[1.2] line-clamp-1">
+                                                        <span className="text-md leading-[1.2] line-clamp-1">
                                                             {item.auth}
                                                         </span>
                                                     </div>
@@ -176,13 +175,14 @@ const OriginalsPage = () => {
                                                             <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
                                                                 Up
                                                             </span>
-                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
                                                                 New
                                                             </span>
                                                         </div>
                                                     </div>
 
-                                                    <div className="w-full h-[30px] shadow mt-auto bg-white bg-opacity-80 rounded-md">
+                                                    {/*Trong component React của bạn */}
+                                                    <div className="w-full h-[30px] shadow bg-white bg-opacity-80 rounded-md">
                                                         <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
                                                             {item.genre}
                                                         </span>
@@ -214,7 +214,7 @@ const OriginalsPage = () => {
                                     {data.map(item => (
                                         <Link to={`/original/series`}>
                                             <li
-                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                                className="max-w-[230px] 2xl:w-[230px] h-[250px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                                 key={item.id}
                                             >
 
@@ -241,14 +241,17 @@ const OriginalsPage = () => {
                                                             {item.like}
                                                         </span>
                                                         <div className="flex mt-2 gap-1">
-                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-300 via-white to-white text-green-500 text-xs font-semibold rounded-full flex items-center justify-center">
-                                                                End
+                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                                Up
                                                             </span>
-
+                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                                New
+                                                            </span>
                                                         </div>
                                                     </div>
 
-                                                    <div className="w-full h-[30px] shadow mt-auto bg-white bg-opacity-80 rounded-md">
+                                                    {/*Trong component React của bạn */}
+                                                    <div className="w-full h-[30px] shadow bg-white bg-opacity-80 rounded-md">
                                                         <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
                                                             {item.genre}
                                                         </span>

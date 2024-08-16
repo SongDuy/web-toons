@@ -121,14 +121,14 @@ const WeekdayOriginalsAndVideosPage = () => {
 
                 </div>
             </div>
-            <div className="w-full min-h-[500px] py-[30px] flex justify-center">
+            <div className="w-full min-h-[535px] py-[30px] flex justify-center">
                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
 
                     {/* khung nội dung */}
                     {filteredData.slice(0, 10).map((item) => (
-                        <Link to={`/original/series`} className="max-w-[210px] h-[210px]" >
+                        <Link to={`/original/series`} className="max-w-[210px] h-[230px]" >
                             <li
-                                className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-xl bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                className="max-w-[210px] 2xl:w-[210px] h-[230px] rounded-xl bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                 key={item.id}
                             >
 

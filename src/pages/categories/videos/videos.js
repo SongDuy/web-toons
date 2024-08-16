@@ -144,7 +144,7 @@ const VideosPage = () => {
                                     {filteredData.map(item => (
                                         <Link to={`/video/series`}>
                                             <li
-                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                                className="max-w-[230px] 2xl:w-[230px] h-[250px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                                 key={item.id}
                                             >
 
@@ -180,7 +180,8 @@ const VideosPage = () => {
                                                         </div>
                                                     </div>
 
-                                                    <div className="w-full h-[30px] shadow mt-auto bg-gray-300 bg-opacity-80 rounded-md">
+                                                    {/*Trong component React của bạn */}
+                                                    <div className="w-full h-[30px] shadow bg-gray-300 bg-opacity-80 rounded-md">
                                                         <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
                                                             {item.genre}
                                                         </span>
@@ -212,7 +213,7 @@ const VideosPage = () => {
                                     {data.map(item => (
                                         <Link to={`/video/series`}>
                                             <li
-                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                                className="max-w-[230px] 2xl:w-[230px] h-[250px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                                 key={item.id}
                                             >
 
@@ -239,14 +240,17 @@ const VideosPage = () => {
                                                             {item.like}
                                                         </span>
                                                         <div className="flex mt-2 gap-1">
-                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-300 via-white to-white text-green-500 text-xs font-semibold rounded-full flex items-center justify-center">
-                                                                End
+                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                                Up
                                                             </span>
-
+                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                                New
+                                                            </span>
                                                         </div>
                                                     </div>
 
-                                                    <div className="w-full h-[30px] shadow mt-auto bg-gray-300 bg-opacity-80 rounded-md">
+                                                    {/*Trong component React của bạn */}
+                                                    <div className="w-full h-[30px] shadow bg-gray-300 bg-opacity-80 rounded-md">
                                                         <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
                                                             {item.genre}
                                                         </span>
