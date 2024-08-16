@@ -119,6 +119,7 @@ const VideosPage = () => {
                                 </span>
                             </div>
 
+                            {/* Danh mục thứ trong tuần */}
                             <div className="h-[70px] mt-5 flex items-center justify-center">
                                 <ul
                                     className="w-11/12 grid grid-cols-7 gap-2"
