@@ -16,6 +16,9 @@ import DisplayOriginalPage from './pages/categories/originals/displayOriginal';
 import CreateOriginalPage from './pages/create/original/createOriginal';
 import NotFoundPage from './pages/notFoundPage';
 
+import RegisterPage from './pages/auth/register';
+import ForgotPasswordPage from './pages/auth/forgotPassword';
+
 import './App.css';
 import Layout from './components/layout/layoutUser';
 import Account from './pages/account/Account';
@@ -67,6 +70,12 @@ function App() {
 
         </Route>
 
+        {/* Trang đăng ký */}
+        <Route path="/register" element={<RegisterPage />} />
+
+        {/* Trang quên mật khẩu */}
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        
         {/* Trang hiển thị truyện và video */}
         <Route path="/original/series/display" element={<DisplayOriginalPage />} />
         <Route path="/video/series/display" element={<DisplayVideoPage />} />

@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import GoogleIcon from '@mui/icons-material/Google';
+
 
 import '../../App.css';
 
@@ -17,12 +19,13 @@ const LoginPage = ({ closeModal }) => {
 
             <div className="w-[400px] h-[550px] px-5 py-5 bg-white shadow rounded-lg">
                 <div>
-                    <span className="text-[25px] flex justify-center font-semibold">Log In Now</span>
+                    <span className="text-[25px] flex justify-center font-semibold">Log In</span>
 
                     <span className="pt-3 pb-5 flex items-center justify-center">Welcome back! Let's take you to your account.</span>
 
                     {/* Đăng nhập bằng email */}
                     <div className="grid grid-cols-1 gap-y-3">
+
                         {/* Nhập địa chỉ email */}
                         <input
                             type="text"
@@ -37,9 +40,12 @@ const LoginPage = ({ closeModal }) => {
                             placeholder="Password"
                         />
 
-                        <span className="text-blue-800 cursor-pointer">
+                        <Link
+                            to="/forgot-password"
+                            className="text-blue-800 cursor-pointer"
+                        >
                             Reset your password?
-                        </span>
+                        </Link>
 
                         <button
                             className="w-full h-[50px] bg-black text-white rounded font-semibold"
@@ -52,9 +58,14 @@ const LoginPage = ({ closeModal }) => {
                                 Don't have an account?
 
                             </span>
-                            <span className="text-blue-800 font-semibold cursor-pointer">
+
+                            <Link
+                                to="/register"
+                                className="text-blue-800 font-semibold"
+                            >
                                 Sign up
-                            </span>
+                            </Link>
+
                         </div>
                     </div >
 

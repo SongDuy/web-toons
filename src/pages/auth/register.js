@@ -1,19 +1,96 @@
 import React from 'react';
-//import '../../App.css'
-const FooterPage = () => {
+import { Link } from 'react-router-dom';
+
+import GoogleIcon from '@mui/icons-material/Google';
+
+const RegisterPage = () => {
     return (
-        <div className="w-full h-[300px] border bg-gray-100">
-            <div className="w-full h-[60px] border-b-2">
-                <div className="h-full px-10 flex items-center">
-                    Rison 입니다
+        <div className="w-screen h-screen bg-gray-100 flex items-center justify-center fixed inset-0 z-50"> {/* backdrop-blur-sm */}
+
+            <div className="w-[400px] h-[600px] px-5 py-5 bg-white shadow rounded-lg">
+                <div>
+                    <span className="text-[25px] flex justify-center font-semibold">Sign Up</span>
+
+                    <span className="pt-3 pb-5 flex items-center justify-center">Welcome! Let's take you to your registration page.</span>
+
+                    {/* Đăng nhập bằng email */}
+                    <div className="grid grid-cols-1 gap-y-3">
+
+                        {/* Nhập tên tài khoản */}
+                        <input
+                            type="text"
+                            className="w-full h-[50px] px-2 border rounded shadow"
+                            placeholder="Full Name"
+                        />
+
+                        {/* Nhập địa chỉ email */}
+                        <input
+                            type="text"
+                            className="w-full h-[50px] px-2 border rounded shadow"
+                            placeholder="Email Address"
+                        />
+
+                        {/* Nhập mật khẩu */}
+                        <input
+                            type="text"
+                            className="w-full h-[50px] px-2 border rounded shadow"
+                            placeholder="Password"
+                        />
+
+                        <Link
+                            to="/forgot-password"
+                            className="text-blue-800 cursor-pointer"
+                        >
+                            Reset your password?
+                        </Link>
+
+                        <button
+                            className="w-full h-[50px] bg-black text-white rounded font-semibold"
+                        >
+                            Continue to Verify Email
+                        </button>
+
+                        <div className="w-full h-[50px] flex gap-x-1 items-center justify-center border rounded">
+                            <span className="">
+                                Already have an account?
+
+                            </span>
+
+                            <Link
+                                to="/"
+                                className="text-blue-800 font-semibold"
+                            >
+                                Login
+                            </Link>
+
+                        </div>
+                    </div >
+
+                    <div class="w-full my-5 flex items-center">
+                        <hr class="flex-1 border-t border-gray-300" />
+                        <span class="px-4">OR</span>
+                        <hr class="flex-1 border-t border-gray-300" />
+                    </div>
+
+                    <ul className="w-full h-full grid grid-cols-1 gap-y-5">
+
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-red-50 hover:bg-red-100 shadow-md flex items-center justify-center rounded">
+                            <span className="mr-auto">
+                                <GoogleIcon />
+                            </span>
+
+                            <span className="mr-auto font-semibold">
+                                Continue with Google
+                            </span>
+                        </li>
+
+                    </ul>
                 </div>
+
             </div>
 
-            <div className="px-10 mt-[180px] flex items-center justify-center">
-                ⓒ Rison 입니다 Ltd.
-            </div>
         </div>
     );
 }
 
-export default FooterPage;
+export default RegisterPage;
