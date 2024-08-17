@@ -147,7 +147,7 @@ const GenresPage = () => {
                                             <Link to={`/original/series`}>
 
                                                 <li
-                                                    className="max-w-[230px] 2xl:w-[230px] h-[250px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                                    className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                                     key={item.id}
                                                 >
 
@@ -246,7 +246,7 @@ const GenresPage = () => {
                                             <Link to={`/video/series`}>
 
                                                 <li
-                                                    className="max-w-[230px] 2xl:w-[230px] h-[250px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                                    className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
                                                     key={item.id}
                                                 >
 
