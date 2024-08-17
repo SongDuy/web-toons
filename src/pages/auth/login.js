@@ -19,7 +19,7 @@ const LoginPage = ({ closeModal }) => {
                 <div>
                     <span className="text-[25px] flex justify-center font-semibold">Log In Now</span>
 
-                    <span className="py-3 flex items-center justify-center">Welcome back! Let's take you to your account.</span>
+                    <span className="pt-3 pb-5 flex items-center justify-center">Welcome back! Let's take you to your account.</span>
 
                     {/* Đăng nhập bằng email */}
                     <div className="grid grid-cols-1 gap-y-3">
@@ -58,10 +58,10 @@ const LoginPage = ({ closeModal }) => {
                         </div>
                     </div >
 
-                    <div className="w-full h-[30px] my-5 flex gap-x-1 items-center justify-center">
-                        <hr />
-                        <span className="w-auto">OR</span>
-                        <hr />
+                    <div class="w-full my-5 flex items-center">
+                        <hr class="flex-1 border-t border-gray-300" />
+                        <span class="px-4">OR</span>
+                        <hr class="flex-1 border-t border-gray-300" />
                     </div>
 
                     <ul className="w-full h-full grid grid-cols-1 gap-y-5">
