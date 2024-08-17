@@ -57,6 +57,12 @@ function App() {
           <Route path="/create/original" element={<CreateOriginalPage />} />
           <Route path="/create/video" element={<CreateVideoPage />} />
 
+          {/* Trang đăng ký */}
+          <Route path="/register" element={<RegisterPage />} />
+
+          {/* Trang quên mật khẩu */}
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+
           <Route path="/account" element={<Account />} />
           <Route path="/comment" element={<Comment />} />
           <Route path="/Subscribed" element={<Subscribed />} />
@@ -70,12 +76,6 @@ function App() {
 
         </Route>
 
-        {/* Trang đăng ký */}
-        <Route path="/register" element={<RegisterPage />} />
-
-        {/* Trang quên mật khẩu */}
-        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        
         {/* Trang hiển thị truyện và video */}
         <Route path="/original/series/display" element={<DisplayOriginalPage />} />
         <Route path="/video/series/display" element={<DisplayVideoPage />} />
