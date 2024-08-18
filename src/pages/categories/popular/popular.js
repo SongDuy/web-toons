@@ -30,7 +30,7 @@ const PopularPage = () => {
     }, []);
 
     //Chọn nội dung theo tiêu đề
-    const [selectedTitle, setSelectedTitle] = useState("new & trending originals");
+    const [selectedSection, setSelectedSection] = useState("section1");
 
     return (
         <div className="w-full h-full bg-white pb-10">
@@ -42,8 +42,8 @@ const PopularPage = () => {
                 >
                     <ScrollLink to="section1" smooth={true} duration={500}>
                         <li
-                            onClick={() => setSelectedTitle("new & trending originals")}
-                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "new & trending originals" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            onClick={() => setSelectedSection("section1")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
                             NEW & TRENDING ORIGINALS
                         </li>
@@ -51,8 +51,8 @@ const PopularPage = () => {
 
                     <ScrollLink to="section2" smooth={true} duration={500}>
                         <li
-                            onClick={() => setSelectedTitle("new & trending videos")}
-                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "new & trending videos" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            onClick={() => setSelectedSection("section2")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
                             NEW & TRENDING VIDEOS
                         </li>
@@ -60,8 +60,8 @@ const PopularPage = () => {
 
                     <ScrollLink to="section3" smooth={true} duration={500}>
                         <li
-                            onClick={() => setSelectedTitle("originals by genre")}
-                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "originals by genre" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            onClick={() => setSelectedSection("section3")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section3" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
                             ORIGINALS BY GENRE
                         </li>
@@ -69,12 +69,13 @@ const PopularPage = () => {
 
                     <ScrollLink to="section4" smooth={true} duration={500}>
                         <li
-                            onClick={() => setSelectedTitle("videos by genre")}
-                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "videos by genre" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            onClick={() => setSelectedSection("section4")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section4" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
                             VIDEOS BY GENRE
                         </li>
                     </ScrollLink>
+
                 </ul>
             </div>
 

@@ -74,7 +74,7 @@ const GenresPage = () => {
     const filteredVideosByGenre = data.filter(data => data.genre === selectedVideosByGenre);
 
     //Chọn nội dung theo tiêu đề
-    const [selectedTitle, setSelectedTitle] = useState("originals");
+    const [selectedSection, setSelectedSection] = useState("section1");
 
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
@@ -83,8 +83,8 @@ const GenresPage = () => {
                 <ul className="h-full flex gap-10">
                     <ScrollLink to="section1" smooth={true} duration={500}>
                         <li
-                            onClick={() => setSelectedTitle("originals")}
-                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "originals" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            onClick={() => setSelectedSection("section1")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
                             ORIGINALS
                         </li>
@@ -92,8 +92,8 @@ const GenresPage = () => {
 
                     <ScrollLink to="section2" smooth={true} duration={500}>
                         <li
-                            onClick={() => setSelectedTitle("videos")}
-                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "videos" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            onClick={() => setSelectedSection("section2")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
                             VIDEOS
                         </li>

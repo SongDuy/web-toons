@@ -78,7 +78,7 @@ const VideosPage = () => {
     const filteredData = data.filter(data => data.dayOfWeek === currentDay);
 
     //Chọn nội dung theo tiêu đề
-    const [selectedTitle, setSelectedTitle] = useState("ongoing");
+    const [selectedSection, setSelectedSection] = useState("section1");
 
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
@@ -87,8 +87,8 @@ const VideosPage = () => {
                 <ul className="h-full flex gap-10">
                     <ScrollLink to="section1" smooth={true} duration={500}>
                         <li
-                            onClick={() => setSelectedTitle("ongoing")}
-                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "ongoing" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            onClick={() => setSelectedSection("section1")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
                             ONGOING
                         </li>
@@ -96,8 +96,8 @@ const VideosPage = () => {
 
                     <ScrollLink to="section2" smooth={true} duration={500}>
                         <li
-                            onClick={() => setSelectedTitle("completed")}
-                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "completed" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            onClick={() => setSelectedSection("section2")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
                             COMPLETED
                         </li>
