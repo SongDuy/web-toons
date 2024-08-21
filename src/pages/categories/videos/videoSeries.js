@@ -40,7 +40,7 @@ const VideoSeriesPage = () => {
     return (
         <div>
 
-            <div className="w-full h-full bg-gradient-to-b from-white via-yellow-100 to-gray-100">
+            <div className="w-full h-full bg-gradient-to-b from-white via-yellow-50 to-gray-100">
                 {/* Hiển thị ảnh nền */}
                 <div className="w-full h-[320px] relative flex items-center justify-center">
                     <img src="https://i.redd.it/0hwfsqufm3w41.jpg"
