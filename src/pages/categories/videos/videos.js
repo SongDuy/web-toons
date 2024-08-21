@@ -111,6 +111,8 @@ const VideosPage = () => {
 
             <div className="w-full h-full ">
                 <div className="max-w-[1200px] h-full ml-auto mr-auto">
+
+                    {/* Videos Ongoing Series */}
                     <ScrollElement name="section1" >
                         <div className="w-full h-full pt-[70px]">
                             <div className="h-[70px] border-b-2 flex items-center">
@@ -213,6 +215,7 @@ const VideosPage = () => {
                         </div>
                     </ScrollElement >
 
+                    {/* Videos Completed Series */}
                     <ScrollElement name="section2" >
                         <div className="w-full h-full pt-[70px]">
                             <div className="h-[70px] border-b-2 flex items-center">

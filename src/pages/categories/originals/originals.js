@@ -111,6 +111,7 @@ const OriginalsPage = () => {
             <div className="w-full h-full ">
                 <div className="max-w-[1200px] h-full ml-auto mr-auto">
 
+                    {/* Truyện Ongoing Series */}
                     <ScrollElement name="section1">
                         <div className="max-w-full h-full pt-[70px]">
 
@@ -214,6 +215,7 @@ const OriginalsPage = () => {
                         </div>
                     </ScrollElement >
 
+                    {/* Truyện Completed Series */}
                     <ScrollElement name="section2" >
                         <div className="w-full h-full pt-[70px]">
                             <div className="h-[70px] border-b-2 flex items-center">
