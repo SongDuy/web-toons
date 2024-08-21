@@ -4,6 +4,7 @@ import { enUS } from 'date-fns/locale';
 
 import CheckIcon from '@mui/icons-material/Check';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink, Element as ScrollElement } from 'react-scroll';
@@ -80,6 +81,9 @@ const VideosPage = () => {
     //Chọn nội dung theo tiêu đề
     const [selectedSection, setSelectedSection] = useState("section1");
 
+    // Khi lia chuột hiên icon khi lia vào truyện hoặc video
+    const [hoveredItem, setHoveredItem] = useState(null);
+
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
 
@@ -144,15 +148,25 @@ const VideosPage = () => {
                                     {filteredData.map(item => (
                                         <Link to={`/video/series`}>
                                             <li
-                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                                 key={item.id}
+                                                onMouseEnter={() => setHoveredItem(item.id)}
+                                                onMouseLeave={() => setHoveredItem(null)}
                                             >
 
-                                                <img
-                                                    src={item.img}
-                                                    alt="img"
-                                                    className="object-fill w-full h-full rounded-md"
-                                                />
+                                                <div className="w-full h-full" >
+                                                    <img
+                                                        src={item.img}
+                                                        alt="img"
+                                                        className="object-fill w-full h-full rounded-md"
+                                                    />
+
+                                                    {hoveredItem === item.id && (
+                                                        <div className="absolute inset-0 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500">
+                                                            <PlayArrowIcon sx={{ fontSize: 50 }} />
+                                                        </div>
+                                                    )}
+                                                </div>
 
                                                 <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
 
@@ -213,15 +227,25 @@ const VideosPage = () => {
                                     {data.map(item => (
                                         <Link to={`/video/series`}>
                                             <li
-                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
+                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                                 key={item.id}
+                                                onMouseEnter={() => setHoveredItem(item.id)}
+                                                onMouseLeave={() => setHoveredItem(null)}
                                             >
 
-                                                <img
-                                                    src={item.img}
-                                                    alt="img"
-                                                    className="object-fill w-full h-full rounded-md"
-                                                />
+                                                <div className="w-full h-full" >
+                                                    <img
+                                                        src={item.img}
+                                                        alt="img"
+                                                        className="object-fill w-full h-full rounded-md"
+                                                    />
+
+                                                    {hoveredItem === item.id && (
+                                                        <div className="absolute inset-0 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500">
+                                                            <PlayArrowIcon sx={{ fontSize: 50 }} />
+                                                        </div>
+                                                    )}
+                                                </div>
 
                                                 <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
 

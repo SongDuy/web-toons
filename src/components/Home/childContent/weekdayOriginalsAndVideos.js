@@ -7,6 +7,8 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 import { Link } from 'react-router-dom';
 
@@ -20,8 +22,8 @@ const WeekdayOriginalsAndVideosPage = () => {
         { id: 3, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Wed', genre: "Animals", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", status: "original" },
         { id: 4, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Thu', genre: "Comedy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", status: "original" },
         { id: 5, img: "https://hips.hearstapps.com/digitalspyuk.cdnds.net/13/24/gaming-the-witcher-3-wild-hunt-screenshot-2.jpg?crop=0.5625xw:1xh;center,top&resize=1200:*", dayOfWeek: 'Fri', genre: "Drama", name: "The Witcher", auth: "Lee Nakeum , seewater", like: "200k", status: "video" },
-        { id: 6, img: "https://hips.hearstapps.com/digitalspyuk.cdnds.net/13/24/gaming-the-witcher-3-wild-hunt-screenshot-2.jpg?crop=0.5625xw:1xh;center,top&resize=1200:*", dayOfWeek: 'Mon', genre: "Drama", name: "The Witcher", auth: "Lee Nakeum , seewater", like: "200k", status: "video"},
-        { id: 7, img: "https://hips.hearstapps.com/digitalspyuk.cdnds.net/13/24/gaming-the-witcher-3-wild-hunt-screenshot-2.jpg?crop=0.5625xw:1xh;center,top&resize=1200:*", dayOfWeek: 'Mon', genre: "Drama", name: "The Witcher", auth: "Lee Nakeum , seewater", like: "200k", status: "video"},
+        { id: 6, img: "https://hips.hearstapps.com/digitalspyuk.cdnds.net/13/24/gaming-the-witcher-3-wild-hunt-screenshot-2.jpg?crop=0.5625xw:1xh;center,top&resize=1200:*", dayOfWeek: 'Mon', genre: "Drama", name: "The Witcher", auth: "Lee Nakeum , seewater", like: "200k", status: "video" },
+        { id: 7, img: "https://hips.hearstapps.com/digitalspyuk.cdnds.net/13/24/gaming-the-witcher-3-wild-hunt-screenshot-2.jpg?crop=0.5625xw:1xh;center,top&resize=1200:*", dayOfWeek: 'Mon', genre: "Drama", name: "The Witcher", auth: "Lee Nakeum , seewater", like: "200k", status: "video" },
         { id: 8, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Historical", name: "Doraemon", auth: "Lee Nakeum , seewater", like: "200k", status: "video" },
         { id: 9, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Sun', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", status: "original" },
         { id: 10, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Sun', genre: "School", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", status: "original" },
@@ -67,6 +69,8 @@ const WeekdayOriginalsAndVideosPage = () => {
         setAnchorEl(null);
     };
 
+    // Khi lia chuột hiên icon khi lia vào truyện hoặc video
+    const [hoveredItem, setHoveredItem] = useState(null);
 
     return (
         <div className="w-full min-h-[560px]">
@@ -86,7 +90,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                     ))}
                 </ul>
                 <div className="w-[150px] h-full flex items-center justify-center">
-                   
+
                     <button
                         id="basic-button"
                         aria-controls={open ? 'basic-menu' : undefined}
@@ -128,16 +132,37 @@ const WeekdayOriginalsAndVideosPage = () => {
                     {filteredData.slice(0, 10).map((item) => (
                         <Link to={`/original/series`} className="max-w-[210px] h-[210px]" >
                             <li
-                                className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-xl bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow-xl"
-                                key={item.id}
+                                className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                                key={item.id} 
+                                onMouseEnter={() => setHoveredItem(item.id)}
+                                onMouseLeave={() => setHoveredItem(null)}
                             >
 
-                                <div className="w-full h-full">
+                                <div className="w-full h-full" >
                                     <img
                                         src={item.img}
                                         alt="img"
                                         className="object-fill w-full h-full rounded-md"
                                     />
+
+                                    {item.status === "original" ? (
+                                        <div>
+                                            {hoveredItem === item.id && (
+                                                <div className="absolute inset-0 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500">
+                                                    <AutoStoriesIcon sx={{ fontSize: 40 }} />
+                                                </div>
+                                            )}
+                                        </div>
+                                    ) : item.status === "video" ? (
+                                        <div>
+                                            {hoveredItem === item.id && (
+                                                <div className="absolute inset-0 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500">
+                                                    <PlayArrowIcon sx={{ fontSize: 50 }} />
+                                                </div>
+                                            )}
+                                        </div>
+                                    ) : null}
+
                                 </div>
 
                                 <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
