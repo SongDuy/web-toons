@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -26,11 +26,22 @@ const HeaderPage = () => {
         setAnchorEl(null);
     };
 
-    const [selectedItem, setSelectedItem] = useState(null);
+    // Chọn danh mục nội dung
+    const [selectedItem, setSelectedItem] = useState(localStorage.getItem('selectedItem') || '');
 
+    // Save selectedItem to localStorage and update state
     const handleItemClick = (item) => {
+        localStorage.setItem('selectedItem', item);
         setSelectedItem(item);
     };
+
+    // useEffect to initialize selectedItem from localStorage
+    useEffect(() => {
+        const savedItem = localStorage.getItem('selectedItem');
+        if (savedItem) {
+            setSelectedItem(savedItem);
+        }
+    }, []);
 
     // Mở đóng modal tìm kiếm
     const [isSearchModal, setIsSearchModal] = useState(false);
