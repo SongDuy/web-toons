@@ -163,7 +163,7 @@ const VideosPage = () => {
 
                                                     {hoveredItem === item.id && (
                                                         <div className="absolute inset-0 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500">
-                                                            <PlayArrowIcon sx={{ fontSize: 50 }} />
+                                                            <PlayArrowIcon sx={{ fontSize: 60 }} />
                                                         </div>
                                                     )}
                                                 </div>
@@ -242,7 +242,7 @@ const VideosPage = () => {
 
                                                     {hoveredItem === item.id && (
                                                         <div className="absolute inset-0 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500">
-                                                            <PlayArrowIcon sx={{ fontSize: 50 }} />
+                                                            <PlayArrowIcon sx={{ fontSize: 60 }} />
                                                         </div>
                                                     )}
                                                 </div>
