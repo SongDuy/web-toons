@@ -161,7 +161,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                 <div className="grid grid-cols-1 gap-y-4">
 
                     {/* khung nội dung dành cho truyện */}
-                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-x-4">
+                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
                         {/* khung nội dung */}
                         {filteredOriginals.slice(0, 5).map((item) => (
                             <Link to={`/originals/original/series`} className="max-w-[210px] h-[210px]" >
@@ -221,7 +221,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                     </ul>
 
                     {/* khung nội dung dành cho videos */}
-                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-x-4">
+                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
                         {/* khung nội dung */}
                         {filteredVideos.slice(0, 5).map((item) => (
                             <Link to={`/videos/video/series`} className="max-w-[210px] h-[210px]" >
