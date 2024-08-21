@@ -156,7 +156,7 @@ const GenresOriginalsAndVideosPage = () => {
                                     <div className="w-full h-[30px]">
                                         {item.status === "original" ? (
                                             <div className="w-full h-full shadow bg-white bg-opacity-80 rounded-md">
-                                                <span className="w-full px-2 py-1 text-yellow-600 text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
                                                     {item.genre}
                                                 </span>
                                             </div>
