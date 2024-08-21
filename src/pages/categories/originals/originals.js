@@ -265,11 +265,8 @@ const OriginalsPage = () => {
                                                             {item.like}
                                                         </span>
                                                         <div className="flex mt-2 gap-1">
-                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                                Up
-                                                            </span>
-                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                                New
+                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-300 via-white to-white text-green-500 text-xs font-semibold rounded-full flex items-center justify-center">
+                                                                End
                                                             </span>
                                                         </div>
                                                     </div>
