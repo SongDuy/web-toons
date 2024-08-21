@@ -32,15 +32,6 @@ const PopularOriginalsAndVideosPage = () => {
                                     <NavigateNextIcon />
                                 </span>
                             </div>
-
-                            {/* <div className="ml-auto flex gap-2 cursor-pointer">
-                                <button className="w-[80px] h-[30px] px-5 bg-black bg-opacity-80 text-white font-semibold rounded-md flex items-center justify-center">
-                                    Originals
-                                </button>
-                                <button className="w-[80px] h-[30px] bg-gray-100 font-semibold rounded-md text-gray-400 hover:text-black flex items-center justify-center">
-                                    Videos
-                                </button>
-                            </div> */}
                         </div>
 
                         {/* Phần nội dung */}
@@ -48,7 +39,7 @@ const PopularOriginalsAndVideosPage = () => {
                             <ul className="w-full h-full ">
                                 {/* khung nội dung */}
                                 {dataPopular.map(item => (
-                                    <Link to={`/original/series`}>
+                                    <Link to={`/originals/original/series`}>
                                         <li
                                             className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                             key={item.key}
@@ -106,7 +97,7 @@ const PopularOriginalsAndVideosPage = () => {
                             <ul className="w-full h-full ">
                                 {/* khung nội dung */}
                                 {dataPopular.map(item => (
-                                    <Link to={`/original/series`}>
+                                    <Link to={`/videos/video/series`}>
                                         <li
                                             className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                             key={item.key}
@@ -226,7 +217,7 @@ const PopularOriginalsAndVideosPage = () => {
                             <ul className="w-full h-full">
                                 {/* khung nội dung */}
                                 {dataPopular.map(item => (
-                                    <Link to={`/video/series`}>
+                                    <Link to={`/videos/video/series`}>
                                         <li
                                             className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                             key={item.key}

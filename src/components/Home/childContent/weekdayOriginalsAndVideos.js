@@ -130,7 +130,7 @@ const WeekdayOriginalsAndVideosPage = () => {
 
                     {/* khung nội dung */}
                     {filteredData.slice(0, 10).map((item) => (
-                        <Link to={`/original/series`} className="max-w-[210px] h-[210px]" >
+                        <Link to={`/originals/original/series`} className="max-w-[210px] h-[210px]" >
                             <li
                                 className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                 key={item.id} 

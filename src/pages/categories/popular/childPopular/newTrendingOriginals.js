@@ -26,7 +26,7 @@ const NewTrendingOriginalsPage = () => {
 
                 {/* Hien thị top 1 */}
                 <Link
-                    to={`/original/series`}
+                    to={`/originals/original/series`}
                     className="h-[815px] bg-white py-1"
                     title="Visit"
                 >
@@ -103,7 +103,7 @@ const NewTrendingOriginalsPage = () => {
 
                             {/* khung nội dung */}
                             {dataPopular.map(item => (
-                                <Link to={`/original/series`}>
+                                <Link to={`/originals/original/series`}>
                                     <li
                                         className="w-full h-[90px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                         key={item.id}

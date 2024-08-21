@@ -146,7 +146,7 @@ const VideosPage = () => {
 
                                     {/* khung nội dung */}
                                     {filteredData.map(item => (
-                                        <Link to={`/video/series`}>
+                                        <Link to={`/videos/video/series`}>
                                             <li
                                                 className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                                 key={item.id}
@@ -225,7 +225,7 @@ const VideosPage = () => {
 
                                     {/* khung nội dung */}
                                     {data.map(item => (
-                                        <Link to={`/video/series`}>
+                                        <Link to={`/videos/video/series`}>
                                             <li
                                                 className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                                 key={item.id}

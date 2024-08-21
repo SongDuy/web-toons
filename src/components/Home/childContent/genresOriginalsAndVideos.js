@@ -92,7 +92,7 @@ const GenresOriginalsAndVideosPage = () => {
                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
                     {/* khung nội dung */}
                     {filteredGenreData.slice(0, 10).map((item) => (
-                        <Link to={`/original/series`} className="max-w-[210px] h-[210px]">
+                        <Link to={`/originals/original/series`} className="max-w-[210px] h-[210px]">
                             <li
                                 className="max-w-[210px] 2xl:w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                 key={item.id}

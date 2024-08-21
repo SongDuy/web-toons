@@ -149,7 +149,7 @@ const GenresPage = () => {
 
                                         {/* khung nội dung */}
                                         {filteredOriginalsByGenre.map(item => (
-                                            <Link to={`/original/series`}>
+                                            <Link to={`/originals/original/series`}>
 
                                                 <li
                                                     className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
@@ -258,7 +258,7 @@ const GenresPage = () => {
 
                                         {/* khung nội dung */}
                                         {filteredVideosByGenre.map(item => (
-                                            <Link to={`/video/series`}>
+                                            <Link to={`/videos/video/series`}>
 
                                                 <li
                                                     className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
