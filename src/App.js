@@ -77,8 +77,8 @@ function App() {
         </Route>
 
         {/* Trang hiển thị truyện và video */}
-        <Route path="/original/series/display" element={<DisplayOriginalPage />} />
-        <Route path="/video/series/display" element={<DisplayVideoPage />} />
+        <Route path="/originals/original/series/display" element={<DisplayOriginalPage />} />
+        <Route path="/videos/video/series/display" element={<DisplayVideoPage />} />
 
         {/* Xử lý trang lỗi */}
         <Route path="*" element={<Navigate to="/404" />} />

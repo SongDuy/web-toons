@@ -82,7 +82,7 @@ const OriginalSeriesPage = () => {
 
                                     {/* khung danh sách */}
                                     {dataSeries.map(item => (
-                                        <Link to={`/original/series/display`}>
+                                        <Link to={`/originals/original/series/display`}>
                                             <li
                                                 className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
                                                 key={item.id}
@@ -213,7 +213,7 @@ const OriginalSeriesPage = () => {
 
                                 {/* khung danh sách */}
                                 {dataAlsoLike.map(item => (
-                                    <Link to={`/original/series`}>
+                                    <Link to={`/originals/original/series`}>
                                         <li
                                             className="w-[375px] h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
                                             key={item.id}
