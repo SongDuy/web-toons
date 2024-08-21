@@ -86,7 +86,7 @@ const OriginalsPage = () => {
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
 
-            <div className={`w-full h-[70px] mb-[-70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-10' : ''}`}>
+            <div className={`w-full h-[70px] mb-[-70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-20' : ''}`}>
                 <ul className="h-full flex gap-10">
                     <ScrollLink to="section1" smooth={true} duration={500}>
                         <li
@@ -163,7 +163,7 @@ const OriginalsPage = () => {
                                                     />
 
                                                     {hoveredItem === item.id && (
-                                                        <div className="absolute inset-0 bg-black bg-opacity-50 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                        <div className="absolute inset-0 bg-black bg-opacity-30 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                             <AutoStoriesIcon sx={{ fontSize: 40 }} />
                                                         </div>
                                                     )}
@@ -242,7 +242,7 @@ const OriginalsPage = () => {
                                                     />
 
                                                     {hoveredItem === item.id && (
-                                                        <div className="absolute inset-0 bg-black bg-opacity-50 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                        <div className="absolute inset-0 bg-black bg-opacity-30 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                             <AutoStoriesIcon sx={{ fontSize: 40 }} />
                                                         </div>
                                                     )}

@@ -36,7 +36,7 @@ const PopularPage = () => {
         <div className="w-full h-full bg-white pb-10">
 
             {/* Hiển thị tiêu đề */}
-            <div className={`w-full h-[70px] mb-[-70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-10' : ''}`}>
+            <div className={`w-full h-[70px] mb-[-70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-20' : ''}`}>
                 <ul
                     className="h-full flex gap-10"
                 >
