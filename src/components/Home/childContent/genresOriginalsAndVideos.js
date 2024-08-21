@@ -74,8 +74,8 @@ const GenresOriginalsAndVideosPage = () => {
     const filteredVideosByGenre = dataVideos.filter(data => data.genre === selectedGenre); //Chọn nội dung theo thể loại videos
 
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
-    const [hoveredOriginalsItem, setHoveredOriginalsItem] = useState(null);
-    const [hoveredVideosItem, setHoveredVideosItem] = useState(null);
+    const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
+    const [hoveredVideoItem, setHoveredVideoItem] = useState(null);
 
     return (
         <div className="w-full min-h-[630px]">
@@ -129,8 +129,8 @@ const GenresOriginalsAndVideosPage = () => {
                                 <li
                                     className="max-w-[210px] 2xl:w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                     key={item.id}
-                                    onMouseEnter={() => setHoveredOriginalsItem(item.id)}
-                                    onMouseLeave={() => setHoveredOriginalsItem(null)}
+                                    onMouseEnter={() => setHoveredOriginalItem(item.id)}
+                                    onMouseLeave={() => setHoveredOriginalItem(null)}
                                 >
 
                                     <div className="w-full h-full" >
@@ -140,7 +140,7 @@ const GenresOriginalsAndVideosPage = () => {
                                             className="object-fill w-full h-full rounded-md"
                                         />
 
-                                        {hoveredOriginalsItem === item.id && (
+                                        {hoveredOriginalItem === item.id && (
                                             <div className="absolute inset-0 bg-black bg-opacity-30 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                 <AutoStoriesIcon sx={{ fontSize: 40 }} />
                                             </div>
@@ -195,8 +195,8 @@ const GenresOriginalsAndVideosPage = () => {
                                 <li
                                     className="max-w-[210px] 2xl:w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                     key={item.id}
-                                    onMouseEnter={() => setHoveredVideosItem(item.id)}
-                                    onMouseLeave={() => setHoveredVideosItem(null)}
+                                    onMouseEnter={() => setHoveredVideoItem(item.id)}
+                                    onMouseLeave={() => setHoveredVideoItem(null)}
                                 >
 
                                     <div className="w-full h-full" >
@@ -206,7 +206,7 @@ const GenresOriginalsAndVideosPage = () => {
                                             className="object-fill w-full h-full rounded-md"
                                         />
 
-                                        {hoveredVideosItem === item.id && (
+                                        {hoveredVideoItem === item.id && (
                                             <div className="absolute inset-0 bg-black bg-opacity-30 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                 <PlayArrowIcon sx={{ fontSize: 60 }} />
                                             </div>
