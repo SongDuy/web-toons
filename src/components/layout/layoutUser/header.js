@@ -68,7 +68,7 @@ const HeaderPage = () => {
                 <ul className="flex xs:gap-1 sm:gap-5">
                     <Link to={`/originals`}>
                         <li
-                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/original") ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/originals") ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                         >
                             <span>
                                 Originals
@@ -78,7 +78,7 @@ const HeaderPage = () => {
                     </Link>
                     <Link to={`/videos`}>
                         <li
-                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/video") ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/videos") ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                         >
                             Videos
                         </li>

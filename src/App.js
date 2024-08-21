@@ -46,10 +46,10 @@ function App() {
           <Route index element={<HomePage />} />
 
           <Route path="/originals" element={<OriginalsPage />} />
-          <Route path="/original/series" element={<OriginalSeriesPage />} />
+          <Route path="/originals/original/series" element={<OriginalSeriesPage />} />
 
           <Route path="/videos" element={<VideosPage />} />
-          <Route path="/video/series" element={<VideoSeriesPage />} />
+          <Route path="/videos/video/series" element={<VideoSeriesPage />} />
 
           <Route path="/genres" element={<GenresPage />} />
           <Route path="/popular" element={<PopularPage />} />
