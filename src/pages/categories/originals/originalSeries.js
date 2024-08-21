@@ -41,11 +41,11 @@ const OriginalSeriesPage = () => {
     return (
         <div>
 
-            <div className="w-full h-full bg-gray-100">
+            <div className="w-full h-full bg-gradient-to-b from-white via-yellow-100 to-gray-100">
                 {/* Hiển thị ảnh nền */}
-                <div className="w-full h-[320px] bg-green-200 relative">
+                <div className="w-full h-[320px] relative flex items-center justify-center">
                     <img src="https://i.redd.it/b5jec682hfk61.jpg"
-                        className="object-cover w-full h-full" alt="img"
+                        className="object-cover w-[1200px] h-full" alt="img"
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-[1200px] overflow-hidden">
