@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -25,23 +25,6 @@ const HeaderPage = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
-    // Chọn danh mục nội dung
-    const [selectedItem, setSelectedItem] = useState(localStorage.getItem('selectedItem') || '');
-
-    // Save selectedItem to localStorage and update state
-    const handleItemClick = (item) => {
-        localStorage.setItem('selectedItem', item);
-        setSelectedItem(item);
-    };
-
-    // useEffect to initialize selectedItem from localStorage
-    useEffect(() => {
-        const savedItem = localStorage.getItem('selectedItem');
-        if (savedItem) {
-            setSelectedItem(savedItem);
-        }
-    }, []);
 
     // Mở đóng modal tìm kiếm
     const [isSearchModal, setIsSearchModal] = useState(false);
@@ -76,7 +59,6 @@ const HeaderPage = () => {
             <Link
                 to={`/`}
                 className="xs:w-[90px] sm:w-[90px] pr-1 flex items-center justify-center xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer"
-                onClick={() => handleItemClick('')}
             >
                 <img src={logo} alt="Logo của website" className="w-24 h-auto shadow rounded-xl hover:bg-green-50" />
             </Link>
@@ -86,8 +68,7 @@ const HeaderPage = () => {
                 <ul className="flex xs:gap-1 sm:gap-5">
                     <Link to={`/originals`}>
                         <li
-                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === 'Originals' ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
-                            onClick={() => handleItemClick('Originals')}
+                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/original") ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                         >
                             <span>
                                 Originals
@@ -97,24 +78,21 @@ const HeaderPage = () => {
                     </Link>
                     <Link to={`/videos`}>
                         <li
-                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === 'Videos' ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
-                            onClick={() => handleItemClick('Videos')}
+                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/video") ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                         >
                             Videos
                         </li>
                     </Link>
                     <Link to={`/genres`}>
                         <li
-                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === 'Genres' ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
-                            onClick={() => handleItemClick('Genres')}
+                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/genres") ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                         >
                             Genres
                         </li>
                     </Link>
                     <Link to={`/popular`}>
                         <li
-                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === 'Popular' ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
-                            onClick={() => handleItemClick('Popular')}
+                            className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/popular") ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                         >
                             Popular
                         </li>
