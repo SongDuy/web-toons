@@ -187,7 +187,7 @@ const DisplayOriginalPage = () => {
                 </div>
 
                 {/* Hiển thị các tập trong series */}
-                <div className="w-full h-[200px] bg-red-50 flex items-center justify-center">
+                <div className="w-full h-[200px] bg-gray-100 shadow flex items-center justify-center">
                     <div
                         className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center"
                         onClick={handlePreviousPage}
