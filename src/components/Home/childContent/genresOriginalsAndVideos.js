@@ -113,7 +113,7 @@ const GenresOriginalsAndVideosPage = () => {
                     >
                         <Link to={`/genres`}>
                             <li
-                                className="w-full h-[60px] bg-white border-b-2 uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+                                className="w-full h-[60px] bg-white border-b-2 uppercase font-semibold text-lg hover:text-yellow-500 cursor-pointer flex items-center justify-center"
                             >
                                 GENRES
                                 <NavigateNextIcon />

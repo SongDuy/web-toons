@@ -27,7 +27,7 @@ const PopularOriginalsAndVideosPage = () => {
                         {/* Phần tiêu đề */}
                         <div className="w-full px-2 py-5 flex items-center border-b">
                             <div className="mr-auto">
-                                <span className="font-semibold text-lg hover:text-green-500 cursor-pointer">
+                                <span className="font-semibold text-lg hover:text-yellow-500 cursor-pointer">
                                     New & Trending Originals
                                     <NavigateNextIcon />
                                 </span>
@@ -85,7 +85,7 @@ const PopularOriginalsAndVideosPage = () => {
                         {/* Phần tiêu đề */}
                         <div className="w-full px-2 py-5 flex items-center border-b">
                             <div className="mr-auto">
-                                <span className="font-semibold text-lg hover:text-green-500 cursor-pointer">
+                                <span className="font-semibold text-lg hover:text-yellow-500 cursor-pointer">
                                     New & Trending Videos
                                     <NavigateNextIcon />
                                 </span>
@@ -141,7 +141,7 @@ const PopularOriginalsAndVideosPage = () => {
                     <div className="w-full flex flex-wrap ">
                         {/* Phần tiêu đề */}
                         <div className="w-full px-2 py-5 flex items-center border-b">
-                            <span className="mr-auto font-semibold text-lg hover:text-green-500 cursor-pointer">
+                            <span className="mr-auto font-semibold text-lg hover:text-yellow-500 cursor-pointer">
                                 ORIGINALS by Genre
                                 <NavigateNextIcon />
                             </span>
@@ -202,7 +202,7 @@ const PopularOriginalsAndVideosPage = () => {
 
                         {/* Phần tiêu đề */}
                         <div className="w-full px-2 py-5 flex items-center border-b">
-                            <span className="mr-auto font-semibold text-lg hover:text-green-500 cursor-pointer">
+                            <span className="mr-auto font-semibold text-lg hover:text-yellow-500 cursor-pointer">
                                 VIDEOS by Genre
                                 <NavigateNextIcon />
                             </span>

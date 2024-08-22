@@ -44,7 +44,7 @@ const NewToOriginalsPage = () => {
                     className="flex"
                 >
                     <li
-                        className="w-full h-[60px] uppercase font-semibold text-lg hover:text-green-500 cursor-pointer flex items-center justify-center"
+                        className="w-full h-[60px] uppercase font-semibold text-lg hover:text-yellow-500 cursor-pointer flex items-center justify-center"
                     >
                         New to Originals
                     </li>
