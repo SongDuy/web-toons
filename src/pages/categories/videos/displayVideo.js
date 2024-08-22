@@ -88,7 +88,7 @@ const DisplayVideoPage = () => {
 
                             <div className="">
                                 <span className="text-white line-clamp-1">
-                                    The Witcher 3
+                                    The Witcher
                                     <NavigateNextIcon />
                                     Episode 15
                                 </span>
