@@ -173,21 +173,21 @@ const DisplayOriginalPage = () => {
                         </div>
 
                         <div className="flex gap-3">
-                            <div className="w-[100px] h-[35px] cursor-pointer rounded-full bg-gray-100 hover:bg-yellow-50 flex gap-1 items-center justify-center px-2 py-2">
+                            <button className="w-[100px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2">
                                 <FavoriteBorderIcon />
                                 9,455
-                            </div>
-                            <div className="w-[120px] h-[35px] cursor-pointer rounded-full bg-gray-100 hover:bg-yellow-50 flex gap-1 items-center justify-center px-2 py-2">
+                            </button>
+                            <button className="w-[120px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2">
                                 <AddIcon />
                                 Subscribe
-                            </div>
+                            </button>
                         </div>
                     </div>
 
                 </div>
 
                 {/* Hiển thị các tập trong series */}
-                <div className="w-full h-[200px] bg-gray-100 shadow flex items-center justify-center">
+                <div className="w-full h-[220px] bg-gray-100 shadow flex items-center justify-center">
                     <div
                         className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center"
                         onClick={handlePreviousPage}
@@ -201,16 +201,18 @@ const DisplayOriginalPage = () => {
                     <ul className="grid grid-cols-9">
                         {currentItems.map(item => (
                             <li
-                                className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
+                                className="w-[120px] h-[165px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
                                 key={item.id}
                             >
                                 <div className="w-[100px] h-[100px] mb-auto">
                                     <img
                                         src={item.img}
                                         alt="img"
-                                        className="object-fill w-full h-full rounded-md"
+                                        className="object-fill w-full h-full rounded"
                                     />
-                                    <span className="leading-[1.2] line-clamp-2 py-1">{item.name}</span>
+                                    <span className="h-[50px] leading-[1.3] line-clamp-2 py-2">
+                                        {item.name}
+                                    </span>
                                 </div>
                             </li>
                         ))}
