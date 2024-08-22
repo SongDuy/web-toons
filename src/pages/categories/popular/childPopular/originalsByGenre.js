@@ -49,7 +49,7 @@ const OriginalsByGenrePage = () => {
 
             <div className="h-[70px] mb-5 bg-white flex items-center justify-center border-t border-b">
                 <ul
-                    class="grid grid-cols-10 gap-x-4 gap-y-2"
+                    className="grid grid-cols-10 gap-x-4 gap-y-2"
                 >
                     {/* khung nội dung */}
                     {dataListGenre.map(item => (

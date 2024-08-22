@@ -10,9 +10,6 @@ import { Link } from 'react-router-dom';
 
 const GenresOriginalsAndVideosPage = () => {
 
-    const genres = ['Drama', 'Fantasy', 'Comedy', 'Action', 'Slice Of Life', 'Romance', 'Superhero', 'Sci-Fi', 'Thriller', 'Supernatural', 'Mystery', 'Sports', 'Historical', 'Heartwarming', 'Horror', 'Informative', 'School', 'Animals', 'Zombies', 'Short Story',];
-    genres.sort((a, b) => a.localeCompare(b));
-
     const dataOriginals = [
         { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
         { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Tue', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
@@ -67,6 +64,34 @@ const GenresOriginalsAndVideosPage = () => {
         { id: 24, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sat', genre: "School", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
     ];
 
+    // Danh sách thể loại
+    const dataListGenre = [
+        { id: 1, name: "Drama" },
+        { id: 2, name: "Fantasy" },
+        { id: 3, name: "Comedy" },
+        { id: 4, name: "Action" },
+        { id: 5, name: "Slice Of Life" },
+        { id: 6, name: "Romance" },
+        { id: 7, name: "Superhero" },
+        { id: 8, name: "Sci-Fi" },
+        { id: 9, name: "Thriller" },
+        { id: 10, name: "Supernatural" },
+        { id: 11, name: "Mystery" },
+        { id: 12, name: "Sports" },
+        { id: 13, name: "Historical" },
+        { id: 14, name: "Heartwarming" },
+        { id: 15, name: "Horror" },
+        { id: 16, name: "Informative" },
+        { id: 17, name: "School" },
+        { id: 18, name: "Animals" },
+        { id: 19, name: "Zombies" },
+        { id: 20, name: "Short Story" },
+
+    ];
+
+    // Sắp xếp mảng theo tên thể loại theo bảng chữ cái
+    dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
+
     //Chọn nội dung truyện và videos theo thể loại
     const [selectedGenre, setSelectedGenre] = useState('Action');
 
@@ -103,13 +128,13 @@ const GenresOriginalsAndVideosPage = () => {
                         class="grid xs:grid-cols-3 sm:grid-cols-7 px-2 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-10 2xl:grid-cols-10 3xl:grid-cols-12 gap-2 pt-8"
                     >
                         {/* khung nội dung */}
-                        {genres.map(genre => (
+                        {dataListGenre.map(genre => (
                             <li
-                                key={genre}
-                                onClick={() => setSelectedGenre(genre)}
-                                className={`uppercase font-semibold shadow rounded px-2 py-2 text-[11px] hover:text-black cursor-pointer flex items-center justify-center ${selectedGenre === genre ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                key={genre.id}
+                                onClick={() => setSelectedGenre(genre.name)}
+                                className={`uppercase font-semibold shadow rounded px-2 py-2 text-[11px] hover:text-black cursor-pointer flex items-center justify-center ${selectedGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                             >
-                                {genre}
+                                {genre.name}
                             </li>
                         ))}
 
