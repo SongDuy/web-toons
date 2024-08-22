@@ -84,8 +84,8 @@ const OriginalSeriesPage = () => {
                                     {dataSeries.map(item => (
                                         <Link to={`/originals/original/series/display`}>
                                             <li
-                                                className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
                                                 key={item.id}
+                                                className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
                                             >
                                                 <div className="w-full h-full flex items-center">
                                                     <div className="w-[80px] h-[80px]">
