@@ -138,7 +138,7 @@ const OriginalSeriesPage = () => {
                             <div className="w-full mb-auto">
                                 <ul className="flex items-center justify-center">
                                     <li className="mr-auto mt-auto mb-auto">
-                                        <span className="mx-1 text-green-500">
+                                        <span className="mx-1 text-yellow-500">
                                             <VisibilityIcon />
                                         </span>
                                         <span className="mx-1">
@@ -146,7 +146,7 @@ const OriginalSeriesPage = () => {
                                         </span>
                                     </li>
                                     <li className="ml-auto" >
-                                        <span className="mx-1 text-green-500">
+                                        <span className="mx-1 text-yellow-500">
                                             <GroupAddSharpIcon />
                                         </span>
                                         <span className="mx-1">
@@ -154,7 +154,7 @@ const OriginalSeriesPage = () => {
                                         </span>
                                     </li>
                                     <li className="ml-auto" >
-                                        <span className="mx-1 text-green-500">
+                                        <span className="mx-1 text-yellow-500">
                                             <StarIcon />
                                         </span>
                                         <span className="mx-1">
@@ -163,7 +163,7 @@ const OriginalSeriesPage = () => {
 
                                     </li>
                                     <li className="ml-auto">
-                                        <span className="w-full h-[35px] px-2 py-[1px] rounded-full text-white bg-green-500">
+                                        <span className="w-full h-[35px] px-2 py-[1px] rounded-full text-white bg-yellow-500">
                                             RATE
                                         </span>
                                     </li>
@@ -215,15 +215,15 @@ const OriginalSeriesPage = () => {
                                 {dataAlsoLike.map(item => (
                                     <Link to={`/originals/original/series`}>
                                         <li
-                                            className="w-[375px] h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
+                                            className="w-[375px] h-[120px] flex bg-gray-100 rounded shadow cursor-pointer hover:bg-gray-200"
                                             key={item.id}
                                         >
 
-                                            <div className="w-[120px] h-[120px] rounded-xl flex items-center justify-center">
+                                            <div className="w-[120px] h-[120px] rounded flex items-center justify-center">
                                                 <img
                                                     src={item.img}
                                                     alt="img"
-                                                    className="object-fill w-[100px] h-[100px] rounded-xl"
+                                                    className="object-fill w-[100px] h-[100px] rounded"
                                                 />
                                             </div>
 
@@ -238,7 +238,7 @@ const OriginalSeriesPage = () => {
                                                 </div>
 
                                                 <div className="w-full">
-                                                    <span className=" flex gap-1 text-green-500">
+                                                    <span className=" flex gap-1 text-yellow-500">
                                                         <VisibilityIcon />
                                                         {item.look}
                                                     </span>
