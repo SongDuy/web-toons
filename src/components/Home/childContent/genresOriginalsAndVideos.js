@@ -152,10 +152,10 @@ const GenresOriginalsAndVideosPage = () => {
                         {filteredOriginalsByGenre.slice(0, 5).map((item) => (
                             <Link to={`/originals/original/series`} className="max-w-[210px] h-[210px]">
                                 <li
-                                    className="max-w-[210px] 2xl:w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                     key={item.id}
                                     onMouseEnter={() => setHoveredOriginalItem(item.id)}
                                     onMouseLeave={() => setHoveredOriginalItem(null)}
+                                    className="max-w-[210px] 2xl:w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                 >
 
                                     <div className="w-full h-full" >
@@ -218,10 +218,11 @@ const GenresOriginalsAndVideosPage = () => {
                         {filteredVideosByGenre.slice(0, 5).map((item) => (
                             <Link to={`/originals/original/series`} className="max-w-[210px] h-[210px]">
                                 <li
-                                    className="max-w-[210px] 2xl:w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                     key={item.id}
                                     onMouseEnter={() => setHoveredVideoItem(item.id)}
                                     onMouseLeave={() => setHoveredVideoItem(null)}
+                                    className="max-w-[210px] 2xl:w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
+
                                 >
 
                                     <div className="w-full h-full" >

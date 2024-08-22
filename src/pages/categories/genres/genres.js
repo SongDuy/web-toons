@@ -209,10 +209,10 @@ const GenresPage = () => {
                                             <Link to={`/originals/original/series`}>
 
                                                 <li
-                                                    className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                                     key={item.id}
                                                     onMouseEnter={() => setHoveredOriginalItem(item.id)}
                                                     onMouseLeave={() => setHoveredOriginalItem(null)}
+                                                    className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                                 >
 
                                                     <div className="w-full h-full" >
@@ -318,10 +318,10 @@ const GenresPage = () => {
                                             <Link to={`/videos/video/series`}>
 
                                                 <li
-                                                    className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                                     key={item.id}
                                                     onMouseEnter={() => setHoveredVideoItem(item.id)}
                                                     onMouseLeave={() => setHoveredVideoItem(null)}
+                                                    className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                                 >
 
                                                     <div className="w-full h-full" >
