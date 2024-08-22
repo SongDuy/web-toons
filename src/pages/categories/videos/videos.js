@@ -192,7 +192,7 @@ const VideosPage = () => {
                                                     />
 
                                                     {hoveredOngoingItem === item.id && (
-                                                        <div className="absolute inset-0 bg-black bg-opacity-30 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                        <div className="absolute inset-0 bg-black bg-opacity-30 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                             <PlayArrowIcon sx={{ fontSize: 60 }} />
                                                         </div>
                                                     )}
@@ -272,7 +272,7 @@ const VideosPage = () => {
                                                     />
 
                                                     {hoveredCompletedItem === item.id && (
-                                                        <div className="absolute inset-0 bg-black bg-opacity-30 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                        <div className="absolute inset-0 bg-black bg-opacity-30 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                             <PlayArrowIcon sx={{ fontSize: 60 }} />
                                                         </div>
                                                     )}
