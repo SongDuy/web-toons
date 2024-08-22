@@ -136,8 +136,8 @@ const OriginalSeriesPage = () => {
                         <div className="h-full px-5">
 
                             <div className="w-full mb-auto">
-                                <ul className="flex items-center justify-center">
-                                    <li className="mr-auto mt-auto mb-auto">
+                                <ul className="grid grid-cols-4 gap-5">
+                                    <li className="flex items-center justify-center">
                                         <span className="mx-1 text-yellow-500">
                                             <VisibilityIcon />
                                         </span>
@@ -145,7 +145,7 @@ const OriginalSeriesPage = () => {
                                             8.5M
                                         </span>
                                     </li>
-                                    <li className="ml-auto" >
+                                    <li className="flex items-center justify-center" >
                                         <span className="mx-1 text-yellow-500">
                                             <GroupAddSharpIcon />
                                         </span>
@@ -153,7 +153,7 @@ const OriginalSeriesPage = () => {
                                             450,229
                                         </span>
                                     </li>
-                                    <li className="ml-auto" >
+                                    <li className="flex items-center justify-center" >
                                         <span className="mx-1 text-yellow-500">
                                             <StarIcon />
                                         </span>
@@ -162,10 +162,10 @@ const OriginalSeriesPage = () => {
                                         </span>
 
                                     </li>
-                                    <li className="ml-auto">
-                                        <span className="w-full h-[35px] px-2 py-[1px] rounded-full text-white bg-yellow-500">
+                                    <li className="flex items-center justify-center">
+                                        <button className="w-[70px] h-[25px] rounded-full text-white bg-yellow-500 flex items-center justify-center">
                                             RATE
-                                        </span>
+                                        </button>
                                     </li>
 
                                 </ul>
