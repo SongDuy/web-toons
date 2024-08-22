@@ -53,7 +53,7 @@ const VideoSeriesPage = () => {
                             </span>
 
                             <span className="font-semibold my-5 text-[50px] text-white leading-[1.2] line-clamp-3 flex justify-center">
-                                The Witcher 3
+                                The Witcher
                             </span>
 
                             <span className="font-semibold text-xl text-white flex items-center justify-center">
@@ -81,8 +81,8 @@ const VideoSeriesPage = () => {
                                     {dataSeries.map(item => (
                                         <Link to={`/videos/video/series/display`}>
                                             <li
-                                                className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
                                                 key={item.id}
+                                                className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
                                             >
                                                 <div className="w-full h-full flex items-center">
 
