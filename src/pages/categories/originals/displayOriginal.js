@@ -291,7 +291,7 @@ const DisplayOriginalPage = () => {
                                                         </div>
 
                                                         {/* Hiển thị nội dung bình luận */}
-                                                        <div className="h-[120px] px-2 3xl:overflow-y-scroll">
+                                                        <div className="h-[120px] px-2 custom-scrollbar">
                                                             <span className="">
                                                                 {item.content}
                                                             </span>

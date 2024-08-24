@@ -75,7 +75,7 @@ const OriginalSeriesPage = () => {
                                 </span>
                             </div>
 
-                            <div className="w-full h-[900px] px-3 overflow-y-scroll">
+                            <div className="w-full h-[900px] px-3 custom-scrollbar">
 
                                 {/* danh sach series */}
                                 <ul className="w-full h-full ">
