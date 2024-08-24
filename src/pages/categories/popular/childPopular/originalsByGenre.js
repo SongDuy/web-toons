@@ -75,7 +75,6 @@ const OriginalsByGenrePage = () => {
                 <Link
                     to={`/originals/original/series`}
                     className="h-[815px] bg-white py-1"
-                    title="Visit"
                 >
                     <div
                         className="w-[500px] h-full"
