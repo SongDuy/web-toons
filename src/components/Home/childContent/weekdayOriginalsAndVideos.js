@@ -52,6 +52,21 @@ const WeekdayOriginalsAndVideosPage = () => {
         { id: 33, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
         { id: 34, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
         { id: 35, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 36, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 37, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 38, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Animals", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 39, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Comedy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 40, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 41, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Tue', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 42, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Tue', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 43, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Tue', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 44, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Tue', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 45, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", dayOfWeek: 'Tue', genre: "School", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 46, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Thu', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 47, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 48, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 49, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 50, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
     ];
 
     const dataVideos = [
@@ -90,6 +105,21 @@ const WeekdayOriginalsAndVideosPage = () => {
         { id: 33, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Doraemon", auth: "Lee Nakeum , seewater", like: "200k", },
         { id: 34, img: "https://hips.hearstapps.com/digitalspyuk.cdnds.net/13/24/gaming-the-witcher-3-wild-hunt-screenshot-2.jpg?crop=0.5625xw:1xh;center,top&resize=1200:*", dayOfWeek: 'Sun', genre: "Fantasy", name: "The Witcher", auth: "Lee Nakeum , seewater", like: "200k", },
         { id: 35, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Doraemon", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 36, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 37, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 38, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Animals", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 39, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Comedy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 40, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 41, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Tue', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 42, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Tue', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 43, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Tue', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 44, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Tue', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 45, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Tue', genre: "School", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 46, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Thu', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 47, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 48, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 49, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 50, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
     ];
 
     //Chọn nội dung theo thứ
@@ -183,124 +213,128 @@ const WeekdayOriginalsAndVideosPage = () => {
                 <div className="grid grid-cols-1 gap-y-4">
 
                     {/* khung nội dung dành cho truyện */}
-                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
-                        {/* khung nội dung */}
-                        {filteredOriginals.slice(0, 5).map((item) => (
-                            <Link to={`/originals/original/series`} className="max-w-[210px] h-[210px]" >
-                                <li
-                                    key={item.id}
-                                    onMouseEnter={() => setHoveredOriginalItem(item.id)}
-                                    onMouseLeave={() => setHoveredOriginalItem(null)}
-                                    className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
-                                >
+                    <div className="w-full h-full">
+                        <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
+                            {/* khung nội dung */}
+                            {filteredOriginals.slice(0, 5).map((item) => (
+                                <Link to={`/originals/original/series`} className="max-w-[210px] h-[210px]" >
+                                    <li
+                                        key={item.id}
+                                        onMouseEnter={() => setHoveredOriginalItem(item.id)}
+                                        onMouseLeave={() => setHoveredOriginalItem(null)}
+                                        className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                                    >
 
-                                    <div className="w-full h-full" >
-                                        <img
-                                            src={item.img}
-                                            alt="img"
-                                            className="object-fill w-full h-full rounded-md"
-                                        />
+                                        <div className="w-full h-full" >
+                                            <img
+                                                src={item.img}
+                                                alt="img"
+                                                className="object-fill w-full h-full rounded-md"
+                                            />
 
-                                        {hoveredOriginalItem === item.id && (
-                                            <div className="absolute inset-0 bg-black bg-opacity-30 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
-                                                <AutoStoriesIcon sx={{ fontSize: 40 }} />
+                                            {hoveredOriginalItem === item.id && (
+                                                <div className="absolute inset-0 bg-black bg-opacity-30 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                    <AutoStoriesIcon sx={{ fontSize: 40 }} />
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                            <div className="w-full h-[65px] mb-auto overflow-hidden">
+                                                <span className="text-black text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                    {item.name}
+                                                </span>
+                                                <span className="text-black text-opacity-80 text-md leading-[1.2] line-clamp-1">
+                                                    {item.auth}
+                                                </span>
                                             </div>
-                                        )}
-                                    </div>
 
-                                    <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                        <div className="w-full h-[65px] mb-auto overflow-hidden">
-                                            <span className="text-black text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                {item.name}
-                                            </span>
-                                            <span className="text-black text-opacity-80 text-md leading-[1.2] line-clamp-1">
-                                                {item.auth}
-                                            </span>
+                                            <div className="w-full mb-[25px]">
+                                                <span className="w-[75px] text-rose-300 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
+                                                    <FavoriteIcon />
+                                                    {item.like}
+                                                </span>
+                                                <span className="w-[35px] h-[35px] mt-2 uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                    Up
+                                                </span>
+                                            </div>
+
+                                            {/*Trong component React của bạn */}
+                                            <div className="w-full h-[30px] shadow bg-white bg-opacity-80 rounded-md">
+                                                <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                    {item.genre}
+                                                </span>
+                                            </div>
+
                                         </div>
 
-                                        <div className="w-full mb-[25px]">
-                                            <span className="w-[75px] text-rose-300 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
-                                                <FavoriteIcon />
-                                                {item.like}
-                                            </span>
-                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                Up
-                                            </span>
-                                        </div>
-
-                                        {/*Trong component React của bạn */}
-                                        <div className="w-full h-[30px] shadow bg-white bg-opacity-80 rounded-md">
-                                            <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
-                                                {item.genre}
-                                            </span>
-                                        </div>
-
-                                    </div>
-
-                                </li>
-                            </Link>
-                        ))}
-                    </ul>
+                                    </li>
+                                </Link>
+                            ))}
+                        </ul>
+                    </div>
 
                     {/* khung nội dung dành cho videos */}
-                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
-                        {/* khung nội dung */}
-                        {filteredVideos.slice(0, 5).map((item) => (
-                            <Link to={`/videos/video/series`} className="max-w-[210px] h-[210px]" >
-                                <li
-                                    key={item.id}
-                                    onMouseEnter={() => setHoveredVideoItem(item.id)}
-                                    onMouseLeave={() => setHoveredVideoItem(null)}
-                                    className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
-                                >
+                    <div className="w-full h-full">
+                        <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
+                            {/* khung nội dung */}
+                            {filteredVideos.slice(0, 5).map((item) => (
+                                <Link to={`/videos/video/series`} className="max-w-[210px] h-[210px]" >
+                                    <li
+                                        key={item.id}
+                                        onMouseEnter={() => setHoveredVideoItem(item.id)}
+                                        onMouseLeave={() => setHoveredVideoItem(null)}
+                                        className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                                    >
 
-                                    <div className="w-full h-full" >
-                                        <img
-                                            src={item.img}
-                                            alt="img"
-                                            className="object-fill w-full h-full rounded-md"
-                                        />
+                                        <div className="w-full h-full" >
+                                            <img
+                                                src={item.img}
+                                                alt="img"
+                                                className="object-fill w-full h-full rounded-md"
+                                            />
 
-                                        {hoveredVideoItem === item.id && (
-                                            <div className="absolute inset-0 bg-black bg-opacity-30 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
-                                                <PlayArrowIcon sx={{ fontSize: 60 }} />
+                                            {hoveredVideoItem === item.id && (
+                                                <div className="absolute inset-0 bg-black bg-opacity-30 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                    <PlayArrowIcon sx={{ fontSize: 60 }} />
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                            <div className="w-full h-[65px] mb-auto overflow-hidden">
+                                                <span className="text-black text-lg font-semibold leading-[1.2] line-clamp-2">
+                                                    {item.name}
+                                                </span>
+                                                <span className="text-black text-opacity-80 text-md leading-[1.2] line-clamp-1">
+                                                    {item.auth}
+                                                </span>
                                             </div>
-                                        )}
-                                    </div>
 
-                                    <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                        <div className="w-full h-[65px] mb-auto overflow-hidden">
-                                            <span className="text-black text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                {item.name}
-                                            </span>
-                                            <span className="text-black text-opacity-80 text-md leading-[1.2] line-clamp-1">
-                                                {item.auth}
-                                            </span>
+                                            <div className="w-full mb-[25px]">
+                                                <span className="w-[75px] text-rose-300 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
+                                                    <FavoriteIcon />
+                                                    {item.like}
+                                                </span>
+                                                <span className="w-[35px] h-[35px] mt-2 uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                    Up
+                                                </span>
+                                            </div>
+
+                                            {/*Trong component React của bạn */}
+                                            <div className="w-full h-[30px] shadow bg-gray-300 bg-opacity-80 rounded-md">
+                                                <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                    {item.genre}
+                                                </span>
+                                            </div>
+
                                         </div>
 
-                                        <div className="w-full mb-[25px]">
-                                            <span className="w-[75px] text-rose-300 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
-                                                <FavoriteIcon />
-                                                {item.like}
-                                            </span>
-                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                Up
-                                            </span>
-                                        </div>
-
-                                        {/*Trong component React của bạn */}
-                                        <div className="w-full h-[30px] shadow bg-gray-300 bg-opacity-80 rounded-md">
-                                            <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
-                                                {item.genre}
-                                            </span>
-                                        </div>
-
-                                    </div>
-
-                                </li>
-                            </Link>
-                        ))}
-                    </ul>
+                                    </li>
+                                </Link>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

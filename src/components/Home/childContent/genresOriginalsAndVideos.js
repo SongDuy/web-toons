@@ -127,7 +127,7 @@ const GenresOriginalsAndVideosPage = () => {
     const [hoveredVideoItem, setHoveredVideoItem] = useState(null);
 
     return (
-        <div className="w-full min-h-[500px]">
+        <div className="w-full min-h-[560px]">
 
             {/* Hiển thị tiêu đề */}
             <div className="w-full h-[60px]">
@@ -150,7 +150,7 @@ const GenresOriginalsAndVideosPage = () => {
                 <div className="grid grid-cols-1 gap-y-[30px]">
 
                     {/* khung nội dung dành cho truyện */}
-                    <div className="w-full h-full ">
+                    <div className="w-full h-full">
 
                         <div className="w-full h-[75px] mb-[30px]">
                             <ul className="grid grid-cols-10 gap-2">
@@ -166,7 +166,7 @@ const GenresOriginalsAndVideosPage = () => {
                             </ul>
                         </div>
 
-                        <ul className="min-h-[100px] grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
+                        <ul className="min-h-[210px] grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
                             {/* khung nội dung */}
                             {filteredOriginalsByGenre.slice(0, 10).map((item) => (
                                 <Link to={`/originals/original/series`} className="max-w-[210px] h-[210px]">
@@ -248,7 +248,7 @@ const GenresOriginalsAndVideosPage = () => {
                             </ul>
                         </div>
 
-                        <ul className="min-h-[100px] grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
+                        <ul className="min-h-[210px] grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
                             {/* khung nội dung */}
                             {filteredVideosByGenre.slice(0, 10).map((item) => (
                                 <Link to={`/originals/original/series`} className="max-w-[210px] h-[210px]">
