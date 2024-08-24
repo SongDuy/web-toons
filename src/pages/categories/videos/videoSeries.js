@@ -43,9 +43,11 @@ const VideoSeriesPage = () => {
             <div className="w-full h-full bg-gradient-to-b from-white via-yellow-50 to-gray-100">
                 {/* Hiển thị ảnh nền */}
                 <div className="w-full h-[320px] relative flex items-center justify-center">
+
                     <img src="https://i.redd.it/0hwfsqufm3w41.jpg"
-                        className="object-cover w-[1200px] h-full" alt="img"
+                        className="object-cover w-[1200px] h-full rounded-t" alt="img"
                     />
+
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-[1200px] overflow-hidden">
                             <span className="font-semibold text-xl text-black flex items-center justify-center">
@@ -63,8 +65,8 @@ const VideoSeriesPage = () => {
                     </div>
                 </div>
 
-                <div className="w-full h-full flex items-center justify-center ">
-                    <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-6 pb-10">
+                <div className="w-full h-full flex items-center justify-center">
+                    <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-6 pb-10 rounded-b">
 
                         <div className="col-span-2 h-full">
                             <div className="w-full px-5 pb-3">
