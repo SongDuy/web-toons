@@ -187,7 +187,7 @@ const DisplayOriginalPage = () => {
                 </div>
 
                 {/* Hiển thị các tập trong series */}
-                <div className="w-full h-[220px] bg-gray-100 shadow flex items-center justify-center">
+                <div className="w-full h-[220px] bg-gray-100 flex items-center justify-center">
                     <div
                         className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center"
                         onClick={handlePreviousPage}
@@ -210,7 +210,7 @@ const DisplayOriginalPage = () => {
                                         alt="img"
                                         className="object-fill w-full h-full rounded"
                                     />
-                                    <span className="h-[50px] leading-[1.3] line-clamp-2 py-2">
+                                    <span className="h-[50px] leading-[1.3] line-clamp-2 py-1">
                                         {item.name}
                                     </span>
                                 </div>
