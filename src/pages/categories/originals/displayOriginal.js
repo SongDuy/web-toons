@@ -299,17 +299,17 @@ const DisplayOriginalPage = () => {
 
                                                         {/* Nút bình luận, thích, không thích */}
                                                         <div className="w-full flex gap-2 py-1">
-                                                            <span className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center cursor-pointer">
+                                                            <button className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center">
                                                                 Replies {item.replies}
-                                                            </span>
-                                                            <span className="px-2 py-1 px-1 ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center cursor-pointer">
+                                                            </button>
+                                                            <button className="px-2 py-1 px-1 ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center">
                                                                 <ThumbUpIcon className="text-gray-400" />
                                                                 226
-                                                            </span>
-                                                            <span className="px-2 py-1 px-1 border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center cursor-pointer">
+                                                            </button>
+                                                            <button className="px-2 py-1 px-1 border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center">
                                                                 <ThumbDownIcon className="text-gray-400" />
                                                                 0
-                                                            </span>
+                                                            </button>
                                                         </div>
 
                                                     </div>
