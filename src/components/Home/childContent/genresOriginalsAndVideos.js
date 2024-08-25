@@ -248,7 +248,7 @@ const GenresOriginalsAndVideosPage = () => {
                                             </div>
 
                                             <div className="w-full mb-[25px]">
-                                                <span className="w-[75px] text-rose-300 rounded-full px-1 gap-1 text-sm font-semibold flex items-center">
+                                                <span className="w-[75px] text-rose-300 rounded-full gap-1 text-sm font-semibold flex items-center">
                                                     <FavoriteIcon />
                                                     {item.like}
                                                 </span>
@@ -256,9 +256,9 @@ const GenresOriginalsAndVideosPage = () => {
                                                     <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
                                                         Up
                                                     </span>
-                                                    <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                    {/* <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black text-white text-xs font-semibold rounded-full flex items-center justify-center">
                                                         New
-                                                    </span>
+                                                    </span> */}
                                                 </div>
                                             </div>
 
@@ -342,7 +342,7 @@ const GenresOriginalsAndVideosPage = () => {
                                             </div>
 
                                             <div className="w-full mb-[25px]">
-                                                <span className="w-[75px] text-rose-300 rounded-full px-1 gap-1 text-sm font-semibold flex items-center">
+                                                <span className="w-[75px] text-rose-300 rounded-full gap-1 text-sm font-semibold flex items-center">
                                                     <FavoriteIcon />
                                                     {item.like}
                                                 </span>
@@ -350,9 +350,9 @@ const GenresOriginalsAndVideosPage = () => {
                                                     <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
                                                         Up
                                                     </span>
-                                                    <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                    {/* <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black text-white text-xs font-semibold rounded-full flex items-center justify-center">
                                                         New
-                                                    </span>
+                                                    </span> */}
                                                 </div>
                                             </div>
 
