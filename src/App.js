@@ -19,6 +19,8 @@ import NotFoundPage from './pages/notFoundPage';
 import RegisterPage from './pages/auth/register';
 import ForgotPasswordPage from './pages/auth/forgotPassword';
 
+import AdminPage from './pages/admin/admin';
+
 import './App.css';
 import Layout from './components/layout/layoutUser';
 import Account from './pages/account/Account';
@@ -79,6 +81,9 @@ function App() {
         {/* Trang hiển thị truyện và video */}
         <Route path="/originals/original/series/display" element={<DisplayOriginalPage />} />
         <Route path="/videos/video/series/display" element={<DisplayVideoPage />} />
+
+        {/* Trang hiển thị Admin */}
+        <Route path="/admin" element={<AdminPage />} />
 
         {/* Xử lý trang lỗi */}
         <Route path="*" element={<Navigate to="/404" />} />
