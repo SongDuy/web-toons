@@ -267,7 +267,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                                 //     <AutoStoriesIcon sx={{ fontSize: 40 }} />
                                                 // </div>
 
-                                                <div class="absolute inset-0  flex items-center justify-center text-yellow-500 z-10">
+                                                <div class="absolute inset-0 flex items-center justify-center text-yellow-500 z-10">
                                                     <img
                                                         src={item.img}
                                                         alt="img"
