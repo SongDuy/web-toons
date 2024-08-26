@@ -9,16 +9,46 @@ import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import FlagIcon from '@mui/icons-material/Flag';
 
+import DashboardPage from './childAdmin/dashboard';
+import BannerPage from './childAdmin/banner';
+import UsersPage from './childAdmin/users';
+import CategoriesPage from './childAdmin/categories';
+import OriginalsPage from './childAdmin/originals';
+import VideosPage from './childAdmin/videos';
+import ReportPage from './childAdmin/report';
+
 const AdminPage = () => {
 
-    // Khi lia chuột hiên icon khi lia vào truyện hoặc video
+    // Chọn tiêu đề
     const [isTitle, setIsTitle] = useState('Dashboard');
+
+    // Define content for each section
+    const renderContent = () => {
+        switch (isTitle) {
+            case 'Dashboard':
+                return <DashboardPage />;
+            case 'Banner':
+                return <BannerPage />;
+            case 'Users':
+                return <UsersPage />;
+            case 'Categories':
+                return <CategoriesPage />;
+            case 'Originals':
+                return <OriginalsPage />;
+            case 'Videos':
+                return <VideosPage />;
+            case 'Report':
+                return <ReportPage />;
+            default:
+                return <div>Select a category</div>;
+        }
+    };
 
     return (
         <div className="w-full h-full border">
             <div className="flex h-screen">
 
-                <div className="w-[350px] h-full bg-gray-50 px-5 py-5">
+                <div className="w-[350px] h-full bg-gray-100 px-5 py-5">
                     <div className="w-full h-[50px] flex items-center border-b-2">
                         <span className="font-semibold">
                             ADMIN
@@ -28,7 +58,7 @@ const AdminPage = () => {
                     <ul className="mt-10 grid grid-cols-1 gap-4">
                         <li
                             onClick={() => setIsTitle('Dashboard')}
-                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white shadow flex items-center justify-center rounded ${ isTitle === "Dashboard" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "Dashboard" ? 'text-yellow-500 bg-red-50' : 'hover:text-yellow-500 bg-white'}`}
                         >
                             <span className="mr-auto">
                                 <PieChartIcon />
@@ -41,7 +71,7 @@ const AdminPage = () => {
 
                         <li
                             onClick={() => setIsTitle('Banner')}
-                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white shadow flex items-center justify-center rounded ${ isTitle === "Banner" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "Banner" ? 'text-yellow-500 bg-red-50' : 'hover:text-yellow-500 bg-white'}`}
                         >
                             <span className="mr-auto">
                                 <CollectionsIcon />
@@ -54,7 +84,7 @@ const AdminPage = () => {
 
                         <li
                             onClick={() => setIsTitle('Users')}
-                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white shadow flex items-center justify-center rounded ${ isTitle === "Users" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "Users" ? 'text-yellow-500 bg-red-50' : 'hover:text-yellow-500 bg-white'}`}
                         >
                             <span className="mr-auto">
                                 <PeopleIcon />
@@ -67,7 +97,7 @@ const AdminPage = () => {
 
                         <li
                             onClick={() => setIsTitle('Categories')}
-                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white shadow flex items-center justify-center rounded ${ isTitle === "Categories" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "Categories" ? 'text-yellow-500 bg-red-50' : 'hover:text-yellow-500 bg-white'}`}
                         >
                             <span className="mr-auto">
                                 <CategoryIcon />
@@ -80,7 +110,7 @@ const AdminPage = () => {
 
                         <li
                             onClick={() => setIsTitle('Originals')}
-                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white shadow flex items-center justify-center rounded ${ isTitle === "Originals" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "Originals" ? 'text-yellow-500 bg-red-50' : 'hover:text-yellow-500 bg-white'}`}
                         >
                             <span className="mr-auto">
                                 <AutoStoriesIcon />
@@ -93,7 +123,7 @@ const AdminPage = () => {
 
                         <li
                             onClick={() => setIsTitle('Videos')}
-                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white shadow flex items-center justify-center rounded ${ isTitle === "Videos" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "Videos" ? 'text-yellow-500 bg-red-50' : 'hover:text-yellow-500 bg-white'}`}
                         >
                             <span className="mr-auto">
                                 <VideoLibraryIcon />
@@ -106,7 +136,7 @@ const AdminPage = () => {
 
                         <li
                             onClick={() => setIsTitle('Report')}
-                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white shadow flex items-center justify-center rounded ${ isTitle === "Report" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "Report" ? 'text-yellow-500 bg-red-50' : 'hover:text-yellow-500 bg-white'}`}
                         >
                             <span className="mr-auto">
                                 <FlagIcon />
@@ -120,17 +150,22 @@ const AdminPage = () => {
                     </ul>
                 </div>
 
-                <div className="w-full h-full px-5 py-5 bg-white">
+               {/* Main Content */}
+               <div className="w-full h-full px-5 py-5 bg-white">
                     <div className="w-full h-[50px] flex gap items-center border-b-2">
-                        <span className="font-semibold">
-                            Admin
-                        </span>
+                        <span className="font-semibold">Admin</span>
                         <NavigateNextIcon />
                         <span className="font-semibold text-yellow-500">
                             {isTitle}
                         </span>
                     </div>
+
+                    {/* Render the content based on the selected title */}
+                    <div className="mt-5">
+                        {renderContent()}
+                    </div>
                 </div>
+
             </div>
         </div>
     );
