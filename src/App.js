@@ -102,7 +102,7 @@ function App() {
           <Route path="originals" element={<AdminOriginalsPage />} />
           <Route path="videos" element={<AdminVideosPage />} />
           <Route path="report" element={<AdminReportPage />} />
-          <Route path="payments" element={<AdminReportPage />} />
+          <Route path="payments" element={<AdminPaymentsPage />} />
         </Route>
 
         {/* Xử lý trang lỗi */}
