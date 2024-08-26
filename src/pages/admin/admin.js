@@ -99,7 +99,7 @@ const AdminPage = () => {
                     </ul>
                 </div>
 
-                <div className="w-full h-full bg-white">
+                <div className="w-full h-full px-5 py-5 bg-white">
                     kk
                 </div>
             </div>
