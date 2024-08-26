@@ -3,6 +3,7 @@ import React from 'react';
 import PieChartIcon from '@mui/icons-material/PieChart';
 import PersonIcon from '@mui/icons-material/Person';
 import CollectionsIcon from '@mui/icons-material/Collections';
+import CategoryIcon from '@mui/icons-material/Category';
 
 const AdminPage = () => {
     return (
@@ -49,11 +50,11 @@ const AdminPage = () => {
 
                         <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:bg-red-100 shadow-md flex items-center justify-center rounded">
                             <span className="mr-auto">
-                                <CollectionsIcon />
+                                <CategoryIcon />
                             </span>
 
                             <span className="mr-auto font-semibold">
-                                Banner
+                                Categories
                             </span>
                         </li>
 
