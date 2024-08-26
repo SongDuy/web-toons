@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import PieChartIcon from '@mui/icons-material/PieChart';
 import PeopleIcon from '@mui/icons-material/People';
@@ -10,6 +10,9 @@ import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import FlagIcon from '@mui/icons-material/Flag';
 
 const AdminPage = () => {
+
+    // Khi lia chuột hiên icon khi lia vào truyện hoặc video
+    const [isTitle, setIsTitle] = useState('Dashboard');
 
     return (
         <div className="w-full h-full border">
@@ -23,7 +26,10 @@ const AdminPage = () => {
                     </div>
 
                     <ul className="mt-10 grid grid-cols-1 gap-4">
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded">
+                        <li
+                            onClick={() => setIsTitle('Dashboard')}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white shadow flex items-center justify-center rounded ${ isTitle === "Dashboard" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                        >
                             <span className="mr-auto">
                                 <PieChartIcon />
                             </span>
@@ -33,7 +39,10 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded">
+                        <li
+                            onClick={() => setIsTitle('Banner')}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded ${ isTitle === "Banner" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                        >
                             <span className="mr-auto">
                                 <CollectionsIcon />
                             </span>
@@ -43,7 +52,10 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded">
+                        <li
+                            onClick={() => setIsTitle('Users')}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded ${ isTitle === "Users" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                        >
                             <span className="mr-auto">
                                 <PeopleIcon />
                             </span>
@@ -53,7 +65,10 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded">
+                        <li
+                            onClick={() => setIsTitle('Categories')}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded ${ isTitle === "Categories" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                        >
                             <span className="mr-auto">
                                 <CategoryIcon />
                             </span>
@@ -63,7 +78,10 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded">
+                        <li
+                            onClick={() => setIsTitle('Originals')}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded ${ isTitle === "Originals" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                        >
                             <span className="mr-auto">
                                 <AutoStoriesIcon />
                             </span>
@@ -73,7 +91,10 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded">
+                        <li
+                            onClick={() => setIsTitle('Videos')}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded ${ isTitle === "Videos" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                        >
                             <span className="mr-auto">
                                 <VideoLibraryIcon />
                             </span>
@@ -83,7 +104,10 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded">
+                        <li
+                            onClick={() => setIsTitle('Report')}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded ${ isTitle === "Report" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                        >
                             <span className="mr-auto">
                                 <FlagIcon />
                             </span>
@@ -103,7 +127,7 @@ const AdminPage = () => {
                         </span>
                         <NavigateNextIcon />
                         <span className="font-semibold text-yellow-500">
-                            Dashboard
+                            {isTitle}
                         </span>
                     </div>
                 </div>
