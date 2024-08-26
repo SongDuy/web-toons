@@ -5,6 +5,9 @@ import PersonIcon from '@mui/icons-material/Person';
 import CollectionsIcon from '@mui/icons-material/Collections';
 import CategoryIcon from '@mui/icons-material/Category';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import FlagIcon from '@mui/icons-material/Flag';
 
 const AdminPage = () => {
 
@@ -62,43 +65,34 @@ const AdminPage = () => {
 
                         <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded">
                             <span className="mr-auto">
-                                <CollectionsIcon />
+                                <AutoStoriesIcon />
                             </span>
 
                             <span className="mr-auto font-semibold">
-                                Banner
+                                Originals
                             </span>
                         </li>
 
                         <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded">
                             <span className="mr-auto">
-                                <CollectionsIcon />
+                                <VideoLibraryIcon />
                             </span>
 
                             <span className="mr-auto font-semibold">
-                                Banner
+                                Videos
                             </span>
                         </li>
 
                         <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded">
                             <span className="mr-auto">
-                                <CollectionsIcon />
+                                <FlagIcon />
                             </span>
 
                             <span className="mr-auto font-semibold">
-                                Banner
+                                Report
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded">
-                            <span className="mr-auto">
-                                <CollectionsIcon />
-                            </span>
-
-                            <span className="mr-auto font-semibold">
-                                Banner
-                            </span>
-                        </li>
                     </ul>
                 </div>
 
