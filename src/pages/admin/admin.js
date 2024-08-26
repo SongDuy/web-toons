@@ -4,9 +4,10 @@ import PieChartIcon from '@mui/icons-material/PieChart';
 import PersonIcon from '@mui/icons-material/Person';
 import CollectionsIcon from '@mui/icons-material/Collections';
 import CategoryIcon from '@mui/icons-material/Category';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 const AdminPage = () => {
-    
+
     return (
         <div className="w-full h-full border">
             <div className="flex h-screen">
@@ -19,7 +20,7 @@ const AdminPage = () => {
                     </div>
 
                     <ul className="mt-10 grid grid-cols-1 gap-4">
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <PieChartIcon />
                             </span>
@@ -29,7 +30,7 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <PersonIcon />
                             </span>
@@ -39,7 +40,7 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <CollectionsIcon />
                             </span>
@@ -49,7 +50,7 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <CategoryIcon />
                             </span>
@@ -59,7 +60,7 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <CollectionsIcon />
                             </span>
@@ -69,7 +70,7 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <CollectionsIcon />
                             </span>
@@ -79,7 +80,7 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <CollectionsIcon />
                             </span>
@@ -89,7 +90,7 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <CollectionsIcon />
                             </span>
@@ -102,7 +103,11 @@ const AdminPage = () => {
                 </div>
 
                 <div className="w-full h-full px-5 py-5 bg-white">
-                    <div className="w-full h-[50px] flex items-center border-b-2">
+                    <div className="w-full h-[50px] flex gap items-center border-b-2">
+                        <span className="font-semibold">
+                            Admin
+                        </span>
+                        <NavigateNextIcon />
                         <span className="font-semibold">
                             Dashboard
                         </span>
