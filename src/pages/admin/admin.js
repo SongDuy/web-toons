@@ -13,23 +13,35 @@ const AdminPage = () => {
                     </div>
 
                     <ul className="mt-10 grid grid-cols-1 gap-4">
-                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-red-100 cursor-pointer">
+                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
 
                         </li>
 
-                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-red-100 cursor-pointer">
+                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
 
                         </li>
 
-                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-red-100 cursor-pointer">
+                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
 
                         </li>
 
-                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-red-100 cursor-pointer">
+                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
 
                         </li>
 
-                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-red-100 cursor-pointer">
+                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
+
+                        </li>
+
+                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
+
+                        </li>
+
+                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
+
+                        </li>
+
+                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
 
                         </li>
                     </ul>
