@@ -103,7 +103,7 @@ const AdminPage = () => {
                 </div>
 
                 <div className="w-full h-full px-5 py-5 bg-white">
-                    <div className="w-full h-[50px] flex gap items-center border-b-2">
+                    <div className="w-full h-[50px] flex gap items-center text-yellow-500 border-b-2">
                         <span className="font-semibold">
                             Admin
                         </span>
