@@ -13,35 +13,37 @@ const AdminPage = () => {
                     </div>
 
                     <ul className="mt-10 grid grid-cols-1 gap-4">
-                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
+                        <li className="w-full h-[50px] flex items-center justify-center hover:text-blue-500 bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
+                            <span className="font-semibold">
+                                Dashboard
+                            </span>
+                        </li>
+
+                        <li className="w-full h-[50px] flex items-center justify-center bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
 
                         </li>
 
-                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
+                        <li className="w-full h-[50px] flex items-center justify-center bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
 
                         </li>
 
-                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
+                        <li className="w-full h-[50px] flex items-center justify-center bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
 
                         </li>
 
-                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
+                        <li className="w-full h-[50px] flex items-center justify-center bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
 
                         </li>
 
-                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
+                        <li className="w-full h-[50px] flex items-center justify-center bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
 
                         </li>
 
-                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
+                        <li className="w-full h-[50px] flex items-center justify-center bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
 
                         </li>
 
-                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
-
-                        </li>
-
-                        <li className="w-full h-[50px] bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
+                        <li className="w-full h-[50px] flex items-center justify-center bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
 
                         </li>
                     </ul>
