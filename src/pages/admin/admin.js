@@ -37,8 +37,8 @@ const AdminPage = () => {
     };
 
     return (
-        <div className="w-full h-full border">
-            <div className="flex h-screen">
+        <div className="w-full h-screen border">
+            <div className="flex h-full">
                 <div className="w-[350px] h-full bg-gray-100 px-5 py-5">
                     <div className="w-full h-[50px] flex items-center border-b-2">
                         <span className="font-semibold">ADMIN</span>
