@@ -6,6 +6,7 @@ import CollectionsIcon from '@mui/icons-material/Collections';
 import CategoryIcon from '@mui/icons-material/Category';
 
 const AdminPage = () => {
+    
     return (
         <div className="w-full h-full border">
             <div className="flex h-screen">
@@ -18,7 +19,7 @@ const AdminPage = () => {
                     </div>
 
                     <ul className="mt-10 grid grid-cols-1 gap-4">
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:bg-red-100 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <PieChartIcon />
                             </span>
@@ -28,7 +29,7 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:bg-red-100 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <PersonIcon />
                             </span>
@@ -38,7 +39,7 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:bg-red-100 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <CollectionsIcon />
                             </span>
@@ -48,7 +49,7 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:bg-red-100 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <CategoryIcon />
                             </span>
@@ -58,7 +59,7 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:bg-red-100 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <CollectionsIcon />
                             </span>
@@ -68,7 +69,7 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:bg-red-100 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <CollectionsIcon />
                             </span>
@@ -78,7 +79,7 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:bg-red-100 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <CollectionsIcon />
                             </span>
@@ -88,7 +89,7 @@ const AdminPage = () => {
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:bg-red-100 shadow-md flex items-center justify-center rounded">
+                        <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 hover:bg-red-50 shadow-md flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <CollectionsIcon />
                             </span>
