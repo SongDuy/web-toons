@@ -20,6 +20,13 @@ import RegisterPage from './pages/auth/register';
 import ForgotPasswordPage from './pages/auth/forgotPassword';
 
 import AdminPage from './pages/admin/admin';
+import AdminDashboardPage from './pages/admin/childAdmin/adminDashboard';
+import AdminBannerPage from './pages/admin/childAdmin/adminBanner';
+import AdminUsersPage from './pages/admin/childAdmin/adminUsers';
+import AdminCategoriesPage from './pages/admin/childAdmin/adminCategories';
+import AdminOriginalsPage from './pages/admin/childAdmin/adminOriginals';
+import AdminVideosPage from './pages/admin/childAdmin/adminVideos';
+import AdminReportPage from './pages/admin/childAdmin/adminReport';
 
 import './App.css';
 import Layout from './components/layout/layoutUser';
@@ -83,7 +90,15 @@ function App() {
         <Route path="/videos/video/series/display" element={<DisplayVideoPage />} />
 
         {/* Trang hiển thị Admin */}
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin" element={<AdminPage />}>
+          <Route path="dashboard" element={<AdminDashboardPage />} />
+          <Route path="banner" element={<AdminBannerPage />} />
+          <Route path="users" element={<AdminUsersPage />} />
+          <Route path="categories" element={<AdminCategoriesPage />} />
+          <Route path="originals" element={<AdminOriginalsPage />} />
+          <Route path="videos" element={<AdminVideosPage />} />
+          <Route path="report" element={<AdminReportPage />} />
+        </Route>
 
         {/* Xử lý trang lỗi */}
         <Route path="*" element={<Navigate to="/404" />} />

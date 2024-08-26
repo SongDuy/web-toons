@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OriginalsPage = () => {
+const AdminVideosPage = () => {
     return (
         <div className="w-full h-[300px] px-5 py-5 border bg-gray-100">
             
@@ -8,4 +8,4 @@ const OriginalsPage = () => {
     );
 }
 
-export default OriginalsPage;
+export default AdminVideosPage;
