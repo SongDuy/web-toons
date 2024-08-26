@@ -13,18 +13,22 @@ const AdminPage = () => {
                     </div>
 
                     <ul className="mt-10 grid grid-cols-1 gap-4">
-                        <li className="w-full h-[50px] flex items-center justify-center hover:text-blue-500 bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
+                        <li className="w-full h-[50px] flex items-center justify-center bg-white rounded shadow hover:text-blue-500 hover:bg-yellow-100 cursor-pointer">
                             <span className="font-semibold">
                                 Dashboard
                             </span>
                         </li>
 
-                        <li className="w-full h-[50px] flex items-center justify-center bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
-
+                        <li className="w-full h-[50px] flex items-center justify-center bg-white rounded shadow hover:text-blue-500 hover:bg-yellow-100 cursor-pointer">
+                            <span className="font-semibold">
+                                Users
+                            </span>
                         </li>
 
-                        <li className="w-full h-[50px] flex items-center justify-center bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
-
+                        <li className="w-full h-[50px] flex items-center justify-center bg-white rounded shadow hover:text-blue-500 hover:bg-yellow-100 cursor-pointer">
+                            <span className="font-semibold">
+                                Banner
+                            </span>
                         </li>
 
                         <li className="w-full h-[50px] flex items-center justify-center bg-white rounded shadow hover:bg-yellow-100 cursor-pointer">
@@ -49,7 +53,7 @@ const AdminPage = () => {
                     </ul>
                 </div>
 
-                <div className="w-full h-full">
+                <div className="w-full h-full bg-white">
                     kk
                 </div>
             </div>
