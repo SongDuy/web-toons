@@ -91,6 +91,9 @@ function App() {
 
         {/* Trang hiển thị Admin */}
         <Route path="/admin" element={<AdminPage />}>
+          {/* Định tuyến mặc định cho /admin */}
+          <Route index element={<Navigate to="dashboard" replace />} />
+
           <Route path="dashboard" element={<AdminDashboardPage />} />
           <Route path="banner" element={<AdminBannerPage />} />
           <Route path="users" element={<AdminUsersPage />} />
