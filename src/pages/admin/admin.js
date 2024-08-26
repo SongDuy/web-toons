@@ -112,7 +112,7 @@ const AdminPage = () => {
                 </div>
 
                 {/* Main Content */}
-                <div className="w-auto h-full px-5 py-5 bg-white">
+                <div className="w-[1250px] h-full px-5 py-5 bg-white">
                     <div className="w-full h-[50px] flex gap items-center border-b-2">
                         <span className="font-semibold">
                             Admin
