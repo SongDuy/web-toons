@@ -39,7 +39,8 @@ const AdminPage = () => {
     return (
         <div className="w-full h-screen border">
             <div className="flex h-full">
-                <div className="w-[350px] h-full bg-gray-100 px-5 py-5">
+
+                <div className="w-[300px] h-full bg-gray-100 px-5 py-5 border">
                     <div className="w-full h-[50px] flex items-center border-b-2">
                         <span className="font-semibold">ADMIN</span>
                     </div>
@@ -111,7 +112,7 @@ const AdminPage = () => {
                 </div>
 
                 {/* Main Content */}
-                <div className="w-full h-full px-5 py-5 bg-white">
+                <div className="w-auto h-full px-5 py-5 bg-white">
                     <div className="w-full h-[50px] flex gap items-center border-b-2">
                         <span className="font-semibold">
                             Admin
