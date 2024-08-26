@@ -41,7 +41,7 @@ const AdminPage = () => {
 
                         <li
                             onClick={() => setIsTitle('Banner')}
-                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded ${ isTitle === "Banner" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white shadow flex items-center justify-center rounded ${ isTitle === "Banner" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                         >
                             <span className="mr-auto">
                                 <CollectionsIcon />
@@ -54,7 +54,7 @@ const AdminPage = () => {
 
                         <li
                             onClick={() => setIsTitle('Users')}
-                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded ${ isTitle === "Users" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white shadow flex items-center justify-center rounded ${ isTitle === "Users" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                         >
                             <span className="mr-auto">
                                 <PeopleIcon />
@@ -67,7 +67,7 @@ const AdminPage = () => {
 
                         <li
                             onClick={() => setIsTitle('Categories')}
-                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded ${ isTitle === "Categories" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white shadow flex items-center justify-center rounded ${ isTitle === "Categories" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                         >
                             <span className="mr-auto">
                                 <CategoryIcon />
@@ -80,7 +80,7 @@ const AdminPage = () => {
 
                         <li
                             onClick={() => setIsTitle('Originals')}
-                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded ${ isTitle === "Originals" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white shadow flex items-center justify-center rounded ${ isTitle === "Originals" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                         >
                             <span className="mr-auto">
                                 <AutoStoriesIcon />
@@ -93,7 +93,7 @@ const AdminPage = () => {
 
                         <li
                             onClick={() => setIsTitle('Videos')}
-                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded ${ isTitle === "Videos" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white shadow flex items-center justify-center rounded ${ isTitle === "Videos" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                         >
                             <span className="mr-auto">
                                 <VideoLibraryIcon />
@@ -106,7 +106,7 @@ const AdminPage = () => {
 
                         <li
                             onClick={() => setIsTitle('Report')}
-                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded ${ isTitle === "Report" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
+                            className={`w-full h-[50px] cursor-pointer px-5 py-2 bg-white shadow flex items-center justify-center rounded ${ isTitle === "Report" ? 'text-yellow-500' : 'hover:text-yellow-500'}`}
                         >
                             <span className="mr-auto">
                                 <FlagIcon />
