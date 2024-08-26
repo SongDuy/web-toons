@@ -27,6 +27,7 @@ import AdminCategoriesPage from './pages/admin/childAdmin/adminCategories';
 import AdminOriginalsPage from './pages/admin/childAdmin/adminOriginals';
 import AdminVideosPage from './pages/admin/childAdmin/adminVideos';
 import AdminReportPage from './pages/admin/childAdmin/adminReport';
+import AdminPaymentsPage from './pages/admin/childAdmin/Payments';
 
 import './App.css';
 import Layout from './components/layout/layoutUser';
@@ -101,6 +102,7 @@ function App() {
           <Route path="originals" element={<AdminOriginalsPage />} />
           <Route path="videos" element={<AdminVideosPage />} />
           <Route path="report" element={<AdminReportPage />} />
+          <Route path="payments" element={<AdminReportPage />} />
         </Route>
 
         {/* Xử lý trang lỗi */}
