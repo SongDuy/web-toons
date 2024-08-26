@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PieChartIcon from '@mui/icons-material/PieChart';
-import PersonIcon from '@mui/icons-material/Person';
+import PeopleIcon from '@mui/icons-material/People';
 import CollectionsIcon from '@mui/icons-material/Collections';
 import CategoryIcon from '@mui/icons-material/Category';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -45,7 +45,7 @@ const AdminPage = () => {
 
                         <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-white hover:text-yellow-500 shadow flex items-center justify-center rounded">
                             <span className="mr-auto">
-                                <PersonIcon />
+                                <PeopleIcon />
                             </span>
 
                             <span className="mr-auto font-semibold">
