@@ -10,7 +10,7 @@ const AdminPage = () => {
         <div className="w-full h-full border">
             <div className="flex h-screen">
 
-                <div className="w-[350px] h-full bg-gray-100 px-5 py-5">
+                <div className="w-[350px] h-full bg-gray-50 px-5 py-5">
                     <div className="w-full h-[50px] flex items-center border-b-2">
                         <span className="font-semibold">
                             ADMIN
@@ -101,7 +101,11 @@ const AdminPage = () => {
                 </div>
 
                 <div className="w-full h-full px-5 py-5 bg-white">
-                    kk
+                    <div className="w-full h-[50px] flex items-center border-b-2">
+                        <span className="font-semibold">
+                            Dashboard
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
