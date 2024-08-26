@@ -36,20 +36,8 @@ const rows = [
 const AdminVideosPage = () => {
     return (
         <div className="w-full h-full py-5 bg-white">
-        <div className="w-[1195px] h-[600px]">
-            <DataGrid
-                rows={rows}
-                columns={columns}
-                initialState={{
-                    pagination: {
-                        paginationModel: { page: 0, pageSize: 10 },
-                    },
-                }}
-                pageSizeOptions={[5, 10]}
-                checkboxSelection
-            />
+
         </div>
-    </div>
     );
 }
 
