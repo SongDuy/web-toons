@@ -79,7 +79,7 @@ const AdminVideosPage = () => {
                 <thead className="bg-gray-100">
                     <tr className="w-full">
                         <th className="w-[50px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">ID</th>
-                        <th className="w-[200px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Videos Image</th>
+                        <th className="w-[150px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Image</th>
                         <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Videos Name</th>
                         <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">ID User</th>
                         <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Date created</th>
@@ -92,11 +92,11 @@ const AdminVideosPage = () => {
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center font-medium text-gray-900">
                                 {item.id}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
+                            <td className="px-6 py-4 whitespace-nowrap flex items-center justify-center text-gray-500">
                                 <img
                                     src={item.img}
                                     alt="img"
-                                    class="object-fill w-full h-full rounded-md"
+                                    class="object-fill w-[100px] h-[100px] rounded-md"
                                 />
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">

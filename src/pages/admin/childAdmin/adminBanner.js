@@ -7,7 +7,7 @@ import EditIcon from '@mui/icons-material/Edit';
 const data = [
     { id: 1, img: 'https://image.baophapluat.vn/1200x630/Uploaded/2024/gznrxgmabianhgzmath/2022_05_30/doraemon-9528.jpg', name: 'John Doe', date: '23/05/2024', },
     { id: 2, img: 'https://wallpapers.com/images/hd/one-piece-pictures-bjm9tdff9yzguoup.jpg', name: 'Jane Smith', date: '23/05/2024', },
-    { id: 3, img: 'https://i.redd.it/5mqp7trvxov51.jpg', name: 'Tom Brown', date: 'tom.brown@example.com', },
+    { id: 3, img: 'https://i.redd.it/5mqp7trvxov51.jpg', name: 'Tom Brown',  date: '23/05/2024', },
     { id: 4, img: 'https://images.alphacoders.com/135/1353040.jpeg', name: 'Tom Brown', date: '23/05/2024', },
     { id: 5, img: 'https://wallpapergod.com/images/hd/anime-4k-5760X3240-wallpaper-par00nk6228xf5xm.jpeg', name: 'Tom Brown', date: '23/05/2024', },
     { id: 6, img: 'https://i.pinimg.com/originals/52/83/59/5283594dd6b1d0dd4b8a59c723a35024.gif', name: 'Tom Brown', date: '23/05/2024', },
