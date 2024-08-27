@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
 // Dữ liệu mẫu
 const data = [
@@ -110,7 +110,7 @@ const AdminVideosPage = () => {
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                                 <button className="w-[35px] h-[35px] text-blue-500 mx-2 bg-gray-100 hover:bg-gray-200 rounded-full">
-                                    <EditIcon />
+                                    <RemoveRedEyeIcon />
                                 </button>
                                 <button className="w-[35px] h-[35px] text-red-500 mx-2 bg-gray-100 hover:bg-gray-200 rounded-full">
                                     <DeleteIcon />

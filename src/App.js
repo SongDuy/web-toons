@@ -26,8 +26,10 @@ import AdminUsersPage from './pages/admin/childAdmin/adminUsers';
 import AdminCategoriesPage from './pages/admin/childAdmin/adminCategories';
 import AdminOriginalsPage from './pages/admin/childAdmin/adminOriginals';
 import AdminVideosPage from './pages/admin/childAdmin/adminVideos';
-import AdminReportPage from './pages/admin/childAdmin/adminReport';
+import AdminReportsPage from './pages/admin/childAdmin/adminReports';
 import AdminPaymentsPage from './pages/admin/childAdmin/Payments';
+import AdminNotificationsPage from './pages/admin/childAdmin/adminNotifications';
+import AdminCensorsPage from './pages/admin/childAdmin/adminCensors';
 
 import './App.css';
 import Layout from './components/layout/layoutUser';
@@ -96,13 +98,15 @@ function App() {
           <Route index element={<Navigate to="dashboard" replace />} />
 
           <Route path="dashboard" element={<AdminDashboardPage />} />
-          <Route path="banner" element={<AdminBannerPage />} />
+          <Route path="banners" element={<AdminBannerPage />} />
           <Route path="users" element={<AdminUsersPage />} />
           <Route path="categories" element={<AdminCategoriesPage />} />
           <Route path="originals" element={<AdminOriginalsPage />} />
           <Route path="videos" element={<AdminVideosPage />} />
-          <Route path="report" element={<AdminReportPage />} />
+          <Route path="reports" element={<AdminReportsPage />} />
           <Route path="payments" element={<AdminPaymentsPage />} />
+          <Route path="notifications" element={<AdminNotificationsPage />} />
+          <Route path="censors" element={<AdminCensorsPage />} />
         </Route>
 
         {/* Xử lý trang lỗi */}
