@@ -116,8 +116,6 @@ const AdminPage = () => {
                                     <span className="mr-auto font-semibold">Payments</span>
                                 </li>
 
-
-
                                 <li
                                     onClick={() => handleNavigation('notifications', '/admin/notifications')}
                                     className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "notifications" ? 'text-yellow-500 bg-red-50 border-t' : 'hover:text-yellow-500 bg-white'}`}
@@ -127,7 +125,7 @@ const AdminPage = () => {
                                 </li>
 
                                 <li
-                                    onClick={() => handleNavigation('report', '/admin/reports')}
+                                    onClick={() => handleNavigation('reports', '/admin/reports')}
                                     className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "reports" ? 'text-yellow-500 bg-red-50 border-t' : 'hover:text-yellow-500 bg-white'}`}
                                 >
                                     <span className="mr-auto"><FlagIcon /></span>
