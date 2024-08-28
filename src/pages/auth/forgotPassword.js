@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 const ForgotPasswordPage = () => {
     return (
-        <div className="w-screen h-screen bg-gray-100 flex items-center justify-center fixed inset-0 z-50"> {/* backdrop-blur-sm */}
+        <div className="w-full h-full bg-gray-100 flex items-center justify-center fixed inset-0 z-50"> {/* backdrop-blur-sm */}
 
             <div className="w-[400px] h-[350px] px-5 py-5 bg-white shadow rounded-lg">
                 <div>

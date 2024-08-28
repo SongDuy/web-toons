@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Element } from 'react-scroll';
+import { Link as ScrollLink, Element as ScrollElement } from 'react-scroll';
 
 import NewTrendingOriginalsPage from './childPopular/newTrendingOriginals';
 import NewTrendingVideosPage from './childPopular/newTrendingVideos';
@@ -30,51 +30,52 @@ const PopularPage = () => {
     }, []);
 
     //Chọn nội dung theo tiêu đề
-    const [selectedTitle, setSelectedTitle] = useState("new & trending originals");
+    const [selectedSection, setSelectedSection] = useState("section1");
 
     return (
         <div className="w-full h-full bg-white pb-10">
 
             {/* Hiển thị tiêu đề */}
-            <div className={`w-full h-[70px] mb-[-70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-10' : ''}`}>
+            <div className={`w-full h-[70px] mb-[-70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-20' : ''}`}>
                 <ul
                     className="h-full flex gap-10"
                 >
-                    <Link to="section1" smooth={true} duration={500}>
+                    <ScrollLink to="section1" smooth={true} duration={500}>
                         <li
-                            onClick={() => setSelectedTitle("new & trending originals")}
-                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "new & trending originals" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            onClick={() => setSelectedSection("section1")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
                             NEW & TRENDING ORIGINALS
                         </li>
-                    </Link>
+                    </ScrollLink>
 
-                    <Link to="section2" smooth={true} duration={500}>
+                    <ScrollLink to="section2" smooth={true} duration={500}>
                         <li
-                            onClick={() => setSelectedTitle("new & trending videos")}
-                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "new & trending videos" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            onClick={() => setSelectedSection("section2")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
                             NEW & TRENDING VIDEOS
                         </li>
-                    </Link>
+                    </ScrollLink>
 
-                    <Link to="section3" smooth={true} duration={500}>
+                    <ScrollLink to="section3" smooth={true} duration={500}>
                         <li
-                            onClick={() => setSelectedTitle("originals by genre")}
-                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "originals by genre" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            onClick={() => setSelectedSection("section3")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section3" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
                             ORIGINALS BY GENRE
                         </li>
-                    </Link>
+                    </ScrollLink>
 
-                    <Link to="section4" smooth={true} duration={500}>
+                    <ScrollLink to="section4" smooth={true} duration={500}>
                         <li
-                            onClick={() => setSelectedTitle("videos by genre")}
-                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedTitle === "videos by genre" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            onClick={() => setSelectedSection("section4")}
+                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section4" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
                             VIDEOS BY GENRE
                         </li>
-                    </Link>
+                    </ScrollLink>
+
                 </ul>
             </div>
 
@@ -82,24 +83,24 @@ const PopularPage = () => {
                 <div className="max-w-[1120px] h-full ml-auto mr-auto">
 
                     {/* Hiển thị NEW & TRENDING ORIGINALS*/}
-                    <Element name="section1" className="element">
+                    <ScrollElement name="section1" className="element">
                         <NewTrendingOriginalsPage />
-                    </Element>
+                    </ScrollElement>
 
                     {/* Hiển thị NEW & TRENDING VIDEOS*/}
-                    <Element name="section2" className="element">
+                    <ScrollElement name="section2" className="element">
                         <NewTrendingVideosPage />
-                    </Element>
+                    </ScrollElement>
 
                     {/* Hiển thị ORIGINALS BY GENRE */}
-                    <Element name="section3" className="element">
+                    <ScrollElement name="section3" className="element">
                         <OriginalsByGenrePage />
-                    </Element>
+                    </ScrollElement>
 
                     {/* Hiển thị VIDEOS BY GENRE */}
-                    <Element name="section4" className="element">
+                    <ScrollElement name="section4" className="element">
                         <VideosByGenrePage />
-                    </Element>
+                    </ScrollElement>
 
                 </div>
             </div>

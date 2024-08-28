@@ -19,6 +19,18 @@ import NotFoundPage from './pages/notFoundPage';
 import RegisterPage from './pages/auth/register';
 import ForgotPasswordPage from './pages/auth/forgotPassword';
 
+import AdminPage from './pages/admin/admin';
+import AdminDashboardPage from './pages/admin/childAdmin/adminDashboard';
+import AdminBannerPage from './pages/admin/childAdmin/adminBanner';
+import AdminUsersPage from './pages/admin/childAdmin/adminUsers';
+import AdminCategoriesPage from './pages/admin/childAdmin/adminCategories';
+import AdminOriginalsPage from './pages/admin/childAdmin/adminOriginals';
+import AdminVideosPage from './pages/admin/childAdmin/adminVideos';
+import AdminReportsPage from './pages/admin/childAdmin/adminReports';
+import AdminPaymentsPage from './pages/admin/childAdmin/Payments';
+import AdminNotificationsPage from './pages/admin/childAdmin/adminNotifications';
+import AdminCensorsPage from './pages/admin/childAdmin/adminCensors';
+
 import './App.css';
 import Layout from './components/layout/layoutUser';
 import Account from './pages/account/Account';
@@ -46,16 +58,22 @@ function App() {
           <Route index element={<HomePage />} />
 
           <Route path="/originals" element={<OriginalsPage />} />
-          <Route path="/original/series" element={<OriginalSeriesPage />} />
+          <Route path="/originals/original/series" element={<OriginalSeriesPage />} />
 
           <Route path="/videos" element={<VideosPage />} />
-          <Route path="/video/series" element={<VideoSeriesPage />} />
+          <Route path="/videos/video/series" element={<VideoSeriesPage />} />
 
           <Route path="/genres" element={<GenresPage />} />
           <Route path="/popular" element={<PopularPage />} />
 
           <Route path="/create/original" element={<CreateOriginalPage />} />
           <Route path="/create/video" element={<CreateVideoPage />} />
+
+          {/* Trang đăng ký */}
+          <Route path="/register" element={<RegisterPage />} />
+
+          {/* Trang quên mật khẩu */}
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
           <Route path="/account" element={<Account />} />
           <Route path="/comment" element={<Comment />} />
@@ -70,15 +88,26 @@ function App() {
 
         </Route>
 
-        {/* Trang đăng ký */}
-        <Route path="/register" element={<RegisterPage />} />
-
-        {/* Trang quên mật khẩu */}
-        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        
         {/* Trang hiển thị truyện và video */}
-        <Route path="/original/series/display" element={<DisplayOriginalPage />} />
-        <Route path="/video/series/display" element={<DisplayVideoPage />} />
+        <Route path="/originals/original/series/display" element={<DisplayOriginalPage />} />
+        <Route path="/videos/video/series/display" element={<DisplayVideoPage />} />
+
+        {/* Trang hiển thị Admin */}
+        <Route path="/admin" element={<AdminPage />}>
+          {/* Định tuyến mặc định cho /admin */}
+          <Route index element={<Navigate to="dashboard" replace />} />
+
+          <Route path="dashboard" element={<AdminDashboardPage />} />
+          <Route path="banners" element={<AdminBannerPage />} />
+          <Route path="users" element={<AdminUsersPage />} />
+          <Route path="categories" element={<AdminCategoriesPage />} />
+          <Route path="originals" element={<AdminOriginalsPage />} />
+          <Route path="videos" element={<AdminVideosPage />} />
+          <Route path="reports" element={<AdminReportsPage />} />
+          <Route path="payments" element={<AdminPaymentsPage />} />
+          <Route path="notifications" element={<AdminNotificationsPage />} />
+          <Route path="censors" element={<AdminCensorsPage />} />
+        </Route>
 
         {/* Xử lý trang lỗi */}
         <Route path="*" element={<Navigate to="/404" />} />

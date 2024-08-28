@@ -59,7 +59,7 @@ const LoginPage = ({ closeModal }) => {
                     <span className="pt-3 pb-5 flex items-center justify-center">Welcome back! Let's take you to your account.</span>
 
                     {/* Đăng nhập bằng email */}
-                    <div className="grid grid-cols-1 gap-y-3">
+                    <div className="w-full grid grid-cols-1 gap-y-3">
 
                         {/* Nhập địa chỉ email */}
                         <input
@@ -82,7 +82,7 @@ const LoginPage = ({ closeModal }) => {
 
                         <Link
                             to="/forgot-password"
-                            className="text-blue-800 cursor-pointer"
+                            className="w-[160px] text-blue-800 cursor-pointer"
                         >
                             Reset your password?
                         </Link>

@@ -102,7 +102,7 @@ const SearchPage = ({ closeModal }) => {
                             <p className="text-center text-gray-500">No relevant results found.</p>
                         ) : (
                             filteredTop30Films.map(item => (
-                                <Link to={`/original/series`} key={item.id}>
+                                <Link to={`/originals/original/series`} key={item.id}>
                                     <li className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer">
 
                                         <div className="w-[80px] h-[80px] rounded">

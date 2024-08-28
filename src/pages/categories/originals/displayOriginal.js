@@ -173,21 +173,21 @@ const DisplayOriginalPage = () => {
                         </div>
 
                         <div className="flex gap-3">
-                            <div className="w-[100px] h-[35px] cursor-pointer rounded-full bg-gray-100 hover:bg-yellow-50 flex gap-1 items-center justify-center px-2 py-2">
+                            <button className="w-[100px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2">
                                 <FavoriteBorderIcon />
                                 9,455
-                            </div>
-                            <div className="w-[120px] h-[35px] cursor-pointer rounded-full bg-gray-100 hover:bg-yellow-50 flex gap-1 items-center justify-center px-2 py-2">
+                            </button>
+                            <button className="w-[120px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2">
                                 <AddIcon />
                                 Subscribe
-                            </div>
+                            </button>
                         </div>
                     </div>
 
                 </div>
 
                 {/* Hiển thị các tập trong series */}
-                <div className="w-full h-[200px] bg-red-50 flex items-center justify-center">
+                <div className="w-full h-[220px] bg-gray-100 flex items-center justify-center">
                     <div
                         className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center"
                         onClick={handlePreviousPage}
@@ -201,16 +201,18 @@ const DisplayOriginalPage = () => {
                     <ul className="grid grid-cols-9">
                         {currentItems.map(item => (
                             <li
-                                className="w-[120px] h-[155px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
+                                className="w-[120px] h-[165px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
                                 key={item.id}
                             >
                                 <div className="w-[100px] h-[100px] mb-auto">
                                     <img
                                         src={item.img}
                                         alt="img"
-                                        className="object-fill w-full h-full rounded-md"
+                                        className="object-fill w-full h-full rounded"
                                     />
-                                    <span className="leading-[1.2] line-clamp-2 py-1">{item.name}</span>
+                                    <span className="h-[50px] leading-[1.3] line-clamp-2 py-1">
+                                        {item.name}
+                                    </span>
                                 </div>
                             </li>
                         ))}
@@ -289,7 +291,7 @@ const DisplayOriginalPage = () => {
                                                         </div>
 
                                                         {/* Hiển thị nội dung bình luận */}
-                                                        <div className="h-[120px] px-2 3xl:overflow-y-scroll">
+                                                        <div className="h-[120px] px-2 custom-scrollbar">
                                                             <span className="">
                                                                 {item.content}
                                                             </span>
@@ -297,17 +299,17 @@ const DisplayOriginalPage = () => {
 
                                                         {/* Nút bình luận, thích, không thích */}
                                                         <div className="w-full flex gap-2 py-1">
-                                                            <span className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center cursor-pointer">
+                                                            <button className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center">
                                                                 Replies {item.replies}
-                                                            </span>
-                                                            <span className="px-2 py-1 px-1 ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center cursor-pointer">
+                                                            </button>
+                                                            <button className="px-2 py-1 px-1 ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center">
                                                                 <ThumbUpIcon className="text-gray-400" />
                                                                 226
-                                                            </span>
-                                                            <span className="px-2 py-1 px-1 border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center cursor-pointer">
+                                                            </button>
+                                                            <button className="px-2 py-1 px-1 border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center">
                                                                 <ThumbDownIcon className="text-gray-400" />
                                                                 0
-                                                            </span>
+                                                            </button>
                                                         </div>
 
                                                     </div>
@@ -337,7 +339,7 @@ const DisplayOriginalPage = () => {
                                 <ul className="w-full h-full py-2">
                                     {/* khung nội dung */}
                                     {dataPopular.map(item => (
-                                        <Link to={`/original/series`}>
+                                        <Link to={`/originals/original/series`}>
                                             <li
                                                 className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                                 key={item.id}
@@ -395,7 +397,7 @@ const DisplayOriginalPage = () => {
                                 <ul className="w-full h-full py-2">
                                     {/* khung nội dung */}
                                     {dataPopular.map(item => (
-                                        <Link to={`/original/series`}>
+                                        <Link to={`/originals/original/series`}>
                                             <li
                                                 className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                                 key={item.id}

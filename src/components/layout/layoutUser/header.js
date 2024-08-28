@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -12,7 +12,7 @@ import LoginPage from "../../../../src/pages/auth/login";
 import logo from "../../../img/logonew.png";
 import { Link } from "react-router-dom";
 import { auth } from "../../../common/themes/firebase";
-import {  useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setIsLoginModal } from "../../../common/store/hidden";
 import { logout, setuser } from "../../../common/store/Auth.js";
 import { onAuthStateChanged } from 'firebase/auth';
@@ -21,7 +21,7 @@ const HeaderPage = () => {
   // mo va dong modal public
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const dispatch = useDispatch();    
+  const dispatch = useDispatch();
   const isLoginModal = useSelector(state => state.hidden.isLoginModal);
   const User = useSelector(state => state.AuthJs.User);
 
@@ -53,11 +53,11 @@ const HeaderPage = () => {
   // Mở đóng modal login
 
   const openLoginModal = () => {
-   dispatch( setIsLoginModal(true));
+    dispatch(setIsLoginModal(true));
   };
 
   const closeLoginModal = () => {
-    dispatch( setIsLoginModal(false));
+    dispatch(setIsLoginModal(false));
   };
 
   //new
@@ -70,10 +70,10 @@ const HeaderPage = () => {
         // dispatch(setuser(false));
       }
     });
-  
+
     // Cleanup the listener when the component unmounts
     return () => unsubscribe();
-  }, [dispatch]); 
+  }, [dispatch]);
   return (
     <div className=" w-full xs:h-[50px] sm:h-[100px] bg-white flex xs:px-[5px] sm:px-[30px]">
       {/* logo */}
@@ -94,11 +94,10 @@ const HeaderPage = () => {
         <ul className="flex xs:gap-1 sm:gap-5">
           <Link to={`/originals`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${
-                selectedItem === "Originals"
-                  ? "text-yellow-500"
-                  : "hover:text-yellow-500"
-              }`}
+              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === "Originals"
+                ? "text-yellow-500"
+                : "hover:text-yellow-500"
+                }`}
               onClick={() => handleItemClick("Originals")}
             >
               <span>Originals</span>
@@ -106,11 +105,10 @@ const HeaderPage = () => {
           </Link>
           <Link to={`/videos`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${
-                selectedItem === "Videos"
-                  ? "text-yellow-500"
-                  : "hover:text-yellow-500"
-              }`}
+              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === "Videos"
+                ? "text-yellow-500"
+                : "hover:text-yellow-500"
+                }`}
               onClick={() => handleItemClick("Videos")}
             >
               Videos
@@ -118,11 +116,10 @@ const HeaderPage = () => {
           </Link>
           <Link to={`/genres`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${
-                selectedItem === "Genres"
-                  ? "text-yellow-500"
-                  : "hover:text-yellow-500"
-              }`}
+              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === "Genres"
+                ? "text-yellow-500"
+                : "hover:text-yellow-500"
+                }`}
               onClick={() => handleItemClick("Genres")}
             >
               Genres
@@ -130,11 +127,10 @@ const HeaderPage = () => {
           </Link>
           <Link to={`/popular`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${
-                selectedItem === "Popular"
-                  ? "text-yellow-500"
-                  : "hover:text-yellow-500"
-              }`}
+              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === "Popular"
+                ? "text-yellow-500"
+                : "hover:text-yellow-500"
+                }`}
               onClick={() => handleItemClick("Popular")}
             >
               Popular
@@ -185,25 +181,25 @@ const HeaderPage = () => {
             </Link>
           </Menu>
         </div>
-        {!User ?    
-        <div>
-          <button
-            className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
-            onClick={openLoginModal}
-          >
-            Log In
-          </button>
-          {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
-        </div>
-: <div>
-<button
-  className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
-  onClick={()=>dispatch(logout())}
->
-  {auth?.currentUser.displayName}
-</button>
-</div>
-}
+        {!User ?
+          <div>
+            <button
+              className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
+              onClick={openLoginModal}
+            >
+              Log In
+            </button>
+            {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+          </div>
+          : <div>
+            <button
+              className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
+              onClick={() => dispatch(logout())}
+            >
+              {auth?.currentUser.displayName}
+            </button>
+          </div>
+        }
 
         <div>
           <button

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import { Link } from 'react-router-dom';
 
 const dataPopular = [
@@ -40,6 +42,10 @@ const dataListGenre = [
 dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 
 const OriginalsByGenrePage = () => {
+
+    // Khi lia chuột hiên icon khi lia vào truyện hoặc video
+    const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
+
     return (
         <div className="w-full h-full pt-[70px]">
 
@@ -49,7 +55,7 @@ const OriginalsByGenrePage = () => {
 
             <div className="h-[70px] mb-5 bg-white flex items-center justify-center border-t border-b">
                 <ul
-                    class="grid grid-cols-10 gap-x-4 gap-y-2"
+                    className="grid grid-cols-10 gap-x-4 gap-y-2"
                 >
                     {/* khung nội dung */}
                     {dataListGenre.map(item => (
@@ -63,25 +69,34 @@ const OriginalsByGenrePage = () => {
                 </ul>
             </div>
 
-            <div className="w-full grid grid-cols-2">
+            <div className="w-full flex gap-[60px]">
 
                 {/* Hien thị top 1 */}
                 <Link
-                    to={`/original/series`}
+                    to={`/originals/original/series`}
                     className="h-[815px] bg-white py-1"
-                    title="Visit"
                 >
                     <div
                         className="w-[500px] h-full"
+                        onMouseEnter={() => setHoveredOriginalItem("choice")}
+                        onMouseLeave={() => setHoveredOriginalItem(null)}
                     >
 
                         <div className="w-full h-full">
                             <div className="w-[500px] mr-auto h-[500px] rounded-md bg-green-500 flex items-center justify-center relative">
-                                <img
-                                    src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
+                                <div>
+                                    <img
+                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                        alt="img"
+                                        className="object-fill w-full h-full rounded-md"
+                                    />
+
+                                    {hoveredOriginalItem === "choice" && (
+                                        <div className="absolute inset-0 bg-black bg-opacity-30 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                            <AutoStoriesIcon sx={{ fontSize: 60 }} />
+                                        </div>
+                                    )}
+                                </div>
 
                                 <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
                                     <div className="w-full h-[120px] mb-auto overflow-hidden">
@@ -144,7 +159,7 @@ const OriginalsByGenrePage = () => {
 
                             {/* khung nội dung */}
                             {dataPopular.map(item => (
-                                <Link to={`/original/series`}>
+                                <Link to={`/originals/original/series`}>
                                     <li
                                         className="w-full h-[90px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                         key={item.id}

@@ -40,12 +40,14 @@ const VideoSeriesPage = () => {
     return (
         <div>
 
-            <div className="w-full h-full bg-gray-100">
+            <div className="w-full h-full bg-gradient-to-b from-white via-yellow-50 to-gray-100">
                 {/* Hiển thị ảnh nền */}
-                <div className="w-full h-[320px] bg-green-200 relative">
+                <div className="w-full h-[320px] relative flex items-center justify-center">
+
                     <img src="https://i.redd.it/0hwfsqufm3w41.jpg"
-                        className="object-cover w-full h-full" alt="img"
+                        className="object-cover w-[1200px] h-full rounded-t" alt="img"
                     />
+
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-[1200px] overflow-hidden">
                             <span className="font-semibold text-xl text-black flex items-center justify-center">
@@ -53,7 +55,7 @@ const VideoSeriesPage = () => {
                             </span>
 
                             <span className="font-semibold my-5 text-[50px] text-white leading-[1.2] line-clamp-3 flex justify-center">
-                                The Witcher 3
+                                The Witcher
                             </span>
 
                             <span className="font-semibold text-xl text-white flex items-center justify-center">
@@ -63,8 +65,8 @@ const VideoSeriesPage = () => {
                     </div>
                 </div>
 
-                <div className="w-full h-full flex items-center justify-center ">
-                    <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-6 pb-10">
+                <div className="w-full h-full flex items-center justify-center">
+                    <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-6 pb-10 rounded-b">
 
                         <div className="col-span-2 h-full">
                             <div className="w-full px-5 pb-3">
@@ -73,16 +75,16 @@ const VideoSeriesPage = () => {
                                 </span>
                             </div>
 
-                            <div className="w-full h-[900px] px-3 overflow-y-scroll">
+                            <div className="w-full h-[900px] px-3 custom-scrollbar">
                                 {/* danh sach series */}
                                 <ul className="w-full h-full ">
 
                                     {/* khung danh sách */}
                                     {dataSeries.map(item => (
-                                        <Link to={`/video/series/display`}>
+                                        <Link to={`/videos/video/series/display`}>
                                             <li
-                                                className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
                                                 key={item.id}
+                                                className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
                                             >
                                                 <div className="w-full h-full flex items-center">
 
@@ -134,25 +136,25 @@ const VideoSeriesPage = () => {
                         <div className="h-full px-5">
 
                             <div className="w-full mb-auto">
-                                <ul className="flex items-center justify-center">
-                                    <li className="mr-auto mt-auto mb-auto">
-                                        <span className="mx-1 text-green-500">
+                                <ul className="grid grid-cols-4 gap-5">
+                                    <li className="flex items-center justify-center">
+                                        <span className="mx-1 text-yellow-500">
                                             <VisibilityIcon />
                                         </span>
                                         <span className="mx-1">
                                             8.5M
                                         </span>
                                     </li>
-                                    <li className="ml-auto" >
-                                        <span className="mx-1 text-green-500">
+                                    <li className="flex items-center justify-center" >
+                                        <span className="mx-1 text-yellow-500">
                                             <GroupAddSharpIcon />
                                         </span>
                                         <span className="mx-1">
                                             450,229
                                         </span>
                                     </li>
-                                    <li className="ml-auto" >
-                                        <span className="mx-1 text-green-500">
+                                    <li className="flex items-center justify-center" >
+                                        <span className="mx-1 text-yellow-500">
                                             <StarIcon />
                                         </span>
                                         <span className="mx-1">
@@ -160,10 +162,10 @@ const VideoSeriesPage = () => {
                                         </span>
 
                                     </li>
-                                    <li className="ml-auto">
-                                        <span className="w-full h-[35px] px-2 py-[1px] rounded-full text-white bg-green-500">
+                                    <li className="flex items-center justify-center">
+                                        <button className="w-[70px] h-[25px] rounded-full text-white bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 flex items-center justify-center">
                                             RATE
-                                        </span>
+                                        </button>
                                     </li>
 
                                 </ul>
@@ -210,17 +212,17 @@ const VideoSeriesPage = () => {
 
                                 {/* khung danh sách */}
                                 {dataAlsoLike.map(item => (
-                                    <Link to={`/original/series`}>
+                                    <Link to={`/videos/video/series`}>
                                         <li
-                                            className="w-[375px] h-[120px] flex bg-red-50 rounded-xl shadow-md cursor-pointer hover:bg-red-100"
+                                            className="w-[375px] h-[120px] flex bg-gray-100 rounded shadow cursor-pointer hover:bg-gray-200"
                                             key={item.id}
                                         >
 
-                                            <div className="w-[120px] h-[120px] rounded-xl flex items-center justify-center">
+                                            <div className="w-[120px] h-[120px] rounded flex items-center justify-center">
                                                 <img
                                                     src={item.img}
                                                     alt="img"
-                                                    className="object-fill w-[100px] h-[100px] rounded-xl"
+                                                    className="object-fill w-[100px] h-[100px] rounded"
                                                 />
                                             </div>
 
@@ -235,7 +237,7 @@ const VideoSeriesPage = () => {
                                                 </div>
 
                                                 <div className="w-full">
-                                                    <span className=" flex gap-1 text-green-500">
+                                                    <span className=" flex gap-1 text-yellow-500">
                                                         <VisibilityIcon />
                                                         {item.look}
                                                     </span>
