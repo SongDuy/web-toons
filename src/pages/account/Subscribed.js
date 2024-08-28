@@ -139,7 +139,7 @@ const Subscribed = () => {
                       return (
                         <button
                           className={` w-full h-full border-2 ${
-                            IdSubcribed === item.id && ALLSubcribed
+                            IdSubcribed === item.id 
                               ? "border-emerald-400"
                               : ""
                           }  relative`}
@@ -166,7 +166,7 @@ const Subscribed = () => {
                           <p className="absolute top-[75%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
                             <CheckIcon
                               sx={
-                                IdSubcribed === item.id && ALLSubcribed
+                                IdSubcribed === item.id 
                                   ? { color: "#31C48D" }
                                   : { color: "white" }
                               }
