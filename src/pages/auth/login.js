@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import GoogleIcon from '@mui/icons-material/Google';
 // import { auth } from "../../common/themes/firebase";
 // import { onIdTokenChanged  } from "firebase/auth";
-import {  useDispatch } from 'react-redux';
+import {  useDispatch,useSelector } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
+
 import { setIsLoginModal } from '../../common/store/hidden';
 import { handleLogin,handleGoogle } from '../../common/store/Auth.js';
 
@@ -12,13 +14,26 @@ const LoginPage = ({ closeModal }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();    
+    const err = useSelector(state => state.AuthJs.error);
 
     const handleBackdropClick = (event) => {
         if (event.target === event.currentTarget) {
             closeModal(); // Gọi hàm closeModal khi nhấp vào nền
         }
     };
-    
+    const GetLogin=async ()=>{
+        try {
+            const lg=await dispatch(handleLogin({email,password}));
+    unwrapResult(lg)
+            if(err ===null){
+              dispatch(setIsLoginModal(false))
+  
+            }
+        } catch (error) {
+            console.log(error)
+        }
+       
+    }
     // useEffect(() => {
     //     onIdTokenChanged(auth, (user) => {
     //         if (user) {
@@ -54,7 +69,7 @@ const LoginPage = ({ closeModal }) => {
                             value={email}
               onChange={(e) => setEmail(e.target.value)}
                         />
-
+                      
                         {/* Nhập mật khẩu */}
                         <input
                             type="password"
@@ -71,10 +86,10 @@ const LoginPage = ({ closeModal }) => {
                         >
                             Reset your password?
                         </Link>
-
+  {err && <p>{err.message}</p>}
                         <button
                             className="w-full h-[50px] bg-black text-white rounded font-semibold"
-                            onClick={()=>{dispatch(handleLogin({email,password}));dispatch(setIsLoginModal(false))}}
+                            onClick={GetLogin}
 
                         >
                             Continue

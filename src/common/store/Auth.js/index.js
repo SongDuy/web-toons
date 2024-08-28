@@ -4,20 +4,29 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  updateProfile,
+  updateProfile, sendEmailVerification 
 } from "firebase/auth";
 import userFireBase from "../../services/User.services";
 import { auth } from "../../themes/firebase";
 export const handleLogin = createAsyncThunk("user/login", async (payload) => {
   try {
-    await signInWithEmailAndPassword(auth, payload.email, payload.password);
+   const userCredential = await signInWithEmailAndPassword(auth, payload.email, payload.password);
+   if(userCredential.user.emailVerified){
     const token = await auth.currentUser.getIdToken(true);
     localStorage.setItem("sadsadas", token);
     console.log("Đăng nhập thành công!", token);
     return true;
+
+   }else{
+    auth.signOut()
+    console.log("Vui lòng xác nhận email trước khi đăng nhập.");
+    throw new Error ( '400');
+
+   }
+   
   } catch (error) {
-    console.error("Lỗi đăng nhập:", error);
-    throw error;
+    // console.log(error);
+    throw error.message === '400'? new Error ( "Please verify your email before logging in."):new Error ( "Incorrect email or password.");
     // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
   }
   //throw error
@@ -26,13 +35,14 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
     try {
       const userCredential = await createUserWithEmailAndPassword (auth, payload.email, payload.password);
          await updateProfile(userCredential.user,{ displayName: payload.displayName })
+        await sendEmailVerification(auth.currentUser)
         await userFireBase.Add({email:payload.email,uid: userCredential?.user?.uid,role:'user'}, userCredential.user.uid)
         console.log("Đăng  ký thành công!");
         return true
         // Ở đây, bạn có thể chuyển hướng người dùng đến trang khác hoặc thực hiện các hành động khác sau khi đăng ký thành công
       } catch (error) {
         console.error("Lỗi đăng ký:", error);
-        throw error
+        throw new Error('Email already exists.')
         // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
       }
   });
@@ -70,7 +80,8 @@ const authRedux = createSlice({
   name: "AuthRedux",
   initialState: {
     User: false,
-    error: {},
+    error: null,
+    errorregister:null,
     admin: true,
   },
   reducers: {
@@ -82,6 +93,7 @@ const authRedux = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(handleLogin.fulfilled, (state, action) => {
+        state.error = null;
         state.User = action.payload;
       })
       .addCase(handleLogin.rejected, (state, action) => {
@@ -91,14 +103,17 @@ const authRedux = createSlice({
       builder
       .addCase(handleRegister.fulfilled, (state, action) => {
         state.User = action.payload;
+        state.errorregister = null;
       })
       .addCase(handleRegister.rejected, (state, action) => {
         state.User = false; // Kết thúc quá trình đăng nhập
-        state.error = action.error; // Lưu thông báo lỗi để hiển thị cho người dùng
+        state.errorregister = action.error; // Lưu thông báo lỗi để hiển thị cho người dùng
       });
       builder
       .addCase(logout.fulfilled, (state, action) => {
         state.User = action.payload;
+        state.error = null;
+        state.errorregister = null;
       })
       .addCase(logout.rejected, (state, action) => {
         state.User = false; // Kết thúc quá trình đăng nhập
