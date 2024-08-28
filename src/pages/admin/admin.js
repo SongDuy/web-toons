@@ -50,8 +50,8 @@ const AdminPage = () => {
                     </div>
 
                     <div className="w-full px-2">
-                        <div className="w-full h-[590px] px-3 my-10 custom-scrollbar">
-                            <ul className="grid grid-cols-1 gap-4 pb-2">
+                        <div className="w-full h-[580px] px-3 my-10 custom-scrollbar">
+                            <ul className="grid grid-cols-1 gap-2 pb-2">
                                 <li
                                     onClick={() => handleNavigation('dashboard', '/admin/dashboard')}
                                     className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "dashboard" ? 'text-yellow-500 bg-red-50' : 'hover:text-yellow-500 bg-white'}`}
@@ -133,6 +133,7 @@ const AdminPage = () => {
                                     <span className="mr-auto"><FlagIcon /></span>
                                     <span className="mr-auto font-semibold">Reports</span>
                                 </li>
+
                             </ul>
                         </div>
                     </div>
