@@ -98,7 +98,7 @@ const AdminOriginalsPage = () => {
                                 <img
                                     src={item.img}
                                     alt="img"
-                                    class="object-fill w-[100px] h-[100px] rounded-md"
+                                    className="object-fill w-[100px] h-[100px] rounded-md"
                                 />
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
