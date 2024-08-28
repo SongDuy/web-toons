@@ -95,8 +95,8 @@ const HeaderPage = () => {
           <Link to={`/originals`}>
             <li
               className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === "Originals"
-                  ? "text-yellow-500"
-                  : "hover:text-yellow-500"
+                ? "text-yellow-500"
+                : "hover:text-yellow-500"
                 }`}
               onClick={() => handleItemClick("Originals")}
             >
@@ -106,8 +106,8 @@ const HeaderPage = () => {
           <Link to={`/videos`}>
             <li
               className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === "Videos"
-                  ? "text-yellow-500"
-                  : "hover:text-yellow-500"
+                ? "text-yellow-500"
+                : "hover:text-yellow-500"
                 }`}
               onClick={() => handleItemClick("Videos")}
             >
@@ -117,8 +117,8 @@ const HeaderPage = () => {
           <Link to={`/genres`}>
             <li
               className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === "Genres"
-                  ? "text-yellow-500"
-                  : "hover:text-yellow-500"
+                ? "text-yellow-500"
+                : "hover:text-yellow-500"
                 }`}
               onClick={() => handleItemClick("Genres")}
             >
@@ -128,8 +128,8 @@ const HeaderPage = () => {
           <Link to={`/popular`}>
             <li
               className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === "Popular"
-                  ? "text-yellow-500"
-                  : "hover:text-yellow-500"
+                ? "text-yellow-500"
+                : "hover:text-yellow-500"
                 }`}
               onClick={() => handleItemClick("Popular")}
             >
