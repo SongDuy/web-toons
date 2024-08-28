@@ -42,7 +42,7 @@ const AdminBannerPage = () => {
                                 <img
                                     src={item.img}
                                     alt="img"
-                                    class="object-fill w-full h-full rounded-md"
+                                    className="object-fill w-full h-full rounded-md"
                                 />
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
