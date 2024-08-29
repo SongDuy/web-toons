@@ -16,6 +16,9 @@ import DisplayOriginalPage from './pages/categories/originals/displayOriginal';
 import CreateOriginalPage from './pages/create/original/createOriginal';
 import NotFoundPage from './pages/notFoundPage';
 
+import MyChannelPage from './pages/channel/myChannel';
+import CreatorChannelPage from './pages/channel/creatorChannel'
+
 import RegisterPage from './pages/auth/register';
 import ForgotPasswordPage from './pages/auth/forgotPassword';
 
@@ -68,6 +71,9 @@ function App() {
 
           <Route path="/create/original" element={<CreateOriginalPage />} />
           <Route path="/create/video" element={<CreateVideoPage />} />
+
+          <Route path="/channel/my" element={<MyChannelPage />} />
+          <Route path="/channel/creator" element={<CreatorChannelPage />} />
 
           {/* Trang đăng ký */}
           <Route path="/register" element={<RegisterPage />} />

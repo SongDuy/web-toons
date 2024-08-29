@@ -70,7 +70,7 @@ const getRegister=async ()=>{
 
             <Link
               to="/forgot-password"
-              className="text-blue-800 cursor-pointer"
+              className="w-[160px] text-blue-800 cursor-pointer"
             >
               Reset your password?
             </Link>
