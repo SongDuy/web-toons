@@ -1,19 +1,19 @@
-import React,{  useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import GoogleIcon from '@mui/icons-material/Google';
 // import { auth } from "../../common/themes/firebase";
 // import { onIdTokenChanged  } from "firebase/auth";
-import {  useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 
 import { setIsLoginModal } from '../../common/store/hidden';
-import { handleLogin,handleGoogle } from '../../common/store/Auth.js';
+import { handleLogin, handleGoogle } from '../../common/store/Auth.js';
 
 const LoginPage = ({ closeModal }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const dispatch = useDispatch();    
+    const dispatch = useDispatch();
     const err = useSelector(state => state.AuthJs.error);
 
     const handleBackdropClick = (event) => {
@@ -21,18 +21,18 @@ const LoginPage = ({ closeModal }) => {
             closeModal(); // Gọi hàm closeModal khi nhấp vào nền
         }
     };
-    const GetLogin=async ()=>{
+    const GetLogin = async () => {
         try {
-            const lg=await dispatch(handleLogin({email,password}));
-    unwrapResult(lg)
-            if(err ===null){
-              dispatch(setIsLoginModal(false))
-  
+            const lg = await dispatch(handleLogin({ email, password }));
+            unwrapResult(lg)
+            if (err === null) {
+                dispatch(setIsLoginModal(false))
+
             }
         } catch (error) {
             console.log(error)
         }
-       
+
     }
     // useEffect(() => {
     //     onIdTokenChanged(auth, (user) => {
@@ -52,7 +52,7 @@ const LoginPage = ({ closeModal }) => {
     return (
         <div className="w-screen h-screen bg-black bg-opacity-50 flex items-center justify-center fixed inset-0 z-50" onClick={handleBackdropClick}> {/* backdrop-blur-sm */}
 
-            <div className="w-[400px] h-[550px] px-5 py-5 bg-white shadow rounded-lg">
+            <div className="w-[400px] h-auto px-5 pt-5 pb-8 bg-white shadow rounded-lg">
                 <div>
                     <span className="text-[25px] flex justify-center font-semibold">Log In</span>
 
@@ -67,15 +67,15 @@ const LoginPage = ({ closeModal }) => {
                             className="w-full h-[50px] px-2 border rounded shadow"
                             placeholder="Email Address"
                             value={email}
-              onChange={(e) => setEmail(e.target.value)}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
-                      
+
                         {/* Nhập mật khẩu */}
                         <input
                             type="password"
                             value={password}
-              form="off"
-              onChange={(e) => setPassword(e.target.value)}
+                            form="off"
+                            onChange={(e) => setPassword(e.target.value)}
                             className="w-full h-[50px] px-2 border rounded shadow"
                             placeholder="Password"
                         />
@@ -86,7 +86,7 @@ const LoginPage = ({ closeModal }) => {
                         >
                             Reset your password?
                         </Link>
-  {err && <p>{err.message}</p>}
+                        {err && <p>{err.message}</p>}
                         <button
                             className="w-full h-[50px] bg-black text-white rounded font-semibold"
                             onClick={GetLogin}
@@ -119,8 +119,8 @@ const LoginPage = ({ closeModal }) => {
 
                     <ul className="w-full h-full grid grid-cols-1 gap-y-5">
 
-                        <button   onClick={()=>{dispatch(handleGoogle());dispatch(setIsLoginModal(false))}}
- className="w-full h-[50px] cursor-pointer px-5 py-2 bg-red-50 hover:bg-red-100 shadow-md flex items-center justify-center rounded">
+                        <button onClick={() => { dispatch(handleGoogle()); dispatch(setIsLoginModal(false)) }}
+                            className="w-full h-[50px] cursor-pointer px-5 py-2 bg-red-50 hover:bg-red-100 shadow-md flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <GoogleIcon />
                             </span>

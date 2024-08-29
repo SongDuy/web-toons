@@ -28,7 +28,7 @@ const getRegister=async ()=>{
     <div className="w-screen h-screen bg-gray-100 flex items-center justify-center fixed inset-0 z-50">
       {" "}
       {/* backdrop-blur-sm */}
-      <div className="w-[400px] h-[600px] px-5 py-5 bg-white shadow rounded-lg">
+      <div className="w-[400px] h-auto px-5 pt-5 pb-8 bg-white shadow rounded-lg">
         <div>
           <span className="text-[25px] flex justify-center font-semibold">
             Sign Up
