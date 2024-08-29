@@ -38,7 +38,13 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
         await sendEmailVerification(auth.currentUser)
         await userFireBase.Add({email:payload.email,uid: userCredential?.user?.uid,role:'user'}, userCredential.user.uid)
         console.log("Đăng  ký thành công!");
+        if(!auth.currentUser.emailVerified){
+          auth.signOut()
+          return false
+        }
         return true
+      
+     
         // Ở đây, bạn có thể chuyển hướng người dùng đến trang khác hoặc thực hiện các hành động khác sau khi đăng ký thành công
       } catch (error) {
         console.error("Lỗi đăng ký:", error);
@@ -86,9 +92,18 @@ const authRedux = createSlice({
   },
   reducers: {
     setuser:(state,action)=>{
-          state.User=action
+          state.User=action.payload
         
-      }
+      },
+      seterr:(state,action)=>{
+        state.error=action.payload
+      
+    },
+    seterregister:(state,action)=>{
+      console.log(action.payload)
+      state.errorregister=action.payload
+    
+  }
   },
   extraReducers: (builder) => {
     builder
@@ -129,6 +144,6 @@ const authRedux = createSlice({
       });
   },
 });
-export const {setuser}=authRedux.actions
+export const {setuser,seterregister,seterr}=authRedux.actions
 
 export default authRedux.reducer;

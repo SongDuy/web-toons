@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
 import {  useDispatch,useSelector } from 'react-redux';
-import {handleRegister} from '../../common/store/Auth.js';
+import {handleRegister, seterregister} from '../../common/store/Auth.js';
 import { useNavigate } from 'react-router-dom';
 import { unwrapResult } from '@reduxjs/toolkit';
-
+import useTimeout from "../../Hooks/useTimeout.js";
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,6 +13,10 @@ const RegisterPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();    
   const err = useSelector(state => state.AuthJs.errorregister);
+  useTimeout(() => {
+    dispatch(seterregister(null));
+  }, err? 3000:null );
+
 const getRegister=async ()=>{
     try {
       const rg=await dispatch( handleRegister({email,password,displayName}));
