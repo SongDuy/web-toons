@@ -1,7 +1,29 @@
-import React from 'react';
+import React,{  useState } from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../../common/themes/firebase';
+import {
+ sendPasswordResetEmail 
+  } from "firebase/auth";
+import useTimeout from '../../Hooks/useTimeout';
 
 const ForgotPasswordPage = () => {
+    const [email, setEmail] = useState("");
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(false);
+
+  useTimeout(() => {
+    setSuccess(false);
+  }, success ? 3000 : null );
+
+    const handleForgotPw=async ()=>{
+        try {
+            await sendPasswordResetEmail(auth, email);
+            setSuccess(true);
+          } catch (err) {
+            setError(err.message);
+            console.log(err)
+          }
+    }
     return (
         <div className="w-full h-full bg-gray-100 flex items-center justify-center fixed inset-0 z-50"> {/* backdrop-blur-sm */}
 
@@ -18,13 +40,17 @@ const ForgotPasswordPage = () => {
 
                         {/* Nhập địa chỉ email */}
                         <input
-                            type="text"
+                            type="email"
                             className="w-full h-[50px] px-2 border rounded shadow"
                             placeholder="Email Address"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
-
+                         {error && <p style={{ color: 'red' }}>{error}</p>}
+      {success && <p>A password reset email has been sent. Please check your inbox.</p>}
                         <button
                             className="w-full h-[50px] bg-black text-white rounded font-semibold"
+                            onClick={handleForgotPw}
                         >
                             Continue
                         </button>
