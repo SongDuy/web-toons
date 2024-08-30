@@ -34,7 +34,6 @@ const LoginPage = ({ closeModal }) => {
   
             }
         } catch (error) {
-            console.log(error)
         }
        
     }

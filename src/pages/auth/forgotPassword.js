@@ -21,7 +21,7 @@ const ForgotPasswordPage = () => {
             setSuccess(true);
           } catch (err) {
             setError(err.message);
-            console.log(err)
+        
           }
     }
     return (
