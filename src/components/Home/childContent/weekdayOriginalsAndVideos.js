@@ -290,7 +290,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                                 </span>
                                             </div>
 
-                                            <div className="w-full mb-[25px]">
+                                            <div className="w-full mb-[20px]">
                                                 <span className="w-[75px] text-rose-300 rounded-full text-sm font-semibold flex items-center gap-1">
                                                     <FavoriteIcon />
                                                     {item.like}
@@ -301,7 +301,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                             </div>
 
                                             {/*Trong component React của bạn */}
-                                            <div className="w-full h-[30px] shadow bg-white bg-opacity-80 rounded-md">
+                                            <div className="w-full h-[30px] mt-auto shadow bg-white bg-opacity-80 rounded-md">
                                                 <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
                                                     {item.genre}
                                                 </span>
@@ -363,7 +363,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                                 </span>
                                             </div>
 
-                                            <div className="w-full mb-[25px]">
+                                            <div className="w-full mb-[20px]">
                                                 <span className="w-[75px] text-rose-300 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
                                                     <FavoriteIcon />
                                                     {item.like}
@@ -374,7 +374,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                             </div>
 
                                             {/*Trong component React của bạn */}
-                                            <div className="w-full h-[30px] shadow bg-gray-300 bg-opacity-80 rounded-md">
+                                            <div className="w-full h-[30px] mt-auto shadow bg-gray-300 bg-opacity-80 rounded-md">
                                                 <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
                                                     {item.genre}
                                                 </span>
