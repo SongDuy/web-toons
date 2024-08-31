@@ -1,3 +1,6 @@
+// tailwind.config.js
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js}"],
@@ -5,11 +8,11 @@ module.exports = {
     extend: {
       keyframes: {
         slideleft: {
-          '100%': { transform: 'translateX(100%)' }, 
+          '100%': { transform: 'translateX(100%)' },
           '0%': { transform: 'translateX(0)' },
         },
         slideright: {
-          '0%': { transform: 'translateX(100%)' }, 
+          '0%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(0)' },
         },
       },
@@ -30,6 +33,16 @@ module.exports = {
     },
 
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-shadow-white': {
+          'text-shadow': '1px 1px 1px rgba(200, 255, 255, 0.5), -1px -1px 1px rgba(255, 200, 255, 0.5), 1px -1px 1px rgba(255, 255, 200, 0.5), -1px 1px 1px rgba(255, 255, 255, 0.5)',
+
+        },
+      };
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    }),
+  ],
 }
 
