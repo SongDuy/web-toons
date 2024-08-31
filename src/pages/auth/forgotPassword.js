@@ -1,9 +1,9 @@
-import React,{  useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { auth } from '../../common/themes/firebase';
 import {
- sendPasswordResetEmail 
-  } from "firebase/auth";
+    sendPasswordResetEmail
+} from "firebase/auth";
 import useTimeout from '../../Hooks/useTimeout';
 
 const ForgotPasswordPage = () => {
@@ -11,18 +11,18 @@ const ForgotPasswordPage = () => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
 
-  useTimeout(() => {
-    setSuccess(false);
-  }, success ? 3000 : null );
+    useTimeout(() => {
+        setSuccess(false);
+    }, success ? 3000 : null);
 
-    const handleForgotPw=async ()=>{
+    const handleForgotPw = async () => {
         try {
             await sendPasswordResetEmail(auth, email);
             setSuccess(true);
-          } catch (err) {
+        } catch (err) {
             setError(err.message);
             console.log(err)
-          }
+        }
     }
     return (
         <div className="w-full h-full bg-gray-100 flex items-center justify-center fixed inset-0 z-50"> {/* backdrop-blur-sm */}
@@ -46,8 +46,8 @@ const ForgotPasswordPage = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                         {error && <p style={{ color: 'red' }}>{error}</p>}
-      {success && <p>A password reset email has been sent. Please check your inbox.</p>}
+                        {error && <p style={{ color: 'red' }}>{error}</p>}
+                        {success && <p>A password reset email has been sent. Please check your inbox.</p>}
                         <button
                             className="w-full h-[50px] bg-black text-white rounded font-semibold"
                             onClick={handleForgotPw}
