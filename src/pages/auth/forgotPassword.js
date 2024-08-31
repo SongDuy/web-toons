@@ -21,8 +21,8 @@ const ForgotPasswordPage = () => {
             setSuccess(true);
         } catch (err) {
             setError(err.message);
-            console.log(err)
-        }
+        
+          }
     }
     return (
         <div className="w-full h-full bg-gray-100 flex items-center justify-center fixed inset-0 z-50"> {/* backdrop-blur-sm */}

@@ -14,12 +14,10 @@ export const handleLogin = createAsyncThunk("user/login", async (payload) => {
    if(userCredential.user.emailVerified){
     const token = await auth.currentUser.getIdToken(true);
     localStorage.setItem("sadsadas", token);
-    console.log("Đăng nhập thành công!", token);
     return true;
 
    }else{
     auth.signOut()
-    console.log("Vui lòng xác nhận email trước khi đăng nhập.");
     throw new Error ( '400');
 
    }
@@ -37,7 +35,6 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
          await updateProfile(userCredential.user,{ displayName: payload.displayName })
         await sendEmailVerification(auth.currentUser)
         await userFireBase.Add({email:payload.email,uid: userCredential?.user?.uid,role:'user'}, userCredential.user.uid)
-        console.log("Đăng  ký thành công!");
         if(!auth.currentUser.emailVerified){
           auth.signOut()
           return false
@@ -47,7 +44,6 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
      
         // Ở đây, bạn có thể chuyển hướng người dùng đến trang khác hoặc thực hiện các hành động khác sau khi đăng ký thành công
       } catch (error) {
-        console.error("Lỗi đăng ký:", error);
         throw new Error('Email already exists.')
         // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
       }
@@ -59,7 +55,6 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
         localStorage.removeItem('sadsadas');
         return false
       } catch (error) {
-        console.error('Lỗi đăng xuất:', error);
         throw error
       }
   });
@@ -78,7 +73,7 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
       // console.log(token, result.user);
     } catch (error) {
       // Xử lý lỗi đăng nhập
-      console.error("Lỗi đăng nhập:", error);
+   
       throw error
     }
   });
