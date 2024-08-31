@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 
 import { setIsLoginModal } from '../../common/store/hidden';
-import { handleLogin,handleGoogle, seterr } from '../../common/store/Auth.js';
+import { handleLogin, handleGoogle, seterr } from '../../common/store/Auth.js';
 import useTimeout from '../../Hooks/useTimeout';
 
 const LoginPage = ({ closeModal }) => {
@@ -18,8 +18,8 @@ const LoginPage = ({ closeModal }) => {
     const err = useSelector(state => state.AuthJs.error);
     useTimeout(() => {
         dispatch(seterr(null));
-      },err? 3000:null );
-    
+    }, err ? 3000 : null);
+
     const handleBackdropClick = (event) => {
         if (event.target === event.currentTarget) {
             closeModal(); // Gọi hàm closeModal khi nhấp vào nền
