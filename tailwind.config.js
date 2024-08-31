@@ -34,15 +34,17 @@ module.exports = {
 
   },
   plugins: [
+
     plugin(function ({ addUtilities }) {
       const newUtilities = {
         '.text-shadow-white': {
-          'text-shadow': '1px 1px 1px rgba(255, 255, 255, 0.5), -1px -1px 1px rgba(255, 255, 255, 0.5), 1px -1px 1px rgba(255, 255, 255, 0.5), -1px 1px 1px rgba(255, 255, 255, 0.5)',
+          'text-shadow': '1px 1px 1px rgba(255, 255, 255, 255), -1px -1px 1px rgba(255, 255, 255, 255), 1px -1px 1px rgba(255, 255, 255, 255), -1px 1px 1px rgba(255, 255, 255, 255)',
 
         },
       };
       addUtilities(newUtilities, ['responsive', 'hover']);
     }),
+
   ],
 }
 
