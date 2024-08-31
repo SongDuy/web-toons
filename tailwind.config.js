@@ -38,7 +38,7 @@ module.exports = {
     plugin(function ({ addUtilities }) {
       const newUtilities = {
         '.text-shadow-white': {
-          'text-shadow': '1px 1px 1px rgba(255, 255, 255, 255), -1px -1px 1px rgba(255, 255, 255, 255), 1px -1px 1px rgba(255, 255, 255, 255), -1px 1px 1px rgba(255, 255, 255, 255)',
+          'text-shadow': '1px 1px 1px rgba(255, 255, 255, 0.8), -1px -1px 1px rgba(255, 255, 255, 0.8), 1px -1px 1px rgba(255, 255, 255, 0.8), -1px 1px 1px rgba(255, 255, 255, 0.8)',
 
         },
       };
