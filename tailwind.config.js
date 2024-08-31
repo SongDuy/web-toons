@@ -38,7 +38,7 @@ module.exports = {
     plugin(function ({ addUtilities }) {
       const newUtilities = {
         '.text-shadow-white': {
-          'text-shadow': '0.5px 0.5px 1px rgba(255, 255, 255, 0.8), -0.5px -0.5px 1px rgba(255, 255, 255, 0.8), 0.5px -0.5px 1px rgba(255, 255, 255, 0.8), -0.5px 0.5px 1px rgba(255, 255, 255, 0.8)',
+          'text-shadow': '0.5px 0.5px 1px rgba(255, 255, 255, 255), -0.5px -0.5px 1px rgba(255, 255, 255, 255), 0.5px -0.5px 1px rgba(255, 255, 255, 255), -0.5px 0.5px 1px rgba(255, 255, 255, 255)',
         },
       };
       addUtilities(newUtilities, ['responsive', 'hover']);
