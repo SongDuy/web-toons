@@ -307,7 +307,7 @@ const OriginalsPage = () => {
                                                         </span>
                                                     </div>
 
-                                                    <div className="w-full mb-[40px] mr-auto">
+                                                    <div className="w-full mb-[40px]">
                                                         <span className="w-[75px] text-rose-300 rounded-full gap-1 text-sm font-semibold flex items-center">
                                                             <FavoriteIcon />
                                                             {item.like}
