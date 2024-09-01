@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
@@ -141,10 +140,6 @@ const HeaderPage = () => {
 
       {/* chức năng */}
       <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
-        <button className="max-w-[130px] rounded-full pl-[5px] font-semibold xs:text-[10px] sm:text-[10px] md:text-lg hover:text-green-500 flex items-center justify-center gap-1">
-          <MenuBookOutlinedIcon sx={{ fontSize: 18 }} />
-          Creators 101
-        </button>
 
         <div>
           <button
