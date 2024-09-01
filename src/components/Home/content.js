@@ -49,8 +49,6 @@ const ContentPage = () => {
         }, timeInterval);
     };
 
-    //new
-
     return (
         <div className="w-full h-full bg-gray-100 pb-10">
 
