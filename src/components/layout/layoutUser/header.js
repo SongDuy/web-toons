@@ -32,12 +32,6 @@ const HeaderPage = () => {
     setAnchorEl(null);
   };
 
-  const [selectedItem, setSelectedItem] = useState(null);
-
-  const handleItemClick = (item) => {
-    setSelectedItem(item);
-  };
-
   // Mở đóng modal tìm kiếm
   const [isSearchModal, setIsSearchModal] = useState(false);
 
@@ -81,7 +75,6 @@ const HeaderPage = () => {
       <Link
         to={`/`}
         className="xs:w-[90px] sm:w-[90px] pr-1 flex items-center justify-center xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer"
-        onClick={() => handleItemClick("")}
       >
         <img
           src={logo}
@@ -95,44 +88,40 @@ const HeaderPage = () => {
         <ul className="flex xs:gap-1 sm:gap-5">
           <Link to={`/originals`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === "Originals"
+              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/originals")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
-              onClick={() => handleItemClick("Originals")}
             >
               <span>Originals</span>
             </li>
           </Link>
           <Link to={`/videos`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === "Videos"
+              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/videos")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
-              onClick={() => handleItemClick("Videos")}
             >
               Videos
             </li>
           </Link>
           <Link to={`/genres`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === "Genres"
+              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/genres")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
-              onClick={() => handleItemClick("Genres")}
             >
               Genres
             </li>
           </Link>
           <Link to={`/popular`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${selectedItem === "Popular"
+              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/popular")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
-              onClick={() => handleItemClick("Popular")}
             >
               Popular
             </li>
