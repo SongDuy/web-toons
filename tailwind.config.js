@@ -38,7 +38,10 @@ module.exports = {
     plugin(function ({ addUtilities }) {
       const newUtilities = {
         '.text-shadow-white': {
-          'text-shadow': '0.5px 0.5px 1px rgba(255, 255, 255, 255), -0.5px -0.5px 1px rgba(255, 255, 255, 255), 0.5px -0.5px 1px rgba(255, 255, 255, 255), -0.5px 0.5px 1px rgba(255, 255, 255, 255)',
+          'text-shadow': '0.5px 0.5px 1px white, -0.5px -0.5px 1px white, 0.5px -0.5px 1px white, -0.5px 0.5px 1px white'
+        },
+        '.text-shadow-black': {
+          'text-shadow': '0.5px 0.5px 1px black, -0.5px -0.5px 1px black, 0.5px -0.5px 1px black, -0.5px 0.5px 1px black'
         },
       };
       addUtilities(newUtilities, ['responsive', 'hover']);
