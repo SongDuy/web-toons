@@ -108,7 +108,7 @@ const CreatorChannelPage = () => {
                         </div>
 
                         {/* Khung nội dung chính bài Post */}
-                        <div className="w-full h-[500px] py-5 border-b-2">
+                        <div className="w-full min-h-[300px] py-5 border-b-2">
 
                             {/* Hiển Avatar creator */}
                             <div className="w-full flex">
@@ -147,8 +147,194 @@ const CreatorChannelPage = () => {
                             </div>
 
                             {/* Hiện hình ảnh bài viết */}
+                            <div className="w-full flex gap-3">
+                                <img
+                                    src="https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg"
+                                    alt="image"
+                                    className="object-cover w-[300px] h-[300px]"
+                                />
+                                <img
+                                    src="https://top10tphcm.com/wp-content/uploads/2023/06/Hinh-anh-Anime-nu-de-thuong.jpg"
+                                    alt="image"
+                                    className="object-cover w-[300px] h-[300px]"
+                                />
+                            </div>
+
+                            {/* Hiện yêu thích bình luận */}
                             <div className="">
 
+                            </div>
+                        </div>
+
+                        {/* Khung nội dung chính bài Post */}
+                        <div className="w-full min-h-[300px] py-5 border-b-2">
+
+                            {/* Hiển Avatar creator */}
+                            <div className="w-full flex">
+                                <div className="">
+                                    <Avatar
+                                        alt="Remy Sharp"
+                                        src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
+                                        sx={{ width: 50, height: 50 }}
+                                    />
+                                </div>
+                                <div className="px-2">
+                                    <div className="">
+                                        <span className="font-semibold">
+                                            Lee Nakeum , seewater
+                                        </span>
+                                        <span className="px-2 font-semibold text-yellow-500">
+                                            . Creator
+                                        </span>
+                                    </div>
+
+                                    <div className="">
+                                        <span className="text-gray-400">
+                                            Jul 11, 2024
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Hiển nội dung bài viết */}
+                            <div className="py-3">
+                                <p className="">
+                                    I got some early Morgana and Oz copies!
+                                    Can’t wait for the first volume to come out in September.
+                                    You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.
+                                </p>
+                            </div>
+
+                            {/* Hiện hình ảnh bài viết */}
+                            <div className="w-full flex gap-3">
+                                <img
+                                    src="https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg"
+                                    alt="image"
+                                    className="object-cover w-[300px] h-[300px]"
+                                />
+                                <img
+                                    src="https://top10tphcm.com/wp-content/uploads/2023/06/Hinh-anh-Anime-nu-de-thuong.jpg"
+                                    alt="image"
+                                    className="object-cover w-[300px] h-[300px]"
+                                />
+                            </div>
+
+                            {/* Hiện yêu thích bình luận */}
+                            <div className="">
+
+                            </div>
+                        </div>
+
+                        {/* Khung nội dung chính bài Post */}
+                        <div className="w-full min-h-[300px] py-5 border-b-2">
+
+                            {/* Hiển Avatar creator */}
+                            <div className="w-full flex">
+                                <div className="">
+                                    <Avatar
+                                        alt="Remy Sharp"
+                                        src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
+                                        sx={{ width: 50, height: 50 }}
+                                    />
+                                </div>
+                                <div className="px-2">
+                                    <div className="">
+                                        <span className="font-semibold">
+                                            Lee Nakeum , seewater
+                                        </span>
+                                        <span className="px-2 font-semibold text-yellow-500">
+                                            . Creator
+                                        </span>
+                                    </div>
+
+                                    <div className="">
+                                        <span className="text-gray-400">
+                                            Jul 11, 2024
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Hiển nội dung bài viết */}
+                            <div className="py-3">
+                                <p className="">
+                                    I got some early Morgana and Oz copies!
+                                    Can’t wait for the first volume to come out in September.
+                                    You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.
+                                </p>
+                            </div>
+
+                            {/* Hiện hình ảnh bài viết */}
+                            <div className="w-full flex gap-3">
+                                <img
+                                    src="https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg"
+                                    alt="image"
+                                    className="object-cover w-[300px] h-[300px]"
+                                />
+                                <img
+                                    src="https://top10tphcm.com/wp-content/uploads/2023/06/Hinh-anh-Anime-nu-de-thuong.jpg"
+                                    alt="image"
+                                    className="object-cover w-[300px] h-[300px]"
+                                />
+                            </div>
+
+                            {/* Hiện yêu thích bình luận */}
+                            <div className="">
+
+                            </div>
+                        </div>
+
+                        {/* Khung nội dung chính bài Post */}
+                        <div className="w-full min-h-[300px] py-5 border-b-2">
+
+                            {/* Hiển Avatar creator */}
+                            <div className="w-full flex">
+                                <div className="">
+                                    <Avatar
+                                        alt="Remy Sharp"
+                                        src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
+                                        sx={{ width: 50, height: 50 }}
+                                    />
+                                </div>
+                                <div className="px-2">
+                                    <div className="">
+                                        <span className="font-semibold">
+                                            Lee Nakeum , seewater
+                                        </span>
+                                        <span className="px-2 font-semibold text-yellow-500">
+                                            . Creator
+                                        </span>
+                                    </div>
+
+                                    <div className="">
+                                        <span className="text-gray-400">
+                                            Jul 11, 2024
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Hiển nội dung bài viết */}
+                            <div className="py-3">
+                                <p className="">
+                                    I got some early Morgana and Oz copies!
+                                    Can’t wait for the first volume to come out in September.
+                                    You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.
+                                </p>
+                            </div>
+
+                            {/* Hiện hình ảnh bài viết */}
+                            <div className="w-full flex gap-3">
+                                <img
+                                    src="https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg"
+                                    alt="image"
+                                    className="object-cover w-[300px] h-[300px]"
+                                />
+                                <img
+                                    src="https://top10tphcm.com/wp-content/uploads/2023/06/Hinh-anh-Anime-nu-de-thuong.jpg"
+                                    alt="image"
+                                    className="object-cover w-[300px] h-[300px]"
+                                />
                             </div>
 
                             {/* Hiện yêu thích bình luận */}
