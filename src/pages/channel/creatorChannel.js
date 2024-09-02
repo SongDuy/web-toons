@@ -56,20 +56,20 @@ const CreatorChannelPage = () => {
 
                 <div className="w-full h-full flex gap-3 mt-3">
                     <div className="w-[420px] grid grid-cols-1 gap-3">
-                        <div className="w-full h-[340px] bg-white rounded-lg">
+                        <div className="w-full h-[340px] px-3 py-3 bg-white rounded-lg">
+kk
+                        </div>
+
+                        <div className="w-full h-[460px] px-3 py-3 bg-white rounded-lg">
 
                         </div>
 
-                        <div className="w-full h-[460px] bg-white rounded-lg">
-
-                        </div>
-
-                        <div className="w-full h-[460px] bg-white rounded-lg">
+                        <div className="w-full h-[460px] px-3 py-3 bg-white rounded-lg">
 
                         </div>
                     </div>
 
-                    <div className="w-[700px] bg-red-100 rounded-lg">
+                    <div className="w-[700px] px-3 py-3 bg-red-100 rounded-lg">
 
                     </div>
                 </div>
