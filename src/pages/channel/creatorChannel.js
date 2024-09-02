@@ -60,7 +60,7 @@ const CreatorChannelPage = () => {
                     <div className="w-[420px] grid grid-cols-1 gap-3">
 
                         {/* Khung hiển thị các liên kết của tác giả */}
-                        <div className="w-full h-[340px] px-3 py-3 bg-white rounded-lg">
+                        <div className="w-full h-[340px] px-5 py-3 bg-white rounded-lg">
                             <span className="font-semibold text-[20px] text-black">
                                 Link
                             </span>
@@ -73,7 +73,7 @@ const CreatorChannelPage = () => {
                         </div>
 
                         {/* Khung hiển thị các Series truyện của tác giả */}
-                        <div className="w-full h-[460px] px-3 py-3 bg-white rounded-lg">
+                        <div className="w-full h-[460px] px-5 py-3 bg-white rounded-lg">
                             <span className="font-semibold text-[20px] text-black">
                                 Series Original
                             </span>
@@ -86,7 +86,7 @@ const CreatorChannelPage = () => {
                         </div>
 
                         {/* Khung hiển thị các Series Video của tác giả */}
-                        <div className="w-full h-[460px] px-3 py-3 bg-white rounded-lg">
+                        <div className="w-full h-[460px] px-5 py-3 bg-white rounded-lg">
                             <span className="font-semibold text-[20px] text-black">
                                 Series Video
                             </span>
@@ -100,7 +100,7 @@ const CreatorChannelPage = () => {
                     </div>
 
                     {/* Hiển thị các bài viết của tác giả */}
-                    <div className="w-[700px] px-3 py-3 bg-white rounded-lg">
+                    <div className="w-[700px] px-5 py-3 bg-white rounded-lg">
                         <div className="w-full h-[40px] border-b-2 border-bg-black">
                             <span className="font-semibold text-[20px] text-black">
                                 Feed
@@ -108,19 +108,49 @@ const CreatorChannelPage = () => {
                         </div>
 
                         {/* Khung nội dung chính bài Post */}
-                        <div className="w-full h-[500px] border-b-2">
+                        <div className="w-full h-[500px] py-5 border-b-2">
+
                             {/* Hiển Avatar creator */}
-                            <div className="">
+                            <div className="w-full flex">
+                                <div className="">
+                                    <Avatar
+                                        alt="Remy Sharp"
+                                        src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
+                                        sx={{ width: 50, height: 50 }}
+                                    />
+                                </div>
+                                <div className="px-2">
+                                    <div className="">
+                                        <span className="font-semibold">
+                                            Lee Nakeum , seewater
+                                        </span>
+                                        <span className="px-2 font-semibold text-yellow-500">
+                                            . Creator
+                                        </span>
+                                    </div>
 
+                                    <div className="">
+                                        <span className="text-gray-400">
+                                            Jul 11, 2024
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
+
                             {/* Hiển nội dung bài viết */}
-                            <div className="">
-
+                            <div className="py-3">
+                                <p className="">
+                                    I got some early Morgana and Oz copies!
+                                    Can’t wait for the first volume to come out in September.
+                                    You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.
+                                </p>
                             </div>
+
                             {/* Hiện hình ảnh bài viết */}
                             <div className="">
 
                             </div>
+
                             {/* Hiện yêu thích bình luận */}
                             <div className="">
 
