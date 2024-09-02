@@ -3,6 +3,8 @@ import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import CommentIcon from '@mui/icons-material/Comment';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const CreatorChannelPage = () => {
     return (
@@ -114,29 +116,35 @@ const CreatorChannelPage = () => {
                         <div className="w-full min-h-[300px] py-5 border-b-2">
 
                             {/* Hiển Avatar creator */}
-                            <div className="w-full flex">
-                                <div className="">
-                                    <Avatar
-                                        alt="Remy Sharp"
-                                        src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
-                                        sx={{ width: 50, height: 50 }}
-                                    />
-                                </div>
-                                <div className="px-2">
+                            <div className="w-full">
+                                <div className="flex items-center justify-center">
                                     <div className="">
-                                        <span className="font-semibold">
-                                            Lee Nakeum , seewater
-                                        </span>
-                                        <span className="px-2 font-semibold text-yellow-500">
-                                            . Creator
-                                        </span>
+                                        <Avatar
+                                            alt="Remy Sharp"
+                                            src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
+                                            sx={{ width: 50, height: 50 }}
+                                        />
+                                    </div>
+                                    <div className="px-2">
+                                        <div className="">
+                                            <span className="font-semibold">
+                                                Lee Nakeum , seewater
+                                            </span>
+                                            <span className="px-2 font-semibold text-yellow-500">
+                                                . Creator
+                                            </span>
+                                        </div>
+
+                                        <div className="">
+                                            <span className="text-gray-400">
+                                                Jul 11, 2024
+                                            </span>
+                                        </div>
                                     </div>
 
-                                    <div className="">
-                                        <span className="text-gray-400">
-                                            Jul 11, 2024
-                                        </span>
-                                    </div>
+                                    <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
+                                        <MoreVertIcon />
+                                    </button>
                                 </div>
                             </div>
 
@@ -179,34 +187,39 @@ const CreatorChannelPage = () => {
                             </div>
                         </div>
 
-                       {/* Khung nội dung chính bài Post */}
+                        {/* Khung nội dung chính bài Post */}
                         <div className="w-full min-h-[300px] py-5 border-b-2">
 
                             {/* Hiển Avatar creator */}
-                            <div className="w-full flex">
-                                
-                                <div className="">
-                                    <Avatar
-                                        alt="Remy Sharp"
-                                        src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
-                                        sx={{ width: 50, height: 50 }}
-                                    />
-                                </div>
-                                <div className="px-2">
+                            <div className="w-full">
+                                <div className="flex items-center justify-center">
                                     <div className="">
-                                        <span className="font-semibold">
-                                            Lee Nakeum , seewater
-                                        </span>
-                                        <span className="px-2 font-semibold text-yellow-500">
-                                            . Creator
-                                        </span>
+                                        <Avatar
+                                            alt="Remy Sharp"
+                                            src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
+                                            sx={{ width: 50, height: 50 }}
+                                        />
+                                    </div>
+                                    <div className="px-2">
+                                        <div className="">
+                                            <span className="font-semibold">
+                                                Lee Nakeum , seewater
+                                            </span>
+                                            <span className="px-2 font-semibold text-yellow-500">
+                                                . Creator
+                                            </span>
+                                        </div>
+
+                                        <div className="">
+                                            <span className="text-gray-400">
+                                                Jul 11, 2024
+                                            </span>
+                                        </div>
                                     </div>
 
-                                    <div className="">
-                                        <span className="text-gray-400">
-                                            Jul 11, 2024
-                                        </span>
-                                    </div>
+                                    <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
+                                        <MoreVertIcon />
+                                    </button>
                                 </div>
                             </div>
 
@@ -237,7 +250,7 @@ const CreatorChannelPage = () => {
                             <div className="w-full pt-5 ">
                                 <div className="mr-auto flex gap-2">
                                     <button className="px-2 py-1 px-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
-                                        <FavoriteIcon className="text-red-500" />
+                                        <FavoriteBorderIcon className="text-black" />
                                         226
                                     </button>
                                     <button className="px-2 py-1 px-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
@@ -249,33 +262,39 @@ const CreatorChannelPage = () => {
                             </div>
                         </div>
 
-                       {/* Khung nội dung chính bài Post */}
+                        {/* Khung nội dung chính bài Post */}
                         <div className="w-full min-h-[300px] py-5 border-b-2">
 
                             {/* Hiển Avatar creator */}
-                            <div className="w-full flex">
-                                <div className="">
-                                    <Avatar
-                                        alt="Remy Sharp"
-                                        src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
-                                        sx={{ width: 50, height: 50 }}
-                                    />
-                                </div>
-                                <div className="px-2">
+                            <div className="w-full">
+                                <div className="flex items-center justify-center">
                                     <div className="">
-                                        <span className="font-semibold">
-                                            Lee Nakeum , seewater
-                                        </span>
-                                        <span className="px-2 font-semibold text-yellow-500">
-                                            . Creator
-                                        </span>
+                                        <Avatar
+                                            alt="Remy Sharp"
+                                            src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
+                                            sx={{ width: 50, height: 50 }}
+                                        />
+                                    </div>
+                                    <div className="px-2">
+                                        <div className="">
+                                            <span className="font-semibold">
+                                                Lee Nakeum , seewater
+                                            </span>
+                                            <span className="px-2 font-semibold text-yellow-500">
+                                                . Creator
+                                            </span>
+                                        </div>
+
+                                        <div className="">
+                                            <span className="text-gray-400">
+                                                Jul 11, 2024
+                                            </span>
+                                        </div>
                                     </div>
 
-                                    <div className="">
-                                        <span className="text-gray-400">
-                                            Jul 11, 2024
-                                        </span>
-                                    </div>
+                                    <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
+                                        <MoreVertIcon />
+                                    </button>
                                 </div>
                             </div>
 
@@ -318,33 +337,39 @@ const CreatorChannelPage = () => {
                             </div>
                         </div>
 
-                       {/* Khung nội dung chính bài Post */}
+                        {/* Khung nội dung chính bài Post */}
                         <div className="w-full min-h-[300px] py-5 border-b-2">
 
                             {/* Hiển Avatar creator */}
-                            <div className="w-full flex">
-                                <div className="">
-                                    <Avatar
-                                        alt="Remy Sharp"
-                                        src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
-                                        sx={{ width: 50, height: 50 }}
-                                    />
-                                </div>
-                                <div className="px-2">
+                            <div className="w-full">
+                                <div className="flex items-center justify-center">
                                     <div className="">
-                                        <span className="font-semibold">
-                                            Lee Nakeum , seewater
-                                        </span>
-                                        <span className="px-2 font-semibold text-yellow-500">
-                                            . Creator
-                                        </span>
+                                        <Avatar
+                                            alt="Remy Sharp"
+                                            src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
+                                            sx={{ width: 50, height: 50 }}
+                                        />
+                                    </div>
+                                    <div className="px-2">
+                                        <div className="">
+                                            <span className="font-semibold">
+                                                Lee Nakeum , seewater
+                                            </span>
+                                            <span className="px-2 font-semibold text-yellow-500">
+                                                . Creator
+                                            </span>
+                                        </div>
+
+                                        <div className="">
+                                            <span className="text-gray-400">
+                                                Jul 11, 2024
+                                            </span>
+                                        </div>
                                     </div>
 
-                                    <div className="">
-                                        <span className="text-gray-400">
-                                            Jul 11, 2024
-                                        </span>
-                                    </div>
+                                    <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
+                                        <MoreVertIcon />
+                                    </button>
                                 </div>
                             </div>
 
