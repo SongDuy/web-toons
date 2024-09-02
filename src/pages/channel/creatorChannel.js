@@ -161,12 +161,12 @@ const CreatorChannelPage = () => {
                             <div className="w-full flex gap-3">
                                 <img
                                     src="https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg"
-                                    alt="image"
+                                    alt="img"
                                     className="object-cover w-[300px] h-[300px]"
                                 />
                                 <img
                                     src="https://top10tphcm.com/wp-content/uploads/2023/06/Hinh-anh-Anime-nu-de-thuong.jpg"
-                                    alt="image"
+                                    alt="img"
                                     className="object-cover w-[300px] h-[300px]"
                                 />
                             </div>
@@ -236,12 +236,12 @@ const CreatorChannelPage = () => {
                             <div className="w-full flex gap-3">
                                 <img
                                     src="https://9anime.vn/wp-content/uploads/2024/04/499-Hinh-Anh-Anime-Nu-Dep-Ngau-Cute-Dang-Yeu.jpg"
-                                    alt="image"
+                                    alt="img"
                                     className="object-cover w-[300px] h-[300px]"
                                 />
                                 <img
                                     src="https://cdn.aicschool.edu.vn/wp-content/uploads/2024/06/anh-avatar-anime-1.jpg"
-                                    alt="image"
+                                    alt="img"
                                     className="object-cover w-[300px] h-[300px]"
                                 />
                             </div>
@@ -311,12 +311,12 @@ const CreatorChannelPage = () => {
                             <div className="w-full flex gap-3">
                                 <img
                                     src="https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/anh-dai-dien-anime-nu-xinh-9.png"
-                                    alt="image"
+                                    alt="img"
                                     className="object-cover w-[300px] h-[300px]"
                                 />
                                 <img
                                     src="https://mega.com.vn/media/news/2306_hinh-nen-anime-nu-cho-dien-thoai1.jpg"
-                                    alt="image"
+                                    alt="img"
                                     className="object-cover w-[300px] h-[300px]"
                                 />
                             </div>
@@ -386,12 +386,12 @@ const CreatorChannelPage = () => {
                             <div className="w-full flex gap-3">
                                 <img
                                     src="https://cohousing.vn/wp-content/uploads/2023/08/nhung-hinh-anh-dep-cua-anime-co-the-dung-lam-hinh-nen.jpg"
-                                    alt="image"
+                                    alt="img"
                                     className="object-cover w-[300px] h-[300px]"
                                 />
                                 <img
                                     src="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:quality(100)/2023_12_11_638378641466845781_avatar-anime.jpg"
-                                    alt="image"
+                                    alt="img"
                                     className="object-cover w-[300px] h-[300px]"
                                 />
                             </div>
