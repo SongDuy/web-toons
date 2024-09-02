@@ -7,12 +7,14 @@ const CreatorChannelPage = () => {
         <div className="w-full h-full pb-10 border bg-gray-100 flex items-center justify-center">
             <div className="w-[1120px] h-full">
                 <div className="w-full h-full bg-white rounded-lg">
+                    {/* Hiển thị ảnh nền */}
                     <div className="w-full h-[400px] bg-green-200 rounded-lg">
                         <img src="https://i.redd.it/b5jec682hfk61.jpg"
                             className="object-cover w-[1200px] h-full rounded-t-lg" alt="img"
                         />
                     </div>
 
+                    {/* Hiển thị thông tin tác giả */}
                     <div className="w-full h-[180px] px-[30px] bg-white rounded-b-lg flex">
                         <div className="w-[185px] h-[185px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
                             <Avatar
@@ -56,30 +58,73 @@ const CreatorChannelPage = () => {
 
                 <div className="w-full h-full flex gap-3 mt-3">
                     <div className="w-[420px] grid grid-cols-1 gap-3">
+
+                        {/* Khung hiển thị các liên kết của tác giả */}
                         <div className="w-full h-[340px] px-3 py-3 bg-white rounded-lg">
                             <span className="font-semibold text-[20px] text-black">
                                 Link
                             </span>
+
+                            <div className="py-5">
+                                <ul className="">
+
+                                </ul>
+                            </div>
                         </div>
 
+                        {/* Khung hiển thị các Series truyện của tác giả */}
                         <div className="w-full h-[460px] px-3 py-3 bg-white rounded-lg">
                             <span className="font-semibold text-[20px] text-black">
                                 Series Original
                             </span>
+
+                            <div className="py-5">
+                                <ul className="">
+
+                                </ul>
+                            </div>
                         </div>
 
+                        {/* Khung hiển thị các Series Video của tác giả */}
                         <div className="w-full h-[460px] px-3 py-3 bg-white rounded-lg">
                             <span className="font-semibold text-[20px] text-black">
                                 Series Video
                             </span>
+
+                            <div className="py-5">
+                                <ul className="">
+
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
+                    {/* Hiển thị các bài viết của tác giả */}
                     <div className="w-[700px] px-3 py-3 bg-white rounded-lg">
                         <div className="w-full h-[40px] border-b-2 border-bg-black">
                             <span className="font-semibold text-[20px] text-black">
                                 Feed
                             </span>
+                        </div>
+
+                        {/* Khung nội dung chính bài Post */}
+                        <div className="w-full h-[500px] border-b-2">
+                            {/* Hiển Avatar creator */}
+                            <div className="">
+
+                            </div>
+                            {/* Hiển nội dung bài viết */}
+                            <div className="">
+
+                            </div>
+                            {/* Hiện hình ảnh bài viết */}
+                            <div className="">
+
+                            </div>
+                            {/* Hiện yêu thích bình luận */}
+                            <div className="">
+
+                            </div>
                         </div>
 
                     </div>
