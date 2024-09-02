@@ -84,10 +84,10 @@ const MyChannelPage = () => {
                             </div>
                             <div className="px-1 py-4 flex">
                                 <span className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    Series Original : 2
+                                    Series Original : 15
                                 </span>
                                 <span className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    Series Video : 2
+                                    Series Video : 15
                                 </span>
                                 <span className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
                                     Followers : 80,135
@@ -221,7 +221,7 @@ const MyChannelPage = () => {
                                         <div className="">
                                             <Avatar
                                                 alt="Remy Sharp"
-                                                src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
+                                                src="https://www.ausp.edu.vn/uploads/blog/2024/05/16/1ecf77502b3bc514b2f535533d7b01f03a772174-1715817458.jpg"
                                                 sx={{ width: 50, height: 50 }}
                                             />
                                         </div>

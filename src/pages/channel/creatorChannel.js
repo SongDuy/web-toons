@@ -56,7 +56,7 @@ const CreatorChannelPage = () => {
                 <div className="w-full h-full bg-white rounded-lg">
                     {/* Hiển thị ảnh nền */}
                     <div className="w-full h-[400px] bg-green-200 rounded-lg">
-                        <img src="https://i.redd.it/b5jec682hfk61.jpg"
+                        <img src="https://wallpapers.com/images/hd/chill-anime-girl-during-winter-n65e3iefecsy01if.jpg"
                             className="object-cover w-[1200px] h-full rounded-t-lg" alt="img"
                         />
                     </div>
@@ -84,10 +84,10 @@ const CreatorChannelPage = () => {
                             </div>
                             <div className="px-1 py-4 flex">
                                 <span className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    Series Original : 2
+                                    Series Original : 15
                                 </span>
                                 <span className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    Series Video : 2
+                                    Series Video : 15
                                 </span>
                                 <span className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
                                     Followers : 80,135
