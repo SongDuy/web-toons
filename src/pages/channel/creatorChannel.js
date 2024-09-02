@@ -13,13 +13,36 @@ const CreatorChannelPage = () => {
                         />
                     </div>
 
-                    <div className="w-full h-[210px] px-[30px] bg-white rounded-b-lg">
-                        <div className="w-full mt-[-30px]">
+                    <div className="w-full h-[180px] px-[30px] bg-white rounded-b-lg flex">
+                        <div className="w-[185px] h-[185px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
                             <Avatar
                                 alt="Remy Sharp"
                                 src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
                                 sx={{ width: 180, height: 180 }}
                             />
+                        </div>
+                        <div className="py-4 px-3">
+                            <div className="">
+                                <span className="text-[35px] font-semibold text-yellow-500 text-shadow-black">
+                                    Lee Nakeum , seewater
+                                </span>
+                            </div>
+                            <div className="px-1">
+                                <span className="text-[18px] text-yellow-500 text-shadow-black">
+                                    commic, game
+                                </span>
+                            </div>
+                            <div className="px-1 py-4 flex">
+                                <span className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
+                                    Series Original : 2
+                                </span>
+                                <span className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
+                                    Series Video : 2
+                                </span>
+                                <span className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
+                                    Followers : 80,135
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>

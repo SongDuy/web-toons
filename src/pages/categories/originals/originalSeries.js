@@ -62,7 +62,7 @@ const OriginalSeriesPage = () => {
                             <Link to="/channel/creator">
                                 <div class="w-full flex items-center justify-center gap-2">
                                     <div className="w-[250px] px-2 rounded-md overflow-hidden flex items-center justify-center gap-2">
-                                        <span className="text-lg font-semibold text-yellow-600 hover:text-yellow-500 text-shadow-white line-clamp-1">
+                                        <span className="text-lg font-semibold text-yellow-500 hover:text-yellow-600 text-shadow-black line-clamp-1">
                                             Lee Nakeum , seewater
                                         </span>
                                         <button className="w-[20px] h-[20px] bg-white rounded-full text-black flex items-center justify-center">

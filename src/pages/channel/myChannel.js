@@ -13,13 +13,36 @@ const MyChannelPage = () => {
                         />
                     </div>
 
-                    <div className="w-full h-[210px] px-[30px] bg-white rounded-b-lg">
-                        <div className="w-full mt-[-30px]">
+                    <div className="w-full h-[180px] px-[30px] bg-white rounded-b-lg flex">
+                        <div className="w-[185px] h-[185px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
                             <Avatar
                                 alt="Remy Sharp"
                                 src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
                                 sx={{ width: 180, height: 180 }}
                             />
+                        </div>
+                        <div className="py-4 px-3">
+                            <div className="">
+                                <span className="text-[35px] font-semibold text-yellow-500 text-shadow-black">
+                                    Lee Nakeum , seewater
+                                </span>
+                            </div>
+                            <div className="px-1">
+                                <span className="text-[18px]">
+                                    commic, game
+                                </span>
+                            </div>
+                            <div className="px-1 py-4 grid grid-cols-3">
+                                <span className="w-[170px] text-[18px] font-semibold">
+                                    Series Originals: 2
+                                </span>
+                                <span className="w-[170px] text-[18px] font-semibold">
+                                    Series Videos: 2
+                                </span>
+                                <span className="w-[170px] text-[18px] font-semibold">
+                                    Followers: 80,135
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
