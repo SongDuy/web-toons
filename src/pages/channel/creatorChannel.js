@@ -48,7 +48,7 @@ const CreatorChannelPage = () => {
 
                         <div className="ml-auto flex items-center justify-center">
                             <button className="w-[120px] h-[50px] font-semibold text-white bg-green-400 hover:bg-green-500 rounded-xl">
-                                Follower
+                                Follow
                             </button>
                         </div>
                     </div>
