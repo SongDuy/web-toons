@@ -21,6 +21,7 @@ const CreatorChannelPage = () => {
                                 sx={{ width: 180, height: 180 }}
                             />
                         </div>
+
                         <div className="py-4 px-3">
                             <div className="">
                                 <span className="text-[35px] font-semibold text-yellow-500 text-shadow-black">
@@ -28,8 +29,8 @@ const CreatorChannelPage = () => {
                                 </span>
                             </div>
                             <div className="px-1">
-                                <span className="text-[18px] text-yellow-500 text-shadow-black">
-                                    commic, game
+                                <span className="text-[18px] text-yellow-400 text-shadow-black">
+                                    Commic, game
                                 </span>
                             </div>
                             <div className="px-1 py-4 flex">
@@ -43,6 +44,12 @@ const CreatorChannelPage = () => {
                                     Followers : 80,135
                                 </span>
                             </div>
+                        </div>
+
+                        <div className="ml-auto flex items-center justify-center">
+                            <button className="w-[120px] h-[50px] font-semibold text-white bg-green-400 hover:bg-green-500 rounded-xl">
+                                Follower
+                            </button>
                         </div>
                     </div>
                 </div>
