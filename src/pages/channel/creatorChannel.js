@@ -4,7 +4,14 @@ import Avatar from '@mui/material/Avatar';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import CommentIcon from '@mui/icons-material/Comment';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+
+const dataPost = [
+    { id: 1, img: "https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg", img2: "https://top10tphcm.com/wp-content/uploads/2023/06/Hinh-anh-Anime-nu-de-thuong.jpg", auth: "Lee Nakeum , seewater", content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", like: "205", comment: "100", date: "23/05/2024", },
+    { id: 2, img: "https://9anime.vn/wp-content/uploads/2024/04/499-Hinh-Anh-Anime-Nu-Dep-Ngau-Cute-Dang-Yeu.jpg", img2: "https://cdn.aicschool.edu.vn/wp-content/uploads/2024/06/anh-avatar-anime-1.jpg", auth: "Lee Nakeum , seewater", content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", like: "205", comment: "100", date: "23/05/2024", },
+    { id: 3, img: "https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/anh-dai-dien-anime-nu-xinh-9.png", img2: "https://mega.com.vn/media/news/2306_hinh-nen-anime-nu-cho-dien-thoai1.jpg", auth: "Lee Nakeum , seewater", content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", like: "205", comment: "100", date: "23/05/2024", },
+    { id: 4, img: "https://cohousing.vn/wp-content/uploads/2023/08/nhung-hinh-anh-dep-cua-anime-co-the-dung-lam-hinh-nen.jpg", img2: "https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:quality(100)/2023_12_11_638378641466845781_avatar-anime.jpg", auth: "Lee Nakeum , seewater", content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", like: "205", comment: "100", date: "23/05/2024", },
+];
 
 const CreatorChannelPage = () => {
     return (
@@ -113,304 +120,81 @@ const CreatorChannelPage = () => {
                         </div>
 
                         {/* Khung nội dung chính bài Post */}
-                        <div className="w-full min-h-[300px] py-5 border-b-2">
-
-                            {/* Hiển Avatar creator */}
-                            <div className="w-full">
-                                <div className="flex items-center justify-center">
-                                    <div className="">
-                                        <Avatar
-                                            alt="Remy Sharp"
-                                            src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
-                                            sx={{ width: 50, height: 50 }}
-                                        />
-                                    </div>
-                                    <div className="px-2">
+                        {dataPost.map(item => (
+                            <div
+                                className="w-full min-h-[300px] py-5 border-b-2"
+                                key={item.id}
+                            >
+                                {/* Hiển Avatar creator */}
+                                <div className="w-full">
+                                    <div className="flex items-center justify-center">
                                         <div className="">
-                                            <span className="font-semibold">
-                                                Lee Nakeum , seewater
-                                            </span>
-                                            <span className="px-2 font-semibold text-yellow-500">
-                                                . Creator
-                                            </span>
+                                            <Avatar
+                                                alt="Remy Sharp"
+                                                src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
+                                                sx={{ width: 50, height: 50 }}
+                                            />
+                                        </div>
+                                        <div className="px-2">
+                                            <div className="">
+                                                <span className="font-semibold">
+                                                    {item.auth}
+                                                </span>
+                                                <span className="px-2 font-semibold text-yellow-500">
+                                                    . Creator
+                                                </span>
+                                            </div>
+
+                                            <div className="">
+                                                <span className="text-gray-400">
+                                                    {item.date}
+                                                </span>
+                                            </div>
                                         </div>
 
-                                        <div className="">
-                                            <span className="text-gray-400">
-                                                Jul 11, 2024
-                                            </span>
-                                        </div>
+                                        <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
+                                            <MoreVertIcon />
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Hiển nội dung bài viết */}
+                                <div className="py-3">
+                                    <p className="">
+                                        {item.content}
+                                    </p>
+                                </div>
+
+                                {/* Hiện hình ảnh bài viết */}
+                                <div className="w-full flex gap-3">
+                                    <img
+                                        src={item.img}
+                                        alt="img"
+                                        className="object-cover w-[300px] h-[300px]"
+                                    />
+                                    <img
+                                        src={item.img2}
+                                        alt="img"
+                                        className="object-cover w-[300px] h-[300px]"
+                                    />
+                                </div>
+
+                                {/* Hiện yêu thích bình luận */}
+                                <div className="w-full pt-5 ">
+                                    <div className="mr-auto flex gap-2">
+                                        <button className="px-2 py-1 px-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
+                                            <FavoriteIcon className="text-red-500" />
+                                            {item.like}
+                                        </button>
+                                        <button className="px-2 py-1 px-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
+                                            <CommentIcon className="text-black" />
+                                            {item.comment}
+                                        </button>
                                     </div>
 
-                                    <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
-                                        <MoreVertIcon />
-                                    </button>
                                 </div>
                             </div>
-
-                            {/* Hiển nội dung bài viết */}
-                            <div className="py-3">
-                                <p className="">
-                                    I got some early Morgana and Oz copies!
-                                    Can’t wait for the first volume to come out in September.
-                                    You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.
-                                </p>
-                            </div>
-
-                            {/* Hiện hình ảnh bài viết */}
-                            <div className="w-full flex gap-3">
-                                <img
-                                    src="https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg"
-                                    alt="img"
-                                    className="object-cover w-[300px] h-[300px]"
-                                />
-                                <img
-                                    src="https://top10tphcm.com/wp-content/uploads/2023/06/Hinh-anh-Anime-nu-de-thuong.jpg"
-                                    alt="img"
-                                    className="object-cover w-[300px] h-[300px]"
-                                />
-                            </div>
-
-                            {/* Hiện yêu thích bình luận */}
-                            <div className="w-full pt-5 ">
-                                <div className="mr-auto flex gap-2">
-                                    <button className="px-2 py-1 px-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
-                                        <FavoriteIcon className="text-red-500" />
-                                        226
-                                    </button>
-                                    <button className="px-2 py-1 px-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
-                                        <CommentIcon className="text-black" />
-                                        226
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        {/* Khung nội dung chính bài Post */}
-                        <div className="w-full min-h-[300px] py-5 border-b-2">
-
-                            {/* Hiển Avatar creator */}
-                            <div className="w-full">
-                                <div className="flex items-center justify-center">
-                                    <div className="">
-                                        <Avatar
-                                            alt="Remy Sharp"
-                                            src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
-                                            sx={{ width: 50, height: 50 }}
-                                        />
-                                    </div>
-                                    <div className="px-2">
-                                        <div className="">
-                                            <span className="font-semibold">
-                                                Lee Nakeum , seewater
-                                            </span>
-                                            <span className="px-2 font-semibold text-yellow-500">
-                                                . Creator
-                                            </span>
-                                        </div>
-
-                                        <div className="">
-                                            <span className="text-gray-400">
-                                                Jul 11, 2024
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
-                                        <MoreVertIcon />
-                                    </button>
-                                </div>
-                            </div>
-
-                            {/* Hiển nội dung bài viết */}
-                            <div className="py-3">
-                                <p className="">
-                                    I got some early Morgana and Oz copies!
-                                    Can’t wait for the first volume to come out in September.
-                                    You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.
-                                </p>
-                            </div>
-
-                            {/* Hiện hình ảnh bài viết */}
-                            <div className="w-full flex gap-3">
-                                <img
-                                    src="https://9anime.vn/wp-content/uploads/2024/04/499-Hinh-Anh-Anime-Nu-Dep-Ngau-Cute-Dang-Yeu.jpg"
-                                    alt="img"
-                                    className="object-cover w-[300px] h-[300px]"
-                                />
-                                <img
-                                    src="https://cdn.aicschool.edu.vn/wp-content/uploads/2024/06/anh-avatar-anime-1.jpg"
-                                    alt="img"
-                                    className="object-cover w-[300px] h-[300px]"
-                                />
-                            </div>
-
-                            {/* Hiện yêu thích bình luận */}
-                            <div className="w-full pt-5 ">
-                                <div className="mr-auto flex gap-2">
-                                    <button className="px-2 py-1 px-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
-                                        <FavoriteBorderIcon className="text-black" />
-                                        226
-                                    </button>
-                                    <button className="px-2 py-1 px-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
-                                        <CommentIcon className="text-black" />
-                                        226
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        {/* Khung nội dung chính bài Post */}
-                        <div className="w-full min-h-[300px] py-5 border-b-2">
-
-                            {/* Hiển Avatar creator */}
-                            <div className="w-full">
-                                <div className="flex items-center justify-center">
-                                    <div className="">
-                                        <Avatar
-                                            alt="Remy Sharp"
-                                            src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
-                                            sx={{ width: 50, height: 50 }}
-                                        />
-                                    </div>
-                                    <div className="px-2">
-                                        <div className="">
-                                            <span className="font-semibold">
-                                                Lee Nakeum , seewater
-                                            </span>
-                                            <span className="px-2 font-semibold text-yellow-500">
-                                                . Creator
-                                            </span>
-                                        </div>
-
-                                        <div className="">
-                                            <span className="text-gray-400">
-                                                Jul 11, 2024
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
-                                        <MoreVertIcon />
-                                    </button>
-                                </div>
-                            </div>
-
-                            {/* Hiển nội dung bài viết */}
-                            <div className="py-3">
-                                <p className="">
-                                    I got some early Morgana and Oz copies!
-                                    Can’t wait for the first volume to come out in September.
-                                    You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.
-                                </p>
-                            </div>
-
-                            {/* Hiện hình ảnh bài viết */}
-                            <div className="w-full flex gap-3">
-                                <img
-                                    src="https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/anh-dai-dien-anime-nu-xinh-9.png"
-                                    alt="img"
-                                    className="object-cover w-[300px] h-[300px]"
-                                />
-                                <img
-                                    src="https://mega.com.vn/media/news/2306_hinh-nen-anime-nu-cho-dien-thoai1.jpg"
-                                    alt="img"
-                                    className="object-cover w-[300px] h-[300px]"
-                                />
-                            </div>
-
-                            {/* Hiện yêu thích bình luận */}
-                            <div className="w-full pt-5 ">
-                                <div className="mr-auto flex gap-2">
-                                    <button className="px-2 py-1 px-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
-                                        <FavoriteIcon className="text-red-500" />
-                                        226
-                                    </button>
-                                    <button className="px-2 py-1 px-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
-                                        <CommentIcon className="text-black" />
-                                        226
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        {/* Khung nội dung chính bài Post */}
-                        <div className="w-full min-h-[300px] py-5 border-b-2">
-
-                            {/* Hiển Avatar creator */}
-                            <div className="w-full">
-                                <div className="flex items-center justify-center">
-                                    <div className="">
-                                        <Avatar
-                                            alt="Remy Sharp"
-                                            src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
-                                            sx={{ width: 50, height: 50 }}
-                                        />
-                                    </div>
-                                    <div className="px-2">
-                                        <div className="">
-                                            <span className="font-semibold">
-                                                Lee Nakeum , seewater
-                                            </span>
-                                            <span className="px-2 font-semibold text-yellow-500">
-                                                . Creator
-                                            </span>
-                                        </div>
-
-                                        <div className="">
-                                            <span className="text-gray-400">
-                                                Jul 11, 2024
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
-                                        <MoreVertIcon />
-                                    </button>
-                                </div>
-                            </div>
-
-                            {/* Hiển nội dung bài viết */}
-                            <div className="py-3">
-                                <p className="">
-                                    I got some early Morgana and Oz copies!
-                                    Can’t wait for the first volume to come out in September.
-                                    You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.
-                                </p>
-                            </div>
-
-                            {/* Hiện hình ảnh bài viết */}
-                            <div className="w-full flex gap-3">
-                                <img
-                                    src="https://cohousing.vn/wp-content/uploads/2023/08/nhung-hinh-anh-dep-cua-anime-co-the-dung-lam-hinh-nen.jpg"
-                                    alt="img"
-                                    className="object-cover w-[300px] h-[300px]"
-                                />
-                                <img
-                                    src="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:quality(100)/2023_12_11_638378641466845781_avatar-anime.jpg"
-                                    alt="img"
-                                    className="object-cover w-[300px] h-[300px]"
-                                />
-                            </div>
-
-                            {/* Hiện yêu thích bình luận */}
-                            <div className="w-full pt-5 ">
-                                <div className="mr-auto flex gap-2">
-                                    <button className="px-2 py-1 px-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
-                                        <FavoriteIcon className="text-red-500" />
-                                        226
-                                    </button>
-                                    <button className="px-2 py-1 px-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
-                                        <CommentIcon className="text-black" />
-                                        226
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
+                        ))}
 
                     </div>
                 </div>
