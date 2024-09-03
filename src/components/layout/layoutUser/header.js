@@ -5,8 +5,10 @@ import MenuItem from "@mui/material/MenuItem";
 import SearchIcon from "@mui/icons-material/Search";
 import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
+import MenuIcon from '@mui/icons-material/Menu';
 
 import SearchPage from "./search";
+import MenuPage from "./search";
 import LoginPage from "../../../../src/pages/auth/login";
 import logo from "../../../img/logonew.png";
 import { Link } from "react-router-dom";
@@ -41,6 +43,17 @@ const HeaderPage = () => {
 
   const closeSearchModal = () => {
     setIsSearchModal(false);
+  };
+
+  // Mở đóng modal menu
+  const [isMenuModal, setIsMenuModal] = useState(false);
+
+  const openMenuModal = () => {
+    setIsMenuModal(true);
+  };
+
+  const closeMenuModal = () => {
+    setIsMenuModal(false);
   };
 
   // Mở đóng modal login
@@ -83,8 +96,60 @@ const HeaderPage = () => {
         />
       </Link>
 
+      {/* Đăng nhập */}
+      {!User ?
+        <div className="flex items-center justify-center">
+
+          {
+            /* <button
+              className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
+              onClick={openLoginModal}
+            >
+              Log In
+            </button> 
+          */}
+
+          <button
+            className="w-[25px] h-[25px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
+            onClick={openLoginModal}
+          >
+            19
+          </button>
+          <button
+            className="border h-[5px] bg-gray-500 w-[20px] rounded-r-full"
+            onClick={openLoginModal}
+          />
+
+          {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+        </div>
+        :
+        <div className="flex items-center justify-center">
+
+          {/* 
+            <button
+              className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
+              onClick={() => dispatch(logout())}
+            >
+              {auth?.currentUser.displayName}
+            </button> 
+          */}
+
+          <button
+            className="border h-[5px] bg-gray-500 w-[20px] rounded-l-full"
+            onClick={() => dispatch(logout())}
+          />
+          <button
+            className="w-[25px] h-[25px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
+            onClick={() => dispatch(logout())}
+          >
+            19
+          </button>
+
+        </div>
+      }
+
       {/* danh mục */}
-      <div className="max-w-[400px] flex items-center ml-2">
+      <div className="max-w-[400px] flex items-center ml-3">
         <ul className="flex xs:gap-1 sm:gap-5">
           <Link to={`/originals`}>
             <li
@@ -168,57 +233,6 @@ const HeaderPage = () => {
           </Menu>
         </div>
 
-        {!User ?
-          <div className="flex items-center justify-center">
-
-            {
-            /* <button
-              className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
-              onClick={openLoginModal}
-            >
-              Log In
-            </button> 
-          */}
-
-            <button
-              className="w-[35px] h-[35px] rounded-full border-2 font-semibold hover:shadow-md flex items-center justify-center"
-              onClick={openLoginModal}
-            >
-              19
-            </button>
-            <button
-              className="border h-[10px] bg-gray-500 w-[35px] rounded-r-full"
-              onClick={openLoginModal}
-            />
-
-            {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
-          </div>
-          :
-          <div className="flex items-center justify-center">
-
-            {/* 
-            <button
-              className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
-              onClick={() => dispatch(logout())}
-            >
-              {auth?.currentUser.displayName}
-            </button> 
-          */}
-
-            <button
-              className="border h-[10px] bg-gray-500 w-[35px] rounded-l-full"
-              onClick={() => dispatch(logout())}
-            />
-            <button
-              className="w-[35px] h-[35px] rounded-full border-2 font-semibold hover:shadow-md flex items-center justify-center"
-              onClick={() => dispatch(logout())}
-            >
-              19
-            </button>
-
-          </div>
-        }
-
         <div>
           <button
             className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full text-gray-500 flex items-center justify-center"
@@ -229,6 +243,16 @@ const HeaderPage = () => {
           {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
         </div>
 
+        <div>
+          <button
+            className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full text-gray-500 flex items-center justify-center"
+            onClick={openMenuModal}
+          >
+            <MenuIcon sx={{ fontSize: 18 }} />
+          </button>
+          {isMenuModal && <MenuPage closeModal={closeMenuModal} />}
+        </div> 
+        
       </div>
     </div>
   );
