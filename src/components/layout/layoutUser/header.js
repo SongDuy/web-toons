@@ -8,7 +8,7 @@ import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import MenuIcon from '@mui/icons-material/Menu';
 
 import SearchPage from "./search";
-import MenuPage from "./search";
+import MenuPage from "./menu";
 import LoginPage from "../../../../src/pages/auth/login";
 import logo from "../../../img/logonew.png";
 import { Link } from "react-router-dom";
