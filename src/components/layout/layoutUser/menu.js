@@ -26,7 +26,8 @@ const MenuPage = ({ closeModal }) => {
                 className={`w-[450px] h-screen pl-3 pr-8 py-3 ml-auto bg-gray-50 relative  ${!isMenu ? "slide-in" : "slide-out"} `}
             >
                 {/* nút tắt tìm kiếm */}
-                <button className="w-[35px] h-[35px] z-50 bg-red-200 flex ml-auto hover:text-white rounded-md"
+                <button
+                    className="w-[35px] h-[35px] z-50 bg-red-200 flex ml-auto hover:text-white rounded-md"
                     onClick={handleBackdropClick}
                 >
                     <span
