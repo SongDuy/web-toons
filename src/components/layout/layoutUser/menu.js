@@ -39,7 +39,6 @@ const MenuPage = ({ closeModal }) => {
 
                 </button>
 
-
             </div>
 
         </div>
