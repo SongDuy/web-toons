@@ -40,6 +40,7 @@ import Account from './pages/account/Account';
 import Comment from './pages/account/Comment';
 import Subscribed from './pages/account/Subscribed';
 import Creators from './pages/account/Creators';
+import Delete from './pages/account/Delete';
 import TermsOfUse from './pages/Policys/TermsOfUse';
 import PrivacyPolicy from './pages/Policys/PrivacyPolicy';
 import CommunityPolicy from './pages/Policys/CommunityPolicy';
@@ -85,6 +86,7 @@ function App() {
           <Route path="/comment" element={<Comment />} />
           <Route path="/Subscribed" element={<Subscribed />} />
           <Route path="/Creators" element={<Creators />} />
+          <Route path="/account/delete" element={<Delete />} />
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/terms/privacyPolicy" element={<PrivacyPolicy />} />
           <Route path="/terms/canvasPolicy" element={<CommunityPolicy />} />
