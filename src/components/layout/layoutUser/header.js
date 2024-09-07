@@ -240,7 +240,7 @@ const HeaderPage = () => {
           <div className="z-10">
             <button
               className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
-              onClick={openLoginModal}
+              onClick={() => { openLoginModal(); handleCloseAccount(); }}
             >
               Publish
             </button>
@@ -252,7 +252,7 @@ const HeaderPage = () => {
 
             <button
               className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
-              onClick={openLoginModal}
+              onClick={() => { openLoginModal(); handleCloseAccount(); }}
             >
               Log In
             </button>
