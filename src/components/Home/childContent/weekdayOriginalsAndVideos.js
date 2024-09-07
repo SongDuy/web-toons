@@ -182,6 +182,8 @@ const WeekdayOriginalsAndVideosPage = () => {
 
                     {/* Chọn menu */}
                     <Popper
+                        className="w-[150px] rounded-lg flex items-center justify-center"
+
                         open={open}
                         anchorEl={anchorRef.current}
                         role={undefined}
