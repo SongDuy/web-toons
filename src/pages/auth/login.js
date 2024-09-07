@@ -121,7 +121,7 @@ const LoginPage = ({ closeModal }) => {
                         <hr class="flex-1 border-t border-gray-300" />
                     </div>
 
-                    <ul className="w-full h-full grid grid-cols-1 gap-y-5">
+                    <div className="w-full h-full grid grid-cols-1 gap-y-5">
 
                         <button onClick={() => { dispatch(handleGoogle()); dispatch(setIsLoginModal(false)) }}
                             className="w-full h-[50px] cursor-pointer px-5 py-2 bg-red-50 hover:bg-red-100 shadow-md flex items-center justify-center rounded">
@@ -134,7 +134,7 @@ const LoginPage = ({ closeModal }) => {
                             </span>
                         </button>
 
-                    </ul>
+                    </div>
                 </div>
 
             </div>

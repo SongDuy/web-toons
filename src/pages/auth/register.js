@@ -102,8 +102,8 @@ const RegisterPage = () => {
             <hr class="flex-1 border-t border-gray-300" />
           </div>
 
-          <ul className="w-full h-full grid grid-cols-1 gap-y-5">
-            <li className="w-full h-[50px] cursor-pointer px-5 py-2 bg-red-50 hover:bg-red-100 shadow-md flex items-center justify-center rounded">
+          <div className="w-full h-full grid grid-cols-1 gap-y-5">
+            <button className="w-full h-[50px] cursor-pointer px-5 py-2 bg-red-50 hover:bg-red-100 shadow-md flex items-center justify-center rounded">
               <span className="mr-auto">
                 <GoogleIcon />
               </span>
@@ -111,8 +111,8 @@ const RegisterPage = () => {
               <span className="mr-auto font-semibold">
                 Continue with Google
               </span>
-            </li>
-          </ul>
+            </button>
+          </div>
         </div>
       </div>
     </div>
