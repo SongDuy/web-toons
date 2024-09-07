@@ -233,221 +233,210 @@ const HeaderPage = () => {
       </div>
 
       {/* chức năng nút Publish và Login*/}
-      {!User ?
-        // Chưa đăng nhập tài khoản
-        <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
+      <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
+        {!User ?
+          // Chưa đăng nhập tài khoản
+          <div className="flex gap-3">
 
-          {/* Chức năng Publish */}
-          <div className="z-10">
-            <button
-              className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
-              onClick={() => { openLoginModal(); handleCloseAccount(); }}
-            >
-              Publish
-            </button>
-            {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+            {/* Chức năng Publish */}
+            < div className="z-10">
+              <button
+                className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
+                onClick={() => { openLoginModal(); handleCloseAccount(); }}
+              >
+                Publish
+              </button>
+              {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+            </div>
+
+            {/* Đăng nhập */}
+            <div className="flex items-center justify-center">
+
+              <button
+                className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
+                onClick={() => { openLoginModal(); handleCloseAccount(); }}
+              >
+                Log In
+              </button>
+
+              {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+            </div>
           </div>
+          :
+          // Đã đăng nhập tài khoản
+          <div className="flex gap-3">
+            
+            {/* Menu Publish */}
+            < div className="z-10">
+              <button
+                className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
+                ref={anchorRef}
+                id="composition-button"
+                aria-controls={open ? 'composition-menu' : undefined}
+                aria-expanded={open ? 'true' : undefined}
+                aria-haspopup="true"
+                onClick={handleToggle}
+              >
+                Publish
+              </button>
 
-          {/* Đăng nhập */}
-          <div className="flex items-center justify-center">
+              {/* Chọn menu */}
+              <Popper
+                open={open}
+                anchorEl={anchorRef.current}
+                role={undefined}
+                placement="bottom-start"
+                transition
+                disablePortal
+              >
+                {({ TransitionProps, placement }) => (
+                  <Grow
+                    {...TransitionProps}
+                    style={{
+                      transformOrigin:
+                        placement === 'bottom-start' ? 'left top' : 'left bottom',
+                    }}
+                  >
+                    <Paper>
+                      <ClickAwayListener onClickAway={handleClose}>
+                        <MenuList
+                          className="bg-gray-100 rounded-lg text-black font-semibold "
+                          autoFocusItem={open}
+                          id="composition-menu"
+                          aria-labelledby="composition-button"
+                          onKeyDown={handleListKeyDown}
+                        >
+                          <Link to={`/create/original`}>
+                            <MenuItem onClick={handleClose} className="flex gap-x-1">
+                              <PictureAsPdfOutlinedIcon />
+                              Original
+                            </MenuItem>
+                          </Link>
 
-            <button
-              className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
-              onClick={() => { openLoginModal(); handleCloseAccount(); }}
-            >
-              Log In
-            </button>
+                          <Link to={`/create/video`}>
+                            <MenuItem onClick={handleClose} className="flex gap-x-1">
+                              <VideoCallOutlinedIcon />
+                              Video
+                            </MenuItem>
+                          </Link>
+                        </MenuList>
+                      </ClickAwayListener>
+                    </Paper>
+                  </Grow>
+                )}
+              </Popper>
+            </div>
 
-            {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+            {/* Menu Account */}
+            <div className="flex items-center justify-center z-10">
+
+              <button
+                className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
+                ref={anchorAccountRef}
+                id="composition-button"
+                aria-controls={openAccount ? 'composition-menu' : undefined}
+                aria-expanded={openAccount ? 'true' : undefined}
+                aria-haspopup="true"
+                onClick={handleToggleAccount}
+              >
+                {auth?.currentUser.displayName}
+              </button>
+
+              {/* Chọn menu Account*/}
+              <Popper
+                className="w-[180px] rounded-lg flex items-center justify-center"
+                open={openAccount}
+                anchorEl={anchorAccountRef.current}
+                role={undefined}
+                placement="bottom-start"
+                transition
+                disablePortal
+              >
+                {({ TransitionProps, placement }) => (
+                  <Grow
+                    {...TransitionProps}
+                    style={{
+                      transformOrigin:
+                        placement === 'bottom-start' ? 'left top' : 'left bottom',
+                    }}
+                  >
+                    <Paper>
+                      <ClickAwayListener onClickAway={handleCloseAccount}>
+                        <MenuList className="bg-gray-100 rounded-lg text-black font-semibold "
+                          autoFocusItem={openAccount}
+                          id="composition-menu"
+                          aria-labelledby="composition-button"
+                          onKeyDown={handleListAccountKeyDown}
+                        >
+                          <Link to={``}>
+                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                              <GroupAddIcon />
+                              Subscribed
+                            </MenuItem>
+                          </Link>
+
+                          <Link to={``}>
+                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                              <PieChartIcon />
+                              Dashboard
+                            </MenuItem>
+                          </Link>
+
+                          <Link to={``}>
+                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                              <CommentIcon />
+                              Comments
+                            </MenuItem>
+                          </Link>
+
+                          <Link to={``}>
+                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                              <EditNoteIcon />
+                              Creators
+                            </MenuItem>
+                          </Link>
+
+                          <Link to={``}>
+                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                              <AssignmentIndIcon />
+                              My Profile Page
+                            </MenuItem>
+                          </Link>
+
+                          <Link to={``}>
+                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                              <AccountCircleIcon />
+                              Account
+                            </MenuItem>
+                          </Link>
+
+                          <MenuItem onClick={() => dispatch(logout())} className="flex gap-x-3">
+                            <LogoutIcon />
+                            Log out
+                          </MenuItem>
+
+                        </MenuList>
+                      </ClickAwayListener>
+                    </Paper>
+                  </Grow>
+                )}
+              </Popper>
+            </div>
           </div>
+        }
 
-          {/* Chức năng tìm kiếm */}
-          <div>
-            <button
-              className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full text-gray-500 flex items-center justify-center"
-              onClick={openSearchModal}
-            >
-              <SearchIcon sx={{ fontSize: 18 }} />
-            </button>
-            {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
-          </div>
+        {/* Chức năng tìm kiếm */}
+        <div>
+          <button
+            className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full text-gray-500 flex items-center justify-center"
+            onClick={openSearchModal}
+          >
+            <SearchIcon sx={{ fontSize: 18 }} />
+          </button>
+          {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
         </div>
-        :
-        // Đã đăng nhập tài khoản
-        <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
-
-          {/* Menu Publish */}
-          <div className="z-10">
-            <button
-              className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
-              ref={anchorRef}
-              id="composition-button"
-              aria-controls={open ? 'composition-menu' : undefined}
-              aria-expanded={open ? 'true' : undefined}
-              aria-haspopup="true"
-              onClick={handleToggle}
-            >
-              Publish
-            </button>
-
-            {/* Chọn menu */}
-            <Popper
-              open={open}
-              anchorEl={anchorRef.current}
-              role={undefined}
-              placement="bottom-start"
-              transition
-              disablePortal
-            >
-              {({ TransitionProps, placement }) => (
-                <Grow
-                  {...TransitionProps}
-                  style={{
-                    transformOrigin:
-                      placement === 'bottom-start' ? 'left top' : 'left bottom',
-                  }}
-                >
-                  <Paper>
-                    <ClickAwayListener onClickAway={handleClose}>
-                      <MenuList
-                        className="bg-gray-100 rounded-lg text-black font-semibold "
-                        autoFocusItem={open}
-                        id="composition-menu"
-                        aria-labelledby="composition-button"
-                        onKeyDown={handleListKeyDown}
-                      >
-                        <Link to={`/create/original`}>
-                          <MenuItem onClick={handleClose} className="flex gap-x-1">
-                            <PictureAsPdfOutlinedIcon />
-                            Original
-                          </MenuItem>
-                        </Link>
-
-                        <Link to={`/create/video`}>
-                          <MenuItem onClick={handleClose} className="flex gap-x-1">
-                            <VideoCallOutlinedIcon />
-                            Video
-                          </MenuItem>
-                        </Link>
-                      </MenuList>
-                    </ClickAwayListener>
-                  </Paper>
-                </Grow>
-              )}
-            </Popper>
-          </div>
-
-          {/* Menu Account */}
-          <div className="flex items-center justify-center z-10">
-
-            <button
-              className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
-              ref={anchorAccountRef}
-              id="composition-button"
-              aria-controls={openAccount ? 'composition-menu' : undefined}
-              aria-expanded={openAccount ? 'true' : undefined}
-              aria-haspopup="true"
-              onClick={handleToggleAccount}
-            >
-              {auth?.currentUser.displayName}
-            </button>
-
-            {/* Chọn menu Account*/}
-            <Popper
-              className="w-[180px] rounded-lg flex items-center justify-center"
-              open={openAccount}
-              anchorEl={anchorAccountRef.current}
-              role={undefined}
-              placement="bottom-start"
-              transition
-              disablePortal
-            >
-              {({ TransitionProps, placement }) => (
-                <Grow
-                  {...TransitionProps}
-                  style={{
-                    transformOrigin:
-                      placement === 'bottom-start' ? 'left top' : 'left bottom',
-                  }}
-                >
-                  <Paper>
-                    <ClickAwayListener onClickAway={handleCloseAccount}>
-                      <MenuList className="bg-gray-100 rounded-lg text-black font-semibold "
-                        autoFocusItem={openAccount}
-                        id="composition-menu"
-                        aria-labelledby="composition-button"
-                        onKeyDown={handleListAccountKeyDown}
-                      >
-                        <Link to={``}>
-                          <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                            <GroupAddIcon />
-                            Subscribed
-                          </MenuItem>
-                        </Link>
-
-                        <Link to={``}>
-                          <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                            <PieChartIcon />
-                            Dashboard
-                          </MenuItem>
-                        </Link>
-
-                        <Link to={``}>
-                          <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                            <CommentIcon />
-                            Comments
-                          </MenuItem>
-                        </Link>
-
-                        <Link to={``}>
-                          <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                            <EditNoteIcon />
-                            Creators
-                          </MenuItem>
-                        </Link>
-
-                        <Link to={``}>
-                          <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                            <AssignmentIndIcon />
-                            My Profile Page
-                          </MenuItem>
-                        </Link>
-
-                        <Link to={``}>
-                          <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                            <AccountCircleIcon />
-                            Account
-                          </MenuItem>
-                        </Link>
-
-                        <MenuItem onClick={() => dispatch(logout())} className="flex gap-x-3">
-                          <LogoutIcon />
-                          Log out
-                        </MenuItem>
-
-                      </MenuList>
-                    </ClickAwayListener>
-                  </Paper>
-                </Grow>
-              )}
-            </Popper>
-          </div>
-
-          {/* Chức năng tìm kiếm */}
-          <div>
-            <button
-              className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full text-gray-500 flex items-center justify-center"
-              onClick={openSearchModal}
-            >
-              <SearchIcon sx={{ fontSize: 18 }} />
-            </button>
-            {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
-          </div>
-
-        </div>
-      }
-      
-    </div>
+      </div >
+    </div >
   );
 };
 
