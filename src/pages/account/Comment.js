@@ -1,63 +1,114 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import Nav from "../../components/Account/nav";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import NotfoundAcount from "../../components/Account/NotfoundAcount";
+import { useDispatch, useSelector } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { idusercomment } from "../../common/store/Comment";
+import CommentFireBase from "../../common/services/Comment.services";
 const Comment = () => {
-  const [Comment, setComment] = useState([]);
+  const gcomment = useSelector(state => state.Comment.commentid);
+    const Account = useSelector(state => state.Account.Account);
+
+    //Xem các tập tiếp theo trong series
+    const dispatch = useDispatch();
   useEffect(() => {
-    setComment([
-      {
-        id:1,
-        Name: "The Lone Necromancer (S2) Ep. 125 - Foreign Powers Vs. The Korean Server (2)",
-        Comment: "Hello",
-        Create: "1 hours ago",
-      },
-    ]);
-  }, []);
+    const getcomment=async ()=>{
+      try {
+        if (Account && Account.uid) { 
+          const comments = await dispatch(idusercomment(Account.uid));
+          unwrapResult(comments);
+        }
+      } catch (error) {
+        
+      }
+    }
+    getcomment()
+  }, [Account,dispatch]);
+  const formatTimeDifference = (create_time) => {
+    const time = new Date();
+    const itemTime = new Date(create_time);
+
+    const timeDiff = time - itemTime;
+
+    const seconds = Math.floor(timeDiff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const months = Math.floor(days / 30);
+    const years = Math.floor(days / 365);
+
+    if (years >= 1) {
+      return `${years} year${years > 1 ? 's' : ''} ago`;
+    } else if (months >= 1) {
+      return `${months} month${months > 1 ? 's' : ''} ago`;
+    } else if (days >= 1) {
+      return `${days} day${days > 1 ? 's' : ''} ago`;
+    } else if (hours >= 1) {
+      return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+    } else if (minutes >= 1) {
+      return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+    } else {
+      return 'Just now';
+    }
+};
+const hanledelete= async (id)=>{
+    try {
+      let result = window.confirm("Do you want to delete this comment?");
+      if(result){
+      await CommentFireBase.Delete(id)
+      const comments = await dispatch(idusercomment(Account.uid));
+      unwrapResult(comments);
+      }
+    } catch (error) {
+      
+    }
+}
   return (
     <div>
       <div className="w-full h-full bg-gray-100">
         <Nav />
 
-        {Comment.length === 0 ? (
+        {gcomment?.Comment?.length === 0 ? (
           <NotfoundAcount page="comments." titlepage="You haven't posted any comments yet." />
         ) : (
           <div className="w-full h-full bg-gray-100">
             <div className="py-[30px] flex-row justify-center items-center container mx-auto my-auto">
               <div className="w-full h-full flex-row   bg-white border border-white p-5">
-                {Comment.map((item) => {
+                {gcomment.Comment?.map((item) => {
                   return (
                     <div className="flex-row ml-5 my-5 w-full h-full border-b border-gray-300 p-5" key={item.id}>
                       <div>
                         <p className="font-semibold text-lg text-black">
-                          {item.Name}
+                          {item.title}
                         </p>
                       </div>
                       <div>
                         <p className="font-semibold text-base text-gray-400">
-                          {item.Comment}
+                          {item.comment}
                         </p>
                       </div>
                       <div>
                         <p className="font-semibold text-sm text-gray-400">
-                          {item.Create}
+                          {formatTimeDifference(item.createTime)}
                         </p>
                       </div>
                       <div className="flex justify-end items-end w-full mr-[5%]">
                         <button className="border border-gray-300 py-1 px-2 ">
                           {" "}
-                          <ThumbUpIcon sx={{ fontSize: 20, marginRight: 1 }} />0
+                          <ThumbUpIcon sx={{ fontSize: 20, marginRight: 1 }} />{item.like}
+
                         </button>
                         <button className="border border-gray-300 py-1 px-2  mx-2">
                           {" "}
                           <ThumbDownIcon
                             sx={{ fontSize: 20, marginRight: 1 }}
                           />
-                          0
+                          {item.dislike}
                         </button>
-                        <button className="border border-gray-300 py-1 px-4 ">
+                        <button className="border border-gray-300 py-1 px-4 " onClick={()=>hanledelete(item.idcomment)}>
                           {" "}
                           <DeleteIcon sx={{ fontSize: 20 }} />
                         </button>
