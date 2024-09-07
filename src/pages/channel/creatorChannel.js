@@ -289,7 +289,7 @@ const CreatorChannelPage = () => {
                                             </button>
 
                                             <button
-                                                onClick={() => handleToggleReply(item.idcomment)}
+                                                onClick={() => handleToggleReply(item.id)}
                                                 className="px-2 py-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
                                             >
                                                 <CommentIcon className="text-black" />
@@ -300,7 +300,7 @@ const CreatorChannelPage = () => {
                                     </div>
 
                                     {/* Phản hồi bình luận */}
-                                    {replyCommentId === item.idcomment && (
+                                    {replyCommentId === item.id && (
                                         <div className="w-full px-5 pt-5">
 
                                             {/* Nhập bình luận phản hồi */}
