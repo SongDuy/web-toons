@@ -352,7 +352,7 @@ const HeaderPage = () => {
               {auth?.currentUser.displayName}
             </button>
 
-            {/* Chọn menu */}
+            {/* Chọn menu Account*/}
             <Popper
               className="w-[180px] rounded-lg flex items-center justify-center"
               open={openAccount}
