@@ -54,7 +54,7 @@ const LoginPage = ({ closeModal }) => {
     //       });
     // }, []);
     return (
-        <div className="w-screen h-screen bg-black bg-opacity-50 flex items-center justify-center fixed inset-0 z-50" onClick={handleBackdropClick}> {/* backdrop-blur-sm */}
+        <div className="w-screen h-screen bg-black bg-opacity-30 flex items-center justify-center fixed inset-0 z-50" onClick={handleBackdropClick}> {/* backdrop-blur-sm */}
 
             <div className="w-[400px] h-auto px-5 pt-5 pb-8 bg-white shadow rounded-lg">
                 <div>

@@ -233,71 +233,21 @@ const HeaderPage = () => {
       </div>
 
       {/* chức năng */}
-      <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
+      {!User ?
+        <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
 
-        <div className="z-10">
+          {/* Chức năng Publish */}
+          <div className="z-10">
+            <button
+              className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
+              onClick={openLoginModal}
+            >
+              Publish
+            </button>
+            {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+          </div>
 
-          <button
-            className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
-            ref={anchorRef}
-            id="composition-button"
-            aria-controls={open ? 'composition-menu' : undefined}
-            aria-expanded={open ? 'true' : undefined}
-            aria-haspopup="true"
-            onClick={handleToggle}
-          >
-            Publish
-          </button>
-
-          {/* Chọn menu */}
-          <Popper
-            open={open}
-            anchorEl={anchorRef.current}
-            role={undefined}
-            placement="bottom-start"
-            transition
-            disablePortal
-          >
-            {({ TransitionProps, placement }) => (
-              <Grow
-                {...TransitionProps}
-                style={{
-                  transformOrigin:
-                    placement === 'bottom-start' ? 'left top' : 'left bottom',
-                }}
-              >
-                <Paper>
-                  <ClickAwayListener onClickAway={handleClose}>
-                    <MenuList
-                      className="bg-gray-100 rounded-lg text-black font-semibold "
-                      autoFocusItem={open}
-                      id="composition-menu"
-                      aria-labelledby="composition-button"
-                      onKeyDown={handleListKeyDown}
-                    >
-                      <Link to={`/create/original`}>
-                        <MenuItem onClick={handleClose} className="flex gap-x-1">
-                          <PictureAsPdfOutlinedIcon />
-                          Original
-                        </MenuItem>
-                      </Link>
-
-                      <Link to={`/create/video`}>
-                        <MenuItem onClick={handleClose} className="flex gap-x-1">
-                          <VideoCallOutlinedIcon />
-                          Video
-                        </MenuItem>
-                      </Link>
-                    </MenuList>
-                  </ClickAwayListener>
-                </Paper>
-              </Grow>
-            )}
-          </Popper>
-        </div>
-
-        {/* Đăng nhập */}
-        {!User ?
+          {/* Đăng nhập */}
           <div className="flex items-center justify-center">
 
             <button
@@ -309,7 +259,84 @@ const HeaderPage = () => {
 
             {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
           </div>
-          :
+
+          {/* Chức năng tìm kiếm */}
+          <div>
+            <button
+              className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full text-gray-500 flex items-center justify-center"
+              onClick={openSearchModal}
+            >
+              <SearchIcon sx={{ fontSize: 18 }} />
+            </button>
+            {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
+          </div>
+
+        </div>
+        :
+        <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
+
+          {/* Menu Publish */}
+          <div className="z-10">
+            <button
+              className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
+              ref={anchorRef}
+              id="composition-button"
+              aria-controls={open ? 'composition-menu' : undefined}
+              aria-expanded={open ? 'true' : undefined}
+              aria-haspopup="true"
+              onClick={handleToggle}
+            >
+              Publish
+            </button>
+
+            {/* Chọn menu */}
+            <Popper
+              open={open}
+              anchorEl={anchorRef.current}
+              role={undefined}
+              placement="bottom-start"
+              transition
+              disablePortal
+            >
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  style={{
+                    transformOrigin:
+                      placement === 'bottom-start' ? 'left top' : 'left bottom',
+                  }}
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={handleClose}>
+                      <MenuList
+                        className="bg-gray-100 rounded-lg text-black font-semibold "
+                        autoFocusItem={open}
+                        id="composition-menu"
+                        aria-labelledby="composition-button"
+                        onKeyDown={handleListKeyDown}
+                      >
+                        <Link to={`/create/original`}>
+                          <MenuItem onClick={handleClose} className="flex gap-x-1">
+                            <PictureAsPdfOutlinedIcon />
+                            Original
+                          </MenuItem>
+                        </Link>
+
+                        <Link to={`/create/video`}>
+                          <MenuItem onClick={handleClose} className="flex gap-x-1">
+                            <VideoCallOutlinedIcon />
+                            Video
+                          </MenuItem>
+                        </Link>
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
+          </div>
+
+          {/* Menu Account */}
           <div className="flex items-center justify-center z-10">
 
             <button
@@ -404,19 +431,20 @@ const HeaderPage = () => {
               )}
             </Popper>
           </div>
-        }
 
-        <div>
-          <button
-            className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full text-gray-500 flex items-center justify-center"
-            onClick={openSearchModal}
-          >
-            <SearchIcon sx={{ fontSize: 18 }} />
-          </button>
-          {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
+          {/* Chức năng tìm kiếm */}
+          <div>
+            <button
+              className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full text-gray-500 flex items-center justify-center"
+              onClick={openSearchModal}
+            >
+              <SearchIcon sx={{ fontSize: 18 }} />
+            </button>
+            {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
+          </div>
+
         </div>
-
-      </div>
+      }
     </div>
   );
 };
