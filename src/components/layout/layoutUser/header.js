@@ -10,7 +10,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import LogoutIcon from '@mui/icons-material/Logout';
-import PersonIcon from '@mui/icons-material/Person';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import PieChartIcon from '@mui/icons-material/PieChart';
 import CommentIcon from '@mui/icons-material/Comment';
 import EditNoteIcon from '@mui/icons-material/EditNote';
@@ -311,12 +311,7 @@ const HeaderPage = () => {
           </div>
           :
           <div className="flex items-center justify-center z-10">
-            {/* <button
-              className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
-              onClick={() => dispatch(logout())}
-            >
-              {auth?.currentUser.displayName}
-            </button> */}
+
             <button
               className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
               ref={anchorAccountRef}
@@ -357,7 +352,7 @@ const HeaderPage = () => {
                       >
                         <Link to={``}>
                           <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                            <PersonIcon />
+                            <GroupAddIcon />
                             Subscribed
                           </MenuItem>
                         </Link>
