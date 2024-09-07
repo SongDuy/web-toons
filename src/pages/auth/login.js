@@ -115,10 +115,10 @@ const LoginPage = ({ closeModal }) => {
                         </div>
                     </div >
 
-                    <div class="w-full my-5 flex items-center">
-                        <hr class="flex-1 border-t border-gray-300" />
-                        <span class="px-4">OR</span>
-                        <hr class="flex-1 border-t border-gray-300" />
+                    <div className="w-full my-5 flex items-center">
+                        <hr className="flex-1 border-t border-gray-300" />
+                        <span className="px-4">OR</span>
+                        <hr className="flex-1 border-t border-gray-300" />
                     </div>
 
                     <div className="w-full h-full grid grid-cols-1 gap-y-5">
