@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import StarIcon from '@mui/icons-material/Star';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import GroupAddSharpIcon from '@mui/icons-material/GroupAddSharp';
 import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import CheckIcon from '@mui/icons-material/Check';
 
 const dataSeries = [
     { id: 1, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 15", date: "jun 10, 2024", like: "23,789", number: "#15" },
@@ -37,12 +39,74 @@ const dataAlsoLike = [
 ];
 
 const VideoSeriesPage = () => {
+
+    // Nhấn nút đăng ký
+    const [isSubscribe, setIsSubscribe] = useState(false);
+
     return (
         <div>
 
             <div className="w-full h-full bg-gradient-to-b from-white via-yellow-50 to-gray-100">
                 {/* Hiển thị ảnh nền */}
-                <div className="w-full h-[320px] relative flex items-center justify-center">
+
+                <div className="w-full flex items-center justify-center">
+                    <div className="w-[1200px] h-[320px] relative ">
+
+                        <img src="https://i.redd.it/0hwfsqufm3w41.jpg"
+                            className="object-cover w-full h-full rounded-t" alt="img"
+                        />
+
+                        {/* Hiện thị tiêu đề và tác giả truyện */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-[1200px] overflow-hidden">
+                                <span className="font-semibold text-xl text-black text-shadow-white flex items-center justify-center">
+                                    Action
+                                </span>
+
+                                <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.2] line-clamp-3 flex justify-center">
+                                    The Witcher
+                                </span>
+
+                                <Link to="/channel/creator">
+                                    <div class="w-full flex items-center justify-center gap-2">
+                                        <div className="w-[250px] px-2 rounded-md overflow-hidden flex items-center justify-center gap-2">
+                                            <span className="text-lg font-semibold text-yellow-500 hover:text-yellow-600 text-shadow-black line-clamp-1">
+                                                Lee Nakeum , seewater
+                                            </span>
+                                            <button className="w-[20px] h-[20px] bg-white rounded-full text-black flex items-center justify-center">
+                                                i
+                                            </button>
+                                        </div>
+                                    </div>
+                                </Link>
+
+                            </div>
+                        </div>
+
+                        {/* Nút đăng ký theo dõi */}
+                        <div className="absolute px-10 py-5 bottom-0 right-0 flex gap-2">
+                            {!isSubscribe ?
+                                <button
+                                    onClick={() => setIsSubscribe(true)}
+                                    className="text-white hover:text-yellow-500 bg-black bg-opacity-30 py-2 px-2 rounded-full flex gap-1 items-center justify-center"
+                                >
+                                    <AddCircleOutlineIcon />
+                                    Subscribe
+                                </button>
+                                :
+                                <button
+                                    onClick={() => setIsSubscribe(false)}
+                                    className="text-white hover:text-yellow-500 bg-black bg-opacity-30 py-2 px-2 rounded-full flex gap-1 items-center justify-center"
+                                >
+                                    <CheckIcon />
+                                </button>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+
+                {/* <div className="w-full h-[320px] relative flex items-center justify-center">
 
                     <img src="https://i.redd.it/0hwfsqufm3w41.jpg"
                         className="object-cover w-[1200px] h-full rounded-t" alt="img"
@@ -72,7 +136,7 @@ const VideoSeriesPage = () => {
                         </div>
                     </div>
 
-                </div>
+                </div> */}
 
                 <div className="w-full h-full flex items-center justify-center">
                     <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-6 pb-10 rounded-b">
