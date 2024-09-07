@@ -402,6 +402,7 @@ const DisplayVideoPage = () => {
                                 </ul>
                             </div>
 
+                            {/* Hiển thị nội dung video theo thể loại*/}
                             <div className="w-full h-full mt-8">
                                 <div className="flex items-center pb-2">
                                     <span className="px-2 font-semibold text-lg hover:text-green-500 cursor-pointer">

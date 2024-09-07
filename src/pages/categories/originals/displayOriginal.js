@@ -382,7 +382,7 @@ const DisplayOriginalPage = () => {
                                                     {/* Phản hồi bình luận */}
                                                     {replyCommentId === item.idcomment && (
                                                         <div className="w-full px-5">
-                                                            
+
                                                             {/* Nhập bình luận phản hồi */}
                                                             <div className="w-full h-full">
 
@@ -468,6 +468,7 @@ const DisplayOriginalPage = () => {
                                 </ul>
                             </div>
 
+                            {/* Hiển thị nội dung truyện theo thể loại*/}
                             <div className="w-full h-full mt-8">
                                 <div className="flex items-center pb-2">
                                     <span className="px-2 font-semibold text-lg hover:text-green-500 cursor-pointer">
