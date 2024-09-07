@@ -125,7 +125,7 @@ const OriginalsPage = () => {
                                     {filteredData?.map(item => (
                                         <Link to={`/originals/original/series`} key={item.id}>
                                             <li
-                                                
+
                                                 onMouseEnter={() => setHoveredOngoingItem(item.id)}
                                                 onMouseLeave={() => setHoveredOngoingItem(null)}
                                                 className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
@@ -133,7 +133,7 @@ const OriginalsPage = () => {
 
                                                 <div className="w-full h-full" >
                                                     <img
-                                                       src={item.squareThumbnail}
+                                                        src={item.squareThumbnail}
                                                         alt="img"
                                                         className="object-fill w-full h-full rounded-md"
                                                     />
@@ -142,17 +142,6 @@ const OriginalsPage = () => {
                                                         <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                             <AutoStoriesIcon sx={{ fontSize: 40 }} />
                                                         </div>
-
-                                                        // <div class="absolute inset-0  flex items-center justify-center text-yellow-500 z-10">
-                                                        //     <img
-                                                        //         src={item.img}
-                                                        //         alt="img"
-                                                        //         class="object-fill w-full h-full rounded-md"
-                                                        //     />
-                                                        //     <div className="absolute w-full h-full flex items-center justify-center border-4 border-yellow-500 rounded-md">
-                                                        //         <AutoStoriesIcon sx={{ fontSize: 40 }} />
-                                                        //     </div>
-                                                        // </div>
                                                     )}
                                                 </div>
 
@@ -176,7 +165,7 @@ const OriginalsPage = () => {
                                                             <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
                                                                 Up
                                                             </span>
-                                                            
+
                                                             {/* <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
                                                                 New
                                                             </span> */}
@@ -215,9 +204,9 @@ const OriginalsPage = () => {
 
                                     {/* khung nội dung */}
                                     {comic.comic?.map(item => (
-                                        <Link to={`/originals/original/series`}  key={item.id}>
+                                        <Link to={`/originals/original/series`} key={item.id}>
                                             <li
-                                               
+
                                                 onMouseEnter={() => setHoveredCompletedItem(item.id)}
                                                 onMouseLeave={() => setHoveredCompletedItem(null)}
                                                 className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
@@ -234,17 +223,6 @@ const OriginalsPage = () => {
                                                         <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                             <AutoStoriesIcon sx={{ fontSize: 40 }} />
                                                         </div>
-
-                                                        // <div class="absolute inset-0  flex items-center justify-center text-yellow-500 z-10">
-                                                        //     <img
-                                                        //         src={item.img}
-                                                        //         alt="img"
-                                                        //         class="object-fill w-full h-full rounded-md"
-                                                        //     />
-                                                        //     <div className="absolute w-full h-full flex items-center justify-center border-4 border-yellow-500 rounded-md">
-                                                        //         <AutoStoriesIcon sx={{ fontSize: 40 }} />
-                                                        //     </div>
-                                                        // </div>
                                                     )}
                                                 </div>
 
