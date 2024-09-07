@@ -196,10 +196,7 @@ const DisplayOriginalPage = () => {
                             alt="img"
                         />
 
-
                     </div>
-
-
                 </div>
 
                 {/* Hiển thị yêu thích, theo dõi */}
