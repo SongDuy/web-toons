@@ -435,7 +435,7 @@ const CreatorChannelPage = () => {
                                                                                     placeholder="Leave a reply"
                                                                                     value=""
                                                                                     className="w-full h-[160px] rounded-md px-3 py-3 border-2"
-                                                                                    onChange=""
+                                                                                    onChange={""}
                                                                                 />
                                                                                 <button className="px-3 py-2 ml-auto bg-black hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                                                                     <SendRoundedIcon className="transform rotate-200" />
