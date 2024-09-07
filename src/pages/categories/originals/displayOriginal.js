@@ -90,6 +90,13 @@ const DisplayOriginalPage = () => {
         dispatch(setIsLoginModal(false));
     };
 
+    // Hiện thị phản hồi của bình luận
+    const [replyCommentId, setReplyCommentId] = useState(null);
+
+    const handleToggleReply = (commentId) => {
+        setReplyCommentId(commentId === replyCommentId ? null : commentId);
+    };
+
     //new
     const handleComment = async () => {
         try {
@@ -125,6 +132,7 @@ const DisplayOriginalPage = () => {
 
     }
     const handledislike = (id) => { }
+
     return (
         <div>
             <div className="w-full h-full bg-white">
@@ -324,52 +332,78 @@ const DisplayOriginalPage = () => {
                                     <div className="w-full py-3">
                                         <ul>
                                             {gcomment?.Comment?.map(item => (
-                                                <li
-                                                    className="w-full h-[200px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2"
-                                                    key={item.idcomment}
-                                                >
-                                                    <div className="w-full h-full">
+                                                <li key={item.idcomment}>
+                                                    <div
+                                                        className="w-full h-[200px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2"
+                                                    >
+                                                        <div className="w-full h-full">
 
-                                                        {/* Hiển thị tên user và ngày đăng bình luận */}
-                                                        <div className="w-full py-1 flex overflow-hidden">
-                                                            <span className="max-w-[500px] font-semibold line-clamp-1">
-                                                                {item.nameUser}
-                                                            </span>
-                                                            <span className="text-gray-400 mx-2 line-clamp-1">
-                                                                {monthNames[new Date(item.createTime).getMonth()]} {new Date(item.createTime).getDate()},
-                                                                {new Date(item.createTime)?.getFullYear()}
-                                                            </span>
+                                                            {/* Hiển thị tên user và ngày đăng bình luận */}
+                                                            <div className="w-full py-1 flex overflow-hidden">
+                                                                <span className="max-w-[500px] font-semibold line-clamp-1">
+                                                                    {item.nameUser}
+                                                                </span>
+                                                                <span className="text-gray-400 mx-2 line-clamp-1">
+                                                                    {monthNames[new Date(item.createTime).getMonth()]} {new Date(item.createTime).getDate()},
+                                                                    {new Date(item.createTime)?.getFullYear()}
+                                                                </span>
+                                                            </div>
+
+                                                            {/* Hiển thị nội dung bình luận */}
+                                                            <div className="h-[120px] px-2 custom-scrollbar">
+                                                                <span className="">
+                                                                    {item.comment}
+                                                                </span>
+                                                            </div>
+
+                                                            {/* Nút bình luận, thích, không thích */}
+                                                            <div className="w-full flex gap-2 py-1">
+                                                                <div>
+                                                                    <button
+                                                                        onClick={() => handleToggleReply(item.idcomment)}
+                                                                        className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center"
+                                                                    >
+                                                                        Replies {item.replies}
+                                                                    </button>
+                                                                </div>
+
+                                                                <button className="px-2 py-1  ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center" onClick={() => handlelike(item.id)}>
+                                                                    <ThumbUpIcon className="text-gray-400" />
+                                                                    {item.like}
+                                                                </button>
+                                                                <button className="px-2 py-1  border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center" onClick={() => handledislike(item.id)}>
+                                                                    <ThumbDownIcon className="text-gray-400" />
+                                                                    {item.dislike}
+                                                                </button>
+                                                            </div>
                                                         </div>
-
-                                                        {/* Hiển thị nội dung bình luận */}
-                                                        <div className="h-[120px] px-2 custom-scrollbar">
-                                                            <span className="">
-                                                                {item.comment}
-                                                            </span>
-                                                        </div>
-
-                                                        {/* Nút bình luận, thích, không thích */}
-                                                        <div className="w-full flex gap-2 py-1">
-                                                            <button className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center">
-                                                                Replies {item.replies}
-                                                            </button>
-                                                            <button className="px-2 py-1  ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center" onClick={() => handlelike(item.id)}>
-                                                                <ThumbUpIcon className="text-gray-400" />
-                                                                {item.like}
-                                                            </button>
-                                                            <button className="px-2 py-1  border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center" onClick={() => handledislike(item.id)}>
-                                                                <ThumbDownIcon className="text-gray-400" />
-                                                                {item.dislike}
-                                                            </button>
-                                                        </div>
-
                                                     </div>
+
+                                                    {/* Phản hồi bình luận */}
+                                                    <div className="w-full px-5">
+                                                        {replyCommentId === item.idcomment && (
+                                                            <div className="w-full h-full">
+
+                                                                {/* Reply input field */}
+                                                                kkk kk kk k k k k k k  kk k k k k k k     kk  k kk k k k k  k k k k k k k k k k k k k k k k kkkkkk k k  k k k k k k k k k k k k k k k k
+                                                            </div>
+                                                        )}
+
+                                                        {item.replies > 0 && (
+                                                            <div className="w-full h-full">
+                                                                {/* Display existing replies here */}
+                                                                <ul>
+                                                                    <li>
+
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                    
                                                 </li>
                                             ))}
-
-
                                         </ul>
-
                                     </div>
 
                                 </div>
@@ -392,8 +426,8 @@ const DisplayOriginalPage = () => {
                                     {dataPopular.map(item => (
                                         <Link to={`/originals/original/series`}>
                                             <li
-                                                className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                                 key={item.id}
+                                                className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                             >
                                                 <div className="w-full h-full flex items-center">
                                                     <div className="w-[80px] h-[80px] flex">
@@ -450,8 +484,9 @@ const DisplayOriginalPage = () => {
                                     {dataPopular.map(item => (
                                         <Link to={`/originals/original/series`}>
                                             <li
-                                                className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                                 key={item.id}
+                                                className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
+
                                             >
                                                 <div className="w-full h-full flex items-center">
                                                     <div className="w-[80px] h-[80px] flex">

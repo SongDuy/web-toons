@@ -73,6 +73,12 @@ const DisplayVideoPage = () => {
     const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
     const currentItems = dataFavorite.slice(startIndex, endIndex);
 
+    // Hiện thị phản hồi của bình luận
+    const [replyCommentId, setReplyCommentId] = useState(null);
+
+    const handleToggleReply = (commentId) => {
+        setReplyCommentId(commentId === replyCommentId ? null : commentId);
+    };
     return (
         <div>
             <div className="w-full h-full bg-white">
@@ -257,48 +263,76 @@ const DisplayVideoPage = () => {
                                     <div className="w-full py-3">
                                         <ul>
                                             {dataComment.map(item => (
-                                                <li
-                                                    className="w-full h-[200px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2"
-                                                    key={item.id}
-                                                >
-                                                    <div className="w-full h-full">
+                                                <li key={item.id}>
+                                                    <div
+                                                        className="w-full h-[200px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2"
+                                                    >
+                                                        <div className="w-full h-full">
 
-                                                        {/* Hiển thị tên user và ngày đăng bình luận */}
-                                                        <div className="w-full py-1 flex overflow-hidden">
-                                                            <span className="max-w-[500px] font-semibold line-clamp-1">
-                                                                {item.nameUser}
-                                                            </span>
-                                                            <span className="text-gray-400 mx-2 line-clamp-1">
-                                                                {item.date}
-                                                            </span>
+                                                            {/* Hiển thị tên user và ngày đăng bình luận */}
+                                                            <div className="w-full py-1 flex overflow-hidden">
+                                                                <span className="max-w-[500px] font-semibold line-clamp-1">
+                                                                    {item.nameUser}
+                                                                </span>
+                                                                <span className="text-gray-400 mx-2 line-clamp-1">
+                                                                    {item.date}
+                                                                </span>
+                                                            </div>
+
+                                                            {/* Hiển thị nội dung bình luận */}
+                                                            <div className="h-[120px] px-2 custom-scrollbar">
+                                                                <span className="w-full">
+                                                                    {item.content}
+                                                                </span>
+                                                            </div>
+
+                                                            {/* Nút bình luận, thích, không thích */}
+                                                            <div className="w-full flex gap-2 py-1">
+
+                                                                <div>
+                                                                    <button
+                                                                        onClick={() => handleToggleReply(item.idcomment)}
+                                                                        className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center"
+                                                                    >
+                                                                        Replies {item.replies}
+                                                                    </button>
+                                                                </div>
+                                                                <button className="px-2 py-1 px-1 ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center">
+                                                                    <ThumbUpIcon className="text-gray-400" />
+                                                                    226
+                                                                </button>
+                                                                <button className="px-2 py-1 px-1 border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center">
+                                                                    <ThumbDownIcon className="text-gray-400" />
+                                                                    0
+                                                                </button>
+                                                            </div>
+
                                                         </div>
+                                                    </div>
 
-                                                        {/* Hiển thị nội dung bình luận */}
-                                                        <div className="h-[120px] px-2 custom-scrollbar">
-                                                            <span className="w-full">
-                                                                {item.content}
-                                                            </span>
-                                                        </div>
+                                                    {/* Phản hồi bình luận */}
+                                                    <div className="w-full px-5">
+                                                        {replyCommentId === item.idcomment && (
+                                                            <div className="w-full h-full">
 
-                                                        {/* Nút bình luận, thích, không thích */}
-                                                        <div className="w-full flex gap-2 py-1">
-                                                            <button className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center">
-                                                                Replies {item.replies}
-                                                            </button>
-                                                            <button className="px-2 py-1 px-1 ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center">
-                                                                <ThumbUpIcon className="text-gray-400" />
-                                                                226
-                                                            </button>
-                                                            <button className="px-2 py-1 px-1 border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center">
-                                                                <ThumbDownIcon className="text-gray-400" />
-                                                                0
-                                                            </button>
-                                                        </div>
+                                                                {/* Reply input field */}
+                                                                kkk kk kk k k k k k k  kk k k k k k k     kk  k kk k k k k  k k k k k k k k k k k k k k k k kkkkkk k k  k k k k k k k k k k k k k k k k
+                                                            </div>
+                                                        )}
 
+                                                        {item.replies > 0 && (
+                                                            <div className="w-full h-full">
+                                                                {/* Display existing replies here */}
+                                                                <ul>
+                                                                    <li>
+
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        )}
                                                     </div>
                                                 </li>
                                             ))}
-
 
                                         </ul>
 
