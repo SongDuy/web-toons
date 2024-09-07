@@ -22,6 +22,7 @@ import CreatorChannelPage from './pages/channel/creatorChannel'
 import RegisterPage from './pages/auth/register';
 import ForgotPasswordPage from './pages/auth/forgotPassword';
 
+import AdminLoginPage from './pages/admin/login';
 import AdminPage from './pages/admin/admin';
 import AdminDashboardPage from './pages/admin/childAdmin/adminDashboard';
 import AdminBannerPage from './pages/admin/childAdmin/adminBanner';
@@ -99,6 +100,9 @@ function App() {
         {/* Trang hiển thị truyện và video */}
         <Route path="/originals/original/series/display" element={<DisplayOriginalPage />} />
         <Route path="/videos/video/series/display" element={<DisplayVideoPage />} />
+
+        {/* Đăng nhập Admin */}
+        <Route path="/admin/login" element={<AdminLoginPage />} />
 
         {/* Trang hiển thị Admin */}
         <Route path="/admin" element={<AdminPage />}>
