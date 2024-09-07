@@ -117,10 +117,12 @@ const NewTrendingOriginalsPage = () => {
 
                             {/* khung nội dung */}
                             {dataPopular.map(item => (
-                                <Link to={`/originals/original/series`}>
+                                <Link
+                                    to={`/originals/original/series`}
+                                    key={item.id}
+                                >
                                     <li
                                         className="w-full h-[90px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
-                                        key={item.id}
                                     >
                                         <div className="w-full h-full flex items-center">
                                             <div className="w-[80px] h-[80px]">
@@ -130,7 +132,7 @@ const NewTrendingOriginalsPage = () => {
                                                     className="object-fill w-full h-full rounded-md"
                                                 />
                                             </div>
-                                            <div className="w-[30px] h-[30px] mx-3 bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
+                                            <div className="w-[30px] h-[30px] mx-3 bg-yellow-500 rounded-full border flex items-center justify-center">
                                                 <span className="mx-3 text-xl text-white font-bold">
                                                     {item.number}
                                                 </span>

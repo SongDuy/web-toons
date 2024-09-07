@@ -60,6 +60,7 @@ const OriginalsByGenrePage = () => {
                     {/* khung nội dung */}
                     {dataListGenre.map(item => (
                         <li
+                            key={item.id}
                             className="uppercase font-semibold text-sm text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
                         >
                             {item.name}
@@ -159,10 +160,12 @@ const OriginalsByGenrePage = () => {
 
                             {/* khung nội dung */}
                             {dataPopular.map(item => (
-                                <Link to={`/originals/original/series`}>
+                                <Link
+                                    key={item.id}
+                                    to={`/originals/original/series`}
+                                >
                                     <li
                                         className="w-full h-[90px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
-                                        key={item.id}
                                     >
                                         <div className="w-full h-full flex items-center">
                                             <div className="w-[80px] h-[80px]">
@@ -172,7 +175,7 @@ const OriginalsByGenrePage = () => {
                                                     className="object-fill w-full h-full rounded-md"
                                                 />
                                             </div>
-                                            <div className="w-[30px] h-[30px] mx-3 bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
+                                            <div className="w-[30px] h-[30px] mx-3 bg-yellow-500 rounded-full border flex items-center justify-center">
                                                 <span className="mx-3 text-xl text-white font-bold">
                                                     {item.number}
                                                 </span>
