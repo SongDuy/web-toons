@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Avatar from '@mui/material/Avatar';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -50,6 +50,14 @@ const dataVideos = [
 ];
 
 const MyChannelPage = () => {
+
+    // Hiện thị phản hồi của bình luận
+    const [replyCommentId, setReplyCommentId] = useState(null);
+
+    const handleToggleReply = (commentId) => {
+        setReplyCommentId(commentId === replyCommentId ? null : commentId);
+    };
+
     return (
         <div className="w-full h-full pb-10 border bg-gray-100 flex items-center justify-center">
             <div className="w-[1120px] h-full">
@@ -209,83 +217,113 @@ const MyChannelPage = () => {
                             </span>
                         </div>
 
-                        {/* Khung nội dung chính bài Post */}
-                        {dataPost.map(item => (
-                            <div
-                                className="w-full min-h-[300px] py-5 border-b-2"
-                                key={item.id}
-                            >
-                                {/* Hiển Avatar creator */}
-                                <div className="w-full">
-                                    <div className="flex items-center justify-center">
-                                        <div className="">
-                                            <Avatar
-                                                alt="Remy Sharp"
-                                                src="https://www.ausp.edu.vn/uploads/blog/2024/05/16/1ecf77502b3bc514b2f535533d7b01f03a772174-1715817458.jpg"
-                                                sx={{ width: 50, height: 50 }}
-                                            />
-                                        </div>
-                                        <div className="px-2">
+                        {/* Danh sách bài post */}
+                        <ul>
+                            {/* Khung nội dung chính bài Post */}
+                            {dataPost.map(item => (
+                                <li
+                                    key={item.id}
+                                    className="w-full min-h-[300px] py-5 border-b-2"
+                                >
+                                    {/* Hiển Avatar creator */}
+                                    <div className="w-full">
+                                        <div className="flex items-center justify-center">
                                             <div className="">
-                                                <span className="font-semibold">
-                                                    {item.auth}
-                                                </span>
-                                                <span className="px-2 font-semibold text-yellow-500">
-                                                    . Creator
-                                                </span>
+                                                <Avatar
+                                                    alt="Remy Sharp"
+                                                    src="https://www.ausp.edu.vn/uploads/blog/2024/05/16/1ecf77502b3bc514b2f535533d7b01f03a772174-1715817458.jpg"
+                                                    sx={{ width: 50, height: 50 }}
+                                                />
+                                            </div>
+                                            <div className="px-2">
+                                                <div className="">
+                                                    <span className="font-semibold">
+                                                        {item.auth}
+                                                    </span>
+                                                    <span className="px-2 font-semibold text-yellow-500">
+                                                        . Creator
+                                                    </span>
+                                                </div>
+
+                                                <div className="">
+                                                    <span className="text-gray-400">
+                                                        {item.date}
+                                                    </span>
+                                                </div>
                                             </div>
 
-                                            <div className="">
-                                                <span className="text-gray-400">
-                                                    {item.date}
-                                                </span>
-                                            </div>
+                                            <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
+                                                <MoreVertIcon />
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    {/* Hiển nội dung bài viết */}
+                                    <div className="py-3">
+                                        <p className="">
+                                            {item.content}
+                                        </p>
+                                    </div>
+
+                                    {/* Hiện hình ảnh bài viết */}
+                                    <div className="w-full flex gap-3">
+                                        <img
+                                            src={item.img}
+                                            alt="img"
+                                            className="object-cover w-[300px] h-[300px]"
+                                        />
+                                        <img
+                                            src={item.img2}
+                                            alt="img"
+                                            className="object-cover w-[300px] h-[300px]"
+                                        />
+                                    </div>
+
+                                    {/* Hiện yêu thích bình luận */}
+                                    <div className="w-full pt-5 ">
+                                        <div className="mr-auto flex gap-2">
+                                            <button className="px-2 py-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
+                                                <FavoriteIcon className="text-red-500" />
+                                                {item.like}
+                                            </button>
+                                            <button
+                                                onClick={() => handleToggleReply(item.idcomment)}
+                                                className="px-2 py-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
+                                            >
+                                                <CommentIcon className="text-black" />
+                                                {item.comment}
+                                            </button>
                                         </div>
 
-                                        <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
-                                            <MoreVertIcon />
-                                        </button>
-                                    </div>
-                                </div>
-
-                                {/* Hiển nội dung bài viết */}
-                                <div className="py-3">
-                                    <p className="">
-                                        {item.content}
-                                    </p>
-                                </div>
-
-                                {/* Hiện hình ảnh bài viết */}
-                                <div className="w-full flex gap-3">
-                                    <img
-                                        src={item.img}
-                                        alt="img"
-                                        className="object-cover w-[300px] h-[300px]"
-                                    />
-                                    <img
-                                        src={item.img2}
-                                        alt="img"
-                                        className="object-cover w-[300px] h-[300px]"
-                                    />
-                                </div>
-
-                                {/* Hiện yêu thích bình luận */}
-                                <div className="w-full pt-5 ">
-                                    <div className="mr-auto flex gap-2">
-                                        <button className="px-2 py-1 px-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
-                                            <FavoriteIcon className="text-red-500" />
-                                            {item.like}
-                                        </button>
-                                        <button className="px-2 py-1 px-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
-                                            <CommentIcon className="text-black" />
-                                            {item.comment}
-                                        </button>
                                     </div>
 
-                                </div>
-                            </div>
-                        ))}
+                                    {/* Phản hồi bình luận */}
+                                    {replyCommentId === item.idcomment && (
+                                        <div className="w-full px-5 pt-5">
 
+                                            {/* Nhập bình luận phản hồi */}
+                                            <div className="w-full h-full">
+
+                                                {/* Reply input field */}
+                                                kkk kk kk k k k k k k  kk k k k k k k   kk  k kk k k k k  k k k k k k k k k k k k k k k k kkkkkk k k  k k k k k k k k k k k k k k k k
+                                            </div>
+
+                                            {/* Hiển thị các phản hồi bình luận có sẳn */}
+                                            {item.replies > 0 && (
+                                                <div className="w-full h-full">
+                                                    {/* Display existing replies here */}
+                                                    <ul>
+                                                        <li>
+                                                            kkk
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </div>

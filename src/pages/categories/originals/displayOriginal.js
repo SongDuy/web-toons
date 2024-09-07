@@ -358,19 +358,18 @@ const DisplayOriginalPage = () => {
 
                                                             {/* Nút bình luận, thích, không thích */}
                                                             <div className="w-full flex gap-2 py-1">
-                                                                <div>
-                                                                    <button
-                                                                        onClick={() => handleToggleReply(item.idcomment)}
-                                                                        className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center"
-                                                                    >
-                                                                        Replies {item.replies}
-                                                                    </button>
-                                                                </div>
+                                                                <button
+                                                                    onClick={() => handleToggleReply(item.idcomment)}
+                                                                    className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center"
+                                                                >
+                                                                    Replies {item.replies}
+                                                                </button>
 
                                                                 <button className="px-2 py-1  ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center" onClick={() => handlelike(item.id)}>
                                                                     <ThumbUpIcon className="text-gray-400" />
                                                                     {item.like}
                                                                 </button>
+
                                                                 <button className="px-2 py-1  border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center" onClick={() => handledislike(item.id)}>
                                                                     <ThumbDownIcon className="text-gray-400" />
                                                                     {item.dislike}
