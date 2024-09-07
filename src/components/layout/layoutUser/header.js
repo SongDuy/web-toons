@@ -232,7 +232,7 @@ const HeaderPage = () => {
         </ul>
       </div>
 
-      {/* chức năng */}
+      {/* chức năng nút Publish và Login*/}
       {!User ?
         // Chưa đăng nhập tài khoản
         <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
