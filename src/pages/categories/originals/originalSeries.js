@@ -220,7 +220,7 @@ const OriginalSeriesPage = () => {
 
                                         </li>
                                         <li className="flex items-center justify-center">
-                                            <button className="w-[70px] h-[25px] rounded-full text-white bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 flex items-center justify-center">
+                                            <button className="w-[70px] h-[25px] rounded-full text-white bg-yellow-500 flex items-center justify-center">
                                                 RATE
                                             </button>
                                         </li>
