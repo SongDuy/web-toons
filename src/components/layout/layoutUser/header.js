@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
 import SearchIcon from "@mui/icons-material/Search";
 import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
@@ -19,20 +23,46 @@ import { logout, setuser } from "../../../common/store/Auth.js";
 import { onAuthStateChanged } from 'firebase/auth';
 
 const HeaderPage = () => {
-  // mo va dong modal public
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+
   const dispatch = useDispatch();
   const isLoginModal = useSelector(state => state.hidden.isLoginModal);
   const User = useSelector(state => state.AuthJs.User);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  // mo va dong modal public 
+  // Mở modal menu để chọn Điều hướng đến trang truyện và videos
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
   };
+
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpen(false);
+    } else if (event.key === 'Escape') {
+      setOpen(false);
+    }
+  }
+
+  const prevOpen = React.useRef(open);// return focus to the button when we transitioned from !open -> open
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
+
 
   // Mở đóng modal tìm kiếm
   const [isSearchModal, setIsSearchModal] = useState(false);
@@ -179,40 +209,64 @@ const HeaderPage = () => {
       {/* chức năng */}
       <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
 
-        <div>
+        <div className="z-10">
+
           <button
-            id="basic-button"
             className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
-            aria-controls={open ? "basic-menu" : undefined}
+            ref={anchorRef}
+            id="composition-button"
+            aria-controls={open ? 'composition-menu' : undefined}
+            aria-expanded={open ? 'true' : undefined}
             aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
+            onClick={handleToggle}
           >
             Publish
           </button>
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
-            }}
-          >
-            <Link to={`/create/original`}>
-              <MenuItem onClick={handleClose} className="flex gap-x-1">
-                <PictureAsPdfOutlinedIcon />
-                Original
-              </MenuItem>
-            </Link>
 
-            <Link to={`/create/video`}>
-              <MenuItem onClick={handleClose} className="flex gap-x-1">
-                <VideoCallOutlinedIcon />
-                Video
-              </MenuItem>
-            </Link>
-          </Menu>
+          {/* Chọn menu */}
+          <Popper
+            open={open}
+            anchorEl={anchorRef.current}
+            role={undefined}
+            placement="bottom-start"
+            transition
+            disablePortal
+          >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                style={{
+                  transformOrigin:
+                    placement === 'bottom-start' ? 'left top' : 'left bottom',
+                }}
+              >
+                <Paper>
+                  <ClickAwayListener onClickAway={handleClose}>
+                    <MenuList
+                      autoFocusItem={open}
+                      id="composition-menu"
+                      aria-labelledby="composition-button"
+                      onKeyDown={handleListKeyDown}
+                    >
+                      <Link to={`/create/original`}>
+                        <MenuItem onClick={handleClose} className="flex gap-x-1">
+                          <PictureAsPdfOutlinedIcon />
+                          Original
+                        </MenuItem>
+                      </Link>
+
+                      <Link to={`/create/video`}>
+                        <MenuItem onClick={handleClose} className="flex gap-x-1">
+                          <VideoCallOutlinedIcon />
+                          Video
+                        </MenuItem>
+                      </Link>
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+            )}
+          </Popper>
         </div>
 
         {/* Đăng nhập */}

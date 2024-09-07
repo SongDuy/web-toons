@@ -8,6 +8,14 @@ import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import CheckIcon from '@mui/icons-material/Check';
 
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+import Rating from '@mui/material/Rating';
+
 const dataSeries = [
     { id: 1, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 15", date: "jun 10, 2024", like: "23,789", number: "#15" },
     { id: 2, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 14", date: "jun 10, 2024", like: "23,789", number: "#14" },
@@ -39,6 +47,40 @@ const dataAlsoLike = [
 ];
 
 const VideoSeriesPage = () => {
+
+    //Mở modal menu để chọn
+    const [open, setOpen] = React.useState(false);
+    const anchorRef = React.useRef(null);
+
+    const handleToggle = () => {
+        setOpen((prevOpen) => !prevOpen);
+    };
+
+    const handleClose = (event) => {
+        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+    function handleListKeyDown(event) {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            setOpen(false);
+        } else if (event.key === 'Escape') {
+            setOpen(false);
+        }
+    }
+
+    const prevOpen = React.useRef(open);// return focus to the button when we transitioned from !open -> open
+    React.useEffect(() => {
+        if (prevOpen.current === true && open === false) {
+            anchorRef.current.focus();
+        }
+
+        prevOpen.current = open;
+    }, [open]);
 
     // Nhấn nút đăng ký
     const [isSubscribe, setIsSubscribe] = useState(false);
@@ -203,10 +245,57 @@ const VideoSeriesPage = () => {
                                         </span>
 
                                     </li>
+
+                                    {/* Nút đánh giá xếp hạng Truyện */}
                                     <li className="flex items-center justify-center">
-                                        <button className="w-[70px] h-[25px] rounded-full text-white bg-yellow-500 flex items-center justify-center">
+                                        <button
+                                            className="w-[70px] h-[25px] rounded-full text-white bg-yellow-500 flex items-center justify-center"
+                                            ref={anchorRef}
+                                            id="composition-button"
+                                            aria-controls={open ? 'composition-menu' : undefined}
+                                            aria-expanded={open ? 'true' : undefined}
+                                            aria-haspopup="true"
+                                            onClick={handleToggle}
+                                        >
                                             RATE
                                         </button>
+                                        <Popper
+                                            open={open}
+                                            anchorEl={anchorRef.current}
+                                            role={undefined}
+                                            placement="bottom-start"
+                                            transition
+                                            disablePortal
+                                        >
+                                            {({ TransitionProps, placement }) => (
+                                                <Grow
+                                                    {...TransitionProps}
+                                                    style={{
+                                                        transformOrigin:
+                                                            placement === 'bottom-start' ? 'left top' : 'left bottom',
+                                                    }}
+                                                >
+                                                    <Paper>
+                                                        <ClickAwayListener onClickAway={handleClose}>
+                                                            <MenuList
+                                                                autoFocusItem={open}
+                                                                id="composition-menu"
+                                                                aria-labelledby="composition-button"
+                                                                onKeyDown={handleListKeyDown}
+                                                            >
+                                                                <MenuItem onClick={handleClose}><ClickAwayListener onClickAway={handleClose}>
+                                                                    <Rating
+                                                                        name="half-rating-read"
+                                                                        defaultValue={0}
+                                                                        precision={0.5}
+                                                                    />
+                                                                </ClickAwayListener></MenuItem>
+                                                            </MenuList>
+                                                        </ClickAwayListener>
+                                                    </Paper>
+                                                </Grow>
+                                            )}
+                                        </Popper>
                                     </li>
 
                                 </ul>

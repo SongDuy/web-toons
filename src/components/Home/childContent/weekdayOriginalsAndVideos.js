@@ -5,8 +5,12 @@ import { enUS } from 'date-fns/locale';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import Menu from '@mui/material/Menu';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
@@ -105,15 +109,39 @@ const WeekdayOriginalsAndVideosPage = () => {
     //chọn nội dung videos theo thứ hiện tại
     const filteredVideos = dataVideos.filter(data => data.dayOfWeek === currentDay);
 
-    // Điều hướng đến trang truyện và videos
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
+    // Mở modal menu để chọn Điều hướng đến trang truyện và videos
+    const [open, setOpen] = React.useState(false);
+    const anchorRef = React.useRef(null);
+
+    const handleToggle = () => {
+        setOpen((prevOpen) => !prevOpen);
     };
-    const handleClose = () => {
-        setAnchorEl(null);
+
+    const handleClose = (event) => {
+        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+            return;
+        }
+
+        setOpen(false);
     };
+
+    function handleListKeyDown(event) {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            setOpen(false);
+        } else if (event.key === 'Escape') {
+            setOpen(false);
+        }
+    }
+
+    const prevOpen = React.useRef(open);// return focus to the button when we transitioned from !open -> open
+    React.useEffect(() => {
+        if (prevOpen.current === true && open === false) {
+            anchorRef.current.focus();
+        }
+
+        prevOpen.current = open;
+    }, [open]);
 
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
@@ -139,36 +167,57 @@ const WeekdayOriginalsAndVideosPage = () => {
                 <div className="w-[150px] h-full flex items-center justify-center">
 
                     <button
-                        id="basic-button"
-                        aria-controls={open ? 'basic-menu' : undefined}
-                        aria-haspopup="true"
+                        ref={anchorRef}
+                        id="composition-button"
+                        aria-controls={open ? 'composition-menu' : undefined}
                         aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick}
+                        aria-haspopup="true"
+                        onClick={handleToggle}
                     >
                         <span className='w-[100px] h-full border-l-2 pl-10 uppercase font-semibold text-md text-gray-400 hover:text-yellow-500 flex items-center justify-center'>
                             More
                             <NavigateNextIcon />
                         </span>
-
                     </button>
 
-                    <Menu
-                        id="basic-menu"
-                        anchorEl={anchorEl}
+                    {/* Chọn menu */}
+                    <Popper
                         open={open}
-                        onClose={handleClose}
-                        MenuListProps={{
-                            'aria-labelledby': 'basic-button',
-                        }}
+                        anchorEl={anchorRef.current}
+                        role={undefined}
+                        placement="bottom-start"
+                        transition
+                        disablePortal
                     >
-                        <Link to={`/originals`}>
-                            <MenuItem onClick={handleClose}>Originals</MenuItem>
-                        </Link>
+                        {({ TransitionProps, placement }) => (
+                            <Grow
+                                {...TransitionProps}
+                                style={{
+                                    transformOrigin:
+                                        placement === 'bottom-start' ? 'left top' : 'left bottom',
+                                }}
+                            >
+                                <Paper>
+                                    <ClickAwayListener onClickAway={handleClose}>
+                                        <MenuList
+                                            autoFocusItem={open}
+                                            id="composition-menu"
+                                            aria-labelledby="composition-button"
+                                            onKeyDown={handleListKeyDown}
+                                        >
+                                            <Link to={`/originals`}>
+                                                <MenuItem onClick={handleClose}>Originals</MenuItem>
+                                            </Link>
 
-                        <Link to={`/videos`}>
-                            <MenuItem onClick={handleClose}>Videos</MenuItem>
-                        </Link>
-                    </Menu>
+                                            <Link to={`/videos`}>
+                                                <MenuItem onClick={handleClose}>Videos</MenuItem>
+                                            </Link>
+                                        </MenuList>
+                                    </ClickAwayListener>
+                                </Paper>
+                            </Grow>
+                        )}
+                    </Popper>
 
                 </div>
             </div>
@@ -199,17 +248,6 @@ const WeekdayOriginalsAndVideosPage = () => {
                                                 <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                     <AutoStoriesIcon sx={{ fontSize: 40 }} />
                                                 </div>
-
-                                                // <div className="absolute inset-0 flex items-center justify-center text-yellow-500 z-10">
-                                                //     <img
-                                                //         src={item.img}
-                                                //         alt="img"
-                                                //         class="object-fill w-full h-full rounded-md"
-                                                //     />
-                                                //     <div className="absolute w-full h-full flex items-center justify-center border-4 border-yellow-500 rounded-md">
-                                                //         <AutoStoriesIcon sx={{ fontSize: 40 }} />
-                                                //     </div>
-                                                // </div>
                                             )}
                                         </div>
 
