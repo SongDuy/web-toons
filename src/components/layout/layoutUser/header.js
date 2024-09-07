@@ -100,15 +100,6 @@ const HeaderPage = () => {
       {!User ?
         <div className="flex items-center justify-center">
 
-          {
-            /* <button
-              className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
-              onClick={openLoginModal}
-            >
-              Log In
-            </button> 
-          */}
-
           <button
             className="w-[25px] h-[25px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
             onClick={openLoginModal}
@@ -124,15 +115,6 @@ const HeaderPage = () => {
         </div>
         :
         <div className="flex items-center justify-center">
-
-          {/* 
-            <button
-              className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
-              onClick={() => dispatch(logout())}
-            >
-              {auth?.currentUser.displayName}
-            </button> 
-          */}
 
           <button
             className="border h-[5px] bg-gray-500 w-[20px] rounded-l-full"
