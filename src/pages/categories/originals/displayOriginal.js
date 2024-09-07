@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../img/logonew.png';
 
@@ -50,7 +50,7 @@ const DisplayOriginalPage = () => {
     const [getcomment, setComment] = useState('');
     const gcomment = useSelector(state => state.Comment.comment);
     const isLoginModal = useSelector(state => state.hidden.isLoginModal);
-   
+
     //Xem các tập tiếp theo trong series
     const [currentPage, setCurrentPage] = useState(0);
     const dispatch = useDispatch();
@@ -60,18 +60,18 @@ const DisplayOriginalPage = () => {
     const monthNames = [
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'
-      ];
+    ];
     useEffect(() => {
-        const getcomments=async ()=>{
+        const getcomments = async () => {
             try {
-              const comments=  await dispatch(getidseries(id.idseries))
-              unwrapResult(comments)
+                const comments = await dispatch(getidseries(id.idseries))
+                unwrapResult(comments)
             } catch (error) {
-                
+
             }
         }
         getcomments()
-    }, [dispatch,id]);
+    }, [dispatch, id]);
     const handleNextPage = () => {
         const totalPages = Math.ceil(totalItems / itemsPerPage);
         const nextPage = currentPage + 1;
@@ -88,31 +88,31 @@ const DisplayOriginalPage = () => {
     const currentItems = dataFavorite.slice(startIndex, endIndex);
     const closeLoginModal = () => {
         dispatch(setIsLoginModal(false));
-      };
-    
-    //new
-    const handleComment=async ()=>{
-        try {
-            if(auth?.currentUser){
-                const account= await  dispatch(getAccount(auth?.currentUser?.uid));
-               const getacc= unwrapResult(account)
-            const data={
-                comment:getcomment,
-                createTime:new Date( Date.now()),
-                like:0,
-                type:'comic',
-                dislike:0,
-                id:id.idseries,
-                uid:auth?.currentUser?.uid,
-                replies:0,
-                nameUser:getacc?.name
+    };
 
+    //new
+    const handleComment = async () => {
+        try {
+            if (auth?.currentUser) {
+                const account = await dispatch(getAccount(auth?.currentUser?.uid));
+                const getacc = unwrapResult(account)
+                const data = {
+                    comment: getcomment,
+                    createTime: new Date(Date.now()),
+                    like: 0,
+                    type: 'comic',
+                    dislike: 0,
+                    id: id.idseries,
+                    uid: auth?.currentUser?.uid,
+                    replies: 0,
+                    nameUser: getacc?.name
+
+                }
+                const comment = await dispatch(AddComment(data))
+                unwrapResult(comment)
+                setComment('')
             }
-            const comment = await dispatch(AddComment(data))
-            unwrapResult(comment)
-            setComment('')
-        }
-            else{
+            else {
                 dispatch(setIsLoginModal(true));
                 setComment('')
 
@@ -121,10 +121,10 @@ const DisplayOriginalPage = () => {
             console.log(error)
         }
     }
-    const handlelike=(id)=>{
+    const handlelike = (id) => {
 
     }
-    const handledislike=(id)=>{}
+    const handledislike = (id) => { }
     return (
         <div>
             <div className="w-full h-full bg-white">
@@ -297,7 +297,7 @@ const DisplayOriginalPage = () => {
                                         placeholder="Leave a comment"
                                         value={getcomment}
                                         className="w-full h-[160px] rounded-md px-3 py-3 border-2"
-                                        onChange={(e)=>setComment(e.target.value)}
+                                        onChange={(e) => setComment(e.target.value)}
                                     />
                                     <button onClick={handleComment} className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                         <SendRoundedIcon className="transform rotate-200" />
@@ -336,8 +336,8 @@ const DisplayOriginalPage = () => {
                                                                 {item.nameUser}
                                                             </span>
                                                             <span className="text-gray-400 mx-2 line-clamp-1">
-                                                            {monthNames[new Date(item.createTime).getMonth()] } {new Date(item.createTime).getDate()},
-                                                        {new Date(item.createTime)?.getFullYear()}
+                                                                {monthNames[new Date(item.createTime).getMonth()]} {new Date(item.createTime).getDate()},
+                                                                {new Date(item.createTime)?.getFullYear()}
                                                             </span>
                                                         </div>
 
@@ -353,11 +353,11 @@ const DisplayOriginalPage = () => {
                                                             <button className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center">
                                                                 Replies {item.replies}
                                                             </button>
-                                                            <button className="px-2 py-1  ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center" onClick={()=>handlelike(item.id)}>
+                                                            <button className="px-2 py-1  ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center" onClick={() => handlelike(item.id)}>
                                                                 <ThumbUpIcon className="text-gray-400" />
-                                                              {item.like}
+                                                                {item.like}
                                                             </button>
-                                                            <button className="px-2 py-1  border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center"  onClick={()=>handledislike(item.id)}>
+                                                            <button className="px-2 py-1  border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center" onClick={() => handledislike(item.id)}>
                                                                 <ThumbDownIcon className="text-gray-400" />
                                                                 {item.dislike}
                                                             </button>
