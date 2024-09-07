@@ -94,12 +94,12 @@ const HeaderPage = () => {
 
   const prevOpenAccount = React.useRef(openAccount);// return focus to the button when we transitioned from !open -> open
   React.useEffect(() => {
-    if (prevOpenAccount.current === true && openAccount === false) {
+    if (prevOpenAccount.current === true && openAccount === false && anchorAccountRef.current) {
       anchorAccountRef.current.focus();
     }
 
     prevOpenAccount.current = openAccount;
-  }, [openAccount]);
+  }, [openAccount, prevOpenAccount]);
 
   // Mở đóng modal tìm kiếm
   const [isSearchModal, setIsSearchModal] = useState(false);
