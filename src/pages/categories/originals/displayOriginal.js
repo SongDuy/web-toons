@@ -19,6 +19,7 @@ import { setIsLoginModal } from '../../../common/store/hidden';
 import LoginPage from '../../auth/login';
 import { auth } from '../../../common/themes/firebase';
 import { getAccount } from '../../../common/store/Account';
+
 const dataPopular = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "1", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
     { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "2", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
@@ -43,6 +44,14 @@ const dataFavorite = [
     { id: 13, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 13" },
     { id: 14, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 14" },
     { id: 15, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 15" },
+]
+
+const dataReplies = [
+    { id: 1, replyUser: "Duy_085", replyComment: "like", replyData: "20/05/2024", replyLike: "205", replyDislike: "205" },
+    { id: 2, replyUser: "Duy_085", replyComment: "like", replyData: "20/05/2024", replyLike: "205", replyDislike: "205" },
+    { id: 3, replyUser: "Duy_085", replyComment: "like", replyData: "20/05/2024", replyLike: "205", replyDislike: "205" },
+    { id: 4, replyUser: "Duy_085", replyComment: "like", replyData: "20/05/2024", replyLike: "205", replyDislike: "205" },
+    { id: 5, replyUser: "Duy_085", replyComment: "like", replyData: "20/05/2024", replyLike: "205", replyDislike: "205" },
 ]
 
 const DisplayOriginalPage = () => {
@@ -362,17 +371,17 @@ const DisplayOriginalPage = () => {
                                                             <div className="w-full flex gap-2 py-1">
                                                                 <button
                                                                     onClick={() => handleToggleReply(item.idcomment)}
-                                                                    className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center"
+                                                                    className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-200 flex items-center justify-center"
                                                                 >
                                                                     Replies {item.replies}
                                                                 </button>
 
-                                                                <button className="px-2 py-1  ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center" onClick={() => handlelike(item.id)}>
+                                                                <button className="px-2 py-1  ml-auto border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center" onClick={() => handlelike(item.id)}>
                                                                     <ThumbUpIcon className="text-gray-400" />
                                                                     {item.like}
                                                                 </button>
 
-                                                                <button className="px-2 py-1  border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center" onClick={() => handledislike(item.id)}>
+                                                                <button className="px-2 py-1  border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center" onClick={() => handledislike(item.id)}>
                                                                     <ThumbDownIcon className="text-gray-400" />
                                                                     {item.dislike}
                                                                 </button>
@@ -387,18 +396,61 @@ const DisplayOriginalPage = () => {
                                                             {/* Nhập bình luận phản hồi */}
                                                             <div className="w-full h-full">
 
-                                                                {/* Reply input field */}
-                                                                kkk kk kk k k k k k k  kk k k k k k k     kk  k kk k k k k  k k k k k k k k k k k k k k k k kkkkkk k k  k k k k k k k k k k k k k k k k
+                                                                {/* Ô nhập bình luận */}
+                                                                <div className="w-full h-full my-3">
+                                                                    <textarea
+                                                                        placeholder="Leave a comment"
+                                                                        value="" //{getcomment}
+                                                                        className="w-full h-[160px] rounded-md px-3 py-3 border-2"
+                                                                        onChange="" //{(e) => setComment(e.target.value)}
+                                                                    />
+                                                                    <button onClick={handleComment} className="px-3 py-2 ml-auto bg-black hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
+                                                                        <SendRoundedIcon className="transform rotate-200" />
+                                                                        Reply
+                                                                    </button>
+                                                                </div>
                                                             </div>
 
                                                             {/* Hiển thị các phản hồi bình luận có sẳn */}
-                                                            {item.replies > 0 && (
+                                                            {item.replies === 0 && (
                                                                 <div className="w-full h-full">
-                                                                    {/* Display existing replies here */}
-                                                                    <ul>
-                                                                        <li>
-                                                                            kkk
-                                                                        </li>
+                                                                    {/* Danh sách phản hồi */}
+                                                                    <ul className="w-full h-full">
+                                                                        {dataReplies.map(item => (
+                                                                            <li key={item.id}>
+                                                                                <div className="w-full h-[200px] rounded-md px-3 border-b bg-gray-100 my-2">
+                                                                                    {/* Hiển thị tên user và ngày đăng bình luận */}
+                                                                                    <div className="w-full py-1 flex overflow-hidden">
+                                                                                        <span className="max-w-[500px] font-semibold line-clamp-1">
+                                                                                            {item.replyUser}
+                                                                                        </span>
+                                                                                        <span className="text-gray-400 mx-2 line-clamp-1">
+                                                                                            {item.replyData}
+                                                                                        </span>
+                                                                                    </div>
+
+                                                                                    {/* Hiển thị nội dung bình luận */}
+                                                                                    <div className="h-[120px] px-2 custom-scrollbar">
+                                                                                        <span className="">
+                                                                                            {item.replyComment}
+                                                                                        </span>
+                                                                                    </div>
+
+                                                                                    {/* Nút bình luận, thích, không thích */}
+                                                                                    <div className="w-full flex gap-2 py-1">
+                                                                                        <button className="px-2 py-1  ml-auto border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center">
+                                                                                            <ThumbUpIcon className="text-gray-400" />
+                                                                                            {item.replyLike}
+                                                                                        </button>
+
+                                                                                        <button className="px-2 py-1  border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center">
+                                                                                            <ThumbDownIcon className="text-gray-400" />
+                                                                                            {item.replyDislike}
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                        ))}
                                                                     </ul>
                                                                 </div>
                                                             )}
