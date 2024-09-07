@@ -234,6 +234,7 @@ const HeaderPage = () => {
 
       {/* chức năng */}
       {!User ?
+        // Chưa đăng nhập tài khoản
         <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
 
           {/* Chức năng Publish */}
@@ -270,9 +271,9 @@ const HeaderPage = () => {
             </button>
             {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
           </div>
-
         </div>
         :
+        // Đã đăng nhập tài khoản
         <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
 
           {/* Menu Publish */}
