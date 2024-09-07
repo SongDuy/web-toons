@@ -106,38 +106,6 @@ const VideoSeriesPage = () => {
                     </div>
                 </div>
 
-                {/* <div className="w-full h-[320px] relative flex items-center justify-center">
-
-                    <img src="https://i.redd.it/0hwfsqufm3w41.jpg"
-                        className="object-cover w-[1200px] h-full rounded-t" alt="img"
-                    />
-
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-[1200px] overflow-hidden">
-                            <span className="font-semibold text-xl text-black text-shadow-white flex items-center justify-center">
-                                Action
-                            </span>
-
-                            <span className="font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.2] line-clamp-3 flex justify-center">
-                                The Witcher
-                            </span>
-                            <Link to="/channel/creator">
-                                <div class="w-full flex items-center justify-center gap-2">
-                                    <div className="w-[250px] px-2 rounded-md overflow-hidden flex items-center justify-center gap-2">
-                                        <span className="text-lg font-semibold text-yellow-500 hover:text-yellow-600 text-shadow-black line-clamp-1">
-                                            Lee Nakeum , seewater
-                                        </span>
-                                        <button className="w-[20px] h-[20px] bg-white rounded-full text-black flex items-center justify-center">
-                                            i
-                                        </button>
-                                    </div>
-                                </div>
-                            </Link>
-                        </div>
-                    </div>
-
-                </div> */}
-
                 <div className="w-full h-full flex items-center justify-center">
                     <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-6 pb-10 rounded-b">
 
