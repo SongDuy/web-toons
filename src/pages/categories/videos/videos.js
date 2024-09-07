@@ -277,17 +277,6 @@ const VideosPage = () => {
                                                         <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                             <PlayArrowIcon sx={{ fontSize: 60 }} />
                                                         </div>
-
-                                                        // <div class="absolute inset-0  flex items-center justify-center text-yellow-500 z-10">
-                                                        //     <img
-                                                        //         src={item.img}
-                                                        //         alt="img"
-                                                        //         class="object-fill w-full h-full rounded-md"
-                                                        //     />
-                                                        //     <div className="absolute w-full h-full flex items-center justify-center border-4 border-yellow-500 rounded-md">
-                                                        //         <PlayArrowIcon sx={{ fontSize: 60 }} />
-                                                        //     </div>
-                                                        // </div>
                                                     )}
                                                 </div>
 
@@ -368,17 +357,6 @@ const VideosPage = () => {
                                                         <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                             <PlayArrowIcon sx={{ fontSize: 60 }} />
                                                         </div>
-
-                                                        // <div class="absolute inset-0  flex items-center justify-center text-yellow-500 z-10">
-                                                        //     <img
-                                                        //         src={item.img}
-                                                        //         alt="img"
-                                                        //         class="object-fill w-full h-full rounded-md"
-                                                        //     />
-                                                        //     <div className="absolute w-full h-full flex items-center justify-center border-4 border-yellow-500 rounded-md">
-                                                        //         <PlayArrowIcon sx={{ fontSize: 60 }} />
-                                                        //     </div>
-                                                        // </div>
                                                     )}
                                                 </div>
 
