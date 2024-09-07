@@ -9,10 +9,15 @@ import MenuList from '@mui/material/MenuList';
 import SearchIcon from "@mui/icons-material/Search";
 import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
-//import MenuIcon from '@mui/icons-material/Menu';
+import LogoutIcon from '@mui/icons-material/Logout';
+import PersonIcon from '@mui/icons-material/Person';
+import PieChartIcon from '@mui/icons-material/PieChart';
+import CommentIcon from '@mui/icons-material/Comment';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import SearchPage from "./search";
-//import MenuPage from "./menu";
 import LoginPage from "../../../../src/pages/auth/login";
 import logo from "../../../img/logonew.png";
 import { Link } from "react-router-dom";
@@ -28,8 +33,7 @@ const HeaderPage = () => {
   const isLoginModal = useSelector(state => state.hidden.isLoginModal);
   const User = useSelector(state => state.AuthJs.User);
 
-  // mo va dong modal public 
-  // Mở modal menu để chọn Điều hướng đến trang truyện và videos
+  // Mở và đóng modal public 
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -63,6 +67,39 @@ const HeaderPage = () => {
     prevOpen.current = open;
   }, [open]);
 
+  // Mở và đóng modal Account 
+  const [openAccount, setOpenAccount] = React.useState(false);
+  const anchorAccountRef = React.useRef(null);
+
+  const handleToggleAccount = () => {
+    setOpenAccount((prevAccountOpen) => !prevAccountOpen);
+  };
+
+  const handleCloseAccount = (event) => {
+    if (anchorAccountRef.current && anchorAccountRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpenAccount(false);
+  };
+
+  function handleListAccountKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpenAccount(false);
+    } else if (event.key === 'Escape') {
+      setOpenAccount(false);
+    }
+  }
+
+  const prevOpenAccount = React.useRef(openAccount);// return focus to the button when we transitioned from !open -> open
+  React.useEffect(() => {
+    if (prevOpenAccount.current === true && openAccount === false) {
+      anchorAccountRef.current.focus();
+    }
+
+    prevOpenAccount.current = openAccount;
+  }, [openAccount]);
 
   // Mở đóng modal tìm kiếm
   const [isSearchModal, setIsSearchModal] = useState(false);
@@ -74,17 +111,6 @@ const HeaderPage = () => {
   const closeSearchModal = () => {
     setIsSearchModal(false);
   };
-
-  // Mở đóng modal menu
-  // const [isMenuModal, setIsMenuModal] = useState(false);
-
-  // const openMenuModal = () => {
-  //   setIsMenuModal(true);
-  // };
-
-  // const closeMenuModal = () => {
-  //   setIsMenuModal(false);
-  // };
 
   // Mở đóng modal login
 
@@ -243,6 +269,7 @@ const HeaderPage = () => {
                 <Paper>
                   <ClickAwayListener onClickAway={handleClose}>
                     <MenuList
+                      className="bg-gray-100 rounded-lg text-black font-semibold "
                       autoFocusItem={open}
                       id="composition-menu"
                       aria-labelledby="composition-button"
@@ -283,13 +310,104 @@ const HeaderPage = () => {
             {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
           </div>
           :
-          <div className="flex items-center justify-center">
-            <button
+          <div className="flex items-center justify-center z-10">
+            {/* <button
               className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
               onClick={() => dispatch(logout())}
             >
               {auth?.currentUser.displayName}
+            </button> */}
+            <button
+              className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
+              ref={anchorAccountRef}
+              id="composition-button"
+              aria-controls={openAccount ? 'composition-menu' : undefined}
+              aria-expanded={openAccount ? 'true' : undefined}
+              aria-haspopup="true"
+              onClick={handleToggleAccount}
+            >
+              {auth?.currentUser.displayName}
             </button>
+
+            {/* Chọn menu */}
+            <Popper
+              className="w-[180px] rounded-lg flex items-center justify-center"
+              open={openAccount}
+              anchorEl={anchorAccountRef.current}
+              role={undefined}
+              placement="bottom-start"
+              transition
+              disablePortal
+            >
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  style={{
+                    transformOrigin:
+                      placement === 'bottom-start' ? 'left top' : 'left bottom',
+                  }}
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={handleCloseAccount}>
+                      <MenuList className="bg-gray-100 rounded-lg text-black font-semibold "
+                        autoFocusItem={openAccount}
+                        id="composition-menu"
+                        aria-labelledby="composition-button"
+                        onKeyDown={handleListAccountKeyDown}
+                      >
+                        <Link to={``}>
+                          <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                            <PersonIcon />
+                            Subscribed
+                          </MenuItem>
+                        </Link>
+
+                        <Link to={``}>
+                          <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                            <PieChartIcon />
+                            Dashboard
+                          </MenuItem>
+                        </Link>
+
+                        <Link to={``}>
+                          <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                            <CommentIcon />
+                            Comments
+                          </MenuItem>
+                        </Link>
+
+                        <Link to={``}>
+                          <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                            <EditNoteIcon />
+                            Creators
+                          </MenuItem>
+                        </Link>
+
+                        <Link to={``}>
+                          <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                            <AssignmentIndIcon />
+                            My Profile Page
+                          </MenuItem>
+                        </Link>
+
+                        <Link to={``}>
+                          <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                            <AccountCircleIcon />
+                            Account
+                          </MenuItem>
+                        </Link>
+
+                        <MenuItem onClick={() => dispatch(logout())} className="flex gap-x-3">
+                          <LogoutIcon />
+                          Log out
+                        </MenuItem>
+
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
           </div>
         }
 
@@ -302,16 +420,6 @@ const HeaderPage = () => {
           </button>
           {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
         </div>
-
-        {/* <div>
-          <button
-            className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full text-gray-500 flex items-center justify-center"
-            onClick={openMenuModal}
-          >
-            <MenuIcon sx={{ fontSize: 18 }} />
-          </button>
-          {isMenuModal && <MenuPage closeModal={closeMenuModal} />}
-        </div> */}
 
       </div>
     </div>
