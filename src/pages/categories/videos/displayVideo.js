@@ -360,8 +360,8 @@ const DisplayVideoPage = () => {
                                     {dataPopular.map(item => (
                                         <Link to={`/videos/video/series`}>
                                             <li
-                                                className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                                 key={item.id}
+                                                className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                             >
                                                 <div className="w-full h-full flex items-center">
                                                     <div className="w-[80px] h-[80px] flex">
@@ -419,8 +419,8 @@ const DisplayVideoPage = () => {
                                     {dataPopular.map(item => (
                                         <Link to={`/videos/video/series`}>
                                             <li
-                                                className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                                 key={item.id}
+                                                className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                             >
                                                 <div className="w-full h-full flex items-center">
                                                     <div className="w-[80px] h-[80px] flex">
