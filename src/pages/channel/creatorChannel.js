@@ -4,13 +4,39 @@ import Avatar from '@mui/material/Avatar';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import CommentIcon from '@mui/icons-material/Comment';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import SendRoundedIcon from '@mui/icons-material/SendRounded';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 
 const dataPost = [
-    { id: 1, img: "https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg", img2: "https://top10tphcm.com/wp-content/uploads/2023/06/Hinh-anh-Anime-nu-de-thuong.jpg", auth: "Lee Nakeum , seewater", content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", like: "205", comment: "100", date: "23/05/2024", },
-    { id: 2, img: "https://9anime.vn/wp-content/uploads/2024/04/499-Hinh-Anh-Anime-Nu-Dep-Ngau-Cute-Dang-Yeu.jpg", img2: "https://cdn.aicschool.edu.vn/wp-content/uploads/2024/06/anh-avatar-anime-1.jpg", auth: "Lee Nakeum , seewater", content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", like: "205", comment: "100", date: "23/05/2024", },
-    { id: 3, img: "https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/anh-dai-dien-anime-nu-xinh-9.png", img2: "https://mega.com.vn/media/news/2306_hinh-nen-anime-nu-cho-dien-thoai1.jpg", auth: "Lee Nakeum , seewater", content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", like: "205", comment: "100", date: "23/05/2024", },
-    { id: 4, img: "https://cohousing.vn/wp-content/uploads/2023/08/nhung-hinh-anh-dep-cua-anime-co-the-dung-lam-hinh-nen.jpg", img2: "https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:quality(100)/2023_12_11_638378641466845781_avatar-anime.jpg", auth: "Lee Nakeum , seewater", content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", like: "205", comment: "100", date: "23/05/2024", },
+    {
+        id: 1,
+        img: "https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg", img2: "https://top10tphcm.com/wp-content/uploads/2023/06/Hinh-anh-Anime-nu-de-thuong.jpg",
+        auth: "Lee Nakeum , seewater", avatar: "https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg",
+        content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.",
+        like: "205", comments: "100", date: "23/05/2024",
+    },
+    {
+        id: 2,
+        img: "https://9anime.vn/wp-content/uploads/2024/04/499-Hinh-Anh-Anime-Nu-Dep-Ngau-Cute-Dang-Yeu.jpg", img2: "https://cdn.aicschool.edu.vn/wp-content/uploads/2024/06/anh-avatar-anime-1.jpg",
+        auth: "Lee Nakeum , seewater", avatar: "https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg",
+        content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.",
+        like: "205", comments: "100", date: "23/05/2024",
+    },
+    {
+        id: 3,
+        img: "https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/anh-dai-dien-anime-nu-xinh-9.png", img2: "https://mega.com.vn/media/news/2306_hinh-nen-anime-nu-cho-dien-thoai1.jpg",
+        auth: "Lee Nakeum , seewater", avatar: "https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg",
+        content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.",
+        like: "205", comments: "100", date: "23/05/2024",
+    },
+    { 
+        id: 4, 
+        img: "https://cohousing.vn/wp-content/uploads/2023/08/nhung-hinh-anh-dep-cua-anime-co-the-dung-lam-hinh-nen.jpg", img2: "https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:quality(100)/2023_12_11_638378641466845781_avatar-anime.jpg", 
+        auth: "Lee Nakeum , seewater", avatar: "https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg", 
+        content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", 
+        like: "205", comments: "100", date: "23/05/2024", 
+    },
 ];
 
 const dataOriginals = [
@@ -49,7 +75,34 @@ const dataVideos = [
     { id: 15, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Wed', genre: "Action", name: "Doraemon", auth: "Lee Nakeum , seewater", like: "200k", },
 ];
 
+const dataComment = [
+    { id: 1, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute Davina and Mikey’s dynamic is so cute ", replies: "10", like: "61665", dislike: "56" },
+    { id: 2, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Da Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 3, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k vk k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k k vDavina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 4, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 5, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 6, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 7, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 8, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+    { id: 9, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
+]
+
+const dataReplies = [
+    { id: 1, replyUser: "Duy_085", replyComment: "like", replyData: "20/05/2024", replyLike: "205", replyDislike: "205" },
+    { id: 2, replyUser: "Duy_085", replyComment: "like", replyData: "20/05/2024", replyLike: "205", replyDislike: "205" },
+    { id: 3, replyUser: "Duy_085", replyComment: "like", replyData: "20/05/2024", replyLike: "205", replyDislike: "205" },
+    { id: 4, replyUser: "Duy_085", replyComment: "like", replyData: "20/05/2024", replyLike: "205", replyDislike: "205" },
+    { id: 5, replyUser: "Duy_085", replyComment: "like", replyData: "20/05/2024", replyLike: "205", replyDislike: "205" },
+]
+
 const CreatorChannelPage = () => {
+
+    // Hiện thị  bình luận
+    const [commentPostId, setCommentPostId] = useState(null);
+
+    const handleToggleComment = (postId) => {
+        setCommentPostId(postId === commentPostId ? null : postId);
+    };
 
     // Hiện thị phản hồi của bình luận
     const [replyCommentId, setReplyCommentId] = useState(null);
@@ -232,7 +285,7 @@ const CreatorChannelPage = () => {
                                             <div className="">
                                                 <Avatar
                                                     alt="Remy Sharp"
-                                                    src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
+                                                    src={item.avatar}
                                                     sx={{ width: 50, height: 50 }}
                                                 />
                                             </div>
@@ -289,35 +342,155 @@ const CreatorChannelPage = () => {
                                             </button>
 
                                             <button
-                                                onClick={() => handleToggleReply(item.id)}
+                                                onClick={() => handleToggleComment(item.id)}
                                                 className="px-2 py-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
                                             >
                                                 <CommentIcon className="text-black" />
-                                                {item.comment}
+                                                {item.comments}
                                             </button>
                                         </div>
 
                                     </div>
 
                                     {/* Phản hồi bình luận */}
-                                    {replyCommentId === item.id && (
+                                    {commentPostId === item.id && (
                                         <div className="w-full px-5 pt-5">
 
                                             {/* Nhập bình luận phản hồi */}
                                             <div className="w-full h-full">
-
-                                                {/* Reply input field */}
-                                                kkk kk kk k k k k k k  kk k k k k k k     kk  k kk k k k k  k k k k k k k k k k k k k k k k kkkkkk k k  k k k k k k k k k k k k k k k k
+                                                <div className="w-full h-full my-3">
+                                                    <textarea
+                                                        placeholder="Leave a comment"
+                                                        className="w-full h-[160px] rounded-md px-3 py-3 border-2"
+                                                    />
+                                                    <button className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
+                                                        <SendRoundedIcon className="transform rotate-200" />
+                                                        Send
+                                                    </button>
+                                                </div>
                                             </div>
 
                                             {/* Hiển thị các phản hồi bình luận có sẳn */}
-                                            {item.replies > 0 && (
+                                            {item.comments > 0 && (
                                                 <div className="w-full h-full">
                                                     {/* Display existing replies here */}
                                                     <ul>
-                                                        <li>
-                                                            kkk
-                                                        </li>
+                                                        {dataComment.map(item => (
+                                                            <li key={item.id}>
+                                                                {/* Hiện thị bình luận */}
+                                                                <div
+                                                                    className="w-full h-[200px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2"
+                                                                >
+                                                                    <div className="w-full h-full">
+
+                                                                        {/* Hiển thị tên user và ngày đăng bình luận */}
+                                                                        <div className="w-full py-1 flex overflow-hidden">
+                                                                            <span className="max-w-[500px] font-semibold line-clamp-1">
+                                                                                {item.nameUser}
+                                                                            </span>
+                                                                            <span className="text-gray-400 mx-2 line-clamp-1">
+                                                                                {item.date}
+                                                                            </span>
+                                                                        </div>
+
+                                                                        {/* Hiển thị nội dung bình luận */}
+                                                                        <div className="h-[120px] px-2 custom-scrollbar">
+                                                                            <span className="w-full">
+                                                                                {item.content}
+                                                                            </span>
+                                                                        </div>
+
+                                                                        {/* Nút bình luận, thích, không thích */}
+                                                                        <div className="w-full flex gap-2 py-1">
+                                                                            <button
+                                                                                onClick={() => handleToggleReply(item.id)}
+                                                                                className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-200 flex items-center justify-center"
+                                                                            >
+                                                                                Replies {item.replies}
+                                                                            </button>
+
+                                                                            <button className="px-2 py-1 ml-auto border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center">
+                                                                                <ThumbUpIcon className="text-gray-400" />
+                                                                                226
+                                                                            </button>
+                                                                            <button className="px-2 py-1 border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center">
+                                                                                <ThumbDownIcon className="text-gray-400" />
+                                                                                0
+                                                                            </button>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                {/* Phản hồi bình luận */}
+                                                                {replyCommentId === item.id && (
+                                                                    <div className="w-full px-5 ">
+
+                                                                        {/* Nhập bình luận phản hồi */}
+                                                                        <div className="w-full h-full">
+
+                                                                            {/* Ô nhập bình luận */}
+                                                                            <div className="w-full h-full my-3">
+                                                                                <textarea
+                                                                                    placeholder="Leave a reply"
+                                                                                    value=""
+                                                                                    className="w-full h-[160px] rounded-md px-3 py-3 border-2"
+                                                                                    onChange=""
+                                                                                />
+                                                                                <button className="px-3 py-2 ml-auto bg-black hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
+                                                                                    <SendRoundedIcon className="transform rotate-200" />
+                                                                                    Reply
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        {/* Hiển thị các phản hồi bình luận có sẳn */}
+                                                                        {item.replies > 0 && (
+                                                                            <div className="w-full h-full">
+                                                                                {/* Danh sách phản hồi */}
+                                                                                <ul className="w-full h-full">
+                                                                                    {dataReplies.map(item => (
+                                                                                        <li key={item.id}>
+                                                                                            <div className="w-full h-[200px] rounded-md px-3 border-b bg-gray-100 my-2">
+                                                                                                {/* Hiển thị tên user và ngày đăng bình luận */}
+                                                                                                <div className="w-full py-1 flex overflow-hidden">
+                                                                                                    <span className="max-w-[500px] font-semibold line-clamp-1">
+                                                                                                        {item.replyUser}
+                                                                                                    </span>
+                                                                                                    <span className="text-gray-400 mx-2 line-clamp-1">
+                                                                                                        {item.replyData}
+                                                                                                    </span>
+                                                                                                </div>
+
+                                                                                                {/* Hiển thị nội dung bình luận */}
+                                                                                                <div className="h-[120px] px-2 custom-scrollbar">
+                                                                                                    <span className="">
+                                                                                                        {item.replyComment}
+                                                                                                    </span>
+                                                                                                </div>
+
+                                                                                                {/* Nút bình luận, thích, không thích */}
+                                                                                                <div className="w-full flex gap-2 py-1">
+                                                                                                    <button className="px-2 py-1  ml-auto border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center">
+                                                                                                        <ThumbUpIcon className="text-gray-400" />
+                                                                                                        {item.replyLike}
+                                                                                                    </button>
+
+                                                                                                    <button className="px-2 py-1  border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center">
+                                                                                                        <ThumbDownIcon className="text-gray-400" />
+                                                                                                        {item.replyDislike}
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    ))}
+                                                                                </ul>
+                                                                            </div>
+                                                                        )}
+                                                                    </div>
+                                                                )}
+                                                            </li>
+                                                        ))}
                                                     </ul>
                                                 </div>
                                             )}

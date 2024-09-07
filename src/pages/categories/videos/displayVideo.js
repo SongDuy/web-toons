@@ -272,6 +272,7 @@ const DisplayVideoPage = () => {
                                         <ul>
                                             {dataComment.map(item => (
                                                 <li key={item.id}>
+                                                    {/* Hiện thị bình luận */}
                                                     <div
                                                         className="w-full h-[200px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2"
                                                     >
