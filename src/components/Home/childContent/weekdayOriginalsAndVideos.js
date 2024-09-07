@@ -183,7 +183,6 @@ const WeekdayOriginalsAndVideosPage = () => {
                     {/* Chọn menu */}
                     <Popper
                         className="w-[150px] rounded-lg flex items-center justify-center"
-
                         open={open}
                         anchorEl={anchorRef.current}
                         role={undefined}
@@ -231,9 +230,12 @@ const WeekdayOriginalsAndVideosPage = () => {
                         <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
                             {/* khung nội dung */}
                             {filteredOriginals?.slice(0, 5)?.map((item) => (
-                                <Link to={`/originals/original/series/${item.id}`} className="max-w-[210px] h-[210px]" >
+                                <Link
+                                    key={item.id}
+                                    to={`/originals/original/series/${item.id}`}
+                                    className="max-w-[210px] h-[210px]"
+                                >
                                     <li
-                                        key={item.id}
                                         onMouseEnter={() => setHoveredOriginalItem(item.id)}
                                         onMouseLeave={() => setHoveredOriginalItem(null)}
                                         className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
@@ -293,9 +295,12 @@ const WeekdayOriginalsAndVideosPage = () => {
                         <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
                             {/* khung nội dung */}
                             {filteredVideos?.slice(0, 5)?.map((item) => (
-                                <Link to={`/videos/video/series`} className="max-w-[210px] h-[210px]" >
+                                <Link
+                                    key={item.id}
+                                    to={`/videos/video/series`}
+                                    className="max-w-[210px] h-[210px]"
+                                >
                                     <li
-                                        key={item.id}
                                         onMouseEnter={() => setHoveredVideoItem(item.id)}
                                         onMouseLeave={() => setHoveredVideoItem(null)}
                                         className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"

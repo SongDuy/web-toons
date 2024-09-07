@@ -257,8 +257,8 @@ const DisplayOriginalPage = () => {
                     <ul className="grid grid-cols-9">
                         {currentItems.map(item => (
                             <li
-                                className="w-[120px] h-[165px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
                                 key={item.id}
+                                className="w-[120px] h-[165px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
                             >
                                 <div className="w-[100px] h-[100px] mb-auto">
                                     <img
@@ -332,7 +332,9 @@ const DisplayOriginalPage = () => {
                                     <div className="w-full py-3">
                                         <ul>
                                             {gcomment?.Comment?.map(item => (
-                                                <li key={item.idcomment}>
+                                                <li
+                                                    key={item.idcomment}
+                                                >
                                                     <div
                                                         className="w-full h-[200px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2"
                                                     >
@@ -426,9 +428,11 @@ const DisplayOriginalPage = () => {
                                 <ul className="w-full h-full py-2">
                                     {/* khung nội dung */}
                                     {dataPopular.map(item => (
-                                        <Link to={`/originals/original/series`}>
+                                        <Link
+                                            key={item.id}
+                                            to={`/originals/original/series`}
+                                        >
                                             <li
-                                                key={item.id}
                                                 className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                             >
                                                 <div className="w-full h-full flex items-center">
@@ -485,11 +489,12 @@ const DisplayOriginalPage = () => {
                                 <ul className="w-full h-full py-2">
                                     {/* khung nội dung */}
                                     {dataPopular.map(item => (
-                                        <Link to={`/originals/original/series`}>
+                                        <Link
+                                            key={item.id}
+                                            to={`/originals/original/series`}
+                                        >
                                             <li
-                                                key={item.id}
                                                 className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
-
                                             >
                                                 <div className="w-full h-full flex items-center">
                                                     <div className="w-[80px] h-[80px] flex">

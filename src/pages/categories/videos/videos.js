@@ -258,9 +258,11 @@ const VideosPage = () => {
 
                                     {/* khung nội dung */}
                                     {filteredData.map(item => (
-                                        <Link to={`/videos/video/series`}>
+                                        <Link
+                                            key={item.id}
+                                            to={`/videos/video/series`}
+                                        >
                                             <li
-                                                key={item.id}
                                                 onMouseEnter={() => setHoveredOngoingItem(item.id)}
                                                 onMouseLeave={() => setHoveredOngoingItem(null)}
                                                 className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
@@ -338,9 +340,11 @@ const VideosPage = () => {
 
                                     {/* khung nội dung */}
                                     {dataCompleted.map(item => (
-                                        <Link to={`/videos/video/series`}>
+                                        <Link
+                                            key={item.id}
+                                            to={`/videos/video/series`}
+                                        >
                                             <li
-                                                key={item.id}
                                                 onMouseEnter={() => setHoveredCompletedItem(item.id)}
                                                 onMouseLeave={() => setHoveredCompletedItem(null)}
                                                 className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"

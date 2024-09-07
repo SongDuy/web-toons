@@ -358,9 +358,11 @@ const DisplayVideoPage = () => {
                                 <ul className="w-full h-full py-2">
                                     {/* khung nội dung */}
                                     {dataPopular.map(item => (
-                                        <Link to={`/videos/video/series`}>
+                                        <Link
+                                            key={item.id}
+                                            to={`/videos/video/series`}
+                                        >
                                             <li
-                                                key={item.id}
                                                 className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                             >
                                                 <div className="w-full h-full flex items-center">
@@ -417,9 +419,11 @@ const DisplayVideoPage = () => {
                                 <ul className="w-full h-full py-2">
                                     {/* khung nội dung */}
                                     {dataPopular.map(item => (
-                                        <Link to={`/videos/video/series`}>
+                                        <Link
+                                            key={item.id}
+                                            to={`/videos/video/series`}
+                                        >
                                             <li
-                                                key={item.id}
                                                 className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                             >
                                                 <div className="w-full h-full flex items-center">

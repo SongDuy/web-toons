@@ -123,9 +123,11 @@ const OriginalsPage = () => {
 
                                     {/* khung nội dung */}
                                     {filteredData?.map(item => (
-                                        <Link to={`/originals/original/series`} key={item.id}>
+                                        <Link
+                                            key={item.id}
+                                            to={`/originals/original/series`}
+                                        >
                                             <li
-
                                                 onMouseEnter={() => setHoveredOngoingItem(item.id)}
                                                 onMouseLeave={() => setHoveredOngoingItem(null)}
                                                 className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
@@ -204,9 +206,11 @@ const OriginalsPage = () => {
 
                                     {/* khung nội dung */}
                                     {comic.comic?.map(item => (
-                                        <Link to={`/originals/original/series`} key={item.id}>
+                                        <Link
+                                            key={item.id}
+                                            to={`/originals/original/series`}
+                                        >
                                             <li
-
                                                 onMouseEnter={() => setHoveredCompletedItem(item.id)}
                                                 onMouseLeave={() => setHoveredCompletedItem(null)}
                                                 className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"

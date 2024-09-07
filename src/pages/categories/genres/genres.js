@@ -64,11 +64,11 @@ const GenresPage = () => {
 
     //Chọn nội dung truyện theo thể loại
     const [selectedOriginalsByGenre, setSelectedOriginalsByGenre] = useState('Action');
-    const filteredOriginalsByGenre = comic.comic?.filter(data => data.genre1 === selectedOriginalsByGenre || data.genre2===selectedOriginalsByGenre);
+    const filteredOriginalsByGenre = comic.comic?.filter(data => data.genre1 === selectedOriginalsByGenre || data.genre2 === selectedOriginalsByGenre);
 
     // Chọn nội dung videos theo thể loại
     const [selectedVideosByGenre, setSelectedVideosByGenre] = useState('Action');
-    const filteredVideosByGenre =  comic.comic?.filter(data => data.genre1 === selectedVideosByGenre|| data.genre2===selectedVideosByGenre);
+    const filteredVideosByGenre = comic.comic?.filter(data => data.genre1 === selectedVideosByGenre || data.genre2 === selectedVideosByGenre);
 
     //Chọn nội dung theo tiêu đề
     const [selectedSection, setSelectedSection] = useState("section1");
@@ -145,10 +145,12 @@ const GenresPage = () => {
 
                                         {/* khung nội dung */}
                                         {filteredOriginalsByGenre?.map(item => (
-                                            <Link to={`/originals/original/series`}>
+                                            <Link
+                                                key={item.id}
+                                                to={`/originals/original/series`}
+                                            >
 
                                                 <li
-                                                    key={item.id}
                                                     onMouseEnter={() => setHoveredOriginalItem(item.id)}
                                                     onMouseLeave={() => setHoveredOriginalItem(null)}
                                                     className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
@@ -254,10 +256,12 @@ const GenresPage = () => {
 
                                         {/* khung nội dung */}
                                         {filteredVideosByGenre?.map(item => (
-                                            <Link to={`/videos/video/series`}>
+                                            <Link
+                                                key={item.id}
+                                                to={`/videos/video/series`}
+                                            >
 
                                                 <li
-                                                    key={item.id}
                                                     onMouseEnter={() => setHoveredVideoItem(item.id)}
                                                     onMouseLeave={() => setHoveredVideoItem(null)}
                                                     className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"

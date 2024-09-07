@@ -110,7 +110,7 @@ const VideoSeriesPage = () => {
                                 </span>
 
                                 <Link to="/channel/creator">
-                                    <div class="w-full flex items-center justify-center gap-2">
+                                    <div className="w-full flex items-center justify-center gap-2">
                                         <div className="w-[250px] px-2 rounded-md overflow-hidden flex items-center justify-center gap-2">
                                             <span className="text-lg font-semibold text-yellow-500 hover:text-yellow-600 text-shadow-black line-clamp-1">
                                                 Lee Nakeum , seewater
@@ -164,9 +164,11 @@ const VideoSeriesPage = () => {
 
                                     {/* khung danh sách */}
                                     {dataSeries.map(item => (
-                                        <Link to={`/videos/video/series/display`}>
+                                        <Link
+                                            key={item.id}
+                                            to={`/videos/video/series/display`}
+                                        >
                                             <li
-                                                key={item.id}
                                                 className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
                                             >
                                                 <div className="w-full h-full flex items-center">
@@ -342,10 +344,12 @@ const VideoSeriesPage = () => {
 
                                 {/* khung danh sách */}
                                 {dataAlsoLike.map(item => (
-                                    <Link to={`/videos/video/series`}>
+                                    <Link
+                                        key={item.id}
+                                        to={`/videos/video/series`}
+                                    >
                                         <li
                                             className="w-[375px] h-[120px] flex bg-gray-100 rounded shadow cursor-pointer hover:bg-gray-200"
-                                            key={item.id}
                                         >
 
                                             <div className="w-[120px] h-[120px] rounded flex items-center justify-center">

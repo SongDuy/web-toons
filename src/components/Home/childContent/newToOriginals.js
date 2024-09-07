@@ -29,9 +29,12 @@ const NewToOriginalsPage = () => {
                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
                     {/* khung nội dung */}
                     {comic.comic?.slice(0, 10)?.map((item) => (
-                        <Link to={`/originals/original/series/${item.id}`} className="max-w-[210px] h-[210px]" key={item.id}>
+                        <Link
+                            key={item.id}
+                            to={`/originals/original/series/${item.id}`}
+                            className="max-w-[210px] h-[210px]"
+                        >
                             <li
-                                
                                 onMouseEnter={() => setHoveredItem(item.id)}
                                 onMouseLeave={() => setHoveredItem(null)}
                                 className="max-w-[210px] 2xl:w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
@@ -48,17 +51,6 @@ const NewToOriginalsPage = () => {
                                         <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                             <AutoStoriesIcon sx={{ fontSize: 40 }} />
                                         </div>
-
-                                        // <div class="absolute inset-0  flex items-center justify-center text-yellow-500 z-10">
-                                        //     <img
-                                        //         src={item.img}
-                                        //         alt="img"
-                                        //         class="object-fill w-full h-full rounded-md"
-                                        //     />
-                                        //     <div className="absolute w-full h-full flex items-center justify-center border-4 border-yellow-500 rounded-md">
-                                        //         <AutoStoriesIcon sx={{ fontSize: 40 }} />
-                                        //     </div>
-                                        // </div>
                                     )}
                                 </div>
 
