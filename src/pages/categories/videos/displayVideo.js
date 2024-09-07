@@ -297,11 +297,12 @@ const DisplayVideoPage = () => {
                                                                         Replies {item.replies}
                                                                     </button>
                                                                 </div>
-                                                                <button className="px-2 py-1 px-1 ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center">
+
+                                                                <button className="px-2 py-1 ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center">
                                                                     <ThumbUpIcon className="text-gray-400" />
                                                                     226
                                                                 </button>
-                                                                <button className="px-2 py-1 px-1 border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center">
+                                                                <button className="px-2 py-1 border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center">
                                                                     <ThumbDownIcon className="text-gray-400" />
                                                                     0
                                                                 </button>
@@ -311,26 +312,30 @@ const DisplayVideoPage = () => {
                                                     </div>
 
                                                     {/* Phản hồi bình luận */}
-                                                    <div className="w-full px-5">
-                                                        {replyCommentId === item.idcomment && (
+                                                    {replyCommentId === item.idcomment && (
+                                                        <div className="w-full px-5">
+
+                                                            {/* Nhập bình luận phản hồi */}
                                                             <div className="w-full h-full">
 
                                                                 {/* Reply input field */}
                                                                 kkk kk kk k k k k k k  kk k k k k k k     kk  k kk k k k k  k k k k k k k k k k k k k k k k kkkkkk k k  k k k k k k k k k k k k k k k k
                                                             </div>
-                                                        )}
 
-                                                        {item.replies > 0 && (
-                                                            <div className="w-full h-full">
-                                                                {/* Display existing replies here */}
-                                                                <ul>
-                                                                    <li>
+                                                            {/* Hiển thị các phản hồi bình luận có sẳn */}
+                                                            {item.replies > 0 && (
+                                                                <div className="w-full h-full">
+                                                                    {/* Display existing replies here */}
+                                                                    <ul>
+                                                                        <li>
+                                                                            kkk
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    )}
 
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        )}
-                                                    </div>
                                                 </li>
                                             ))}
 
