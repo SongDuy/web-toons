@@ -289,7 +289,7 @@ const DisplayVideoPage = () => {
                                                             {/* Nút bình luận, thích, không thích */}
                                                             <div className="w-full flex gap-2 py-1">
                                                                 <button
-                                                                    onClick={() => handleToggleReply(item.idcomment)}
+                                                                    onClick={() => handleToggleReply(item.id)}
                                                                     className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center"
                                                                 >
                                                                     Replies {item.replies}
@@ -309,7 +309,7 @@ const DisplayVideoPage = () => {
                                                     </div>
 
                                                     {/* Phản hồi bình luận */}
-                                                    {replyCommentId === item.idcomment && (
+                                                    {replyCommentId === item.id && (
                                                         <div className="w-full px-5">
 
                                                             {/* Nhập bình luận phản hồi */}
