@@ -5,8 +5,12 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 import { Link } from 'react-router-dom';
 
+import { useSelector } from 'react-redux';
 
 const PopularOriginalsAndVideosPage = () => {
+    const comic = useSelector(state => state.comic.comic);
+    const filteredcomic= comic.comic?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
+    const searchedcomic= comic.comic?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
 
     const dataPopular = [
         { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "1", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
@@ -38,7 +42,7 @@ const PopularOriginalsAndVideosPage = () => {
                         <div className="w-full h-full">
                             <ul className="w-full h-full ">
                                 {/* khung nội dung */}
-                                {dataPopular.map(item => (
+                                {filteredcomic?.slice(0, 5)?.map((item ,index)=> (
                                     <Link to={`/originals/original/series`}>
                                         <li
                                             className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
@@ -47,27 +51,28 @@ const PopularOriginalsAndVideosPage = () => {
                                             <div className="w-full h-full flex items-center">
                                                 <div className="w-[80px] h-[80px] flex">
                                                     <img
-                                                        src={item.img}
-                                                        alt="img"
+                                        src={item.squareThumbnail}
+                                        alt="img"
                                                         className="object-fill w-full h-full rounded-md"
                                                     />
                                                 </div>
 
                                                 <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
                                                     <span className="mx-3 text-xl text-white font-bold">
-                                                        {item.number}
+                                                        {index+1}
                                                     </span>
                                                 </div>
 
                                                 <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
-                                                        {item.genre}
+                                                        {item.genre1}
                                                     </span>
                                                     <span className="text-md font-semibold line-clamp-1">
-                                                        {item.name}
+                                                    {item.title}
+
                                                     </span>
                                                     <span className="text-sm line-clamp-1">
-                                                        {item.auth}
+                                                    {item.summary}
                                                     </span>
                                                 </div>
 
@@ -155,7 +160,7 @@ const PopularOriginalsAndVideosPage = () => {
                         <div className="w-full h-full">
                             <ul className="w-full h-full">
                                 {/* khung nội dung */}
-                                {dataPopular.map(item => (
+                                {searchedcomic?.slice(0, 5)?.map((item,index) => (
                                     <Link to={`/original/series`}>
                                         <li
                                             className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
@@ -164,7 +169,7 @@ const PopularOriginalsAndVideosPage = () => {
                                             <div className="w-full h-full flex items-center">
                                                 <div className="w-[80px] h-[80px] flex">
                                                     <img
-                                                        src={item.img}
+                                                         src={item.squareThumbnail}
                                                         alt="img"
                                                         className="object-fill w-full h-full rounded-md"
                                                     />
@@ -172,19 +177,19 @@ const PopularOriginalsAndVideosPage = () => {
 
                                                 <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
                                                     <span className="mx-3 text-xl text-white font-bold">
-                                                        {item.number}
+                                                        {index+1}
                                                     </span>
                                                 </div>
 
                                                 <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                                     <span className="text-gray-400 text-sm">
-                                                        {item.genre}
+                                                        {item.genre1}
                                                     </span>
                                                     <span className="text-md font-semibold line-clamp-1">
-                                                        {item.name}
+                                                    {item.title}
                                                     </span>
                                                     <span className="text-sm line-clamp-1">
-                                                        {item.auth}
+                                                        {item.summary}
                                                     </span>
                                                 </div>
 

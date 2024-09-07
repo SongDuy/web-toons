@@ -46,6 +46,8 @@ import CommunityPolicy from './pages/Policys/CommunityPolicy';
 import CanvasTermsOfUse from './pages/Policys/CanvasTermsOfUse';
 import AdRevenueSharingTerms from './pages/Policys/AdRevenueSharingTerms';
 import SuperLikeTerms from './pages/Policys/SuperLikeTerms';
+import { AuthProvider } from './Hooks/useAuth';
+import Loading from './components/layout/layoutUser/loading';
 
 function App() {
 
@@ -58,15 +60,15 @@ function App() {
       <Routes>
 
         <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
+          <Route index element={<Loading>  <HomePage /></Loading> } />
 
-          <Route path="/originals" element={<OriginalsPage />} />
-          <Route path="/originals/original/series" element={<OriginalSeriesPage />} />
+          <Route path="/originals" element={<Loading> <OriginalsPage /></Loading>} />
+          <Route path="/originals/original/series/:id" element={<OriginalSeriesPage />} />
 
           <Route path="/videos" element={<VideosPage />} />
           <Route path="/videos/video/series" element={<VideoSeriesPage />} />
 
-          <Route path="/genres" element={<GenresPage />} />
+          <Route path="/genres" element={<Loading><GenresPage /></Loading>} />
           <Route path="/popular" element={<PopularPage />} />
 
           <Route path="/create/original" element={<CreateOriginalPage />} />
@@ -80,11 +82,8 @@ function App() {
 
           {/* Trang quên mật khẩu */}
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-
-          <Route path="/account" element={<Account />} />
-          <Route path="/comment" element={<Comment />} />
-          <Route path="/Subscribed" element={<Subscribed />} />
-          <Route path="/Creators" element={<Creators />} />
+       
+         
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/terms/privacyPolicy" element={<PrivacyPolicy />} />
           <Route path="/terms/canvasPolicy" element={<CommunityPolicy />} />
@@ -93,9 +92,16 @@ function App() {
           <Route path="/terms/superLikePolicy" element={<SuperLikeTerms />} />
 
         </Route>
+  {/* Trang chỉ đăng nhập mới sử dụng được của user*/}
+  <Route  element={<AuthProvider><Layout /></AuthProvider>}>
+  <Route path="/account" element={   <AuthProvider><Account /> </AuthProvider>} />
+          <Route path="/comment" element={<Comment />} />
+          <Route path="/Subscribed" element={<Subscribed />} />
+          <Route path="/Creators" element={<Creators />} />
 
+</Route>
         {/* Trang hiển thị truyện và video */}
-        <Route path="/originals/original/series/display" element={<DisplayOriginalPage />} />
+        <Route path="/originals/original/series/display/:id/:idseries" element={<DisplayOriginalPage />} />
         <Route path="/videos/video/series/display" element={<DisplayVideoPage />} />
 
         {/* Trang hiển thị Admin */}

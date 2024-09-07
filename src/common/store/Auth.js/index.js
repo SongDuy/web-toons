@@ -34,7 +34,7 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
       const userCredential = await createUserWithEmailAndPassword (auth, payload.email, payload.password);
          await updateProfile(userCredential.user,{ displayName: payload.displayName })
         await sendEmailVerification(auth.currentUser)
-        await userFireBase.Add({email:payload.email,uid: userCredential?.user?.uid,role:'user'}, userCredential.user.uid)
+        await userFireBase.Add({email:payload.email,uid: userCredential?.user?.uid,role:'user',name: payload?.displayName}, userCredential.user.uid)
         if(!auth.currentUser.emailVerified){
           auth.signOut()
           return false
@@ -66,8 +66,11 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
       const token = await auth.currentUser.getIdToken(true);
       localStorage.setItem('sadsadas', token);
       const finduser=await userFireBase.getbyid(result?.user?.uid)
+      console.log(result)
+
       if(!finduser?.success){
-        await userFireBase.Add({email:result?.user?.email,uid: result?.user?.uid,role:'user'},result?.user?.uid)
+        console.log(result)
+        await userFireBase.Add({email:result?.user?.email,uid: result?.user?.uid,role:'user',name: result?.user?.displayName},result?.user?.uid)
       }
       return true
       // console.log(token, result.user);

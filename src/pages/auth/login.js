@@ -37,6 +37,7 @@ const LoginPage = ({ closeModal }) => {
         }
 
     }
+   
     // useEffect(() => {
     //     onIdTokenChanged(auth, (user) => {
     //         if (user) {

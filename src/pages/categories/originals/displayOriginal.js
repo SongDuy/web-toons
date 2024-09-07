@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../img/logonew.png';
 
@@ -11,7 +11,14 @@ import CheckIcon from '@mui/icons-material/Check';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { AddComment, getidseries } from '../../../common/store/Comment';
+import { setIsLoginModal } from '../../../common/store/hidden';
+import LoginPage from '../../auth/login';
+import { auth } from '../../../common/themes/firebase';
+import { getAccount } from '../../../common/store/Account';
 const dataPopular = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "1", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
     { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "2", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
@@ -38,25 +45,33 @@ const dataFavorite = [
     { id: 15, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "Episode 15" },
 ]
 
-const dataComment = [
-    { id: 1, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
-    { id: 2, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
-    { id: 3, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
-    { id: 4, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
-    { id: 5, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
-    { id: 6, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
-    { id: 7, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
-    { id: 8, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
-    { id: 9, nameUser: "MustangQueen16", date: "Apr 09, 2024", content: "Davina and Mikey’s dynamic is so cute", replies: "10", like: "61665", dislike: "56" },
-]
-
 const DisplayOriginalPage = () => {
-
+    const id = useParams();
+    const [getcomment, setComment] = useState('');
+    const gcomment = useSelector(state => state.Comment.comment);
+    const isLoginModal = useSelector(state => state.hidden.isLoginModal);
+   
     //Xem các tập tiếp theo trong series
     const [currentPage, setCurrentPage] = useState(0);
+    const dispatch = useDispatch();
+
     const itemsPerPage = 9;
     const totalItems = dataFavorite.length;
-
+    const monthNames = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ];
+    useEffect(() => {
+        const getcomments=async ()=>{
+            try {
+              const comments=  await dispatch(getidseries(id.idseries))
+              unwrapResult(comments)
+            } catch (error) {
+                
+            }
+        }
+        getcomments()
+    }, [dispatch,id]);
     const handleNextPage = () => {
         const totalPages = Math.ceil(totalItems / itemsPerPage);
         const nextPage = currentPage + 1;
@@ -71,9 +86,45 @@ const DisplayOriginalPage = () => {
     const startIndex = currentPage * itemsPerPage;
     const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
     const currentItems = dataFavorite.slice(startIndex, endIndex);
-
+    const closeLoginModal = () => {
+        dispatch(setIsLoginModal(false));
+      };
+    
     //new
+    const handleComment=async ()=>{
+        try {
+            if(auth?.currentUser){
+                const account= await  dispatch(getAccount(auth?.currentUser?.uid));
+               const getacc= unwrapResult(account)
+            const data={
+                comment:getcomment,
+                createTime:new Date( Date.now()),
+                like:0,
+                type:'comic',
+                dislike:0,
+                id:id.idseries,
+                uid:auth?.currentUser?.uid,
+                replies:0,
+                nameUser:getacc?.name
 
+            }
+            const comment = await dispatch(AddComment(data))
+            unwrapResult(comment)
+            setComment('')
+        }
+            else{
+                dispatch(setIsLoginModal(true));
+                setComment('')
+
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const handlelike=(id)=>{
+
+    }
+    const handledislike=(id)=>{}
     return (
         <div>
             <div className="w-full h-full bg-white">
@@ -247,9 +298,11 @@ const DisplayOriginalPage = () => {
                                 <div className="w-full h-full my-3">
                                     <textarea
                                         placeholder="Leave a comment"
+                                        value={getcomment}
                                         className="w-full h-[160px] rounded-md px-3 py-3 border-2"
+                                        onChange={(e)=>setComment(e.target.value)}
                                     />
-                                    <button className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
+                                    <button onClick={handleComment} className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                         <SendRoundedIcon className="transform rotate-200" />
                                         Send
                                     </button>
@@ -273,10 +326,10 @@ const DisplayOriginalPage = () => {
                                     </div>
                                     <div className="w-full py-3">
                                         <ul>
-                                            {dataComment.map(item => (
+                                            {gcomment?.Comment?.map(item => (
                                                 <li
                                                     className="w-full h-[200px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2"
-                                                    key={item.id}
+                                                    key={item.idcomment}
                                                 >
                                                     <div className="w-full h-full">
 
@@ -286,14 +339,15 @@ const DisplayOriginalPage = () => {
                                                                 {item.nameUser}
                                                             </span>
                                                             <span className="text-gray-400 mx-2 line-clamp-1">
-                                                                {item.date}
+                                                            {monthNames[new Date(item.createTime).getMonth()] } {new Date(item.createTime).getDate()},
+                                                        {new Date(item.createTime)?.getFullYear()}
                                                             </span>
                                                         </div>
 
                                                         {/* Hiển thị nội dung bình luận */}
                                                         <div className="h-[120px] px-2 custom-scrollbar">
                                                             <span className="">
-                                                                {item.content}
+                                                                {item.comment}
                                                             </span>
                                                         </div>
 
@@ -302,13 +356,13 @@ const DisplayOriginalPage = () => {
                                                             <button className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-100 flex items-center justify-center">
                                                                 Replies {item.replies}
                                                             </button>
-                                                            <button className="px-2 py-1 px-1 ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center">
+                                                            <button className="px-2 py-1  ml-auto border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center" onClick={()=>handlelike(item.id)}>
                                                                 <ThumbUpIcon className="text-gray-400" />
-                                                                226
+                                                              {item.like}
                                                             </button>
-                                                            <button className="px-2 py-1 px-1 border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center">
+                                                            <button className="px-2 py-1  border rounded-md gap-2 hover:bg-gray-100 flex items-center justify-center"  onClick={()=>handledislike(item.id)}>
                                                                 <ThumbDownIcon className="text-gray-400" />
-                                                                0
+                                                                {item.dislike}
                                                             </button>
                                                         </div>
 
@@ -442,6 +496,8 @@ const DisplayOriginalPage = () => {
 
                 </div>
             </div>
+            {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+
         </div>
 
     );

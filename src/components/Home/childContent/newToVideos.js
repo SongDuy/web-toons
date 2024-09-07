@@ -65,7 +65,7 @@ const NewToVideosPage = () => {
             <div className="w-full min-h-[500px] py-[30px] flex justify-center">
                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
                     {/* khung nội dung */}
-                    {dataVideos.slice(0, 10).map((item) => (
+                    {dataVideos?.slice(0, 10)?.map((item) => (
                         <Link to={`/videos/video/series`} className="max-w-[210px] h-[210px]" >
                             <li
                                 key={item.id}

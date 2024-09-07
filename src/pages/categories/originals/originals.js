@@ -8,154 +8,14 @@ import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink, Element as ScrollElement } from 'react-scroll';
-
-const dataOngoing = [
-    { id: 1, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 2, img: "https://w0.peakpx.com/wallpaper/473/232/HD-wallpaper-steam-workshop-japan-landscape-anime-1080x1080-japanese.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 3, img: "https://i.redd.it/uuvmyyb9h9fb1.jpg", dayOfWeek: 'Mon', genre: "Animals", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 4, img: "https://wallpapercave.com/wp/wp5102463.jpg", dayOfWeek: 'Mon', genre: "Comedy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 5, img: "https://i.pinimg.com/originals/20/8e/d7/208ed7bf49be7dac98d4abf8022dd89f.jpg", dayOfWeek: 'Mon', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 6, img: "https://i.pinimg.com/736x/44/d5/c7/44d5c7ec2369524788d06b01027b9b7e.jpg", dayOfWeek: 'Tue', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 7, img: "https://i.pinimg.com/originals/1d/de/ab/1ddeabd0300a42b1c873a2e5fba59209.jpg", dayOfWeek: 'Tue', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 8, img: "https://i.pinimg.com/736x/ff/85/15/ff851573b6e77758a1a0441ed5009103.jpg", dayOfWeek: 'Tue', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 9, img: "https://i.pinimg.com/originals/79/f5/f5/79f5f56085a73b1db28b8eb9751796fd.jpg", dayOfWeek: 'Tue', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 10, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Tue', genre: "School", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 11, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Wed', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 12, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Wed', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 13, img: "https://i.pinimg.com/originals/10/a4/af/10a4afd51f7725f18f9c381e196500ca.jpg", dayOfWeek: 'Wed', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 14, img: "https://i.pinimg.com/originals/10/a4/af/10a4afd51f7725f18f9c381e196500ca.jpg", dayOfWeek: 'Wed', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 15, img: "https://i.pinimg.com/originals/10/a4/af/10a4afd51f7725f18f9c381e196500ca.jpg", dayOfWeek: 'Wed', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 16, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Thu', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 17, img: "https://i.pinimg.com/736x/44/d5/c7/44d5c7ec2369524788d06b01027b9b7e.jpg", dayOfWeek: 'Thu', genre: "School", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 18, img: "https://i.pinimg.com/736x/44/d5/c7/44d5c7ec2369524788d06b01027b9b7e.jpg", dayOfWeek: 'Thu', genre: "School", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 19, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 20, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 21, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 22, img: "https://i.pinimg.com/736x/44/d5/c7/44d5c7ec2369524788d06b01027b9b7e.jpg", dayOfWeek: 'Fri', genre: "Sci-Fi", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 23, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 24, img: "https://i.pinimg.com/736x/44/d5/c7/44d5c7ec2369524788d06b01027b9b7e.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 25, img: "https://i.pinimg.com/736x/44/d5/c7/44d5c7ec2369524788d06b01027b9b7e.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 26, img: "https://i.pinimg.com/736x/44/d5/c7/44d5c7ec2369524788d06b01027b9b7e.jpg", dayOfWeek: 'Sat', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 27, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Sat', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 28, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Sat', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 29, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Sat', genre: "Sci-Fi", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 30, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sat', genre: "Sci-Fi", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 31, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Sci-Fi", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 32, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 33, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 34, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 35, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 36, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 37, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 38, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Mon', genre: "Animals", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 39, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Mon', genre: "Comedy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 40, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Mon', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 41, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Mon', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 42, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Mon', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 43, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Mon', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 44, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Mon', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 45, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Mon', genre: "School", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 46, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Wed', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 47, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Wed', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 48, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Wed', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 49, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Wed', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 50, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Wed', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 51, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Wed', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 52, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Wed', genre: "School", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 53, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Wed', genre: "School", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 54, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Wed', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 55, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Wed', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 56, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 57, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Fri', genre: "Sci-Fi", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 58, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 59, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 60, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 61, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 62, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 63, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sat', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 64, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Sat', genre: "Sci-Fi", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 65, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sat', genre: "Sci-Fi", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 66, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Sci-Fi", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 67, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 68, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 69, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 70, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-];
-
-const dataCompleted = [
-    { id: 1, img: "https://i.pinimg.com/originals/1d/de/ab/1ddeabd0300a42b1c873a2e5fba59209.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 2, img: "https://i.pinimg.com/originals/1d/de/ab/1ddeabd0300a42b1c873a2e5fba59209.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 3, img: "https://i.pinimg.com/originals/1d/de/ab/1ddeabd0300a42b1c873a2e5fba59209.jpg", dayOfWeek: 'Mon', genre: "Animals", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 4, img: "https://i.pinimg.com/originals/1d/de/ab/1ddeabd0300a42b1c873a2e5fba59209.jpg", dayOfWeek: 'Mon', genre: "Comedy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 5, img: "https://i.pinimg.com/originals/1d/de/ab/1ddeabd0300a42b1c873a2e5fba59209.jpg", dayOfWeek: 'Mon', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 6, img: "https://i.pinimg.com/736x/44/d5/c7/44d5c7ec2369524788d06b01027b9b7e.jpg", dayOfWeek: 'Tue', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 7, img: "https://i.pinimg.com/736x/44/d5/c7/44d5c7ec2369524788d06b01027b9b7e.jpg", dayOfWeek: 'Tue', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 8, img: "https://i.pinimg.com/736x/44/d5/c7/44d5c7ec2369524788d06b01027b9b7e.jpg", dayOfWeek: 'Tue', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 9, img: "https://i.pinimg.com/736x/44/d5/c7/44d5c7ec2369524788d06b01027b9b7e.jpg", dayOfWeek: 'Tue', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 10, img: "https://i.pinimg.com/736x/44/d5/c7/44d5c7ec2369524788d06b01027b9b7e.jpg", dayOfWeek: 'Tue', genre: "School", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 11, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Wed', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 12, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Wed', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 13, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Wed', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 14, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Wed', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 15, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Wed', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 16, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Thu', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 17, img: "https://i.redd.it/uuvmyyb9h9fb1.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 18, img: "https://i.redd.it/uuvmyyb9h9fb1.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 19, img: "https://i.redd.it/uuvmyyb9h9fb1.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 20, img: "https://i.redd.it/uuvmyyb9h9fb1.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 21, img: "https://i.redd.it/uuvmyyb9h9fb1.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 22, img: "https://i.redd.it/uuvmyyb9h9fb1.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 23, img: "https://i.pinimg.com/originals/79/f5/f5/79f5f56085a73b1db28b8eb9751796fd.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 24, img: "https://i.pinimg.com/originals/79/f5/f5/79f5f56085a73b1db28b8eb9751796fd.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 25, img: "https://i.pinimg.com/originals/79/f5/f5/79f5f56085a73b1db28b8eb9751796fd.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 26, img: "https://i.pinimg.com/originals/79/f5/f5/79f5f56085a73b1db28b8eb9751796fd.jpg", dayOfWeek: 'Sat', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 27, img: "https://i.pinimg.com/originals/79/f5/f5/79f5f56085a73b1db28b8eb9751796fd.jpg", dayOfWeek: 'Sat', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 28, img: "https://i.pinimg.com/originals/79/f5/f5/79f5f56085a73b1db28b8eb9751796fd.jpg", dayOfWeek: 'Sat', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 29, img: "https://i.pinimg.com/736x/ff/85/15/ff851573b6e77758a1a0441ed5009103.jpg", dayOfWeek: 'Sat', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 30, img: "https://i.pinimg.com/736x/ff/85/15/ff851573b6e77758a1a0441ed5009103.jpg", dayOfWeek: 'Sat', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 31, img: "https://i.pinimg.com/736x/ff/85/15/ff851573b6e77758a1a0441ed5009103.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 32, img: "https://i.pinimg.com/736x/ff/85/15/ff851573b6e77758a1a0441ed5009103.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 33, img: "https://i.pinimg.com/736x/ff/85/15/ff851573b6e77758a1a0441ed5009103.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 34, img: "https://i.pinimg.com/736x/ff/85/15/ff851573b6e77758a1a0441ed5009103.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 35, img: "https://wallpapercave.com/wp/wp5102463.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 36, img: "https://wallpapercave.com/wp/wp5102463.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 37, img: "https://wallpapercave.com/wp/wp5102463.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 38, img: "https://wallpapercave.com/wp/wp5102463.jpg", dayOfWeek: 'Mon', genre: "Animals", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 39, img: "https://wallpapercave.com/wp/wp5102463.jpg", dayOfWeek: 'Mon', genre: "Comedy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 40, img: "https://wallpapercave.com/wp/wp5102463.jpg", dayOfWeek: 'Mon', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 41, img: "https://wallpapercave.com/wp/wp5102463.jpg", dayOfWeek: 'Tue', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 42, img: "https://wallpapercave.com/wp/wp5102463.jpg", dayOfWeek: 'Tue', genre: "Drama", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 43, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Tue', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 44, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Tue', genre: "Historical", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 45, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Tue', genre: "School", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 46, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Thu', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 47, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 48, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 49, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 50, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Thu', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 51, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 52, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 53, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 54, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 55, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Fri', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 56, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sat', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 57, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sat', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 58, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sat', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 59, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sat', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 60, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sat', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 61, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 62, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 63, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 64, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 65, img: "https://cdn.popsww.com/blog/sites/2/2022/03/Anh-mat-si-tinh-cua-nam-chinh-trong-Lai-duoc-gap-em-715x1080.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-];
-
+import { useSelector } from 'react-redux';
 const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 const OriginalsPage = () => {
 
     //kích hoạt dính vào trên cùng
     const [isSticky, setIsSticky] = useState(false);
+    const comic = useSelector(state => state.comic.comic);
 
     useEffect(() => {
         const threshold = 100; // Ngưỡng để kích hoạt dính vào trên cùng
@@ -189,7 +49,7 @@ const OriginalsPage = () => {
         setCurrentDay(day);
     };
 
-    const filteredData = dataOngoing.filter(data => data.dayOfWeek === currentDay);
+    const filteredData = comic.comic?.filter(data => data.schedule === currentDay);
 
     //Chọn nội dung theo tiêu đề
     const [selectedSection, setSelectedSection] = useState("section1");
@@ -262,10 +122,10 @@ const OriginalsPage = () => {
                                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                     {/* khung nội dung */}
-                                    {filteredData.map(item => (
-                                        <Link to={`/originals/original/series`}>
+                                    {filteredData?.map(item => (
+                                        <Link to={`/originals/original/series`} key={item.id}>
                                             <li
-                                                key={item.id}
+                                                
                                                 onMouseEnter={() => setHoveredOngoingItem(item.id)}
                                                 onMouseLeave={() => setHoveredOngoingItem(null)}
                                                 className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
@@ -273,7 +133,7 @@ const OriginalsPage = () => {
 
                                                 <div className="w-full h-full" >
                                                     <img
-                                                        src={item.img}
+                                                       src={item.squareThumbnail}
                                                         alt="img"
                                                         className="object-fill w-full h-full rounded-md"
                                                     />
@@ -300,10 +160,10 @@ const OriginalsPage = () => {
 
                                                     <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                         <span className="text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
-                                                            {item.name}
+                                                            {item.title}
                                                         </span>
                                                         <span className="text-md text-shadow-white leading-[1.2] line-clamp-1">
-                                                            {item.auth}
+                                                            {item.summary}
                                                         </span>
                                                     </div>
 
@@ -326,7 +186,7 @@ const OriginalsPage = () => {
                                                     {/*Trong component React của bạn */}
                                                     <div className="w-full h-[30px] shadow bg-white bg-opacity-80 rounded-md">
                                                         <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
-                                                            {item.genre}
+                                                            {item.genre1}
                                                         </span>
                                                     </div>
 
@@ -354,10 +214,10 @@ const OriginalsPage = () => {
                                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                     {/* khung nội dung */}
-                                    {dataCompleted.map(item => (
-                                        <Link to={`/originals/original/series`}>
+                                    {comic.comic?.map(item => (
+                                        <Link to={`/originals/original/series`}  key={item.id}>
                                             <li
-                                                key={item.id}
+                                               
                                                 onMouseEnter={() => setHoveredCompletedItem(item.id)}
                                                 onMouseLeave={() => setHoveredCompletedItem(null)}
                                                 className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
@@ -365,7 +225,7 @@ const OriginalsPage = () => {
 
                                                 <div className="w-full h-full" >
                                                     <img
-                                                        src={item.img}
+                                                        src={item.squareThumbnail}
                                                         alt="img"
                                                         className="object-fill w-full h-full rounded-md"
                                                     />
@@ -392,10 +252,10 @@ const OriginalsPage = () => {
 
                                                     <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                         <span className="text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
-                                                            {item.name}
+                                                            {item.title}
                                                         </span>
                                                         <span className="text-md text-shadow-white leading-[1.2] line-clamp-1">
-                                                            {item.auth}
+                                                            {item.summary}
                                                         </span>
                                                     </div>
 
@@ -414,7 +274,7 @@ const OriginalsPage = () => {
                                                     {/*Trong component React của bạn */}
                                                     <div className="w-full h-[30px] shadow bg-white bg-opacity-80 rounded-md">
                                                         <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
-                                                            {item.genre}
+                                                            {item.genre1}
                                                         </span>
                                                     </div>
 

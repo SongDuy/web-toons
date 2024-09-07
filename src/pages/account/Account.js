@@ -1,11 +1,62 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import GoogleIcon from "@mui/icons-material/Google";
 import Switch from "@mui/material/Switch";
 import Nav from "../../components/Account/nav";
+import {  useSelector,useDispatch } from 'react-redux';
+import { auth } from "../../common/themes/firebase";
+import { updateAccount } from "../../common/store/Account";
+import { unwrapResult } from '@reduxjs/toolkit';
 
 const Account = () => {
   const [openName, setopenName] = useState(false);
   const [openEmail, setopenEmail] = useState(false);
+  const [isValid, setIsValid] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const Account = useSelector(state => state.Account.Account);
+  const   dispatch = useDispatch();
+
+  useEffect(() => {
+    setName(Account?.name)
+    setEmail(Account?.email)
+  }, [Account]);
+  const handleName = async () => {
+   try {
+      // Kiểm tra độ dài và các ký tự hợp lệ
+    if (name.length <= 20 && /^[a-zA-Z0-9\s!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]*$/.test(name)) {
+      const updatename= await dispatch(updateAccount({
+        name,
+        id:Account.uid
+      }))
+      
+      unwrapResult(updatename)
+      setIsValid(false);
+      setopenName(!openName)
+    } else {
+      setIsValid(true);
+    }
+   } catch (error) {
+     
+   }
+  };
+  const handleEmail = async () => {
+    try {
+       // Kiểm tra độ dài và các ký tự hợp lệ
+     if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+       const updateemail= await dispatch(updateAccount({
+         email,
+         id:Account.uid
+       }))
+       
+       unwrapResult(updateemail)
+       setopenEmail(!openEmail)
+     } else {
+     }
+    } catch (error) {
+      
+    }
+   };
+ 
   return (
     <div>
       <div className="w-full h-full bg-gray-100">
@@ -19,17 +70,18 @@ const Account = () => {
 
           <div className="w-full h-full flex   bg-white border border-white p-5">
             <div className="rounded-full  bg-gray-200 flex justify-center items-center p-2 w-[8%] ml-5">
-              <GoogleIcon sx={{ fontSize: 40 }} />
-            </div>
+            {auth?.currentUser?.providerData[0].providerId? <GoogleIcon sx={{ fontSize: 40 }} />:""}   
+                    </div>
             <div className="flex-row ml-5 my-5">
               <div>
                 <span className="font-semibold text-base text-black">
-                  Login information
+                   {auth?.currentUser?.providerData[0].providerId?"Google":""}
                 </span>
               </div>
               <div>
                 <span className="font-semibold text-base text-gray-400">
-                  Login information
+                {auth?.currentUser?.displayName}
+
                 </span>
               </div>
             </div>
@@ -50,18 +102,19 @@ const Account = () => {
                 <div className="flex-row ml-5 my-8">
                   <div>
                     <input
-                      value="Login information"
-                      className=" outline-none text-lg"
+                      value={name}
+                      className={` outline-none text-lg ${isValid&&"text-red-500"}`}
+                      onChange={(e)=>setName(e.target.value)}
                     />
                   </div>
-                  <div className="my-2">
+                 {isValid && <div className="my-2">
                     <span className="font-semibold text-base text-gray-400 ">
                       Nickname already exists.
                     </span>
-                  </div>
+                  </div>}
                 </div>
                 <button
-                  onClick={() => setopenName(!openName)}
+                  onClick={handleName}
                   className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[35px]  text-gray-400"
                 >
                   Check for availability
@@ -84,7 +137,7 @@ const Account = () => {
               <div className="grid grid-cols-8 gap-4   ml-5 my-5 p-5 border-b border-gray-300">
                 <div className="my-2 col-span-7">
                   <p className="font-semibold  text-lg text-black">
-                    Name
+                   {name}
                   </p>
                 
                 </div>
@@ -118,8 +171,9 @@ const Account = () => {
                 <div className="flex-row ml-5 my-8">
                   <div>
                     <input
-                      placeholder="Enter email address"
+                      value=  {email}
                       className=" outline-none text-lg"
+                      onChange={(e)=>setEmail(e.target.value)}
                     />
                   </div>
                   <div className="my-2">
@@ -129,7 +183,7 @@ const Account = () => {
                   </div>
                 </div>
                 <button
-                  onClick={() =>setopenEmail(!openEmail)}
+                  onClick={handleEmail}
                   className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[35px]  text-gray-400"
                 >
                   Verify
@@ -139,7 +193,7 @@ const Account = () => {
               <div className="grid grid-cols-8 gap-4   ml-5 my-5 p-5 border-b border-gray-300">
                 <div className="my-2 col-span-7">
                   <p className="font-semibold  text-lg text-black">
-                    Enter email address
+                  {email}
                   </p>
                   <span className="font-semibold text-sm text-gray-400 ">
                     Enter your email address for new updates and latest news.
