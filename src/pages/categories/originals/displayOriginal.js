@@ -399,7 +399,7 @@ const DisplayOriginalPage = () => {
                                                                 {/* Ô nhập bình luận */}
                                                                 <div className="w-full h-full my-3">
                                                                     <textarea
-                                                                        placeholder="Leave a comment"
+                                                                        placeholder="Leave a reply"
                                                                         value="" //{getcomment}
                                                                         className="w-full h-[160px] rounded-md px-3 py-3 border-2"
                                                                         onChange="" //{(e) => setComment(e.target.value)}
