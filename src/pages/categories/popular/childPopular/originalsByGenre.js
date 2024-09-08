@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const dataPopular = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "2", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
@@ -46,11 +47,22 @@ const OriginalsByGenrePage = () => {
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
 
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <div className="w-full h-full pt-[70px]">
 
-            <div className="h-[70px] flex items-center">
-                <span className="uppercase font-semibold text-xl">ORIGINALS BY GENRE</span>
+            <div className="h-[70px] flex items-center uppercase font-semibold text-xl">
+                {!language ?
+                    <span>
+                        ORIGINALS BY GENRE
+                    </span>
+                    :
+                    <span>
+                        장르별 오리지널
+                    </span>
+                }
             </div>
 
             <div className="h-[70px] mb-5 bg-white flex items-center justify-center border-t border-b">

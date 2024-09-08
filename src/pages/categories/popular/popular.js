@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link as ScrollLink, Element as ScrollElement } from 'react-scroll';
+import { useSelector } from 'react-redux';
 
 import NewTrendingOriginalsPage from './childPopular/newTrendingOriginals';
 import NewTrendingVideosPage from './childPopular/newTrendingVideos';
@@ -32,6 +33,9 @@ const PopularPage = () => {
     //Chọn nội dung theo tiêu đề
     const [selectedSection, setSelectedSection] = useState("section1");
 
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <div className="w-full h-full bg-white pb-10">
 
@@ -45,7 +49,16 @@ const PopularPage = () => {
                             onClick={() => setSelectedSection("section1")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            NEW & TRENDING ORIGINALS
+                            {!language ?
+                                <span>
+                                    NEW & TRENDING ORIGINALS
+                                </span>
+                                :
+                                <span>
+                                    원본의 새로운 기능
+                                </span>
+                            }
+
                         </li>
                     </ScrollLink>
 
@@ -54,7 +67,16 @@ const PopularPage = () => {
                             onClick={() => setSelectedSection("section2")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            NEW & TRENDING VIDEOS
+                            {!language ?
+                                <span>
+                                    NEW & TRENDING VIDEOS
+                                </span>
+                                :
+                                <span>
+                                    새로운 동영상
+                                </span>
+                            }
+
                         </li>
                     </ScrollLink>
 
@@ -63,7 +85,16 @@ const PopularPage = () => {
                             onClick={() => setSelectedSection("section3")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section3" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            ORIGINALS BY GENRE
+                            {!language ?
+                                <span>
+                                    ORIGINALS BY GENRE
+                                </span>
+                                :
+                                <span>
+                                    장르별 오리지널
+                                </span>
+                            }
+
                         </li>
                     </ScrollLink>
 
@@ -72,7 +103,16 @@ const PopularPage = () => {
                             onClick={() => setSelectedSection("section4")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section4" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            VIDEOS BY GENRE
+                            {!language ?
+                                <span>
+                                    VIDEOS BY GENRE
+                                </span>
+                                :
+                                <span>
+                                    장르별 동영상
+                                </span>
+                            }
+
                         </li>
                     </ScrollLink>
 

@@ -77,6 +77,9 @@ const GenresPage = () => {
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
     const [hoveredVideoItem, setHoveredVideoItem] = useState(null);
 
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
 
@@ -87,7 +90,16 @@ const GenresPage = () => {
                             onClick={() => setSelectedSection("section1")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            ORIGINALS
+
+                            {!language ?
+                                <span>
+                                    ORIGINALS
+                                </span>
+                                :
+                                <span>
+                                    원본
+                                </span>
+                            }
                         </li>
                     </ScrollLink >
 
@@ -96,7 +108,15 @@ const GenresPage = () => {
                             onClick={() => setSelectedSection("section2")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            VIDEOS
+                            {!language ?
+                                <span>
+                                    VIDEOS
+                                </span>
+                                :
+                                <span>
+                                    비디오
+                                </span>
+                            }
                         </li>
                     </ScrollLink >
                 </ul>
@@ -111,7 +131,16 @@ const GenresPage = () => {
                             {/* Tiêu đề */}
                             <div className="h-[70px] border-b-2 flex items-center">
                                 <span className="font-semibold text-md">
-                                    Originals Series
+                                    {!language ?
+                                        <span>
+                                            Originals Series
+                                        </span>
+                                        :
+                                        <span>
+                                            오리지널 시리즈
+                                        </span>
+                                    }
+
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
                                     All
@@ -221,7 +250,16 @@ const GenresPage = () => {
                             {/* Tiêu đề */}
                             <div className="h-[70px] border-b-2 flex items-center">
                                 <span className="font-semibold text-md">
-                                    Videos Series
+                                    {!language ?
+                                        <span>
+                                            Videos Series
+                                        </span>
+                                        :
+                                        <span>
+                                            비디오 시리즈
+                                        </span>
+                                    }
+
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
                                     All

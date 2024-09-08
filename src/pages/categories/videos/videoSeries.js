@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import StarIcon from '@mui/icons-material/Star';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -85,6 +86,9 @@ const VideoSeriesPage = () => {
     // Nhấn nút đăng ký
     const [isSubscribe, setIsSubscribe] = useState(false);
 
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <div>
 
@@ -152,10 +156,16 @@ const VideoSeriesPage = () => {
                     <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-6 pb-10 rounded-b">
 
                         <div className="col-span-2 h-full">
-                            <div className="w-full px-5 pb-3">
-                                <span className="font-semibold text-md">
-                                    Series Video
-                                </span>
+                            <div className="w-full px-5 pb-3 font-semibold text-md">
+                                {!language ?
+                                    <span>
+                                        Series Video
+                                    </span>
+                                    :
+                                    <span>
+                                        시리즈 영상
+                                    </span>
+                                }
                             </div>
 
                             <div className="w-full h-[900px] px-3 custom-scrollbar">
@@ -334,10 +344,17 @@ const VideoSeriesPage = () => {
 
                 <div className="w-full h-full  py-10 flex items-center justify-center">
                     <div className="w-[1200px] h-full ">
-                        <div className="">
-                            <span className="text-xl font-semibold">
-                                You may also like
-                            </span>
+                        <div className="text-xl font-semibold">
+                            {!language ?
+                                <span>
+                                    You may also like
+                                </span>
+                                :
+                                <span>
+                                    당신은 또한 좋아할 수도 있습니다
+                                </span>
+                            }
+
                         </div>
                         <div className="w-full min-h-[160px] bg-white my-5 px-5 py-5 rounded-md">
                             <ul className="w-full h-full grid grid-cols-3 gap-3">
