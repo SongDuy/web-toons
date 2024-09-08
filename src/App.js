@@ -42,6 +42,7 @@ import Comment from './pages/account/Comment';
 import Subscribed from './pages/account/Subscribed';
 import Creators from './pages/account/Creators';
 //import Delete from './pages/account/Delete';
+import PaymentPage from './pages/payment/payment';
 import TermsOfUse from './pages/Policys/TermsOfUse';
 import PrivacyPolicy from './pages/Policys/PrivacyPolicy';
 import CommunityPolicy from './pages/Policys/CommunityPolicy';
@@ -62,7 +63,7 @@ function App() {
       <Routes>
 
         <Route path="/" element={<Layout />}>
-          <Route index element={<Loading>  <HomePage /></Loading> } />
+          <Route index element={<Loading>  <HomePage /></Loading>} />
 
           <Route path="/originals" element={<Loading> <OriginalsPage /></Loading>} />
           <Route path="/originals/original/series/:id" element={<OriginalSeriesPage />} />
@@ -79,13 +80,16 @@ function App() {
           <Route path="/channel/my" element={<MyChannelPage />} />
           <Route path="/channel/creator" element={<CreatorChannelPage />} />
 
+          {/* Trang thanh toán */}
+          <Route path="/payment" element={<PaymentPage />} />
+
           {/* Trang đăng ký */}
           <Route path="/register" element={<RegisterPage />} />
 
           {/* Trang quên mật khẩu */}
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-       
-         
+
+
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/terms/privacyPolicy" element={<PrivacyPolicy />} />
           <Route path="/terms/canvasPolicy" element={<CommunityPolicy />} />
@@ -94,14 +98,14 @@ function App() {
           <Route path="/terms/superLikePolicy" element={<SuperLikeTerms />} />
 
         </Route>
-  {/* Trang chỉ đăng nhập mới sử dụng được của user*/}
-  <Route  element={<AuthProvider><Layout /></AuthProvider>}>
-  <Route path="/account" element={   <AuthProvider><Account /> </AuthProvider>} />
+        {/* Trang chỉ đăng nhập mới sử dụng được của user*/}
+        <Route element={<AuthProvider><Layout /></AuthProvider>}>
+          <Route path="/account" element={<AuthProvider><Account /> </AuthProvider>} />
           <Route path="/comment" element={<Comment />} />
           <Route path="/Subscribed" element={<Subscribed />} />
           <Route path="/Creators" element={<Creators />} />
 
-</Route>
+        </Route>
         {/* Trang hiển thị truyện và video */}
         <Route path="/originals/original/series/display/:id/:idseries" element={<DisplayOriginalPage />} />
         <Route path="/videos/video/series/display" element={<DisplayVideoPage />} />
