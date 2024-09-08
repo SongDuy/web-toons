@@ -71,7 +71,16 @@ const OriginalsPage = () => {
                             onClick={() => setSelectedSection("section1")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            ONGOING
+                            {!language ?
+                                <span>
+                                    ONGOING
+                                </span>
+                                :
+                                <span>
+                                    전진
+                                </span>
+                            }
+
                         </li>
                     </ScrollLink >
 
@@ -80,7 +89,16 @@ const OriginalsPage = () => {
                             onClick={() => setSelectedSection("section2")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            COMPLETED
+                            {!language ?
+                                <span>
+                                    COMPLETED
+                                </span>
+                                :
+                                <span>
+                                    완전한
+                                </span>
+                            }
+
                         </li>
                     </ScrollLink >
                 </ul>
@@ -95,7 +113,16 @@ const OriginalsPage = () => {
 
                             <div className="h-[70px] border-b-2 flex items-center">
                                 <span className="font-semibold text-md">
-                                    Ongoing Series
+                                    {!language ?
+                                        <span>
+                                            Ongoing Series
+                                        </span>
+                                        :
+                                        <span>
+                                            진행중인 시리즈
+                                        </span>
+                                    }
+
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
                                     by Popularity
@@ -199,8 +226,17 @@ const OriginalsPage = () => {
                     {/* Truyện Completed Series */}
                     <ScrollElement name="section2" >
                         <div className="w-full h-full pt-[70px]">
-                            <div className="h-[70px] border-b-2 flex items-center">
-                                <span className="font-semibold text-md">Completed Series</span>
+                            <div className="h-[70px] border-b-2 flex items-center font-semibold text-md">
+                                {!language ?
+                                    <span>
+                                        Completed Series
+                                    </span>
+                                    :
+                                    <span>
+                                        완성된 시리즈
+                                    </span>
+                                }
+
                             </div>
 
                             <div className="w-full h-full mt-[25px] flex items-center justify-center">
