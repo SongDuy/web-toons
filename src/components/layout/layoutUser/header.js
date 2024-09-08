@@ -431,8 +431,10 @@ const HeaderPage = () => {
           </div>
         }
 
-        {/* Chức năng tìm kiếm */}
+        {/* Chức năng tìm kiếm và chuyển ngữ */}
         <div className="flex gap-3">
+
+          {/* Chức năng tìm kiếm */}
           <div>
             <button
               className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full text-gray-500 flex items-center justify-center"
