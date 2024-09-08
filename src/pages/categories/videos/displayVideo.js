@@ -89,6 +89,9 @@ const DisplayVideoPage = () => {
         setReplyCommentId(commentId === replyCommentId ? null : commentId);
     };
 
+    // Nhấn nút đăng ký
+    const [isSubscribe, setIsSubscribe] = useState(false);
+
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
 
@@ -187,19 +190,30 @@ const DisplayVideoPage = () => {
                                 <FavoriteBorderIcon />
                                 9,455
                             </button>
-                            <button className="w-[120px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2">
-                                <AddIcon />
-                                {!language ?
-                                    <span>
-                                        Subscribe
-                                    </span>
-                                    :
-                                    <span>
-                                        구독하다
-                                    </span>
-                                }
-
-                            </button>
+                            {!isSubscribe ?
+                                <button
+                                    onClick={() => setIsSubscribe(true)}
+                                    className="w-[120px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2"
+                                >
+                                    <AddIcon />
+                                    {!language ?
+                                        <span>
+                                            Subscribe
+                                        </span>
+                                        :
+                                        <span>
+                                            구독하다
+                                        </span>
+                                    }
+                                </button>
+                                :
+                                <button
+                                    onClick={() => setIsSubscribe(false)}
+                                    className="w-[35px] h-[35px] text-black hover:text-yellow-500 bg-gray-100 hover:bg-gray-200 py-2 px-2 rounded-full flex gap-1 items-center justify-center"
+                                >
+                                    <CheckIcon />
+                                </button>
+                            }
                         </div>
                     </div>
 
