@@ -113,6 +113,9 @@ const CreatorChannelPage = () => {
         setReplyCommentId(commentId === replyCommentId ? null : commentId);
     };
 
+    // Nhấn nút đăng ký
+    const [isSubscribe, setIsSubscribe] = useState(false);
+
     // Nhấn nút thả tim
     const [isLike, setIsLike] = useState(false);
 
@@ -193,17 +196,37 @@ const CreatorChannelPage = () => {
                         </div>
 
                         <div className="ml-auto flex items-center justify-center">
-                            <button className="w-[120px] h-[50px] font-semibold text-white bg-green-400 hover:bg-green-500 rounded-xl">
-                                {!language ?
-                                    <span>
-                                        Follow:
-                                    </span>
-                                    :
-                                    <span>
-                                        따르다:
-                                    </span>
-                                }
-                            </button>
+                            {!isSubscribe ?
+                                <button 
+                                onClick={() => setIsSubscribe(true)}
+                                className="w-[150px] h-[50px] font-semibold text-white bg-green-400 hover:bg-green-500 rounded-full"
+                                >
+                                    {!language ?
+                                        <span>
+                                            Follow
+                                        </span>
+                                        :
+                                        <span>
+                                            따르다
+                                        </span>
+                                    }
+                                </button>
+                                :
+                                <button
+                                onClick={() => setIsSubscribe(false)}
+                                 className="w-[150px] h-[50px] font-semibold text-gray-400 bg-white hover:text-yellow-500 border-2 rounded-full"
+                                 >
+                                    {!language ?
+                                        <span>
+                                            Following
+                                        </span>
+                                        :
+                                        <span>
+                                            수행원
+                                        </span>
+                                    }
+                                </button>
+                            }
                         </div>
                     </div>
                 </div>
