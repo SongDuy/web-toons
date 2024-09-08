@@ -596,7 +596,7 @@ const HeaderPage = () => {
               </button>
               :
               <button className="w-[80px] h-[35px] px-2 bg-gray-100 font-semibold rounded" onClick={() => dispatch(getlanguage())}>
-                Koean
+                Korean
               </button>
             }
           </div>
