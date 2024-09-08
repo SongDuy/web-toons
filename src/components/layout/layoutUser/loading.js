@@ -9,6 +9,7 @@ import { getAllComic } from '../../../common/store/comic';
 const Loading = ({ children }) => {
     const dispatch = useDispatch();
     const [loading, setloading] = useState(false);
+
     useEffect(() => {
         const get = async () => {
             try {

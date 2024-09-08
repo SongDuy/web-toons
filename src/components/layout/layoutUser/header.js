@@ -23,7 +23,7 @@ import logo from "../../../img/logonew.png";
 import { Link } from "react-router-dom";
 import { auth } from "../../../common/themes/firebase";
 import { useDispatch, useSelector } from 'react-redux';
-import { setIsLoginModal } from "../../../common/store/hidden";
+import { getlanguage, setIsLoginModal } from "../../../common/store/hidden";
 import { logout, setuser } from "../../../common/store/Auth.js";
 import { onAuthStateChanged } from 'firebase/auth';
 
@@ -32,6 +32,7 @@ const HeaderPage = () => {
   const dispatch = useDispatch();
   const isLoginModal = useSelector(state => state.hidden.isLoginModal);
   const User = useSelector(state => state.AuthJs.User);
+  const language = useSelector(state => state.hidden.language);
 
   // Mở và đóng modal public 
   const [open, setOpen] = React.useState(false);
@@ -138,7 +139,6 @@ const HeaderPage = () => {
   }, [dispatch]);
 
   // Nhấn nút Chuyển ngôn ngữ
-  const [isLanguage, setIsLanguage] = useState(false);
 
   return (
     <div className=" w-full xs:h-[50px] sm:h-[100px] bg-white flex xs:px-[5px] sm:px-[30px]">
@@ -199,7 +199,7 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-              {!isLanguage ?
+              {!language ?
                 <span>
                   Originals
                 </span>
@@ -217,7 +217,7 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-              {!isLanguage ?
+              {!language ?
                 <span>
                   Videos
                 </span>
@@ -236,7 +236,7 @@ const HeaderPage = () => {
                 }`}
             >
 
-              {!isLanguage ?
+              {!language ?
                 <span>
                   Genres
                 </span>
@@ -255,7 +255,7 @@ const HeaderPage = () => {
                 }`}
             >
               
-              {!isLanguage ?
+              {!language ?
                 <span>
                   Popular
                 </span>
@@ -285,7 +285,7 @@ const HeaderPage = () => {
                 className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
                 onClick={() => { openLoginModal(); handleCloseAccount(); }}
               >
-                {!isLanguage ?
+                {!language ?
                   <span>
                     Publish
                   </span>
@@ -305,7 +305,7 @@ const HeaderPage = () => {
                 className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
                 onClick={() => { openLoginModal(); handleCloseAccount(); }}
               >
-                {!isLanguage ?
+                {!language ?
                   <span>
                     Log In
                   </span>
@@ -336,7 +336,7 @@ const HeaderPage = () => {
                 onClick={handleToggle}
               >
                 {/* Publish {process.env.REACT_APP_HOME} */}
-                {!isLanguage ?
+                {!language ?
                   <span>
                     Publish
                   </span>
@@ -508,12 +508,12 @@ const HeaderPage = () => {
 
           {/* Nút chuyển ngữ */}
           <div className="w-full h-full">
-            {!isLanguage ?
-              <button className="w-[80px] h-[35px] px-2 bg-gray-100 font-semibold rounded" onClick={() => setIsLanguage(true)}>
+            {!language ?
+              <button className="w-[80px] h-[35px] px-2 bg-gray-100 font-semibold rounded" onClick={() =>  dispatch(getlanguage())}>
                 English
               </button>
               :
-              <button className="w-[80px] h-[35px] px-2 bg-gray-100 font-semibold rounded" onClick={() => setIsLanguage(false)}>
+              <button className="w-[80px] h-[35px] px-2 bg-gray-100 font-semibold rounded" onClick={() =>  dispatch(getlanguage())}>
                 Koean
               </button>
             }
