@@ -328,7 +328,15 @@ const OriginalSeriesPage = () => {
                                                 aria-haspopup="true"
                                                 onClick={handleToggle}
                                             >
-                                                RATE
+                                                {!language ?
+                                                    <span>
+                                                        RATE
+                                                    </span>
+                                                    :
+                                                    <span>
+                                                        비율
+                                                    </span>
+                                                }
                                             </button>
 
                                             {/* Chọn đánh giá */}

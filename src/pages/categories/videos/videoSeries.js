@@ -137,7 +137,15 @@ const VideoSeriesPage = () => {
                                     className="text-white hover:text-yellow-500 bg-black bg-opacity-30 py-2 px-2 rounded-full flex gap-1 items-center justify-center"
                                 >
                                     <AddCircleOutlineIcon />
-                                    Subscribe
+                                    {!language ?
+                                        <span>
+                                            Subscribe
+                                        </span>
+                                        :
+                                        <span>
+                                            구독하다
+                                        </span>
+                                    }
                                 </button>
                                 :
                                 <button
@@ -269,7 +277,15 @@ const VideoSeriesPage = () => {
                                             aria-haspopup="true"
                                             onClick={handleToggle}
                                         >
-                                            RATE
+                                            {!language ?
+                                                <span>
+                                                    RATE
+                                                </span>
+                                                :
+                                                <span>
+                                                    비율
+                                                </span>
+                                            }
                                         </button>
                                         <Popper
                                             open={open}

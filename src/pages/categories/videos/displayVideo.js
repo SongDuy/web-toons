@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
 import logo from '../../../img/logonew.png';
+import { useSelector } from 'react-redux';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import AddIcon from '@mui/icons-material/Add';
@@ -87,6 +88,10 @@ const DisplayVideoPage = () => {
     const handleToggleReply = (commentId) => {
         setReplyCommentId(commentId === replyCommentId ? null : commentId);
     };
+
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <div>
             <div className="w-full h-full bg-white">
@@ -162,7 +167,15 @@ const DisplayVideoPage = () => {
 
                         <div className="flex-auto mb-3">
                             <span className="flex items-center justify-center text-yellow-800 font-semibold">
-                                Creator
+                                {!language ?
+                                    <span>
+                                        Creator
+                                    </span>
+                                    :
+                                    <span>
+                                        창조자
+                                    </span>
+                                }
                             </span>
                             <span className="flex items-center justify-center text-yellow-600 text-lg font-semibold">
                                 Lee Nakeum , seewater
@@ -176,7 +189,16 @@ const DisplayVideoPage = () => {
                             </button>
                             <button className="w-[120px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2">
                                 <AddIcon />
-                                Subscribe
+                                {!language ?
+                                    <span>
+                                        Subscribe
+                                    </span>
+                                    :
+                                    <span>
+                                        구독하다
+                                    </span>
+                                }
+
                             </button>
                         </div>
                     </div>
@@ -235,7 +257,16 @@ const DisplayVideoPage = () => {
 
                                 <div className="flex items-center pb-2">
                                     <span className="font-semibold text-lg">
-                                        Comments
+                                        {!language ?
+                                            <span>
+                                                Comments
+                                            </span>
+                                            :
+                                            <span>
+                                                댓글
+                                            </span>
+                                        }
+
                                     </span>
                                     <span className="px-2 text-gray-400">2,907</span>
                                 </div>
@@ -248,7 +279,16 @@ const DisplayVideoPage = () => {
                                     />
                                     <button className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                         <SendRoundedIcon className="transform rotate-200" />
-                                        Send
+
+                                        {!language ?
+                                            <span>
+                                                Send
+                                            </span>
+                                            :
+                                            <span>
+                                                보내다
+                                            </span>
+                                        }
                                     </button>
                                 </div>
 
@@ -256,15 +296,29 @@ const DisplayVideoPage = () => {
                                 <div className="w-full h-full my-5 ">
                                     <div className="px-3">
                                         <ul className="flex gap-2">
-                                            <li className="px-5 py-5 cursor-pointer hover:text-green-500 border-b-2">
-                                                <span className="font-semibold">
-                                                    TOP
-                                                </span>
+                                            <li className="px-5 py-5 cursor-pointer hover:text-green-500 font-semibold border-b-2">
+
+                                                {!language ?
+                                                    <span>
+                                                        TOP
+                                                    </span>
+                                                    :
+                                                    <span>
+                                                        맨 위
+                                                    </span>
+                                                }
                                             </li>
-                                            <li className="px-5 py-5 cursor-pointer hover:text-green-500">
-                                                <span className="font-semibold">
-                                                    NEWEST
-                                                </span>
+                                            <li className="px-5 py-5 cursor-pointer hover:text-green-500 font-semibold">
+
+                                                {!language ?
+                                                    <span>
+                                                        NEWEST
+                                                    </span>
+                                                    :
+                                                    <span>
+                                                        최신
+                                                    </span>
+                                                }
                                             </li>
                                         </ul>
                                     </div>
@@ -299,9 +353,18 @@ const DisplayVideoPage = () => {
                                                             <div className="w-full flex gap-2 py-1">
                                                                 <button
                                                                     onClick={() => handleToggleReply(item.id)}
-                                                                    className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-200 flex items-center justify-center"
+                                                                    className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-200 flex gap-2 items-center justify-center"
                                                                 >
-                                                                    Replies {item.replies}
+                                                                    {!language ?
+                                                                        <span>
+                                                                            Replies
+                                                                        </span>
+                                                                        :
+                                                                        <span>
+                                                                            답글
+                                                                        </span>
+                                                                    }
+                                                                    {item.replies}
                                                                 </button>
 
                                                                 <button className="px-2 py-1 ml-auto border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center">
@@ -334,7 +397,16 @@ const DisplayVideoPage = () => {
                                                                     />
                                                                     <button className="px-3 py-2 ml-auto bg-black hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                                                         <SendRoundedIcon className="transform rotate-200" />
-                                                                        Reply
+
+                                                                        {!language ?
+                                                                            <span>
+                                                                                Reply
+                                                                            </span>
+                                                                            :
+                                                                            <span>
+                                                                                회신하다
+                                                                            </span>
+                                                                        }
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -402,7 +474,16 @@ const DisplayVideoPage = () => {
                             <div className="w-full h-full mb-8">
                                 <div className="flex items-center pb-2">
                                     <span className="px-2 font-semibold text-lg hover:text-green-500 cursor-pointer">
-                                        New & Trending
+
+                                        {!language ?
+                                            <span>
+                                                New & Trending
+                                            </span>
+                                            :
+                                            <span>
+                                                신규 및 인기
+                                            </span>
+                                        }
                                         <NavigateNextIcon />
                                     </span>
                                 </div>
@@ -457,7 +538,16 @@ const DisplayVideoPage = () => {
                             <div className="w-full h-full mt-8">
                                 <div className="flex items-center pb-2">
                                     <span className="px-2 font-semibold text-lg hover:text-green-500 cursor-pointer">
-                                        Videos by Genre
+
+                                        {!language ?
+                                            <span>
+                                                Videos by Genre
+                                            </span>
+                                            :
+                                            <span>
+                                                장르별 동영상
+                                            </span>
+                                        }
                                         <NavigateNextIcon />
                                     </span>
                                     <span className="ml-auto text-green-500 cursor-pointer mr-2">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import Avatar from '@mui/material/Avatar';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -88,6 +89,9 @@ const MyChannelPage = () => {
         setReplyCommentId(commentId === replyCommentId ? null : commentId);
     };
 
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <div className="w-full h-full pb-10 border bg-gray-100 flex items-center justify-center">
             <div className="w-[1120px] h-full">
@@ -121,21 +125,57 @@ const MyChannelPage = () => {
                                 </span>
                             </div>
                             <div className="px-1 py-4 flex">
-                                <span className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    Series Original : 15
-                                </span>
-                                <span className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    Series Video : 15
-                                </span>
-                                <span className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    Followers : 80,135
-                                </span>
+                                <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
+                                    {!language ?
+                                        <span>
+                                            Series Original:
+                                        </span>
+                                        :
+                                        <span>
+
+                                            시리즈 오리지널:
+                                        </span>
+                                    }
+                                    {' '} 15
+                                </div>
+                                <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
+                                    {!language ?
+                                        <span>
+                                            Series Video:
+                                        </span>
+                                        :
+                                        <span>
+                                            시리즈 비디오:
+                                        </span>
+                                    }
+                                    {' '} 15
+                                </div>
+                                <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
+                                    {!language ?
+                                        <span>
+                                            Followers:
+                                        </span>
+                                        :
+                                        <span>
+                                            추종자:
+                                        </span>
+                                    }
+                                    {' '} 80,135
+                                </div>
                             </div>
                         </div>
 
                         <div className="ml-auto flex items-center justify-center">
                             <button className="w-[120px] h-[50px] font-semibold text-white bg-green-400 hover:bg-green-500 rounded-xl">
-                                Follow
+                                {!language ?
+                                    <span>
+                                        Follow:
+                                    </span>
+                                    :
+                                    <span>
+                                        따르다:
+                                    </span>
+                                }
                             </button>
                         </div>
                     </div>
@@ -147,9 +187,17 @@ const MyChannelPage = () => {
 
                         {/* Khung hiển thị các liên kết của tác giả */}
                         <div className="w-full h-[340px] px-5 py-3 bg-white rounded-lg">
-                            <span className="font-semibold text-[20px] text-black">
-                                Link
-                            </span>
+                            <div className="font-semibold text-[20px] text-black">
+                                {!language ?
+                                    <span>
+                                        Link
+                                    </span>
+                                    :
+                                    <span>
+                                        링크
+                                    </span>
+                                }
+                            </div>
 
                             <div className="py-5">
                                 <ul className="w-full">
@@ -162,9 +210,18 @@ const MyChannelPage = () => {
 
                         {/* Khung hiển thị các Series truyện của tác giả */}
                         <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
-                            <span className="font-semibold text-[20px] text-black">
-                                Series Original
-                            </span>
+                            <div className="font-semibold text-[20px] text-black">
+                                {!language ?
+                                    <span>
+                                        Series Original
+                                    </span>
+                                    :
+                                    <span>
+
+                                        시리즈 오리지널
+                                    </span>
+                                }
+                            </div>
 
                             <div className="mt-5 h-[450px] custom-scrollbar">
                                 <ul className="w-full">
@@ -201,9 +258,17 @@ const MyChannelPage = () => {
 
                         {/* Khung hiển thị các Series Video của tác giả */}
                         <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
-                            <span className="font-semibold text-[20px] text-black">
-                                Series Video
-                            </span>
+                            <div className="font-semibold text-[20px] text-black">
+                                {!language ?
+                                    <span>
+                                        Series Video
+                                    </span>
+                                    :
+                                    <span>
+                                        시리즈 비디오
+                                    </span>
+                                }
+                            </div>
 
                             <div className="mt-5 h-[450px] custom-scrollbar">
                                 <ul className="w-full">
@@ -242,9 +307,17 @@ const MyChannelPage = () => {
                     {/* Hiển thị các bài viết của tác giả */}
                     <div className="w-[700px] px-5 pt-3 pb-10 bg-white rounded-lg">
                         <div className="w-full h-[40px] border-b-2 border-bg-black">
-                            <span className="font-semibold text-[20px] text-black">
-                                Feed
-                            </span>
+                            <div className="font-semibold text-[20px] text-black">
+                                {!language ?
+                                    <span>
+                                        Feed
+                                    </span>
+                                    :
+                                    <span>
+                                        밥을 먹이다
+                                    </span>
+                                }
+                            </div>
                         </div>
 
                         {/* Danh sách bài post */}
@@ -267,13 +340,21 @@ const MyChannelPage = () => {
                                                 />
                                             </div>
                                             <div className="px-2">
-                                                <div className="">
+                                                <div className="flex">
                                                     <span className="font-semibold">
                                                         {item.auth}
                                                     </span>
-                                                    <span className="px-2 font-semibold text-yellow-500">
-                                                        . Creator
-                                                    </span>
+                                                    <div className="px-2 font-semibold text-yellow-500">
+                                                        {!language ?
+                                                            <span>
+                                                                . Creator
+                                                            </span>
+                                                            :
+                                                            <span>
+                                                                . 창조자
+                                                            </span>
+                                                        }
+                                                    </div>
                                                 </div>
 
                                                 <div className="">
@@ -342,7 +423,15 @@ const MyChannelPage = () => {
                                                     />
                                                     <button className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                                         <SendRoundedIcon className="transform rotate-200" />
-                                                        Send
+                                                        {!language ?
+                                                            <span>
+                                                                Send
+                                                            </span>
+                                                            :
+                                                            <span>
+                                                                보내다
+                                                            </span>
+                                                        }
                                                     </button>
                                                 </div>
                                             </div>
@@ -381,9 +470,19 @@ const MyChannelPage = () => {
                                                                         <div className="w-full flex gap-2 py-1">
                                                                             <button
                                                                                 onClick={() => handleToggleReply(item.id)}
-                                                                                className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-200 flex items-center justify-center"
+                                                                                className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-200 flex gap-2 items-center justify-center"
                                                                             >
-                                                                                Replies {item.replies}
+
+                                                                                {!language ?
+                                                                                    <span>
+                                                                                        Replies
+                                                                                    </span>
+                                                                                    :
+                                                                                    <span>
+                                                                                        답글
+                                                                                    </span>
+                                                                                }
+                                                                                {item.replies}
                                                                             </button>
 
                                                                             <button className="px-2 py-1 ml-auto border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center">
@@ -416,7 +515,15 @@ const MyChannelPage = () => {
                                                                                 />
                                                                                 <button className="px-3 py-2 ml-auto bg-black hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                                                                     <SendRoundedIcon className="transform rotate-200" />
-                                                                                    Reply
+                                                                                    {!language ?
+                                                                                        <span>
+                                                                                            Reply
+                                                                                        </span>
+                                                                                        :
+                                                                                        <span>
+                                                                                            회신하다
+                                                                                        </span>
+                                                                                    }
                                                                                 </button>
                                                                             </div>
                                                                         </div>
