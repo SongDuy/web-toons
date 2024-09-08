@@ -20,8 +20,9 @@ import { useSelector } from 'react-redux';
 const WeekdayOriginalsAndVideosPage = () => {
 
     const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const daysInKorean = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'];
     const comic = useSelector(state => state.comic.comic);
-
+    const language = useSelector(state => state.hidden.language);
 
     const dataVideos = [
         { id: 1, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Doraemon", auth: "Lee Nakeum , seewater", like: "200k", },
@@ -151,7 +152,7 @@ const WeekdayOriginalsAndVideosPage = () => {
         <div className="w-full min-h-[560px]">
             {/* Phần hiển thị nội dung theo thứ trong tuần */}
             <div className="w-full xs:min-h-[60px] sm:h-[60px] bg-white shadow flex items-center justify-center">
-                <ul
+               {!language? <ul
                     className="w-[850px] grid xs:grid-cols-4 sm:grid-cols-7"
                 >
                     {days.map(day => (
@@ -163,7 +164,21 @@ const WeekdayOriginalsAndVideosPage = () => {
                             {day}
                         </li>
                     ))}
-                </ul>
+                </ul>:
+                <ul
+                className="w-[850px] grid xs:grid-cols-4 sm:grid-cols-7"
+            >
+                {daysInKorean.map(day => (
+                    <li
+                        key={day}
+                        onClick={() => handleSelectDay(day)}
+                        className={`max-w-[120px] h-[60px] uppercase font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500 '}`}
+                    >
+                        {day}
+                    </li>
+                ))}
+            </ul>
+                }
                 <div className="w-[150px] h-full flex items-center justify-center">
 
                     <button
