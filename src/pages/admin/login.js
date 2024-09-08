@@ -1,6 +1,25 @@
-import React from 'react';
-//import '../../App.css'
+import React,{ useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { handleAdmin } from '../../common/store/Auth.js';
+import { useNavigate } from 'react-router-dom';
+
 const AdminLoginPage = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const GetLogin = async () => {
+        try {
+            const lg = await dispatch(handleAdmin({ email, password }));
+            unwrapResult(lg)
+            navigate('/admin')
+        } catch (error) {
+        }
+
+    }
+   
     return (
         <div className="w-screen h-screen bg-gray-100 flex items-center justify-center fixed inset-0 z-50">
 
@@ -16,22 +35,22 @@ const AdminLoginPage = () => {
 
                         {/* Nhập tên tài khoản */}
                         <div className="w-full h-full">
-                            <label for="username" className="w-full h-full font-semibold">
+                            <label htmlFor="username" className="w-full h-full font-semibold">
                                 Username
                             </label>
 
                             <input
-                                type="text"
+                                type="email"
                                 className="w-full h-[50px] px-2 mt-3 border rounded shadow"
                                 placeholder="Username"
-                                value=""
-                                onChange=""
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
 
                         {/* Nhập mật khẩu */}
                         <div className="w-full h-full">
-                            <label for="password" className="w-full h-full font-semibold">
+                            <label htmlFor="password" className="w-full h-full font-semibold">
                                 Password
                             </label>
 
@@ -39,16 +58,16 @@ const AdminLoginPage = () => {
                                 type="password"
                                 className="w-full h-[50px] px-2 mt-3 border rounded shadow"
                                 placeholder="Password"
+                                value={password}
                                 form="off"
-                                value=""
-                                onChange=""
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
 
                         {/* Đăng nhập */}
                         <button
                             className="w-full h-[50px] mt-8 bg-black text-white rounded font-semibold"
-                        // onClick={getRegister}
+                            onClick={GetLogin}
                         >
                             Continue
                         </button>

@@ -8,7 +8,6 @@ import {
     addDoc,
     query,
     where,
-    orderBy,
     limit,
   } from 'firebase/firestore';
 import { fireStore } from '../themes/firebase';
@@ -56,14 +55,28 @@ import { fireStore } from '../themes/firebase';
         }
       },
     async getrandom(){
-       // Tạo truy vấn sắp xếp theo trường 'randomField' và giới hạn kết quả là 1
-  const q = query(collection(fireStore, 'yourCollection'), orderBy('randomField'), limit(1));
+      const randomValue = Math.random();
+      const q = query(collection(fireStore, 'Comic'), where("random", ">=", randomValue), limit(5))
   const querySnapshot = await getDocs(q);
 
   if (!querySnapshot.empty) {
-    const randomDoc = querySnapshot.docs[0];
-    console.log("Tài liệu ngẫu nhiên:", randomDoc.data());
-  }
+    const comic = querySnapshot.docs?.map((item) => {
+      //   console.log(item.ref)
+      //   const subcollectionRef = collection(item.ref, 'YZOoN8D6Ued98MSS7xEF');
+      //   const subcollectionSnapshot = await getDocs(subcollectionRef)
+      //   subcollectionSnapshot.forEach((chapterDoc) => {
+      //     Xử lý dữ liệu từ subcollection ở đây
+      //     console.log(chapterDoc.id, chapterDoc.data());
+      // });
+        return { id: item.id, ...item.data(),createTime: new Date(item.data().createTime?.toDate()).toISOString() };
+        
+      });
+        return { comic, success: true };
+     
+  } else {
+    return { message: 'No such document!', success: false };
+  }   
+
     },
     async getbyid(id) {
       const docRef = doc(fireStore, 'Comic', id);
@@ -102,10 +115,10 @@ import { fireStore } from '../themes/firebase';
     },
    
     async update(data, id) {
-      const updatepoint = doc(fireStore, 'Comic', id);
+      const update = doc(fireStore, 'Comic', id);
   
       // Set the "capital" field of the city 'DC'
-      await updateDoc(updatepoint, data);
+      await updateDoc(update, data);
     },
     async Delete(id) {
         await deleteDoc(doc(fireStore, 'Comic', id));

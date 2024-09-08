@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   hidden: true,
   isLoginModal: false,
-  Address: true,
+  language: "eng",
   WithDrawal: true,
   Access:false,
   Bage: false,
@@ -18,8 +18,8 @@ const Hidden = createSlice({
     getHidden: (state) => {
       state.hidden = !state.hidden;
     },
-    getAddress: (state) => {
-      state.Address = !state.Address;
+    getlanguage: (state) => {
+      state.language = !state.language;
     },
     getWithDrawal: (state) => {
       state.WithDrawal = !state.WithDrawal;
@@ -35,7 +35,7 @@ const Hidden = createSlice({
 export const {
   setIsLoginModal,
   getHidden,
-  getAddress,
+  getlanguage,
   getWithDrawal,
   getBage,
   getAccess

@@ -29,6 +29,29 @@ export const handleLogin = createAsyncThunk("user/login", async (payload) => {
   }
   //throw error
 });
+export const handleAdmin = createAsyncThunk("user/loginadmin", async (payload) => {
+  try {
+   const userCredential = await signInWithEmailAndPassword(auth, payload.email, payload.password);
+   const finduser=await userFireBase.getbyid(userCredential?.user?.uid)
+   if(userCredential.user.emailVerified && finduser.success && finduser.role==='admin'){
+
+    const token = await auth.currentUser.getIdToken(true);
+    localStorage.setItem("sadsad", token);
+    return true;
+
+   }else{
+    auth.signOut()
+    throw new Error ( '400');
+
+   }
+  
+  } catch (error) {
+    // console.log(error);
+    throw error.message === '400'? new Error ( "Please verify your email before logging in."):new Error ( "Incorrect email or password.");
+    // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
+  }
+  //throw error
+});
 export const handleRegister = createAsyncThunk("user/Register", async (payload) => {
     try {
       const userCredential = await createUserWithEmailAndPassword (auth, payload.email, payload.password);
@@ -51,7 +74,15 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
   export const logout = createAsyncThunk("user/logout", async () => {
     try {
         await auth.signOut();
-        console.log('Đăng xuất thành công',process.env,auth.currentUser);
+        localStorage.removeItem('sadsadas');
+        return false
+      } catch (error) {
+        throw error
+      }
+  });
+  export const logoutadmin = createAsyncThunk("admin/logout", async () => {
+    try {
+        await auth.signOut();
         localStorage.removeItem('sadsadas');
         return false
       } catch (error) {
@@ -86,13 +117,17 @@ const authRedux = createSlice({
     User: false,
     error: null,
     errorregister:null,
-    admin: true,
+    admin: false,
   },
   reducers: {
     setuser:(state,action)=>{
           state.User=action.payload
         
       },
+      setad:(state,action)=>{
+        state.admin=action.payload
+      
+    },
       seterr:(state,action)=>{
         state.error=action.payload
       
@@ -125,11 +160,23 @@ const authRedux = createSlice({
       builder
       .addCase(logout.fulfilled, (state, action) => {
         state.User = action.payload;
+        
         state.error = null;
         state.errorregister = null;
       })
       .addCase(logout.rejected, (state, action) => {
         state.User = false; // Kết thúc quá trình đăng nhập
+        state.error = action.error; // Lưu thông báo lỗi để hiển thị cho người dùng
+      });
+      builder
+      .addCase(logoutadmin.fulfilled, (state, action) => {
+        state.admin = action.payload;
+        
+        state.error = null;
+        state.errorregister = null;
+      })
+      .addCase(logoutadmin.rejected, (state, action) => {
+        state.admin = false; // Kết thúc quá trình đăng nhập
         state.error = action.error; // Lưu thông báo lỗi để hiển thị cho người dùng
       });
       builder
@@ -140,8 +187,17 @@ const authRedux = createSlice({
         state.User = false; // Kết thúc quá trình đăng nhập
         state.error = action.error; // Lưu thông báo lỗi để hiển thị cho người dùng
       });
+      builder
+      .addCase(handleAdmin.fulfilled, (state, action) => {
+        state.error = null;
+        state.admin = action.payload;
+      })
+      .addCase(handleAdmin.rejected, (state, action) => {
+        state.User = false; // Kết thúc quá trình đăng nhập
+        state.error = action.error; // Lưu thông báo lỗi để hiển thị cho người dùng
+      });
   },
 });
-export const {setuser,seterregister,seterr}=authRedux.actions
+export const {setuser,seterregister,seterr,setad}=authRedux.actions
 
 export default authRedux.reducer;

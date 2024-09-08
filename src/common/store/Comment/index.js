@@ -14,7 +14,6 @@ export const getidseries = createAsyncThunk("Comment/idseries", async (id) => {
 export const idusercomment = createAsyncThunk("Comment/iduser", async (id) => {
   try {
       const comment =await CommentFireBase.getbyid(id)
-      console.log(comment)
 
       return comment.success?comment:[]
     

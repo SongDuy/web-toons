@@ -50,6 +50,7 @@ import AdRevenueSharingTerms from './pages/Policys/AdRevenueSharingTerms';
 import SuperLikeTerms from './pages/Policys/SuperLikeTerms';
 import { AuthProvider } from './Hooks/useAuth';
 import Loading from './components/layout/layoutUser/loading';
+import { AuthadProvider } from './Hooks/useAuthad';
 
 function App() {
 
@@ -110,7 +111,7 @@ function App() {
         <Route path="/admin/login" element={<AdminLoginPage />} />
 
         {/* Trang hiển thị Admin */}
-        <Route path="/admin" element={<AdminPage />}>
+        <Route path="/admin" element={<AuthadProvider><AdminPage /></AuthadProvider>}>
           {/* Định tuyến mặc định cho /admin */}
           <Route index element={<Navigate to="dashboard" replace />} />
 

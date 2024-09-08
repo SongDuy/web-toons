@@ -12,10 +12,14 @@ import FlagIcon from '@mui/icons-material/Flag';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import SafetyCheckIcon from '@mui/icons-material/SafetyCheck';
-
+import {  useDispatch,useSelector } from 'react-redux';
+import { auth } from '../../common/themes/firebase';
+import { logout } from '../../common/store/Auth.js';
 const AdminPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const admin = useSelector(state => state.AuthJs.admin);
+    const dispatch = useDispatch();
 
     // Hàm chuyển đổi chữ cái đầu thành chữ hoa
     const capitalizeFirstLetter = (string) => {
@@ -151,10 +155,16 @@ const AdminPage = () => {
                                 {capitalizeFirstLetter(isTitle)}
                             </span>
                         </div>
-
-                        <div className="ml-auto">
-                            ADMIN Name
-                        </div>
+                        {admin &&
+                          
+                            <button
+                            className="ml-auto xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
+                            onClick={() => dispatch(logout())}
+                          >
+                            {auth?.currentUser.displayName}
+                          </button>
+    
+}
                     </div>
 
                     {/* Render the content based on the selected title */}

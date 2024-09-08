@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+
 const useShowNavRView = () => {
   const location = useLocation();
   const [showNavRView, setShowNavRView] = useState(false);
-
+  
+ 
   useEffect(() => {
     const NavRView = [
       "/",

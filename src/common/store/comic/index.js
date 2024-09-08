@@ -32,6 +32,16 @@ export const getAllComic = createAsyncThunk("comic/get", async () => {
     }
     //throw error
   });
+  export const getrandomComic = createAsyncThunk("comic/getrandom", async (id) => {
+    try {
+      const comic=  await comicFireBase.getrandom()
+        return comic.success?comic:[]
+    } catch (error) {
+      throw error
+      // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
+    }
+    //throw error
+  });
   export const getchaptersComic = createAsyncThunk("comic/chapters", async (id) => {
     try {
       const Chapters=  await comicFireBase.getchapters(id)
@@ -48,6 +58,7 @@ export const getAllComic = createAsyncThunk("comic/get", async () => {
     initialState: {
       comic: {},
       comicid:{},
+      random:{},
       Chapters:{},
       error: null,
       loading:false,
@@ -96,6 +107,15 @@ export const getAllComic = createAsyncThunk("comic/get", async () => {
         })
         .addCase(getchaptersComic.rejected, (state, action) => {
           state.Chapters = {};
+          state.error = action.error;
+        });
+        builder
+        .addCase(getrandomComic.fulfilled, (state, action) => {
+          state.error = null;
+          state.random = action.payload;
+        })
+        .addCase(getrandomComic.rejected, (state, action) => {
+          state.random = {};
           state.error = action.error;
         });
     },

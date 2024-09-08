@@ -23,6 +23,9 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Rating from '@mui/material/Rating';
+import { auth } from '../../../common/themes/firebase';
+import SubscribeFireBase from '../../../common/services/Subscribe.services';
+import comicFireBase from '../../../common/services/Comic.services';
 
 const dataAlsoLike = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
@@ -42,6 +45,9 @@ const OriginalSeriesPage = () => {
     const comicid = useSelector(state => state.comic.comicid);
     const chapters = useSelector(state => state.comic.Chapters);
     const [loading, setloading] = useState(false);
+    const [isSubscribe, setIsSubscribe] = useState(false);
+    const [Subscribe, setSubscribe] = useState([[]]);
+
     const dispatch = useDispatch();
     const monthNames = [
         'January', 'February', 'March', 'April', 'May', 'June',
@@ -56,8 +62,12 @@ const OriginalSeriesPage = () => {
                 unwrapResult(comicID)
                 unwrapResult(chap)
                 setloading(true)
+                if(auth.currentUser){
+                    const subscribe=await SubscribeFireBase.getbyid(auth.currentUser.uid)
+                   subscribe.success?setIsSubscribe(true):setIsSubscribe(false)
+                   subscribe.success?setSubscribe(subscribe.subscribe):setSubscribe([])
+                }
             } catch (error) {
-
             }
         }
         get()
@@ -88,7 +98,6 @@ const OriginalSeriesPage = () => {
         }
     }
 
-    // return focus to the button when we transitioned from !open -> open
     const prevOpen = React.useRef(open);
     React.useEffect(() => {
         if (prevOpen.current === true && open === false) {
@@ -99,8 +108,36 @@ const OriginalSeriesPage = () => {
     }, [open]);
 
     // Nhấn nút đăng ký Subscribe
-    const [isSubscribe, setIsSubscribe] = useState(false);
+   
+const handlesubscribe=async()=>{
+    try {
+        if(auth.currentUser){
+         await SubscribeFireBase.Add({uid:auth.currentUser.uid,idcomic:id.id})
+         await comicFireBase.update({totalSubscribed:comicid.totalSubscribed+1},id.id)
+          await dispatch(getidComic(id.id))
 
+         const subscribe=await SubscribeFireBase.getbyid(auth.currentUser.uid)
+         subscribe.success?setIsSubscribe(true):setIsSubscribe(false)
+         subscribe.success?setSubscribe(subscribe.subscribe):setSubscribe([])
+        }
+    } catch (error) {
+        
+    }
+}
+const handleDeleteSub=async()=>{
+    try {
+        if(auth.currentUser){
+         await SubscribeFireBase.Delete(Subscribe[0].id)
+         await comicFireBase.update({totalSubscribed:comicid.totalSubscribed-1},id.id)
+         await dispatch(getidComic(id.id))
+         const subscribe=await SubscribeFireBase.getbyid(auth.currentUser.uid)
+         subscribe.success?setIsSubscribe(true):setIsSubscribe(false)
+         subscribe.success?setSubscribe(subscribe.subscribe):setSubscribe([])
+        }
+    } catch (error) {
+        
+    }
+}
     return (
         <div>
             {loading ?
@@ -144,7 +181,7 @@ const OriginalSeriesPage = () => {
                             <div className="absolute px-10 py-5 bottom-0 right-0 flex gap-2">
                                 {!isSubscribe ?
                                     <button
-                                        onClick={() => setIsSubscribe(true)}
+                                        onClick={handlesubscribe}
                                         className="text-white hover:text-yellow-500 bg-black bg-opacity-30 py-2 px-2 rounded-full flex gap-1 items-center justify-center"
                                     >
                                         <AddCircleOutlineIcon />
@@ -152,7 +189,7 @@ const OriginalSeriesPage = () => {
                                     </button>
                                     :
                                     <button
-                                        onClick={() => setIsSubscribe(false)}
+                                        onClick={handleDeleteSub}
                                         className="text-white hover:text-yellow-500 bg-black bg-opacity-30 py-2 px-2 rounded-full flex gap-1 items-center justify-center"
                                     >
                                         <CheckIcon />
@@ -250,7 +287,7 @@ const OriginalSeriesPage = () => {
                                                 <GroupAddSharpIcon />
                                             </span>
                                             <span className="mx-1">
-                                                450,229
+                                                {comicid.totalSubscribed}
                                             </span>
                                         </li>
                                         <li className="flex items-center justify-center" >

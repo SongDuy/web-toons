@@ -26,9 +26,9 @@ const userFireBase = {
     await setDoc(doc(fireStore, 'Users', iduser), data);
   },
   async update(data, iduser) {
-    const updatesetting = doc(fireStore, 'Users', iduser);
+    const update= doc(fireStore, 'Users', iduser);
 
-    await updateDoc(updatesetting, data);
+    await updateDoc(update, data);
   },
 };
 export default userFireBase;

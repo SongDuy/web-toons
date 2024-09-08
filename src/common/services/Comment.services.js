@@ -55,7 +55,7 @@ import { fireStore } from '../themes/firebase';
       const docRef =query(
         collection(fireStore, 'comment'),
         where('uid', '==', id),
-      );;
+      );
 
     const docSnap = await getDocs(docRef);
     const Comment =await Promise.all( docSnap.docs.map(async (item) => {

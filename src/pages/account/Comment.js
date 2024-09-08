@@ -79,7 +79,7 @@ const hanledelete= async (id)=>{
               <div className="w-full h-full flex-row   bg-white border border-white p-5">
                 {gcomment.Comment?.map((item) => {
                   return (
-                    <div className="flex-row ml-5 my-5 w-full h-full border-b border-gray-300 p-5" key={item.id}>
+                    <div className="flex-row ml-5 my-5 w-full h-full border-b border-gray-300 p-5" key={item.idcomment}>
                       <div>
                         <p className="font-semibold text-lg text-black">
                           {item.title}

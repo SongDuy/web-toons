@@ -1,40 +1,33 @@
 import React, { useState, useEffect } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { unwrapResult } from '@reduxjs/toolkit';
+import { useDispatch,useSelector } from 'react-redux';
+import { getrandomComic } from "../../../common/store/comic";
+
 const NavRViewd = () => {
-  const [RViewd, setRViewd] = useState([]);
   const [OpennavRVivew, setOpennavRVivew] = useState(false);
   const [OpenoAnimation, setnoAnimation] = useState(false);
-
+  const   dispatch = useDispatch();
+  const comic = useSelector(state => state.comic.random);
   useEffect(() => {
-    setRViewd([
-      {
-        id: 1,
-        Name: "The Lone Necromancer (S2) Ep. 125 - Foreign Powers Vs. The Korean Server (2)",
-        Rate: 1,
-        genre: "Comedy",
-        Author: "singNsong/UMI",
-        Create: "july 22,2024",
-      },
-      {
-        id: 2,
-        Name: "The Lone Necromancer (S2) Ep. 125 - Foreign Powers Vs. The Korean Server (2)",
-        Rate: 2,
-        genre: "Comedy",
-        Author: "singNsong/UMI",
-        Create: "july 22,2024",
-      },
-      {
-        id: 3,
-        Name: "The Lone Necromancer (S2) Ep. 125 - Foreign Powers Vs. The Korean Server (2)",
-        Rate: 3,
-        genre: "Comedy",
+    const getRandom = async ()=>{
+      if (!comic.comic) {
+       try {
+      
+        const random= await  dispatch(getrandomComic());
+        
+       unwrapResult(random)
+         
+       } catch (error) {
+        console.log(error)
 
-        Author: "singNsong/UMI",
-        Create: "july 22,2024",
-      },
-    ]);
-  }, []);
+       }
+      }
+    };
+    getRandom()
+  }, [dispatch,comic]);
+ 
   const OpenRView = () => {
     setOpennavRVivew(true)
     setnoAnimation(true)
@@ -79,24 +72,24 @@ const NavRViewd = () => {
               </div>
             </div>
             <div className="w-full h-full  mt-5 ">
-              {RViewd?.length === 0 ? (
+              {comic.comic?.length === 0 ? (
                 <div></div>
               ) : (
                 <div className="grid grid-rows-3 gap-2 w-full mx-auto py-auto  ">
-                  {RViewd?.map((item) => {
+                  {comic.comic?.map((item) => {
                     return (
                       <div className="grid grid-row-5 gap-1 " key={item.id}>
                         <div className="w-full col-row-4 ">
                           <img
-                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                            src={item.squareThumbnail}
                             alt=""
                             className="object-contain w-full "
                           />
                         </div>
                         <p className="truncate  transition-all text-sm ">
-                          {item.Name}{" "}
+                          {item.title}{" "}
                         </p>
-                        <p className="text-gray-400 text-sm">#{item.Rate}</p>
+                        <p className="text-gray-400 text-sm">#{item.rate}</p>
                       </div>
                     );
                   })}
