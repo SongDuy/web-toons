@@ -141,7 +141,7 @@ const DisplayVideoPage = () => {
                 {/* Hiển thị nội dung truyện */}
                 <div className="w-full h-[705px] bg-black flex items-center justify-center">
                     <ReactPlayer
-                        url="https://youtu.be/-uF9NA5vhko?si=QrgoU83XhkLJsWej"
+                        url="https://www.youtube.com/watch?v=CnDNIEe7G0I"
                         controls={true}
                         width="80%"
                         height="100%"

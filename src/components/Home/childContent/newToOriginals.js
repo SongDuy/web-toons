@@ -11,6 +11,9 @@ const NewToOriginalsPage = () => {
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredItem, setHoveredItem] = useState(null);
 
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+    
     return (
         <div className="w-full min-h-[560px]">
             <div className="w-full h-[60px] bg-white shadow flex items-center justify-center">
@@ -20,7 +23,17 @@ const NewToOriginalsPage = () => {
                     <li
                         className="w-full h-[60px] uppercase font-semibold text-lg hover:text-yellow-500 cursor-pointer flex items-center justify-center"
                     >
-                        New to Originals
+                        {!language ?
+                            <span>
+                                New to Originals
+                            </span>
+                            :
+                            <span>
+
+                                오리지널의 새로운 기능
+                            </span>
+                        }
+
                     </li>
 
                 </ul>

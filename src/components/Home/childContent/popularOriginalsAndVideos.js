@@ -20,6 +20,9 @@ const PopularOriginalsAndVideosPage = () => {
         { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "5", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
     ];
 
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <div className="w-full min-h-[560px] bg-white">
             {/* Phần hiển thị các series truyện và video mới hạn cao */}
@@ -32,7 +35,16 @@ const PopularOriginalsAndVideosPage = () => {
                         <div className="w-full px-2 py-5 flex items-center border-b">
                             <div className="mr-auto">
                                 <span className="font-semibold text-lg hover:text-yellow-500 cursor-pointer">
-                                    New & Trending Originals
+                                    {!language ?
+                                        <span>
+                                            New & Trending Originals
+                                        </span>
+                                        :
+                                        <span>
+                                            원본의 새로운 기능
+                                        </span>
+                                    }
+
                                     <NavigateNextIcon />
                                 </span>
                             </div>
@@ -93,7 +105,16 @@ const PopularOriginalsAndVideosPage = () => {
                         <div className="w-full px-2 py-5 flex items-center border-b">
                             <div className="mr-auto">
                                 <span className="font-semibold text-lg hover:text-yellow-500 cursor-pointer">
-                                    New & Trending Videos
+                                    {!language ?
+                                        <span>
+                                            New & Trending Videos
+                                        </span>
+                                        :
+                                        <span>
+                                            새로운 동영상
+                                        </span>
+                                    }
+
                                     <NavigateNextIcon />
                                 </span>
                             </div>
@@ -151,7 +172,16 @@ const PopularOriginalsAndVideosPage = () => {
                         {/* Phần tiêu đề */}
                         <div className="w-full px-2 py-5 flex items-center border-b">
                             <span className="mr-auto font-semibold text-lg hover:text-yellow-500 cursor-pointer">
-                                ORIGINALS by Genre
+                                {!language ?
+                                    <span>
+                                        ORIGINALS by Genre
+                                    </span>
+                                    :
+                                    <span>
+                                        장르별 오리지널
+                                    </span>
+                                }
+
                                 <NavigateNextIcon />
                             </span>
                             <span className="ml-auto flex gap-1 text-yellow-500 cursor-pointer">
@@ -214,7 +244,16 @@ const PopularOriginalsAndVideosPage = () => {
                         {/* Phần tiêu đề */}
                         <div className="w-full px-2 py-5 flex items-center border-b">
                             <span className="mr-auto font-semibold text-lg hover:text-yellow-500 cursor-pointer">
-                                VIDEOS by Genre
+                                {!language ?
+                                    <span>
+                                        VIDEOS by Genre
+                                    </span>
+                                    :
+                                    <span>
+                                        장르별 동영상
+                                    </span>
+                                }
+
                                 <NavigateNextIcon />
                             </span>
                             <span className="ml-auto flex gap-1 text-yellow-500 cursor-pointer">
