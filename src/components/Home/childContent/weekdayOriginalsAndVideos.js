@@ -147,6 +147,9 @@ const WeekdayOriginalsAndVideosPage = () => {
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
     const [hoveredVideoItem, setHoveredVideoItem] = useState(null);
 
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <div className="w-full min-h-[560px]">
             {/* Phần hiển thị nội dung theo thứ trong tuần */}
@@ -175,7 +178,16 @@ const WeekdayOriginalsAndVideosPage = () => {
                         onClick={handleToggle}
                     >
                         <span className='w-[100px] h-full border-l-2 pl-10 uppercase font-semibold text-md text-gray-400 hover:text-yellow-500 flex items-center justify-center'>
-                            More
+                            {!language ?
+                                <span>
+                                    More
+                                </span>
+                                :
+                                <span>
+                                    더
+                                </span>
+                            }
+
                             <NavigateNextIcon />
                         </span>
                     </button>

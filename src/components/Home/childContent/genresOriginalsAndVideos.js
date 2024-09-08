@@ -89,6 +89,9 @@ const GenresOriginalsAndVideosPage = () => {
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
     const [hoveredVideoItem, setHoveredVideoItem] = useState(null);
 
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <div className="w-full min-h-[560px]">
 
@@ -101,7 +104,15 @@ const GenresOriginalsAndVideosPage = () => {
                         <li
                             className="w-full h-[60px] bg-white border-b-2 uppercase font-semibold text-lg hover:text-yellow-500 cursor-pointer flex items-center justify-center"
                         >
-                            GENRES
+                            {!language ?
+                                <span>
+                                    GENRES
+                                </span>
+                                :
+                                <span>
+                                    장르
+                                </span>
+                            }
                             <NavigateNextIcon />
                         </li>
                     </Link>

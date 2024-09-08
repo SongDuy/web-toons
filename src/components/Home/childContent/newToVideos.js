@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { useSelector } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
@@ -48,6 +49,9 @@ const NewToVideosPage = () => {
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredItem, setHoveredItem] = useState(null);
 
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <div className="w-full min-h-[560px]">
             <div className="w-full h-[60px] bg-white shadow flex items-center justify-center">
@@ -57,7 +61,16 @@ const NewToVideosPage = () => {
                     <li
                         className="w-full h-[60px] uppercase font-semibold text-lg hover:text-yellow-500 cursor-pointer flex items-center justify-center"
                     >
-                        New to Videos
+                        {!language ?
+                            <span>
+                                New to Videos
+                            </span>
+                            :
+                            <span>
+                                동영상의 새로운 기능
+                            </span>
+                        }
+
                     </li>
 
                 </ul>

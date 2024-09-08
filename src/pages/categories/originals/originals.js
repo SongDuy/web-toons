@@ -58,6 +58,9 @@ const OriginalsPage = () => {
     const [hoveredOngoingItem, setHoveredOngoingItem] = useState(null);
     const [hoveredCompletedItem, setHoveredCompletedItem] = useState(null);
 
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
 
