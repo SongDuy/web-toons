@@ -8,6 +8,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const dataPost = [
     {
@@ -111,6 +112,9 @@ const CreatorChannelPage = () => {
     const handleToggleReply = (commentId) => {
         setReplyCommentId(commentId === replyCommentId ? null : commentId);
     };
+
+    // Nhấn nút thả tim
+    const [isLike, setIsLike] = useState(false);
 
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
@@ -419,11 +423,26 @@ const CreatorChannelPage = () => {
                                     {/* Hiện yêu thích bình luận */}
                                     <div className="w-full pt-5 ">
                                         <div className="mr-auto flex gap-2">
-                                            <button className="px-2 py-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
-                                                <FavoriteIcon className="text-red-500" />
-                                                {item.like}
-                                            </button>
+                                            {/* Nhấn nút thả tim */}
+                                            {!isLike ?
+                                                <button
+                                                    onClick={() => setIsLike(true)}
+                                                    className="px-2 py-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
+                                                >
+                                                    <FavoriteBorderIcon />
+                                                    {item.like}
+                                                </button>
+                                                :
+                                                <button
+                                                    onClick={() => setIsLike(false)}
+                                                    className="px-2 py-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
+                                                >
+                                                    <FavoriteIcon className="text-red-500" />
+                                                    {item.like}
+                                                </button>
+                                            }
 
+                                            {/* Nhấn nút xem bình luận */}
                                             <button
                                                 onClick={() => handleToggleComment(item.id)}
                                                 className="px-2 py-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
@@ -540,16 +559,16 @@ const CreatorChannelPage = () => {
                                                                                 />
                                                                                 <button className="px-3 py-2 ml-auto bg-black hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                                                                     <SendRoundedIcon className="transform rotate-200" />
-                                                                                    
+
                                                                                     {!language ?
-                                                                                    <span>
-                                                                                        Reply
-                                                                                    </span>
-                                                                                    :
-                                                                                    <span>
-                                                                                        회신하다
-                                                                                    </span>
-                                                                                }
+                                                                                        <span>
+                                                                                            Reply
+                                                                                        </span>
+                                                                                        :
+                                                                                        <span>
+                                                                                            회신하다
+                                                                                        </span>
+                                                                                    }
                                                                                 </button>
                                                                             </div>
                                                                         </div>

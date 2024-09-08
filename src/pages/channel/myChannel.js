@@ -8,6 +8,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const dataPost = [
     { id: 1, img: "https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/hinh-anh-anime-nu-cute-vay-do-1.jpg", img2: "https://ddk.1cdn.vn/thumbs/900x600/2023/08/25/image.daidoanket.vn-images-upload-hungnv-08252023-_amini-9.jpg", auth: "Lee Nakeum , seewater", content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", like: "205", comments: "100", date: "23/05/2024", },
@@ -88,6 +89,9 @@ const MyChannelPage = () => {
     const handleToggleReply = (commentId) => {
         setReplyCommentId(commentId === replyCommentId ? null : commentId);
     };
+
+    // Nhấn nút thả tim
+    const [isLike, setIsLike] = useState(false);
 
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
@@ -394,11 +398,26 @@ const MyChannelPage = () => {
                                     {/* Hiện yêu thích bình luận */}
                                     <div className="w-full pt-5 ">
                                         <div className="mr-auto flex gap-2">
-                                            <button className="px-2 py-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center">
-                                                <FavoriteIcon className="text-red-500" />
-                                                {item.like}
-                                            </button>
+                                            {/* Nhấn nút thả tim */}
+                                            {!isLike ?
+                                                <button
+                                                    onClick={() => setIsLike(true)}
+                                                    className="px-2 py-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
+                                                >
+                                                    <FavoriteBorderIcon />
+                                                    {item.like}
+                                                </button>
+                                                :
+                                                <button
+                                                    onClick={() => setIsLike(false)}
+                                                    className="px-2 py-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
+                                                >
+                                                    <FavoriteIcon className="text-red-500" />
+                                                    {item.like}
+                                                </button>
+                                            }
 
+                                            {/* Nhấn nút xem bình luận */}
                                             <button
                                                 onClick={() => handleToggleComment(item.id)}
                                                 className="px-2 py-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
