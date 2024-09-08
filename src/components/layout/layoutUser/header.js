@@ -137,6 +137,9 @@ const HeaderPage = () => {
     return () => unsubscribe();
   }, [dispatch]);
 
+  // Nhấn nút Chuyển ngôn ngữ
+  const [isLanguage, setIsLanguage] = useState(false);
+
   return (
     <div className=" w-full xs:h-[50px] sm:h-[100px] bg-white flex xs:px-[5px] sm:px-[30px]">
 
@@ -232,9 +235,12 @@ const HeaderPage = () => {
         </ul>
       </div>
 
-      {/* chức năng nút Publish và Login*/}
+      {/* Chức năng  */}
       <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
+
+        {/* chức năng nút Publish và Login*/}
         {!User ?
+
           // Chưa đăng nhập tài khoản
           <div className="flex gap-3">
 
@@ -265,7 +271,7 @@ const HeaderPage = () => {
           :
           // Đã đăng nhập tài khoản
           <div className="flex gap-3">
-            
+
             {/* Menu Publish */}
             < div className="z-10">
               <button
@@ -277,7 +283,7 @@ const HeaderPage = () => {
                 aria-haspopup="true"
                 onClick={handleToggle}
               >
-                Publish
+                {/* Publish */} {process.env.REACT_APP_HOME}
               </button>
 
               {/* Chọn menu */}
@@ -425,16 +431,34 @@ const HeaderPage = () => {
           </div>
         }
 
-        {/* Chức năng tìm kiếm */}
-        <div>
-          <button
-            className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full text-gray-500 flex items-center justify-center"
-            onClick={openSearchModal}
-          >
-            <SearchIcon sx={{ fontSize: 18 }} />
-          </button>
-          {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
+        {/* Chức năng tìm kiếm và chuyển ngữ */}
+        <div className="flex gap-3">
+
+          {/* Chức năng tìm kiếm */}
+          <div>
+            <button
+              className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full text-gray-500 flex items-center justify-center"
+              onClick={openSearchModal}
+            >
+              <SearchIcon sx={{ fontSize: 18 }} />
+            </button>
+            {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
+          </div>
+
+          {/* Nút chuyển ngữ */}
+          <div className="w-full h-full">
+            {!isLanguage ?
+              <button className="px-2 h-[35px] bg-gray-100 font-semibold rounded" onClick={() => setIsLanguage(true)}>
+                English
+              </button>
+              :
+              <button className="px-2 h-[35px] bg-gray-100 font-semibold rounded" onClick={() => setIsLanguage(false)}>
+                Koean
+              </button>
+            }
+          </div>
         </div>
+
       </div >
     </div >
   );
