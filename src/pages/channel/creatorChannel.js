@@ -114,7 +114,7 @@ const CreatorChannelPage = () => {
     };
 
     // Nhấn nút đăng ký
-    const [isSubscribe, setIsSubscribe] = useState(false);
+    const [isFollow, setIsFollow] = useState(false);
 
     // Nhấn nút thả tim
     const [isLike, setIsLike] = useState(false);
@@ -196,9 +196,9 @@ const CreatorChannelPage = () => {
                         </div>
 
                         <div className="ml-auto flex items-center justify-center">
-                            {!isSubscribe ?
+                            {!isFollow ?
                                 <button 
-                                onClick={() => setIsSubscribe(true)}
+                                onClick={() => setIsFollow(true)}
                                 className="w-[150px] h-[50px] font-semibold text-white bg-green-400 hover:bg-green-500 rounded-full"
                                 >
                                     {!language ?
@@ -213,7 +213,7 @@ const CreatorChannelPage = () => {
                                 </button>
                                 :
                                 <button
-                                onClick={() => setIsSubscribe(false)}
+                                onClick={() => setIsFollow(false)}
                                  className="w-[150px] h-[50px] font-semibold text-gray-400 bg-white hover:text-yellow-500 border-2 rounded-full"
                                  >
                                     {!language ?
