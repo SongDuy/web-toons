@@ -199,7 +199,15 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-              <span>Originals</span>
+              {!isLanguage ?
+                <span>
+                  Originals
+                </span>
+                :
+                <span>
+                  원본
+                </span>
+              }
             </li>
           </Link>
           <Link to={`/videos`}>
@@ -209,7 +217,15 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-              Videos
+              {!isLanguage ?
+                <span>
+                  Videos
+                </span>
+                :
+                <span>
+                  비디오
+                </span>
+              }
             </li>
           </Link>
           <Link to={`/genres`}>
@@ -219,7 +235,16 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-              Genres
+
+              {!isLanguage ?
+                <span>
+                  Genres
+                </span>
+                :
+                <span>
+                  장르
+                </span>
+              }
             </li>
           </Link>
           <Link to={`/popular`}>
@@ -229,7 +254,17 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-              Popular
+              
+              {!isLanguage ?
+                <span>
+                  Popular
+                </span>
+                :
+                <span>
+
+                  인기 있는
+                </span>
+              }
             </li>
           </Link>
         </ul>
@@ -250,7 +285,15 @@ const HeaderPage = () => {
                 className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
                 onClick={() => { openLoginModal(); handleCloseAccount(); }}
               >
-                Publish
+                {!isLanguage ?
+                  <span>
+                    Publish
+                  </span>
+                  :
+                  <span>
+                    게시
+                  </span>
+                }
               </button>
               {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
             </div>
@@ -262,7 +305,16 @@ const HeaderPage = () => {
                 className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
                 onClick={() => { openLoginModal(); handleCloseAccount(); }}
               >
-                Log In
+                {!isLanguage ?
+                  <span>
+                    Log In
+                  </span>
+                  :
+                  <span>
+                    로그인
+                  </span>
+                }
+
               </button>
 
               {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
@@ -283,7 +335,16 @@ const HeaderPage = () => {
                 aria-haspopup="true"
                 onClick={handleToggle}
               >
-                {/* Publish */} {process.env.REACT_APP_HOME}
+                {/* Publish {process.env.REACT_APP_HOME} */}
+                {!isLanguage ?
+                  <span>
+                    Publish
+                  </span>
+                  :
+                  <span>
+                    게시
+                  </span>
+                }
               </button>
 
               {/* Chọn menu */}
@@ -448,11 +509,11 @@ const HeaderPage = () => {
           {/* Nút chuyển ngữ */}
           <div className="w-full h-full">
             {!isLanguage ?
-              <button className="px-2 h-[35px] bg-gray-100 font-semibold rounded" onClick={() => setIsLanguage(true)}>
+              <button className="w-[80px] h-[35px] px-2 bg-gray-100 font-semibold rounded" onClick={() => setIsLanguage(true)}>
                 English
               </button>
               :
-              <button className="px-2 h-[35px] bg-gray-100 font-semibold rounded" onClick={() => setIsLanguage(false)}>
+              <button className="w-[80px] h-[35px] px-2 bg-gray-100 font-semibold rounded" onClick={() => setIsLanguage(false)}>
                 Koean
               </button>
             }
