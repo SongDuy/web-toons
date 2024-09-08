@@ -250,7 +250,7 @@ const HeaderPage = () => {
                 className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
                 onClick={() => { openLoginModal(); handleCloseAccount(); }}
               >
-                Publish
+                {/* Publish */} 게시
               </button>
               {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
             </div>
@@ -448,11 +448,11 @@ const HeaderPage = () => {
           {/* Nút chuyển ngữ */}
           <div className="w-full h-full">
             {!isLanguage ?
-              <button className="px-2 h-[35px] bg-gray-100 font-semibold rounded" onClick={() => setIsLanguage(true)}>
+              <button className="w-[80px] h-[35px] px-2 bg-gray-100 font-semibold rounded" onClick={() => setIsLanguage(true)}>
                 English
               </button>
               :
-              <button className="px-2 h-[35px] bg-gray-100 font-semibold rounded" onClick={() => setIsLanguage(false)}>
+              <button className="w-[80px] h-[35px] px-2 bg-gray-100 font-semibold rounded" onClick={() => setIsLanguage(false)}>
                 Koean
               </button>
             }
