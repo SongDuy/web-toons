@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom';
 
 const GenresOriginalsAndVideosPage = () => {
     const comic = useSelector(state => state.comic.comic);
+    const language = useSelector(state => state.hidden.language);
+
     const dataVideos = [
         { id: 1, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Sci-Fi", name: "Doraemon", auth: "Lee Nakeum , seewater", like: "200k", },
         { id: 2, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Doraemon", auth: "Lee Nakeum , seewater", like: "200k", },
@@ -51,27 +53,27 @@ const GenresOriginalsAndVideosPage = () => {
 
     // Danh sách thể loại
     const dataListGenre = [
-        { id: 1, name: "Drama" },
-        { id: 2, name: "Fantasy" },
-        { id: 3, name: "Comedy" },
-        { id: 4, name: "Action" },
-        { id: 5, name: "Slice Of Life" },
-        { id: 6, name: "Romance" },
-        { id: 7, name: "Superhero" },
-        { id: 8, name: "Sci-Fi" },
-        { id: 9, name: "Thriller" },
-        { id: 10, name: "Supernatural" },
-        { id: 11, name: "Mystery" },
-        { id: 12, name: "Sports" },
-        { id: 13, name: "Historical" },
-        { id: 14, name: "Heartwarming" },
-        { id: 15, name: "Horror" },
-        { id: 16, name: "Informative" },
-        { id: 17, name: "School" },
-        { id: 18, name: "Animals" },
-        { id: 19, name: "Zombies" },
-        { id: 20, name: "Short Story" },
-
+        { id: 1, name: "Drama", nameKorean: "드라마" },
+        { id: 2, name: "Fantasy", nameKorean: "판타지" },
+        { id: 3, name: "Comedy", nameKorean: "코미디" },
+        { id: 4, name: "Action", nameKorean: "액션" },
+        { id: 5, name: "Slice Of Life", nameKorean: "일상" },
+        { id: 6, name: "Romance", nameKorean: "로맨스" },
+        { id: 7, name: "Superhero", nameKorean: "슈퍼히어로" },
+        { id: 8, name: "Sci-Fi", nameKorean: "SF" },
+        { id: 9, name: "Thriller", nameKorean: "스릴러" },
+        { id: 10, name: "Supernatural", nameKorean: "초자연" },
+        { id: 11, name: "Mystery", nameKorean: "미스터리" },
+        { id: 12, name: "Sports", nameKorean: "스포츠" },
+        { id: 13, name: "Historical", nameKorean: "역사" },
+        { id: 14, name: "Heartwarming", nameKorean: "훈훈한" },
+        { id: 15, name: "Horror", nameKorean: "호러" },
+        { id: 16, name: "Informative", nameKorean: "정보" },
+        { id: 17, name: "School", nameKorean: "학교" },
+        { id: 18, name: "Animals", nameKorean: "동물" },
+        { id: 19, name: "Zombies", nameKorean: "좀비" },
+        { id: 20, name: "Short Story", nameKorean: "단편" },
+    
     ];
 
     // Sắp xếp mảng theo tên thể loại theo bảng chữ cái
@@ -89,8 +91,6 @@ const GenresOriginalsAndVideosPage = () => {
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
     const [hoveredVideoItem, setHoveredVideoItem] = useState(null);
 
-    //Lấy ngôn ngữ
-    const language = useSelector(state => state.hidden.language);
 
     return (
         <div className="w-full min-h-[560px]">
@@ -134,7 +134,7 @@ const GenresOriginalsAndVideosPage = () => {
                                         onClick={() => setSelectedOriginalsByGenre(genre.name)}
                                         className={`uppercase font-semibold shadow rounded px-2 py-2 text-[11px] hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                     >
-                                        {genre.name}
+                                        {  !language? genre.name:genre.nameKorean}
                                     </li>
                                 ))}
                             </ul>
@@ -195,9 +195,13 @@ const GenresOriginalsAndVideosPage = () => {
 
                                             {/*Trong component React của bạn */}
                                             <div className="w-full h-[30px] mt-auto shadow bg-white bg-opacity-80 rounded-md">
+                                                {!language?
                                                 <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
-                                                    {selectedOriginalsByGenre}
+                                                    { selectedOriginalsByGenre}
                                                 </span>
+: <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+{ dataListGenre.filter(item=>item.name===selectedOriginalsByGenre)[0].nameKorean }
+</span>}
                                             </div>
 
                                         </div>
@@ -213,13 +217,13 @@ const GenresOriginalsAndVideosPage = () => {
                     <div className="w-full h-full">
                         <div className="w-full h-[75px] mb-[30px]">
                             <ul className="grid grid-cols-10 gap-2">
-                                {dataListGenre.map(genre => (
+                            {dataListGenre.map(genre => (
                                     <li
                                         key={genre.id}
                                         onClick={() => setSelectedVideosByGenre(genre.name)}
-                                        className={`uppercase font-semibold shadow rounded px-2 py-2 text-[11px] hover:text-black cursor-pointer flex items-center justify-center ${selectedVideosByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                        className={`uppercase font-semibold shadow rounded px-2 py-2 text-[11px] hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                     >
-                                        {genre.name}
+                                        {  !language? genre.name:genre.nameKorean}
                                     </li>
                                 ))}
                             </ul>
@@ -281,7 +285,13 @@ const GenresOriginalsAndVideosPage = () => {
                                             {/*Trong component React của bạn */}
                                             <div className="w-full h-[30px] mt-auto shadow bg-gray-300 bg-opacity-80 rounded-md">
                                                 <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
-                                                    {item.genre}
+                                                {!language?
+                                                <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                    { selectedVideosByGenre}
+                                                </span>
+: <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+{ dataListGenre.filter(item=>item.name===selectedVideosByGenre)[0].nameKorean }
+</span>}
                                                 </span>
                                             </div>
 
