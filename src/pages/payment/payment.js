@@ -95,7 +95,7 @@ const PaymentPage = () => {
                             </div>
                         </div>
 
-                        {/* Phần thông tin sản phẩm */}
+                        {/* Phần thông tin Sản phẩm */}
                         <div className="w-full h-full border-b-2">
 
                         </div>
@@ -112,7 +112,6 @@ const PaymentPage = () => {
                                 Payment details
                             </span>
                         </div>
-
                     </div>
 
                     <div className="w-[940px] h-full bg-green-100 px-5 py-5">
