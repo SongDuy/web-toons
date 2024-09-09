@@ -234,11 +234,33 @@ const WeekdayOriginalsAndVideosPage = () => {
                                             onKeyDown={handleListKeyDown}
                                         >
                                             <Link to={`/originals`}>
-                                                <MenuItem onClick={handleClose}>Originals</MenuItem>
+                                                <MenuItem onClick={handleClose}>
+
+                                                    {!language ?
+                                                        <span>
+                                                            Originals
+                                                        </span>
+                                                        :
+                                                        <span>
+                                                            원본
+                                                        </span>
+                                                    }
+                                                </MenuItem>
                                             </Link>
 
                                             <Link to={`/videos`}>
-                                                <MenuItem onClick={handleClose}>Videos</MenuItem>
+                                                <MenuItem onClick={handleClose}>
+
+                                                    {!language ?
+                                                        <span>
+                                                            Videos
+                                                        </span>
+                                                        :
+                                                        <span>
+                                                            비디오
+                                                        </span>
+                                                    }
+                                                </MenuItem>
                                             </Link>
                                         </MenuList>
                                     </ClickAwayListener>
