@@ -128,7 +128,7 @@ const GenresOriginalsAndVideosPage = () => {
 
                         <div className="w-full h-[75px] mb-[30px]">
                             <ul className="grid grid-cols-10 gap-2">
-                                {dataListGenre.map(genre => (
+                                {dataListGenre?.map(genre => (
                                     <li
                                         key={genre.id}
                                         onClick={() => setSelectedOriginalsByGenre(genre.name)}

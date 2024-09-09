@@ -3,6 +3,13 @@ import React from 'react';
 import CheckIcon from '@mui/icons-material/Check';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+
 import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
@@ -20,8 +27,101 @@ const PopularOriginalsAndVideosPage = () => {
         { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "5", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
     ];
 
+    // Danh sách thể loại
+    const dataListGenre = [
+        { id: 1, name: "Drama", nameKorean: "드라마" },
+        { id: 2, name: "Fantasy", nameKorean: "판타지" },
+        { id: 3, name: "Comedy", nameKorean: "코미디" },
+        { id: 4, name: "Action", nameKorean: "액션" },
+        { id: 5, name: "Slice Of Life", nameKorean: "일상" },
+        { id: 6, name: "Romance", nameKorean: "로맨스" },
+        { id: 7, name: "Superhero", nameKorean: "슈퍼히어로" },
+        { id: 8, name: "Sci-Fi", nameKorean: "SF" },
+        { id: 9, name: "Thriller", nameKorean: "스릴러" },
+        { id: 10, name: "Supernatural", nameKorean: "초자연" },
+        { id: 11, name: "Mystery", nameKorean: "미스터리" },
+        { id: 12, name: "Sports", nameKorean: "스포츠" },
+        { id: 13, name: "Historical", nameKorean: "역사" },
+        { id: 14, name: "Heartwarming", nameKorean: "훈훈한" },
+        { id: 15, name: "Horror", nameKorean: "호러" },
+        { id: 16, name: "Informative", nameKorean: "정보" },
+        { id: 17, name: "School", nameKorean: "학교" },
+        { id: 18, name: "Animals", nameKorean: "동물" },
+        { id: 19, name: "Zombies", nameKorean: "좀비" },
+        { id: 20, name: "Short Story", nameKorean: "단편" },
+
+    ];
+
+    // Sắp xếp mảng theo tên thể loại theo bảng chữ cái
+    dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
+
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
+
+    //Mở modal menu original by genre để chọn
+    const [openOriginals, setOpenOriginals] = React.useState(false);
+    const anchorRefOriginals = React.useRef(null);
+
+    const handleToggleOriginals = () => {
+        setOpenOriginals((prevOpen) => !prevOpen);
+    };
+
+    const handleCloseOriginals = (event) => {
+        if (anchorRefOriginals.current && anchorRefOriginals.current.contains(event.target)) {
+            return;
+        }
+        setOpenOriginals(false);
+    };
+
+    function handleListKeyDownOriginals(event) {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            setOpenOriginals(false);
+        } else if (event.key === 'Escape') {
+            setOpenOriginals(false);
+        }
+    }
+
+    const prevOpenOriginals = React.useRef(openOriginals);
+    React.useEffect(() => {
+        if (prevOpenOriginals.current === true && openOriginals === false) {
+            anchorRefOriginals.current.focus();
+        }
+        prevOpenOriginals.current = openOriginals;
+    }, [openOriginals]);
+
+    //Mở modal menu video by genre để chọn
+    const [openVideos, setOpenVideos] = React.useState(false);
+    const anchorRefVideos = React.useRef(null);
+
+    const handleToggleVideos = () => {
+        setOpenVideos((prevOpen) => !prevOpen);
+    };
+
+    const handleCloseVideos = (event) => {
+        if (anchorRefVideos.current && anchorRefVideos.current.contains(event.target)) {
+            return;
+        }
+        setOpenVideos(false);
+    };
+
+    function handleListKeyDownVideos(event) {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            setOpenVideos(false);
+        } else if (event.key === 'Escape') {
+            setOpenVideos(false);
+        }
+    }
+
+    const prevOpenVideos = React.useRef(openVideos);
+    React.useEffect(() => {
+        if (prevOpenVideos.current === true && openVideos === false) {
+            anchorRefVideos.current.focus();
+        }
+        prevOpenVideos.current = openVideos;
+    }, [openVideos]);
+
 
     return (
         <div className="w-full min-h-[560px] bg-white">
@@ -184,10 +284,63 @@ const PopularOriginalsAndVideosPage = () => {
 
                                 <NavigateNextIcon />
                             </span>
-                            <span className="ml-auto flex gap-1 text-yellow-500 cursor-pointer">
-                                ALL
-                                <CheckIcon />
-                            </span>
+
+                            {/* Chọn menu thể loại originals*/}
+                            <div className="ml-auto flex gap-1 text-yellow-500 cursor-pointer">
+                                <button
+                                    ref={anchorRefOriginals}
+                                    id="originals-button"
+                                    aria-controls={openOriginals ? 'originals-menu' : undefined}
+                                    aria-expanded={openOriginals ? 'true' : undefined}
+                                    aria-haspopup="true"
+                                    onClick={handleToggleOriginals}
+                                >
+                                    {!language ?
+                                        <span>
+                                            ALL <CheckIcon />
+                                        </span>
+                                        :
+                                        <span>
+                                            모두 <CheckIcon />
+                                        </span>
+                                    }
+                                </button>
+                                <Popper
+                                    open={openOriginals}
+                                    anchorEl={anchorRefOriginals.current}
+                                    role={undefined}
+                                    placement="bottom-start"
+                                    transition
+                                    disablePortal
+                                >
+                                    {({ TransitionProps, placement }) => (
+                                        <Grow
+                                            {...TransitionProps}
+                                            style={{
+                                                transformOrigin:
+                                                    placement === 'bottom-start' ? 'left top' : 'left bottom',
+                                            }}
+                                        >
+                                            <Paper>
+                                                <ClickAwayListener onClickAway={handleCloseOriginals}>
+                                                    <MenuList
+                                                        autoFocusItem={openOriginals}
+                                                        id="originals-menu"
+                                                        aria-labelledby="originals-button"
+                                                        onKeyDown={handleListKeyDownOriginals}
+                                                        style={{ maxHeight: 300, overflowY: 'auto' }}
+                                                    >
+                                                        {/* Hiển thị danh sách thể loại original */}
+                                                        {dataListGenre?.map(genre => (
+                                                            <MenuItem onClick={handleCloseOriginals}>{genre.name}</MenuItem>
+                                                        ))}
+                                                    </MenuList>
+                                                </ClickAwayListener>
+                                            </Paper>
+                                        </Grow>
+                                    )}
+                                </Popper>
+                            </div>
                         </div>
 
                         {/* Phần nội dung */}
@@ -256,10 +409,64 @@ const PopularOriginalsAndVideosPage = () => {
 
                                 <NavigateNextIcon />
                             </span>
-                            <span className="ml-auto flex gap-1 text-yellow-500 cursor-pointer">
-                                ALL
-                                <CheckIcon />
-                            </span>
+
+                            {/* Chọn menu thể loại */}
+                            <div className="ml-auto flex gap-1 text-yellow-500 cursor-pointer">
+                                <button
+                                    ref={anchorRefVideos}
+                                    id="videos-button"
+                                    aria-controls={openVideos ? 'videos-menu' : undefined}
+                                    aria-expanded={openVideos ? 'true' : undefined}
+                                    aria-haspopup="true"
+                                    onClick={handleToggleVideos}
+                                >
+                                    {!language ?
+                                        <span>
+                                            Videos <CheckIcon />
+                                        </span>
+                                        :
+                                        <span>
+                                            비디오 <CheckIcon />
+                                        </span>
+                                    }
+                                </button>
+                                <Popper
+                                    open={openVideos}
+                                    anchorEl={anchorRefVideos.current}
+                                    role={undefined}
+                                    placement="bottom-start"
+                                    transition
+                                    disablePortal
+                                >
+                                    {({ TransitionProps, placement }) => (
+                                        <Grow
+                                            {...TransitionProps}
+                                            style={{
+                                                transformOrigin:
+                                                    placement === 'bottom-start' ? 'left top' : 'left bottom',
+                                            }}
+                                        >
+                                            <Paper>
+                                                <ClickAwayListener onClickAway={handleCloseVideos}>
+                                                    <MenuList
+                                                        autoFocusItem={openVideos}
+                                                        id="videos-menu"
+                                                        aria-labelledby="videos-button"
+                                                        onKeyDown={handleListKeyDownVideos}
+                                                        style={{ maxHeight: 300, overflowY: 'auto' }}
+                                                    >
+                                                        {/* Hiển thị danh sách thể loại video */}
+                                                        {dataListGenre?.map(genre => (
+                                                            <MenuItem onClick={handleCloseVideos}>{genre.name}</MenuItem>
+                                                        ))}
+                                                    </MenuList>
+                                                </ClickAwayListener>
+                                            </Paper>
+                                        </Grow>
+                                    )}
+                                </Popper>
+                            </div>
+
                         </div>
 
                         {/* Phần nội dung */}
