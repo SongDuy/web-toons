@@ -338,7 +338,7 @@ const OriginalsPage = () => {
 
                                                     {/*Trong component React của bạn */}
                                                     <div className="w-full h-[30px] shadow bg-white bg-opacity-80 rounded-md">
-                                                        <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                        <span className="w-full px-2 py-1 text-yellow-500 text-shadow-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
                                                             {item.genre1}
                                                         </span>
                                                     </div>
@@ -426,7 +426,7 @@ const OriginalsPage = () => {
 
                                                     {/*Trong component React của bạn */}
                                                     <div className="w-full h-[30px] shadow bg-white bg-opacity-80 rounded-md">
-                                                        <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                        <span className="w-full px-2 py-1 text-yellow-500 text-shadow-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
                                                             {item.genre1}
                                                         </span>
                                                     </div>
