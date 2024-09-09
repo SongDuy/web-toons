@@ -28,15 +28,7 @@ const NewTrendingVideosPage = () => {
         <div className="w-full h-full pt-[70px]">
 
             <div className="h-[70px] flex items-center uppercase font-semibold text-xl">
-                {!language ?
-                    <span>
-                        NEW & TRENDING VIDEOS
-                    </span>
-                    :
-                    <span>
-                        새로운 동영상
-                    </span>
-                }
+                {!language ? <span> NEW & TRENDING VIDEOS </span> : <span> 새로운 동영상 </span>}
             </div>
 
             <div className="w-full flex gap-[60px]">
@@ -128,7 +120,7 @@ const NewTrendingVideosPage = () => {
                         <ul className="w-full h-full ">
 
                             {/* khung nội dung */}
-                            {dataPopular.map(item => (
+                            {dataPopular?.map((item, index) => (
                                 <Link
                                     to={`/videos/video/series`}
                                     key={item.id}
@@ -146,7 +138,7 @@ const NewTrendingVideosPage = () => {
                                             </div>
                                             <div className="w-[30px] h-[30px] mx-3 bg-yellow-500 rounded-full border flex items-center justify-center">
                                                 <span className="mx-3 text-xl text-white font-bold">
-                                                    {item.number}
+                                                    {index + 2}
                                                 </span>
                                             </div>
                                             <div className="w-[420px] mt-auto mb-auto overflow-hidden">

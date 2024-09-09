@@ -54,15 +54,7 @@ const OriginalsByGenrePage = () => {
         <div className="w-full h-full pt-[70px]">
 
             <div className="h-[70px] flex items-center uppercase font-semibold text-xl">
-                {!language ?
-                    <span>
-                        ORIGINALS BY GENRE
-                    </span>
-                    :
-                    <span>
-                        장르별 오리지널
-                    </span>
-                }
+                {!language ? <span> ORIGINALS BY GENRE </span> : <span> 장르별 오리지널 </span>}
             </div>
 
             <div className="h-[70px] mb-5 bg-white flex items-center justify-center border-t border-b">
@@ -171,7 +163,7 @@ const OriginalsByGenrePage = () => {
                         <ul className="w-full h-full ">
 
                             {/* khung nội dung */}
-                            {dataPopular.map(item => (
+                            {dataPopular?.map((item, index) => (
                                 <Link
                                     key={item.id}
                                     to={`/originals/original/series`}
@@ -189,7 +181,7 @@ const OriginalsByGenrePage = () => {
                                             </div>
                                             <div className="w-[30px] h-[30px] mx-3 bg-yellow-500 rounded-full border flex items-center justify-center">
                                                 <span className="mx-3 text-xl text-white font-bold">
-                                                    {item.number}
+                                                    {index + 2}
                                                 </span>
                                             </div>
                                             <div className="w-[420px] mt-auto mb-auto overflow-hidden">
