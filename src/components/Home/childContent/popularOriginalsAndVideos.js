@@ -27,22 +27,6 @@ const PopularOriginalsAndVideosPage = () => {
         { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "5", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
     ];
 
-    // Danh sách thể loại
-    const dataListGenre = [
-        { id: 1, name: "All", nameKorean: "드라마" },
-        { id: 2, name: "Action", nameKorean: "판타지" },
-        { id: 3, name: "Romance", nameKorean: "코미디" },
-        { id: 4, name: "Fantasy", nameKorean: "액션" },
-        { id: 5, name: "Drama", nameKorean: "일상" },
-        { id: 6, name: "Comedy", nameKorean: "로맨스" },
-        { id: 7, name: "Thriller", nameKorean: "슈퍼히어로" },
-        { id: 8, name: "Slice of life", nameKorean: "SF" },
-        { id: 9, name: "Supernatural", nameKorean: "스릴러" },
-        { id: 10, name: "Sci-fi", nameKorean: "초자연" },
-        { id: 11, name: "Horror", nameKorean: "미스터리" },
-        { id: 12, name: "Others", nameKorean: "스포츠" },
-    ];
-
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
 
@@ -111,7 +95,7 @@ const PopularOriginalsAndVideosPage = () => {
     }, [openVideos]);
 
     //Chọn thể loại originals
-    const [selectedOriginalGenres, setSelectedOriginalGenres] = useState("All");
+    const [selectedOriginalGenre, setSelectedOriginalGenre] = useState("All");
 
     //Chọn thể loại videos
     const [selectedVideoGenre, setSelectedVideoGenre] = useState("All");
@@ -288,15 +272,7 @@ const PopularOriginalsAndVideosPage = () => {
                                     aria-haspopup="true"
                                     onClick={handleToggleOriginals}
                                 >
-                                    {!language ?
-                                        <span>
-                                            {selectedOriginalGenres} <CheckIcon />
-                                        </span>
-                                        :
-                                        <span>
-                                            모두 <CheckIcon />
-                                        </span>
-                                    }
+                                    <span> {selectedOriginalGenre} </span>    <CheckIcon />
                                 </button>
                                 <Popper
                                     open={openOriginals}
@@ -321,29 +297,117 @@ const PopularOriginalsAndVideosPage = () => {
                                                         id="originals-menu"
                                                         aria-labelledby="originals-button"
                                                         onKeyDown={handleListKeyDownOriginals}
-                                                        style={{ maxHeight: 300, overflowY: 'auto' }}
                                                     >
 
-                                                        {/* Hiển thị danh sách thể loại original */}
-                                                        {dataListGenre?.map(genre => (
-                                                            <MenuItem onClick={handleCloseOriginals}>
-                                                                {!(selectedOriginalGenres === genre.name) ?
-                                                                    <span
-                                                                        onClick={() => setSelectedOriginalGenres(genre.name)}
-                                                                        className="w-full h-full"
-                                                                    >
-                                                                        {genre.name}
-                                                                    </span>
-                                                                    :
-                                                                    <span
-                                                                        onClick={() => setSelectedOriginalGenres(genre.name)}
-                                                                        className="w-full h-full text-yellow-500"
-                                                                    >
-                                                                        {genre.name} <CheckIcon />
-                                                                    </span>
-                                                                }
-                                                            </MenuItem>
-                                                        ))}
+                                                        {/* Hiển thị danh sách thể loại original xếp hạng */}
+
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedOriginalGenre("All")}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "All" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                All
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedOriginalGenre("Action")}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Action" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Action
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedOriginalGenre("Romance")}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Romance" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Romance
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedOriginalGenre("Fantasy")}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Fantasy" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Fantasy
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedOriginalGenre("Drama")}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Drama" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Drama
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedOriginalGenre("Comedy")}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Comedy" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Comedy
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedOriginalGenre("Thriller")}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Thriller" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Thriller
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedOriginalGenre("Slice of life")}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Slice of life" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Slice of life
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedOriginalGenre("Supernatural")}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Supernatural" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Supernatural
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedOriginalGenre("Sci-fi")}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Sci-fi" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Sci-fi
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedOriginalGenre("Horror")}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Horror" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Horror
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedOriginalGenre("Others")}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Others" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Others
+                                                            </span>
+                                                        </MenuItem>
 
                                                     </MenuList>
                                                 </ClickAwayListener>
@@ -464,29 +528,115 @@ const PopularOriginalsAndVideosPage = () => {
                                                         id="videos-menu"
                                                         aria-labelledby="videos-button"
                                                         onKeyDown={handleListKeyDownVideos}
-                                                        style={{ maxHeight: 300, overflowY: 'auto' }}
                                                     >
 
-                                                        {/* Hiển thị danh sách thể loại video */}
-                                                        {dataListGenre?.map(genre => (
-                                                            <MenuItem onClick={handleCloseVideos}>
-                                                                {!(selectedVideoGenre === genre.name) ?
-                                                                    <span
-                                                                        onClick={() => setSelectedVideoGenre(genre.name)}
-                                                                        className="w-full h-full"
-                                                                    >
-                                                                        {genre.name}
-                                                                    </span>
-                                                                    :
-                                                                    <span
-                                                                        onClick={() => setSelectedVideoGenre(genre.name)}
-                                                                        className="w-full h-full text-yellow-500"
-                                                                    >
-                                                                        {genre.name} <CheckIcon />
-                                                                    </span>
-                                                                }
-                                                            </MenuItem>
-                                                        ))}
+                                                        <MenuItem onClick={handleCloseVideos}>
+                                                            <span
+                                                                onClick={() => setSelectedVideoGenre("All")}
+                                                                className={`w-full h-full ${selectedVideoGenre === "All" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                All
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseVideos}>
+                                                            <span
+                                                                onClick={() => setSelectedVideoGenre("Action")}
+                                                                className={`w-full h-full ${selectedVideoGenre === "Action" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Action
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseVideos}>
+                                                            <span
+                                                                onClick={() => setSelectedVideoGenre("Romance")}
+                                                                className={`w-full h-full ${selectedVideoGenre === "Romance" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Romance
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseVideos}>
+                                                            <span
+                                                                onClick={() => setSelectedVideoGenre("Fantasy")}
+                                                                className={`w-full h-full ${selectedVideoGenre === "Fantasy" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Fantasy
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseVideos}>
+                                                            <span
+                                                                onClick={() => setSelectedVideoGenre("Drama")}
+                                                                className={`w-full h-full ${selectedVideoGenre === "Drama" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Drama
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseVideos}>
+                                                            <span
+                                                                onClick={() => setSelectedVideoGenre("Comedy")}
+                                                                className={`w-full h-full ${selectedVideoGenre === "Comedy" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Comedy
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseVideos}>
+                                                            <span
+                                                                onClick={() => setSelectedVideoGenre("Thriller")}
+                                                                className={`w-full h-full ${selectedVideoGenre === "Thriller" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Thriller
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseVideos}>
+                                                            <span
+                                                                onClick={() => setSelectedVideoGenre("Slice of life")}
+                                                                className={`w-full h-full ${selectedVideoGenre === "Slice of life" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Slice of life
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseVideos}>
+                                                            <span
+                                                                onClick={() => setSelectedVideoGenre("Supernatural")}
+                                                                className={`w-full h-full ${selectedVideoGenre === "Supernatural" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Supernatural
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseVideos}>
+                                                            <span
+                                                                onClick={() => setSelectedVideoGenre("Sci-fi")}
+                                                                className={`w-full h-full ${selectedVideoGenre === "Sci-fi" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Sci-fi
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseVideos}>
+                                                            <span
+                                                                onClick={() => setSelectedVideoGenre("Horror")}
+                                                                className={`w-full h-full ${selectedVideoGenre === "Horror" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Horror
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseVideos}>
+                                                            <span
+                                                                onClick={() => setSelectedVideoGenre("Others")}
+                                                                className={`w-full h-full ${selectedVideoGenre === "Others" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                Others
+                                                            </span>
+                                                        </MenuItem>
 
                                                     </MenuList>
                                                 </ClickAwayListener>

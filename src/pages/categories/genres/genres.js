@@ -5,6 +5,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink, Element as ScrollElement } from 'react-scroll';
 import { useSelector } from 'react-redux';
@@ -80,6 +87,43 @@ const GenresPage = () => {
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
 
+    // Mở và đóng modal genre list
+    const [open, setOpen] = React.useState(false);
+    const anchorRef = React.useRef(null);
+
+    const handleToggle = () => {
+        setOpen((prevOpen) => !prevOpen);
+    };
+
+    const handleClose = (event) => {
+        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+    function handleListKeyDown(event) {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            setOpen(false);
+        } else if (event.key === 'Escape') {
+            setOpen(false);
+        }
+    }
+
+    const prevOpen = React.useRef(open);// return focus to the button when we transitioned from !open -> open
+    React.useEffect(() => {
+        if (prevOpen.current === true && open === false) {
+            anchorRef.current.focus();
+        }
+
+        prevOpen.current = open;
+    }, [open]);
+
+    //Chọn menu cho thể loại
+    const [selectedMenuGenreList, setSelectedMenuGenreList] = useState("by Popularity");
+
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
 
@@ -143,7 +187,77 @@ const GenresPage = () => {
 
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
-                                    All
+                                    <button
+                                        ref={anchorRef}
+                                        id="composition-button"
+                                        aria-controls={open ? 'composition-menu' : undefined}
+                                        aria-expanded={open ? 'true' : undefined}
+                                        aria-haspopup="true"
+                                        onClick={handleToggle}
+                                    >
+                                        {selectedMenuGenreList}
+                                    </button>
+
+                                    {/* Chọn menu */}
+                                    <Popper
+                                        open={open}
+                                        anchorEl={anchorRef.current}
+                                        role={undefined}
+                                        placement="bottom-start"
+                                        transition
+                                        disablePortal
+                                    >
+                                        {({ TransitionProps, placement }) => (
+                                            <Grow
+                                                {...TransitionProps}
+                                                style={{
+                                                    transformOrigin:
+                                                        placement === 'bottom-start' ? 'left top' : 'left bottom',
+                                                }}
+                                            >
+                                                <Paper>
+                                                    <ClickAwayListener onClickAway={handleClose}>
+                                                        <MenuList
+                                                            className="bg-white rounded-lg text-black font-semibold "
+                                                            autoFocusItem={open}
+                                                            id="composition-menu"
+                                                            aria-labelledby="composition-button"
+                                                            onKeyDown={handleListKeyDown}
+                                                        >
+                                                            <MenuItem onClick={handleClose}>
+                                                                <span
+                                                                    onClick={() => setSelectedMenuGenreList("by Popularity")}
+                                                                    className={`w-full h-full ${selectedMenuGenreList === "by Popularity" ? "text-yellow-500" : ""}`}
+                                                                >
+                                                                    by Popularity
+                                                                </span>
+                                                            </MenuItem>
+
+                                                            <MenuItem onClick={handleClose}>
+                                                                <span
+                                                                    onClick={() => setSelectedMenuGenreList("by Likes")}
+                                                                    className={`w-full h-full ${selectedMenuGenreList === "by Likes" ? "text-yellow-500" : ""}`}
+                                                                >
+                                                                    by Likes
+                                                                </span>
+                                                            </MenuItem>
+
+                                                            <MenuItem onClick={handleClose}>
+                                                                <span
+                                                                    onClick={() => setSelectedMenuGenreList("by Date")}
+                                                                    className={`w-full h-full ${selectedMenuGenreList === "by Date" ? "text-yellow-500" : ""}`}
+                                                                >
+                                                                    by Date
+                                                                </span>
+                                                            </MenuItem>
+
+                                                        </MenuList>
+                                                    </ClickAwayListener>
+                                                </Paper>
+                                            </Grow>
+                                        )}
+                                    </Popper>
+
                                     <CheckIcon />
                                 </span>
                             </div>
