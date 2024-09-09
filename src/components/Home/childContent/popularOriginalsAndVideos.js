@@ -148,8 +148,8 @@ const PopularOriginalsAndVideosPage = () => {
                                                     />
                                                 </div>
 
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
-                                                    <span className="mx-3 text-xl text-white font-bold">
+                                                <div className="w-[30px] h-[30px] flex items-center justify-center mx-2">
+                                                    <span className="mx-3 text-xl text-white text-shadow-black font-bold">
                                                         {index + 1}
                                                     </span>
                                                 </div>
@@ -218,8 +218,8 @@ const PopularOriginalsAndVideosPage = () => {
                                                     />
                                                 </div>
 
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
-                                                    <span className="mx-3 text-xl text-white font-bold">
+                                                <div className="w-[30px] h-[30px] flex items-center justify-center mx-2">
+                                                    <span className="mx-3 text-xl text-white text-shadow-black font-bold">
                                                         {index + 1}
                                                     </span>
                                                 </div>
@@ -441,8 +441,8 @@ const PopularOriginalsAndVideosPage = () => {
                                                     />
                                                 </div>
 
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
-                                                    <span className="mx-3 text-xl text-white font-bold">
+                                                <div className="w-[30px] h-[30px] flex items-center justify-center mx-2">
+                                                    <span className="mx-3 text-xl text-white text-shadow-black font-bold">
                                                         {index + 1}
                                                     </span>
                                                 </div>
@@ -666,8 +666,8 @@ const PopularOriginalsAndVideosPage = () => {
                                                     />
                                                 </div>
 
-                                                <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2">
-                                                    <span className="mx-3 text-xl text-white font-bold">
+                                                <div className="w-[30px] h-[30px] flex items-center justify-center mx-2">
+                                                    <span className="mx-3 text-xl text-white text-shadow-black font-bold">
                                                         {index + 1}
                                                     </span>
                                                 </div>

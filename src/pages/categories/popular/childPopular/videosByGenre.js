@@ -113,8 +113,8 @@ const VideosByGenrePage = () => {
 
                                 <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
                                     <div className="w-full h-[120px] mb-auto overflow-hidden">
-                                        <div className="w-[80px] h-[80px] bg-yellow-500 rounded-xl flex items-center justify-center mx-2">
-                                            <span className="mx-3 text-[60px] text-white font-bold">
+                                        <div className="w-[80px] h-[80px] flex items-center justify-center mx-2">
+                                            <span className="mx-3 text-[60px] text-white text-shadow-black font-bold">
                                                 1
                                             </span>
                                         </div>
@@ -128,7 +128,6 @@ const VideosByGenrePage = () => {
                                         Fantasy
                                     </span>
                                 </div>
-
 
                                 <div className="w-full h-[75px] overflow-hidden">
                                     <span className="text-[30px] font-semibold leading-[1.2] line-clamp-2">
@@ -187,8 +186,8 @@ const VideosByGenrePage = () => {
                                                     className="object-fill w-full h-full rounded-md"
                                                 />
                                             </div>
-                                            <div className="w-[30px] h-[30px] mx-3 bg-yellow-500 rounded-full border flex items-center justify-center">
-                                                <span className="mx-3 text-xl text-white font-bold">
+                                            <div className="w-[30px] h-[30px] mx-3 flex items-center justify-center">
+                                                <span className="mx-3 text-xl text-white text-shadow-black font-bold">
                                                     {index + 2}
                                                 </span>
                                             </div>
