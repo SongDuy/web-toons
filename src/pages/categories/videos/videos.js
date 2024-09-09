@@ -145,7 +145,7 @@ const dataCompleted = [
     { id: 65, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Sun', genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
 ];
 
-const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
 
 const VideosPage = () => {
 
@@ -196,7 +196,7 @@ const VideosPage = () => {
 
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
-    
+
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
 
@@ -264,20 +264,37 @@ const VideosPage = () => {
 
                             {/* Danh mục thứ trong tuần */}
                             <div className="h-[70px] mt-5 flex items-center justify-center">
-                                <ul
-                                    className="w-11/12 grid grid-cols-7 gap-2"
-                                >
-                                    {days.map(day => (
-                                        <li
-                                            key={day}
-                                            onClick={() => handleSelectDay(day)}
-                                            className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
-                                        >
-                                            {day}
-                                        </li>
-                                    ))}
+                                {!language ?
+                                    <ul
+                                        className="w-11/12 grid grid-cols-7 gap-2"
+                                    >
+                                        {days?.map((item, index) => (
+                                            <li
+                                                key={index}
+                                                onClick={() => handleSelectDay(item.day)}
+                                                className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                            >
+                                                {item.day}
+                                            </li>
+                                        ))}
 
-                                </ul>
+                                    </ul>
+                                    :
+                                    <ul
+                                        className="w-11/12 grid grid-cols-7 gap-2"
+                                    >
+                                        {days?.map((item, index) => (
+                                            <li
+                                                key={index}
+                                                onClick={() => handleSelectDay(item.day)}
+                                                className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                            >
+                                                {item.daysInKorean}
+                                            </li>
+                                        ))}
+
+                                    </ul>
+                                }
                             </div>
 
                             <div className="w-full h-full py-5 flex items-center justify-center">

@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { Link as ScrollLink, Element as ScrollElement } from 'react-scroll';
 import { useSelector } from 'react-redux';
 
-const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
 
 const OriginalsPage = () => {
 
@@ -133,20 +133,37 @@ const OriginalsPage = () => {
 
                             {/* Danh mục thứ trong tuần */}
                             <div className="h-[70px] mt-5 flex items-center justify-center">
-                                <ul
-                                    className="w-11/12 grid grid-cols-7 gap-2"
-                                >
-                                    {days.map(day => (
-                                        <li
-                                            key={day}
-                                            onClick={() => handleSelectDay(day)}
-                                            className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500'}`}
-                                        >
-                                            {day}
-                                        </li>
-                                    ))}
+                                {!language ?
+                                    <ul
+                                        className="w-11/12 grid grid-cols-7 gap-2"
+                                    >
+                                        {days?.map((item, index) => (
+                                            <li
+                                                key={index}
+                                                onClick={() => handleSelectDay(item.day)}
+                                                className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                            >
+                                                {item.day}
+                                            </li>
+                                        ))}
 
-                                </ul>
+                                    </ul>
+                                    :
+                                    <ul
+                                        className="w-11/12 grid grid-cols-7 gap-2"
+                                    >
+                                        {days?.map((item, index) => (
+                                            <li
+                                                key={index}
+                                                onClick={() => handleSelectDay(item.day)}
+                                                className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                            >
+                                                {item.daysInKorean}
+                                            </li>
+                                        ))}
+
+                                    </ul>
+                                }
                             </div>
 
                             <div className="w-full h-full py-5 flex items-center justify-center">

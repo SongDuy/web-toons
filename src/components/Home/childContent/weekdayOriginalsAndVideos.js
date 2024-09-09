@@ -21,7 +21,6 @@ const WeekdayOriginalsAndVideosPage = () => {
 
     const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
     const comic = useSelector(state => state.comic.comic);
-    const language = useSelector(state => state.hidden.language);
 
     const dataVideos = [
         { id: 1, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Doraemon", auth: "Lee Nakeum , seewater", like: "200k", },
@@ -148,6 +147,7 @@ const WeekdayOriginalsAndVideosPage = () => {
     const [hoveredVideoItem, setHoveredVideoItem] = useState(null);
 
     //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
 
     return (
         <div className="w-full min-h-[560px]">
@@ -317,7 +317,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                             <div className="w-full mb-[20px]">
                                                 <span className="w-[75px] text-rose-300 rounded-full text-sm font-semibold flex items-center gap-1">
                                                     <FavoriteIcon />
-                                                    {item.totalSubscribed}
+                                                    {item.like}
                                                 </span>
                                                 <span className="w-[35px] h-[35px] mt-2 uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
                                                     Up

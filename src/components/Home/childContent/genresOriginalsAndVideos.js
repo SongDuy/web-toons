@@ -181,7 +181,7 @@ const GenresOriginalsAndVideosPage = () => {
                                             <div className="w-full mb-[20px]">
                                                 <span className="w-[75px] text-rose-300 rounded-full gap-1 text-sm font-semibold flex items-center">
                                                     <FavoriteIcon />
-                                                    {item.totalSubscribed}
+                                                    {item.like}
                                                 </span>
                                                 <div className="flex mt-2 gap-1">
                                                     <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
