@@ -73,7 +73,7 @@ const GenresOriginalsAndVideosPage = () => {
         { id: 18, name: "Animals", nameKorean: "동물" },
         { id: 19, name: "Zombies", nameKorean: "좀비" },
         { id: 20, name: "Short Story", nameKorean: "단편" },
-    
+
     ];
 
     // Sắp xếp mảng theo tên thể loại theo bảng chữ cái
@@ -134,7 +134,7 @@ const GenresOriginalsAndVideosPage = () => {
                                         onClick={() => setSelectedOriginalsByGenre(genre.name)}
                                         className={`uppercase font-semibold shadow rounded px-2 py-2 text-[11px] hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                     >
-                                        {  !language? genre.name:genre.nameKorean}
+                                        {!language ? genre.name : genre.nameKorean}
                                     </li>
                                 ))}
                             </ul>
@@ -195,13 +195,13 @@ const GenresOriginalsAndVideosPage = () => {
 
                                             {/*Trong component React của bạn */}
                                             <div className="w-full h-[30px] mt-auto shadow bg-white bg-opacity-80 rounded-md">
-                                                {!language?
-                                                <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
-                                                    { selectedOriginalsByGenre}
-                                                </span>
-: <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
-{ dataListGenre.filter(item=>item.name===selectedOriginalsByGenre)[0].nameKorean }
-</span>}
+                                                {!language ?
+                                                    <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                        {selectedOriginalsByGenre}
+                                                    </span>
+                                                    : <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                        {dataListGenre.filter(item => item.name === selectedOriginalsByGenre)[0].nameKorean}
+                                                    </span>}
                                             </div>
 
                                         </div>
@@ -217,13 +217,13 @@ const GenresOriginalsAndVideosPage = () => {
                     <div className="w-full h-full">
                         <div className="w-full h-[75px] mb-[30px]">
                             <ul className="grid grid-cols-10 gap-2">
-                            {dataListGenre.map(genre => (
+                                {dataListGenre.map(genre => (
                                     <li
                                         key={genre.id}
                                         onClick={() => setSelectedVideosByGenre(genre.name)}
                                         className={`uppercase font-semibold shadow rounded px-2 py-2 text-[11px] hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                     >
-                                        {  !language? genre.name:genre.nameKorean}
+                                        {!language ? genre.name : genre.nameKorean}
                                     </li>
                                 ))}
                             </ul>
@@ -284,15 +284,13 @@ const GenresOriginalsAndVideosPage = () => {
 
                                             {/*Trong component React của bạn */}
                                             <div className="w-full h-[30px] mt-auto shadow bg-gray-300 bg-opacity-80 rounded-md">
-                                                <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
-                                                {!language?
-                                                <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
-                                                    { selectedVideosByGenre}
-                                                </span>
-: <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
-{ dataListGenre.filter(item=>item.name===selectedVideosByGenre)[0].nameKorean }
-</span>}
-                                                </span>
+                                                {!language ?
+                                                    <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                        {selectedVideosByGenre}
+                                                    </span>
+                                                    : <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                        {dataListGenre.filter(item => item.name === selectedVideosByGenre)[0].nameKorean}
+                                                    </span>}
                                             </div>
 
                                         </div>
