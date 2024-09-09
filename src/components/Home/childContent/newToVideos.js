@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const NewToVideosPage = () => {
 
     const dataVideos = [
-        { id: 1, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Doraemon", auth: "Lee Nakeum , seewater", like: "200k", },
+        { id: 1, img: "https://i.pinimg.com/736x/f9/8c/c5/f98cc52a70dea95af4677e97f984add9.jpg", dayOfWeek: 'Mon', genre: "Action", name: "The Witcher", auth: "Lee Nakeum , seewater", like: "200k", },
     ];
 
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
