@@ -78,34 +78,67 @@ const PaymentPage = () => {
         <div className="w-full h-full bg-gray-100 flex items-center justify-center pt-2 pb-5">
             <div className="w-[1300px] h-[640px] bg-white rounded-xl shadow">
                 <div className="flex">
-
                     <div className="w-[360px] h-full px-5 py-5">
-                        {/* Tiêu đề */}
-                        <h1 className="font-semibold text-lg">
-                            Awaiting payment
-                        </h1>
-                        <div className="w-full h-[60px] mt-[10px] flex items-center justify-center border-b-2">
-                            <span className="text-xl font-bold">
-                                {formatTime(timeLeft)}
+
+                        {/* Phần thời gian chờ thanh toán */}
+                        <div className="w-full h-full border-b-2">
+                            {/* Tiêu đề */}
+                            <span className="font-semibold text-lg">
+                                Awaiting payment
                             </span>
 
+                            {/* Hiển thị thời gian */}
+                            <div className="w-full h-[60px] mt-[10px] flex items-center justify-center ">
+                                <span className="text-xl font-bold">
+                                    {formatTime(timeLeft)}
+                                </span>
+                            </div>
                         </div>
+
+                        {/* Phần thông tin sản phẩm */}
+                        <div className="w-full h-full border-b-2">
+
+                        </div>
+
+                        {/* Phần nhập mã khuyến mại */}
+                        <div className="w-full h-full border-b-2">
+
+                        </div>
+
+                        {/* Phần giá tiền cần thanh toán */}
+                        <div className="w-full h-full border-b-2">
+                            {/* Tiêu đề */}
+                            <span className="">
+                                Payment details
+                            </span>
+                        </div>
+
                     </div>
 
                     <div className="w-[940px] h-full bg-green-100 px-5 py-5">
-                        {/* Tiêu đề */}
-                        <h1 className="font-semibold text-2xl">
-                            Transfer accounts by QR
-                        </h1>
-                        <div>
-                            <h1 className="font-semibold text-2xl">
+
+                        {/* Phần nhập chuyển khoản bằng QR */}
+                        <div className="w-full h-full">
+                            {/* Tiêu đề */}
+                            <span className="font-semibold text-2xl">
+                                Transfer accounts by QR
+                            </span>
+                        </div>
+
+                        {/* Phần chuyển khoản thủ công */}
+                        <div className="w-full h-full">
+                            <span className="font-semibold text-2xl">
                                 Manual transfer
-                            </h1>
+                            </span>
                             <span className="text-yellow-500 text-shadow-black font-bold ">
                                 {orderCode}
                             </span>
                         </div>
 
+                        {/* Phần chú ý */}
+                        <div className="w-full h-full">
+
+                        </div>
                     </div>
                 </div>
             </div>
