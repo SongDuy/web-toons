@@ -272,7 +272,9 @@ const PopularOriginalsAndVideosPage = () => {
                                     aria-haspopup="true"
                                     onClick={handleToggleOriginals}
                                 >
-                                    <span> {selectedOriginalGenre} </span>    <CheckIcon />
+                                    <span>
+                                        {selectedOriginalGenre} <CheckIcon />
+                                    </span>
                                 </button>
                                 <Popper
                                     open={openOriginals}
@@ -495,15 +497,9 @@ const PopularOriginalsAndVideosPage = () => {
                                     aria-haspopup="true"
                                     onClick={handleToggleVideos}
                                 >
-                                    {!language ?
-                                        <span>
-                                            {selectedVideoGenre} <CheckIcon />
-                                        </span>
-                                        :
-                                        <span>
-                                            비디오 <CheckIcon />
-                                        </span>
-                                    }
+                                    <span>
+                                        {selectedVideoGenre} <CheckIcon />
+                                    </span>
                                 </button>
                                 <Popper
                                     open={openVideos}
