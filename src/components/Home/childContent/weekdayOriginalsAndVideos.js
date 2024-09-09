@@ -19,7 +19,7 @@ import { useSelector } from 'react-redux';
 
 const WeekdayOriginalsAndVideosPage = () => {
 
-    const days = [{'day': 'Mon', 'daysInKorean': '월요일'}, {'day': 'Tue', 'daysInKorean': '화요일'}, {'day': 'Wed', 'daysInKorean': '수요일'}, {'day': 'Thu', 'daysInKorean': '목요일'}, {'day': 'Fri', 'daysInKorean': '금요일'}, {'day': 'Sat', 'daysInKorean': '토요일'}, {'day': 'Sun', 'daysInKorean': '일요일'}]
+    const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
     const comic = useSelector(state => state.comic.comic);
     const language = useSelector(state => state.hidden.language);
 
@@ -103,7 +103,7 @@ const WeekdayOriginalsAndVideosPage = () => {
     const handleSelectDay = (day) => {
         setCurrentDay(day);
     };
-console.log(days[0].day)
+    console.log(days[0].day)
     //chọn nội dung truyện theo thứ hiện tại
     const filteredOriginals = comic.comic?.filter(data => data.schedule === currentDay);
     //chọn nội dung videos theo thứ hiện tại
@@ -133,7 +133,7 @@ console.log(days[0].day)
             setOpen(false);
         }
     }
-console.log(days)
+    console.log(days)
     const prevOpen = React.useRef(open);// return focus to the button when we transitioned from !open -> open
     React.useEffect(() => {
         if (prevOpen.current === true && open === false) {
@@ -153,32 +153,34 @@ console.log(days)
         <div className="w-full min-h-[560px]">
             {/* Phần hiển thị nội dung theo thứ trong tuần */}
             <div className="w-full xs:min-h-[60px] sm:h-[60px] bg-white shadow flex items-center justify-center">
-               {!language? <ul
-                    className="w-[850px] grid xs:grid-cols-4 sm:grid-cols-7"
-                >
-                    {days?.map((item,index) =>  (
-                        <li
-                            key={index}
-                            onClick={() => handleSelectDay(item.day)}
-                            className={`max-w-[120px] h-[60px] uppercase font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500 '}`}
-                        >
-                            {item.day}
-                        </li>
-                    ))}
-                </ul>:
-                <ul
-                className="w-[850px] grid xs:grid-cols-4 sm:grid-cols-7"
-            >
-                {days?.map((item,index) => (
-                    <li
-                        key={index}
-                        onClick={() => handleSelectDay(item.day)}
-                        className={`max-w-[120px] h-[60px] uppercase font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500 '}`}
+                {!language ?
+                    <ul
+                        className="w-[850px] grid xs:grid-cols-4 sm:grid-cols-7"
                     >
-                        {item.daysInKorean}
-                    </li>
-                ))}
-            </ul>
+                        {days?.map((item, index) => (
+                            <li
+                                key={index}
+                                onClick={() => handleSelectDay(item.day)}
+                                className={`max-w-[120px] h-[60px] uppercase font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500 '}`}
+                            >
+                                {item.day}
+                            </li>
+                        ))}
+                    </ul>
+                    :
+                    <ul
+                        className="w-[850px] grid xs:grid-cols-4 sm:grid-cols-7"
+                    >
+                        {days?.map((item, index) => (
+                            <li
+                                key={index}
+                                onClick={() => handleSelectDay(item.day)}
+                                className={`max-w-[120px] h-[60px] uppercase font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500 '}`}
+                            >
+                                {item.daysInKorean}
+                            </li>
+                        ))}
+                    </ul>
                 }
                 <div className="w-[150px] h-full flex items-center justify-center">
 
