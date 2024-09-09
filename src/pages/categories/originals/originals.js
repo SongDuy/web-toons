@@ -181,7 +181,7 @@ const OriginalsPage = () => {
                                         {selectedMenuOriginalList}
                                     </button>
 
-                                    {/* Chọn menu */}
+                                    {/* Chọn menu theo loại*/}
                                     <Popper
                                         open={open}
                                         anchorEl={anchorRef.current}

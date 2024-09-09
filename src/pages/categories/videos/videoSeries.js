@@ -109,7 +109,7 @@ const VideoSeriesPage = () => {
                                     Action
                                 </span>
 
-                                <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.2] line-clamp-3 flex justify-center">
+                                <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.3] line-clamp-3 flex justify-center">
                                     The Witcher
                                 </span>
 

@@ -199,7 +199,8 @@ const GenresOriginalsAndVideosPage = () => {
                                                     <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
                                                         {selectedOriginalsByGenre}
                                                     </span>
-                                                    : <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                    :
+                                                     <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
                                                         {dataListGenre.filter(item => item.name === selectedOriginalsByGenre)[0].nameKorean}
                                                     </span>}
                                             </div>

@@ -161,7 +161,7 @@ const OriginalSeriesPage = () => {
                                         {comicid.genre1}
                                     </span>
 
-                                    <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.2] line-clamp-3 flex justify-center">
+                                    <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.3] line-clamp-3 flex justify-center">
                                         {comicid.title}
                                     </span>
 
@@ -169,7 +169,7 @@ const OriginalSeriesPage = () => {
                                         <div className="w-full flex items-center justify-center gap-2">
                                             <div className="w-[250px] px-2 rounded-md overflow-hidden flex items-center justify-center gap-2">
                                                 <span className="text-lg font-semibold text-yellow-500 hover:text-yellow-600 text-shadow-black line-clamp-1">
-                                                    Lee Nakeum , seewater
+                                                    {comicid.summary}
                                                 </span>
                                                 <button className="w-[20px] h-[20px] bg-white rounded-full text-black flex items-center justify-center">
                                                     i
