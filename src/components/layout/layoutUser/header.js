@@ -190,7 +190,7 @@ const HeaderPage = () => {
       }
 
       {/* danh mục */}
-      <div className="max-w-[400px] flex items-center ml-3">
+      <div className="max-w-[400px] flex items-center ml-5">
         <ul className="flex xs:gap-1 sm:gap-5">
           <Link to={`/originals`}>
             <li
@@ -199,15 +199,7 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-              {!language ?
-                <span>
-                  Originals
-                </span>
-                :
-                <span>
-                  원본
-                </span>
-              }
+              {!language ? <span> Originals </span> : <span> 원본 </span>}
             </li>
           </Link>
           <Link to={`/videos`}>
@@ -217,15 +209,7 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-              {!language ?
-                <span>
-                  Videos
-                </span>
-                :
-                <span>
-                  비디오
-                </span>
-              }
+              {!language ? <span> Videos </span> : <span> 비디오 </span>}
             </li>
           </Link>
           <Link to={`/genres`}>
@@ -235,16 +219,7 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-
-              {!language ?
-                <span>
-                  Genres
-                </span>
-                :
-                <span>
-                  장르
-                </span>
-              }
+              {!language ? <span> Genres </span> : <span> 장르 </span>}
             </li>
           </Link>
           <Link to={`/popular`}>
@@ -254,17 +229,7 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-
-              {!language ?
-                <span>
-                  Popular
-                </span>
-                :
-                <span>
-
-                  인기 있는
-                </span>
-              }
+              {!language ? <span> Popular </span> : <span> 인기 있는 </span>}
             </li>
           </Link>
         </ul>
@@ -285,16 +250,9 @@ const HeaderPage = () => {
                 className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
                 onClick={() => { openLoginModal(); handleCloseAccount(); }}
               >
-                {!language ?
-                  <span>
-                    Publish
-                  </span>
-                  :
-                  <span>
-                    게시
-                  </span>
-                }
+                {!language ? <span> Publish </span> : <span> 게시 </span>}
               </button>
+
               {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
             </div>
 
@@ -305,15 +263,7 @@ const HeaderPage = () => {
                 className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
                 onClick={() => { openLoginModal(); handleCloseAccount(); }}
               >
-                {!language ?
-                  <span>
-                    Log In
-                  </span>
-                  :
-                  <span>
-                    로그인
-                  </span>
-                }
+                {!language ? <span> Log In </span> : <span> 로그인 </span>}
 
               </button>
 
@@ -336,15 +286,7 @@ const HeaderPage = () => {
                 onClick={handleToggle}
               >
                 {/* Publish {process.env.REACT_APP_HOME} */}
-                {!language ?
-                  <span>
-                    Publish
-                  </span>
-                  :
-                  <span>
-                    게시
-                  </span>
-                }
+                {!language ? <span> Publish </span> : <span> 게시 </span>}
               </button>
 
               {/* Chọn menu */}
@@ -376,15 +318,8 @@ const HeaderPage = () => {
                           <Link to={`/create/original`}>
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <PictureAsPdfOutlinedIcon />
-                              {!language ?
-                                <span>
-                                  Original
-                                </span>
-                                :
-                                <span>
-                                  원래의
-                                </span>
-                              }
+
+                              {!language ? <span> Original </span> : <span> 원래의 </span>}
 
                             </MenuItem>
                           </Link>
@@ -392,15 +327,9 @@ const HeaderPage = () => {
                           <Link to={`/create/video`}>
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <VideoCallOutlinedIcon />
-                              {!language ?
-                                <span>
-                                  Video
-                                </span>
-                                :
-                                <span>
-                                  동영상
-                                </span>
-                              }
+
+                              {!language ? <span> Video </span> : <span> 동영상 </span>}
+
                             </MenuItem>
                           </Link>
                         </MenuList>
@@ -455,15 +384,8 @@ const HeaderPage = () => {
                           <Link to={``}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <GroupAddIcon />
-                              {!language ?
-                                <span>
-                                  Subscribed
-                                </span>
-                                :
-                                <span>
-                                  구독함
-                                </span>
-                              }
+
+                              {!language ? <span> Subscribed </span> : <span> 구독함 </span>}
 
                             </MenuItem>
                           </Link>
@@ -471,15 +393,8 @@ const HeaderPage = () => {
                           <Link to={``}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <PieChartIcon />
-                              {!language ?
-                                <span>
-                                  Dashboard
-                                </span>
-                                :
-                                <span>
-                                  계기반
-                                </span>
-                              }
+
+                              {!language ? <span> Dashboard </span> : <span> 계기반 </span>}
 
                             </MenuItem>
                           </Link>
@@ -487,15 +402,8 @@ const HeaderPage = () => {
                           <Link to={``}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <CommentIcon />
-                              {!language ?
-                                <span>
-                                  Comments
-                                </span>
-                                :
-                                <span>
-                                  댓글
-                                </span>
-                              }
+
+                              {!language ? <span> Comments </span> : <span> 댓글 </span>}
 
                             </MenuItem>
                           </Link>
@@ -503,16 +411,8 @@ const HeaderPage = () => {
                           <Link to={``}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <EditNoteIcon />
-                              {!language ?
-                                <span>
-                                  Creators
-                                </span>
-                                :
-                                <span>
 
-                                  크리에이터
-                                </span>
-                              }
+                              {!language ? <span> Creators </span> : <span> 크리에이터 </span>}
 
                             </MenuItem>
                           </Link>
@@ -520,15 +420,8 @@ const HeaderPage = () => {
                           <Link to={``}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <AssignmentIndIcon />
-                              {!language ?
-                                <span>
-                                  My Profile Page
-                                </span>
-                                :
-                                <span>
-                                  내 프로필 페이지
-                                </span>
-                              }
+
+                              {!language ? <span> My Profile Page </span> : <span> 내 프로필 페이지 </span>}
 
                             </MenuItem>
                           </Link>
@@ -536,35 +429,20 @@ const HeaderPage = () => {
                           <Link to={``}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <AccountCircleIcon />
-                              {!language ?
-                                <span>
-                                  Account
-                                </span>
-                                :
-                                <span>
 
-                                  계정
-                                </span>
-                              }
+                              {!language ? <span> Account </span> : <span> 계정 </span>}
 
                             </MenuItem>
                           </Link>
 
                           <MenuItem onClick={() => dispatch(logout())} className="flex gap-x-3">
                             <LogoutIcon />
-                            {!language ?
-                              <span>
-                                Log out
-                              </span>
-                              :
-                              <span>
-                                로그아웃
-                              </span>
-                            }
+
+                            {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
 
                           </MenuItem>
-
                         </MenuList>
+                        
                       </ClickAwayListener>
                     </Paper>
                   </Grow>
