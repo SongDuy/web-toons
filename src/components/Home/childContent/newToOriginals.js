@@ -87,8 +87,8 @@ const NewToOriginalsPage = () => {
                                         </span>
                                     </div>
 
-                                    <div className="w-full h-[30px] mt-auto shadow-xl bg-white bg-opacity-80 rounded-md">
-                                        <span className="w-full px-2 py-1 text-yellow-500 text-shadow-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                    <div className="w-full h-[30px] mt-auto">
+                                        <span className="w-full px-2 py-1 text-yellow-500 text-shadow-black text-sm font-semibold flex items-center justify-center">
                                             {item.genre1}
                                         </span>
                                     </div>

@@ -90,8 +90,8 @@ const NewToVideosPage = () => {
                                         </span>
                                     </div>
 
-                                    <div className="w-full h-[30px] mt-auto shadow bg-gray-300 bg-opacity-80 rounded-md">
-                                        <span className="w-full px-2 py-1 text-white text-shadow-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                    <div className="w-full h-[30px] mt-auto">
+                                        <span className="w-full px-2 py-1 text-white text-shadow-black text-sm font-semibold flex items-center justify-center">
                                             {item.genre}
                                         </span>
                                     </div>

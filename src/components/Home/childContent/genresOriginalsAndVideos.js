@@ -160,13 +160,13 @@ const GenresOriginalsAndVideosPage = () => {
                                             </div>
 
                                             {/*Trong component React của bạn */}
-                                            <div className="w-full h-[30px] mt-auto shadow bg-white bg-opacity-80 rounded-md">
+                                            <div className="w-full h-[30px] mt-auto">
                                                 {!language ?
-                                                    <span className="w-full px-2 py-1 text-yellow-500 text-shadow-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                    <span className="w-full px-2 py-1 text-yellow-500 text-shadow-black text-sm font-semibold flex items-center justify-center">
                                                         {selectedOriginalsByGenre}
                                                     </span>
                                                     :
-                                                     <span className="w-full px-2 py-1 text-yellow-500 text-shadow-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                     <span className="w-full px-2 py-1 text-yellow-500 text-shadow-black text-sm font-semibold flex items-center justify-center">
                                                         {dataListGenre.filter(item => item.name === selectedOriginalsByGenre)[0].nameKorean}
                                                     </span>}
                                             </div>
@@ -250,12 +250,12 @@ const GenresOriginalsAndVideosPage = () => {
                                             </div>
 
                                             {/*Trong component React của bạn */}
-                                            <div className="w-full h-[30px] mt-auto shadow bg-gray-300 bg-opacity-80 rounded-md">
+                                            <div className="w-full h-[30px] mt-auto">
                                                 {!language ?
-                                                    <span className="w-full px-2 py-1 text-white text-shadow-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                    <span className="w-full px-2 py-1 text-white text-shadow-black text-sm font-semibold flex items-center justify-center">
                                                         {selectedVideosByGenre}
                                                     </span>
-                                                    : <span className="w-full px-2 py-1 text-white text-shadow-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                    : <span className="w-full px-2 py-1 text-white text-shadow-black text-sm font-semibold flex items-center justify-center">
                                                         {dataListGenre.filter(item => item.name === selectedVideosByGenre)[0].nameKorean}
                                                     </span>}
                                             </div>
