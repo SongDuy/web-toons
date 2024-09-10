@@ -19,26 +19,26 @@ import { useSelector } from 'react-redux';
 
 // Danh sách thể loại
 const dataListGenre = [
-    { id: 1, name: "Drama" },
-    { id: 2, name: "Fantasy" },
-    { id: 3, name: "Comedy" },
-    { id: 4, name: "Action" },
-    { id: 5, name: "Slice Of Life" },
-    { id: 6, name: "Romance" },
-    { id: 7, name: "Superhero" },
-    { id: 8, name: "Sci-Fi" },
-    { id: 9, name: "Thriller" },
-    { id: 10, name: "Supernatural" },
-    { id: 11, name: "Mystery" },
-    { id: 12, name: "Sports" },
-    { id: 13, name: "Historical" },
-    { id: 14, name: "Heartwarming" },
-    { id: 15, name: "Horror" },
-    { id: 16, name: "Informative" },
-    { id: 17, name: "School" },
-    { id: 18, name: "Animals" },
-    { id: 19, name: "Zombies" },
-    { id: 20, name: "Short Story" },
+    { id: 1, name: "Drama", nameKorean: "드라마" },
+    { id: 2, name: "Fantasy", nameKorean: "판타지" },
+    { id: 3, name: "Comedy", nameKorean: "코미디" },
+    { id: 4, name: "Action", nameKorean: "액션" },
+    { id: 5, name: "Slice Of Life", nameKorean: "일상" },
+    { id: 6, name: "Romance", nameKorean: "로맨스" },
+    { id: 7, name: "Superhero", nameKorean: "슈퍼히어로" },
+    { id: 8, name: "Sci-Fi", nameKorean: "SF" },
+    { id: 9, name: "Thriller", nameKorean: "스릴러" },
+    { id: 10, name: "Supernatural", nameKorean: "초자연" },
+    { id: 11, name: "Mystery", nameKorean: "미스터리" },
+    { id: 12, name: "Sports", nameKorean: "스포츠" },
+    { id: 13, name: "Historical", nameKorean: "역사" },
+    { id: 14, name: "Heartwarming", nameKorean: "훈훈한" },
+    { id: 15, name: "Horror", nameKorean: "호러" },
+    { id: 16, name: "Informative", nameKorean: "정보" },
+    { id: 17, name: "School", nameKorean: "학교" },
+    { id: 18, name: "Animals", nameKorean: "동물" },
+    { id: 19, name: "Zombies", nameKorean: "좀비" },
+    { id: 20, name: "Short Story", nameKorean: "단편" },
 
 ];
 
@@ -134,16 +134,7 @@ const GenresPage = () => {
                             onClick={() => setSelectedSection("section1")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-
-                            {!language ?
-                                <span>
-                                    ORIGINALS
-                                </span>
-                                :
-                                <span>
-                                    원본
-                                </span>
-                            }
+                            {!language ? <span> ORIGINALS </span> : <span> 원본 </span>}
                         </li>
                     </ScrollLink >
 
@@ -152,15 +143,7 @@ const GenresPage = () => {
                             onClick={() => setSelectedSection("section2")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            {!language ?
-                                <span>
-                                    VIDEOS
-                                </span>
-                                :
-                                <span>
-                                    비디오
-                                </span>
-                            }
+                            {!language ? <span> VIDEOS </span> : <span> 비디오 </span>}
                         </li>
                     </ScrollLink >
                 </ul>
@@ -274,9 +257,9 @@ const GenresPage = () => {
                                                 <li
                                                     key={genre.id}
                                                     onClick={() => setSelectedOriginalsByGenre(genre.name)}
-                                                    className={`uppercase font-semibold shadow text-xs py-2 px-2 rounded hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                                    className={`w-[115px] uppercase font-semibold shadow text-xs py-2 px-2 rounded hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                                 >
-                                                    {genre.name}
+                                                    {!language ? <span> {genre.name} </span> : <span> {genre.nameKorean} </span>}
                                                 </li>
                                             ))}
 
@@ -394,9 +377,9 @@ const GenresPage = () => {
                                                 <li
                                                     key={genre.id}
                                                     onClick={() => setSelectedVideosByGenre(genre.name)}
-                                                    className={`uppercase font-semibold shadow text-xs py-2 px-2 rounded hover:text-black cursor-pointer flex items-center justify-center ${selectedVideosByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                                    className={`w-[115px] uppercase font-semibold shadow text-xs py-2 px-2 rounded hover:text-black cursor-pointer flex items-center justify-center ${selectedVideosByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                                 >
-                                                    {genre.name}
+                                                    {!language ? <span> {genre.name} </span> : <span> {genre.nameKorean} </span>}
                                                 </li>
                                             ))}
 
