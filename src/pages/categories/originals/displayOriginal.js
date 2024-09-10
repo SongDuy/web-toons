@@ -6,6 +6,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import AddIcon from '@mui/icons-material/Add';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CheckIcon from '@mui/icons-material/Check';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
@@ -145,6 +146,9 @@ const DisplayOriginalPage = () => {
     // Nhấn nút đăng ký
     const [isSubscribe, setIsSubscribe] = useState(false);
 
+    // Nhấn nút thả tim
+    const [isLike, setIsLike] = useState(false);
+
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
 
@@ -253,10 +257,26 @@ const DisplayOriginalPage = () => {
                         </div>
 
                         <div className="flex gap-3">
-                            <button className="w-[100px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2">
-                                <FavoriteBorderIcon />
-                                9,455
-                            </button>
+                            {/* Nhấn nút thả tim */}
+                            {!isLike ?
+                                <button
+                                    onClick={() => setIsLike(true)}
+                                    className="w-[100px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2"
+                                >
+                                    <FavoriteBorderIcon />
+                                    9,455
+                                </button>
+                                :
+                                <button
+                                    onClick={() => setIsLike(false)}
+                                    className="w-[100px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2"
+                                >
+                                    <FavoriteIcon className="text-red-500" />
+                                    9,455
+                                </button>
+                            }
+
+                            {/* Nhấn nút đăng ký */}
                             {!isSubscribe ?
                                 <button
                                     onClick={() => setIsSubscribe(true)}
@@ -586,8 +606,8 @@ const DisplayOriginalPage = () => {
                                                         />
                                                     </div>
 
-                                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                        <span className="mx-3 text-xl text-white font-bold">
+                                                    <div className="w-[30px] h-[30px] flex items-center justify-center mx-2">
+                                                        <span className="mx-3 text-xl text-white text-shadow-black font-bold">
                                                             {item.number}
                                                         </span>
                                                     </div>
@@ -656,8 +676,8 @@ const DisplayOriginalPage = () => {
                                                         />
                                                     </div>
 
-                                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                        <span className="mx-3 text-xl text-white font-bold">
+                                                    <div className="w-[30px] h-[30px] flex items-center justify-center mx-2">
+                                                        <span className="mx-3 text-xl text-white text-shadow-black font-bold">
                                                             {item.number}
                                                         </span>
                                                     </div>
