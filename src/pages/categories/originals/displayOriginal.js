@@ -240,16 +240,7 @@ const DisplayOriginalPage = () => {
 
                         <div className="flex-auto mb-3">
                             <div className="flex items-center justify-center text-yellow-800 font-semibold">
-
-                                {!language ?
-                                    <span>
-                                        Creator
-                                    </span>
-                                    :
-                                    <span>
-                                        창조자
-                                    </span>
-                                }
+                                {!language ? <span> Creator </span> : <span> 창조자 </span>}
                             </div>
                             <span className="flex items-center justify-center text-yellow-600 text-lg font-semibold">
                                 Lee Nakeum , seewater
@@ -283,15 +274,7 @@ const DisplayOriginalPage = () => {
                                     className="w-[120px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2"
                                 >
                                     <AddIcon />
-                                    {!language ?
-                                        <span>
-                                            Subscribe
-                                        </span>
-                                        :
-                                        <span>
-                                            구독하다
-                                        </span>
-                                    }
+                                    {!language ? <span> Subscribe </span> : <span> 구독하다 </span>}
                                 </button>
                                 :
                                 <button
@@ -357,15 +340,7 @@ const DisplayOriginalPage = () => {
                             <div className="w-full px-2 pr-5">
 
                                 <div className="flex items-center pb-2 font-semibold text-lg">
-                                    {!language ?
-                                        <span>
-                                            Comments
-                                        </span>
-                                        :
-                                        <span>
-                                            댓글
-                                        </span>
-                                    }
+                                    {!language ? <span> Comments </span> : <span> 댓글 </span>}
                                     <span className="px-2 text-gray-400">2,907</span>
                                 </div>
 
@@ -379,15 +354,7 @@ const DisplayOriginalPage = () => {
                                     />
                                     <button onClick={handleComment} className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                         <SendRoundedIcon className="transform rotate-200" />
-                                        {!language ?
-                                            <span>
-                                                Send
-                                            </span>
-                                            :
-                                            <span>
-                                                보내다
-                                            </span>
-                                        }
+                                        {!language ? <span> Send </span> : <span> 보내다 </span>}
                                     </button>
                                 </div>
 
@@ -396,27 +363,10 @@ const DisplayOriginalPage = () => {
                                     <div className="px-3">
                                         <ul className="flex gap-2">
                                             <li className="px-5 py-5 cursor-pointer hover:text-green-500 font-semibold border-b-2">
-                                                {!language ?
-                                                    <span>
-                                                        TOP
-                                                    </span>
-                                                    :
-                                                    <span>
-                                                        맨 위
-                                                    </span>
-                                                }
+                                                {!language ? <span> TOP </span> : <span> 맨 위 </span>}
                                             </li>
                                             <li className="px-5 py-5 cursor-pointer hover:text-green-500 font-semibold">
-                                                {!language ?
-                                                    <span>
-                                                        NEWEST
-                                                    </span>
-                                                    :
-                                                    <span>
-
-                                                        최신
-                                                    </span>
-                                                }
+                                                {!language ? <span> NEWEST </span> : <span> 최신 </span>}
                                             </li>
                                         </ul>
                                     </div>
@@ -455,16 +405,7 @@ const DisplayOriginalPage = () => {
                                                                     onClick={() => handleToggleReply(item.idcomment)}
                                                                     className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-200 flex gap-2 items-center justify-center"
                                                                 >
-                                                                    {!language ?
-                                                                        <span>
-                                                                            Replies
-                                                                        </span>
-                                                                        :
-                                                                        <span>
-
-                                                                            답글
-                                                                        </span>
-                                                                    }
+                                                                    {!language ? <span> Replies </span> : <span> 답글 </span>}
                                                                     {item.replies}
                                                                 </button>
 
@@ -498,15 +439,7 @@ const DisplayOriginalPage = () => {
                                                                     />
                                                                     <button onClick={handleComment} className="px-3 py-2 ml-auto bg-black hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                                                         <SendRoundedIcon className="transform rotate-200" />
-                                                                        {!language ?
-                                                                            <span>
-                                                                                Reply
-                                                                            </span>
-                                                                            :
-                                                                            <span>
-                                                                                회신하다
-                                                                            </span>
-                                                                        }
+                                                                        {!language ? <span> Reply </span> : <span> 회신하다 </span>}
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -572,16 +505,7 @@ const DisplayOriginalPage = () => {
                             <div className="w-full h-full mb-8">
                                 <div className="flex items-center pb-2">
                                     <span className="px-2 font-semibold text-lg hover:text-green-500 cursor-pointer">
-
-                                        {!language ?
-                                            <span>
-                                                New & Trending
-                                            </span>
-                                            :
-                                            <span>
-                                                신규 및 인기
-                                            </span>
-                                        }
+                                        {!language ? <span> New & Trending </span> : <span> 신규 및 인기 </span>}
                                         <NavigateNextIcon />
                                     </span>
                                 </div>
@@ -636,16 +560,7 @@ const DisplayOriginalPage = () => {
                             <div className="w-full h-full mt-8">
                                 <div className="flex items-center pb-2">
                                     <span className="px-2 font-semibold text-lg hover:text-green-500 cursor-pointer">
-                                        {!language ?
-                                            <span>
-                                                Originals by Genre
-                                            </span>
-                                            :
-                                            <span>
-                                                장르별 원작
-                                            </span>
-                                        }
-
+                                        {!language ? <span> Originals by Genre </span> : <span> 장르별 원작 </span>}
                                         <NavigateNextIcon />
                                     </span>
                                     <span className="ml-auto text-green-500 cursor-pointer mr-2">

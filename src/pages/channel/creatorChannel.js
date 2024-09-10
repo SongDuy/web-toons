@@ -156,40 +156,15 @@ const CreatorChannelPage = () => {
                             </div>
                             <div className="px-1 py-4 flex">
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    {!language ?
-                                        <span>
-                                            Series Original:
-                                        </span>
-                                        :
-                                        <span>
-
-                                            시리즈 오리지널:
-                                        </span>
-                                    }
+                                    {!language ? <span> Series Original: </span> : <span> 시리즈 오리지널: </span>}
                                     {' '} 15
                                 </div>
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    {!language ?
-                                        <span>
-                                            Series Video:
-                                        </span>
-                                        :
-                                        <span>
-                                            시리즈 비디오:
-                                        </span>
-                                    }
+                                    {!language ? <span> Series Video: </span> : <span> 시리즈 비디오: </span>}
                                     {' '} 15
                                 </div>
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    {!language ?
-                                        <span>
-                                            Followers:
-                                        </span>
-                                        :
-                                        <span>
-                                            추종자:
-                                        </span>
-                                    }
+                                    {!language ? <span> Followers: </span> : <span> 추종자: </span>}
                                     {' '} 80,135
                                 </div>
                             </div>
@@ -197,34 +172,18 @@ const CreatorChannelPage = () => {
 
                         <div className="ml-auto flex items-center justify-center">
                             {!isFollow ?
-                                <button 
-                                onClick={() => setIsFollow(true)}
-                                className="w-[150px] h-[50px] font-semibold text-white bg-green-400 hover:bg-green-500 rounded-full"
+                                <button
+                                    onClick={() => setIsFollow(true)}
+                                    className="w-[150px] h-[50px] font-semibold text-white bg-green-400 hover:bg-green-500 rounded-full"
                                 >
-                                    {!language ?
-                                        <span>
-                                            Follow
-                                        </span>
-                                        :
-                                        <span>
-                                            따르다
-                                        </span>
-                                    }
+                                    {!language ? <span> Follow </span> : <span> 따르다 </span>}
                                 </button>
                                 :
                                 <button
-                                onClick={() => setIsFollow(false)}
-                                 className="w-[150px] h-[50px] font-semibold text-gray-400 bg-white hover:text-yellow-500 border-2 rounded-full"
-                                 >
-                                    {!language ?
-                                        <span>
-                                            Following
-                                        </span>
-                                        :
-                                        <span>
-                                            수행원
-                                        </span>
-                                    }
+                                    onClick={() => setIsFollow(false)}
+                                    className="w-[150px] h-[50px] font-semibold text-gray-400 bg-white hover:text-yellow-500 border-2 rounded-full"
+                                >
+                                    {!language ? <span> Following </span> : <span> 수행원 </span>}
                                 </button>
                             }
                         </div>
@@ -238,15 +197,7 @@ const CreatorChannelPage = () => {
                         {/* Khung hiển thị các liên kết của tác giả */}
                         <div className="w-full h-[340px] px-5 py-3 bg-white rounded-lg">
                             <div className="font-semibold text-[20px] text-black">
-                                {!language ?
-                                    <span>
-                                        Link
-                                    </span>
-                                    :
-                                    <span>
-                                        링크
-                                    </span>
-                                }
+                                {!language ? <span> Link </span> : <span> 링크 </span>}
                             </div>
 
                             <div className="py-5">
@@ -261,16 +212,7 @@ const CreatorChannelPage = () => {
                         {/* Khung hiển thị các Series truyện của tác giả */}
                         <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
                             <div className="font-semibold text-[20px] text-black">
-                                {!language ?
-                                    <span>
-                                        Series Original
-                                    </span>
-                                    :
-                                    <span>
-
-                                        시리즈 오리지널
-                                    </span>
-                                }
+                                {!language ? <span> Series Original </span> : <span> 시리즈 오리지널 </span>}
                             </div>
 
                             <div className="mt-5 h-[450px] custom-scrollbar">
@@ -309,15 +251,7 @@ const CreatorChannelPage = () => {
                         {/* Khung hiển thị các Series Video của tác giả */}
                         <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
                             <div className="font-semibold text-[20px] text-black">
-                                {!language ?
-                                    <span>
-                                        Series Video
-                                    </span>
-                                    :
-                                    <span>
-                                        시리즈 비디오
-                                    </span>
-                                }
+                                {!language ? <span> Series Video </span> : <span> 시리즈 비디오 </span>}
                             </div>
 
                             <div className="mt-5 h-[450px] custom-scrollbar">
@@ -358,15 +292,7 @@ const CreatorChannelPage = () => {
                     <div className="w-[700px] px-5 pt-3 pb-10 bg-white rounded-lg">
                         <div className="w-full h-[40px] border-b-2 border-bg-black">
                             <div className="font-semibold text-[20px] text-black">
-                                {!language ?
-                                    <span>
-                                        Feed
-                                    </span>
-                                    :
-                                    <span>
-                                        밥을 먹이다
-                                    </span>
-                                }
+                                {!language ? <span> Feed </span> : <span> 밥을 먹이다 </span>}
                             </div>
                         </div>
 
@@ -396,15 +322,7 @@ const CreatorChannelPage = () => {
                                                     </span>
 
                                                     <div className="px-2 font-semibold text-yellow-500">
-                                                        {!language ?
-                                                            <span>
-                                                                . Creator
-                                                            </span>
-                                                            :
-                                                            <span>
-                                                                . 창조자
-                                                            </span>
-                                                        }
+                                                        {!language ? <span> . Creator </span> : <span> . 창조자 </span>}
                                                     </div>
 
                                                 </div>
@@ -490,16 +408,7 @@ const CreatorChannelPage = () => {
                                                     />
                                                     <button className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                                         <SendRoundedIcon className="transform rotate-200" />
-
-                                                        {!language ?
-                                                            <span>
-                                                                Send
-                                                            </span>
-                                                            :
-                                                            <span>
-                                                                보내다
-                                                            </span>
-                                                        }
+                                                        {!language ? <span> Send </span> : <span> 보내다 </span>}
                                                     </button>
                                                 </div>
                                             </div>
@@ -582,16 +491,7 @@ const CreatorChannelPage = () => {
                                                                                 />
                                                                                 <button className="px-3 py-2 ml-auto bg-black hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                                                                     <SendRoundedIcon className="transform rotate-200" />
-
-                                                                                    {!language ?
-                                                                                        <span>
-                                                                                            Reply
-                                                                                        </span>
-                                                                                        :
-                                                                                        <span>
-                                                                                            회신하다
-                                                                                        </span>
-                                                                                    }
+                                                                                    {!language ? <span> Reply </span> : <span> 회신하다 </span> }
                                                                                 </button>
                                                                             </div>
                                                                         </div>

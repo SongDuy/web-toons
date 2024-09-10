@@ -137,15 +137,7 @@ const VideoSeriesPage = () => {
                                     className="text-white hover:text-yellow-500 bg-black bg-opacity-30 py-2 px-2 rounded-full flex gap-1 items-center justify-center"
                                 >
                                     <AddCircleOutlineIcon />
-                                    {!language ?
-                                        <span>
-                                            Subscribe
-                                        </span>
-                                        :
-                                        <span>
-                                            구독하다
-                                        </span>
-                                    }
+                                    {!language ? <span> Subscribe </span> : <span> 구독하다 </span>}
                                 </button>
                                 :
                                 <button
@@ -165,15 +157,7 @@ const VideoSeriesPage = () => {
 
                         <div className="col-span-2 h-full">
                             <div className="w-full px-5 pb-3 font-semibold text-md">
-                                {!language ?
-                                    <span>
-                                        Series Video
-                                    </span>
-                                    :
-                                    <span>
-                                        시리즈 영상
-                                    </span>
-                                }
+                                {!language ? <span> Series Video </span> : <span> 시리즈 영상 </span>}
                             </div>
 
                             <div className="w-full h-[900px] px-3 custom-scrollbar">
@@ -277,15 +261,7 @@ const VideoSeriesPage = () => {
                                             aria-haspopup="true"
                                             onClick={handleToggle}
                                         >
-                                            {!language ?
-                                                <span>
-                                                    RATE
-                                                </span>
-                                                :
-                                                <span>
-                                                    비율
-                                                </span>
-                                            }
+                                            {!language ? <span> RATE </span>  : <span> 비율 </span>}
                                         </button>
                                         <Popper
                                             open={open}
@@ -361,16 +337,7 @@ const VideoSeriesPage = () => {
                 <div className="w-full h-full  py-10 flex items-center justify-center">
                     <div className="w-[1200px] h-full ">
                         <div className="text-xl font-semibold">
-                            {!language ?
-                                <span>
-                                    You may also like
-                                </span>
-                                :
-                                <span>
-                                    당신은 또한 좋아할 수도 있습니다
-                                </span>
-                            }
-
+                            {!language ? <span> You may also like </span> : <span> 당신은 또한 좋아할 수도 있습니다 </span>}
                         </div>
                         <div className="w-full min-h-[160px] bg-white my-5 px-5 py-5 rounded-md">
                             <ul className="w-full h-full grid grid-cols-3 gap-3">

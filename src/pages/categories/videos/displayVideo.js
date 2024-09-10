@@ -174,15 +174,7 @@ const DisplayVideoPage = () => {
 
                         <div className="flex-auto mb-3">
                             <span className="flex items-center justify-center text-yellow-800 font-semibold">
-                                {!language ?
-                                    <span>
-                                        Creator
-                                    </span>
-                                    :
-                                    <span>
-                                        창조자
-                                    </span>
-                                }
+                                {!language ? <span> Creator </span> : <span> 창조자 </span>}
                             </span>
                             <span className="flex items-center justify-center text-yellow-600 text-lg font-semibold">
                                 Lee Nakeum , seewater
@@ -379,16 +371,7 @@ const DisplayVideoPage = () => {
                                                                     />
                                                                     <button className="px-3 py-2 ml-auto bg-black hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                                                         <SendRoundedIcon className="transform rotate-200" />
-
-                                                                        {!language ?
-                                                                            <span>
-                                                                                Reply
-                                                                            </span>
-                                                                            :
-                                                                            <span>
-                                                                                회신하다
-                                                                            </span>
-                                                                        }
+                                                                        {!language ? <span> Reply </span> : <span> 회신하다 </span>}
                                                                     </button>
                                                                 </div>
                                                             </div>
