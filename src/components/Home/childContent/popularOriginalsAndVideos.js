@@ -648,7 +648,7 @@ const PopularOriginalsAndVideosPage = () => {
                         <div className="w-full h-full">
                             <ul className="w-full h-full">
                                 {/* khung nội dung */}
-                                {dataPopular.map((item, index) => (
+                                {dataPopular?.map((item, index) => (
                                     <Link
                                         key={item.id}
                                         to={`/videos/video/series`}
