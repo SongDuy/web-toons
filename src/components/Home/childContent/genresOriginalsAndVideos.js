@@ -162,11 +162,11 @@ const GenresOriginalsAndVideosPage = () => {
                                             {/*Trong component React của bạn */}
                                             <div className="w-full h-[30px] mt-auto">
                                                 {!language ?
-                                                    <span className="w-full px-2 py-1 text-yellow-500 text-shadow-black text-sm font-semibold flex items-center justify-center">
+                                                    <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
                                                         {selectedOriginalsByGenre}
                                                     </span>
                                                     :
-                                                     <span className="w-full px-2 py-1 text-yellow-500 text-shadow-black text-sm font-semibold flex items-center justify-center">
+                                                     <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
                                                         {dataListGenre.filter(item => item.name === selectedOriginalsByGenre)[0].nameKorean}
                                                     </span>}
                                             </div>
