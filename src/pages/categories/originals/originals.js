@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
 
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+
 import CheckIcon from '@mui/icons-material/Check';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
@@ -10,7 +17,7 @@ import { Link } from 'react-router-dom';
 import { Link as ScrollLink, Element as ScrollElement } from 'react-scroll';
 import { useSelector } from 'react-redux';
 
-const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
 
 const OriginalsPage = () => {
 
@@ -59,6 +66,43 @@ const OriginalsPage = () => {
     const [hoveredOngoingItem, setHoveredOngoingItem] = useState(null);
     const [hoveredCompletedItem, setHoveredCompletedItem] = useState(null);
 
+    // Mở và đóng menu video list
+    const [open, setOpen] = React.useState(false);
+    const anchorRef = React.useRef(null);
+
+    const handleToggle = () => {
+        setOpen((prevOpen) => !prevOpen);
+    };
+
+    const handleClose = (event) => {
+        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+    function handleListKeyDown(event) {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            setOpen(false);
+        } else if (event.key === 'Escape') {
+            setOpen(false);
+        }
+    }
+
+    const prevOpen = React.useRef(open);// return focus to the button when we transitioned from !open -> open
+    React.useEffect(() => {
+        if (prevOpen.current === true && open === false) {
+            anchorRef.current.focus();
+        }
+
+        prevOpen.current = open;
+    }, [open]);
+
+    //Chọn menu cho thể loại
+    const [selectedMenuOriginalList, setSelectedMenuOriginalList] = useState("by Popularity");
+
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
 
@@ -72,16 +116,7 @@ const OriginalsPage = () => {
                             onClick={() => setSelectedSection("section1")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            {!language ?
-                                <span>
-                                    ONGOING
-                                </span>
-                                :
-                                <span>
-                                    전진
-                                </span>
-                            }
-
+                            {!language ? <span> ONGOING </span> : <span> 전진 </span>}
                         </li>
                     </ScrollLink >
 
@@ -90,16 +125,7 @@ const OriginalsPage = () => {
                             onClick={() => setSelectedSection("section2")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            {!language ?
-                                <span>
-                                    COMPLETED
-                                </span>
-                                :
-                                <span>
-                                    완전한
-                                </span>
-                            }
-
+                            {!language ? <span> COMPLETED </span> : <span> 완전한 </span>}
                         </li>
                     </ScrollLink >
                 </ul>
@@ -114,39 +140,117 @@ const OriginalsPage = () => {
 
                             <div className="h-[70px] border-b-2 flex items-center">
                                 <span className="font-semibold text-md">
-                                    {!language ?
-                                        <span>
-                                            Ongoing Series
-                                        </span>
-                                        :
-                                        <span>
-                                            진행중인 시리즈
-                                        </span>
-                                    }
-
+                                    {!language ? <span> Ongoing Series </span> : <span> 진행중인 시리즈 </span>}
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
-                                    by Popularity
+                                    <button
+                                        ref={anchorRef}
+                                        id="composition-button"
+                                        aria-controls={open ? 'composition-menu' : undefined}
+                                        aria-expanded={open ? 'true' : undefined}
+                                        aria-haspopup="true"
+                                        onClick={handleToggle}
+                                    >
+                                        {selectedMenuOriginalList}
+                                    </button>
+
+                                    {/* Chọn menu theo loại*/}
+                                    <Popper
+                                        open={open}
+                                        anchorEl={anchorRef.current}
+                                        role={undefined}
+                                        placement="bottom-start"
+                                        transition
+                                        disablePortal
+                                    >
+                                        {({ TransitionProps, placement }) => (
+                                            <Grow
+                                                {...TransitionProps}
+                                                style={{
+                                                    transformOrigin:
+                                                        placement === 'bottom-start' ? 'left top' : 'left bottom',
+                                                }}
+                                            >
+                                                <Paper>
+                                                    <ClickAwayListener onClickAway={handleClose}>
+                                                        <MenuList
+                                                            className="bg-white rounded-lg text-black font-semibold "
+                                                            autoFocusItem={open}
+                                                            id="composition-menu"
+                                                            aria-labelledby="composition-button"
+                                                            onKeyDown={handleListKeyDown}
+                                                        >
+                                                            <MenuItem onClick={handleClose}>
+                                                                <span
+                                                                    onClick={() => setSelectedMenuOriginalList("by Popularity")}
+                                                                    className={`w-full h-full ${selectedMenuOriginalList === "by Popularity" ? "text-yellow-500" : ""}`}
+                                                                >
+                                                                    by Popularity
+                                                                </span>
+                                                            </MenuItem>
+
+                                                            <MenuItem onClick={handleClose}>
+                                                                <span
+                                                                    onClick={() => setSelectedMenuOriginalList("by Likes")}
+                                                                    className={`w-full h-full ${selectedMenuOriginalList === "by Likes" ? "text-yellow-500" : ""}`}
+                                                                >
+                                                                    by Likes
+                                                                </span>
+                                                            </MenuItem>
+
+                                                            <MenuItem onClick={handleClose}>
+                                                                <span
+                                                                    onClick={() => setSelectedMenuOriginalList("by Date")}
+                                                                    className={`w-full h-full ${selectedMenuOriginalList === "by Date" ? "text-yellow-500" : ""}`}
+                                                                >
+                                                                    by Date
+                                                                </span>
+                                                            </MenuItem>
+
+                                                        </MenuList>
+                                                    </ClickAwayListener>
+                                                </Paper>
+                                            </Grow>
+                                        )}
+                                    </Popper>
+
                                     <CheckIcon />
                                 </span>
                             </div>
 
                             {/* Danh mục thứ trong tuần */}
                             <div className="h-[70px] mt-5 flex items-center justify-center">
-                                <ul
-                                    className="w-11/12 grid grid-cols-7 gap-2"
-                                >
-                                    {days.map(day => (
-                                        <li
-                                            key={day}
-                                            onClick={() => handleSelectDay(day)}
-                                            className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500'}`}
-                                        >
-                                            {day}
-                                        </li>
-                                    ))}
+                                {!language ?
+                                    <ul
+                                        className="w-11/12 grid grid-cols-7 gap-2"
+                                    >
+                                        {days?.map((item, index) => (
+                                            <li
+                                                key={index}
+                                                onClick={() => handleSelectDay(item.day)}
+                                                className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                            >
+                                                {item.day}
+                                            </li>
+                                        ))}
 
-                                </ul>
+                                    </ul>
+                                    :
+                                    <ul
+                                        className="w-11/12 grid grid-cols-7 gap-2"
+                                    >
+                                        {days?.map((item, index) => (
+                                            <li
+                                                key={index}
+                                                onClick={() => handleSelectDay(item.day)}
+                                                className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                            >
+                                                {item.daysInKorean}
+                                            </li>
+                                        ))}
+
+                                    </ul>
+                                }
                             </div>
 
                             <div className="w-full h-full py-5 flex items-center justify-center">
@@ -206,8 +310,8 @@ const OriginalsPage = () => {
                                                     </div>
 
                                                     {/*Trong component React của bạn */}
-                                                    <div className="w-full h-[30px] shadow bg-white bg-opacity-80 rounded-md">
-                                                        <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                    <div className="w-full h-[30px]">
+                                                        <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
                                                             {item.genre1}
                                                         </span>
                                                     </div>
@@ -228,16 +332,7 @@ const OriginalsPage = () => {
                     <ScrollElement name="section2" >
                         <div className="w-full h-full pt-[70px]">
                             <div className="h-[70px] border-b-2 flex items-center font-semibold text-md">
-                                {!language ?
-                                    <span>
-                                        Completed Series
-                                    </span>
-                                    :
-                                    <span>
-                                        완성된 시리즈
-                                    </span>
-                                }
-
+                                {!language ? <span> Completed Series </span> : <span> 완성된 시리즈 </span>}
                             </div>
 
                             <div className="w-full h-full mt-[25px] flex items-center justify-center">
@@ -294,8 +389,8 @@ const OriginalsPage = () => {
                                                     </div>
 
                                                     {/*Trong component React của bạn */}
-                                                    <div className="w-full h-[30px] shadow bg-white bg-opacity-80 rounded-md">
-                                                        <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                    <div className="w-full h-[30px]">
+                                                        <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
                                                             {item.genre1}
                                                         </span>
                                                     </div>

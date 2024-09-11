@@ -5,6 +5,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink, Element as ScrollElement } from 'react-scroll';
 import { useSelector } from 'react-redux';
@@ -12,26 +19,26 @@ import { useSelector } from 'react-redux';
 
 // Danh sách thể loại
 const dataListGenre = [
-    { id: 1, name: "Drama" },
-    { id: 2, name: "Fantasy" },
-    { id: 3, name: "Comedy" },
-    { id: 4, name: "Action" },
-    { id: 5, name: "Slice Of Life" },
-    { id: 6, name: "Romance" },
-    { id: 7, name: "Superhero" },
-    { id: 8, name: "Sci-Fi" },
-    { id: 9, name: "Thriller" },
-    { id: 10, name: "Supernatural" },
-    { id: 11, name: "Mystery" },
-    { id: 12, name: "Sports" },
-    { id: 13, name: "Historical" },
-    { id: 14, name: "Heartwarming" },
-    { id: 15, name: "Horror" },
-    { id: 16, name: "Informative" },
-    { id: 17, name: "School" },
-    { id: 18, name: "Animals" },
-    { id: 19, name: "Zombies" },
-    { id: 20, name: "Short Story" },
+    { id: 1, name: "Drama", nameKorean: "드라마" },
+    { id: 2, name: "Fantasy", nameKorean: "판타지" },
+    { id: 3, name: "Comedy", nameKorean: "코미디" },
+    { id: 4, name: "Action", nameKorean: "액션" },
+    { id: 5, name: "Slice Of Life", nameKorean: "일상" },
+    { id: 6, name: "Romance", nameKorean: "로맨스" },
+    { id: 7, name: "Superhero", nameKorean: "슈퍼히어로" },
+    { id: 8, name: "Sci-Fi", nameKorean: "SF" },
+    { id: 9, name: "Thriller", nameKorean: "스릴러" },
+    { id: 10, name: "Supernatural", nameKorean: "초자연" },
+    { id: 11, name: "Mystery", nameKorean: "미스터리" },
+    { id: 12, name: "Sports", nameKorean: "스포츠" },
+    { id: 13, name: "Historical", nameKorean: "역사" },
+    { id: 14, name: "Heartwarming", nameKorean: "훈훈한" },
+    { id: 15, name: "Horror", nameKorean: "호러" },
+    { id: 16, name: "Informative", nameKorean: "정보" },
+    { id: 17, name: "School", nameKorean: "학교" },
+    { id: 18, name: "Animals", nameKorean: "동물" },
+    { id: 19, name: "Zombies", nameKorean: "좀비" },
+    { id: 20, name: "Short Story", nameKorean: "단편" },
 
 ];
 
@@ -80,6 +87,43 @@ const GenresPage = () => {
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
 
+    // Mở và đóng modal genre list
+    const [open, setOpen] = React.useState(false);
+    const anchorRef = React.useRef(null);
+
+    const handleToggle = () => {
+        setOpen((prevOpen) => !prevOpen);
+    };
+
+    const handleClose = (event) => {
+        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+    function handleListKeyDown(event) {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            setOpen(false);
+        } else if (event.key === 'Escape') {
+            setOpen(false);
+        }
+    }
+
+    const prevOpen = React.useRef(open);// return focus to the button when we transitioned from !open -> open
+    React.useEffect(() => {
+        if (prevOpen.current === true && open === false) {
+            anchorRef.current.focus();
+        }
+
+        prevOpen.current = open;
+    }, [open]);
+
+    //Chọn menu cho thể loại
+    const [selectedMenuGenreList, setSelectedMenuGenreList] = useState("by Popularity");
+
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
 
@@ -90,16 +134,7 @@ const GenresPage = () => {
                             onClick={() => setSelectedSection("section1")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-
-                            {!language ?
-                                <span>
-                                    ORIGINALS
-                                </span>
-                                :
-                                <span>
-                                    원본
-                                </span>
-                            }
+                            {!language ? <span> ORIGINALS </span> : <span> 원본 </span>}
                         </li>
                     </ScrollLink >
 
@@ -108,15 +143,7 @@ const GenresPage = () => {
                             onClick={() => setSelectedSection("section2")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            {!language ?
-                                <span>
-                                    VIDEOS
-                                </span>
-                                :
-                                <span>
-                                    비디오
-                                </span>
-                            }
+                            {!language ? <span> VIDEOS </span> : <span> 비디오 </span>}
                         </li>
                     </ScrollLink >
                 </ul>
@@ -143,7 +170,77 @@ const GenresPage = () => {
 
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
-                                    All
+                                    <button
+                                        ref={anchorRef}
+                                        id="composition-button"
+                                        aria-controls={open ? 'composition-menu' : undefined}
+                                        aria-expanded={open ? 'true' : undefined}
+                                        aria-haspopup="true"
+                                        onClick={handleToggle}
+                                    >
+                                        {selectedMenuGenreList}
+                                    </button>
+
+                                    {/* Chọn menu */}
+                                    <Popper
+                                        open={open}
+                                        anchorEl={anchorRef.current}
+                                        role={undefined}
+                                        placement="bottom-start"
+                                        transition
+                                        disablePortal
+                                    >
+                                        {({ TransitionProps, placement }) => (
+                                            <Grow
+                                                {...TransitionProps}
+                                                style={{
+                                                    transformOrigin:
+                                                        placement === 'bottom-start' ? 'left top' : 'left bottom',
+                                                }}
+                                            >
+                                                <Paper>
+                                                    <ClickAwayListener onClickAway={handleClose}>
+                                                        <MenuList
+                                                            className="bg-white rounded-lg text-black font-semibold "
+                                                            autoFocusItem={open}
+                                                            id="composition-menu"
+                                                            aria-labelledby="composition-button"
+                                                            onKeyDown={handleListKeyDown}
+                                                        >
+                                                            <MenuItem onClick={handleClose}>
+                                                                <span
+                                                                    onClick={() => setSelectedMenuGenreList("by Popularity")}
+                                                                    className={`w-full h-full ${selectedMenuGenreList === "by Popularity" ? "text-yellow-500" : ""}`}
+                                                                >
+                                                                    by Popularity
+                                                                </span>
+                                                            </MenuItem>
+
+                                                            <MenuItem onClick={handleClose}>
+                                                                <span
+                                                                    onClick={() => setSelectedMenuGenreList("by Likes")}
+                                                                    className={`w-full h-full ${selectedMenuGenreList === "by Likes" ? "text-yellow-500" : ""}`}
+                                                                >
+                                                                    by Likes
+                                                                </span>
+                                                            </MenuItem>
+
+                                                            <MenuItem onClick={handleClose}>
+                                                                <span
+                                                                    onClick={() => setSelectedMenuGenreList("by Date")}
+                                                                    className={`w-full h-full ${selectedMenuGenreList === "by Date" ? "text-yellow-500" : ""}`}
+                                                                >
+                                                                    by Date
+                                                                </span>
+                                                            </MenuItem>
+
+                                                        </MenuList>
+                                                    </ClickAwayListener>
+                                                </Paper>
+                                            </Grow>
+                                        )}
+                                    </Popper>
+
                                     <CheckIcon />
                                 </span>
                             </div>
@@ -160,9 +257,9 @@ const GenresPage = () => {
                                                 <li
                                                     key={genre.id}
                                                     onClick={() => setSelectedOriginalsByGenre(genre.name)}
-                                                    className={`uppercase font-semibold shadow text-xs py-2 px-2 rounded hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                                    className={`w-[115px] uppercase font-semibold shadow text-xs py-2 px-2 rounded hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                                 >
-                                                    {genre.name}
+                                                    {!language ? <span> {genre.name} </span> : <span> {genre.nameKorean} </span>}
                                                 </li>
                                             ))}
 
@@ -226,8 +323,8 @@ const GenresPage = () => {
                                                         </div>
 
                                                         {/*Trong component React của bạn */}
-                                                        <div className="w-full h-[30px] shadow bg-white bg-opacity-80 rounded-md">
-                                                            <span className="w-full px-2 py-1 text-black text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                        <div className="w-full h-[30px]">
+                                                            <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
                                                                 {selectedOriginalsByGenre}
                                                             </span>
                                                         </div>
@@ -280,9 +377,9 @@ const GenresPage = () => {
                                                 <li
                                                     key={genre.id}
                                                     onClick={() => setSelectedVideosByGenre(genre.name)}
-                                                    className={`uppercase font-semibold shadow text-xs py-2 px-2 rounded hover:text-black cursor-pointer flex items-center justify-center ${selectedVideosByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                                    className={`w-[115px] uppercase font-semibold shadow text-xs py-2 px-2 rounded hover:text-black cursor-pointer flex items-center justify-center ${selectedVideosByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                                 >
-                                                    {genre.name}
+                                                    {!language ? <span> {genre.name} </span> : <span> {genre.nameKorean} </span>}
                                                 </li>
                                             ))}
 
@@ -346,8 +443,8 @@ const GenresPage = () => {
                                                         </div>
 
                                                         {/*Trong component React của bạn */}
-                                                        <div className="w-full h-[30px] shadow bg-gray-300 bg-opacity-80 rounded-md">
-                                                            <span className="w-full px-2 py-1 text-white text-sm font-semibold shadow-xl flex items-center justify-center rounded-md">
+                                                        <div className="w-full h-[30px]">
+                                                            <span className="w-full px-2 py-1 text-white text-shadow-black text-sm font-semibold flex items-center justify-center">
                                                                 {selectedVideosByGenre}
                                                             </span>
                                                         </div>

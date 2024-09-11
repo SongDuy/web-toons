@@ -195,7 +195,7 @@ const handleRate=async (event, newValue) => {
                                         {comicid.genre1}
                                     </span>
 
-                                    <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.2] line-clamp-3 flex justify-center">
+                                    <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.3] line-clamp-3 flex justify-center">
                                         {comicid.title}
                                     </span>
 
@@ -203,7 +203,7 @@ const handleRate=async (event, newValue) => {
                                         <div className="w-full flex items-center justify-center gap-2">
                                             <div className="w-[250px] px-2 rounded-md overflow-hidden flex items-center justify-center gap-2">
                                                 <span className="text-lg font-semibold text-yellow-500 hover:text-yellow-600 text-shadow-black line-clamp-1">
-                                                    Lee Nakeum , seewater
+                                                    {comicid.summary}
                                                 </span>
                                                 <button className="w-[20px] h-[20px] bg-white rounded-full text-black flex items-center justify-center">
                                                     i
@@ -223,16 +223,7 @@ const handleRate=async (event, newValue) => {
                                         className="text-white hover:text-yellow-500 bg-black bg-opacity-30 py-2 px-2 rounded-full flex gap-1 items-center justify-center"
                                     >
                                         <AddCircleOutlineIcon />
-                                        {!language ?
-                                            <span>
-                                                Subscribe
-                                            </span>
-                                            :
-                                            <span>
-                                                구독하다
-                                            </span>
-                                        }
-
+                                        {!language ? <span> Subscribe </span> : <span> 구독하다 </span>}
                                     </button>
                                     :
                                     <button
@@ -252,15 +243,7 @@ const handleRate=async (event, newValue) => {
 
                             <div className="col-span-2 h-full">
                                 <div className="w-full px-5 pb-3 font-semibold text-md">
-                                    {!language ?
-                                        <span>
-                                            Series Original
-                                        </span>
-                                        :
-                                        <span>
-                                            시리즈 오리지널
-                                        </span>
-                                    }
+                                    {!language ? <span> Series Original </span> : <span> 시리즈 오리지널 </span>}
                                 </div>
                                 <div className="w-full h-[900px] px-3 custom-scrollbar">
 
@@ -450,16 +433,7 @@ const handleRate=async (event, newValue) => {
                     <div className="w-full h-full  py-10 flex items-center justify-center">
                         <div className="w-[1200px] h-full ">
                             <div className="text-xl font-semibold">
-                                {!language ?
-                                    <span>
-                                        You may also like
-                                    </span>
-                                    :
-                                    <span>
-                                        당신은 또한 좋아할 수도 있습니다
-                                    </span>
-                                }
-
+                                {!language ? <span> You may also like </span> : <span> 당신은 또한 좋아할 수도 있습니다 </span>}
                             </div>
                             <div className="w-full min-h-[160px] bg-white my-5 px-5 py-5 rounded-md">
                                 <ul className="w-full h-full grid grid-cols-3 gap-3">

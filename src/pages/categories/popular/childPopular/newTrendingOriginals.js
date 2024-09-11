@@ -30,15 +30,7 @@ const NewTrendingOriginalsPage = () => {
         <div className="w-full h-full pt-[70px]">
 
             <div className="h-[70px] flex items-center uppercase font-semibold text-xl">
-                {!language ?
-                    <span>
-                        NEW & TRENDING ORIGINALS
-                    </span>
-                    :
-                    <span>
-                        원본의 새로운 기능
-                    </span>
-                }
+                {!language ? <span> NEW & TRENDING ORIGINALS </span> : <span> 원본의 새로운 기능 </span>}
             </div>
 
             <div className="w-full flex gap-[60px]">
@@ -64,15 +56,15 @@ const NewTrendingOriginalsPage = () => {
                                     />
 
                                     {hoveredOriginalItem === "choice" && (
-                                        <div className="absolute inset-0 bg-black bg-opacity-30 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                        <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                             <AutoStoriesIcon sx={{ fontSize: 60 }} />
                                         </div>
                                     )}
                                 </div>
                                 <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
                                     <div className="w-full h-[120px] mb-auto overflow-hidden">
-                                        <div className="w-[80px] h-[80px] bg-yellow-500 rounded-xl flex items-center justify-center mx-2">
-                                            <span className="mx-3 text-[60px] text-white font-bold">
+                                        <div className="w-[80px] h-[80px] flex items-center justify-center mx-2">
+                                            <span className="mx-3 text-[60px] text-white text-shadow-black font-bold">
                                                 1
                                             </span>
                                         </div>
@@ -128,7 +120,7 @@ const NewTrendingOriginalsPage = () => {
                         <ul className="w-full h-full ">
 
                             {/* khung nội dung */}
-                            {dataPopular.map(item => (
+                            {dataPopular?.map((item, index) => (
                                 <Link
                                     to={`/originals/original/series`}
                                     key={item.id}
@@ -144,9 +136,9 @@ const NewTrendingOriginalsPage = () => {
                                                     className="object-fill w-full h-full rounded-md"
                                                 />
                                             </div>
-                                            <div className="w-[30px] h-[30px] mx-3 bg-yellow-500 rounded-full border flex items-center justify-center">
-                                                <span className="mx-3 text-xl text-white font-bold">
-                                                    {item.number}
+                                            <div className="w-[30px] h-[30px] mx-3 flex items-center justify-center">
+                                                <span className="mx-3 text-xl text-white text-shadow-black font-bold">
+                                                    {index + 2}
                                                 </span>
                                             </div>
                                             <div className="w-[420px] mt-auto mb-auto overflow-hidden">

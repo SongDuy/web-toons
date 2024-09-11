@@ -8,6 +8,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import AddIcon from '@mui/icons-material/Add';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CheckIcon from '@mui/icons-material/Check';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
@@ -92,6 +93,9 @@ const DisplayVideoPage = () => {
     // Nhấn nút đăng ký
     const [isSubscribe, setIsSubscribe] = useState(false);
 
+    // Nhấn nút thả tim
+    const [isLike, setIsLike] = useState(false);
+
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
 
@@ -170,15 +174,7 @@ const DisplayVideoPage = () => {
 
                         <div className="flex-auto mb-3">
                             <span className="flex items-center justify-center text-yellow-800 font-semibold">
-                                {!language ?
-                                    <span>
-                                        Creator
-                                    </span>
-                                    :
-                                    <span>
-                                        창조자
-                                    </span>
-                                }
+                                {!language ? <span> Creator </span> : <span> 창조자 </span>}
                             </span>
                             <span className="flex items-center justify-center text-yellow-600 text-lg font-semibold">
                                 Lee Nakeum , seewater
@@ -186,25 +182,32 @@ const DisplayVideoPage = () => {
                         </div>
 
                         <div className="flex gap-3">
-                            <button className="w-[100px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2">
-                                <FavoriteBorderIcon />
-                                9,455
-                            </button>
+                            {/* Nhấn nút thả tim */}
+                            {!isLike ?
+                                <button
+                                    onClick={() => setIsLike(true)}
+                                    className="w-[100px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2"
+                                >
+                                    <FavoriteBorderIcon />
+                                    9,455
+                                </button>
+                                :
+                                <button
+                                    onClick={() => setIsLike(false)}
+                                    className="w-[100px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2"
+                                >
+                                    <FavoriteIcon className="text-red-500" />
+                                    9,455
+                                </button>
+                            }
+                            {/* Nhấn nút đăng ký */}
                             {!isSubscribe ?
                                 <button
                                     onClick={() => setIsSubscribe(true)}
                                     className="w-[120px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2"
                                 >
                                     <AddIcon />
-                                    {!language ?
-                                        <span>
-                                            Subscribe
-                                        </span>
-                                        :
-                                        <span>
-                                            구독하다
-                                        </span>
-                                    }
+                                    {!language ? <span> Subscribe </span> : <span> 구독하다 </span>}
                                 </button>
                                 :
                                 <button
@@ -271,16 +274,7 @@ const DisplayVideoPage = () => {
 
                                 <div className="flex items-center pb-2">
                                     <span className="font-semibold text-lg">
-                                        {!language ?
-                                            <span>
-                                                Comments
-                                            </span>
-                                            :
-                                            <span>
-                                                댓글
-                                            </span>
-                                        }
-
+                                        {!language ? <span> Comments </span> : <span> 댓글 </span>}
                                     </span>
                                     <span className="px-2 text-gray-400">2,907</span>
                                 </div>
@@ -293,16 +287,7 @@ const DisplayVideoPage = () => {
                                     />
                                     <button className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                         <SendRoundedIcon className="transform rotate-200" />
-
-                                        {!language ?
-                                            <span>
-                                                Send
-                                            </span>
-                                            :
-                                            <span>
-                                                보내다
-                                            </span>
-                                        }
+                                        {!language ? <span> Send </span> : <span> 보내다 </span>}
                                     </button>
                                 </div>
 
@@ -311,28 +296,10 @@ const DisplayVideoPage = () => {
                                     <div className="px-3">
                                         <ul className="flex gap-2">
                                             <li className="px-5 py-5 cursor-pointer hover:text-green-500 font-semibold border-b-2">
-
-                                                {!language ?
-                                                    <span>
-                                                        TOP
-                                                    </span>
-                                                    :
-                                                    <span>
-                                                        맨 위
-                                                    </span>
-                                                }
+                                                {!language ? <span> TOP </span> : <span> 맨 위 </span>}
                                             </li>
                                             <li className="px-5 py-5 cursor-pointer hover:text-green-500 font-semibold">
-
-                                                {!language ?
-                                                    <span>
-                                                        NEWEST
-                                                    </span>
-                                                    :
-                                                    <span>
-                                                        최신
-                                                    </span>
-                                                }
+                                                {!language ? <span> NEWEST </span> : <span> 최신 </span>}
                                             </li>
                                         </ul>
                                     </div>
@@ -369,15 +336,8 @@ const DisplayVideoPage = () => {
                                                                     onClick={() => handleToggleReply(item.id)}
                                                                     className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-200 flex gap-2 items-center justify-center"
                                                                 >
-                                                                    {!language ?
-                                                                        <span>
-                                                                            Replies
-                                                                        </span>
-                                                                        :
-                                                                        <span>
-                                                                            답글
-                                                                        </span>
-                                                                    }
+                                                                    {!language ? <span> Replies </span> : <span> 답글 </span>}
+
                                                                     {item.replies}
                                                                 </button>
 
@@ -411,16 +371,7 @@ const DisplayVideoPage = () => {
                                                                     />
                                                                     <button className="px-3 py-2 ml-auto bg-black hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                                                         <SendRoundedIcon className="transform rotate-200" />
-
-                                                                        {!language ?
-                                                                            <span>
-                                                                                Reply
-                                                                            </span>
-                                                                            :
-                                                                            <span>
-                                                                                회신하다
-                                                                            </span>
-                                                                        }
+                                                                        {!language ? <span> Reply </span> : <span> 회신하다 </span>}
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -522,8 +473,8 @@ const DisplayVideoPage = () => {
                                                         />
                                                     </div>
 
-                                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                        <span className="mx-3 text-xl text-white font-bold">
+                                                    <div className="w-[30px] h-[30px] flex items-center justify-center mx-2">
+                                                        <span className="mx-3 text-xl text-white text-shadow-black font-bold">
                                                             {item.number}
                                                         </span>
                                                     </div>
@@ -592,8 +543,8 @@ const DisplayVideoPage = () => {
                                                         />
                                                     </div>
 
-                                                    <div className="w-[30px] h-[30px] bg-yellow-500 rounded-full border flex items-center justify-center mx-2 shadow-xl">
-                                                        <span className="mx-3 text-xl text-white font-bold">
+                                                    <div className="w-[30px] h-[30px] flex items-center justify-center mx-2">
+                                                        <span className="mx-3 text-xl text-white text-shadow-black font-bold">
                                                             {item.number}
                                                         </span>
                                                     </div>

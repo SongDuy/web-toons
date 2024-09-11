@@ -10,10 +10,10 @@ import GenresPage from './pages/categories/genres/genres';
 import PopularPage from './pages/categories/popular/popular';
 import VideoSeriesPage from './pages/categories/videos/videoSeries';
 import DisplayVideoPage from './pages/categories/videos/displayVideo';
-import CreateVideoPage from './pages/create/video/createVideo';
+import PublishVideoPage from './pages/publish/video/publishVideo';
 import OriginalSeriesPage from './pages/categories/originals/originalSeries';
 import DisplayOriginalPage from './pages/categories/originals/displayOriginal';
-import CreateOriginalPage from './pages/create/original/createOriginal';
+import PublishOriginalPage from './pages/publish/original/publishOriginal';
 import NotFoundPage from './pages/notFoundPage';
 
 import MyChannelPage from './pages/channel/myChannel';
@@ -75,8 +75,8 @@ function App() {
           <Route path="/genres" element={<Loading><GenresPage /></Loading>} />
           <Route path="/popular" element={<PopularPage />} />
 
-          <Route path="/create/original" element={<CreateOriginalPage />} />
-          <Route path="/create/video" element={<CreateVideoPage />} />
+          <Route path="/publish/original" element={<PublishOriginalPage />} />
+          <Route path="/publish/video" element={<PublishVideoPage />} />
 
           <Route path="/channel/my" element={<MyChannelPage />} />
           <Route path="/channel/creator" element={<CreatorChannelPage />} />
@@ -102,9 +102,9 @@ function App() {
         {/* Trang chỉ đăng nhập mới sử dụng được của user*/}
         <Route element={<AuthProvider><Layout /></AuthProvider>}>
           <Route path="/account" element={<AuthProvider><Account /> </AuthProvider>} />
-          <Route path="/comment" element={<Comment />} />
-          <Route path="/Subscribed" element={<Subscribed />} />
-          <Route path="/Creators" element={<Creators />} />
+          <Route path="/comments" element={<Comment />} />
+          <Route path="/subscribed" element={<Subscribed />} />
+          <Route path="/creators" element={<Creators />} />
 
         </Route>
         {/* Trang hiển thị truyện và video */}
