@@ -25,9 +25,9 @@ const ForgotPasswordPage = () => {
         }
     }
     return (
-        <div className="w-full h-full bg-gray-100 flex items-center justify-center fixed inset-0 z-50"> {/* backdrop-blur-sm */}
+        <div className="w-full h-full bg-gray-100 flex items-center justify-center"> {/* backdrop-blur-sm */}
 
-            <div className="w-[400px] h-auto px-5 py-5 bg-white shadow rounded-lg">
+            <div className="w-[400px] h-auto my-[170px] px-5 py-5 bg-white shadow rounded-lg">
                 <div>
                     <span className="text-[25px] flex justify-center font-semibold">Forgot Password?</span>
                     <div className="pt-3 pb-5">
