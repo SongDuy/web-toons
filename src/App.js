@@ -102,9 +102,9 @@ function App() {
         {/* Trang chỉ đăng nhập mới sử dụng được của user*/}
         <Route element={<AuthProvider><Layout /></AuthProvider>}>
           <Route path="/account" element={<AuthProvider><Account /> </AuthProvider>} />
-          <Route path="/comment" element={<Comment />} />
-          <Route path="/Subscribed" element={<Subscribed />} />
-          <Route path="/Creators" element={<Creators />} />
+          <Route path="/comments" element={<Comment />} />
+          <Route path="/subscribed" element={<Subscribed />} />
+          <Route path="/creators" element={<Creators />} />
 
         </Route>
         {/* Trang hiển thị truyện và video */}

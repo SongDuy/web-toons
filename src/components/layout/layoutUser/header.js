@@ -390,7 +390,7 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <Link to={``}>
+                          <Link to={`/dashboard`}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <PieChartIcon />
 
@@ -399,7 +399,7 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <Link to={``}>
+                          <Link to={`/comments`}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <CommentIcon />
 
@@ -417,29 +417,25 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <Link to={``}>
+                          <Link to={`/channel/my`}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <AssignmentIndIcon />
 
-                              {!language ? <span> My Profile Page </span> : <span> 내 프로필 페이지 </span>}
+                              {!language ? <span> My Channel Page</span> : <span> 내 채널 페이지 </span>}
 
                             </MenuItem>
                           </Link>
 
-                          <Link to={``}>
+                          <Link to={`/account`}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <AccountCircleIcon />
-
                               {!language ? <span> Account </span> : <span> 계정 </span>}
-
                             </MenuItem>
                           </Link>
 
                           <MenuItem onClick={() => dispatch(logout())} className="flex gap-x-3">
                             <LogoutIcon />
-
                             {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
-
                           </MenuItem>
                         </MenuList>
                         

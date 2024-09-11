@@ -9,6 +9,7 @@ import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 
 const dataPost = [
     { id: 1, img: "https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/hinh-anh-anime-nu-cute-vay-do-1.jpg", img2: "https://ddk.1cdn.vn/thumbs/900x600/2023/08/25/image.daidoanket.vn-images-upload-hungnv-08252023-_amini-9.jpg", auth: "Lee Nakeum , seewater", content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", like: "205", comments: "100", date: "23/05/2024", },
@@ -101,20 +102,32 @@ const MyChannelPage = () => {
             <div className="w-[1120px] h-full">
                 <div className="w-full h-full bg-white rounded-lg">
                     {/* Hiển thị ảnh nền */}
-                    <div className="w-full h-[400px] bg-green-200 rounded-lg">
+                    <div className="w-full h-[400px] bg-green-200 rounded-lg relative">
                         <img src="https://wallpapers.com/images/hd/chill-anime-girl-during-winter-n65e3iefecsy01if.jpg"
                             className="object-cover w-[1200px] h-full rounded-t-lg" alt="img"
                         />
+                        <div className="absolute px-5 py-5 bottom-0 right-0">
+                            <button className="w-[180px] py-2 px-2 bg-white hover:bg-gray-100 rounded shadow font-semibold flex gap-2 items-center justify-center">
+                                <PhotoCameraIcon />
+                                {!language ? <span> Edit cover photo </span> : <span> 표지 사진 편집 </span>}
+                            </button>
+                        </div>
                     </div>
 
                     {/* Hiển thị thông tin tác giả */}
                     <div className="w-full h-[180px] px-[30px] bg-white rounded-b-lg flex">
-                        <div className="w-[185px] h-[185px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
+                        <div className="w-[185px] h-[185px] rounded-full border-4 mt-[-30px] flex items-center justify-center relative">
                             <Avatar
                                 alt="Remy Sharp"
                                 src="https://www.ausp.edu.vn/uploads/blog/2024/05/16/1ecf77502b3bc514b2f535533d7b01f03a772174-1715817458.jpg"
                                 sx={{ width: 180, height: 180 }}
                             />
+
+                            <div className="absolute bottom-0 right-0">
+                                <button className="w-[40px] h-[40px] border-2 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center">
+                                    <PhotoCameraIcon />
+                                </button>
+                            </div>
                         </div>
 
                         <div className="py-4 px-3">
