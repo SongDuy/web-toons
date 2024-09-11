@@ -10,12 +10,56 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
 const dataPost = [
-    { id: 1, img: "https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/hinh-anh-anime-nu-cute-vay-do-1.jpg", img2: "https://ddk.1cdn.vn/thumbs/900x600/2023/08/25/image.daidoanket.vn-images-upload-hungnv-08252023-_amini-9.jpg", auth: "Lee Nakeum , seewater", content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", like: "205", comments: "100", date: "23/05/2024", },
-    { id: 2, img: "https://cdn.vinaenter.edu.vn/wp-content/uploads/2024/06/hinh-anh-nhom-ban-than-4-nguoi-anime.jpg", img2: "https://haycafe.vn/wp-content/uploads/2021/11/Hinh-anh-anime-co-trang.jpg", auth: "Lee Nakeum , seewater", content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", like: "205", comments: "100", date: "23/05/2024", },
-    { id: 3, img: "https://i.pinimg.com/736x/8c/fd/90/8cfd9089b4ae7ecede4605de2f90e62f.jpg", img2: "https://i.pinimg.com/originals/76/d9/b8/76d9b859e232e83d98828be99324908f.jpg", auth: "Lee Nakeum , seewater", content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", like: "205", comments: "100", date: "23/05/2024", },
-    { id: 4, img: "https://tbdn.com.vn/wp-content/uploads/2022/06/anime-cherry-blossom-images_102149394.jpg", img2: "https://img7.thuthuatphanmem.vn/uploads/2023/07/12/hinh-anh-anime-chill-dep-nhat_091546723.jpg", auth: "Lee Nakeum , seewater", content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.", like: "205", comments: "100", date: "23/05/2024", },
+    {
+        id: 1,
+        images: [
+            "https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/hinh-anh-anime-nu-cute-vay-do-1.jpg",
+            "https://ddk.1cdn.vn/thumbs/900x600/2023/08/25/image.daidoanket.vn-images-upload-hungnv-08252023-_amini-9.jpg",
+            "https://9anime.vn/wp-content/uploads/2024/04/499-Hinh-Anh-Anime-Nu-Dep-Ngau-Cute-Dang-Yeu.jpg",
+            "https://tbdn.com.vn/wp-content/uploads/2022/06/anime-cherry-blossom-images_102149394.jpg",
+        ],
+        auth: "Lee Nakeum , seewater",
+        avatar: "https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg",
+        content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.",
+        like: "205",
+        comments: "100",
+        date: "23/05/2024",
+    },
+    {
+        id: 2,
+        images: [
+            "https://cdn.vinaenter.edu.vn/wp-content/uploads/2024/06/hinh-anh-nhom-ban-than-4-nguoi-anime.jpg",
+            "https://haycafe.vn/wp-content/uploads/2021/11/Hinh-anh-anime-co-trang.jpg",
+            "https://top10tphcm.com/wp-content/uploads/2023/06/Hinh-anh-Anime-nu-de-thuong.jpg",
+            "https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg",
+        ],
+        auth: "Lee Nakeum , seewater",
+        avatar: "https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg",
+        content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.",
+        like: "205",
+        comments: "100",
+        date: "23/05/2024",
+    },
+    {
+        id: 3,
+        images: [
+            "https://i.pinimg.com/736x/8c/fd/90/8cfd9089b4ae7ecede4605de2f90e62f.jpg",
+            "https://i.pinimg.com/originals/76/d9/b8/76d9b859e232e83d98828be99324908f.jpg",
+            "https://img7.thuthuatphanmem.vn/uploads/2023/07/12/hinh-anh-anime-chill-dep-nhat_091546723.jpg",
+            "https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg",
+        ],
+        auth: "Lee Nakeum , seewater",
+        avatar: "https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg",
+        content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.",
+        like: "205",
+        comments: "100",
+        date: "23/05/2024",
+    },
+    // Các bài viết khác...
 ];
 
 const dataOriginals = [
@@ -96,6 +140,24 @@ const MyChannelPage = () => {
 
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
+
+    // State để lưu chỉ số hiện tại cho mỗi bài viết
+    const [currentIndices, setCurrentIndices] = useState({});
+
+    // Hàm xử lý việc điều chỉnh chỉ số hiện tại cho một bài viết cụ thể để xem ảnh cuộn bài post
+    const handlePrev = (postId) => {
+        setCurrentIndices(prevIndices => ({
+            ...prevIndices,
+            [postId]: Math.max((prevIndices[postId] || 0) - 1, 0),
+        }));
+    };
+
+    const handleNext = (postId, imagesLength) => {
+        setCurrentIndices(prevIndices => ({
+            ...prevIndices,
+            [postId]: Math.min((prevIndices[postId] || 0) + 1, imagesLength - 2),
+        }));
+    };
 
     return (
         <div className="w-full h-full pb-10 border bg-gray-100 flex items-center justify-center">
@@ -330,45 +392,28 @@ const MyChannelPage = () => {
 
                             {/* Khung nội dung chính bài Post */}
                             {dataPost.map(item => (
-                                <li
-                                    key={item.id}
-                                    className="w-full min-h-[300px] py-5 border-b-2"
-                                >
+                                <li key={item.id} className="w-full min-h-[300px] py-5 border-b-2">
                                     {/* Hiển Avatar creator */}
                                     <div className="w-full">
                                         <div className="flex items-center justify-center">
                                             <div className="">
                                                 <Avatar
-                                                    alt="Remy Sharp"
-                                                    src="https://www.ausp.edu.vn/uploads/blog/2024/05/16/1ecf77502b3bc514b2f535533d7b01f03a772174-1715817458.jpg"
+                                                    alt="Creator Avatar"
+                                                    src={item.avatar}
                                                     sx={{ width: 50, height: 50 }}
                                                 />
                                             </div>
                                             <div className="px-2">
                                                 <div className="flex">
-                                                    <span className="font-semibold">
-                                                        {item.auth}
-                                                    </span>
+                                                    <span className="font-semibold">{item.auth}</span>
                                                     <div className="px-2 font-semibold text-yellow-500">
-                                                        {!language ?
-                                                            <span>
-                                                                . Creator
-                                                            </span>
-                                                            :
-                                                            <span>
-                                                                . 창조자
-                                                            </span>
-                                                        }
+                                                        <span> . Creator </span>
                                                     </div>
                                                 </div>
-
                                                 <div className="">
-                                                    <span className="text-gray-400">
-                                                        {item.date}
-                                                    </span>
+                                                    <span className="text-gray-400">{item.date}</span>
                                                 </div>
                                             </div>
-
                                             <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
                                                 <MoreVertIcon />
                                             </button>
@@ -377,23 +422,35 @@ const MyChannelPage = () => {
 
                                     {/* Hiển nội dung bài viết */}
                                     <div className="py-3">
-                                        <p className="">
-                                            {item.content}
-                                        </p>
+                                        <p>{item.content}</p>
                                     </div>
 
                                     {/* Hiện hình ảnh bài viết */}
-                                    <div className="w-full flex gap-3">
-                                        <img
-                                            src={item.img}
-                                            alt="img"
-                                            className="object-cover w-[300px] h-[300px]"
-                                        />
-                                        <img
-                                            src={item.img2}
-                                            alt="img"
-                                            className="object-cover w-[300px] h-[300px]"
-                                        />
+                                    <div className="relative w-full flex items-center justify-center p-4">
+                                        <button
+                                            onClick={() => handlePrev(item.id)}
+                                            disabled={(currentIndices[item.id] || 0) === 0}
+                                            className="absolute left-0 bg-gray-500 text-white p-2 rounded-full disabled:opacity-50"
+                                        >
+                                            <NavigateBeforeIcon />
+                                        </button>
+                                        <div className="flex gap-3 overflow-hidden w-full">
+                                            {item.images.slice(currentIndices[item.id] || 0, (currentIndices[item.id] || 0) + 2).map((img, index) => (
+                                                <img
+                                                    key={index}
+                                                    src={img}
+                                                    alt={`Slide ${index}`}
+                                                    className="object-cover w-[300px] h-[300px] transition-transform duration-300 ease-in-out"
+                                                />
+                                            ))}
+                                        </div>
+                                        <button
+                                            onClick={() => handleNext(item.id, item.images.length)}
+                                            disabled={(currentIndices[item.id] || 0) >= item.images.length - 2}
+                                            className="absolute right-0 bg-gray-500 text-white p-2 rounded-full disabled:opacity-50"
+                                        >
+                                            <NavigateNextIcon />
+                                        </button>
                                     </div>
 
                                     {/* Hiện yêu thích bình luận */}

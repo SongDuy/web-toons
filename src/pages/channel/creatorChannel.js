@@ -9,37 +9,58 @@ import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
 const dataPost = [
     {
         id: 1,
-        img: "https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg", img2: "https://top10tphcm.com/wp-content/uploads/2023/06/Hinh-anh-Anime-nu-de-thuong.jpg",
-        auth: "Lee Nakeum , seewater", avatar: "https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg",
+        images: [
+            "https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg",
+            "https://top10tphcm.com/wp-content/uploads/2023/06/Hinh-anh-Anime-nu-de-thuong.jpg",
+            "https://9anime.vn/wp-content/uploads/2024/04/499-Hinh-Anh-Anime-Nu-Dep-Ngau-Cute-Dang-Yeu.jpg",
+            "https://cdn.aicschool.edu.vn/wp-content/uploads/2024/06/anh-avatar-anime-1.jpg",
+        ],
+        auth: "Lee Nakeum , seewater",
+        avatar: "https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg",
         content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.",
-        like: "205", comments: "100", date: "23/05/2024",
+        like: "205",
+        comments: "100",
+        date: "23/05/2024",
     },
     {
         id: 2,
-        img: "https://9anime.vn/wp-content/uploads/2024/04/499-Hinh-Anh-Anime-Nu-Dep-Ngau-Cute-Dang-Yeu.jpg", img2: "https://cdn.aicschool.edu.vn/wp-content/uploads/2024/06/anh-avatar-anime-1.jpg",
-        auth: "Lee Nakeum , seewater", avatar: "https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg",
+        images: [
+            "https://9anime.vn/wp-content/uploads/2024/04/499-Hinh-Anh-Anime-Nu-Dep-Ngau-Cute-Dang-Yeu.jpg",
+            "https://cdn.aicschool.edu.vn/wp-content/uploads/2024/06/anh-avatar-anime-1.jpg",
+            "https://top10tphcm.com/wp-content/uploads/2023/06/Hinh-anh-Anime-nu-de-thuong.jpg",
+            "https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg",
+        ],
+        auth: "Lee Nakeum , seewater",
+        avatar: "https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg",
         content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.",
-        like: "205", comments: "100", date: "23/05/2024",
+        like: "205",
+        comments: "100",
+        date: "23/05/2024",
     },
     {
         id: 3,
-        img: "https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/anh-dai-dien-anime-nu-xinh-9.png", img2: "https://mega.com.vn/media/news/2306_hinh-nen-anime-nu-cho-dien-thoai1.jpg",
-        auth: "Lee Nakeum , seewater", avatar: "https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg",
+        images: [
+            "https://9anime.vn/wp-content/uploads/2024/04/499-Hinh-Anh-Anime-Nu-Dep-Ngau-Cute-Dang-Yeu.jpg",
+            "https://cdn.aicschool.edu.vn/wp-content/uploads/2024/06/anh-avatar-anime-1.jpg",
+            "https://top10tphcm.com/wp-content/uploads/2023/06/Hinh-anh-Anime-nu-de-thuong.jpg",
+            "https://yamicomputer.com/image/data/anht11/hinh-nen-anime-5.jpg",
+        ],
+        auth: "Lee Nakeum , seewater",
+        avatar: "https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg",
         content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.",
-        like: "205", comments: "100", date: "23/05/2024",
+        like: "205",
+        comments: "100",
+        date: "23/05/2024",
     },
-    {
-        id: 4,
-        img: "https://cohousing.vn/wp-content/uploads/2023/08/nhung-hinh-anh-dep-cua-anime-co-the-dung-lam-hinh-nen.jpg", img2: "https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:quality(100)/2023_12_11_638378641466845781_avatar-anime.jpg",
-        auth: "Lee Nakeum , seewater", avatar: "https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg",
-        content: "I got some early Morgana and Oz copies! Can’t wait for the first volume to come out in September. You can pre-order it on Amazon and Barnes&Noble or anywhere else you like to buy books.",
-        like: "205", comments: "100", date: "23/05/2024",
-    },
+    // Các bài viết khác...
 ];
+
 
 const dataOriginals = [
     { id: 1, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
@@ -121,6 +142,24 @@ const CreatorChannelPage = () => {
 
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
+
+    // State để lưu chỉ số hiện tại cho mỗi bài viết
+    const [currentIndices, setCurrentIndices] = useState({});
+
+    // Hàm xử lý việc điều chỉnh chỉ số hiện tại cho một bài viết cụ thể để xem ảnh cuộn bài post
+    const handlePrev = (postId) => {
+        setCurrentIndices(prevIndices => ({
+            ...prevIndices,
+            [postId]: Math.max((prevIndices[postId] || 0) - 1, 0),
+        }));
+    };
+
+    const handleNext = (postId, imagesLength) => {
+        setCurrentIndices(prevIndices => ({
+            ...prevIndices,
+            [postId]: Math.min((prevIndices[postId] || 0) + 1, imagesLength - 2),
+        }));
+    };
 
     return (
         <div className="w-full h-full pb-10 border bg-gray-100 flex items-center justify-center">
@@ -301,39 +340,28 @@ const CreatorChannelPage = () => {
 
                             {/* Khung nội dung chính bài Post */}
                             {dataPost.map(item => (
-                                <li
-                                    key={item.id}
-                                    className="w-full min-h-[300px] py-5 border-b-2"
-                                >
+                                <li key={item.id} className="w-full min-h-[300px] py-5 border-b-2">
                                     {/* Hiển Avatar creator */}
                                     <div className="w-full">
                                         <div className="flex items-center justify-center">
                                             <div className="">
                                                 <Avatar
-                                                    alt="Remy Sharp"
+                                                    alt="Creator Avatar"
                                                     src={item.avatar}
                                                     sx={{ width: 50, height: 50 }}
                                                 />
                                             </div>
                                             <div className="px-2">
                                                 <div className="flex">
-                                                    <span className="font-semibold">
-                                                        {item.auth}
-                                                    </span>
-
+                                                    <span className="font-semibold">{item.auth}</span>
                                                     <div className="px-2 font-semibold text-yellow-500">
-                                                        {!language ? <span> . Creator </span> : <span> . 창조자 </span>}
+                                                        <span> . Creator </span>
                                                     </div>
-
                                                 </div>
-
                                                 <div className="">
-                                                    <span className="text-gray-400">
-                                                        {item.date}
-                                                    </span>
+                                                    <span className="text-gray-400">{item.date}</span>
                                                 </div>
                                             </div>
-
                                             <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
                                                 <MoreVertIcon />
                                             </button>
@@ -342,23 +370,35 @@ const CreatorChannelPage = () => {
 
                                     {/* Hiển nội dung bài viết */}
                                     <div className="py-3">
-                                        <p className="">
-                                            {item.content}
-                                        </p>
+                                        <p>{item.content}</p>
                                     </div>
 
                                     {/* Hiện hình ảnh bài viết */}
-                                    <div className="w-full flex gap-3">
-                                        <img
-                                            src={item.img}
-                                            alt="img"
-                                            className="object-cover w-[300px] h-[300px]"
-                                        />
-                                        <img
-                                            src={item.img2}
-                                            alt="img"
-                                            className="object-cover w-[300px] h-[300px]"
-                                        />
+                                    <div className="relative w-full flex items-center justify-center p-4">
+                                        <button
+                                            onClick={() => handlePrev(item.id)}
+                                            disabled={(currentIndices[item.id] || 0) === 0}
+                                            className="absolute left-0 bg-gray-500 text-white p-2 rounded-full disabled:opacity-50"
+                                        >
+                                            <NavigateBeforeIcon/>
+                                        </button>
+                                        <div className="flex gap-3 overflow-hidden w-full">
+                                            {item.images.slice(currentIndices[item.id] || 0, (currentIndices[item.id] || 0) + 2).map((img, index) => (
+                                                <img
+                                                    key={index}
+                                                    src={img}
+                                                    alt={`Slide ${index}`}
+                                                    className="object-cover w-[300px] h-[300px] transition-transform duration-300 ease-in-out"
+                                                />
+                                            ))}
+                                        </div>
+                                        <button
+                                            onClick={() => handleNext(item.id, item.images.length)}
+                                            disabled={(currentIndices[item.id] || 0) >= item.images.length - 2}
+                                            className="absolute right-0 bg-gray-500 text-white p-2 rounded-full disabled:opacity-50"
+                                        >
+                                            <NavigateNextIcon/>
+                                        </button>
                                     </div>
 
                                     {/* Hiện yêu thích bình luận */}
@@ -491,7 +531,7 @@ const CreatorChannelPage = () => {
                                                                                 />
                                                                                 <button className="px-3 py-2 ml-auto bg-black hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center">
                                                                                     <SendRoundedIcon className="transform rotate-200" />
-                                                                                    {!language ? <span> Reply </span> : <span> 회신하다 </span> }
+                                                                                    {!language ? <span> Reply </span> : <span> 회신하다 </span>}
                                                                                 </button>
                                                                             </div>
                                                                         </div>
