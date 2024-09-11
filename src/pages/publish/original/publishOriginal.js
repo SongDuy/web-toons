@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import SeriesPage from './series';
 import EpisodesPage from './episodes';
 
-const CreateOriginalPage = () => {
+const PublishOriginalPage = () => {
 
     const [currentStep, setCurrentStep] = useState(1);
 
@@ -26,4 +26,4 @@ const CreateOriginalPage = () => {
     );
 }
 
-export default CreateOriginalPage;
+export default PublishOriginalPage;

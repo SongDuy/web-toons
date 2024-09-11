@@ -315,7 +315,7 @@ const HeaderPage = () => {
                           aria-labelledby="composition-button"
                           onKeyDown={handleListKeyDown}
                         >
-                          <Link to={`/create/original`}>
+                          <Link to={`/publish/original`}>
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <PictureAsPdfOutlinedIcon />
 
@@ -324,7 +324,7 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <Link to={`/create/video`}>
+                          <Link to={`/publish/video`}>
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <VideoCallOutlinedIcon />
 
@@ -384,45 +384,35 @@ const HeaderPage = () => {
                           <Link to={``}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <GroupAddIcon />
-
                               {!language ? <span> Subscribed </span> : <span> 구독함 </span>}
-
                             </MenuItem>
                           </Link>
 
                           <Link to={`/dashboard`}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <PieChartIcon />
-
                               {!language ? <span> Dashboard </span> : <span> 계기반 </span>}
-
                             </MenuItem>
                           </Link>
 
                           <Link to={`/comments`}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <CommentIcon />
-
                               {!language ? <span> Comments </span> : <span> 댓글 </span>}
-
                             </MenuItem>
                           </Link>
 
                           <Link to={``}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <EditNoteIcon />
-
                               {!language ? <span> Creators </span> : <span> 크리에이터 </span>}
-
                             </MenuItem>
                           </Link>
 
                           <Link to={`/channel/my`}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <AssignmentIndIcon />
-
                               {!language ? <span> My Channel Page</span> : <span> 내 채널 페이지 </span>}
-
                             </MenuItem>
                           </Link>
 
