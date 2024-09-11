@@ -112,16 +112,7 @@ const PopularOriginalsAndVideosPage = () => {
                         <div className="w-full px-2 py-5 flex items-center border-b">
                             <div className="mr-auto">
                                 <span className="font-semibold text-lg hover:text-yellow-500 cursor-pointer">
-                                    {!language ?
-                                        <span>
-                                            New & Trending Originals
-                                        </span>
-                                        :
-                                        <span>
-                                            원본의 새로운 기능
-                                        </span>
-                                    }
-
+                                    {!language ? <span> New & Trending Originals </span> : <span> 원본의 새로운 기능 </span>}
                                     <NavigateNextIcon />
                                 </span>
                             </div>
@@ -182,16 +173,7 @@ const PopularOriginalsAndVideosPage = () => {
                         <div className="w-full px-2 py-5 flex items-center border-b">
                             <div className="mr-auto">
                                 <span className="font-semibold text-lg hover:text-yellow-500 cursor-pointer">
-                                    {!language ?
-                                        <span>
-                                            New & Trending Videos
-                                        </span>
-                                        :
-                                        <span>
-                                            새로운 동영상
-                                        </span>
-                                    }
-
+                                    {!language ? <span> New & Trending Videos </span> : <span> 새로운 동영상 </span>}
                                     <NavigateNextIcon />
                                 </span>
                             </div>
@@ -249,16 +231,7 @@ const PopularOriginalsAndVideosPage = () => {
                         {/* Phần tiêu đề */}
                         <div className="w-full px-2 py-5 flex items-center border-b">
                             <span className="mr-auto font-semibold text-lg hover:text-yellow-500 cursor-pointer">
-                                {!language ?
-                                    <span>
-                                        ORIGINALS by Genre
-                                    </span>
-                                    :
-                                    <span>
-                                        장르별 오리지널
-                                    </span>
-                                }
-
+                                {!language ? <span> ORIGINALS by Genre </span> : <span> 장르별 오리지널 </span>}
                                 <NavigateNextIcon />
                             </span>
 
@@ -474,16 +447,7 @@ const PopularOriginalsAndVideosPage = () => {
                         {/* Phần tiêu đề */}
                         <div className="w-full px-2 py-5 flex items-center border-b">
                             <span className="mr-auto font-semibold text-lg hover:text-yellow-500 cursor-pointer">
-                                {!language ?
-                                    <span>
-                                        VIDEOS by Genre
-                                    </span>
-                                    :
-                                    <span>
-                                        장르별 동영상
-                                    </span>
-                                }
-
+                                {!language ? <span> VIDEOS by Genre </span> : <span> 장르별 동영상 </span>}
                                 <NavigateNextIcon />
                             </span>
 
