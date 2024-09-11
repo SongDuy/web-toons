@@ -98,7 +98,7 @@ const GenresOriginalsAndVideosPage = () => {
                                     <li
                                         key={genre.id}
                                         onClick={() => setSelectedOriginalsByGenre(genre.name)}
-                                        className={`uppercase font-semibold shadow rounded px-2 py-2 text-[11px] hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                        className={`w-[104px] uppercase font-semibold shadow rounded px-2 py-2 text-[11px] hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                     >
                                         {!language ? genre.name : genre.nameKorean}
                                     </li>
@@ -188,7 +188,7 @@ const GenresOriginalsAndVideosPage = () => {
                                     <li
                                         key={genre.id}
                                         onClick={() => setSelectedVideosByGenre(genre.name)}
-                                        className={`uppercase font-semibold shadow rounded px-2 py-2 text-[11px] hover:text-black cursor-pointer flex items-center justify-center ${selectedVideosByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                        className={`w-[104px] uppercase font-semibold shadow rounded px-2 py-2 text-[11px] hover:text-black cursor-pointer flex items-center justify-center ${selectedVideosByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                     >
                                         {!language ? genre.name : genre.nameKorean}
                                     </li>
