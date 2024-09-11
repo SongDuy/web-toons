@@ -88,7 +88,7 @@ const ContentPage = () => {
             <GenresOriginalsAndVideosPage />
 
             {/* Phần hiển thị các series truyện và video phổ biến*/}
-            {/* <PopularOriginalsAndVideosPage /> */}
+            <PopularOriginalsAndVideosPage />
 
         </div >
     );
