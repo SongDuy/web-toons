@@ -106,6 +106,7 @@ const MyChannelPage = () => {
                         <img src="https://wallpapers.com/images/hd/chill-anime-girl-during-winter-n65e3iefecsy01if.jpg"
                             className="object-cover w-[1200px] h-full rounded-t-lg" alt="img"
                         />
+                        {/* Nút thay ảnh bìa */}
                         <div className="absolute px-5 py-5 bottom-0 right-0">
                             <button className="w-[180px] py-2 px-2 bg-white hover:bg-gray-100 rounded shadow font-semibold flex gap-2 items-center justify-center">
                                 <PhotoCameraIcon />
@@ -123,6 +124,7 @@ const MyChannelPage = () => {
                                 sx={{ width: 180, height: 180 }}
                             />
 
+                            {/* Nút thay ảnh Avatar */}
                             <div className="absolute bottom-0 right-0">
                                 <button className="w-[40px] h-[40px] border-2 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center">
                                     <PhotoCameraIcon />
