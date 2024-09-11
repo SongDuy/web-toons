@@ -469,11 +469,11 @@ const HeaderPage = () => {
           {/* Nút chuyển ngữ */}
           <div className="w-full h-full">
             {!language ?
-              <button className="w-[80px] h-[35px] px-2 bg-gray-100 font-semibold rounded shadow" onClick={() => dispatch(getlanguage())}>
+              <button className="w-[80px] h-[35px] px-2 bg-gray-100 text-black font-semibold rounded shadow" onClick={() => dispatch(getlanguage())}>
                 English
               </button>
               :
-              <button className="w-[80px] h-[35px] px-2 bg-gray-100 font-semibold rounded shadow" onClick={() => dispatch(getlanguage())}>
+              <button className="w-[80px] h-[35px] px-2 bg-gray-100 text-black font-semibold rounded shadow" onClick={() => dispatch(getlanguage())}>
                 Korean
               </button>
             }
