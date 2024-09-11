@@ -344,7 +344,7 @@ const HeaderPage = () => {
             <div className="flex items-center justify-center z-10">
 
               <button
-                className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 shadow bg-gray-50 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
+                className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 shadow bg-gray-50 hover:bg-gray-100 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
                 ref={anchorAccountRef}
                 id="composition-button"
                 aria-controls={openAccount ? 'composition-menu' : undefined}
@@ -454,7 +454,7 @@ const HeaderPage = () => {
           {/* Chức năng tìm kiếm */}
           <div className="w-full h-full">
             <button
-              className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 border shadow rounded-full text-gray-500 flex items-center justify-center"
+              className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 hover:bg-gray-100 border shadow rounded-full text-gray-500 flex items-center justify-center"
               onClick={openSearchModal}
             >
               <SearchIcon sx={{ fontSize: 18 }} />
@@ -465,11 +465,11 @@ const HeaderPage = () => {
           {/* Nút chuyển ngữ */}
           <div className="w-full h-full">
             {!language ?
-              <button className="w-[80px] h-[35px] px-2 bg-gray-100 text-black font-semibold rounded shadow" onClick={() => dispatch(getlanguage())}>
+              <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded shadow" onClick={() => dispatch(getlanguage())}>
                 English
               </button>
               :
-              <button className="w-[80px] h-[35px] px-2 bg-gray-100 text-black font-semibold rounded shadow" onClick={() => dispatch(getlanguage())}>
+              <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded shadow" onClick={() => dispatch(getlanguage())}>
                 Korean
               </button>
             }

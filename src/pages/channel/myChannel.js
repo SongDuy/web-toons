@@ -108,7 +108,7 @@ const MyChannelPage = () => {
                         />
                         {/* Nút thay ảnh bìa */}
                         <div className="absolute px-5 py-5 bottom-0 right-0">
-                            <button className="w-[180px] py-2 px-2 bg-white hover:bg-gray-100 rounded shadow font-semibold flex gap-2 items-center justify-center">
+                            <button className="w-[170px] py-2 px-2 bg-white hover:bg-gray-100 rounded shadow font-semibold flex gap-2 items-center justify-center">
                                 <PhotoCameraIcon />
                                 {!language ? <span> Edit cover photo </span> : <span> 표지 사진 편집 </span>}
                             </button>
