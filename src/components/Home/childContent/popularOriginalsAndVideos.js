@@ -9,8 +9,8 @@ import { useSelector } from 'react-redux';
 
 const PopularOriginalsAndVideosPage = () => {
     const comic = useSelector(state => state.comic.comic);
-    const filteredcomic = comic.comic?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
-    const searchedcomic = comic.comic?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
+    const filteredcomic = comic.comic?.slice()?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
+    const searchedcomic = comic.comic?.slice()?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
 
     const dataPopular = [
         { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "1", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },

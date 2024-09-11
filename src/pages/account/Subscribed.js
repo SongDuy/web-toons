@@ -5,38 +5,92 @@ import CheckIcon from "@mui/icons-material/Check";
 import Recentlyviewed from "../../components/Account/subscribed/Recentlyviewed";
 import Alsolike from "../../components/Account/subscribed/Alsolike";
 import Suggestsubscribed from "../../components/Account/subscribed/Suggestsubscribed";
+import { useSelector } from "react-redux";
+import SubscribeFireBase from "../../common/services/Subscribe.services";
+import comicFireBase from "../../common/services/Comic.services";
 const Subscribed = () => {
   const [EditSubscribed, setEditSubscribed] = useState(false);
   const [Subscribed, setSubscribed] = useState([]);
-  const [IdSubcribed, setIdSubcribed] = useState(0);
+  const [checkSubcribed, setcheckSubcribed] = useState([]);
   const [ALLSubcribed, setALLSubcribed] = useState(false);
-
+  const [loading, setloading] = useState(false);
+  const Account = useSelector((state) => state.Account.Account);
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   useEffect(() => {
-    setSubscribed([
-      {
-        id: 1,
-        Name: "The Lone Necromancer (S2) Ep. 125 - Foreign Powers Vs. The Korean Server (2)",
-        Author: "singNsong/UMI",
-        Create: "july 22,2024",
-      },
-      {
-        id: 2,
-        Name: "The Lone Necromancer (S2) Ep. 125 - Foreign Powers Vs. The Korean Server (2)",
-        Author: "singNsong/UMI",
-        Create: "july 22,2024",
-      },
-      {
-        id: 3,
-        Name: "The Lone Necromancer (S2) Ep. 125 - Foreign Powers Vs. The Korean Server (2)",
-        Author: "singNsong/UMI",
-        Create: "july 22,2024",
-      },
-    ]);
-   
-  }, []);
-  
+    const get = async () => {
+      try {
+        setloading(false);
+
+        const subscribe = await SubscribeFireBase.getbyid(Account.id);
+        if (subscribe.success) {
+          const sub = await Promise.all(
+            subscribe.subscribe?.map(async (item) => {
+              const comicid = await comicFireBase.getbyid(item.idcomic);
+              return {
+                ...item,
+                ...comicid,
+                id: item.id,
+                createTime: new Date(comicid?.createTime).toISOString(),
+              };
+            })
+          );
+          setSubscribed(sub);
+        } else {
+          setSubscribed([]);
+        }
+        setloading(true);
+      } catch (error) {}
+    };
+    get();
+  }, [Account, loading]);
+  const HandleDelete = async () => {
+    setloading(false);
+    checkSubcribed?.map(async (item) => {
+      try {
+        const sub = await SubscribeFireBase.getbysub(item);
+        if (sub.success) {
+          const comicid = await comicFireBase.getbyid(sub.idcomic);
+          await comicFireBase.update(
+            { totalSubscribed: comicid.totalSubscribed - 1 },
+            sub.idcomic
+          );
+          await SubscribeFireBase.Delete(item);
+        }
+      } catch (error) {}
+    });
+  };
   const getidSubscribed = (id) => {
-    setIdSubcribed(id);
+    if (!checkSubcribed.includes(id)) {
+      setcheckSubcribed([...checkSubcribed, id]);
+    } else {
+      const updatedCheckSubcribed = checkSubcribed.filter(
+        (item) => item !== id
+      );
+      setcheckSubcribed(updatedCheckSubcribed);
+    }
+  };
+  const getALLSubscribed = () => {
+    if (checkSubcribed.length === 0) {
+      setcheckSubcribed(Subscribed?.map((item) => item.id));
+
+      setALLSubcribed(!ALLSubcribed);
+    } else {
+      setcheckSubcribed([]);
+      setALLSubcribed(!ALLSubcribed);
+    }
   };
   return (
     <>
@@ -59,7 +113,7 @@ const Subscribed = () => {
                   <div className="flex">
                     <button
                       className="font-semibold text-base text-black     ml-3 p-2 rounded-full bg-[#dfdbdbec]"
-                      onClick={() => setALLSubcribed(!ALLSubcribed)}
+                      onClick={getALLSubscribed}
                     >
                       <CheckIcon
                         sx={
@@ -72,14 +126,14 @@ const Subscribed = () => {
 
                     <button
                       className="font-semibold text-base     mr-2 ml-1 p-1 rounded-full text-gray-400"
-                      onClick={() => setALLSubcribed(!ALLSubcribed)}
+                      onClick={getALLSubscribed}
                     >
                       Select All
                     </button>
 
                     <button
                       className="font-semibold text-basg text-black border-gray-400 border py-2 px-7 rounded-full mr-5 ml-3"
-                      onClick={() => setEditSubscribed(!EditSubscribed)}
+                      onClick={() => HandleDelete()}
                     >
                       Delete
                     </button>
@@ -100,83 +154,50 @@ const Subscribed = () => {
                 )}
               </div>
               {EditSubscribed ? (
-                ALLSubcribed ? (
-                  <div className="  grid grid-cols-5 gap-2  w-full h-full   px-5">
-                    {Subscribed.map((item) => {
-                      return (
-                        <button
-                          className=" w-full h-full border-2 border-emerald-400 relative"
-                          key={item?.id}
-                          onClick={() => getidSubscribed(item.id)}
-                        >
-                          <img
-                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                            alt=""
-                            className="object-contain "
+                <div className="  grid grid-cols-5 gap-2  w-full h-full   px-5">
+                  {Subscribed?.map((item) => {
+                    return (
+                      <button
+                        className={` w-full h-full border-2 ${
+                          checkSubcribed?.includes(item.id)
+                            ? "border-emerald-400"
+                            : ""
+                        }  relative`}
+                        key={item?.id}
+                        onClick={() => getidSubscribed(item.id)}
+                      >
+                        <img
+                          src={item.squareThumbnail}
+                          alt=""
+                          className="object-contain "
+                        />
+                        <p className="absolute top-2 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
+                          {item?.title}
+                        </p>
+                        <p className="absolute top-7 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3">
+                          {item?.summary}
+                        </p>
+                        <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
+                          Update
+                        </p>
+                        <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
+                          {monthNames[new Date(item.createTime).getMonth()]}{" "}
+                          {new Date(item.createTime).getDate()},
+                          {new Date(item.createTime)?.getFullYear()}
+                        </p>
+                        <p className="absolute top-[75%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
+                          <CheckIcon
+                            sx={
+                              checkSubcribed?.includes(item.id)
+                                ? { color: "#31C48D" }
+                                : { color: "white" }
+                            }
                           />
-                          <p className="absolute top-2 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
-                            {item?.Name}
-                          </p>
-                          <p className="absolute top-7 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3">
-                            {item?.Author}
-                          </p>
-                          <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
-                            Update
-                          </p>
-                          <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
-                            {item?.Create}
-                          </p>
-                          <p className="absolute top-[75%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
-                            <CheckIcon sx={{ color: "#31C48D" }} />
-                          </p>
-                        </button>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  <div className="  grid grid-cols-5 gap-2  w-full h-full   px-5">
-                    {Subscribed.map((item) => {
-                      return (
-                        <button
-                          className={` w-full h-full border-2 ${
-                            IdSubcribed === item.id 
-                              ? "border-emerald-400"
-                              : ""
-                          }  relative`}
-                          key={item?.id}
-                          onClick={() => getidSubscribed(item.id)}
-                        >
-                          <img
-                            src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                            alt=""
-                            className="object-contain "
-                          />
-                          <p className="absolute top-2 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
-                            {item?.Name}
-                          </p>
-                          <p className="absolute top-7 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3">
-                            {item?.Author}
-                          </p>
-                          <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
-                            Update
-                          </p>
-                          <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
-                            {item?.Create}
-                          </p>
-                          <p className="absolute top-[75%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
-                            <CheckIcon
-                              sx={
-                                IdSubcribed === item.id 
-                                  ? { color: "#31C48D" }
-                                  : { color: "white" }
-                              }
-                            />
-                          </p>
-                        </button>
-                      );
-                    })}
-                  </div>
-                )
+                        </p>
+                      </button>
+                    );
+                  })}
+                </div>
               ) : (
                 <div className="w-full h-full flex-row grid grid-cols-5 gap-4 px-5">
                   {Subscribed.map((item) => {
@@ -186,21 +207,23 @@ const Subscribed = () => {
                         key={item?.id}
                       >
                         <img
-                          src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                          src={item.squareThumbnail}
                           alt=""
                           className="object-contain "
                         />
                         <p className="absolute top-2 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
-                          {item?.Name}
+                          {item?.title}
                         </p>
                         <p className="absolute top-7 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3">
-                          {item?.Author}
+                          {item?.summary}
                         </p>
                         <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
                           Update
                         </p>
                         <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
-                          {item?.Create}
+                          {monthNames[new Date(item.createTime).getMonth()]}{" "}
+                          {new Date(item.createTime).getDate()},
+                          {new Date(item.createTime)?.getFullYear()}
                         </p>
                       </button>
                     );

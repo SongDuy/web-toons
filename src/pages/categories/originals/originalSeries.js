@@ -26,6 +26,7 @@ import Rating from '@mui/material/Rating';
 import { auth } from '../../../common/themes/firebase';
 import SubscribeFireBase from '../../../common/services/Subscribe.services';
 import comicFireBase from '../../../common/services/Comic.services';
+import RateFireBase from '../../../common/services/Rate.services';
 
 const dataAlsoLike = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
@@ -47,7 +48,8 @@ const OriginalSeriesPage = () => {
     const [loading, setloading] = useState(false);
     const [isSubscribe, setIsSubscribe] = useState(false);
     const [Subscribe, setSubscribe] = useState([[]]);
-
+    const language = useSelector(state => state.hidden.language);
+    const [Rate, setRate] = useState(0);
     const dispatch = useDispatch();
     const monthNames = [
         'January', 'February', 'March', 'April', 'May', 'June',
@@ -63,7 +65,9 @@ const OriginalSeriesPage = () => {
                 unwrapResult(chap)
                 setloading(true)
                 if (auth.currentUser) {
-                    const subscribe = await SubscribeFireBase.getbyid(auth.currentUser.uid)
+                    const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid,id.id)
+                    const rateuser=await RateFireBase.getbyid(auth.currentUser.uid,id.id)
+                    setRate(rateuser.success?rateuser.rate[0].rate:0);
                     subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
                     subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
                 }
@@ -111,17 +115,18 @@ const OriginalSeriesPage = () => {
 
     const handlesubscribe = async () => {
         try {
+           
             if (auth.currentUser) {
-                await SubscribeFireBase.Add({ uid: auth.currentUser.uid, idcomic: id.id })
+                await SubscribeFireBase.Add({ uid: auth.currentUser.uid, idcomic: id.id, createTime: new Date(Date.now()) })
                 await comicFireBase.update({ totalSubscribed: comicid.totalSubscribed + 1 }, id.id)
                 await dispatch(getidComic(id.id))
+              
+                const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid,id.id)
 
-                const subscribe = await SubscribeFireBase.getbyid(auth.currentUser.uid)
                 subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
                 subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
             }
         } catch (error) {
-
         }
     }
     const handleDeleteSub = async () => {
@@ -130,7 +135,7 @@ const OriginalSeriesPage = () => {
                 await SubscribeFireBase.Delete(Subscribe[0].id)
                 await comicFireBase.update({ totalSubscribed: comicid.totalSubscribed - 1 }, id.id)
                 await dispatch(getidComic(id.id))
-                const subscribe = await SubscribeFireBase.getbyid(auth.currentUser.uid)
+                const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid,id.id)
                 subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
                 subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
             }
@@ -138,9 +143,38 @@ const OriginalSeriesPage = () => {
 
         }
     }
-
-    //Lấy ngôn ngữ
-    const language = useSelector(state => state.hidden.language);
+  
+const handleRate=async (event, newValue) => {
+    if(auth.currentUser){
+        setRate(newValue);
+        try {
+            const rateuser=await RateFireBase.getbyid( auth.currentUser.uid,id.id)
+          
+            if(!rateuser.success){
+            await RateFireBase.Add({
+                createTime: new Date(Date.now()),
+                idcomic:id.id,
+                uid: auth.currentUser.uid,
+                rate:newValue
+            })
+            const comicrate=await RateFireBase.getbycomic( id.id)
+            const averageRating =comicrate.success? (comicrate.rate.reduce((accumulator, currentValue) =>  accumulator + currentValue.rate, 0) / comicrate.rate.length)*2:0;
+          await  comicFireBase.update({rate:averageRating},id.id)
+         const idcomic= await dispatch(getidComic(id.id))
+            unwrapResult(idcomic)
+        }else{
+            await RateFireBase.update({rate:newValue,createTime: new Date(Date.now())},rateuser.rate[0].id)
+            const comicrate=await RateFireBase.getbycomic( id.id)
+            const averageRating =comicrate.success? (comicrate.rate.reduce((accumulator, currentValue) =>  accumulator + currentValue.rate, 0) / comicrate.rate.length)*2:0;
+            await  comicFireBase.update({rate:averageRating},id.id)
+            const idcomic= await dispatch(getidComic(id.id))
+            unwrapResult(idcomic)
+        }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+  };
 
     return (
         <div>
@@ -312,7 +346,7 @@ const OriginalSeriesPage = () => {
                                                 <StarIcon />
                                             </span>
                                             <span className="mx-1">
-                                                9.74
+                                            {comicid.rate}
                                             </span>
 
                                         </li>
@@ -357,7 +391,7 @@ const OriginalSeriesPage = () => {
                                                         }}
                                                     >
                                                         <Paper>
-                                                            <ClickAwayListener onClickAway={handleClose}>
+                                                            <ClickAwayListener onClickAway={handleClose} >
                                                                 <MenuList
                                                                     autoFocusItem={open}
                                                                     id="composition-menu"
@@ -367,8 +401,9 @@ const OriginalSeriesPage = () => {
                                                                     <MenuItem onClick={handleClose}><ClickAwayListener onClickAway={handleClose}>
                                                                         <Rating
                                                                             name="half-rating-read"
-                                                                            defaultValue={0}
+                                                                            defaultValue={parseInt(Rate)}
                                                                             precision={0.5}
+                                                                            onChange={handleRate} 
                                                                         />
                                                                     </ClickAwayListener></MenuItem>
                                                                 </MenuList>

@@ -533,7 +533,7 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <Link to={``}>
+                          <Link to={`/account`}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <AccountCircleIcon />
                               {!language ?

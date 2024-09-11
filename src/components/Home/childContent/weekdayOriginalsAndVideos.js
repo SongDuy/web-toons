@@ -103,7 +103,6 @@ const WeekdayOriginalsAndVideosPage = () => {
     const handleSelectDay = (day) => {
         setCurrentDay(day);
     };
-console.log(days[0].day)
     //chọn nội dung truyện theo thứ hiện tại
     const filteredOriginals = comic.comic?.filter(data => data.schedule === currentDay);
     //chọn nội dung videos theo thứ hiện tại
@@ -133,7 +132,6 @@ console.log(days[0].day)
             setOpen(false);
         }
     }
-console.log(days)
     const prevOpen = React.useRef(open);// return focus to the button when we transitioned from !open -> open
     React.useEffect(() => {
         if (prevOpen.current === true && open === false) {
