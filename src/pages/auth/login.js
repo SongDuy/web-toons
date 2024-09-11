@@ -87,6 +87,7 @@ const LoginPage = ({ closeModal }) => {
                         <Link
                             to="/forgot-password"
                             className="w-[160px] text-blue-800 cursor-pointer"
+                            onClick={handleBackdropClick}
                         >
                             Reset your password?
                         </Link>
@@ -100,14 +101,14 @@ const LoginPage = ({ closeModal }) => {
                         </button>
 
                         <div className="w-full h-[50px] flex gap-x-1 items-center justify-center border rounded">
-                            <span className="">
+                            <span>
                                 Don't have an account?
-
                             </span>
 
                             <Link
                                 to="/register"
                                 className="text-blue-800 font-semibold"
+                                onClick={handleBackdropClick}
                             >
                                 Sign up
                             </Link>

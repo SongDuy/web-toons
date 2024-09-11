@@ -7,9 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { unwrapResult } from '@reduxjs/toolkit';
 import useTimeout from "../../Hooks/useTimeout.js";
 
-import HeaderPage from "../../components/layout/layoutUser/header.js";
-import FooterPage from "../../components/layout/layoutUser/footer.js";
-
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
