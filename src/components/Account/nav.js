@@ -8,14 +8,14 @@ const Nav = () => {
 
     <div className="w-full h-[60px] bg-white shadow flex items-center justify-center border-t">
       <ul className="flex gap-10">
-        <Link className={`h-[60px] uppercase font-semibold text-base ${location.pathname === '/Subscribed' ? "text-black border-b-2" : "text-gray-300 "}  border-b-black hover:text-black cursor-pointer flex items-center justify-center`} to="/Subscribed">
+        <Link className={`h-[60px] uppercase font-semibold text-base ${location.pathname === '/subscribed' ? "text-black border-b-2" : "text-gray-300 "}  border-b-black hover:text-black cursor-pointer flex items-center justify-center`} to="/subscribed">
           SUBSCRIBED
         </Link>
-        <Link className={`h-[60px] uppercase font-semibold text-base ${location.pathname === '/comment' ? "text-black border-b-2" : "text-gray-300 "}  border-b-black hover:text-black cursor-pointer flex items-center justify-center`} to="/comment">
+        <Link className={`h-[60px] uppercase font-semibold text-base ${location.pathname === '/mycomment' ? "text-black border-b-2" : "text-gray-300 "}  border-b-black hover:text-black cursor-pointer flex items-center justify-center`} to="/mycomment">
           COMMENTS
         </Link>
 
-        <Link className={`h-[60px] uppercase font-semibold text-base ${location.pathname === '/Creators' ? "text-black border-b-2" : "text-gray-300 "}  border-b-black hover:text-black cursor-pointer flex items-center justify-center`} to="/Creators">
+        <Link className={`h-[60px] uppercase font-semibold text-base ${location.pathname === '/creators' ? "text-black border-b-2" : "text-gray-300 "}  border-b-black hover:text-black cursor-pointer flex items-center justify-center`} to="/creators">
           CREATORS
         </Link>
 

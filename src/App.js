@@ -105,7 +105,7 @@ function App() {
         {/* Trang chỉ đăng nhập mới sử dụng được của user*/}
         <Route element={<AuthProvider><Layout /></AuthProvider>}>
           <Route path="/account" element={<AuthProvider><Account /> </AuthProvider>} />
-          <Route path="/comments" element={<Comment />} />
+          <Route path="/mycomment" element={<Comment />} />
           <Route path="/subscribed" element={<Subscribed />} />
           <Route path="/creators" element={<Creators />} />
 
