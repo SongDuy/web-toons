@@ -41,7 +41,7 @@ import Account from './pages/account/Account';
 import Comment from './pages/account/Comment';
 import Subscribed from './pages/account/Subscribed';
 import Creators from './pages/account/Creators';
-//import Delete from './pages/account/Delete';
+import DeletePage from './pages/account/Delete';
 import PaymentPage from './pages/payment/payment';
 import TermsOfUse from './pages/Policys/TermsOfUse';
 import PrivacyPolicy from './pages/Policys/PrivacyPolicy';
@@ -80,6 +80,9 @@ function App() {
 
           <Route path="/channel/my" element={<MyChannelPage />} />
           <Route path="/channel/creator" element={<CreatorChannelPage />} />
+
+          {/* Xóa tài khoản */}
+          <Route path="/account/delete" element={<DeletePage />} />
 
           {/* Trang thanh toán */}
           <Route path="/payment" element={<PaymentPage />} />
