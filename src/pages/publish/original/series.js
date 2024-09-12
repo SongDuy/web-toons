@@ -66,6 +66,7 @@ const SeriesPage = ({ goToEposodes }) => {
         }
     };
 
+    // check
     const [selections, setSelections] = useState({
         violence: '',
         nudity: '',
@@ -92,19 +93,19 @@ const SeriesPage = ({ goToEposodes }) => {
     const anyTwo = Object.values(selections).includes('2');
     const anyThree = Object.values(selections).includes('3');
 
-    let message = 'I acknowledge that the assigned Content Rating of my series is ';
+    let message = '';
     if (Object.values(selections).includes('')) {
         message = 'Please complete the Self Assessment above to get the result.';
     } else if (allZero) {
         message = 'All Ages';
-    } else if (anyThree) {
-        message += 'Mature';
-    } else if (anyTwo) {
-        message += 'Young Adult';
     } else if (anyOne) {
-        message += 'Teen';
+        message = 'Teen';
+    } else if (anyTwo) {
+        message = 'Young Adult';
+    } else if (anyThree) {
+        message = 'Mature';
     } else {
-        message += 'Unrated';
+        message = 'Unrated';
     }
 
     return (
@@ -473,7 +474,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                         onClick={handleCheckboxClick}
                                         disabled={!Object.values(selections).every(value => value !== '')}
                                     >
-                                        <CheckIcon/>
+                                        <CheckIcon />
                                     </button>
                                     <span className="ml-2 font-semibold">
                                         I acknowledge that the assigned Content Rating of my series is <span className="text-red-500"> {message} </span>
