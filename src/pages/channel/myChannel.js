@@ -357,7 +357,7 @@ const MyChannelPage = () => {
                                 </div>
 
                                 {/* Ô nhập nội dung bài viết */}
-                                <div className="w-full mt-5">
+                                <div className="w-full mt-5 px-3">
                                     <textarea
                                         placeholder="What are you thinking?"
                                         className="w-full h-[160px] rounded-md px-3 py-3 border-2"
@@ -366,7 +366,7 @@ const MyChannelPage = () => {
                                 </div>
 
                                 {/* Phần thêm ảnh vào bài viết */}
-                                <div className="w-full mt-5">
+                                <div className="w-full mt-5 px-3">
                                     <div className="flex flex-wrap gap-5 mb-5">
                                         {photos.map((photo, index) => (
                                             <div
