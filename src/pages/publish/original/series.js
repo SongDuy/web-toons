@@ -112,7 +112,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                     </span>
                                 </div>
 
-                                <div className="w-[350px] border rounded shadow bg-red-100 flex items-center justify-center">
+                                <div className="w-[350px] flex items-center justify-center">
                                     {/* Nút tải ảnh đại diện cho series truyện */}
                                     <button className="w-[200px] h-[200px] shadow border-2 bg-red-100 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
                                         <div>
