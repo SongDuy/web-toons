@@ -66,14 +66,6 @@ const SeriesPage = ({ goToEposodes }) => {
         }
     };
 
-    // Khởi tạo state để theo dõi nếu đã chọn đủ giá trị
-    const [isChecked, setIsChecked] = useState(false);
-
-    // Xử lý khi nhấn checkbox
-    const handleCheckboxClick = () => {
-        setIsChecked(!isChecked);
-    };
-
     const [selections, setSelections] = useState({
         violence: '',
         nudity: '',
@@ -82,10 +74,17 @@ const SeriesPage = ({ goToEposodes }) => {
         alcohol: '',
         sensitiveThemes: ''
     });
+    const [isChecked, setIsChecked] = useState(false);
 
     const handleSelectChange = (e) => {
         const { name, value } = e.target;
         setSelections(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleCheckboxClick = () => {
+        if (Object.values(selections).every(value => value !== '')) {
+            setIsChecked(prev => !prev);
+        }
     };
 
     const allZero = Object.values(selections).every(value => value === '0');
@@ -93,9 +92,9 @@ const SeriesPage = ({ goToEposodes }) => {
     const anyTwo = Object.values(selections).includes('2');
     const anyThree = Object.values(selections).includes('3');
 
-    let message = '';
+    let message = 'I acknowledge that the assigned Content Rating of my series is ';
     if (Object.values(selections).includes('')) {
-        message = '(Please complete the Self Assessment above to get the result.)';
+        message = 'Please complete the Self Assessment above to get the result.';
     } else if (allZero) {
         message = 'All Ages';
     } else if (anyThree) {
@@ -470,10 +469,11 @@ const SeriesPage = ({ goToEposodes }) => {
 
                                 <div className="mt-[60px]">
                                     <button
-                                        className={`w-[35px] h-[35px] border-2 rounded-full ${isChecked ? 'bg-green-500 text-white' : ''}`}
+                                        className={`w-[35px] h-[35px] border-2 rounded-full ${Object.values(selections).every(value => value !== '') ? (isChecked ? 'bg-green-500 text-white' : 'bg-gray-300') : 'bg-gray-300'}`}
                                         onClick={handleCheckboxClick}
+                                        disabled={!Object.values(selections).every(value => value !== '')}
                                     >
-                                        <CheckIcon />
+                                        <CheckIcon/>
                                     </button>
                                     <span className="ml-2 font-semibold">
                                         I acknowledge that the assigned Content Rating of my series is <span className="text-red-500"> {message} </span>
