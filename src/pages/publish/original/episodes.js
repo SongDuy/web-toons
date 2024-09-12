@@ -80,36 +80,6 @@ const EpisodesPage = ({ goToPreviousStep }) => {
 
                                 </div>
                             </div>
-
-                            <div className="w-[220px] h-full">
-                                <div className="w-full py-3">
-                                    <span className="w-full font-semibold text-xl">
-                                        Vertical Thumbnail
-                                    </span>
-                                </div>
-
-                                <div className="w-full h-[440px] shadow-md bg-red-100 rounded border hover:border-green-500 hover:text-gray-500 flex items-center justify-center group cursor-pointer">
-                                    <div>
-                                        <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
-                                            <NorthIcon />
-                                        </span>
-                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                            Select an image to upload.
-                                        </span>
-                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                            Or drag the image file here.
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div className="w-[230px] py-3">
-                                    <span className="block w-full font-semibold text-sm text-gray-500">Image size must be 1080x1920.</span>
-                                    <span className="block w-full font-semibold text-sm text-gray-500">Image must be less than 700KB.</span>
-                                    <span className="block w-full font-semibold text-sm text-gray-500">Only JPG, JPEG, and PNG formats are allowed.</span>
-                                </div>
-
-
-                            </div>
                         </div>
 
                         <div className="w-9/12 h-full ">
