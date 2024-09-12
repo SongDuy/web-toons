@@ -29,15 +29,9 @@ const dataListGenre = [
     { id: 19, name: "ZOMBIES", translatedName: "(좀비)" },
     { id: 20, name: "SHORT STORY", translatedName: "(단편)" }
 ];
+
 // Sắp xếp mảng theo tên thể loại theo bảng chữ cái
 dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
-
-const dataListAge = [
-    { id: 1, age: "ALL", translatedName: "(모든 연령)" },
-    { id: 2, age: "12+", translatedName: "(12세 이상 관람가)" },
-    { id: 3, age: "15+", translatedName: "(15세 이상 관람가)" },
-    { id: 4, age: "19+", translatedName: "(19세 이상 관람가)" },
-];
 
 const SeriesPage = ({ goToEposodes }) => {
 
@@ -184,13 +178,13 @@ const SeriesPage = ({ goToEposodes }) => {
                             </div>
                         </div>
 
-                        <div className="w-[820px] h-full ">
+                        <div className="w-[820px] h-full grid grid-cols-1">
 
                             <div className="w-full py-3 pl-5 flex">
                                 <div className="w-full">
-                                    <span className="w-full font-semibold text-xl">
+                                    <h1 className="w-full font-semibold text-xl">
                                         Genre 1
-                                    </span>
+                                    </h1>
 
                                     <FormControl className="w-full">
                                         <Select
@@ -209,7 +203,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                                     key={item.id}
                                                     value={item.name}
                                                 >
-                                                    {item.name} {item.translatedName}
+                                                    {item.name}
                                                 </MenuItem>
                                             ))}
                                         </Select>
@@ -218,9 +212,10 @@ const SeriesPage = ({ goToEposodes }) => {
                                 </div>
 
                                 <div className="w-full ml-5">
-                                    <span className="w-full font-semibold text-xl">
+                                    <h1 className="w-full font-semibold text-xl">
                                         Genre 2
-                                    </span>
+                                    </h1>
+
                                     <FormControl className="w-full">
                                         <Select
                                             value={genre2}
@@ -236,7 +231,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                                     key={item.id}
                                                     value={item.name}
                                                 >
-                                                    {item.name} {item.translatedName}
+                                                    {item.name}
                                                 </MenuItem>
                                             ))}
                                         </Select>
@@ -246,9 +241,10 @@ const SeriesPage = ({ goToEposodes }) => {
                             </div>
 
                             <div className="w-full py-3 pl-5">
-                                <span className="w-full font-semibold text-xl">
+                                <h1 className="w-full font-semibold text-xl">
                                     Series title
-                                </span>
+                                </h1>
+
                                 <input
                                     className="w-full h-[40px] mt-3 bg-white px-3"
                                     placeholder="Less than 50 characters"
@@ -258,9 +254,10 @@ const SeriesPage = ({ goToEposodes }) => {
                             </div>
 
                             <div className="w-full py-3 pl-5">
-                                <span className="w-full font-semibold text-xl">
+                                <h1 className="w-full font-semibold text-xl">
                                     Summary
-                                </span>
+                                </h1>
+
                                 <textarea
                                     className="w-full h-[300px] mt-3 bg-white px-3 py-2"
                                     placeholder="Less than 500 characters"
@@ -271,43 +268,53 @@ const SeriesPage = ({ goToEposodes }) => {
                             </div>
 
                             <div className="w-full py-3 pl-5">
-                                <span className="w-full font-semibold text-xl">
-                                    Email
-                                </span>
-                                <div>
-                                    <input
-                                        className="w-10/12 h-[40px] mt-3 bg-white px-2"
-                                    />
-                                    <button className="w-2/12 h-[40px] bg-black text-white">
-                                        SEND
-                                    </button>
-                                </div>
-                                <div className="pt-3 pb-10">
-                                    <span className="block w-full font-semibold text-sm text-gray-500">
-                                        We need an email through which we can contact you concerning your work.
-                                    </span>
-                                    <span className="block w-full font-semibold text-sm text-gray-500">
-                                        The email address you entered will be processed as your account information.
-                                    </span>
-                                </div>
+                                <h1 className="w-full font-semibold text-xl">
+                                    CONTENT RATING SELF ASSESSMENT
+                                </h1>
 
+                                <div className="w-full mt-2 flex flex-wrap">
+                                    <span className="w-full">
+                                        All series on WEBTOON must now display a Content Rating.
+                                        With visible Content Ratings, we can help users discover
+                                        content that should be appropriate for their age group and
+                                        align with their content preferences.
+                                    </span>
+                                    <span className="w-full">
+                                        To ensure the appropriate Content Rating is assigned to your series,
+                                        please respond to the following questionnaire regarding the content
+                                        of your series. Please note that ratings are subject to change at
+                                        WEBTOON's sole discretion and without prior notice.
+                                        The WEBTOON Community Policy and Uploading Guidelines will remain the same. Content Rating Guide.
+                                    </span>
+                                </div>
                             </div>
 
-                            <div className="w-full py-5 pl-5 flex border-t-2 border-gray-200">
-                                <div>
-                                    <span className="block w-full font-semibold text-sm text-green-500">
-                                        KEEP IN MIND
-                                    </span>
-                                    <span className="block py-2 font-semibold text-[15px]">
-                                        We do not allow content that contains nudity or is intended to
-                                        be sexually gratifying. This includes, but is not limited to,
-                                        full and partial nudity, as well as graphic depictions of sexual acts.
-                                        We do not allow excessive violence or graphic content intended to shock
-                                        and offend readers. This includes brutal and extended/prolonged scenes
-                                        of violence and gore. More details can be found <span className="text-blue-500">HERE</span>
-                                    </span>
-                                </div>
+                            <div className="w-full py-3 pl-5">
+                                <ul className="">
+                                    <li className="">
 
+                                    </li>
+
+                                    <li className="">
+
+                                    </li>
+
+                                    <li className="">
+
+                                    </li>
+
+                                    <li className="">
+
+                                    </li>
+
+                                    <li className="">
+
+                                    </li>
+
+                                    <li className="">
+
+                                    </li>
+                                </ul>
                             </div>
 
                             <div className="w-full py-3 pl-5">
