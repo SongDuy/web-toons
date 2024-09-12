@@ -66,12 +66,47 @@ const SeriesPage = ({ goToEposodes }) => {
         }
     };
 
-    // Nhấn vào ô check đồng ý
+    // Khởi tạo state để theo dõi nếu đã chọn đủ giá trị
     const [isChecked, setIsChecked] = useState(false);
 
+    // Xử lý khi nhấn checkbox
     const handleCheckboxClick = () => {
         setIsChecked(!isChecked);
     };
+
+    const [selections, setSelections] = useState({
+        violence: '',
+        nudity: '',
+        sexualContent: '',
+        profanity: '',
+        alcohol: '',
+        sensitiveThemes: ''
+    });
+
+    const handleSelectChange = (e) => {
+        const { name, value } = e.target;
+        setSelections(prev => ({ ...prev, [name]: value }));
+    };
+
+    const allZero = Object.values(selections).every(value => value === '0');
+    const anyOne = Object.values(selections).includes('1');
+    const anyTwo = Object.values(selections).includes('2');
+    const anyThree = Object.values(selections).includes('3');
+
+    let message = '';
+    if (Object.values(selections).includes('')) {
+        message = '(Please complete the Self Assessment above to get the result.)';
+    } else if (allZero) {
+        message = 'All Ages';
+    } else if (anyThree) {
+        message += 'Mature';
+    } else if (anyTwo) {
+        message += 'Young Adult';
+    } else if (anyOne) {
+        message += 'Teen';
+    } else {
+        message += 'Unrated';
+    }
 
     return (
         <div>
@@ -301,140 +336,147 @@ const SeriesPage = ({ goToEposodes }) => {
                                 <ul className="grid grid-cols-1 gap-4">
                                     <li className="w-full h-[40px] flex items-center">
                                         <div className="min-w-[250px] h-full flex items-center">
-                                            <span>
-                                                Violent and graphic content
-                                            </span>
+                                            <span>Violent and graphic content</span>
                                         </div>
-
                                         <div className="w-full h-full flex items-center relative">
-                                            <select class="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none">
+                                            <select
+                                                name="violence"
+                                                className="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none"
+                                                value={selections.violence}
+                                                onChange={handleSelectChange}
+                                            >
                                                 <option value="">Please select one</option>
                                                 <option value="0">0: No violence, blood or gore</option>
                                                 <option value="1">1: Mild or fantasy blood in a few episodes</option>
                                                 <option value="2">2: Violent themes with moderate blood or gore</option>
                                                 <option value="3">3: Detailed violence, blood or gore</option>
                                             </select>
-                                            <svg class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            <svg className="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </li>
-
                                     <li className="w-full h-[40px] flex items-center">
                                         <div className="min-w-[250px] h-full flex items-center">
-                                            <span>
-                                                Nudity
-                                            </span>
+                                            <span>Nudity</span>
                                         </div>
-
                                         <div className="w-full h-full flex items-center relative">
-                                            <select class="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none">
+                                            <select
+                                                name="nudity"
+                                                className="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none"
+                                                value={selections.nudity}
+                                                onChange={handleSelectChange}
+                                            >
                                                 <option value="">Please select one</option>
-                                                <option value="0">0: No nudity (partial and full) </option>
-                                                <option value="1">1: Some characters in minimal clothing (eg. bathing suit, lingerie), non sexual themes</option>
+                                                <option value="0">0: No nudity (partial and full)</option>
+                                                <option value="1">1: Some characters in minimal clothing (e.g., bathing suit, lingerie), non-sexual themes</option>
                                                 <option value="2">2: Comedic nudity with strategic censoring</option>
-                                                <option value="3">3: Fan-service panels (ie. minimal clothing in sexual posing). Sexually suggestive themes </option>
+                                                <option value="3">3: Fan-service panels (e.g., minimal clothing in sexual posing). Sexually suggestive themes</option>
                                             </select>
-                                            <svg class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            <svg className="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </li>
-
                                     <li className="w-full h-[40px] flex items-center">
                                         <div className="min-w-[250px] h-full flex items-center">
-                                            <span>
-                                                Sexual content
-                                            </span>
+                                            <span>Sexual content</span>
                                         </div>
-
                                         <div className="w-full h-full flex items-center relative">
-                                            <select class="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none">
+                                            <select
+                                                name="sexualContent"
+                                                className="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none"
+                                                value={selections.sexualContent}
+                                                onChange={handleSelectChange}
+                                            >
                                                 <option value="">Please select one</option>
                                                 <option value="0">0: No sexual content or themes</option>
                                                 <option value="1">1: Mild sexual themes</option>
                                                 <option value="2">2: Sexual content or innuendos in a few episodes</option>
                                                 <option value="3">3: Sexual content and sexually suggestive themes throughout series</option>
                                             </select>
-                                            <svg class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            <svg className="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </li>
-
                                     <li className="w-full h-[40px] flex items-center">
                                         <div className="min-w-[250px] h-full flex items-center">
-                                            <span>
-                                                Profanity
-                                            </span>
+                                            <span>Profanity</span>
                                         </div>
-
                                         <div className="w-full h-full flex items-center relative">
-                                            <select class="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none">
+                                            <select
+                                                name="profanity"
+                                                className="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none"
+                                                value={selections.profanity}
+                                                onChange={handleSelectChange}
+                                            >
                                                 <option value="">Please select one</option>
                                                 <option value="0">0: No profanity</option>
-                                                <option value="1">1: Fully censored profanity (eg. #$%^) in a few episodes </option>
+                                                <option value="1">1: Fully censored profanity (e.g., #$%^) in a few episodes</option>
                                                 <option value="2">2: Uncensored or partially censored profanity in a few episodes</option>
                                                 <option value="3">3: Uncensored profanity throughout series</option>
                                             </select>
-                                            <svg class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            <svg className="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </li>
-
                                     <li className="w-full h-[40px] flex items-center">
                                         <div className="min-w-[250px] h-full flex items-center">
-                                            <span>
-                                                Alcohol, drugs or tobacco
-                                            </span>
+                                            <span>Alcohol, drugs or tobacco</span>
                                         </div>
-
                                         <div className="w-full h-full flex items-center relative">
-                                            <select class="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none">
+                                            <select
+                                                name="alcohol"
+                                                className="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none"
+                                                value={selections.alcohol}
+                                                onChange={handleSelectChange}
+                                            >
                                                 <option value="">Please select one</option>
                                                 <option value="0">0: No alcohol, tobacco, or drugs</option>
                                                 <option value="1">1: A few mentions of alcohol, tobacco, or drugs</option>
                                                 <option value="2">2: Implied or mild consumption of alcohol, tobacco, or drugs</option>
                                                 <option value="3">3: Depiction of moderate to excessive consumption of alcohol, tobacco, or drugs</option>
                                             </select>
-                                            <svg class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            <svg className="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </li>
-
                                     <li className="w-full h-[40px] flex items-center">
                                         <div className="min-w-[250px] h-full flex items-center">
-                                            <span>
-                                                Sensitive themes and topics
-                                            </span>
+                                            <span>Sensitive themes and topics</span>
                                         </div>
-
                                         <div className="w-full h-full flex items-center relative">
-                                            <select class="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none">
+                                            <select
+                                                name="sensitiveThemes"
+                                                className="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none"
+                                                value={selections.sensitiveThemes}
+                                                onChange={handleSelectChange}
+                                            >
                                                 <option value="">Please select one</option>
                                                 <option value="0">0: No sensitive themes or topics</option>
-                                                <option value="1">1: A few mentions of themes or topics such as self-harm, bullying or abuse</option>
+                                                <option value="1">1: A few mentions of themes or topics such as self-harm, bullying, or abuse</option>
                                                 <option value="2">2: Sensitive themes or topics such as self-harm, bullying, or abuse are mildly explored in some story arcs</option>
                                                 <option value="3">3: Sensitive themes such as self-harm, bullying, or abuse explored and are consistently present throughout the series</option>
                                             </select>
-                                            <svg class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            <svg className="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </li>
                                 </ul>
 
-                                <div className="w-full mt-3">
+                                <div className="mt-[60px]">
                                     <button
                                         className={`w-[35px] h-[35px] border-2 rounded-full ${isChecked ? 'bg-green-500 text-white' : ''}`}
                                         onClick={handleCheckboxClick}
                                     >
                                         <CheckIcon />
                                     </button>
-                                    <span className="ml-2">
-                                        I acknowledge that the assigned Content Rating of my series is
+                                    <span className="ml-2 font-semibold">
+                                        I acknowledge that the assigned Content Rating of my series is <span className="text-red-500"> {message} </span>
                                     </span>
                                 </div>
 
@@ -442,6 +484,7 @@ const SeriesPage = ({ goToEposodes }) => {
 
                             <div className="w-full pl-5 mt-[50px]">
                                 <button
+                                    onClick={goToEposodes}
                                     className={`w-[200px] h-[50px] ${isChecked ? 'bg-black' : 'bg-gray-200 cursor-not-allowed'} rounded-full shadow text-white font-semibold`}
                                     disabled={!isChecked}
                                 >
