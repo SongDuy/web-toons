@@ -373,23 +373,26 @@ const MyChannelPage = () => {
                                                 key={index}
                                                 className="relative w-[300px] h-[300px] text-black border bg-red-50 hover:bg-red-100 rounded flex justify-center items-center"
                                             >
-                                                {photo ? (
-                                                    <img
-                                                        src={photo}
-                                                        alt="Selected"
-                                                        className="w-full h-full object-cover rounded"
-                                                    />
-                                                ) : (
-                                                    <>
-                                                        <AddPhotoAlternateIcon sx={{ fontSize: 40 }} />
-                                                        <input
-                                                            type="file"
-                                                            accept="image/*"
-                                                            onChange={(e) => handlePhotoChange(e, index)}
-                                                            className="absolute inset-0 opacity-0 cursor-pointer"
+                                                {photo ?
+                                                    (
+                                                        <img
+                                                            src={photo}
+                                                            alt="Selected"
+                                                            className="w-full h-full object-cover rounded"
                                                         />
-                                                    </>
-                                                )}
+                                                    )
+                                                    :
+                                                    (
+                                                        <>
+                                                            <AddPhotoAlternateIcon sx={{ fontSize: 40 }} />
+                                                            <input
+                                                                type="file"
+                                                                accept="image/*"
+                                                                onChange={(e) => handlePhotoChange(e, index)}
+                                                                className="absolute inset-0 opacity-0 cursor-pointer"
+                                                            />
+                                                        </>
+                                                    )}
 
                                                 {/* Nút xóa */}
                                                 <button
