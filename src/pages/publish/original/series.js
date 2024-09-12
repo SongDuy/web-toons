@@ -113,7 +113,8 @@ const SeriesPage = ({ goToEposodes }) => {
                                 </div>
 
                                 <div className="w-[350px] border rounded shadow bg-red-100 flex items-center justify-center">
-                                    <div className="w-[200px] h-[200px] shadow border-2 bg-red-100 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group cursor-pointer">
+                                    {/* Nút tải ảnh đại diện cho series truyện */}
+                                    <button className="w-[200px] h-[200px] shadow border-2 bg-red-100 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
                                         <div>
                                             <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
                                                 <NorthIcon />
@@ -125,7 +126,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                                 Or drag the image file here.
                                             </span>
                                         </div>
-                                    </div>
+                                    </button>
                                 </div>
 
                                 <div className="w-full py-3">
@@ -152,7 +153,8 @@ const SeriesPage = ({ goToEposodes }) => {
                                 </div>
 
                                 <div className="w-[350px] shadow flex items-center justify-center">
-                                    <div className="w-[350px] h-[200px] shadow-md bg-red-100 rounded border hover:border-green-500 hover:text-gray-500 flex items-center justify-center group cursor-pointer">
+                                    {/* Nút tải ảnh nền */}
+                                    <button className="w-[350px] h-[200px] shadow-md bg-red-100 rounded border hover:border-green-500 hover:text-gray-500 flex items-center justify-center group cursor-pointer">
                                         <div>
                                             <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
                                                 <NorthIcon />
@@ -164,7 +166,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                                 Or drag the image file here.
                                             </span>
                                         </div>
-                                    </div>
+                                    </button>
                                 </div>
 
                                 <div className="w-full py-3">
