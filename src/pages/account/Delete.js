@@ -83,7 +83,7 @@ const Delete = () => {
                             </span>
                         </div>
 
-                        <div className="w-full mt-[60px] flex gap-2 items-center justify-center">
+                        <div className="w-full mt-[60px] flex gap-3 items-center justify-center">
                             <Link to={`/`}>
                                 <button className="w-[240px] h-[50px] bg-green-500 rounded-full shadow text-white font-semibold">
                                     Keep My Account
