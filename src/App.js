@@ -81,9 +81,6 @@ function App() {
           <Route path="/channel/my" element={<MyChannelPage />} />
           <Route path="/channel/creator" element={<CreatorChannelPage />} />
 
-          {/* Xóa tài khoản */}
-          <Route path="/account/delete" element={<DeletePage />} />
-
           {/* Trang thanh toán */}
           <Route path="/payment" element={<PaymentPage />} />
 
@@ -92,7 +89,6 @@ function App() {
 
           {/* Trang quên mật khẩu */}
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-
 
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/terms/privacyPolicy" element={<PrivacyPolicy />} />
@@ -105,6 +101,8 @@ function App() {
         {/* Trang chỉ đăng nhập mới sử dụng được của user*/}
         <Route element={<AuthProvider><Layout /></AuthProvider>}>
           <Route path="/account" element={<AuthProvider><Account /> </AuthProvider>} />
+          {/* Xóa tài khoản */}
+          <Route path="/account/delete" element={<DeletePage />} />
           <Route path="/mycomment" element={<Comment />} />
           <Route path="/subscribed" element={<Subscribed />} />
           <Route path="/creators" element={<Creators />} />

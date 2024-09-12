@@ -6,6 +6,7 @@ import Select from '@mui/material/Select';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import NorthIcon from '@mui/icons-material/North';
+import CheckIcon from '@mui/icons-material/Check';
 
 const dataListGenre = [
     { id: 1, name: "DRAMA", translatedName: "(드라마)" },
@@ -63,6 +64,13 @@ const SeriesPage = ({ goToEposodes }) => {
         if (inputValueSummary.length <= 500) { // Giới hạn số ký tự nhập vào là 500
             setValueSummary(inputValueSummary);
         }
+    };
+
+    // Nhấn vào ô check đồng ý
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleCheckboxClick = () => {
+        setIsChecked(!isChecked);
     };
 
     return (
@@ -290,37 +298,92 @@ const SeriesPage = ({ goToEposodes }) => {
                             </div>
 
                             <div className="w-full py-3 pl-5">
-                                <ul className="grid grid-cols-1 gap-1">
-                                    <li className="w-full">
-                                        kk
+                                <ul className="grid grid-cols-1 gap-4">
+                                    <li className="w-full h-[40px] flex items-center">
+                                        <div className="min-w-[250px] h-full flex items-center">
+                                            <span>
+                                                Violent and graphic content
+                                            </span>
+                                        </div>
+                                        <div className="w-full h-full border-2 flex items-center">
+                                            k
+                                        </div>
                                     </li>
 
-                                    <li className="w-full">
-                                        mmm
+                                    <li className="w-full h-[40px] flex items-center">
+                                        <div className="min-w-[250px] h-full flex items-center">
+                                            <span>
+                                                Nudity
+                                            </span>
+                                        </div>
+                                        <div className="w-full h-full border-2 flex items-center">
+                                            k
+                                        </div>
                                     </li>
 
-                                    <li className="w-full">
-
+                                    <li className="w-full h-[40px] flex items-center">
+                                        <div className="min-w-[250px] h-full flex items-center">
+                                            <span>
+                                                Sexual content
+                                            </span>
+                                        </div>
+                                        <div className="w-full h-full border-2 flex items-center">
+                                            k
+                                        </div>
                                     </li>
 
-                                    <li className="w-full">
-
+                                    <li className="w-full h-[40px] flex items-center">
+                                        <div className="min-w-[250px] h-full flex items-center">
+                                            <span>
+                                                Profanity
+                                            </span>
+                                        </div>
+                                        <div className="w-full h-full border-2 flex items-center">
+                                            k
+                                        </div>
                                     </li>
 
-                                    <li className="w-full">
-
+                                    <li className="w-full h-[40px] flex items-center">
+                                        <div className="min-w-[250px] h-full flex items-center">
+                                            <span>
+                                                Alcohol, drugs or tobacco
+                                            </span>
+                                        </div>
+                                        <div className="w-full h-full border-2 flex items-center">
+                                            k
+                                        </div>
                                     </li>
 
-                                    <li className="w-full">
-
+                                    <li className="w-full h-[40px] flex items-center">
+                                        <div className="min-w-[250px] h-full flex items-center">
+                                            <span>
+                                                Sensitive themes and topics
+                                            </span>
+                                        </div>
+                                        <div className="w-full h-full border-2 flex items-center">
+                                            k
+                                        </div>
                                     </li>
                                 </ul>
+
+                                <div className="w-full mt-3">
+                                    <button
+                                        className={`w-[35px] h-[35px] border-2 rounded-full ${isChecked ? 'bg-green-500 text-white' : ''}`}
+                                        onClick={handleCheckboxClick}
+                                    >
+                                        <CheckIcon />
+                                    </button>
+                                    <span className="ml-2">
+                                    I acknowledge that the assigned Content Rating of my series is
+                                    </span>
+                                </div>
+
                             </div>
 
-                            <div className="w-full py-3 pl-5">
+                            <div className="w-full pl-5 mt-[50px]">
                                 <button
-                                    onClick={goToEposodes}
-                                    className="w-[200px] h-[50px] flex items-center justify-center pl-3 gap-5 bg-green-500 text-white text-[18px] font-semibold rounded-full"
+                                    className={`w-[200px] h-[50px] ${isChecked ? 'bg-black' : 'bg-gray-200 cursor-not-allowed'} rounded-full shadow text-white font-semibold`}
+                                    disabled={!isChecked}
                                 >
                                     Create Series
                                     <NavigateNextIcon />
