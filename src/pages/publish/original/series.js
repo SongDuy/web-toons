@@ -290,28 +290,28 @@ const SeriesPage = ({ goToEposodes }) => {
                             </div>
 
                             <div className="w-full py-3 pl-5">
-                                <ul className="">
-                                    <li className="">
+                                <ul className="grid grid-cols-1 gap-1">
+                                    <li className="w-full">
+                                        kk
+                                    </li>
+
+                                    <li className="w-full">
+                                        mmm
+                                    </li>
+
+                                    <li className="w-full">
 
                                     </li>
 
-                                    <li className="">
+                                    <li className="w-full">
 
                                     </li>
 
-                                    <li className="">
+                                    <li className="w-full">
 
                                     </li>
 
-                                    <li className="">
-
-                                    </li>
-
-                                    <li className="">
-
-                                    </li>
-
-                                    <li className="">
+                                    <li className="w-full">
 
                                     </li>
                                 </ul>
