@@ -40,16 +40,20 @@ const dataListAge = [
 ];
 
 const SeriesPage = ({ goToEposodes }) => {
-    const [genre, setGenre] = React.useState('');
-    const handleChangeGenre = (event) => {
-        setGenre(event.target.value);
+
+    // thể loại 1
+    const [genre1, setGenre1] = React.useState('');
+    const handleChangeGenre1 = (event) => {
+        setGenre1(event.target.value);
     };
 
-    const [age, setAge] = React.useState('');
-    const handleChangeAge = (event) => {
-        setAge(event.target.value);
+    // thể loại 2
+    const [genre2, setGenre2] = React.useState('');
+    const handleChangeGenre2 = (event) => {
+        setGenre2(event.target.value);
     };
 
+    // Tiêu đề
     const [valueTitle, setValueTile] = useState('');
     const handleTitle = (event) => {
         const inputValueTitle = event.target.value;
@@ -58,6 +62,7 @@ const SeriesPage = ({ goToEposodes }) => {
         }
     };
 
+    // Mô tả
     const [valueSummary, setValueSummary] = useState('');
     const handleSummary = (event) => {
         const inputValueSummary = event.target.value;
@@ -74,7 +79,7 @@ const SeriesPage = ({ goToEposodes }) => {
                 <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
                     <ul className="flex gap-10">
                         <li className="uppercase font-semibold cursor-pointer text-md flex items-center justify-center">
-                            <div className="w-[40px] h-[40px] bg-gradient-to-t from-yellow-300 via-yellow-400 to-yellow-500 rounded-full border flex items-center justify-center mx-2">
+                            <div className="w-[40px] h-[40px] bg-green-500 rounded-full border flex items-center justify-center mx-2">
                                 <span className="mx-3 text-2xl text-white font-bold">
                                     1
                                 </span>
@@ -184,18 +189,18 @@ const SeriesPage = ({ goToEposodes }) => {
                             <div className="w-full py-3 pl-5 flex">
                                 <div className="w-full">
                                     <span className="w-full font-semibold text-xl">
-                                        Genre
+                                        Genre 1
                                     </span>
 
                                     <FormControl className="w-full">
                                         <Select
-                                            value={genre}
-                                            onChange={handleChangeGenre}
+                                            value={genre1}
+                                            onChange={handleChangeGenre1}
                                             displayEmpty
                                             className="w-full h-[40px] bg-white mt-3 rounded-md"
                                         >
                                             <MenuItem value="">
-                                                Select Genre
+                                                Select
                                             </MenuItem>
                                             {/* khung nội dung */}
                                             {dataListGenre.map(item => (
@@ -214,24 +219,24 @@ const SeriesPage = ({ goToEposodes }) => {
 
                                 <div className="w-full ml-5">
                                     <span className="w-full font-semibold text-xl">
-                                        Age
+                                        Genre 2
                                     </span>
                                     <FormControl className="w-full">
                                         <Select
-                                            value={age}
-                                            onChange={handleChangeAge}
+                                            value={genre2}
+                                            onChange={handleChangeGenre2}
                                             displayEmpty
                                             className="w-full h-[40px] bg-white mt-3 rounded-md"
                                         >
                                             <MenuItem value="">
-                                                Select Age
+                                                Select
                                             </MenuItem>
-                                            {dataListAge.map(item => (
+                                            {dataListGenre.map(item => (
                                                 <MenuItem
                                                     key={item.id}
-                                                    value={item.age}
+                                                    value={item.name}
                                                 >
-                                                    {item.age} {item.translatedName}
+                                                    {item.name} {item.translatedName}
                                                 </MenuItem>
                                             ))}
                                         </Select>
@@ -306,7 +311,10 @@ const SeriesPage = ({ goToEposodes }) => {
                             </div>
 
                             <div className="w-full py-3 pl-5">
-                                <button onClick={goToEposodes} className="w-[200px] h-[50px] flex items-center justify-center pl-3 gap-5 bg-gradient-to-t from-yellow-300 via-yellow-400 to-yellow-500 text-white text-[18px] font-semibold rounded-full">
+                                <button
+                                    onClick={goToEposodes}
+                                    className="w-[200px] h-[50px] flex items-center justify-center pl-3 gap-5 bg-green-500 text-white text-[18px] font-semibold rounded-full"
+                                >
                                     Create Series
                                     <NavigateNextIcon />
                                 </button>
