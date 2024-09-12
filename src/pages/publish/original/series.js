@@ -305,8 +305,18 @@ const SeriesPage = ({ goToEposodes }) => {
                                                 Violent and graphic content
                                             </span>
                                         </div>
-                                        <div className="w-full h-full border-2 flex items-center">
-                                            k
+
+                                        <div className="w-full h-full flex items-center relative">
+                                            <select class="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none">
+                                                <option value="">Please select one</option>
+                                                <option value="0">0: No violence, blood or gore</option>
+                                                <option value="1">1: Mild or fantasy blood in a few episodes</option>
+                                                <option value="2">2: Violent themes with moderate blood or gore</option>
+                                                <option value="3">3: Detailed violence, blood or gore</option>
+                                            </select>
+                                            <svg class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
                                         </div>
                                     </li>
 
@@ -316,8 +326,18 @@ const SeriesPage = ({ goToEposodes }) => {
                                                 Nudity
                                             </span>
                                         </div>
-                                        <div className="w-full h-full border-2 flex items-center">
-                                            k
+
+                                        <div className="w-full h-full flex items-center relative">
+                                            <select class="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none">
+                                                <option value="">Please select one</option>
+                                                <option value="0">0: No nudity (partial and full) </option>
+                                                <option value="1">1: Some characters in minimal clothing (eg. bathing suit, lingerie), non sexual themes</option>
+                                                <option value="2">2: Comedic nudity with strategic censoring</option>
+                                                <option value="3">3: Fan-service panels (ie. minimal clothing in sexual posing). Sexually suggestive themes </option>
+                                            </select>
+                                            <svg class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
                                         </div>
                                     </li>
 
@@ -327,8 +347,18 @@ const SeriesPage = ({ goToEposodes }) => {
                                                 Sexual content
                                             </span>
                                         </div>
-                                        <div className="w-full h-full border-2 flex items-center">
-                                            k
+
+                                        <div className="w-full h-full flex items-center relative">
+                                            <select class="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none">
+                                                <option value="">Please select one</option>
+                                                <option value="0">0: No sexual content or themes</option>
+                                                <option value="1">1: Mild sexual themes</option>
+                                                <option value="2">2: Sexual content or innuendos in a few episodes</option>
+                                                <option value="3">3: Sexual content and sexually suggestive themes throughout series</option>
+                                            </select>
+                                            <svg class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
                                         </div>
                                     </li>
 
@@ -338,8 +368,18 @@ const SeriesPage = ({ goToEposodes }) => {
                                                 Profanity
                                             </span>
                                         </div>
-                                        <div className="w-full h-full border-2 flex items-center">
-                                            k
+
+                                        <div className="w-full h-full flex items-center relative">
+                                            <select class="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none">
+                                                <option value="">Please select one</option>
+                                                <option value="0">0: No profanity</option>
+                                                <option value="1">1: Fully censored profanity (eg. #$%^) in a few episodes </option>
+                                                <option value="2">2: Uncensored or partially censored profanity in a few episodes</option>
+                                                <option value="3">3: Uncensored profanity throughout series</option>
+                                            </select>
+                                            <svg class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
                                         </div>
                                     </li>
 
@@ -349,8 +389,18 @@ const SeriesPage = ({ goToEposodes }) => {
                                                 Alcohol, drugs or tobacco
                                             </span>
                                         </div>
-                                        <div className="w-full h-full border-2 flex items-center">
-                                            k
+
+                                        <div className="w-full h-full flex items-center relative">
+                                            <select class="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none">
+                                                <option value="">Please select one</option>
+                                                <option value="0">0: No alcohol, tobacco, or drugs</option>
+                                                <option value="1">1: A few mentions of alcohol, tobacco, or drugs</option>
+                                                <option value="2">2: Implied or mild consumption of alcohol, tobacco, or drugs</option>
+                                                <option value="3">3: Depiction of moderate to excessive consumption of alcohol, tobacco, or drugs</option>
+                                            </select>
+                                            <svg class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
                                         </div>
                                     </li>
 
@@ -360,8 +410,18 @@ const SeriesPage = ({ goToEposodes }) => {
                                                 Sensitive themes and topics
                                             </span>
                                         </div>
-                                        <div className="w-full h-full border-2 flex items-center">
-                                            k
+
+                                        <div className="w-full h-full flex items-center relative">
+                                            <select class="w-full h-full border-2 px-4 rounded-md focus:outline-none appearance-none">
+                                                <option value="">Please select one</option>
+                                                <option value="0">0: No sensitive themes or topics</option>
+                                                <option value="1">1: A few mentions of themes or topics such as self-harm, bullying or abuse</option>
+                                                <option value="2">2: Sensitive themes or topics such as self-harm, bullying, or abuse are mildly explored in some story arcs</option>
+                                                <option value="3">3: Sensitive themes such as self-harm, bullying, or abuse explored and are consistently present throughout the series</option>
+                                            </select>
+                                            <svg class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
                                         </div>
                                     </li>
                                 </ul>
@@ -374,7 +434,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                         <CheckIcon />
                                     </button>
                                     <span className="ml-2">
-                                    I acknowledge that the assigned Content Rating of my series is
+                                        I acknowledge that the assigned Content Rating of my series is
                                     </span>
                                 </div>
 
