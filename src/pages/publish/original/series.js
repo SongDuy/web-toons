@@ -129,7 +129,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                 </span>
                             </div>
                             <span className="text-black">
-                                SERIES
+                                SERIES ORIGINAL
                             </span>
                         </li>
                         <li className="uppercase font-semibold text-md flex items-center justify-center">
@@ -144,7 +144,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                 </span>
                             </div>
                             <span className="text-gray-400">
-                                EPISODES
+                                ORIGINAL EPISODES
                             </span>
                         </li>
                     </ul>

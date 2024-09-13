@@ -46,7 +46,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                 </span>
                             </div>
                             <span className="text-gray-400">
-                                SERIES
+                                SERIES ORIGINAL
                             </span>
                         </li>
                         <li className="uppercase font-semibold text-md flex items-center justify-center">
@@ -61,7 +61,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                 </span>
                             </div>
                             <span className="text-black">
-                                EPISODES
+                                ORIGINAL EPISODES
                             </span>
                         </li>
                     </ul>
@@ -74,7 +74,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                             <div className="w-[220px] h-full">
                                 <div className="w-full py-3">
                                     <span className="w-full font-semibold text-xl">
-                                        Thumbnail
+                                        Episode Thumbnail
                                     </span>
                                 </div>
 
