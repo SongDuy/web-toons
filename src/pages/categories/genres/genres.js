@@ -87,7 +87,7 @@ const GenresPage = () => {
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
 
-    // Mở và đóng modal genre list
+    // Mở và đóng modal originals genre list
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
 
