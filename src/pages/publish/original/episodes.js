@@ -47,7 +47,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                             <div className="w-[220px] h-full">
                                 <div className="w-full py-3">
                                     <span className="w-full font-semibold text-xl">
-                                        Square Thumbnail
+                                        Thumbnail
                                     </span>
                                 </div>
 
@@ -67,14 +67,17 @@ const EpisodesPage = ({ goToPreviousStep }) => {
 
                                 <div className="w-full py-3">
                                     <span className="block w-full font-semibold text-sm text-gray-500">
-                                        Image size must be 1080x1080.
+                                        Recommended size is 160x151.
                                     </span>
                                     <span className="block w-full font-semibold text-sm text-gray-500">
-                                        Image must be less than 500KB.
+                                        Image must be less than 500kb.
                                     </span>
 
                                     <span className="block w-full font-semibold text-sm text-gray-500">
-                                        Only JPG, JPEG, and PNG formats are allowed.
+                                        Only JPG, JPEG, and PNG
+                                        formats are allowed. File name
+                                        can only be in English letters
+                                        and numbers.
                                     </span>
 
 
@@ -139,7 +142,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
 
                             <div className="w-[300px] py-3 pl-5 ml-auto mr-auto">
                                 <button className="w-full bg-gray-400 text-white font-bold py-2 px-4 rounded ml-auto mr-auto">
-                                    Send 
+                                    Send
                                 </button>
                             </div>
                         </div>
