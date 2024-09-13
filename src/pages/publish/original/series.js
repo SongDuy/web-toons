@@ -137,7 +137,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                 <ArrowForwardIosIcon />
                             </span>
                         </li>
-                        <li className="uppercase font-semibold cursor-pointer text-md flex items-center justify-center">
+                        <li className="uppercase font-semibold text-md flex items-center justify-center">
                             <div className="w-[40px] h-[40px] bg-gray-500 rounded-full border flex items-center justify-center mx-2">
                                 <span className="mx-3 text-2xl text-white font-bold">
                                     2
