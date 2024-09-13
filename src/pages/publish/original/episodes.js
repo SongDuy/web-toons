@@ -133,6 +133,13 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                     </span>
                                 </div>
 
+                                {/* Phần pro tips */}
+                                <div className="w-full">
+                                    <h1 className="w-full font-semibold text-xl">
+                                        PRO TIPS
+                                    </h1>
+                                </div>
+
                                 {/* Phần hiệu chỉnh comment */}
                                 <div className="w-full">
                                     <h1 className="w-full font-semibold text-xl">
