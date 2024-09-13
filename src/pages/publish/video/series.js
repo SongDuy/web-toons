@@ -48,7 +48,7 @@ const SeriesPage = ({ goToEposodes }) => {
         setGenre2(event.target.value);
     };
 
-    // Tiêu đề
+    // Tiêu đề video
     const [valueTitle, setValueTile] = useState('');
     const handleTitle = (event) => {
         const inputValueTitle = event.target.value;
@@ -57,7 +57,7 @@ const SeriesPage = ({ goToEposodes }) => {
         }
     };
 
-    // Mô tả
+    // Mô tả video
     const [valueSummary, setValueSummary] = useState('');
     const handleSummary = (event) => {
         const inputValueSummary = event.target.value;
@@ -66,7 +66,7 @@ const SeriesPage = ({ goToEposodes }) => {
         }
     };
 
-    // Nhấn nút check để kiểm tra độ tuổi truyện
+    // Nhấn nút check để kiểm tra độ tuổi video
     const [isChecked, setIsChecked] = useState(false);
 
     const [selections, setSelections] = useState({
@@ -89,7 +89,7 @@ const SeriesPage = ({ goToEposodes }) => {
         }
     };
 
-    // lưu độ tuổi truyện
+    // lưu độ tuổi video
     const [isAge, setIsAge] = useState('');
 
     // Sử dụng useEffect để cập nhật isAge mỗi khi selections thay đổi
@@ -155,7 +155,7 @@ const SeriesPage = ({ goToEposodes }) => {
                         {/* Phần cột bên trái */}
                         <div className="w-[380px] h-full">
 
-                            {/* Phần tải ảnh đại diện cho series */}
+                            {/* Phần tải ảnh đại diện cho series video */}
                             <div className="w-full h-full">
                                 <div className="w-full py-3">
                                     <span className="w-full font-semibold text-xl">
@@ -164,7 +164,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                 </div>
 
                                 <div className="w-[350px] flex items-center justify-center">
-                                    {/* Nút tải ảnh đại diện cho series truyện */}
+                                    {/* Nút tải ảnh đại diện cho series video */}
                                     <button className="w-[200px] h-[200px] shadow bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
                                         <div>
                                             <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
@@ -196,7 +196,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                 </div>
                             </div>
 
-                            {/* Phần tải ảnh nền cho series */}
+                            {/* Phần tải ảnh nền cho series video */}
                             <div className="w-full h-full ">
                                 <div className="w-full py-3">
                                     <span className="w-full font-semibold text-xl">
@@ -205,7 +205,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                 </div>
 
                                 <div className="w-[350px] shadow flex items-center justify-center">
-                                    {/* Nút tải ảnh nền */}
+                                    {/* Nút tải ảnh nền cho serise video*/}
                                     <button className="w-[350px] h-[200px] shadow bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
                                         <div>
                                             <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
@@ -296,7 +296,7 @@ const SeriesPage = ({ goToEposodes }) => {
 
                             </div>
 
-                            {/* Phần tiêu đề series truyện  */}
+                            {/* Phần tiêu đề series video  */}
                             <div className="w-full py-3 pl-5">
                                 <h1 className="w-full font-semibold text-xl">
                                     Series title
@@ -310,7 +310,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                 />
                             </div>
 
-                            {/* Phần mô tả series truyện  */}
+                            {/* Phần mô tả series video  */}
                             <div className="w-full py-3 pl-5">
                                 <h1 className="w-full font-semibold text-xl">
                                     Summary
@@ -348,7 +348,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                 </div>
                             </div>
 
-                            {/* Phần chọn nội dung truyện buộc chọn xong mới có thể nhấn nút check*/}
+                            {/* Phần chọn nội dung video buộc chọn xong mới có thể nhấn nút check*/}
                             <div className="w-full py-3 pl-5">
                                 {/* Khi chọn xong nội dung các ô thì sẽ trả về độ tuổi truyện */}
                                 <ul className="grid grid-cols-1 gap-4">
@@ -602,7 +602,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                     </li>
                                 </ul>
 
-                                {/* Khi chọn xong mới nhấn được check để qua phần tải tập truyện  */}
+                                {/* Khi chọn xong mới nhấn được check để qua phần tải tập video  */}
                                 <div className="mt-[60px]">
                                     <button
                                         className={`w-[35px] h-[35px] border-2 rounded-full ${Object.values(selections).every(value => value !== '') ? (isChecked ? 'bg-green-500 text-white' : 'bg-gray-300') : 'bg-gray-300'}`}
@@ -618,7 +618,7 @@ const SeriesPage = ({ goToEposodes }) => {
 
                             </div>
 
-                            {/* Nút để qua tập truyện */}
+                            {/* Nút để qua tập video */}
                             <div className="w-full pl-5 mt-[50px]">
                                 <button
                                     onClick={goToEposodes}

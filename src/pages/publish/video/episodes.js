@@ -71,6 +71,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                     <div className="w-full h-full py-5 flex">
                         <div className="w-3/12 h-full">
 
+                            {/* Phần tải ảnh cho tập video */}
                             <div className="w-[220px] h-full">
                                 <div className="w-full py-3">
                                     <span className="w-full font-semibold text-xl">
