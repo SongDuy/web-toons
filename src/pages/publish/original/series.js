@@ -622,7 +622,7 @@ const SeriesPage = ({ goToEposodes }) => {
                             <div className="w-full pl-5 mt-[50px]">
                                 <button
                                     onClick={goToEposodes}
-                                    className={`w-[200px] h-[50px] ${isChecked ? 'bg-black' : 'bg-gray-200 cursor-not-allowed'} rounded-full shadow text-white font-semibold`}
+                                    className={`w-[200px] h-[50px] ${isChecked ? 'bg-green-500' : 'bg-gray-200 cursor-not-allowed'} rounded-full shadow text-white font-semibold`}
                                     disabled={!isChecked}
                                 >
                                     Create Series

@@ -1,14 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import NorthIcon from '@mui/icons-material/North';
 
+import Radio from '@mui/material/Radio';
+
 const EpisodesPage = ({ goToPreviousStep }) => {
+
+    // hàm material nút chọn ở mục comment
+    const [selectedValue, setSelectedValue] = React.useState('Enable');
+
+    const handleChange = (event) => {
+        setSelectedValue(event.target.value);
+    };
+
+    // Tiêu đề tập truyện
+    const [valueEpisodeTitle, setValueEpisodeTitle] = useState('');
+    const handleEpisodeTitle = (event) => {
+        const inputValueEpisodeTitle = event.target.value;
+        if (inputValueEpisodeTitle.length <= 60) { // Giới hạn số ký tự nhập vào là 60
+            setValueEpisodeTitle(inputValueEpisodeTitle);
+        }
+    };
+
+    // Ghi chú của tác giả
+    const [valueNote, setValueNote] = useState('');
+    const handleNote = (event) => {
+        const inputValueNote = event.target.value;
+        if (inputValueNote.length <= 400) { // Giới hạn số ký tự nhập vào là 400
+            setValueNote(inputValueNote);
+        }
+    };
 
     return (
         <div>
 
-            <div className="w-full h-full bg-gray-100">
+            <div className="w-full h-full bg-gray-100 pb-10">
 
                 <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
                     <ul className="flex gap-10">
@@ -87,7 +114,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
 
                         <div className="w-9/12 h-full ">
 
-                            <div className="w-full py-3 pl-5 grid grid-cols-1 gap-5">
+                            <div className="w-full py-3 pl-5 grid grid-cols-1 gap-5 border-b-2 pb-10">
 
                                 {/* Tiêu đề của series */}
                                 <div className="w-full flex items-center gap-2">
@@ -102,6 +129,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
 
                                 {/* Tiêu để của tập truyện */}
                                 <div className="w-full">
+                                    {/* Tiêu đề */}
                                     <h1 className="w-full font-semibold text-xl">
                                         Episode title
                                     </h1>
@@ -111,46 +139,142 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                         </button>
                                         <input
                                             className="w-full h-[40px] px-2 border-r-2 border-t-2 border-b-2 outline-none bg-white"
+                                            placeholder="Less than 60 characters"
+                                            value={valueEpisodeTitle}
+                                            onChange={handleEpisodeTitle}
                                         />
 
                                     </div>
                                 </div>
 
                                 {/* Phần tải nội dung tập truyện */}
-                                <div className="w-full">
+                                <div className="w-full grid grid-cols-1 gap-4">
+                                    {/* Tiêu đề */}
                                     <h1 className="w-full font-semibold text-xl">
                                         Upload file
                                     </h1>
+
+                                    {/* Nút tải file */}
+                                    <div className="flex gap-3">
+                                        <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
+                                            Select File To Upload
+                                        </button>
+
+                                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                                            Delete All
+                                        </button>
+                                    </div>
+
+                                    {/* Phần hiện nội dung tải lên*/}
+                                    <div className="h-[500px] bg-white flex items-center justify-center">
+                                        <span className="font-semibold text-gray-500">
+                                            drag and drop image files
+                                        </span>
+                                    </div>
+
+                                    {/* Phần mô tả */}
+                                    <div className="w-full grid grid-cols-1">
+                                        <span className="text-gray-500">
+                                            The system will automatically slice and reduce image(s) that exceed the maximum dimensions, 800x1280px.
+                                        </span>
+                                        <span className="text-gray-500">
+                                            Images that exceed the maximum dimensions may be optimized in a number of ways. They may be sliced into multiple images,
+                                            the image quality may be dropped, the image dimensions may be reduced, and/or the file size and format may be changed.
+                                        </span>
+                                        <span className="text-gray-500">
+                                            The maximum file size for all sliced, resized, and unchanged images is 2MB. You can upload up to 20MB, 100 images in total.
+                                        </span>
+                                        <span className="text-gray-500">
+                                            If you do not want your image to be optimized in any way, please make sure to upload an image within 800x1280px,
+                                            and within the total file size limit.
+                                        </span>
+                                        <span className="text-gray-500">
+                                            Only JPG, JPEG, PNG formats are supported.
+                                        </span>
+                                    </div>
                                 </div>
 
                                 {/* Phần ghi chú của tác giả */}
-                                <div className="w-full flex items-center gap-2">
-                                    <h1 className="h-full font-semibold text-xl flex items-center">
-                                        Creator's note
-                                    </h1>
-                                    <span className="h-full text-gray-400 font-semibold flex items-center">
-                                        (Optional)
-                                    </span>
+                                <div>
+                                    <div className="w-full flex items-center gap-2">
+                                        {/* Tiêu đề */}
+                                        <h1 className="h-full font-semibold text-xl flex items-center">
+                                            Creator's note
+                                        </h1>
+                                        <span className="h-full text-gray-400 font-semibold flex items-center">
+                                            (Optional)
+                                        </span>
+                                    </div>
+
+                                    <div className="w-full">
+                                        <textarea
+                                            className="w-full h-[90px] mt-3 bg-white px-3 py-2"
+                                            placeholder="Less than 400 characters"
+                                            value={valueNote}
+                                            onChange={handleNote}
+                                        />
+
+                                    </div>
                                 </div>
 
                                 {/* Phần pro tips */}
                                 <div className="w-full">
+                                    {/* Tiêu đề */}
                                     <h1 className="w-full font-semibold text-xl">
                                         PRO TIPS
                                     </h1>
+
+                                    <div className="w-full h-[100px] flex items-center gap-3">
+                                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                                            Preview PC
+                                        </button>
+
+                                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                                            Preview Mobile
+                                        </button>
+
+                                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                                            Save Draft
+                                        </button>
+                                    </div>
                                 </div>
 
                                 {/* Phần hiệu chỉnh comment */}
-                                <div className="w-full">
-                                    <h1 className="w-full font-semibold text-xl">
+                                <div className="w-full flex items-center gap-10">
+                                    {/* Tiêu đề */}
+                                    <h1 className="h-full font-semibold text-xl flex items-center">
                                         Comments
                                     </h1>
+
+                                    <div className="flex gap-10 items-center">
+                                        <label className="flex items-center">
+                                            <Radio
+                                                checked={selectedValue === 'Enable'}
+                                                onChange={handleChange}
+                                                value="Enable"
+                                                name="radio-buttons"
+                                                sx={{ '& .MuiSvgIcon-root': { fontSize: 28, }, }}
+                                            />
+                                            <span>Enable</span>
+                                        </label>
+                                        <label className="flex items-center">
+                                            <Radio
+                                                checked={selectedValue === 'Disable'}
+                                                onChange={handleChange}
+                                                value="Disable"
+                                                name="radio-buttons"
+                                                sx={{ '& .MuiSvgIcon-root': { fontSize: 28, }, }}
+                                            />
+                                            <span>Disable</span>
+                                        </label>
+                                    </div>
+
                                 </div>
                             </div>
 
                             {/* Nút đăng tập truyện */}
-                            <div className="w-[300px] py-3 pl-5">
-                                <button className="w-[200px] h-[50px] bg-black text-white rounded-full shadow font-semibold py-2 px-4">
+                            <div className="w-full mt-10 py-3 pl-5">
+                                <button className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4">
                                     Publish episode
                                 </button>
                             </div>
