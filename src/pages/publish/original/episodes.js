@@ -88,6 +88,8 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                         <div className="w-9/12 h-full ">
 
                             <div className="w-full py-3 pl-5 grid grid-cols-1 gap-5">
+
+                                {/* Tiêu đề của series */}
                                 <div className="w-full flex items-center gap-2">
                                     <h1 className="font-semibold text-xl flex items-center">
                                         Series title :
@@ -98,6 +100,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                     </span>
                                 </div>
 
+                                {/* Tiêu để của tập truyện */}
                                 <div className="w-full">
                                     <span className="w-full font-semibold text-xl">
                                         Episode title
@@ -113,14 +116,17 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                     </div>
                                 </div>
 
+                                {/* Phần tải nội dung tập truyện */}
                                 <div className="w-full">
 
                                 </div>
 
+                                {/* Phần ghi chú của tác giả */}
                                 <div className="w-full">
 
                                 </div>
 
+                                {/* Phần hiệu chỉnh comment */}
                                 <div className="w-full">
 
                                 </div>

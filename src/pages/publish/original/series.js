@@ -119,6 +119,7 @@ const SeriesPage = ({ goToEposodes }) => {
 
             <div className="w-full h-full bg-gray-100">
 
+                {/* Phần tiêu đề mục */}
                 <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
                     <ul className="flex gap-10">
                         <li className="uppercase font-semibold cursor-pointer text-md flex items-center justify-center">
@@ -151,8 +152,10 @@ const SeriesPage = ({ goToEposodes }) => {
 
                 <div className="w-full h-full px-[160px]">
                     <div className="w-full h-full py-5 flex">
+                        {/* Phần cột bên trái */}
                         <div className="w-[380px] h-full">
 
+                            {/* Phần tải ảnh đại diện cho series */}
                             <div className="w-full h-full">
                                 <div className="w-full py-3">
                                     <span className="w-full font-semibold text-xl">
@@ -193,6 +196,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                 </div>
                             </div>
 
+                            {/* Phần tải ảnh nền cho series */}
                             <div className="w-full h-full ">
                                 <div className="w-full py-3">
                                     <span className="w-full font-semibold text-xl">
@@ -227,8 +231,10 @@ const SeriesPage = ({ goToEposodes }) => {
                             </div>
                         </div>
 
+                        {/* Phần cột bên phải */}
                         <div className="w-[820px] h-full grid grid-cols-1">
 
+                            {/* Phần chọn thể loại 1 */}
                             <div className="w-full py-3 pl-5 flex">
                                 <div className="w-full">
                                     <h1 className="w-full font-semibold text-xl">
@@ -260,6 +266,7 @@ const SeriesPage = ({ goToEposodes }) => {
 
                                 </div>
 
+                                {/* Phần chọn thể loại 2 */}
                                 <div className="w-full ml-5">
                                     <h1 className="w-full font-semibold text-xl">
                                         Genre 2
@@ -289,6 +296,7 @@ const SeriesPage = ({ goToEposodes }) => {
 
                             </div>
 
+                            {/* Phần tiêu đề series truyện  */}
                             <div className="w-full py-3 pl-5">
                                 <h1 className="w-full font-semibold text-xl">
                                     Series title
@@ -302,6 +310,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                 />
                             </div>
 
+                            {/* Phần mô tả series truyện  */}
                             <div className="w-full py-3 pl-5">
                                 <h1 className="w-full font-semibold text-xl">
                                     Summary
@@ -316,6 +325,7 @@ const SeriesPage = ({ goToEposodes }) => {
 
                             </div>
 
+                            {/* Phần hướng dẫn */}
                             <div className="w-full py-3 pl-5">
                                 <h1 className="w-full font-semibold text-xl">
                                     CONTENT RATING SELF ASSESSMENT
@@ -338,7 +348,9 @@ const SeriesPage = ({ goToEposodes }) => {
                                 </div>
                             </div>
 
+                            {/* Phần chọn nội dung truyện buộc chọn xong mới có thể nhấn nút check*/}
                             <div className="w-full py-3 pl-5">
+                                {/* Khi chọn xong nội dung các ô thì sẽ trả về độ tuổi truyện */}
                                 <ul className="grid grid-cols-1 gap-4">
                                     <li className="w-full h-[40px] flex items-center">
                                         <div className="min-w-[250px] h-full flex items-center">
@@ -590,6 +602,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                     </li>
                                 </ul>
 
+                                {/* Khi chọn xong mới nhấn được check để qua phần tải tập truyện  */}
                                 <div className="mt-[60px]">
                                     <button
                                         className={`w-[35px] h-[35px] border-2 rounded-full ${Object.values(selections).every(value => value !== '') ? (isChecked ? 'bg-green-500 text-white' : 'bg-gray-300') : 'bg-gray-300'}`}
@@ -605,6 +618,7 @@ const SeriesPage = ({ goToEposodes }) => {
 
                             </div>
 
+                            {/* Nút để qua tập truyện */}
                             <div className="w-full pl-5 mt-[50px]">
                                 <button
                                     onClick={goToEposodes}
