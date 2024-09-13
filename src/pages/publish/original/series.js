@@ -94,23 +94,36 @@ const SeriesPage = ({ goToEposodes }) => {
 
     // Sử dụng useEffect để cập nhật isAge mỗi khi selections thay đổi
     useEffect(() => {
-        const allZero = Object.values(selections).every(value => value === '0');
-        const anyOne = Object.values(selections).includes('1');
-        const anyTwo = Object.values(selections).includes('2');
-        const anyThree = Object.values(selections).includes('3');
-
-        if (Object.values(selections).includes('')) {
+        // Kiểm tra nếu tất cả các trường đều đã được chọn
+        if (Object.values(selections).some(value => value === '')) {
             setIsAge('Please complete the Self Assessment above to get the result.');
-        } else if (allZero) {
-            setIsAge('All Ages.');
-        } else if (anyOne) {
-            setIsAge('Teen.');
-        } else if (anyTwo) {
-            setIsAge('Young Adult.');
-        } else if (anyThree) {
-            setIsAge('Mature.');
-        } else {
-            setIsAge('Unrated');
+            return;
+        }
+
+        // Chuyển đổi giá trị thành số
+        const numericSelections = Object.values(selections)
+            .map(val => parseInt(val, 10))
+            .filter(val => !isNaN(val));
+
+        // Tìm giá trị cao nhất trong các trường selections
+        const maxSelectionValue = Math.max(...numericSelections);
+
+        // Dựa vào giá trị cao nhất để xác định isAge
+        switch (maxSelectionValue) {
+            case 0:
+                setIsAge('All Ages.');
+                break;
+            case 1:
+                setIsAge('Teen.');
+                break;
+            case 2:
+                setIsAge('Young Adult.');
+                break;
+            case 3:
+                setIsAge('Mature.');
+                break;
+            default:
+                setIsAge('Unrated');
         }
     }, [selections]);
 
