@@ -102,9 +102,9 @@ const EpisodesPage = ({ goToPreviousStep }) => {
 
                                 {/* Tiêu để của tập truyện */}
                                 <div className="w-full">
-                                    <span className="w-full font-semibold text-xl">
+                                    <h1 className="w-full font-semibold text-xl">
                                         Episode title
-                                    </span>
+                                    </h1>
                                     <div className="flex mt-3">
                                         <button className="w-[90px] h-[40px] border-2 bg-white flex items-center justify-center">
                                             1
@@ -118,20 +118,30 @@ const EpisodesPage = ({ goToPreviousStep }) => {
 
                                 {/* Phần tải nội dung tập truyện */}
                                 <div className="w-full">
-
+                                    <h1 className="w-full font-semibold text-xl">
+                                        Upload file
+                                    </h1>
                                 </div>
 
                                 {/* Phần ghi chú của tác giả */}
-                                <div className="w-full">
-
+                                <div className="w-full flex items-center gap-2">
+                                    <h1 className="h-full font-semibold text-xl flex items-center">
+                                        Creator's note
+                                    </h1>
+                                    <span className="h-full text-gray-400 font-semibold flex items-center">
+                                        (Optional)
+                                    </span>
                                 </div>
 
                                 {/* Phần hiệu chỉnh comment */}
                                 <div className="w-full">
-
+                                    <h1 className="w-full font-semibold text-xl">
+                                        Comments
+                                    </h1>
                                 </div>
                             </div>
 
+                            {/* Nút đăng tập truyện */}
                             <div className="w-[300px] py-3 pl-5">
                                 <button className="w-[200px] h-[50px] bg-black text-white rounded-full shadow font-semibold py-2 px-4">
                                     Publish episode
