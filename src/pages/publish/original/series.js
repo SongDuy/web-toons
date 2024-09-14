@@ -178,7 +178,7 @@ const SeriesPage = ({ goToEposodes }) => {
 
                                 <div className="w-[350px] flex items-center justify-center">
                                     {/* Nút tải ảnh đại diện cho series truyện */}
-                                    <button className="w-[200px] h-[200px] shadow bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
+                                    <button className="w-[200px] h-[200px] shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
                                         <div>
                                             <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
                                                 <NorthIcon />
@@ -219,7 +219,7 @@ const SeriesPage = ({ goToEposodes }) => {
 
                                 <div className="w-[350px] shadow flex items-center justify-center">
                                     {/* Nút tải ảnh nền */}
-                                    <button className="w-[350px] h-[200px] shadow bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
+                                    <button className="w-[350px] h-[200px] shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
                                         <div>
                                             <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
                                                 <NorthIcon />
