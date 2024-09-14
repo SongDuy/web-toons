@@ -20,7 +20,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SearchPage from "./search";
 import LoginPage from "../../../../src/pages/auth/login";
 import logo from "../../../img/logonew.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 import { auth } from "../../../common/themes/firebase";
 import { useDispatch, useSelector } from 'react-redux';
 import { getlanguage, setIsLoginModal } from "../../../common/store/hidden";
@@ -33,6 +33,8 @@ const HeaderPage = () => {
   const isLoginModal = useSelector(state => state.hidden.isLoginModal);
   const User = useSelector(state => state.AuthJs.User);
   const language = useSelector(state => state.hidden.language);
+
+  const location = useLocation();
 
   // Mở và đóng modal public 
   const [open, setOpen] = React.useState(false);
@@ -194,7 +196,7 @@ const HeaderPage = () => {
         <ul className="flex xs:gap-1 sm:gap-5">
           <Link to={`/originals`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/originals")
+              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${location.pathname.includes("/originals")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
@@ -204,7 +206,7 @@ const HeaderPage = () => {
           </Link>
           <Link to={`/videos`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/videos")
+              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${location.pathname.includes("/videos")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
@@ -214,7 +216,7 @@ const HeaderPage = () => {
           </Link>
           <Link to={`/genres`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/genres")
+              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${location.pathname.includes("/genres")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
@@ -224,7 +226,7 @@ const HeaderPage = () => {
           </Link>
           <Link to={`/popular`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${window.location.pathname.includes("/popular")
+              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${location.pathname.includes("/popular")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
@@ -247,7 +249,7 @@ const HeaderPage = () => {
             {/* Chức năng Publish */}
             < div className="z-10">
               <button
-                className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full shadow font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
+                className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
                 onClick={() => { openLoginModal(); handleCloseAccount(); }}
               >
                 {!language ? <span> Publish </span> : <span> 게시 </span>}
@@ -260,7 +262,7 @@ const HeaderPage = () => {
             <div className="flex items-center justify-center">
 
               <button
-                className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 border shadow border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
+                className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
                 onClick={() => { openLoginModal(); handleCloseAccount(); }}
               >
                 {!language ? <span> Log In </span> : <span> 로그인 </span>}
@@ -277,7 +279,7 @@ const HeaderPage = () => {
             {/* Menu Publish */}
             < div className="z-10">
               <button
-                className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full shadow font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
+                className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
                 ref={anchorRef}
                 id="composition-button"
                 aria-controls={open ? 'composition-menu' : undefined}
@@ -344,7 +346,7 @@ const HeaderPage = () => {
             <div className="flex items-center justify-center z-10">
 
               <button
-                className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 shadow bg-gray-50 hover:bg-gray-100 border border-gray-300 rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
+                className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
                 ref={anchorAccountRef}
                 id="composition-button"
                 aria-controls={openAccount ? 'composition-menu' : undefined}
@@ -444,7 +446,7 @@ const HeaderPage = () => {
           {/* Chức năng tìm kiếm */}
           <div className="w-full h-full">
             <button
-              className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 hover:bg-gray-100 border shadow rounded-full text-gray-500 flex items-center justify-center"
+              className="xs:w-[20px] sm:w-[35px] xs:h-[20px] sm:h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
               onClick={openSearchModal}
             >
               <SearchIcon sx={{ fontSize: 18 }} />
@@ -455,11 +457,11 @@ const HeaderPage = () => {
           {/* Nút chuyển ngữ */}
           <div className="w-full h-full">
             {!language ?
-              <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded shadow" onClick={() => dispatch(getlanguage())}>
+              <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => dispatch(getlanguage())}>
                 English
               </button>
               :
-              <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded shadow" onClick={() => dispatch(getlanguage())}>
+              <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => dispatch(getlanguage())}>
                 Korean
               </button>
             }

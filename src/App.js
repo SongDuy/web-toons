@@ -41,7 +41,7 @@ import Account from './pages/account/Account';
 import Comment from './pages/account/Comment';
 import Subscribed from './pages/account/Subscribed';
 import Creators from './pages/account/Creators';
-//import Delete from './pages/account/Delete';
+import DeletePage from './pages/account/Delete';
 import PaymentPage from './pages/payment/payment';
 import TermsOfUse from './pages/Policys/TermsOfUse';
 import PrivacyPolicy from './pages/Policys/PrivacyPolicy';
@@ -89,7 +89,6 @@ function App() {
           {/* Trang quên mật khẩu */}
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
-
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/terms/privacyPolicy" element={<PrivacyPolicy />} />
           <Route path="/terms/canvasPolicy" element={<CommunityPolicy />} />
@@ -101,7 +100,9 @@ function App() {
         {/* Trang chỉ đăng nhập mới sử dụng được của user*/}
         <Route element={<AuthProvider><Layout /></AuthProvider>}>
           <Route path="/account" element={<AuthProvider><Account /> </AuthProvider>} />
-          <Route path="/comments" element={<Comment />} />
+          {/* Xóa tài khoản */}
+          <Route path="/account/delete" element={<DeletePage />} />
+          <Route path="/mycomment" element={<Comment />} />
           <Route path="/subscribed" element={<Subscribed />} />
           <Route path="/creators" element={<Creators />} />
           <Route path="/channel/my" element={<MyChannelPage />} />

@@ -363,7 +363,7 @@ const MyChannelPage = () => {
                                         {photos.map((photo, index) => (
                                             <div
                                                 key={index}
-                                                className="relative w-[300px] h-[300px] text-black border bg-red-50 hover:bg-red-100 rounded flex justify-center items-center"
+                                                className="relative w-[300px] h-[300px] text-black border bg-gray-50 hover:bg-gray-100 rounded flex justify-center items-center"
                                             >
                                                 {photo ?
                                                     (
@@ -400,16 +400,16 @@ const MyChannelPage = () => {
                                     <div className="flex justify-end px-2">
                                         <button
                                             onClick={handleAddPhoto}
-                                            className="w-[120px] px-2 py-2 border font-semibold rounded bg-red-50 hover:bg-red-100 shadow"
+                                            className="w-[120px] px-2 py-2 border font-semibold rounded-full bg-gray-50 hover:bg-gray-100 shadow"
                                         >
-                                            {!language ? <span>Add Image</span> : <span>이미지 추가</span>}
+                                            {!language ? <span> Add Image</span> : <span>이미지 추가</span>}
                                         </button>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Đăng bài viết */}
-                            <div className="flex items-center justify-center">
+                            <div className="flex items-center justify-center mt-5">
                                 <button
                                     className="w-1/2 bg-gray-50 hover:bg-gray-100 border font-semibold shadow text-black py-2 mt-5 rounded"
                                     onClick={handlepost}
@@ -495,7 +495,7 @@ const MyChannelPage = () => {
                                         </div>
 
                                         {/* Hiện yêu thích bình luận */}
-                                        <div className="w-full pt-5 ">
+                                        <div className="w-full pt-5">
                                             <div className="mr-auto flex gap-2">
                                                 {/* Nhấn nút thả tim */}
                                                 {!iLike?.filter(like=>like[item.idpost])?.length>0 ?
