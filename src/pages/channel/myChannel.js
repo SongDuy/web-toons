@@ -534,7 +534,7 @@ const MyChannelPage = () => {
 
                                         </div>
 
-                                        {/* Phản hồi bình luận */}
+                                        {/* bình luận */}
                                         {commentPostId === item.id && (
                                             <div className="w-full px-5 pt-5">
 
@@ -607,7 +607,7 @@ const MyChannelPage = () => {
 
                                                                     {/* Phản hồi bình luận */}
                                                                     {replyCommentId === item.id && (
-                                                                        <div className="w-full px-5 ">
+                                                                        <div className="w-full pl-5 ">
 
                                                                             {/* Nhập bình luận phản hồi */}
                                                                             <div className="w-full h-full">

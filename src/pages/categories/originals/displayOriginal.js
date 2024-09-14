@@ -424,7 +424,7 @@ const DisplayOriginalPage = () => {
 
                                                     {/* Phản hồi bình luận */}
                                                     {replyCommentId === item.idcomment && (
-                                                        <div className="w-full px-5">
+                                                        <div className="w-full pl-5">
 
                                                             {/* Nhập bình luận phản hồi */}
                                                             <div className="w-full h-full">
@@ -445,7 +445,7 @@ const DisplayOriginalPage = () => {
                                                             </div>
 
                                                             {/* Hiển thị các phản hồi bình luận có sẳn */}
-                                                            {item.replies === 0 && (
+                                                            {item.replies >= 0 && (
                                                                 <div className="w-full h-full">
                                                                     {/* Danh sách phản hồi */}
                                                                     <ul className="w-full h-full">

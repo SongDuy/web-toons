@@ -189,14 +189,14 @@ const CreatorChannelPage = () => {
                             {!isFollow ?
                                 <button
                                     onClick={() => setIsFollow(true)}
-                                    className="w-[150px] h-[50px] font-semibold text-white bg-green-400 hover:bg-green-500 rounded-full"
+                                    className="w-[150px] h-[50px] font-semibold text-white bg-green-500 hover:bg-green-600 shadow  rounded-full"
                                 >
                                     {!language ? <span> Follow </span> : <span> 따르다 </span>}
                                 </button>
                                 :
                                 <button
                                     onClick={() => setIsFollow(false)}
-                                    className="w-[150px] h-[50px] font-semibold text-gray-400 bg-white hover:text-yellow-500 border-2 rounded-full"
+                                    className="w-[150px] h-[50px] font-semibold text-black bg-gray-50 hover:bg-gray-100 border-2 rounded-full"
                                 >
                                     {!language ? <span> Following </span> : <span> 수행원 </span>}
                                 </button>
@@ -492,7 +492,7 @@ const CreatorChannelPage = () => {
 
                                                                 {/* Phản hồi bình luận */}
                                                                 {replyCommentId === item.id && (
-                                                                    <div className="w-full px-5 ">
+                                                                    <div className="w-full pl-5 ">
 
                                                                         {/* Nhập bình luận phản hồi */}
                                                                         <div className="w-full h-full">
