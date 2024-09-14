@@ -137,7 +137,9 @@ const MyChannelPage = () => {
         }));
     };
 
-    const [photos, setPhotos] = useState([null]); // Lưu các ảnh đã chọn
+    // Lưu các ảnh đã chọn
+    const [photos, setPhotos] = useState([null, null]); // Bắt đầu với 2 ô ảnh rỗng
+
 
     // Thêm ô ảnh mới
     const handleAddPhoto = () => {
