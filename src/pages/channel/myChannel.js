@@ -138,7 +138,7 @@ const MyChannelPage = () => {
     };
 
     // Lưu các ảnh đã chọn
-    const [photos, setPhotos] = useState([null, null]); // Bắt đầu với 2 ô ảnh rỗng
+    const [photos, setPhotos] = useState([]); // Bắt đầu với 2 ô ảnh rỗng
 
 
     // Thêm ô ảnh mới
@@ -419,7 +419,7 @@ const MyChannelPage = () => {
                             </div>
 
                             {/* Đăng bài viết */}
-                            <div className="flex items-center justify-center">
+                            <div className="flex items-center justify-center mt-5">
                                 <button
                                     className="w-1/2 bg-gray-50 hover:bg-gray-100 border font-semibold shadow text-black py-2 mt-5 rounded"
                                 >
