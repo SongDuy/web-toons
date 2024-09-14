@@ -468,7 +468,7 @@ const MyChannelPage = () => {
                                         </div>
 
                                         {/* Hiển nội dung bài viết */}
-                                        <div className="py-3">
+                                        <div className="py-3 px-3">
                                             <p>{item.content}</p>
                                         </div>
 
@@ -501,7 +501,7 @@ const MyChannelPage = () => {
                                         </div>
 
                                         {/* Hiện yêu thích bình luận */}
-                                        <div className="w-full pt-5 ">
+                                        <div className="w-full pt-5">
                                             <div className="mr-auto flex gap-2">
                                                 {/* Nhấn nút thả tim */}
                                                 {!isLike ?
