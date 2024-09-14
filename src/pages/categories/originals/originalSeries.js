@@ -199,7 +199,7 @@ const handleRate=async (event, newValue) => {
                                         {comicid.title}
                                     </span>
 
-                                    <Link to="/channel/creator">
+                                    <Link to={`/channel/creator/${comicid.uid}`}>
                                         <div className="w-full flex items-center justify-center gap-2">
                                             <div className="w-[250px] px-2 rounded-md overflow-hidden flex items-center justify-center gap-2">
                                                 <span className="text-lg font-semibold text-yellow-500 hover:text-yellow-600 text-shadow-black line-clamp-1">

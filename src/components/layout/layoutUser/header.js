@@ -423,7 +423,7 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <MenuItem onClick={() => dispatch(logout())} className="flex gap-x-3">
+                          <MenuItem onClick={() =>{ dispatch(logout());window.location.reload()}} className="flex gap-x-3">
                             <LogoutIcon />
                             {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
                           </MenuItem>

@@ -11,7 +11,7 @@ const Nav = () => {
         <Link className={`h-[60px] uppercase font-semibold text-base ${location.pathname === '/Subscribed' ? "text-black border-b-2" : "text-gray-300 "}  border-b-black hover:text-black cursor-pointer flex items-center justify-center`} to="/Subscribed">
           SUBSCRIBED
         </Link>
-        <Link className={`h-[60px] uppercase font-semibold text-base ${location.pathname === '/comment' ? "text-black border-b-2" : "text-gray-300 "}  border-b-black hover:text-black cursor-pointer flex items-center justify-center`} to="/comment">
+        <Link className={`h-[60px] uppercase font-semibold text-base ${location.pathname === '/comments' ? "text-black border-b-2" : "text-gray-300 "}  border-b-black hover:text-black cursor-pointer flex items-center justify-center`} to="/comments">
           COMMENTS
         </Link>
 
