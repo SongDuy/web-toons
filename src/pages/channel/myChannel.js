@@ -409,7 +409,7 @@ const MyChannelPage = () => {
                                     <div className="flex justify-end px-2">
                                         <button
                                             onClick={handleAddPhoto}
-                                            className="w-[120px] px-2 py-2 border font-semibold rounded-full bg-red-50 hover:bg-red-100 shadow"
+                                            className="w-[120px] px-2 py-2 border font-semibold rounded bg-red-50 hover:bg-red-100 shadow"
                                         >
                                             {!language ? <span> Add Image</span> : <span>이미지 추가</span>}
                                         </button>
@@ -420,7 +420,7 @@ const MyChannelPage = () => {
                             {/* Đăng bài viết */}
                             <div className="flex items-center justify-center mt-5">
                                 <button
-                                    className="w-1/2 bg-gray-50 hover:bg-gray-100 border font-semibold shadow text-black py-2 mt-5 rounded-full"
+                                    className="w-1/2 bg-gray-50 hover:bg-gray-100 border font-semibold shadow text-black py-2 mt-5 rounded"
                                 >
                                     {!language ? <span>  Post Article </span> : <span> 기사 게시 </span>}
                                 </button>
