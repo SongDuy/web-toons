@@ -189,7 +189,7 @@ const MyChannelPage = () => {
 
                             {/* Nút thay ảnh Avatar */}
                             <div className="absolute bottom-0 right-0">
-                                <button className="w-[40px] h-[40px] border-2 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center">
+                                <button className="w-[40px] h-[40px] border-2 rounded-full shadow bg-white hover:bg-gray-100 flex items-center justify-center">
                                     <PhotoCameraIcon />
                                 </button>
                             </div>

@@ -111,16 +111,16 @@ const SeriesPage = ({ goToEposodes }) => {
         // Dựa vào giá trị cao nhất để xác định isAge
         switch (maxSelectionValue) {
             case 0:
-                setIsAge('All Ages.');
+                setIsAge('All Ages');
                 break;
             case 1:
-                setIsAge('Teen.');
+                setIsAge('Teen');
                 break;
             case 2:
-                setIsAge('Young Adult.');
+                setIsAge('Young Adult');
                 break;
             case 3:
-                setIsAge('Mature.');
+                setIsAge('Mature');
                 break;
             default:
                 setIsAge('Unrated');
@@ -365,10 +365,10 @@ const SeriesPage = ({ goToEposodes }) => {
                             <div className="w-full py-3 pl-5">
                                 {/* Khi chọn xong nội dung các ô thì sẽ trả về độ tuổi truyện */}
                                 <ul className="grid grid-cols-1 gap-4">
-                                    <li className="w-full h-[40px] flex items-center">
-                                        <div className="min-w-[250px] h-full flex items-center">
-                                            <span>Violent and graphic content</span>
-                                        </div>
+                                    <li className="w-full h-[50px] flex items-center">
+                                        <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                            Violent and graphic content
+                                        </h1>
 
                                         <FormControl className="w-full">
                                             <Select
@@ -376,7 +376,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                                 value={selections.violence}
                                                 onChange={handleSelectChange}
                                                 displayEmpty
-                                                className="w-full h-[40px] bg-white mt-3 rounded-md"
+                                                className="w-full h-[50px] bg-white mt-3 rounded-md"
                                                 MenuProps={{ PaperProps: { sx: { maxWidth: '300px', whiteSpace: 'normal', } } }}
                                             >
                                                 <MenuItem value="">
@@ -385,32 +385,32 @@ const SeriesPage = ({ goToEposodes }) => {
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="0" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         0: No violence, blood or gore
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="1" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         1: Mild or fantasy blood in a few episodes
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="2" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         2: Violent themes with moderate blood or gore
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="3" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         3: Detailed violence, blood or gore
                                                     </span>
                                                 </MenuItem>
                                             </Select>
                                         </FormControl>
                                     </li>
-                                    <li className="w-full h-[40px] flex items-center">
-                                        <div className="min-w-[250px] h-full flex items-center">
-                                            <span>Nudity</span>
-                                        </div>
+                                    <li className="w-full h-[50px] flex items-center">
+                                        <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                            Nudity
+                                        </h1>
 
                                         <FormControl className="w-full">
                                             <Select
@@ -418,7 +418,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                                 value={selections.nudity}
                                                 onChange={handleSelectChange}
                                                 displayEmpty
-                                                className="w-full h-[40px] bg-white mt-3 rounded-md"
+                                                className="w-full h-[50px] bg-white mt-3 rounded-md"
                                                 MenuProps={{ PaperProps: { sx: { maxWidth: '300px', whiteSpace: 'normal', } } }}
                                             >
                                                 <MenuItem value="">
@@ -427,32 +427,32 @@ const SeriesPage = ({ goToEposodes }) => {
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="0" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         0: No nudity (partial and full)
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="1" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         1: Some characters in minimal clothing (e.g., bathing suit, lingerie), non-sexual themes
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="2" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         2: Comedic nudity with strategic censoring
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="3" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         3: Fan-service panels (e.g., minimal clothing in sexual posing). Sexually suggestive themes
                                                     </span>
                                                 </MenuItem>
                                             </Select>
                                         </FormControl>
                                     </li>
-                                    <li className="w-full h-[40px] flex items-center">
-                                        <div className="min-w-[250px] h-full flex items-center">
-                                            <span>Sexual content</span>
-                                        </div>
+                                    <li className="w-full h-[50px] flex items-center">
+                                        <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                            Sexual content
+                                        </h1>
 
                                         <FormControl className="w-full">
                                             <Select
@@ -460,7 +460,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                                 value={selections.sexualContent}
                                                 onChange={handleSelectChange}
                                                 displayEmpty
-                                                className="w-full h-[40px] bg-white mt-3 rounded-md"
+                                                className="w-full h-[50px] bg-white mt-3 rounded-md"
                                                 MenuProps={{ PaperProps: { sx: { maxWidth: '300px', whiteSpace: 'normal', } } }}
                                             >
                                                 <MenuItem value="">
@@ -469,32 +469,32 @@ const SeriesPage = ({ goToEposodes }) => {
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="0" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         0: No sexual content or themes
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="1" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         1: Mild sexual themes
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="2" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         2: Sexual content or innuendos in a few episodes
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="3" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         3: Sexual content and sexually suggestive themes throughout series
                                                     </span>
                                                 </MenuItem>
                                             </Select>
                                         </FormControl>
                                     </li>
-                                    <li className="w-full h-[40px] flex items-center">
-                                        <div className="min-w-[250px] h-full flex items-center">
-                                            <span>Profanity</span>
-                                        </div>
+                                    <li className="w-full h-[50px] flex items-center">
+                                        <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                            Profanity
+                                        </h1>
 
                                         <FormControl className="w-full">
                                             <Select
@@ -502,7 +502,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                                 value={selections.profanity}
                                                 onChange={handleSelectChange}
                                                 displayEmpty
-                                                className="w-full h-[40px] bg-white mt-3 rounded-md"
+                                                className="w-full h-[50px] bg-white mt-3 rounded-md"
                                                 MenuProps={{ PaperProps: { sx: { maxWidth: '300px', whiteSpace: 'normal', } } }}
                                             >
                                                 <MenuItem value="">
@@ -510,28 +510,32 @@ const SeriesPage = ({ goToEposodes }) => {
                                                     Please select one
                                                 </MenuItem>
                                                 <MenuItem value="0" >
-                                                    <span className="whitespace-normal"></span>
-                                                    0: No profanity
+                                                    <span className="whitespace-normal text-red-500">
+                                                        0: No profanity
+                                                    </span>
                                                 </MenuItem>
                                                 <MenuItem value="1" >
-                                                    <span className="whitespace-normal"></span>
-                                                    1: Fully censored profanity (e.g., #$%^) in a few episodes
+                                                    <span className="whitespace-normal text-red-500">
+                                                        1: Fully censored profanity (e.g., #$%^) in a few episodes
+                                                    </span>
                                                 </MenuItem>
                                                 <MenuItem value="2" >
-                                                    <span className="whitespace-normal"></span>
-                                                    2: Uncensored or partially censored profanity in a few episodes
+                                                    <span className="whitespace-normal text-red-500">
+                                                        2: Uncensored or partially censored profanity in a few episodes
+                                                    </span>
                                                 </MenuItem>
                                                 <MenuItem value="3" >
-                                                    <span className="whitespace-normal"></span>
-                                                    3: Uncensored profanity throughout series
+                                                    <span className="whitespace-normal text-red-500">
+                                                        3: Uncensored profanity throughout series
+                                                    </span>
                                                 </MenuItem>
                                             </Select>
                                         </FormControl>
                                     </li>
-                                    <li className="w-full h-[40px] flex items-center">
-                                        <div className="min-w-[250px] h-full flex items-center">
-                                            <span>Alcohol, drugs or tobacco</span>
-                                        </div>
+                                    <li className="w-full h-[50px] flex items-center">
+                                        <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                            Alcohol, drugs or tobacco
+                                        </h1>
 
                                         <FormControl className="w-full">
                                             <Select
@@ -539,7 +543,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                                 value={selections.alcohol}
                                                 onChange={handleSelectChange}
                                                 displayEmpty
-                                                className="w-full h-[40px] bg-white mt-3 rounded-md"
+                                                className="w-full h-[50px] bg-white mt-3 rounded-md"
                                                 MenuProps={{ PaperProps: { sx: { maxWidth: '300px', whiteSpace: 'normal', } } }}
                                             >
                                                 <MenuItem value="">
@@ -548,32 +552,32 @@ const SeriesPage = ({ goToEposodes }) => {
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="0" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         0: No alcohol, tobacco, or drugs
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="1" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         1: A few mentions of alcohol, tobacco, or drugs
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="2" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         2: Implied or mild consumption of alcohol, tobacco, or drugs
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="3" >
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         3: Depiction of moderate to excessive consumption of alcohol, tobacco, or drugs
                                                     </span>
                                                 </MenuItem>
                                             </Select>
                                         </FormControl>
                                     </li>
-                                    <li className="w-full h-[40px] flex items-center">
-                                        <div className="min-w-[250px] h-full flex items-center">
-                                            <span>Sensitive themes and topics</span>
-                                        </div>
+                                    <li className="w-full h-[50px] flex items-center">
+                                        <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                            Sensitive themes and topics
+                                        </h1>
 
                                         <FormControl className="w-full">
                                             <Select
@@ -581,7 +585,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                                 value={selections.sensitiveThemes}
                                                 onChange={handleSelectChange}
                                                 displayEmpty
-                                                className="w-full h-[40px] bg-white mt-3 rounded-md"
+                                                className="w-full h-[50px] bg-white mt-3 rounded-md"
                                                 MenuProps={{ PaperProps: { sx: { maxWidth: '300px', whiteSpace: 'normal', } } }}
                                             >
                                                 <MenuItem value="">
@@ -590,22 +594,22 @@ const SeriesPage = ({ goToEposodes }) => {
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="0">
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         0: No sensitive themes or topics
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="1">
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         1: A few mentions of themes or topics such as self-harm, bullying, or abuse
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="2">
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         2: Sensitive themes or topics such as self-harm, bullying, or abuse are mildly explored in some story arcs
                                                     </span>
                                                 </MenuItem>
                                                 <MenuItem value="3">
-                                                    <span className="whitespace-normal">
+                                                    <span className="whitespace-normal text-red-500">
                                                         3: Sensitive themes such as self-harm, bullying, or abuse explored and are consistently present throughout the series
                                                     </span>
                                                 </MenuItem>
@@ -625,7 +629,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                         <CheckIcon />
                                     </button>
                                     <span className="ml-2 font-semibold">
-                                        I acknowledge that the assigned Content Rating of my series is <span className="text-red-500"> {isAge} </span>
+                                        I acknowledge that the assigned Content Rating of my series is <span className="text-red-500"> {isAge}. </span>
                                     </span>
                                 </div>
 
@@ -635,11 +639,11 @@ const SeriesPage = ({ goToEposodes }) => {
                             <div className="w-full pl-5 mt-[50px]">
                                 <button
                                     onClick={goToEposodes}
-                                    className={`w-[200px] h-[50px] ${isChecked ? 'bg-green-500' : 'bg-gray-200 cursor-not-allowed'} rounded-full shadow text-white font-semibold`}
+                                    className={`w-[200px] h-[50px] ${isChecked ? 'bg-green-500' : 'bg-gray-200 cursor-not-allowed'} pl-2 rounded-full shadow text-white font-semibold flex items-center justify-center gap-5`}
                                     disabled={!isChecked}
                                 >
                                     Create Series
-                                    <NavigateNextIcon />
+                                    <NavigateNextIcon className="mt-1" />
                                 </button>
                             </div>
 

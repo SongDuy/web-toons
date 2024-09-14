@@ -196,7 +196,7 @@ const CreatorChannelPage = () => {
                                 :
                                 <button
                                     onClick={() => setIsFollow(false)}
-                                    className="w-[150px] h-[50px] font-semibold text-black bg-gray-50 hover:bg-gray-100 border-2 rounded-full"
+                                    className="w-[150px] h-[50px] font-semibold text-black bg-gray-50 hover:bg-gray-100 shadow border rounded-full"
                                 >
                                     {!language ? <span> Following </span> : <span> 수행원 </span>}
                                 </button>
