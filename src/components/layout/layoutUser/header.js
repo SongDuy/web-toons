@@ -359,7 +359,7 @@ const HeaderPage = () => {
 
               {/* Chọn menu Account*/}
               <Popper
-                className="w-[180px] rounded-lg flex items-center justify-center"
+                className="rounded-lg flex items-center justify-center"
                 open={openAccount}
                 anchorEl={anchorAccountRef.current}
                 role={undefined}

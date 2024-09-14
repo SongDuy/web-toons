@@ -171,11 +171,11 @@ const CreatorChannelPage = () => {
                             </div>
                             <div className="px-1 py-4 flex">
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    {!language ? <span> Series Original: </span> : <span> 시리즈 오리지널: </span>}
+                                    {!language ? <span> Series Originals: </span> : <span> 시리즈 오리지널: </span>}
                                     {' '} 15
                                 </div>
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    {!language ? <span> Series Video: </span> : <span> 시리즈 비디오: </span>}
+                                    {!language ? <span> Series Videos: </span> : <span> 시리즈 비디오: </span>}
                                     {' '} 15
                                 </div>
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">

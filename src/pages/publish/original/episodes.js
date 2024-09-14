@@ -254,7 +254,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                                 onChange={handleChange}
                                                 value="Enable"
                                                 name="radio-buttons"
-                                                sx={{ '& .MuiSvgIcon-root': { fontSize: 28, }, }}
+                                                sx={{ '& .MuiSvgIcon-root': { fontSize: 30, }, }}
                                             />
                                             <span>Enable</span>
                                         </label>
@@ -264,7 +264,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                                 onChange={handleChange}
                                                 value="Disable"
                                                 name="radio-buttons"
-                                                sx={{ '& .MuiSvgIcon-root': { fontSize: 28, }, }}
+                                                sx={{ '& .MuiSvgIcon-root': { fontSize: 30, }, }}
                                             />
                                             <span>Disable</span>
                                         </label>

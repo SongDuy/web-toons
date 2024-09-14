@@ -208,12 +208,12 @@ const MyChannelPage = () => {
                             </div>
                             <div className="px-1 py-4 flex">
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    {!language ? <span> Series Original: </span> : <span> 시리즈 오리지널: </span>
+                                    {!language ? <span> Series Originals: </span> : <span> 시리즈 오리지널: </span>
                                     }
                                     {' '} 15
                                 </div>
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    {!language ? <span> Series Video: </span> : <span> 시리즈 비디오: </span>}
+                                    {!language ? <span> Series Videos: </span> : <span> 시리즈 비디오: </span>}
                                     {' '} 15
                                 </div>
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
@@ -411,7 +411,7 @@ const MyChannelPage = () => {
                                             onClick={handleAddPhoto}
                                             className="w-[120px] px-2 py-2 border font-semibold rounded-full bg-gray-50 hover:bg-gray-100 shadow"
                                         >
-                                            {!language ? <span> Add Image</span> : <span>이미지 추가</span>}
+                                            {!language ? <span> Add Image</span> : <span> 이미지 추가</span>}
                                         </button>
                                     </div>
                                 </div>
