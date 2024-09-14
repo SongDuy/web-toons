@@ -372,7 +372,7 @@ const MyChannelPage = () => {
                                         {photos.map((photo, index) => (
                                             <div
                                                 key={index}
-                                                className="relative w-[300px] h-[300px] text-black border bg-red-50 hover:bg-red-100 rounded flex justify-center items-center"
+                                                className="relative w-[300px] h-[300px] text-black border bg-gray-50 hover:bg-gray-100 rounded flex justify-center items-center"
                                             >
                                                 {photo ?
                                                     (
@@ -409,7 +409,7 @@ const MyChannelPage = () => {
                                     <div className="flex justify-end px-2">
                                         <button
                                             onClick={handleAddPhoto}
-                                            className="w-[120px] px-2 py-2 border font-semibold rounded bg-red-50 hover:bg-red-100 shadow"
+                                            className="w-[120px] px-2 py-2 border font-semibold rounded-full bg-gray-50 hover:bg-gray-100 shadow"
                                         >
                                             {!language ? <span> Add Image</span> : <span>이미지 추가</span>}
                                         </button>
