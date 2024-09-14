@@ -49,11 +49,11 @@ const SeriesPage = ({ goToEposodes }) => {
     };
 
     // Tiêu đề
-    const [valueTitle, setValueTile] = useState('');
+    const [valueTitle, setValueTitle] = useState('');
     const handleTitle = (event) => {
         const inputValueTitle = event.target.value;
         if (inputValueTitle.length <= 50) { // Giới hạn số ký tự nhập vào là 50
-            setValueTile(inputValueTitle);
+            setValueTitle(inputValueTitle);
         }
     };
 

@@ -87,42 +87,76 @@ const GenresPage = () => {
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
 
-    // Mở và đóng modal originals genre list
-    const [open, setOpen] = React.useState(false);
-    const anchorRef = React.useRef(null);
+    // Mở và đóng menu originals
+    
+    const [openOriginals, setOpenOriginals] = React.useState(false);
+    const anchorRefOriginals = React.useRef(null);
 
-    const handleToggle = () => {
-        setOpen((prevOpen) => !prevOpen);
+    const handleToggleOriginals = () => {
+        setOpenOriginals((prevOpen) => !prevOpen);
     };
 
-    const handleClose = (event) => {
-        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+    const handleCloseOriginals = (event) => {
+        if (anchorRefOriginals.current && anchorRefOriginals.current.contains(event.target)) {
             return;
         }
-
-        setOpen(false);
+        setOpenOriginals(false);
     };
 
-    function handleListKeyDown(event) {
+    function handleListKeyDownOriginals(event) {
         if (event.key === 'Tab') {
             event.preventDefault();
-            setOpen(false);
+            setOpenOriginals(false);
         } else if (event.key === 'Escape') {
-            setOpen(false);
+            setOpenOriginals(false);
         }
     }
 
-    const prevOpen = React.useRef(open);// return focus to the button when we transitioned from !open -> open
+    const prevOpenOriginals = React.useRef(openOriginals);
+
     React.useEffect(() => {
-        if (prevOpen.current === true && open === false) {
-            anchorRef.current.focus();
+        if (prevOpenOriginals.current === true && openOriginals === false) {
+            anchorRefOriginals.current.focus();
         }
+        prevOpenOriginals.current = openOriginals;
+    }, [openOriginals]);
 
-        prevOpen.current = open;
-    }, [open]);
+    // Mở và đóng menu videos
 
-    //Chọn menu cho thể loại
-    const [selectedMenuGenreList, setSelectedMenuGenreList] = useState("by Popularity");
+    const anchorRefVideos = React.useRef(null); // New ref for video genre list
+    const [openVideos, setOpenVideos] = React.useState(false); // New state for video genre list
+
+    const handleToggleVideos = () => {
+        setOpenVideos((prevOpen) => !prevOpen);
+    };
+
+    const handleCloseVideos = (event) => {
+        if (anchorRefVideos.current && anchorRefVideos.current.contains(event.target)) {
+            return;
+        }
+        setOpenVideos(false);
+    };
+
+    function handleListKeyDownVideos(event) {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            setOpenVideos(false);
+        } else if (event.key === 'Escape') {
+            setOpenVideos(false);
+        }
+    }
+    const prevOpenVideos = React.useRef(openVideos);
+
+    React.useEffect(() => {
+        if (prevOpenVideos.current === true && openVideos === false) {
+            anchorRefVideos.current.focus();
+        }
+        prevOpenVideos.current = openVideos;
+    }, [openVideos]);
+
+    //Chọn menu cho thể loại truyện và video
+    const [selectedMenuOriginalList, setSelectedMenuOriginalList] = React.useState("by Popularity"); // Originals genre list
+    const [selectedMenuVideoList, setSelectedMenuVideoList] = React.useState("by Popularity"); // Video genre list
 
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
@@ -158,33 +192,24 @@ const GenresPage = () => {
                             {/* Tiêu đề */}
                             <div className="h-[70px] border-b-2 flex items-center">
                                 <span className="font-semibold text-md">
-                                    {!language ?
-                                        <span>
-                                            Originals Series
-                                        </span>
-                                        :
-                                        <span>
-                                            오리지널 시리즈
-                                        </span>
-                                    }
-
+                                    {!language ? <span> Originals Series </span> : <span> 오리지널 시리즈 </span>}
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
                                     <button
-                                        ref={anchorRef}
-                                        id="composition-button"
-                                        aria-controls={open ? 'composition-menu' : undefined}
-                                        aria-expanded={open ? 'true' : undefined}
+                                        ref={anchorRefOriginals}
+                                        id="composition-button-originals"
+                                        aria-controls={openOriginals ? 'composition-menu-originals' : undefined}
+                                        aria-expanded={openOriginals ? 'true' : undefined}
                                         aria-haspopup="true"
-                                        onClick={handleToggle}
+                                        onClick={handleToggleOriginals}
                                     >
-                                        {selectedMenuGenreList}
+                                        {selectedMenuOriginalList}
                                     </button>
 
-                                    {/* Chọn menu */}
+                                    {/* Originals Menu */}
                                     <Popper
-                                        open={open}
-                                        anchorEl={anchorRef.current}
+                                        open={openOriginals}
+                                        anchorEl={anchorRefOriginals.current}
                                         role={undefined}
                                         placement="bottom-start"
                                         transition
@@ -199,41 +224,42 @@ const GenresPage = () => {
                                                 }}
                                             >
                                                 <Paper>
-                                                    <ClickAwayListener onClickAway={handleClose}>
+                                                    <ClickAwayListener onClickAway={handleCloseOriginals}>
                                                         <MenuList
-                                                            className="bg-white rounded-lg text-black font-semibold "
-                                                            autoFocusItem={open}
-                                                            id="composition-menu"
-                                                            aria-labelledby="composition-button"
-                                                            onKeyDown={handleListKeyDown}
+                                                            className="bg-white rounded-lg text-black font-semibold"
+                                                            autoFocusItem={openOriginals}
+                                                            id="composition-menu-originals"
+                                                            aria-labelledby="composition-button-originals"
+                                                            onKeyDown={handleListKeyDownOriginals}
                                                         >
-                                                            <MenuItem onClick={handleClose}>
+
+                                                            <MenuItem onClick={handleCloseOriginals}>
                                                                 <span
-                                                                    onClick={() => setSelectedMenuGenreList("by Popularity")}
-                                                                    className={`w-full h-full ${selectedMenuGenreList === "by Popularity" ? "text-yellow-500" : ""}`}
+                                                                    onClick={() => setSelectedMenuOriginalList("by Popularity")}
+                                                                    className={`w-full h-full ${selectedMenuOriginalList === "by Popularity" ? "text-yellow-500" : ""}`}
                                                                 >
                                                                     by Popularity
                                                                 </span>
                                                             </MenuItem>
 
-                                                            <MenuItem onClick={handleClose}>
+                                                            <MenuItem onClick={handleCloseOriginals}>
                                                                 <span
-                                                                    onClick={() => setSelectedMenuGenreList("by Likes")}
-                                                                    className={`w-full h-full ${selectedMenuGenreList === "by Likes" ? "text-yellow-500" : ""}`}
+                                                                    onClick={() => setSelectedMenuOriginalList("by Likes")}
+                                                                    className={`w-full h-full ${selectedMenuOriginalList === "by Likes" ? "text-yellow-500" : ""}`}
                                                                 >
                                                                     by Likes
                                                                 </span>
                                                             </MenuItem>
 
-                                                            <MenuItem onClick={handleClose}>
+                                                            <MenuItem onClick={handleCloseOriginals}>
                                                                 <span
-                                                                    onClick={() => setSelectedMenuGenreList("by Date")}
-                                                                    className={`w-full h-full ${selectedMenuGenreList === "by Date" ? "text-yellow-500" : ""}`}
+                                                                    onClick={() => setSelectedMenuOriginalList("by Date")}
+                                                                    className={`w-full h-full ${selectedMenuOriginalList === "by Date" ? "text-yellow-500" : ""}`}
                                                                 >
                                                                     by Date
                                                                 </span>
                                                             </MenuItem>
-
+                                                            {/* Add more menu items here */}
                                                         </MenuList>
                                                     </ClickAwayListener>
                                                 </Paper>
@@ -347,19 +373,81 @@ const GenresPage = () => {
                             {/* Tiêu đề */}
                             <div className="h-[70px] border-b-2 flex items-center">
                                 <span className="font-semibold text-md">
-                                    {!language ?
-                                        <span>
-                                            Videos Series
-                                        </span>
-                                        :
-                                        <span>
-                                            비디오 시리즈
-                                        </span>
-                                    }
-
+                                    {!language ? <span> Videos Series </span> : <span> 비디오 시리즈 </span>}
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
-                                    All
+                                    {/* Button for Video Genre List */}
+                                    <button
+                                        ref={anchorRefVideos}
+                                        id="composition-button-videos"
+                                        aria-controls={openVideos ? 'composition-menu-videos' : undefined}
+                                        aria-expanded={openVideos ? 'true' : undefined}
+                                        aria-haspopup="true"
+                                        onClick={handleToggleVideos}
+                                    >
+                                        {selectedMenuVideoList} {/* You'll need to define `selectedMenuVideoList` state */}
+                                    </button>
+
+                                    {/* Videos Menu */}
+                                    <Popper
+                                        open={openVideos}
+                                        anchorEl={anchorRefVideos.current}
+                                        role={undefined}
+                                        placement="bottom-start"
+                                        transition
+                                        disablePortal
+                                    >
+                                        {({ TransitionProps, placement }) => (
+                                            <Grow
+                                                {...TransitionProps}
+                                                style={{
+                                                    transformOrigin:
+                                                        placement === 'bottom-start' ? 'left top' : 'left bottom',
+                                                }}
+                                            >
+                                                <Paper>
+                                                    <ClickAwayListener onClickAway={handleCloseVideos}>
+                                                        <MenuList
+                                                            className="bg-white rounded-lg text-black font-semibold"
+                                                            autoFocusItem={openVideos}
+                                                            id="composition-menu-videos"
+                                                            aria-labelledby="composition-button-videos"
+                                                            onKeyDown={handleListKeyDownVideos}
+                                                        >
+                   
+                                                            <MenuItem onClick={handleCloseVideos}>
+                                                                <span
+                                                                    onClick={() => setSelectedMenuVideoList("by Popularity")}
+                                                                    className={`w-full h-full ${selectedMenuVideoList === "by Popularity" ? "text-yellow-500" : ""}`}
+                                                                >
+                                                                    by Popularity
+                                                                </span>
+                                                            </MenuItem>
+
+                                                            <MenuItem onClick={handleCloseVideos}>
+                                                                <span
+                                                                    onClick={() => setSelectedMenuVideoList("by Likes")}
+                                                                    className={`w-full h-full ${selectedMenuVideoList === "by Likes" ? "text-yellow-500" : ""}`}
+                                                                >
+                                                                    by Likes
+                                                                </span>
+                                                            </MenuItem>
+
+                                                            <MenuItem onClick={handleCloseVideos}>
+                                                                <span
+                                                                    onClick={() => setSelectedMenuVideoList("by Date")}
+                                                                    className={`w-full h-full ${selectedMenuVideoList === "by Date" ? "text-yellow-500" : ""}`}
+                                                                >
+                                                                    by Date
+                                                                </span>
+                                                            </MenuItem>
+                                                            {/* Add more menu items here */}
+                                                        </MenuList>
+                                                    </ClickAwayListener>
+                                                </Paper>
+                                            </Grow>
+                                        )}
+                                    </Popper>
                                     <CheckIcon />
                                 </span>
                             </div>

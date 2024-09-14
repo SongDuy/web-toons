@@ -74,38 +74,36 @@ const VideosPage = () => {
     const [hoveredCompletedItem, setHoveredCompletedItem] = useState(null);
 
     // Mở và đóng menu video list
-    const [open, setOpen] = React.useState(false);
-    const anchorRef = React.useRef(null);
+    const anchorRefVideos = React.useRef(null); // New ref for video genre list
+    const [openVideos, setOpenVideos] = React.useState(false); // New state for video genre list
 
-    const handleToggle = () => {
-        setOpen((prevOpen) => !prevOpen);
+    const handleToggleVideos = () => {
+        setOpenVideos((prevOpen) => !prevOpen);
     };
 
-    const handleClose = (event) => {
-        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+    const handleCloseVideos = (event) => {
+        if (anchorRefVideos.current && anchorRefVideos.current.contains(event.target)) {
             return;
         }
-
-        setOpen(false);
+        setOpenVideos(false);
     };
 
-    function handleListKeyDown(event) {
+    function handleListKeyDownVideos(event) {
         if (event.key === 'Tab') {
             event.preventDefault();
-            setOpen(false);
+            setOpenVideos(false);
         } else if (event.key === 'Escape') {
-            setOpen(false);
+            setOpenVideos(false);
         }
     }
+    const prevOpenVideos = React.useRef(openVideos);
 
-    const prevOpen = React.useRef(open);// return focus to the button when we transitioned from !open -> open
     React.useEffect(() => {
-        if (prevOpen.current === true && open === false) {
-            anchorRef.current.focus();
+        if (prevOpenVideos.current === true && openVideos === false) {
+            anchorRefVideos.current.focus();
         }
-
-        prevOpen.current = open;
-    }, [open]);
+        prevOpenVideos.current = openVideos;
+    }, [openVideos]);
 
     //Chọn menu cho loại
     const [selectedMenuVideoList, setSelectedMenuVideoList] = useState("by Popularity");
@@ -149,21 +147,22 @@ const VideosPage = () => {
                                     {!language ? <span> Ongoing Series </span> : <span> 진행중인 시리즈 </span>}
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
-                                    <button
-                                        ref={anchorRef}
-                                        id="composition-button"
-                                        aria-controls={open ? 'composition-menu' : undefined}
-                                        aria-expanded={open ? 'true' : undefined}
+                                   {/* Button for Video Genre List */}
+                                   <button
+                                        ref={anchorRefVideos}
+                                        id="composition-button-videos"
+                                        aria-controls={openVideos ? 'composition-menu-videos' : undefined}
+                                        aria-expanded={openVideos ? 'true' : undefined}
                                         aria-haspopup="true"
-                                        onClick={handleToggle}
+                                        onClick={handleToggleVideos}
                                     >
-                                        {selectedMenuVideoList}
+                                        {selectedMenuVideoList} {/* You'll need to define `selectedMenuVideoList` state */}
                                     </button>
 
-                                    {/* Chọn menu */}
+                                    {/* Videos Menu */}
                                     <Popper
-                                        open={open}
-                                        anchorEl={anchorRef.current}
+                                        open={openVideos}
+                                        anchorEl={anchorRefVideos.current}
                                         role={undefined}
                                         placement="bottom-start"
                                         transition
@@ -178,15 +177,16 @@ const VideosPage = () => {
                                                 }}
                                             >
                                                 <Paper>
-                                                    <ClickAwayListener onClickAway={handleClose}>
+                                                    <ClickAwayListener onClickAway={handleCloseVideos}>
                                                         <MenuList
-                                                            className="bg-white rounded-lg text-black font-semibold "
-                                                            autoFocusItem={open}
-                                                            id="composition-menu"
-                                                            aria-labelledby="composition-button"
-                                                            onKeyDown={handleListKeyDown}
+                                                            className="bg-white rounded-lg text-black font-semibold"
+                                                            autoFocusItem={openVideos}
+                                                            id="composition-menu-videos"
+                                                            aria-labelledby="composition-button-videos"
+                                                            onKeyDown={handleListKeyDownVideos}
                                                         >
-                                                            <MenuItem onClick={handleClose}>
+                   
+                                                            <MenuItem onClick={handleCloseVideos}>
                                                                 <span
                                                                     onClick={() => setSelectedMenuVideoList("by Popularity")}
                                                                     className={`w-full h-full ${selectedMenuVideoList === "by Popularity" ? "text-yellow-500" : ""}`}
@@ -195,7 +195,7 @@ const VideosPage = () => {
                                                                 </span>
                                                             </MenuItem>
 
-                                                            <MenuItem onClick={handleClose}>
+                                                            <MenuItem onClick={handleCloseVideos}>
                                                                 <span
                                                                     onClick={() => setSelectedMenuVideoList("by Likes")}
                                                                     className={`w-full h-full ${selectedMenuVideoList === "by Likes" ? "text-yellow-500" : ""}`}
@@ -204,7 +204,7 @@ const VideosPage = () => {
                                                                 </span>
                                                             </MenuItem>
 
-                                                            <MenuItem onClick={handleClose}>
+                                                            <MenuItem onClick={handleCloseVideos}>
                                                                 <span
                                                                     onClick={() => setSelectedMenuVideoList("by Date")}
                                                                     className={`w-full h-full ${selectedMenuVideoList === "by Date" ? "text-yellow-500" : ""}`}
@@ -212,14 +212,13 @@ const VideosPage = () => {
                                                                     by Date
                                                                 </span>
                                                             </MenuItem>
-
+                                                            {/* Add more menu items here */}
                                                         </MenuList>
                                                     </ClickAwayListener>
                                                 </Paper>
                                             </Grow>
                                         )}
                                     </Popper>
-
                                     <CheckIcon />
                                 </span>
                             </div>
