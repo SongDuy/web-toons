@@ -361,7 +361,7 @@ const MyChannelPage = () => {
                                 <div className="w-full mt-5 px-3">
                                     <textarea
                                         placeholder="What are you thinking?"
-                                        className="w-full h-[100px] rounded-md px-3 py-3 border-2"
+                                        className="w-full h-[160px] rounded-md px-3 py-3 border-2"
                                     />
 
                                 </div>
