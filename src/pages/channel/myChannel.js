@@ -140,7 +140,6 @@ const MyChannelPage = () => {
     // Lưu các ảnh đã chọn
     const [photos, setPhotos] = useState([]); // Bắt đầu với 0 ô ảnh rỗng // [null] bắt đầu với 1 ô // [null,null] bắt đầu với 2 ô
 
-
     // Thêm ô ảnh mới
     const handleAddPhoto = () => {
         setPhotos([...photos, null]);
