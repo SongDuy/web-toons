@@ -29,7 +29,7 @@ const dataVideos = [
 //https://www.ausp.edu.vn/uploads/blog/2024/05/16/1ecf77502b3bc514b2f535533d7b01f03a772174-1715817458.jpg
 const MyChannelPage = () => {
 
-    const [photos, setPhotos] = useState([null]); // Lưu các ảnh đã chọn
+    const [photos, setPhotos] = useState([]); // Lưu các ảnh đã chọn 0
     const [getphotos, setgetPhotos] = useState([null]);
     // Hiện thị phản hồi của bình luận
     const [post, setpost] = useState('');

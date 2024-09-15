@@ -108,7 +108,7 @@ const SeriesPage = ({ goToEposodes }) => {
     useEffect(() => {
         // Kiểm tra nếu tất cả các trường đều đã được chọn
         if (Object.values(selections).some((value) => value === "")) {
-            setIsAge("Please complete the Self Assessment above to get the result.");
+            setIsAge("Please complete the Self Assessment above to get the result");
             return;
         }
 
@@ -123,16 +123,16 @@ const SeriesPage = ({ goToEposodes }) => {
         // Dựa vào giá trị cao nhất để xác định isAge
         switch (maxSelectionValue) {
             case 0:
-                setIsAge("All Ages.");
+                setIsAge("All Ages");
                 break;
             case 1:
-                setIsAge("Teen.");
+                setIsAge("Teen");
                 break;
             case 2:
-                setIsAge("Young Adult.");
+                setIsAge("Young Adult");
                 break;
             case 3:
-                setIsAge("Mature.");
+                setIsAge("Mature");
                 break;
             default:
                 setIsAge("Unrated");
@@ -732,7 +732,7 @@ const SeriesPage = ({ goToEposodes }) => {
                                     </button>
                                     <span className="ml-2 font-semibold">
                                         I acknowledge that the assigned Content Rating of my series
-                                        is <span className="text-red-500"> {isAge} </span>
+                                        is <span className="text-red-500"> {isAge}. </span>
                                     </span>
                                 </div>
                             </div>
