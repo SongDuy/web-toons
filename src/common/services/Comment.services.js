@@ -240,5 +240,14 @@ const CommentFireBase = {
   async Delete(id) {
     await deleteDoc(doc(fireStore, "comment", id));
   },
+  async deleteAccount(id) {
+    const commentsRef = collection(fireStore, "comment");
+    const q = query(commentsRef, where("uid", "==", id)); 
+  
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(async (doc) => {
+      await deleteDoc(doc.ref);
+    });
+  }
 };
 export default CommentFireBase;

@@ -3,16 +3,76 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import CheckIcon from '@mui/icons-material/Check';
+import {   reauthenticateWithCredential, 
+    EmailAuthProvider, 
+    deleteUser  } from 'firebase/auth';
+import { auth } from "../../common/themes/firebase";
+import CommentFireBase from "../../common/services/Comment.services";
+import comicFireBase from "../../common/services/Comic.services";
+import postFireBase from "../../common/services/post.services";
+import RateFireBase from "../../common/services/Rate.services";
+import SubscribeFireBase from "../../common/services/Subscribe.services";
+import {  useDispatch } from 'react-redux';
+import userFireBase from "../../common/services/User.services";
+import { logout } from "../../common/store/Auth.js";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';   
+import DialogContentText from '@mui/material/DialogContentText';
 
 const Delete = () => {
 
     // Nhấn vào ô check đồng ý xóa tài khoản
     const [isChecked, setIsChecked] = useState(false);
+    const [Password, setPassword] = useState('');
+    const [error, seterror] = useState('');
 
+    const dispatch = useDispatch();
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
+  
     const handleCheckboxClick = () => {
         setIsChecked(!isChecked);
     };
+  const  deleteAccount=async ()=> {
+        const user = auth.currentUser; // Lấy người dùng hiện tại
+      
+        if (user) {
+          try {
+            const credential = EmailAuthProvider.credential(user.email, Password); // Giả sử bạn đã lấy được mật khẩu từ người dùng
+            await reauthenticateWithCredential(user, credential);
+           await   CommentFireBase.deleteAccount(auth.currentUser.uid)
+           await   comicFireBase.deleteAccount(auth.currentUser.uid)
+           await   postFireBase.deleteAccount(auth.currentUser.uid)
+           await   RateFireBase.deleteAccount(auth.currentUser.uid)
+           await   SubscribeFireBase.deleteAccount(auth.currentUser.uid)
+           await   userFireBase.deleteAccount(auth.currentUser.uid)
 
+            await deleteUser(user);
+            dispatch(logout())
+            setOpen(false);
+
+            // Thực hiện các hành động cần thiết sau khi xóa tài khoản, ví dụ: chuyển hướng người dùng, xóa dữ liệu liên quan, ...
+          } catch (error) {
+            seterror('"Incorrect  password.')
+            console.error('Lỗi khi xóa tài khoản:', error);
+            // Xử lý lỗi, ví dụ: hiển thị thông báo lỗi cho người dùng
+          }
+        } else {
+          console.log('Không có người dùng nào đang đăng nhập.');
+          // Xử lý trường hợp không có người dùng đăng nhập
+        }
+      }
     return (
         <div className="w-full h-full bg-gray-100 py-[40px] flex justify-center items-center">
             <div className="w-[1112px] h-full">
@@ -94,6 +154,7 @@ const Delete = () => {
                                 className={`w-[240px] h-[50px] ${isChecked ? 'bg-black' : 'bg-gray-200 cursor-not-allowed'
                                     } rounded-full shadow text-white font-semibold`}
                                 disabled={!isChecked}
+                                onClick={handleClickOpen }
                             >
                                 Delete My Account
                             </button>
@@ -102,7 +163,41 @@ const Delete = () => {
 
                 </div>
             </div>
+            <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Re-enter password?"}
+        </DialogTitle>
+        <DialogContent>
+          
+          <TextField
+          autoFocus
+          margin="dense"   
 
+          id="password"
+          label="Re-enter password"
+          type="password"
+          fullWidth
+          value={Password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {error&&
+         <DialogContentText id="alert-dialog-description">
+           {error}
+          </DialogContentText>
+}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={deleteAccount} autoFocus>
+            Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
         </div>
     );
 };

@@ -1,15 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import NorthIcon from '@mui/icons-material/North';
 
 import Radio from '@mui/material/Radio';
-
+import { useParams } from 'react-router-dom';
+import comicFireBase from '../../../common/services/Comic.services';
+import { useSelector,useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { getidComic } from '../../../common/store/comic';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 const EpisodesPage = ({ goToPreviousStep }) => {
-
     // hàm material nút chọn ở mục comment
     const [selectedValue, setSelectedValue] = React.useState('Enable');
+    const Account = useSelector((state) => state.Account.Account);
+    const comicid = useSelector(state => state.comic.comicid);
+    const [loading, setloading] = useState(false);
+    const dispatch = useDispatch();
 
+    const navigate = useNavigate();
+
+    const id = useParams();
+    const [photos1, setPhotos1] = useState("");
+    const [horizontalThumbnail, sethorizontalThumbnail] = useState();
+    useEffect(() => {
+        const get = async () => {
+            try {
+                setloading(false)
+                const comicID = await dispatch(getidComic(id.id))
+                unwrapResult(comicID)
+                setloading(true)
+              
+            } catch (error) {
+            }
+        }
+        get()
+    }, [dispatch,id]);
     const handleChange = (event) => {
         setSelectedValue(event.target.value);
     };
@@ -31,10 +59,39 @@ const EpisodesPage = ({ goToPreviousStep }) => {
             setValueNote(inputValueNote);
         }
     };
-
+    const handlePhotoChange1 = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          let newPhotos = URL.createObjectURL(file); // Tạo URL tạm thời cho ảnh
+          setPhotos1(newPhotos);
+          sethorizontalThumbnail(file)
+        }
+      };
+      const handleEp=async ()=>{
+        try {
+            const getdata = {
+               valueEpisodeTitle,
+               idseries:id.id,
+                uid: Account.uid,
+                valueNote,
+                fileURL: '',
+                likes: 0,
+                num: 0,
+                checkcomment:selectedValue,
+                views: 0,
+                createTime: new Date(Date.now()),
+              };
+            const docid=  await comicFireBase.Addep(getdata)
+            await comicFireBase.uploadToFirebaseep(horizontalThumbnail,horizontalThumbnail.name,Account.uid,id.id,docid,'horizontalThumbnail')
+            navigate('/')
+        } catch (error) {
+        }
+      }
     return (
         <div>
-
+            {!loading? <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5 }}>
+                    <CircularProgress />
+                </Box>: 
             <div className="w-full h-full bg-gray-100 pb-10">
 
                 <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
@@ -78,8 +135,15 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                         Episode Thumbnail
                                     </span>
                                 </div>
-
-                                <button className="w-full h-[220px] shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
+                                {photos1 ? (
+                    <img
+                      src={photos1}
+                      alt="Selected"
+                      className="w-full h-full object-cover rounded"
+                    />
+                  ) : (
+                    <>
+                     <button className="w-full h-[220px] relative shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
                                     <div>
                                         <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
                                             <NorthIcon />
@@ -90,9 +154,20 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                         <span className="block w-full font-semibold text-sm hover:text-gray-500">
                                             Or drag the image file here.
                                         </span>
+                                        <input
+                              type="file"
+                              accept="image/*"
+                              onChange={(e) => handlePhotoChange1(e)}
+                              className="absolute inset-0 opacity-0 cursor-pointer "
+                            />
                                     </div>
                                 </button>
 
+                    
+                     
+                    </>
+                  )}
+                               
                                 <div className="w-full py-3">
                                     <span className="block w-full font-semibold text-sm text-gray-500">
                                         Recommended size is 160x151.
@@ -124,7 +199,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                     </h1>
 
                                     <span className="font-semibold text-xl flex items-center">
-                                        kkkk
+                                        {comicid.title}
                                     </span>
                                 </div>
 
@@ -275,7 +350,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
 
                             {/* Nút đăng tập truyện */}
                             <div className="w-full mt-10 py-3 pl-5">
-                                <button className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4">
+                                <button onClick={handleEp} className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4">
                                     Publish episode
                                 </button>
                             </div>
@@ -286,6 +361,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                 </div>
 
             </div>
+}
         </div >
 
     );

@@ -73,7 +73,7 @@ const NewToOriginalsPage = () => {
                                             {item.title}
                                         </span>
                                         <span className="text-black text-md text-shadow-white leading-[1.2] line-clamp-1">
-                                            {item.summary}
+                                            {item.Author}
                                         </span>
                                     </div>
 

@@ -82,5 +82,14 @@ const RateFireBase = {
   async Delete(id) {
     await deleteDoc(doc(fireStore, "rate", id));
   },
+  async deleteAccount(id) {
+    const Ref = collection(fireStore, "rate");
+    const q = query(Ref, where("uid", "==", id)); 
+  
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(async (doc) => {
+      await deleteDoc(doc.ref);
+    });
+  }
 };
 export default RateFireBase;

@@ -84,6 +84,15 @@ import {
     async Delete(id) {
       await deleteDoc(doc(fireStore, 'subscribe', id));
     },
+    async deleteAccount(id) {
+      const Ref = collection(fireStore, "subscribe");
+      const q = query(Ref, where("uid", "==", id)); 
+    
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+    }
   };
   export default SubscribeFireBase;
   

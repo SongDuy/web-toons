@@ -68,6 +68,8 @@ const CreatorChannelPage = () => {
                 const pot = await postFireBase.getlike(user.uid);
                 const like= pot.post?.filter(item=>item.success).map(item=>{   return{[item?.id]: item?.id}})
                 setILike(like);
+             }else{
+                 setILike([])
              } 
             } catch (error) {
               

@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 import SeriesPage from './series';
 import EpisodesPage from './episodes';
+import { useParams } from 'react-router-dom';
 
 const PublishOriginalPage = () => {
+    const id = useParams();
 
     const [currentStep, setCurrentStep] = useState(1);
-
+useEffect(() => {
+        if(id?.id){
+            setCurrentStep(2)
+        }else{
+            setCurrentStep(1)
+        }
+}, [id]);
     const goToNextStep = () => {
         window.scrollTo(0, 0); // Cuộn đến đầu trang trước khi chuyển trang
         setCurrentStep(currentStep + 1);

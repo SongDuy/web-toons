@@ -192,7 +192,7 @@ const handleRate=async (event, newValue) => {
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="w-[1200px] overflow-hidden">
                                     <span className="font-semibold text-xl text-black text-shadow-white flex items-center justify-center">
-                                        {comicid.genre1}
+                                        {comicid.genre1},{comicid.genre2}
                                     </span>
 
                                     <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.3] line-clamp-3 flex justify-center">
@@ -203,7 +203,7 @@ const handleRate=async (event, newValue) => {
                                         <div className="w-full flex items-center justify-center gap-2">
                                             <div className="w-[250px] px-2 rounded-md overflow-hidden flex items-center justify-center gap-2">
                                                 <span className="text-lg font-semibold text-yellow-500 hover:text-yellow-600 text-shadow-black line-clamp-1">
-                                                    {comicid.summary}
+                                                    {comicid.Author}
                                                 </span>
                                                 <button className="w-[20px] h-[20px] bg-white rounded-full text-black flex items-center justify-center">
                                                     i
@@ -251,7 +251,7 @@ const handleRate=async (event, newValue) => {
                                     <ul className="w-full h-full ">
 
                                         {/* khung danh sách */}
-                                        {chapters.chaps.map(item => (
+                                        {chapters.chaps?.map(item => (
                                             <Link to={`/originals/original/series/display/${id.id}/${item.id}`} key={item.id}>
                                                 <li
                                                     className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
@@ -412,14 +412,7 @@ const handleRate=async (event, newValue) => {
                                     </div>
                                     <div className="w-full">
                                         <span className="">
-                                            The Etruscan Kingdom is stained with blood when the king’s illegitimate
-                                            son Cesare conspires with his fiancée Ariadne to usurp the throne from
-                                            his half-brother Alfonso. Despite Ariadne’s devotion to the new king,
-                                            her faith is shattered when she is betrayed by him and eventually murdered
-                                            by her own sister, who wishes to be queen. To her surprise, Ariadne finds
-                                            herself sent back in time to her 17-year-old self. As she navigates the
-                                            perils and opportunities of palace intrigue, Ariadne must make the most
-                                            of her guile and grit to ensure that her tragic future does not repeat itself.
+                                         {comicid.summary}
                                         </span>
                                     </div>
 

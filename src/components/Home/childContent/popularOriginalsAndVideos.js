@@ -155,7 +155,7 @@ const PopularOriginalsAndVideosPage = () => {
 
                                                     </span>
                                                     <span className="text-sm line-clamp-1">
-                                                        {item.summary}
+                                                        {item.Author}
                                                     </span>
                                                 </div>
 
@@ -429,7 +429,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                         {item.title}
                                                     </span>
                                                     <span className="text-sm line-clamp-1">
-                                                        {item.summary}
+                                                        {item.Author}
                                                     </span>
                                                 </div>
 

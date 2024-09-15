@@ -108,7 +108,7 @@ const SearchPage = ({ closeModal }) => {
                                                 </span>
                                                 <div className="flex">
                                                     <span className="max-w-[150px] pr-2 border-r-2 line-clamp-1">
-                                                        {item.summary}
+                                                        {item.Author}
                                                     </span>
                                                     <span className="max-w-[110px] px-2 border-l line-clamp-1">
                                                         {item.genre1}
