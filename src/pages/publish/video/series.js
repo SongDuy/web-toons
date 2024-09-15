@@ -96,7 +96,7 @@ const SeriesPage = ({ goToEposodes }) => {
     useEffect(() => {
         // Kiểm tra nếu tất cả các trường đều đã được chọn
         if (Object.values(selections).some(value => value === '')) {
-            setIsAge('Please complete the Self Assessment above to get the result.');
+            setIsAge('Please complete the Self Assessment above to get the result');
             return;
         }
 
