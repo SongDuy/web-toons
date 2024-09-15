@@ -5,6 +5,9 @@ import {
   getDoc,
   setDoc,
   updateDoc,
+  query,
+  where,
+  deleteDoc
 } from 'firebase/firestore';
 import { fireStore } from '../themes/firebase';
 const userFireBase = {
@@ -30,5 +33,14 @@ const userFireBase = {
 
     await updateDoc(update, data);
   },
+  async deleteAccount(id) {
+    const Ref = collection(fireStore, "Users");
+    const q = query(Ref, where("uid", "==", id)); 
+  
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(async (doc) => {
+      await deleteDoc(doc.ref);
+    });
+  }
 };
 export default userFireBase;

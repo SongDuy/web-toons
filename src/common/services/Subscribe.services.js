@@ -2,6 +2,7 @@ import {
     collection,
     getDocs,
     doc,
+    getDoc,
     addDoc,
     updateDoc,
     where,
@@ -29,6 +30,16 @@ import {
           return { message: 'No such document!', success: false };
         }
     },
+    async getbysub(id) {
+      const docRef = doc(fireStore, 'subscribe', id);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        return { ...docSnap.data(), success: true };
+      } else {
+        return { message: 'No such document!', success: false };
+      }
+    },
     async getbyid(id) {
       const docRef =query(
         collection(fireStore, 'subscribe'),
@@ -44,6 +55,24 @@ import {
         return { message: 'No such document!', success: false };
       }
     },
+    async getbycomic(id,idcomic) {
+      const docRef =query(
+        collection(fireStore, 'subscribe'),
+        where('uid', '==', id),
+        where('idcomic', '==', idcomic),
+      );
+      const docSnap = await getDocs(docRef);
+      const subscribe=docSnap.docs?.map(item=>{
+        return { id: item.id, ...item.data()}
+      })
+      if (subscribe.length !==0) {
+        return { subscribe, success: true };
+      } else {
+        return { message: 'No such document!', success: false };
+      }
+    },
+
+
     async Add(data, id) {
         await addDoc(collection(fireStore, 'subscribe'), data);
     },
@@ -55,6 +84,15 @@ import {
     async Delete(id) {
       await deleteDoc(doc(fireStore, 'subscribe', id));
     },
+    async deleteAccount(id) {
+      const Ref = collection(fireStore, "subscribe");
+      const q = query(Ref, where("uid", "==", id)); 
+    
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+    }
   };
   export default SubscribeFireBase;
   

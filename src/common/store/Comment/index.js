@@ -33,7 +33,6 @@ export const AddComment = createAsyncThunk("Comment/Add", async (payload) => {
         throw error
       }
   });
- 
   
 const commentRedux = createSlice({
   name: "commentRedux",

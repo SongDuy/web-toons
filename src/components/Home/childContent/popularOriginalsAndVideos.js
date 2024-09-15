@@ -16,8 +16,13 @@ import { useSelector } from 'react-redux';
 
 const PopularOriginalsAndVideosPage = () => {
     const comic = useSelector(state => state.comic.comic);
-    const filteredcomic = comic.comic?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
-    const searchedcomic = comic.comic?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
+     //Chọn thể loại originals
+     const [selectedOriginalGenre, setSelectedOriginalGenre] = useState("All");
+
+     //Chọn thể loại videos
+     const [selectedVideoGenre, setSelectedVideoGenre] = useState("All");
+    const filteredcomic = comic.comic?.slice()?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
+    const searchedcomic = comic.comic?.filter(item=>selectedOriginalGenre==='All'?item:item.genre1===selectedOriginalGenre || item.genre2===selectedOriginalGenre).slice()?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
 
     const dataPopular = [
         { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
@@ -94,11 +99,7 @@ const PopularOriginalsAndVideosPage = () => {
         prevOpenVideos.current = openVideos;
     }, [openVideos]);
 
-    //Chọn thể loại originals
-    const [selectedOriginalGenre, setSelectedOriginalGenre] = useState("All");
-
-    //Chọn thể loại videos
-    const [selectedVideoGenre, setSelectedVideoGenre] = useState("All");
+   
 
     return (
         <div className="w-full min-h-[560px] bg-white">
@@ -154,7 +155,7 @@ const PopularOriginalsAndVideosPage = () => {
 
                                                     </span>
                                                     <span className="text-sm line-clamp-1">
-                                                        {item.summary}
+                                                        {item.Author}
                                                     </span>
                                                 </div>
 
@@ -428,7 +429,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                         {item.title}
                                                     </span>
                                                     <span className="text-sm line-clamp-1">
-                                                        {item.summary}
+                                                        {item.Author}
                                                     </span>
                                                 </div>
 

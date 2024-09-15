@@ -75,11 +75,9 @@ function App() {
           <Route path="/genres" element={<Loading><GenresPage /></Loading>} />
           <Route path="/popular" element={<PopularPage />} />
 
-          <Route path="/publish/original" element={<PublishOriginalPage />} />
           <Route path="/publish/video" element={<PublishVideoPage />} />
 
-          <Route path="/channel/my" element={<MyChannelPage />} />
-          <Route path="/channel/creator" element={<CreatorChannelPage />} />
+          <Route path="/channel/creator/:id" element={<CreatorChannelPage />} />
 
           {/* Trang thanh toán */}
           <Route path="/payment" element={<PaymentPage />} />
@@ -106,6 +104,9 @@ function App() {
           <Route path="/mycomment" element={<Comment />} />
           <Route path="/subscribed" element={<Subscribed />} />
           <Route path="/creators" element={<Creators />} />
+          <Route path="/channel/my" element={<MyChannelPage />} />
+          <Route path="/publish/original" element={<PublishOriginalPage />} />
+          <Route path="/publish/original/:id" element={<PublishOriginalPage />} />
 
         </Route>
         {/* Trang hiển thị truyện và video */}

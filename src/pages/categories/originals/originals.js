@@ -291,7 +291,7 @@ const OriginalsPage = () => {
                                                             {item.title}
                                                         </span>
                                                         <span className="text-md text-shadow-white leading-[1.2] line-clamp-1">
-                                                            {item.summary}
+                                                            {item.Author}
                                                         </span>
                                                     </div>
 
@@ -374,7 +374,7 @@ const OriginalsPage = () => {
                                                             {item.title}
                                                         </span>
                                                         <span className="text-md text-shadow-white leading-[1.2] line-clamp-1">
-                                                            {item.summary}
+                                                            {item.Author}
                                                         </span>
                                                     </div>
 

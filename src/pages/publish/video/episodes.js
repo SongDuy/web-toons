@@ -79,7 +79,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                     </span>
                                 </div>
 
-                                <button className="w-full h-[220px] shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
+                                <button className="w-[200px] h-[200px] shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
                                     <div>
                                         <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
                                             <NorthIcon />

@@ -26,6 +26,7 @@ import Rating from '@mui/material/Rating';
 import { auth } from '../../../common/themes/firebase';
 import SubscribeFireBase from '../../../common/services/Subscribe.services';
 import comicFireBase from '../../../common/services/Comic.services';
+import RateFireBase from '../../../common/services/Rate.services';
 
 const dataAlsoLike = [
     { id: 1, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
@@ -47,7 +48,8 @@ const OriginalSeriesPage = () => {
     const [loading, setloading] = useState(false);
     const [isSubscribe, setIsSubscribe] = useState(false);
     const [Subscribe, setSubscribe] = useState([[]]);
-
+    const language = useSelector(state => state.hidden.language);
+    const [Rate, setRate] = useState(0);
     const dispatch = useDispatch();
     const monthNames = [
         'January', 'February', 'March', 'April', 'May', 'June',
@@ -63,7 +65,9 @@ const OriginalSeriesPage = () => {
                 unwrapResult(chap)
                 setloading(true)
                 if (auth.currentUser) {
-                    const subscribe = await SubscribeFireBase.getbyid(auth.currentUser.uid)
+                    const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid, id.id)
+                    const rateuser = await RateFireBase.getbyid(auth.currentUser.uid, id.id)
+                    setRate(rateuser.success ? rateuser.rate[0].rate : 0);
                     subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
                     subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
                 }
@@ -111,17 +115,18 @@ const OriginalSeriesPage = () => {
 
     const handlesubscribe = async () => {
         try {
+
             if (auth.currentUser) {
-                await SubscribeFireBase.Add({ uid: auth.currentUser.uid, idcomic: id.id })
+                await SubscribeFireBase.Add({ uid: auth.currentUser.uid, idcomic: id.id, createTime: new Date(Date.now()) })
                 await comicFireBase.update({ totalSubscribed: comicid.totalSubscribed + 1 }, id.id)
                 await dispatch(getidComic(id.id))
 
-                const subscribe = await SubscribeFireBase.getbyid(auth.currentUser.uid)
+                const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid, id.id)
+
                 subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
                 subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
             }
         } catch (error) {
-
         }
     }
     const handleDeleteSub = async () => {
@@ -130,7 +135,7 @@ const OriginalSeriesPage = () => {
                 await SubscribeFireBase.Delete(Subscribe[0].id)
                 await comicFireBase.update({ totalSubscribed: comicid.totalSubscribed - 1 }, id.id)
                 await dispatch(getidComic(id.id))
-                const subscribe = await SubscribeFireBase.getbyid(auth.currentUser.uid)
+                const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid, id.id)
                 subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
                 subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
             }
@@ -139,8 +144,37 @@ const OriginalSeriesPage = () => {
         }
     }
 
-    //Lấy ngôn ngữ
-    const language = useSelector(state => state.hidden.language);
+    const handleRate = async (event, newValue) => {
+        if (auth.currentUser) {
+            setRate(newValue);
+            try {
+                const rateuser = await RateFireBase.getbyid(auth.currentUser.uid, id.id)
+
+                if (!rateuser.success) {
+                    await RateFireBase.Add({
+                        createTime: new Date(Date.now()),
+                        idcomic: id.id,
+                        uid: auth.currentUser.uid,
+                        rate: newValue
+                    })
+                    const comicrate = await RateFireBase.getbycomic(id.id)
+                    const averageRating = comicrate.success ? (comicrate.rate.reduce((accumulator, currentValue) => accumulator + currentValue.rate, 0) / comicrate.rate.length) * 2 : 0;
+                    await comicFireBase.update({ rate: averageRating }, id.id)
+                    const idcomic = await dispatch(getidComic(id.id))
+                    unwrapResult(idcomic)
+                } else {
+                    await RateFireBase.update({ rate: newValue, createTime: new Date(Date.now()) }, rateuser.rate[0].id)
+                    const comicrate = await RateFireBase.getbycomic(id.id)
+                    const averageRating = comicrate.success ? (comicrate.rate.reduce((accumulator, currentValue) => accumulator + currentValue.rate, 0) / comicrate.rate.length) * 2 : 0;
+                    await comicFireBase.update({ rate: averageRating }, id.id)
+                    const idcomic = await dispatch(getidComic(id.id))
+                    unwrapResult(idcomic)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    };
 
     return (
         <div>
@@ -158,18 +192,18 @@ const OriginalSeriesPage = () => {
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="w-[1200px] overflow-hidden">
                                     <span className="font-semibold text-xl text-black text-shadow-white flex items-center justify-center">
-                                        {comicid.genre1}
+                                        {comicid.genre1},{comicid.genre2}
                                     </span>
 
                                     <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.3] line-clamp-3 flex justify-center">
                                         {comicid.title}
                                     </span>
 
-                                    <Link to="/channel/creator">
+                                    <Link to={`/channel/creator/${comicid.uid}`}>
                                         <div className="w-full flex items-center justify-center gap-2">
                                             <div className="w-[250px] px-2 rounded-md overflow-hidden flex items-center justify-center gap-2">
                                                 <span className="text-lg font-semibold text-yellow-500 hover:text-yellow-600 text-shadow-black line-clamp-1">
-                                                    {comicid.summary}
+                                                    {comicid.Author}
                                                 </span>
                                                 <button className="w-[20px] h-[20px] bg-white rounded-full text-black flex items-center justify-center">
                                                     i
@@ -217,7 +251,7 @@ const OriginalSeriesPage = () => {
                                     <ul className="w-full h-full ">
 
                                         {/* khung danh sách */}
-                                        {chapters.chaps.map(item => (
+                                        {chapters.chaps?.map(item => (
                                             <Link to={`/originals/original/series/display/${id.id}/${item.id}`} key={item.id}>
                                                 <li
                                                     className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
@@ -295,7 +329,7 @@ const OriginalSeriesPage = () => {
                                                 <StarIcon />
                                             </span>
                                             <span className="mx-1">
-                                                9.74
+                                                {comicid.rate}
                                             </span>
 
                                         </li>
@@ -340,7 +374,7 @@ const OriginalSeriesPage = () => {
                                                         }}
                                                     >
                                                         <Paper>
-                                                            <ClickAwayListener onClickAway={handleClose}>
+                                                            <ClickAwayListener onClickAway={handleClose} >
                                                                 <MenuList
                                                                     autoFocusItem={open}
                                                                     id="composition-menu"
@@ -350,8 +384,9 @@ const OriginalSeriesPage = () => {
                                                                     <MenuItem onClick={handleClose}><ClickAwayListener onClickAway={handleClose}>
                                                                         <Rating
                                                                             name="half-rating-read"
-                                                                            defaultValue={0}
+                                                                            defaultValue={parseInt(Rate)}
                                                                             precision={0.5}
+                                                                            onChange={handleRate}
                                                                         />
                                                                     </ClickAwayListener></MenuItem>
                                                                 </MenuList>
@@ -377,14 +412,7 @@ const OriginalSeriesPage = () => {
                                     </div>
                                     <div className="w-full">
                                         <span className="">
-                                            The Etruscan Kingdom is stained with blood when the king’s illegitimate
-                                            son Cesare conspires with his fiancée Ariadne to usurp the throne from
-                                            his half-brother Alfonso. Despite Ariadne’s devotion to the new king,
-                                            her faith is shattered when she is betrayed by him and eventually murdered
-                                            by her own sister, who wishes to be queen. To her surprise, Ariadne finds
-                                            herself sent back in time to her 17-year-old self. As she navigates the
-                                            perils and opportunities of palace intrigue, Ariadne must make the most
-                                            of her guile and grit to ensure that her tragic future does not repeat itself.
+                                            {comicid.summary}
                                         </span>
                                     </div>
 

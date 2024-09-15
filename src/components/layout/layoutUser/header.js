@@ -397,7 +397,7 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <Link to={`/comments`}>
+                          <Link to={`/mycomment`}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <CommentIcon />
                               {!language ? <span> Comments </span> : <span> 댓글 </span>}
@@ -425,7 +425,7 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <MenuItem onClick={() => dispatch(logout())} className="flex gap-x-3">
+                          <MenuItem onClick={() =>{ dispatch(logout())}} className="flex gap-x-3">
                             <LogoutIcon />
                             {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
                           </MenuItem>
