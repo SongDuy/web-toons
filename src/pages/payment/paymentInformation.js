@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-const PaymentPage = () => {
-
+const PaymentInformationPage = () => {
     // Hàm tạo mã ngẫu nhiên
     const generateOrderCode = () => {
         // Tạo một chuỗi ngẫu nhiên và chuyển đổi nó thành chữ hoa
@@ -71,7 +70,6 @@ const PaymentPage = () => {
         const secs = seconds % 60; // Tính số giây
         return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`; // Định dạng và trả về chuỗi thời gian
     };
-
 
     // new 
     return (
@@ -145,4 +143,4 @@ const PaymentPage = () => {
     );
 }
 
-export default PaymentPage;
+export default PaymentInformationPage;

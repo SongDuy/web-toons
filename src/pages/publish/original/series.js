@@ -37,7 +37,7 @@ const dataListGenre = [
 // Sắp xếp mảng theo tên thể loại theo bảng chữ cái
 dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 
-const SeriesPage = ({ goToEposodes }) => {
+const SeriesOriginalPage = ({ goToEposodes }) => {
     const Account = useSelector((state) => state.Account.Account);
     const navigate = useNavigate();
 
@@ -759,4 +759,4 @@ const SeriesPage = ({ goToEposodes }) => {
     );
 };
 
-export default SeriesPage;
+export default SeriesOriginalPage;

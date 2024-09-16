@@ -12,7 +12,7 @@ import { unwrapResult } from '@reduxjs/toolkit';
 import { getidComic } from '../../../common/store/comic';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-const EpisodesPage = ({ goToPreviousStep }) => {
+const EpisodesOriginalPage = ({ goToPreviousStep }) => {
     // hàm material nút chọn ở mục comment
     const [selectedValue, setSelectedValue] = React.useState('Enable');
     const Account = useSelector((state) => state.Account.Account);
@@ -367,4 +367,4 @@ const EpisodesPage = ({ goToPreviousStep }) => {
     );
 }
 
-export default EpisodesPage;
+export default EpisodesOriginalPage;

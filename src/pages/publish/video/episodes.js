@@ -5,7 +5,7 @@ import NorthIcon from '@mui/icons-material/North';
 
 import Radio from '@mui/material/Radio';
 
-const EpisodesPage = ({ goToPreviousStep }) => {
+const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
     // hàm material nút chọn ở mục comment
     const [selectedValue, setSelectedValue] = React.useState('Enable');
@@ -291,4 +291,4 @@ const EpisodesPage = ({ goToPreviousStep }) => {
     );
 }
 
-export default EpisodesPage;
+export default EpisodesVideoPage;

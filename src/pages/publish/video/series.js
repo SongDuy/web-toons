@@ -34,7 +34,7 @@ const dataListGenre = [
 // Sắp xếp mảng theo tên thể loại theo bảng chữ cái
 dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 
-const SeriesPage = ({ goToEposodes }) => {
+const SeriesVideoPage = ({ goToEposodes }) => {
 
     // thể loại 1
     const [genre1, setGenre1] = React.useState('');
@@ -659,4 +659,4 @@ const SeriesPage = ({ goToEposodes }) => {
     );
 }
 
-export default SeriesPage;
+export default SeriesVideoPage;
