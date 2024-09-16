@@ -1,77 +1,77 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'; // Import icon copy
 
 const PaymentInformationPage = () => {
     // Hàm tạo mã ngẫu nhiên
     const generateOrderCode = () => {
-        // Tạo một chuỗi ngẫu nhiên và chuyển đổi nó thành chữ hoa
         return Math.random().toString(36).substring(2, 10).toUpperCase();
     };
 
-    // Hàm lấy thời gian còn lại từ localStorage hoặc thiết lập giá trị mặc định là 5 phút
+    // Lấy thời gian còn lại
     const initialTime = () => {
         const storedTime = localStorage.getItem('timeLeft');
         if (storedTime) {
-            // Nếu thời gian còn lại đã được lưu trữ, chuyển đổi nó từ chuỗi sang số nguyên và trả về
             return parseInt(storedTime, 10);
         } else {
-            // Nếu không có thời gian được lưu trữ, trả về 5 phút tính bằng giây (300 giây)
             return 5 * 60;
         }
     };
 
-    // Hàm lấy mã đơn hàng từ localStorage hoặc tạo mã mới nếu chưa có
+    // Lấy mã đơn hàng
     const initialOrderCode = () => {
         const storedCode = localStorage.getItem('orderCode');
         if (storedCode) {
-            // Nếu mã đơn hàng đã được lưu trữ, trả về mã đó
             return storedCode;
         } else {
-            // Nếu không có mã đơn hàng, tạo mã mới, lưu trữ và trả về
             const newCode = generateOrderCode();
             localStorage.setItem('orderCode', newCode);
             return newCode;
         }
     };
 
-    // Khởi tạo trạng thái cho thời gian còn lại và mã đơn hàng
     const [timeLeft, setTimeLeft] = useState(initialTime);
     const [orderCode, setOrderCode] = useState(initialOrderCode);
 
-    // Hàm cập nhật thời gian còn lại
+    // Hàm cập nhật thời gian
     const updateTime = useCallback(() => {
         setTimeLeft((prevTime) => {
-            const newTime = prevTime - 1; // Giảm thời gian còn lại đi 1 giây
-            localStorage.setItem('timeLeft', newTime); // Cập nhật thời gian còn lại trong localStorage
+            const newTime = prevTime - 1;
+            localStorage.setItem('timeLeft', newTime);
 
             if (newTime <= 0) {
-                // Khi thời gian kết thúc, tạo mã mới và đặt lại thời gian
                 const newCode = generateOrderCode();
-                localStorage.setItem('orderCode', newCode); // Lưu mã mới vào localStorage
-                localStorage.setItem('timeLeft', 5 * 60); // Đặt lại thời gian 5 phút
-                setOrderCode(newCode); // Cập nhật mã đơn hàng trong trạng thái
-                return 5 * 60; // Đặt lại thời gian còn lại
+                localStorage.setItem('orderCode', newCode);
+                localStorage.setItem('timeLeft', 5 * 60);
+                setOrderCode(newCode);
+                return 5 * 60;
             }
-            return newTime; // Trả về thời gian còn lại nếu chưa kết thúc
+            return newTime;
         });
     }, []);
 
-    // Thiết lập một hiệu ứng để cập nhật thời gian mỗi giây
     useEffect(() => {
         const timer = setInterval(updateTime, 1000);
 
         return () => {
-            clearInterval(timer); // Dọn dẹp timer khi component bị gỡ bỏ
+            clearInterval(timer);
         };
     }, [updateTime]);
 
-    // Hàm định dạng thời gian từ giây thành định dạng "MM:SS"
     const formatTime = (seconds) => {
-        const minutes = Math.floor(seconds / 60); // Tính số phút
-        const secs = seconds % 60; // Tính số giây
-        return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`; // Định dạng và trả về chuỗi thời gian
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     };
 
-    // new 
+    // Hàm copy giá trị vào clipboard
+    const copyToClipboard = (text) => {
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Copied: ' + text);
+        }).catch((err) => {
+            console.error('Failed to copy: ', err);
+        });
+    };
+
     return (
         <div className="w-full h-full bg-gray-100 flex items-center justify-center pt-2 pb-5">
             <div className="w-[1300px] h-[640px] bg-white rounded-xl shadow">
@@ -80,61 +80,157 @@ const PaymentInformationPage = () => {
 
                         {/* Phần thời gian chờ thanh toán */}
                         <div className="w-full h-full border-b-2">
-                            {/* Tiêu đề */}
-                            <span className="font-semibold text-lg">
-                                Awaiting payment
-                            </span>
-
-                            {/* Hiển thị thời gian */}
+                            <h1 className="font-semibold text-lg">Awaiting payment</h1>
                             <div className="w-full h-[60px] mt-[10px] flex items-center justify-center ">
-                                <span className="text-xl font-bold">
-                                    {formatTime(timeLeft)}
-                                </span>
+                                <span className="text-xl font-bold">{formatTime(timeLeft)}</span>
                             </div>
                         </div>
 
                         {/* Phần thông tin Sản phẩm */}
-                        <div className="w-full h-full border-b-2">
-
-                        </div>
-
-                        {/* Phần nhập mã khuyến mại */}
-                        <div className="w-full h-full border-b-2">
-
+                        <div className="w-full h-full border-b-2 py-3">
+                            <h1 className="font-semibold text-lg">Service name: Videos</h1>
+                            <div className="flex items-center gap-5">
+                                <h1 className="font-semibold text-lg">Order code:</h1>
+                                <span className="text-yellow-500 text-shadow-black font-bold ">
+                                    {orderCode}
+                                </span>
+                            </div>
                         </div>
 
                         {/* Phần giá tiền cần thanh toán */}
-                        <div className="w-full h-full border-b-2">
-                            {/* Tiêu đề */}
-                            <span className="">
-                                Payment details
-                            </span>
+                        <div className="w-full h-full py-3">
+                            <h1 className="font-semibold text-lg">Payment details</h1>
+                            <div className="w-full h-[50px] bg-gray-100 border shadow rounded-xl mt-2 px-3 flex items-center">
+                                <h1 className="font-semibold text-lg">Selling price:</h1>
+                                <div className="ml-auto flex items-center space-x-2">
+                                    {/* Giá tiền */}
+                                    <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
+                                        255.000
+                                    </span>
+
+                                    {/* Icon copy */}
+                                    <ContentCopyIcon
+                                        className="cursor-pointer text-gray-600 hover:text-black"
+                                        onClick={() => copyToClipboard("255.000")}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="w-[940px] h-full bg-green-100 px-5 py-5">
+                    <div className="w-[940px] h-full pl-5 pr-10 py-5">
+                        <div className="w-full">
+                            <h1 className="font-semibold text-2xl">Transfer accounts by QR</h1>
 
-                        {/* Phần nhập chuyển khoản bằng QR */}
-                        <div className="w-full h-full">
-                            {/* Tiêu đề */}
-                            <span className="font-semibold text-2xl">
-                                Transfer accounts by QR
-                            </span>
+                            <div className="py-3 flex gap-5">
+                                <div className="w-[150px] h-[150px] border shadow">
+                                    <img
+                                        src="" alt="img QR" className="w-full h-full container-fill"
+                                    />
+                                </div>
+
+                                <div className="">
+                                    <ul className="">
+                                        <li className="text-lg">
+                                            Step 1: Open the banking app and scan the QR code.
+                                        </li>
+                                        <li className="text-lg flex gap-2">
+                                            <span className="">
+                                                Step 2: Make sure the transfer content is
+                                            </span>
+                                            <span className="text-yellow-500 text-shadow-black font-bold ">
+                                                {orderCode}
+                                            </span>
+                                        </li>
+                                        <li className="text-lg">
+                                            Step 3: Make the payment.
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
 
-                        {/* Phần chuyển khoản thủ công */}
-                        <div className="w-full h-full">
-                            <span className="font-semibold text-2xl">
-                                Manual transfer
-                            </span>
-                            <span className="text-yellow-500 text-shadow-black font-bold ">
-                                {orderCode}
-                            </span>
+                        <div className="w-full">
+                            <h1 className="font-semibold text-2xl">Manual transfer</h1>
+                            <div className="grid grid-cols-2 gap-3 py-3">
+                                <div className="w-full h-[50px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
+                                    <h1 className="font-semibold text-lg">Selling price:</h1>
+                                    <div className="ml-auto flex items-center space-x-2">
+                                        {/* Giá tiền */}
+                                        <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
+                                            255.000
+                                        </span>
+
+                                        {/* Icon copy */}
+                                        <ContentCopyIcon
+                                            className="cursor-pointer text-gray-600 hover:text-black"
+                                            onClick={() => copyToClipboard("255.000")}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="w-full h-[50px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
+                                    <h1 className="font-semibold text-lg">Selling price:</h1>
+                                    <div className="ml-auto flex items-center space-x-2">
+                                        {/* Giá tiền */}
+                                        <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
+                                            255.000
+                                        </span>
+
+                                        {/* Icon copy */}
+                                        <ContentCopyIcon
+                                            className="cursor-pointer text-gray-600 hover:text-black"
+                                            onClick={() => copyToClipboard("255.000")}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="w-full h-[50px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
+                                    <h1 className="font-semibold text-lg">Selling price:</h1>
+                                    <div className="ml-auto flex items-center space-x-2">
+                                        {/* Giá tiền */}
+                                        <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
+                                            255.000
+                                        </span>
+
+                                        {/* Icon copy */}
+                                        <ContentCopyIcon
+                                            className="cursor-pointer text-gray-600 hover:text-black"
+                                            onClick={() => copyToClipboard("255.000")}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="w-full h-[50px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
+                                    <h1 className="font-semibold text-lg">Selling price:</h1>
+                                    <div className="ml-auto flex items-center space-x-2">
+                                        {/* Giá tiền */}
+                                        <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
+                                            255.000
+                                        </span>
+
+                                        {/* Icon copy */}
+                                        <ContentCopyIcon
+                                            className="cursor-pointer text-gray-600 hover:text-black"
+                                            onClick={() => copyToClipboard("255.000")}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
-                        {/* Phần chú ý */}
-                        <div className="w-full h-full">
-
+                        <div className="w-full h-full border">
+                            <div className="w-[300px] h-[50px] mt-10 ml-auto">
+                                 <button className="ml-auto">
+                                ll
+                            </button>
+                            <button className="mt-auto">
+                                kkk
+                            </button>
+                            </div>
+                           
                         </div>
                     </div>
                 </div>
