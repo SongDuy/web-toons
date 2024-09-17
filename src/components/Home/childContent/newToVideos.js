@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import FavoriteIcon from '@mui/icons-material/Favorite';
+//import FavoriteIcon from '@mui/icons-material/Favorite';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { useSelector } from 'react-redux';
 
@@ -13,7 +13,7 @@ const NewToVideosPage = () => {
     ];
 
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
-    const [hoveredItem, setHoveredItem] = useState(null);
+    const [hoveredVideoItem, setHoveredVideoItem] = useState(null);
 
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
@@ -50,54 +50,49 @@ const NewToVideosPage = () => {
                             to={`/videos/video/series`}
                             className="max-w-[210px] h-[210px]"
                         >
-                            <li
-                                onMouseEnter={() => setHoveredItem(item.id)}
-                                onMouseLeave={() => setHoveredItem(null)}
-                                className="max-w-[210px] 2xl:w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
-                            >
+                             <li
+                                        onMouseEnter={() => setHoveredVideoItem(item.id)}
+                                        onMouseLeave={() => setHoveredVideoItem(null)}
+                                        className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white  cursor-pointer transition-shadow duration-300 hover:shadow"
+                                    >
 
-                                <div className="w-full h-full" >
-                                    <img
-                                        src={item.img}
-                                        alt="img"
-                                        className="object-fill w-full h-full rounded-md"
-                                    />
+                                        <div className="w-full h-[120px] relative" >
+                                            <img
+                                                src={item.img}
+                                                alt="img"
+                                                className="object-fill w-full h-full rounded-md"
+                                            />
 
-                                    {hoveredItem === item.id && (
-                                        <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
-                                            <PlayArrowIcon sx={{ fontSize: 60 }} />
+                                            {hoveredVideoItem === item.id && (
+                                                <div className="absolute inset-0 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                    <PlayArrowIcon sx={{ fontSize: 60 }} />
+                                                </div>
+                                            )}
                                         </div>
-                                    )}
-                                </div>
 
-                                <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                    <div className="w-full h-[65px] mb-auto overflow-hidden">
-                                        <span className="text-black text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
-                                            {item.name}
-                                        </span>
-                                        <span className="text-black text-md text-shadow-white leading-[1.2] line-clamp-1">
-                                            {item.auth}
-                                        </span>
-                                    </div>
+                                        <div className="w-full flex flex-wrap items-center px-3 py-3">
+                                            <div className="w-full h-[65px] mb-auto overflow-hidden">
+                                                <span className="text-black text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
+                                                    {item.name}
+                                                </span>
+                                                <span className="text-black text-md text-shadow-white leading-[1.2] line-clamp-1">
+                                                    {item.auth}
+                                                </span>
+                                            </div>
 
-                                    <div className="w-full mb-[20px]">
-                                        <span className="w-[75px] text-rose-300 rounded-full text-sm font-semibold flex items-center gap-1">
-                                            <FavoriteIcon />
-                                            {item.like}
-                                        </span>
-                                        <span className="w-[35px] h-[35px] mt-2 uppercase bg-gradient-to-t from-gray-500 via-black to-black text-white font-semibold text-xs rounded-full flex items-center justify-center">
-                                            New
-                                        </span>
-                                    </div>
+                                            {/* <div className="w-full mb-[20px]">
+                                                <span className="w-[75px] text-rose-300 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
+                                                    <FavoriteIcon />
+                                                    {item.like}
+                                                </span>
+                                                <span className="w-[35px] h-[35px] mt-2 uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                    Up
+                                                </span>
+                                            </div> */}
 
-                                    <div className="w-full h-[30px] mt-auto">
-                                        <span className="w-full px-2 py-1 text-white text-shadow-black text-sm font-semibold flex items-center justify-center">
-                                            {item.genre}
-                                        </span>
-                                    </div>
-                                </div>
+                                        </div>
 
-                            </li>
+                                    </li>
                         </Link>
                     ))}
 

@@ -36,18 +36,6 @@ dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 
 const SeriesVideoPage = ({ goToEposodes }) => {
 
-    // thể loại 1
-    const [genre1, setGenre1] = React.useState('');
-    const handleChangeGenre1 = (event) => {
-        setGenre1(event.target.value);
-    };
-
-    // thể loại 2
-    const [genre2, setGenre2] = React.useState('');
-    const handleChangeGenre2 = (event) => {
-        setGenre2(event.target.value);
-    };
-
     // Tiêu đề video
     const [valueTitle, setValueTile] = useState('');
     const handleTitle = (event) => {
@@ -142,7 +130,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                 </span>
                             </div>
                             <span className="text-black">
-                                SERIES VIDEO
+                                VIDEO SERIES 
                             </span>
                         </li>
                         <li className="uppercase font-semibold text-md flex items-center justify-center">
@@ -157,7 +145,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                 </span>
                             </div>
                             <span className="text-gray-400">
-                                EPISODES VIDEO
+                                VIDEO EPISODES 
                             </span>
                         </li>
                     </ul>
@@ -246,68 +234,6 @@ const SeriesVideoPage = ({ goToEposodes }) => {
 
                         {/* Phần cột bên phải */}
                         <div className="w-[820px] h-full grid grid-cols-1">
-
-                            {/* Phần chọn thể loại 1 */}
-                            <div className="w-full py-3 pl-5 flex">
-                                <div className="w-full">
-                                    <h1 className="w-full font-semibold text-xl">
-                                        Genre 1
-                                    </h1>
-
-                                    <FormControl className="w-full">
-                                        <Select
-                                            value={genre1}
-                                            onChange={handleChangeGenre1}
-                                            displayEmpty
-                                            className="w-full h-[40px] bg-white mt-3 rounded-md"
-                                        >
-                                            <MenuItem value="">
-                                                Select
-                                            </MenuItem>
-                                            {/* khung nội dung */}
-                                            {dataListGenre.map(item => (
-
-                                                <MenuItem
-                                                    key={item.id}
-                                                    value={item.name}
-                                                >
-                                                    {item.name}
-                                                </MenuItem>
-                                            ))}
-                                        </Select>
-                                    </FormControl>
-
-                                </div>
-
-                                {/* Phần chọn thể loại 2 */}
-                                <div className="w-full ml-5">
-                                    <h1 className="w-full font-semibold text-xl">
-                                        Genre 2
-                                    </h1>
-
-                                    <FormControl className="w-full">
-                                        <Select
-                                            value={genre2}
-                                            onChange={handleChangeGenre2}
-                                            displayEmpty
-                                            className="w-full h-[40px] bg-white mt-3 rounded-md"
-                                        >
-                                            <MenuItem value="">
-                                                Select
-                                            </MenuItem>
-                                            {dataListGenre.map(item => (
-                                                <MenuItem
-                                                    key={item.id}
-                                                    value={item.name}
-                                                >
-                                                    {item.name}
-                                                </MenuItem>
-                                            ))}
-                                        </Select>
-                                    </FormControl>
-                                </div>
-
-                            </div>
 
                             {/* Phần tiêu đề series video  */}
                             <div className="w-full py-3 pl-5">

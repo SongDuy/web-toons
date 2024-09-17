@@ -196,12 +196,12 @@ const MyChannelPage = () => {
                             </div>
                             <div className="px-1 py-4 flex">
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    {!language ? <span> Series Originals: </span> : <span> 시리즈 오리지널: </span>
+                                    {!language ? <span> Original Series: </span> : <span> 시리즈 오리지널: </span>
                                     }
                                     {' '} 15
                                 </div>
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    {!language ? <span> Series Videos: </span> : <span> 시리즈 비디오: </span>}
+                                    {!language ? <span> Video Series: </span> : <span> 시리즈 비디오: </span>}
                                     {' '} 15
                                 </div>
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
@@ -235,7 +235,7 @@ const MyChannelPage = () => {
                         {/* Khung hiển thị các Series truyện của tác giả */}
                         <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
                             <div className="font-semibold text-[20px] text-black">
-                                {!language ? <span> Series Original </span> : <span> 시리즈 오리지널 </span>}
+                                {!language ? <span>Original Series </span> : <span> 시리즈 오리지널 </span>}
                             </div>
 
                             <div className="mt-5 h-[450px] custom-scrollbar">
@@ -274,7 +274,7 @@ const MyChannelPage = () => {
                         {/* Khung hiển thị các Series Video của tác giả */}
                         <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
                             <div className="font-semibold text-[20px] text-black">
-                                {!language ? <span> Series Video </span> : <span> 시리즈 비디오 </span>}
+                                {!language ? <span>Video Series </span> : <span> 시리즈 비디오 </span>}
                             </div>
 
                             <div className="mt-5 h-[450px] custom-scrollbar">

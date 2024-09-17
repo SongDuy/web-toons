@@ -192,7 +192,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                             <div className="w-[40px] h-[40px] bg-green-500 rounded-full border flex items-center justify-center mx-2">
                                 <span className="mx-3 text-2xl text-white font-bold">1</span>
                             </div>
-                            <span className="text-black">SERIES ORIGINAL</span>
+                            <span className="text-black">ORIGINAL SERIES </span>
                         </li>
                         <li className="uppercase font-semibold text-md flex items-center justify-center">
                             <span className="text-gray-400">

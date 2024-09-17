@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import NewTrendingOriginalsPage from './childPopular/newTrendingOriginals';
 import NewTrendingVideosPage from './childPopular/newTrendingVideos';
 import OriginalsByGenrePage from './childPopular/originalsByGenre';
-import VideosByGenrePage from './childPopular/videosByGenre';
 
 const PopularPage = () => {
 
@@ -98,24 +97,6 @@ const PopularPage = () => {
                         </li>
                     </ScrollLink>
 
-                    <ScrollLink to="section4" smooth={true} duration={500}>
-                        <li
-                            onClick={() => setSelectedSection("section4")}
-                            className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section4" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
-                        >
-                            {!language ?
-                                <span>
-                                    VIDEOS BY GENRE
-                                </span>
-                                :
-                                <span>
-                                    장르별 동영상
-                                </span>
-                            }
-
-                        </li>
-                    </ScrollLink>
-
                 </ul>
             </div>
 
@@ -135,11 +116,6 @@ const PopularPage = () => {
                     {/* Hiển thị ORIGINALS BY GENRE */}
                     <ScrollElement name="section3" className="element">
                         <OriginalsByGenrePage />
-                    </ScrollElement>
-
-                    {/* Hiển thị VIDEOS BY GENRE */}
-                    <ScrollElement name="section4" className="element">
-                        <VideosByGenrePage />
                     </ScrollElement>
 
                 </div>

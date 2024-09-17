@@ -151,7 +151,7 @@ const PaymentInformationPage = () => {
                             </div>
                         </div>
 
-                        <div className="w-full">
+                        <div className="w-full mt-5">
                             <h1 className="font-semibold text-2xl">Manual transfer</h1>
                             <div className="grid grid-cols-2 gap-3 py-3">
                                 <div className="w-full h-[50px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
@@ -221,16 +221,16 @@ const PaymentInformationPage = () => {
 
                         </div>
 
-                        <div className="w-full h-full border">
-                            <div className="w-[300px] h-[50px] mt-10 ml-auto">
-                                 <button className="ml-auto">
-                                ll
-                            </button>
-                            <button className="mt-auto">
-                                kkk
-                            </button>
+                        <div className="w-full h-full mt-10 flex items-center justify-center">
+                            <div className="w-1/2 h-[50px] flex gap-10">
+                                <button className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center">
+                                    Cancel
+                                </button>
+                                <button className="w-1/2 h-[50px] text-white font-semibold bg-green-500 hover:bg-green-600 shadow rounded-full flex items-center justify-center">
+                                    Completed
+                                </button>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>

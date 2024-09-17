@@ -243,7 +243,7 @@ const OriginalSeriesPage = () => {
 
                             <div className="col-span-2 h-full">
                                 <div className="w-full px-5 pb-3 font-semibold text-md">
-                                    {!language ? <span> Series Original </span> : <span> 시리즈 오리지널 </span>}
+                                    {!language ? <span> Original Series Episodes </span> : <span> 시리즈 오리지널 </span>}
                                 </div>
                                 <div className="w-full h-[900px] px-3 custom-scrollbar">
 
