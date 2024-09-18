@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import Avatar from '@mui/material/Avatar';
@@ -29,12 +29,12 @@ const dataVideos = [
 //https://www.ausp.edu.vn/uploads/blog/2024/05/16/1ecf77502b3bc514b2f535533d7b01f03a772174-1715817458.jpg
 const MyChannelPage = () => {
 
-    const [photos, setPhotos] = useState([null]); // Lưu các ảnh đã chọn
+    const [photos, setPhotos] = useState([]); // Lưu các ảnh đã chọn 0
     const [getphotos, setgetPhotos] = useState([null]);
     // Hiện thị phản hồi của bình luận
     const [post, setpost] = useState('');
     const [posts, setposts] = useState([]);
-   
+
     const [iLike, setILike] = useState([]);
 
     const Account = useSelector((state) => state.Account.Account);
@@ -45,12 +45,12 @@ const MyChannelPage = () => {
     // State để lưu chỉ số hiện tại cho mỗi bài viết
     const [currentIndices, setCurrentIndices] = useState({});
     useEffect(() => {
-        const getpost=async ()=>{
+        const getpost = async () => {
             try {
-                if(Account){
+                if (Account) {
                     const post = await postFireBase.getAllid(Account.uid);
                     const pot = await postFireBase.getlike(Account.uid);
-                    const like= pot.post?.filter(item=>item.success).map(item=>{   return{[item?.id]: item?.id}})
+                    const like = pot.post?.filter(item => item.success).map(item => { return { [item?.id]: item?.id } })
                     setILike(like);
                     setposts(post.success ? post?.post : []);
                 }
@@ -76,7 +76,7 @@ const MyChannelPage = () => {
         }));
     };
 
-   
+
     // Thêm ô ảnh mới
     const handleAddPhoto = () => {
         setPhotos([...photos, null]);
@@ -93,28 +93,28 @@ const MyChannelPage = () => {
         if (file) {
             const newPhotos = [...photos];
             const newPhoto = [...getphotos];
-            newPhoto[index]=file
+            newPhoto[index] = file
             newPhotos[index] = URL.createObjectURL(file); // Tạo URL tạm thời cho ảnh
             setPhotos(newPhotos);
             setgetPhotos(newPhoto)
         }
     };
-    const handlepost=async ()=>{
+    const handlepost = async () => {
         try {
-            if(auth.currentUser.uid){
+            if (auth.currentUser.uid) {
                 console.log(getphotos)
-         const res=   await postFireBase.Add({uid:auth.currentUser.uid, createTime: new Date(Date.now()),post,image:[],like:0})
-                if( getphotos.length!==0){
+                const res = await postFireBase.Add({ uid: auth.currentUser.uid, createTime: new Date(Date.now()), post, image: [], like: 0 })
+                if (getphotos.length !== 0) {
                     for (const photo of getphotos) {
                         try {
-                          await postFireBase.uploadToFirebase(photo, photo.name, auth?.currentUser?.uid, res);
-                          console.log(`Ảnh ${photo.name} đã được upload thành công!`);
+                            await postFireBase.uploadToFirebase(photo, photo.name, auth?.currentUser?.uid, res);
+                            console.log(`Ảnh ${photo.name} đã được upload thành công!`);
                         } catch (error) {
-                          console.error(`Lỗi upload ảnh ${photo.name}:`, error);
-                          // Xử lý lỗi cho từng ảnh (nếu cần)
+                            console.error(`Lỗi upload ảnh ${photo.name}:`, error);
+                            // Xử lý lỗi cho từng ảnh (nếu cần)
                         }
-                      }
-                     
+                    }
+
                 }
                 const posts = await postFireBase.getAllid(Account.uid);
                 setposts(posts.success ? posts?.post : []);
@@ -128,26 +128,26 @@ const MyChannelPage = () => {
     }
     const handlelike = async (idpost, togglelike) => {
         try {
-          if (auth?.currentUser) {
-            await postFireBase.Addlike({
-                idpost,
-              uid: auth?.currentUser?.uid,
-              like: true,
-              togglelike,
-            });
-            const pot = await postFireBase.getlike(Account.uid);
-            const like= pot.post?.filter(item=>item.success).map(item=>{   return{[item?.id]: item?.id}})
-            setILike(like);
-            const posts = await postFireBase.getAllid(Account.uid);
+            if (auth?.currentUser) {
+                await postFireBase.Addlike({
+                    idpost,
+                    uid: auth?.currentUser?.uid,
+                    like: true,
+                    togglelike,
+                });
+                const pot = await postFireBase.getlike(Account.uid);
+                const like = pot.post?.filter(item => item.success).map(item => { return { [item?.id]: item?.id } })
+                setILike(like);
+                const posts = await postFireBase.getAllid(Account.uid);
                 setposts(posts.success ? posts?.post : []);
-              
-          }
-         
+
+            }
+
         } catch (error) {
-          console.log(error);
+            console.log(error);
         }
-      };
-    
+    };
+
     return (
         <div className="w-full h-full pb-10 border bg-gray-100 flex items-center justify-center">
             <div className="w-[1120px] h-full">
@@ -177,7 +177,7 @@ const MyChannelPage = () => {
 
                             {/* Nút thay ảnh Avatar */}
                             <div className="absolute bottom-0 right-0">
-                                <button className="w-[40px] h-[40px] border-2 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center">
+                                <button className="w-[40px] h-[40px] border-2 rounded-full shadow bg-white hover:bg-gray-100 flex items-center justify-center">
                                     <PhotoCameraIcon />
                                 </button>
                             </div>
@@ -196,12 +196,12 @@ const MyChannelPage = () => {
                             </div>
                             <div className="px-1 py-4 flex">
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    {!language ? <span> Series Original: </span> : <span> 시리즈 오리지널: </span>
+                                    {!language ? <span> Original Series: </span> : <span> 시리즈 오리지널: </span>
                                     }
                                     {' '} 15
                                 </div>
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                    {!language ? <span> Series Video: </span> : <span> 시리즈 비디오: </span>}
+                                    {!language ? <span> Video Series: </span> : <span> 시리즈 비디오: </span>}
                                     {' '} 15
                                 </div>
                                 <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
@@ -235,7 +235,7 @@ const MyChannelPage = () => {
                         {/* Khung hiển thị các Series truyện của tác giả */}
                         <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
                             <div className="font-semibold text-[20px] text-black">
-                                {!language ? <span> Series Original </span> : <span> 시리즈 오리지널 </span>}
+                                {!language ? <span>Original Series </span> : <span> 시리즈 오리지널 </span>}
                             </div>
 
                             <div className="mt-5 h-[450px] custom-scrollbar">
@@ -274,7 +274,7 @@ const MyChannelPage = () => {
                         {/* Khung hiển thị các Series Video của tác giả */}
                         <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
                             <div className="font-semibold text-[20px] text-black">
-                                {!language ? <span> Series Video </span> : <span> 시리즈 비디오 </span>}
+                                {!language ? <span>Video Series </span> : <span> 시리즈 비디오 </span>}
                             </div>
 
                             <div className="mt-5 h-[450px] custom-scrollbar">
@@ -339,8 +339,8 @@ const MyChannelPage = () => {
                                             <span className="font-semibold">{Account?.name}</span>
                                         </div>
                                         <div className="w-full">
-                                            <span className="text-gray-400">{new Date(Date.now()).getDate()}/{new Date(Date.now()).getMonth()+1}/
-                          {new Date(Date.now())?.getFullYear()}</span>
+                                            <span className="text-gray-400">{new Date(Date.now()).getDate()}/{new Date(Date.now()).getMonth() + 1}/
+                                                {new Date(Date.now())?.getFullYear()}</span>
                                         </div>
                                     </div>
 
@@ -352,7 +352,7 @@ const MyChannelPage = () => {
                                         placeholder="What are you thinking?"
                                         className="w-full h-[160px] rounded-md px-3 py-3 border-2"
                                         value={post}
-                                        onChange={(e)=>setpost(e.target.value)}
+                                        onChange={(e) => setpost(e.target.value)}
                                     />
 
                                 </div>
@@ -402,7 +402,7 @@ const MyChannelPage = () => {
                                             onClick={handleAddPhoto}
                                             className="w-[120px] px-2 py-2 border font-semibold rounded-full bg-gray-50 hover:bg-gray-100 shadow"
                                         >
-                                            {!language ? <span> Add Image</span> : <span>이미지 추가</span>}
+                                            {!language ? <span> Add Image</span> : <span> 이미지 추가</span>}
                                         </button>
                                     </div>
                                 </div>
@@ -450,9 +450,9 @@ const MyChannelPage = () => {
                                                         <span className="font-semibold">{Account?.name}</span>
                                                     </div>
                                                     <div className="">
-                                                        <span className="text-gray-400">  
-                          {new Date(item.createTime).getDate()}/{new Date(item.createTime).getMonth()+1}/
-                          {new Date(item.createTime)?.getFullYear()}</span>
+                                                        <span className="text-gray-400">
+                                                            {new Date(item.createTime).getDate()}/{new Date(item.createTime).getMonth() + 1}/
+                                                            {new Date(item.createTime)?.getFullYear()}</span>
                                                     </div>
                                                 </div>
                                                 <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
@@ -498,9 +498,9 @@ const MyChannelPage = () => {
                                         <div className="w-full pt-5">
                                             <div className="mr-auto flex gap-2">
                                                 {/* Nhấn nút thả tim */}
-                                                {!iLike?.filter(like=>like[item.idpost])?.length>0 ?
+                                                {!iLike?.filter(like => like[item.idpost])?.length > 0 ?
                                                     <button
-                                                        onClick={() => handlelike(item.idpost,item.like)}
+                                                        onClick={() => handlelike(item.idpost, item.like)}
                                                         className="px-2 py-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
                                                     >
                                                         <FavoriteBorderIcon />
@@ -508,23 +508,17 @@ const MyChannelPage = () => {
                                                     </button>
                                                     :
                                                     <button
-                                                        onClick={() => handlelike(item.idpost,item.like)}
+                                                        onClick={() => handlelike(item.idpost, item.like)}
                                                         className="px-2 py-1 border rounded-md gap-2 bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
                                                     >
                                                         <FavoriteIcon className="text-red-500" />
                                                         {item.like}
                                                     </button>
                                                 }
-
-                                            
-                                               
                                             </div>
 
                                         </div>
-
-                                       
                                     </li>
-
                                 ))}
                             </ul>
                         </div>

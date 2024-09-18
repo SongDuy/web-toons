@@ -10,7 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 
 import CheckIcon from '@mui/icons-material/Check';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -74,38 +74,36 @@ const VideosPage = () => {
     const [hoveredCompletedItem, setHoveredCompletedItem] = useState(null);
 
     // Mở và đóng menu video list
-    const [open, setOpen] = React.useState(false);
-    const anchorRef = React.useRef(null);
+    const anchorRefVideos = React.useRef(null); // New ref for video genre list
+    const [openVideos, setOpenVideos] = React.useState(false); // New state for video genre list
 
-    const handleToggle = () => {
-        setOpen((prevOpen) => !prevOpen);
+    const handleToggleVideos = () => {
+        setOpenVideos((prevOpen) => !prevOpen);
     };
 
-    const handleClose = (event) => {
-        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+    const handleCloseVideos = (event) => {
+        if (anchorRefVideos.current && anchorRefVideos.current.contains(event.target)) {
             return;
         }
-
-        setOpen(false);
+        setOpenVideos(false);
     };
 
-    function handleListKeyDown(event) {
+    function handleListKeyDownVideos(event) {
         if (event.key === 'Tab') {
             event.preventDefault();
-            setOpen(false);
+            setOpenVideos(false);
         } else if (event.key === 'Escape') {
-            setOpen(false);
+            setOpenVideos(false);
         }
     }
+    const prevOpenVideos = React.useRef(openVideos);
 
-    const prevOpen = React.useRef(open);// return focus to the button when we transitioned from !open -> open
     React.useEffect(() => {
-        if (prevOpen.current === true && open === false) {
-            anchorRef.current.focus();
+        if (prevOpenVideos.current === true && openVideos === false) {
+            anchorRefVideos.current.focus();
         }
-
-        prevOpen.current = open;
-    }, [open]);
+        prevOpenVideos.current = openVideos;
+    }, [openVideos]);
 
     //Chọn menu cho loại
     const [selectedMenuVideoList, setSelectedMenuVideoList] = useState("by Popularity");
@@ -149,21 +147,22 @@ const VideosPage = () => {
                                     {!language ? <span> Ongoing Series </span> : <span> 진행중인 시리즈 </span>}
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
-                                    <button
-                                        ref={anchorRef}
-                                        id="composition-button"
-                                        aria-controls={open ? 'composition-menu' : undefined}
-                                        aria-expanded={open ? 'true' : undefined}
+                                   {/* Button for Video Genre List */}
+                                   <button
+                                        ref={anchorRefVideos}
+                                        id="composition-button-videos"
+                                        aria-controls={openVideos ? 'composition-menu-videos' : undefined}
+                                        aria-expanded={openVideos ? 'true' : undefined}
                                         aria-haspopup="true"
-                                        onClick={handleToggle}
+                                        onClick={handleToggleVideos}
                                     >
-                                        {selectedMenuVideoList}
+                                        {selectedMenuVideoList} {/* You'll need to define `selectedMenuVideoList` state */}
                                     </button>
 
-                                    {/* Chọn menu */}
+                                    {/* Videos Menu */}
                                     <Popper
-                                        open={open}
-                                        anchorEl={anchorRef.current}
+                                        open={openVideos}
+                                        anchorEl={anchorRefVideos.current}
                                         role={undefined}
                                         placement="bottom-start"
                                         transition
@@ -178,15 +177,16 @@ const VideosPage = () => {
                                                 }}
                                             >
                                                 <Paper>
-                                                    <ClickAwayListener onClickAway={handleClose}>
+                                                    <ClickAwayListener onClickAway={handleCloseVideos}>
                                                         <MenuList
-                                                            className="bg-white rounded-lg text-black font-semibold "
-                                                            autoFocusItem={open}
-                                                            id="composition-menu"
-                                                            aria-labelledby="composition-button"
-                                                            onKeyDown={handleListKeyDown}
+                                                            className="bg-white rounded-lg text-black font-semibold"
+                                                            autoFocusItem={openVideos}
+                                                            id="composition-menu-videos"
+                                                            aria-labelledby="composition-button-videos"
+                                                            onKeyDown={handleListKeyDownVideos}
                                                         >
-                                                            <MenuItem onClick={handleClose}>
+                   
+                                                            <MenuItem onClick={handleCloseVideos}>
                                                                 <span
                                                                     onClick={() => setSelectedMenuVideoList("by Popularity")}
                                                                     className={`w-full h-full ${selectedMenuVideoList === "by Popularity" ? "text-yellow-500" : ""}`}
@@ -195,7 +195,7 @@ const VideosPage = () => {
                                                                 </span>
                                                             </MenuItem>
 
-                                                            <MenuItem onClick={handleClose}>
+                                                            <MenuItem onClick={handleCloseVideos}>
                                                                 <span
                                                                     onClick={() => setSelectedMenuVideoList("by Likes")}
                                                                     className={`w-full h-full ${selectedMenuVideoList === "by Likes" ? "text-yellow-500" : ""}`}
@@ -204,7 +204,7 @@ const VideosPage = () => {
                                                                 </span>
                                                             </MenuItem>
 
-                                                            <MenuItem onClick={handleClose}>
+                                                            <MenuItem onClick={handleCloseVideos}>
                                                                 <span
                                                                     onClick={() => setSelectedMenuVideoList("by Date")}
                                                                     className={`w-full h-full ${selectedMenuVideoList === "by Date" ? "text-yellow-500" : ""}`}
@@ -212,14 +212,13 @@ const VideosPage = () => {
                                                                     by Date
                                                                 </span>
                                                             </MenuItem>
-
+                                                            {/* Add more menu items here */}
                                                         </MenuList>
                                                     </ClickAwayListener>
                                                 </Paper>
                                             </Grow>
                                         )}
                                     </Popper>
-
                                     <CheckIcon />
                                 </span>
                             </div>
@@ -271,10 +270,10 @@ const VideosPage = () => {
                                             <li
                                                 onMouseEnter={() => setHoveredOngoingItem(item.id)}
                                                 onMouseLeave={() => setHoveredOngoingItem(null)}
-                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md  cursor-pointer transition-shadow duration-300 hover:shadow"
                                             >
 
-                                                <div className="w-full h-full" >
+                                                <div className="w-full h-[130px] relative" >
                                                     <img
                                                         src={item.img}
                                                         alt="img"
@@ -282,13 +281,13 @@ const VideosPage = () => {
                                                     />
 
                                                     {hoveredOngoingItem === item.id && (
-                                                        <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                        <div className="absolute inset-0 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                             <PlayArrowIcon sx={{ fontSize: 60 }} />
                                                         </div>
                                                     )}
                                                 </div>
 
-                                                <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                                <div className=" flex flex-wrap items-center px-3 py-3">
 
                                                     <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                         <span className="text-lg font-semibold text-black text-shadow-white leading-[1.2] line-clamp-2">
@@ -296,28 +295,6 @@ const VideosPage = () => {
                                                         </span>
                                                         <span className="text-md text-black text-shadow-white leading-[1.2] line-clamp-1">
                                                             {item.auth}
-                                                        </span>
-                                                    </div>
-
-                                                    <div className="w-full mb-[40px] mr-auto">
-                                                        <span className="w-[75px] text-rose-300 rounded-full gap-1 text-sm font-semibold flex items-center">
-                                                            <FavoriteIcon />
-                                                            {item.like}
-                                                        </span>
-                                                        <div className="flex mt-2 gap-1">
-                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                                Up
-                                                            </span>
-                                                            {/* <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                                New
-                                                            </span> */}
-                                                        </div>
-                                                    </div>
-
-                                                    {/*Trong component React của bạn */}
-                                                    <div className="w-full h-[30px]">
-                                                        <span className="w-full px-2 py-1 text-white text-shadow-black text-sm font-semibold flex items-center justify-center">
-                                                            {item.genre}
                                                         </span>
                                                     </div>
 
@@ -353,10 +330,10 @@ const VideosPage = () => {
                                             <li
                                                 onMouseEnter={() => setHoveredCompletedItem(item.id)}
                                                 onMouseLeave={() => setHoveredCompletedItem(null)}
-                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md cursor-pointer transition-shadow duration-300 hover:shadow"
                                             >
 
-                                                <div className="w-full h-full" >
+                                                <div className="w-full h-[130px] relative" >
                                                     <img
                                                         src={item.img}
                                                         alt="img"
@@ -364,13 +341,13 @@ const VideosPage = () => {
                                                     />
 
                                                     {hoveredCompletedItem === item.id && (
-                                                        <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                        <div className="absolute inset-0 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                             <PlayArrowIcon sx={{ fontSize: 60 }} />
                                                         </div>
                                                     )}
                                                 </div>
 
-                                                <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                                <div className="flex flex-wrap items-center px-3 py-3">
 
                                                     <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                         <span className="text-lg font-semibold text-black text-shadow-white leading-[1.2] line-clamp-2">
@@ -378,25 +355,6 @@ const VideosPage = () => {
                                                         </span>
                                                         <span className="text-md text-black text-shadow-white leading-[1.2] line-clamp-1">
                                                             {item.auth}
-                                                        </span>
-                                                    </div>
-
-                                                    <div className="w-full mb-[40px] mr-auto">
-                                                        <span className="w-[75px] text-rose-300 rounded-full gap-1 text-sm font-semibold flex items-center">
-                                                            <FavoriteIcon />
-                                                            {item.like}
-                                                        </span>
-                                                        <div className="flex mt-2 gap-1">
-                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-300 via-white to-white text-green-500 text-xs font-semibold rounded-full flex items-center justify-center">
-                                                                End
-                                                            </span>
-                                                        </div>
-                                                    </div>
-
-                                                    {/*Trong component React của bạn */}
-                                                    <div className="w-full h-[30px]">
-                                                        <span className="w-full px-2 py-1 text-white text-shadow-black text-sm font-semibold flex items-center justify-center">
-                                                            {item.genre}
                                                         </span>
                                                     </div>
 

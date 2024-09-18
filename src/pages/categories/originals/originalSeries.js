@@ -60,9 +60,9 @@ const OriginalSeriesPage = () => {
 
                 setloading(true)
                 if (auth.currentUser) {
-                    const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid,id.id)
-                    const rateuser=await RateFireBase.getbyid(auth.currentUser.uid,id.id)
-                    setRate(rateuser.success?rateuser.rate[0].rate:0);
+                    const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid, id.id)
+                    const rateuser = await RateFireBase.getbyid(auth.currentUser.uid, id.id)
+                    setRate(rateuser.success ? rateuser.rate[0].rate : 0);
                     subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
                     subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
                 }
@@ -110,13 +110,13 @@ const OriginalSeriesPage = () => {
 
     const handlesubscribe = async () => {
         try {
-           
+
             if (auth.currentUser) {
                 await SubscribeFireBase.Add({ uid: auth.currentUser.uid, idcomic: id.id, createTime: new Date(Date.now()) })
                 await comicFireBase.update({ totalSubscribed: comicid.totalSubscribed + 1 }, id.id)
                 await dispatch(getidComic(id.id))
-              
-                const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid,id.id)
+
+                const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid, id.id)
 
                 subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
                 subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
@@ -130,7 +130,7 @@ const OriginalSeriesPage = () => {
                 await SubscribeFireBase.Delete(Subscribe[0].id)
                 await comicFireBase.update({ totalSubscribed: comicid.totalSubscribed - 1 }, id.id)
                 await dispatch(getidComic(id.id))
-                const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid,id.id)
+                const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid, id.id)
                 subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
                 subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
             }
@@ -244,7 +244,7 @@ const handleRate=async (event, newValue) => {
 
                             <div className="col-span-2 h-full">
                                 <div className="w-full px-5 pb-3 font-semibold text-md">
-                                    {!language ? <span> Series Original </span> : <span> 시리즈 오리지널 </span>}
+                                    {!language ? <span> Original Series Episodes </span> : <span> 시리즈 오리지널 </span>}
                                 </div>
                                 <div className="w-full h-[900px] px-3 custom-scrollbar">
 
@@ -330,7 +330,7 @@ const handleRate=async (event, newValue) => {
                                                 <StarIcon />
                                             </span>
                                             <span className="mx-1">
-                                            {comicid.rate}
+                                                {comicid.rate}
                                             </span>
 
                                         </li>
@@ -387,7 +387,7 @@ const handleRate=async (event, newValue) => {
                                                                             name="half-rating-read"
                                                                             defaultValue={parseInt(Rate)}
                                                                             precision={0.5}
-                                                                            onChange={handleRate} 
+                                                                            onChange={handleRate}
                                                                         />
                                                                     </ClickAwayListener></MenuItem>
                                                                 </MenuList>
@@ -413,7 +413,7 @@ const handleRate=async (event, newValue) => {
                                     </div>
                                     <div className="w-full">
                                         <span className="">
-                                         {comicid.summary}
+                                            {comicid.summary}
                                         </span>
                                     </div>
 

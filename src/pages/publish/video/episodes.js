@@ -5,7 +5,7 @@ import NorthIcon from '@mui/icons-material/North';
 
 import Radio from '@mui/material/Radio';
 
-const EpisodesPage = ({ goToPreviousStep }) => {
+const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
     // hàm material nút chọn ở mục comment
     const [selectedValue, setSelectedValue] = React.useState('Enable');
@@ -79,7 +79,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                     </span>
                                 </div>
 
-                                <button className="w-full h-[220px] shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
+                                <button className="w-[200px] h-[200px] shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
                                     <div>
                                         <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
                                             <NorthIcon />
@@ -254,7 +254,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                                 onChange={handleChange}
                                                 value="Enable"
                                                 name="radio-buttons"
-                                                sx={{ '& .MuiSvgIcon-root': { fontSize: 28, }, }}
+                                                sx={{ '& .MuiSvgIcon-root': { fontSize: 30, }, }}
                                             />
                                             <span>Enable</span>
                                         </label>
@@ -264,7 +264,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                                 onChange={handleChange}
                                                 value="Disable"
                                                 name="radio-buttons"
-                                                sx={{ '& .MuiSvgIcon-root': { fontSize: 28, }, }}
+                                                sx={{ '& .MuiSvgIcon-root': { fontSize: 30, }, }}
                                             />
                                             <span>Disable</span>
                                         </label>
@@ -291,4 +291,4 @@ const EpisodesPage = ({ goToPreviousStep }) => {
     );
 }
 
-export default EpisodesPage;
+export default EpisodesVideoPage;

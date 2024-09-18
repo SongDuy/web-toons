@@ -187,7 +187,7 @@ const DisplayOriginalPage = () => {
       const rep = await CommentFireBase.getidrep(commentId);
       setreps(rep.success ? rep?.rep : []);
       setReplyCommentId(commentId === replyCommentId ? null : commentId);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   //new
@@ -215,7 +215,7 @@ const DisplayOriginalPage = () => {
         dispatch(setIsLoginModal(true));
         setComment("");
       }
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const handlesubscribe = async () => {
@@ -298,7 +298,6 @@ const DisplayOriginalPage = () => {
   };
   const repdislike = async (idcomment, idrep, toggledislike) => {
     try {
-      console.log(idcomment, idrep, toggledislike);
       if (auth?.currentUser) {
         await CommentFireBase.Addrepdislike({
           idcomment,

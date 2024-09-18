@@ -356,7 +356,7 @@ const DisplayVideoPage = () => {
 
                                                     {/* Phản hồi bình luận */}
                                                     {replyCommentId === item.id && (
-                                                        <div className="w-full px-5 ">
+                                                        <div className="w-full pl-5 ">
 
                                                             {/* Nhập bình luận phản hồi */}
                                                             <div className="w-full h-full">
@@ -377,7 +377,7 @@ const DisplayVideoPage = () => {
                                                             </div>
 
                                                             {/* Hiển thị các phản hồi bình luận có sẳn */}
-                                                            {item.replies > 0 && (
+                                                            {item.replies >= 0 && (
                                                                 <div className="w-full h-full">
                                                                     {/* Danh sách phản hồi */}
                                                                     <ul className="w-full h-full">
@@ -499,75 +499,6 @@ const DisplayVideoPage = () => {
                                 </ul>
                             </div>
 
-                            {/* Hiển thị nội dung video theo thể loại*/}
-                            <div className="w-full h-full mt-8">
-                                <div className="flex items-center pb-2">
-                                    <span className="px-2 font-semibold text-lg hover:text-green-500 cursor-pointer">
-
-                                        {!language ?
-                                            <span>
-                                                Videos by Genre
-                                            </span>
-                                            :
-                                            <span>
-                                                장르별 동영상
-                                            </span>
-                                        }
-                                        <NavigateNextIcon />
-                                    </span>
-                                    <span className="ml-auto text-green-500 cursor-pointer mr-2">
-                                        ALL
-                                    </span>
-                                    <span className="text-green-500 cursor-pointer">
-                                        <CheckIcon />
-                                    </span>
-                                </div>
-
-                                <ul className="w-full h-full py-2">
-                                    {/* khung nội dung */}
-                                    {dataPopular.map(item => (
-                                        <Link
-                                            key={item.id}
-                                            to={`/videos/video/series`}
-                                        >
-                                            <li
-                                                className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
-                                            >
-                                                <div className="w-full h-full flex items-center">
-                                                    <div className="w-[80px] h-[80px] flex">
-                                                        <img
-                                                            src={item.img}
-                                                            alt="img"
-
-                                                            className="object-fill w-full h-full rounded-md"
-                                                        />
-                                                    </div>
-
-                                                    <div className="w-[30px] h-[30px] flex items-center justify-center mx-2">
-                                                        <span className="mx-3 text-xl text-white text-shadow-black font-bold">
-                                                            {item.number}
-                                                        </span>
-                                                    </div>
-
-                                                    <div className="w-[230px] mt-auto mb-auto overflow-hidden">
-                                                        <span className="text-gray-400 text-sm">
-                                                            {item.genre}
-                                                        </span>
-                                                        <span className="text-md font-semibold line-clamp-1">
-                                                            {item.name}
-                                                        </span>
-                                                        <span className="text-sm line-clamp-1">
-                                                            {item.auth}
-                                                        </span>
-                                                    </div>
-
-                                                </div>
-                                            </li>
-                                        </Link>
-                                    ))}
-
-                                </ul>
-                            </div>
                         </div>
                     </div>
 

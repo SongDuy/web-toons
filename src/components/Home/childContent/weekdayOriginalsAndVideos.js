@@ -286,10 +286,10 @@ const WeekdayOriginalsAndVideosPage = () => {
                                     <li
                                         onMouseEnter={() => setHoveredVideoItem(item.id)}
                                         onMouseLeave={() => setHoveredVideoItem(null)}
-                                        className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                                        className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white  cursor-pointer transition-shadow duration-300 hover:shadow"
                                     >
 
-                                        <div className="w-full h-full" >
+                                        <div className="w-full h-[120px] relative" >
                                             <img
                                                 src={item.img}
                                                 alt="img"
@@ -297,13 +297,13 @@ const WeekdayOriginalsAndVideosPage = () => {
                                             />
 
                                             {hoveredVideoItem === item.id && (
-                                                <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                <div className="absolute inset-0 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                     <PlayArrowIcon sx={{ fontSize: 60 }} />
                                                 </div>
                                             )}
                                         </div>
 
-                                        <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                        <div className="w-full flex flex-wrap items-center px-3 py-3">
                                             <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                 <span className="text-black text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
                                                     {item.name}
@@ -313,7 +313,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                                 </span>
                                             </div>
 
-                                            <div className="w-full mb-[20px]">
+                                            {/* <div className="w-full mb-[20px]">
                                                 <span className="w-[75px] text-rose-300 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
                                                     <FavoriteIcon />
                                                     {item.like}
@@ -321,14 +321,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                                 <span className="w-[35px] h-[35px] mt-2 uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
                                                     Up
                                                 </span>
-                                            </div>
-
-                                            {/*Trong component React của bạn */}
-                                            <div className="w-full h-[30px] mt-auto">
-                                                <span className="w-full px-2 py-1 text-white text-shadow-black text-sm font-semibold flex items-center justify-center">
-                                                    {item.genre}
-                                                </span>
-                                            </div>
+                                            </div> */}
 
                                         </div>
 

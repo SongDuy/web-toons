@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { useSelector } from 'react-redux';
 
 import { Link } from 'react-router-dom';
@@ -12,10 +11,6 @@ import { Link } from 'react-router-dom';
 const GenresOriginalsAndVideosPage = () => {
     const comic = useSelector(state => state.comic.comic);
     const language = useSelector(state => state.hidden.language);
-
-    const dataVideos = [
-        { id: 1, img: "https://i.pinimg.com/736x/f9/8c/c5/f98cc52a70dea95af4677e97f984add9.jpg", dayOfWeek: 'Mon', genre: "Action", name: "The witcher", auth: "Lee Nakeum , seewater", like: "200k", },
-    ];
 
     // Danh sách thể loại
     const dataListGenre = [
@@ -49,14 +44,8 @@ const GenresOriginalsAndVideosPage = () => {
     const [selectedOriginalsByGenre, setSelectedOriginalsByGenre] = useState('Action');
     const filteredOriginalsByGenre = comic.comic?.filter(data => data.genre1 === selectedOriginalsByGenre || data.genre2 === selectedOriginalsByGenre);
 
-    // Chọn nội dung videos theo thể loại
-    const [selectedVideosByGenre, setSelectedVideosByGenre] = useState('Action');
-    const filteredVideosByGenre = dataVideos?.filter(data => data.genre === selectedVideosByGenre);
-
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
-    const [hoveredVideoItem, setHoveredVideoItem] = useState(null);
-
 
     return (
         <div className="w-full min-h-[560px]">
@@ -180,6 +169,7 @@ const GenresOriginalsAndVideosPage = () => {
                         </ul>
                     </div>
 
+<<<<<<< HEAD
                     {/* khung nội dung dành cho videos */}
                     <div className="w-full h-full">
                         <div className="w-full h-[75px] mb-[30px]">
@@ -269,6 +259,8 @@ const GenresOriginalsAndVideosPage = () => {
                         </ul>
                     </div>
 
+=======
+>>>>>>> 288f77aeb2441f16f84d76fabfba1ca0826ee0c6
                 </div>
             </div>
         </div>

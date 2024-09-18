@@ -67,38 +67,39 @@ const OriginalsPage = () => {
     const [hoveredCompletedItem, setHoveredCompletedItem] = useState(null);
 
     // Mở và đóng menu video list
-    const [open, setOpen] = React.useState(false);
-    const anchorRef = React.useRef(null);
+    // Mở và đóng menu originals
 
-    const handleToggle = () => {
-        setOpen((prevOpen) => !prevOpen);
+    const [openOriginals, setOpenOriginals] = React.useState(false);
+    const anchorRefOriginals = React.useRef(null);
+
+    const handleToggleOriginals = () => {
+        setOpenOriginals((prevOpen) => !prevOpen);
     };
 
-    const handleClose = (event) => {
-        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+    const handleCloseOriginals = (event) => {
+        if (anchorRefOriginals.current && anchorRefOriginals.current.contains(event.target)) {
             return;
         }
-
-        setOpen(false);
+        setOpenOriginals(false);
     };
 
-    function handleListKeyDown(event) {
+    function handleListKeyDownOriginals(event) {
         if (event.key === 'Tab') {
             event.preventDefault();
-            setOpen(false);
+            setOpenOriginals(false);
         } else if (event.key === 'Escape') {
-            setOpen(false);
+            setOpenOriginals(false);
         }
     }
 
-    const prevOpen = React.useRef(open);// return focus to the button when we transitioned from !open -> open
-    React.useEffect(() => {
-        if (prevOpen.current === true && open === false) {
-            anchorRef.current.focus();
-        }
+    const prevOpenOriginals = React.useRef(openOriginals);
 
-        prevOpen.current = open;
-    }, [open]);
+    React.useEffect(() => {
+        if (prevOpenOriginals.current === true && openOriginals === false) {
+            anchorRefOriginals.current.focus();
+        }
+        prevOpenOriginals.current = openOriginals;
+    }, [openOriginals]);
 
     //Chọn menu cho thể loại
     const [selectedMenuOriginalList, setSelectedMenuOriginalList] = useState("by Popularity");
@@ -144,20 +145,20 @@ const OriginalsPage = () => {
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
                                     <button
-                                        ref={anchorRef}
-                                        id="composition-button"
-                                        aria-controls={open ? 'composition-menu' : undefined}
-                                        aria-expanded={open ? 'true' : undefined}
+                                        ref={anchorRefOriginals}
+                                        id="composition-button-originals"
+                                        aria-controls={openOriginals ? 'composition-menu-originals' : undefined}
+                                        aria-expanded={openOriginals ? 'true' : undefined}
                                         aria-haspopup="true"
-                                        onClick={handleToggle}
+                                        onClick={handleToggleOriginals}
                                     >
                                         {selectedMenuOriginalList}
                                     </button>
 
-                                    {/* Chọn menu theo loại*/}
+                                    {/* Originals Menu */}
                                     <Popper
-                                        open={open}
-                                        anchorEl={anchorRef.current}
+                                        open={openOriginals}
+                                        anchorEl={anchorRefOriginals.current}
                                         role={undefined}
                                         placement="bottom-start"
                                         transition
@@ -172,15 +173,16 @@ const OriginalsPage = () => {
                                                 }}
                                             >
                                                 <Paper>
-                                                    <ClickAwayListener onClickAway={handleClose}>
+                                                    <ClickAwayListener onClickAway={handleCloseOriginals}>
                                                         <MenuList
-                                                            className="bg-white rounded-lg text-black font-semibold "
-                                                            autoFocusItem={open}
-                                                            id="composition-menu"
-                                                            aria-labelledby="composition-button"
-                                                            onKeyDown={handleListKeyDown}
+                                                            className="bg-white rounded-lg text-black font-semibold"
+                                                            autoFocusItem={openOriginals}
+                                                            id="composition-menu-originals"
+                                                            aria-labelledby="composition-button-originals"
+                                                            onKeyDown={handleListKeyDownOriginals}
                                                         >
-                                                            <MenuItem onClick={handleClose}>
+
+                                                            <MenuItem onClick={handleCloseOriginals}>
                                                                 <span
                                                                     onClick={() => setSelectedMenuOriginalList("by Popularity")}
                                                                     className={`w-full h-full ${selectedMenuOriginalList === "by Popularity" ? "text-yellow-500" : ""}`}
@@ -189,7 +191,7 @@ const OriginalsPage = () => {
                                                                 </span>
                                                             </MenuItem>
 
-                                                            <MenuItem onClick={handleClose}>
+                                                            <MenuItem onClick={handleCloseOriginals}>
                                                                 <span
                                                                     onClick={() => setSelectedMenuOriginalList("by Likes")}
                                                                     className={`w-full h-full ${selectedMenuOriginalList === "by Likes" ? "text-yellow-500" : ""}`}
@@ -198,7 +200,7 @@ const OriginalsPage = () => {
                                                                 </span>
                                                             </MenuItem>
 
-                                                            <MenuItem onClick={handleClose}>
+                                                            <MenuItem onClick={handleCloseOriginals}>
                                                                 <span
                                                                     onClick={() => setSelectedMenuOriginalList("by Date")}
                                                                     className={`w-full h-full ${selectedMenuOriginalList === "by Date" ? "text-yellow-500" : ""}`}
@@ -206,7 +208,7 @@ const OriginalsPage = () => {
                                                                     by Date
                                                                 </span>
                                                             </MenuItem>
-
+                                                            {/* Add more menu items here */}
                                                         </MenuList>
                                                     </ClickAwayListener>
                                                 </Paper>

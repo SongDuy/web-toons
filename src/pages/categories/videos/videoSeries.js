@@ -105,9 +105,6 @@ const VideoSeriesPage = () => {
                         {/* Hiện thị tiêu đề và tác giả truyện */}
                         <div className="absolute inset-0 flex items-center justify-center">
                             <div className="w-[1200px] overflow-hidden">
-                                <span className="font-semibold text-xl text-black text-shadow-white flex items-center justify-center">
-                                    Action
-                                </span>
 
                                 <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.3] line-clamp-3 flex justify-center">
                                     The Witcher
@@ -157,7 +154,7 @@ const VideoSeriesPage = () => {
 
                         <div className="col-span-2 h-full">
                             <div className="w-full px-5 pb-3 font-semibold text-md">
-                                {!language ? <span> Series Video </span> : <span> 시리즈 영상 </span>}
+                                {!language ? <span> Video Series Episodes </span> : <span> 시리즈 영상 </span>}
                             </div>
 
                             <div className="w-full h-[900px] px-3 custom-scrollbar">
