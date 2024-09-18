@@ -63,13 +63,22 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
     const handlePhotoChange1 = (e) => {
         const file = e.target.files[0];
         if (file) {
-            let newPhotos = URL.createObjectURL(file); // Tạo URL tạm thời cho ảnh
+            let newPhotos = URL.createObjectURL(file); 
             setPhotos1(newPhotos);
-            sethorizontalThumbnail(file)
+          sethorizontalThumbnail(file)
         }
-    };
-    const handleEp = async () => {
+      };
+      const handlefileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+        
+          setfileURL(file)
+        }
+      };
+      const handleEp=async ()=>{
         try {
+            console.log()
+           if(horizontalThumbnail?.name && fileURL?.name  ){
             const getdata = {
                 valueEpisodeTitle,
                 idseries: id.id,
@@ -81,11 +90,14 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                 checkcomment: selectedValue,
                 views: 0,
                 createTime: new Date(Date.now()),
-            };
-            const docid = await comicFireBase.Addep(getdata)
-            await comicFireBase.uploadToFirebaseep(horizontalThumbnail, horizontalThumbnail.name, Account.uid, id.id, docid, 'horizontalThumbnail')
+              };
+            const docid=  await comicFireBase.Addep(getdata)
+            await comicFireBase.uploadToFirebaseep(horizontalThumbnail,horizontalThumbnail.name,Account.uid,id.id,docid,'horizontalThumbnail')
+            await comicFireBase.uploadToFirebaseep(fileURL,fileURL.name,Account.uid,id.id,docid,'fileURL')
             navigate('/')
+           }
         } catch (error) {
+            console.log(error)
         }
     }
     return (
@@ -189,11 +201,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                                 </div>
                             </div>
 
-                            <div className="w-9/12 h-full ">
-
+                                {/* Phần ghi chú của tác giả */}
                                 <div className="w-full py-3 pl-5 grid grid-cols-1 gap-5 border-b-2 pb-10">
-
-                                    {/* Tiêu đề của series */}
+                                <div>
                                     <div className="w-full flex items-center gap-2">
                                         <h1 className="font-semibold text-xl flex items-center">
                                             Series title :
@@ -232,15 +242,22 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                                         </h1>
 
                                         {/* Nút tải file */}
-                                        <div className="flex gap-3">
-                                            <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                Select File To Upload
-                                            </button>
-
-                                            <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                Delete All
-                                            </button>
+                                        <div className="flex gap-3 ">
+                                        <div className="relative">
+                                        <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
+                                            Select File To Upload
+                                        </button>
+                                        <input
+                              type="file"
+                              accept="application/pdf"
+                              onChange={(e) => handlefileChange(e)}
+                              className="absolute inset-0 opacity-0 cursor-pointer "
+                            />
                                         </div>
+                                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                                            Delete All
+                                        </button>
+                                    </div>
 
                                         {/* Phần hiện nội dung tải lên*/}
                                         <div className="h-[500px] bg-white flex items-center justify-center">
