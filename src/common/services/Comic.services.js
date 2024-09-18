@@ -8,6 +8,7 @@ import {
   addDoc,
   query,
   where,
+  setDoc,
   limit,
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -16,7 +17,7 @@ import { fireStore, storage } from "../themes/firebase";
 const comicFireBase = {
   async get() {
     const docSnap = await getDocs(
-      query(collection(fireStore, "Comic"), where("lock", "==", true))
+      query(collection(fireStore, "Comic"), where("lock", "==", true), where("check", "==", true))
     );
     const comic = docSnap.docs.map((item) => {
       //   console.log(item.ref)
@@ -60,12 +61,12 @@ const comicFireBase = {
       return { message: "No such document!", success: false };
     }
   },
-  async getrandom() {
+  async getrandom(setlimit) {
     const randomValue = Math.random();
     const q = query(
       collection(fireStore, "Comic"),
       where("random", ">=", randomValue),
-      limit(5)
+      limit(setlimit)
     );
     const querySnapshot = await getDocs(q);
 
@@ -123,6 +124,66 @@ const comicFireBase = {
       return { message: "No such document!", success: false };
     }
   },
+  async getchaptersid(id,idchap) {
+    const docRef = doc(fireStore, "Comic", id);
+
+    const docSnap = await getDoc(docRef);
+    const ChaptersnRef = collection(docSnap.ref, id);
+    const Chapters = await getDocs(ChaptersnRef);
+    const chaps = Chapters.docs.map((item) => {
+      return {
+        id: item.id,
+        ...item.data(),
+        createTime: new Date(item.data().createTime?.toDate()).toISOString(),
+      };
+    });
+    if (chaps.length !== 0) {
+      return { chaps, success: true };
+    } else {
+      return { message: "No such document!", success: false };
+    }
+  },
+  async getidlikechap(id,idchap,uid) {
+    const parentDocRef = doc(fireStore, "Comic", id);
+    const repcollectionRef = collection(parentDocRef,id);
+    const subrepRef=doc(repcollectionRef,idchap)
+    const subcollectionRef = collection(subrepRef, "like");
+    const docRef = doc(subcollectionRef, uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      return { ...docSnap.data(), success: true };
+    } else {
+      return { message: "No such document!", success: false };
+    }
+  },
+  async Addlikechap(data) {
+    const parentDocRef = doc(fireStore, "Comic", data.id);
+    const repcollectionRef = collection(parentDocRef,data.id);
+    const subrepRef=doc(repcollectionRef,data.idseries)
+    const subcollectionRef = collection(subrepRef, "like");
+    const docRef = doc(subcollectionRef, data.uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      await deleteDoc(docRef);
+     
+
+      await updateDoc(subrepRef, {
+        likes: data.togglelike === 0 ? 0 : data.togglelike - 1,
+      });
+    } else {
+      const getdata = {
+        id: data.id,
+        uid: data.uid,
+        idrep:data.idseries,
+        like: data.like,
+      };
+    
+      await setDoc(docRef, getdata);
+    
+
+      await updateDoc(subrepRef, { likes: data.togglelike + 1 });
+    }
+  },
   async Add(data) {
     const docid = await addDoc(collection(fireStore, "Comic"), data);
     return docid.id;
@@ -161,7 +222,7 @@ const comicFireBase = {
     await deleteDoc(doc(fireStore, "Comic", id));
   },
   async uploadToFirebase(file, name, iduser, id, key) {
-    const storageRef = ref(storage, `cms_uploads/comic/${iduser}/${name}`);
+    const storageRef =ref(storage, `cms_uploads/comic/${iduser}/${name}`);
 
     const uploadTask = uploadBytesResumable(storageRef, file);
     new Promise((resolve, reject) => {
@@ -198,7 +259,7 @@ const comicFireBase = {
     return uploadTask;
   },
   async uploadToFirebaseep(file, name, iduser, id, idchap,key) {
-    const storageRef = ref(storage, `cms_uploads/comic/episodes/image/${iduser}/${name}`);
+    const storageRef = key==="fileURL"?ref(storage, `cms_uploads/comic/episodes/${iduser}/${id}/chap/${idchap}/${name}`):ref(storage, `cms_uploads/comic/episodes/${iduser}/${id}/${name}`);
 
     const uploadTask = uploadBytesResumable(storageRef, file);
     new Promise((resolve, reject) => {
@@ -220,6 +281,8 @@ const comicFireBase = {
             const imageKeyMapping = {
               squareThumbnail: "squareThumbnail",
               horizontalThumbnail: "horizontalThumbnail",
+              fileURL:"fileURL"
+
             };
 
             const imageToUpdate = imageKeyMapping[key];

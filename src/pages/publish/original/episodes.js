@@ -18,6 +18,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
     const Account = useSelector((state) => state.Account.Account);
     const comicid = useSelector(state => state.comic.comicid);
     const [loading, setloading] = useState(false);
+    const [fileURL, setfileURL] = useState();
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -62,9 +63,16 @@ const EpisodesPage = ({ goToPreviousStep }) => {
     const handlePhotoChange1 = (e) => {
         const file = e.target.files[0];
         if (file) {
-          let newPhotos = URL.createObjectURL(file); // Tạo URL tạm thời cho ảnh
-          setPhotos1(newPhotos);
+            let newPhotos = URL.createObjectURL(file); 
+            setPhotos1(newPhotos);
           sethorizontalThumbnail(file)
+        }
+      };
+      const handlefileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+        
+          setfileURL(file)
         }
       };
       const handleEp=async ()=>{
@@ -83,6 +91,7 @@ const EpisodesPage = ({ goToPreviousStep }) => {
               };
             const docid=  await comicFireBase.Addep(getdata)
             await comicFireBase.uploadToFirebaseep(horizontalThumbnail,horizontalThumbnail.name,Account.uid,id.id,docid,'horizontalThumbnail')
+            await comicFireBase.uploadToFirebaseep(fileURL,fileURL.name,Account.uid,id.id,docid,'fileURL')
             navigate('/')
         } catch (error) {
         }
@@ -231,11 +240,18 @@ const EpisodesPage = ({ goToPreviousStep }) => {
                                     </h1>
 
                                     {/* Nút tải file */}
-                                    <div className="flex gap-3">
+                                    <div className="flex gap-3 ">
+                                        <div className="relative">
                                         <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
                                             Select File To Upload
                                         </button>
-
+                                        <input
+                              type="file"
+                              accept="application/pdf"
+                              onChange={(e) => handlefileChange(e)}
+                              className="absolute inset-0 opacity-0 cursor-pointer "
+                            />
+                                        </div>
                                         <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
                                             Delete All
                                         </button>

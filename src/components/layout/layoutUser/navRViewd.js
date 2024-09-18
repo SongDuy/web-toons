@@ -15,7 +15,7 @@ const NavRViewd = () => {
       if (!comic.comic) {
        try {
       
-        const random= await  dispatch(getrandomComic());
+        const random= await  dispatch(getrandomComic(5));
         
        unwrapResult(random)
          

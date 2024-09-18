@@ -35,6 +35,9 @@ const Delete = () => {
 
     const handleClickOpen = () => {
       setOpen(true);
+      const user = auth.currentUser;
+      const isGoogleProvider = user.providerData.some(provider => provider.providerId === 'google.com');
+      console.log(isGoogleProvider)
     };
   
     const handleClose = () => {

@@ -32,9 +32,9 @@ export const getAllComic = createAsyncThunk("comic/get", async () => {
     }
     //throw error
   });
-  export const getrandomComic = createAsyncThunk("comic/getrandom", async (id) => {
+  export const getrandomComic = createAsyncThunk("comic/getrandom", async (getlimit) => {
     try {
-      const comic=  await comicFireBase.getrandom()
+      const comic=  await comicFireBase.getrandom(getlimit)
         return comic.success?comic:[]
     } catch (error) {
       throw error
@@ -45,6 +45,16 @@ export const getAllComic = createAsyncThunk("comic/get", async () => {
   export const getchaptersComic = createAsyncThunk("comic/chapters", async (id) => {
     try {
       const Chapters=  await comicFireBase.getchapters(id)
+        return Chapters.success?Chapters:[]
+    } catch (error) {
+      throw error
+      // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
+    }
+    //throw error
+  });
+  export const getchaptersidComic = createAsyncThunk("comic/chaptersid", async (payload) => {
+    try {
+      const Chapters=  await comicFireBase.getchapters(payload.id)
         return Chapters.success?Chapters:[]
     } catch (error) {
       throw error

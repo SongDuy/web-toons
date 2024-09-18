@@ -97,7 +97,6 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
       const token = await auth.currentUser.getIdToken(true);
       localStorage.setItem('sadsadas', token);
       const finduser=await userFireBase.getbyid(result?.user?.uid)
-      console.log(result)
 
       if(!finduser?.success){
         console.log(result)

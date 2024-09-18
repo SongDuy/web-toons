@@ -201,7 +201,7 @@ const GenresOriginalsAndVideosPage = () => {
                             {filteredVideosByGenre?.slice(0, 10)?.map((item) => (
                                 <Link
                                     key={item.id}
-                                    to={`/originals/original/series`}
+                                    to={`/originals/original/series/${item.id}`}
                                     className="max-w-[210px] h-[210px]"
                                 >
                                     <li

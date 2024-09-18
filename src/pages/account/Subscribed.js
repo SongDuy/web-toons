@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import Nav from "../../components/Account/nav";
 import NotfoundAcount from "../../components/Account/NotfoundAcount";
 import CheckIcon from "@mui/icons-material/Check";
-import Recentlyviewed from "../../components/Account/subscribed/Recentlyviewed";
 import Alsolike from "../../components/Account/subscribed/Alsolike";
 import Suggestsubscribed from "../../components/Account/subscribed/Suggestsubscribed";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import SubscribeFireBase from "../../common/services/Subscribe.services";
 import comicFireBase from "../../common/services/Comic.services";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { getAllComic, getrandomComic } from "../../common/store/comic";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 const Subscribed = () => {
   const [EditSubscribed, setEditSubscribed] = useState(false);
   const [Subscribed, setSubscribed] = useState([]);
@@ -15,6 +18,8 @@ const Subscribed = () => {
   const [ALLSubcribed, setALLSubcribed] = useState(false);
   const [loading, setloading] = useState(false);
   const Account = useSelector((state) => state.Account.Account);
+
+  const dispatch = useDispatch();
   const monthNames = [
     "January",
     "February",
@@ -35,6 +40,11 @@ const Subscribed = () => {
         setloading(false);
 
         const subscribe = await SubscribeFireBase.getbyid(Account.id);
+        const randoms= await  dispatch(getrandomComic(3));
+          const lg = await dispatch(getAllComic());
+         unwrapResult(lg);
+        
+        unwrapResult(randoms)
         if (subscribe.success) {
           const sub = await Promise.all(
             subscribe.subscribe?.map(async (item) => {
@@ -55,7 +65,7 @@ const Subscribed = () => {
       } catch (error) {}
     };
     get();
-  }, [Account, loading]);
+  }, [dispatch,Account]);
   const HandleDelete = async () => {
     setloading(false);
     checkSubcribed?.map(async (item) => {
@@ -94,6 +104,7 @@ const Subscribed = () => {
   };
   return (
     <>
+    {loading?
       <div className="w-full  h-full bg-gray-100">
         <Nav />
 
@@ -175,7 +186,7 @@ const Subscribed = () => {
                           {item?.title}
                         </p>
                         <p className="absolute top-7 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3">
-                          {item?.summary}
+                          {item?.Author}
                         </p>
                         <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
                           Update
@@ -215,7 +226,7 @@ const Subscribed = () => {
                           {item?.title}
                         </p>
                         <p className="absolute top-7 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3">
-                          {item?.summary}
+                        {item?.Author}
                         </p>
                         <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
                           Update
@@ -234,11 +245,14 @@ const Subscribed = () => {
           </div>
         )}
         <div>
-          <Recentlyviewed />
+        
           <Alsolike />
           <Suggestsubscribed />
         </div>
       </div>
+:<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5 }}>
+<CircularProgress />
+</Box>}
     </>
   );
 };

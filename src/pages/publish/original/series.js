@@ -168,6 +168,7 @@ const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
             check: true,
             random: Math.random().toFixed(2),
             Age:isAge,
+            views:0,
             Author:Account.name,
             uid: Account.uid,
             rate:0,

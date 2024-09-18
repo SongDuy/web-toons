@@ -126,7 +126,7 @@ const PopularOriginalsAndVideosPage = () => {
                                 {filteredcomic?.slice(0, 5)?.map((item, index) => (
                                     <Link
                                         key={item.id}
-                                        to={`/originals/original/series`}
+                                        to={`/originals/original/series/${item.id}`}
                                     >
                                         <li
                                             className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
@@ -401,7 +401,7 @@ const PopularOriginalsAndVideosPage = () => {
                                 {searchedcomic?.slice(0, 5)?.map((item, index) => (
                                     <Link
                                         key={item.id}
-                                        to={`/original/series`}
+                                        to={`/originals/original/series/${item.id}`}
                                     >
                                         <li
                                             className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"

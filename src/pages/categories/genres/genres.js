@@ -273,7 +273,7 @@ const GenresPage = () => {
                                         {filteredOriginalsByGenre?.map(item => (
                                             <Link
                                                 key={item.id}
-                                                to={`/originals/original/series`}
+                                                to={`/originals/original/series/${item.id}`}
                                             >
 
                                                 <li
@@ -393,7 +393,7 @@ const GenresPage = () => {
                                         {filteredVideosByGenre?.map(item => (
                                             <Link
                                                 key={item.id}
-                                                to={`/videos/video/series`}
+                                                to={`/originals/original/series/${item.id}`}
                                             >
 
                                                 <li

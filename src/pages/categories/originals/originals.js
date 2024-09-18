@@ -260,7 +260,7 @@ const OriginalsPage = () => {
                                     {filteredData?.map(item => (
                                         <Link
                                             key={item.id}
-                                            to={`/originals/original/series`}
+                                            to={`/originals/original/series/${item.id}`}
                                         >
                                             <li
                                                 onMouseEnter={() => setHoveredOngoingItem(item.id)}
@@ -343,7 +343,7 @@ const OriginalsPage = () => {
                                     {comic.comic?.map(item => (
                                         <Link
                                             key={item.id}
-                                            to={`/originals/original/series`}
+                                            to={`/originals/original/series/${item.id}`}
                                         >
                                             <li
                                                 onMouseEnter={() => setHoveredCompletedItem(item.id)}

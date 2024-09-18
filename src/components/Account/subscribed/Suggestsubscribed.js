@@ -1,67 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import CheckIcon from "@mui/icons-material/Check";
+import { useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
+
 const Suggestsubscribed = () => {
-  const [Trending, setTrending] = useState([]);
-  const [Originals, setOriginals] = useState([]);
-  useEffect(() => {
-    setTrending([
-      {
-        id: 1,
-        Name: "The Lone Necromancer (S2) Ep. 125 - Foreign Powers Vs. The Korean Server (2)",
-        Rate: 1,
-        genre: "Comedy",
-        Author: "singNsong/UMI",
-        Create: "july 22,2024",
-      },
-      {
-        id: 2,
-        Name: "The Lone Necromancer (S2) Ep. 125 - Foreign Powers Vs. The Korean Server (2)",
-        Rate: 2,
-        genre: "Comedy",
-        Author: "singNsong/UMI",
-        Create: "july 22,2024",
-      },
-      {
-        id: 3,
-        Name: "The Lone Necromancer (S2) Ep. 125 - Foreign Powers Vs. The Korean Server (2)",
-        Rate: 3,
-        genre: "Comedy",
 
-        Author: "singNsong/UMI",
-        Create: "july 22,2024",
-      },
-    ]);
-    setOriginals([
-      {
-        id: 1,
-        Name: "The Lone Necromancer (S2) Ep. 125 - Foreign Powers Vs. The Korean Server (2)",
-        Rate: 1,
-        Author: "singNsong/UMI",
-        genre: "Comedy",
+  const [selectedOriginalGenre, setSelectedOriginalGenre] = useState("All");
+  const comic = useSelector((state) => state.comic.comic);
 
-        Create: "july 22,2024",
-      },
-      {
-        id: 2,
-        Name: "The Lone Necromancer (S2) Ep. 125 - Foreign Powers Vs. The Korean Server (2)",
-        Rate: 2,
-        Author: "singNsong/UMI",
-        genre: "Comedy",
-
-        Create: "july 22,2024",
-      },
-      {
-        id: 3,
-        Name: "The Lone Necromancer (S2) Ep. 125 - Foreign Powers Vs. The Korean Server (2)",
-        Rate: 3,
-        genre: "Comedy",
-        Author: "singNsong/UMI",
-        Create: "july 22,2024",
-      },
-    ]);
-  }, []);
-
+  const filteredcomic = comic.comic
+    ?.slice(0,3)
+    ?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
+  const searchedcomic = comic.comic
+    ?.filter((item) =>
+      selectedOriginalGenre === "All"
+        ? item
+        : item.genre1 === selectedOriginalGenre ||
+          item.genre2 === selectedOriginalGenre
+    )
+    .slice(0,3)
+  ;
+ 
   return (
       <div className="grid grid-cols-2     container  mx-auto">
       <div className=" flex-row  justify-center items-center container">
@@ -73,34 +33,50 @@ const Suggestsubscribed = () => {
 
         <div className=" flex    p-5">
           <div className="w-full h-full     ">
-            {Trending.length === 0 ? (
+            {filteredcomic?.length === 0 ? (
               <div></div>
             ) : (
               <div className="grid grid-rows-3 gap-2 w-full">
-                {Trending.map((item) => {
+                {filteredcomic?.map((item,index) => {
                   return (
-                    <div className="grid grid-cols-8 gap-2 " key={item.id}>
-                      <div className="col-span-2">
-                        <img
-                          src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                          alt=""
-                          className="object-contain"
-                        />
-                      </div>
+                    <Link
+                    key={item.id}
+                    to={`/originals/original/series/${item.id}`}
+                >
+                    <div
+                        className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
+                    >
+                        <div className="w-full h-full flex items-center">
+                            <div className="w-[80px] h-[80px] flex">
+                                <img
+                                    src={item.squareThumbnail}
+                                    alt="img"
+                                    className="object-fill w-full h-full rounded-md"
+                                />
+                            </div>
 
-                      <div className="col-span-6 flex m-auto py-auto">
-                        <div className="mx-3  m-auto ">
-                          <p className="font-semibold text-lg">{item.Rate}</p>
+                            <div className="w-[30px] h-[30px] flex items-center justify-center mx-2">
+                                <span className="mx-3 text-xl text-white text-shadow-black font-bold">
+                                    {index + 1}
+                                </span>
+                            </div>
+
+                            <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                <span className="text-gray-400 text-sm">
+                                    {item.genre1}
+                                </span>
+                                <span className="text-md font-semibold line-clamp-1">
+                                    {item.title}
+
+                                </span>
+                                <span className="text-sm line-clamp-1">
+                                    {item.Author}
+                                </span>
+                            </div>
+
                         </div>
-                        <div className="w-1/2">
-                          <p className=" text-[12px]">{item.genre}</p>
-                          <p className="truncate line-clamp-5 transition-all after:content-['...']">
-                            {item.Name}
-                          </p>
-                          <p className=" text-[12px]">{item.Author}</p>
-                        </div>
-                      </div>
                     </div>
+                </Link>
                   );
                 })}
               </div>
@@ -120,34 +96,50 @@ const Suggestsubscribed = () => {
 
         <div className=" flex    p-5">
           <div className="w-full h-full     ">
-            {Originals.length === 0 ? (
+            {searchedcomic?.length === 0 ? (
               <div></div>
             ) : (
               <div className="grid grid-rows-3 gap-2 w-full">
-                {Originals.map((item) => {
+                {searchedcomic?.map((item,index) => {
                   return (
-                    <div className="grid grid-cols-8 gap-2 " key={item.id}>
-                      <div className="col-span-2">
-                        <img
-                          src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
-                          alt=""
-                          className="object-contain"
-                        />
-                      </div>
+                    <Link
+                    key={item.id}
+                    to={`/originals/original/series/${item.id}`}
+                >
+                    <div
+                        className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
+                    >
+                        <div className="w-full h-full flex items-center">
+                            <div className="w-[80px] h-[80px] flex">
+                                <img
+                                    src={item.squareThumbnail}
+                                    alt="img"
+                                    className="object-fill w-full h-full rounded-md"
+                                />
+                            </div>
 
-                      <div className="col-span-6 flex m-auto py-auto">
-                        <div className="mx-3  m-auto ">
-                          <p className="font-semibold text-lg">{item.Rate}</p>
+                            <div className="w-[30px] h-[30px] flex items-center justify-center mx-2">
+                                <span className="mx-3 text-xl text-white text-shadow-black font-bold">
+                                    {index + 1}
+                                </span>
+                            </div>
+
+                            <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                                <span className="text-gray-400 text-sm">
+                                    {item.genre1}
+                                </span>
+                                <span className="text-md font-semibold line-clamp-1">
+                                    {item.title}
+
+                                </span>
+                                <span className="text-sm line-clamp-1">
+                                    {item.Author}
+                                </span>
+                            </div>
+
                         </div>
-                        <div className="w-1/2">
-                          <p className=" text-[12px]">{item.genre}</p>
-                          <p className="truncate line-clamp-5 transition-all after:content-['...']">
-                            {item.Name}
-                          </p>
-                          <p className=" text-[12px]">{item.Author}</p>
-                        </div>
-                      </div>
                     </div>
+                </Link>
                   );
                 })}
               </div>

@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 
 import { useParams } from 'react-router-dom';
-import { getchaptersComic, getidComic } from '../../../common/store/comic';
+import { getchaptersComic, getidComic, getrandomComic } from '../../../common/store/comic';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
@@ -28,23 +28,13 @@ import SubscribeFireBase from '../../../common/services/Subscribe.services';
 import comicFireBase from '../../../common/services/Comic.services';
 import RateFireBase from '../../../common/services/Rate.services';
 
-const dataAlsoLike = [
-    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-];
 
 
 const OriginalSeriesPage = () => {
     const id = useParams();
     const comicid = useSelector(state => state.comic.comicid);
     const chapters = useSelector(state => state.comic.Chapters);
+    const comic = useSelector(state => state.comic.random);
     const [loading, setloading] = useState(false);
     const [isSubscribe, setIsSubscribe] = useState(false);
     const [Subscribe, setSubscribe] = useState([[]]);
@@ -61,8 +51,13 @@ const OriginalSeriesPage = () => {
                 setloading(false)
                 const comicID = await dispatch(getidComic(id.id))
                 const chap = await dispatch(getchaptersComic(id.id))
+                const random= await  dispatch(getrandomComic(9));
+        
+                unwrapResult(random)
                 unwrapResult(comicID)
-                unwrapResult(chap)
+               const chaps= unwrapResult(chap)
+             await  comicFireBase.update({views:chaps.success?chaps?.chaps?.reduce((a,b)=>a+b.views,0):0},id.id)
+
                 setloading(true)
                 if (auth.currentUser) {
                     const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid,id.id)
@@ -155,18 +150,18 @@ const handleRate=async (event, newValue) => {
                 createTime: new Date(Date.now()),
                 idcomic:id.id,
                 uid: auth.currentUser.uid,
-                rate:newValue
+                rate:parseFloat( newValue)
             })
             const comicrate=await RateFireBase.getbycomic( id.id)
             const averageRating =comicrate.success? (comicrate.rate.reduce((accumulator, currentValue) =>  accumulator + currentValue.rate, 0) / comicrate.rate.length)*2:0;
-          await  comicFireBase.update({rate:averageRating},id.id)
+          await  comicFireBase.update({rate:parseFloat( averageRating.toFixed(2))},id.id)
          const idcomic= await dispatch(getidComic(id.id))
             unwrapResult(idcomic)
         }else{
-            await RateFireBase.update({rate:newValue,createTime: new Date(Date.now())},rateuser.rate[0].id)
+            await RateFireBase.update({rate:parseFloat( newValue),createTime: new Date(Date.now())},rateuser.rate[0].id)
             const comicrate=await RateFireBase.getbycomic( id.id)
             const averageRating =comicrate.success? (comicrate.rate.reduce((accumulator, currentValue) =>  accumulator + currentValue.rate, 0) / comicrate.rate.length)*2:0;
-            await  comicFireBase.update({rate:averageRating},id.id)
+            await  comicFireBase.update({rate:parseFloat( averageRating.toFixed(2))},id.id)
             const idcomic= await dispatch(getidComic(id.id))
             unwrapResult(idcomic)
         }
@@ -175,7 +170,13 @@ const handleRate=async (event, newValue) => {
         }
     }
   };
-
+  function formatNumberWithM(number) {
+    if(number>=1000000){
+    const millions = number / 1000000;
+    return millions + 'M';
+    }
+    return number
+  }
     return (
         <div>
             {loading ?
@@ -313,7 +314,7 @@ const handleRate=async (event, newValue) => {
                                                 <VisibilityIcon />
                                             </span>
                                             <span className="mx-1">
-                                                8.5M
+                                                {formatNumberWithM(comicid?.views)}
                                             </span>
                                         </li>
                                         <li className="flex items-center justify-center" >
@@ -432,15 +433,15 @@ const handleRate=async (event, newValue) => {
                                 <ul className="w-full h-full grid grid-cols-3 gap-3">
 
                                     {/* khung danh sách */}
-                                    {dataAlsoLike.map(item => (
-                                        <Link to={`/originals/original/series`} key={item.id}>
+                                    {comic?.comic?.map(item => (
+                                        <Link to={`/originals/original/series/${item.id}`} key={item.id}>
                                             <li
                                                 className="w-[375px] h-[120px] flex bg-gray-100 rounded shadow cursor-pointer hover:bg-gray-200"
                                             >
 
                                                 <div className="w-[120px] h-[120px] rounded flex items-center justify-center">
                                                     <img
-                                                        src={item.img}
+                                                        src={item.squareThumbnail}
                                                         alt="img"
                                                         className="object-fill w-[100px] h-[100px] rounded"
                                                     />
@@ -449,17 +450,17 @@ const handleRate=async (event, newValue) => {
                                                 <div className="h-full rounded-xl px-3 py-3">
                                                     <div className="w-[230px] h-[75px] overflow-hidden">
                                                         <span className="w-full text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                            {item.name}
+                                                            {item.title}
                                                         </span>
                                                         <span className="w-full line-clamp-1">
-                                                            {item.auth}
+                                                            {item.Author}
                                                         </span>
                                                     </div>
 
                                                     <div className="w-full">
                                                         <span className=" flex gap-1 text-yellow-500">
                                                             <VisibilityIcon />
-                                                            {item.look}
+                                                            {item?.views}
                                                         </span>
                                                     </div>
                                                 </div>
