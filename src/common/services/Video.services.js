@@ -14,12 +14,12 @@ import {
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { fireStore, storage } from "../themes/firebase";
 
-const comicFireBase = {
+const VideoFireBase = {
   async get() {
     const docSnap = await getDocs(
-      query(collection(fireStore, "Comic"), where("lock", "==", true), where("check", "==", true))
+      query(collection(fireStore, "Video"), where("lock", "==", true), where("check", "==", true))
     );
-    const comic = docSnap.docs.map((item) => {
+    const Video = docSnap.docs.map((item) => {
       //   console.log(item.ref)
       //   const subcollectionRef = collection(item.ref, 'YZOoN8D6Ued98MSS7xEF');
       //   const subcollectionSnapshot = await getDocs(subcollectionRef)
@@ -33,15 +33,15 @@ const comicFireBase = {
         createTime: new Date(item.data().createTime?.toDate()).toISOString(),
       };
     });
-    if (comic.length !== 0) {
-      return { comic, success: true };
+    if (Video.length !== 0) {
+      return { Video, success: true };
     } else {
       return { message: "No such document!", success: false };
     }
   },
   async getad() {
-    const docSnap = await getDocs(collection(fireStore, "Comic"));
-    const comic = docSnap.docs.map((item) => {
+    const docSnap = await getDocs(collection(fireStore, "Video"));
+    const Video = docSnap.docs.map((item) => {
       //   console.log(item.ref)
       //   const subcollectionRef = collection(item.ref, 'YZOoN8D6Ued98MSS7xEF');
       //   const subcollectionSnapshot = await getDocs(subcollectionRef)
@@ -55,8 +55,23 @@ const comicFireBase = {
         createTime: new Date(item.data().createTime?.toDate()).toISOString(),
       };
     });
-    if (comic.length !== 0) {
-      return { comic, success: true };
+    if (Video.length !== 0) {
+      return { Video, success: true };
+    } else {
+      return { message: "No such document!", success: false };
+    }
+  },
+  async getbyuser(uid) {
+    const docRef = query(
+      collection(fireStore, "Video"),
+      where("uid", "==", uid)
+    );
+    const docSnap = await getDocs(docRef);
+    const Video = docSnap.docs?.map((item) => {
+      return { id: item.id, ...item.data() };
+    });
+    if (Video.length !== 0) {
+      return { Video, success: true };
     } else {
       return { message: "No such document!", success: false };
     }
@@ -64,14 +79,14 @@ const comicFireBase = {
   async getrandom(setlimit) {
     const randomValue = Math.random();
     const q = query(
-      collection(fireStore, "Comic"),
+      collection(fireStore, "Video"),
       where("random", ">=", randomValue),
       limit(setlimit)
     );
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
-      const comic = querySnapshot.docs?.map((item) => {
+      const Video = querySnapshot.docs?.map((item) => {
         //   console.log(item.ref)
         //   const subcollectionRef = collection(item.ref, 'YZOoN8D6Ued98MSS7xEF');
         //   const subcollectionSnapshot = await getDocs(subcollectionRef)
@@ -85,28 +100,13 @@ const comicFireBase = {
           createTime: new Date(item.data().createTime?.toDate()).toISOString(),
         };
       });
-      return { comic, success: true };
-    } else {
-      return { message: "No such document!", success: false };
-    }
-  },
-  async getbyuser(uid) {
-    const docRef = query(
-      collection(fireStore, "Comic"),
-      where("uid", "==", uid)
-    );
-    const docSnap = await getDocs(docRef);
-    const comic = docSnap.docs?.map((item) => {
-      return { id: item.id, ...item.data() };
-    });
-    if (comic.length !== 0) {
-      return { comic, success: true };
+      return { Video, success: true };
     } else {
       return { message: "No such document!", success: false };
     }
   },
   async getbyid(id) {
-    const docRef = doc(fireStore, "Comic", id);
+    const docRef = doc(fireStore, "Video", id);
 
     const docSnap = await getDoc(docRef);
 
@@ -120,8 +120,9 @@ const comicFireBase = {
       return { message: "No such document!", success: false };
     }
   },
+  
   async getchapters(id) {
-    const docRef = doc(fireStore, "Comic", id);
+    const docRef = doc(fireStore, "Video", id);
 
     const docSnap = await getDoc(docRef);
     const ChaptersnRef = collection(docSnap.ref, id);
@@ -200,11 +201,11 @@ const comicFireBase = {
     }
   },
   async Add(data) {
-    const docid = await addDoc(collection(fireStore, "Comic"), data);
+    const docid = await addDoc(collection(fireStore, "Video"), data);
     return docid.id;
   },
   async Addep(data) {
-    const parentDocRef = doc(fireStore, "Comic", data.idseries);
+    const parentDocRef = doc(fireStore, "Video", data.idseries);
     const subcollectionRef = collection(parentDocRef, data.idseries);
 
     const getdata = {
@@ -222,7 +223,7 @@ const comicFireBase = {
     return docid.id;
   },
   async update(data, id) {
-    const update = doc(fireStore, "Comic", id);
+    const update = doc(fireStore, "Video", id);
 
     // Set the "capital" field of the city 'DC'
     await updateDoc(update, data);
@@ -234,10 +235,10 @@ const comicFireBase = {
     await updateDoc(parentDoc, data);
   },
   async Delete(id) {
-    await deleteDoc(doc(fireStore, "Comic", id));
+    await deleteDoc(doc(fireStore, "Video", id));
   },
   async uploadToFirebase(file, name, iduser, id, key) {
-    const storageRef =ref(storage, `cms_uploads/comic/${iduser}/${name}`);
+    const storageRef =ref(storage, `cms_uploads/Video/${iduser}/${name}`);
 
     const uploadTask = uploadBytesResumable(storageRef, file);
     new Promise((resolve, reject) => {
@@ -313,7 +314,7 @@ const comicFireBase = {
     return uploadTask;
   },
   async deleteAccount(id) {
-    const Ref = collection(fireStore, "Comic");
+    const Ref = collection(fireStore, "Video");
     const q = query(Ref, where("uid", "==", id)); 
   
     const querySnapshot = await getDocs(q);
@@ -323,4 +324,4 @@ const comicFireBase = {
   }
 };
 
-export default comicFireBase;
+export default VideoFireBase;

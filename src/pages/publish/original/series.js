@@ -171,6 +171,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                 Author: Account.name,
                 uid: Account.uid,
                 rate: 0,
+                views:0,
                 schedule: dayNames[new Date(Date.now()).getDay()]
             };
             const id = await comicFireBase.Add(data)

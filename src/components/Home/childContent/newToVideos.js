@@ -7,10 +7,9 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const NewToVideosPage = () => {
+    const Video = useSelector(state => state.Video.video);
 
-    const dataVideos = [
-        { id: 1, img: "https://i.pinimg.com/736x/f9/8c/c5/f98cc52a70dea95af4677e97f984add9.jpg", dayOfWeek: 'Mon', genre: "Action", name: "The Witcher", auth: "Lee Nakeum , seewater", like: "200k", },
-    ];
+   
 
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredVideoItem, setHoveredVideoItem] = useState(null);
@@ -44,10 +43,10 @@ const NewToVideosPage = () => {
             <div className="w-full min-h-[500px] py-[30px] flex justify-center">
                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
                     {/* khung nội dung */}
-                    {dataVideos?.slice(0, 10)?.map((item) => (
+                    {Video?.Video?.slice(0, 10)?.map((item) => (
                         <Link
                             key={item.id}
-                            to={`/videos/video/series`}
+                            to={`/videos/video/series/${item.id}`}
                             className="max-w-[210px] h-[210px]"
                         >
                              <li
@@ -58,7 +57,7 @@ const NewToVideosPage = () => {
 
                                         <div className="w-full h-[120px] relative" >
                                             <img
-                                                src={item.img}
+                                                src={item.squareThumbnail}
                                                 alt="img"
                                                 className="object-fill w-full h-full rounded-md"
                                             />
@@ -73,10 +72,10 @@ const NewToVideosPage = () => {
                                         <div className="w-full flex flex-wrap items-center px-3 py-3">
                                             <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                 <span className="text-black text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
-                                                    {item.name}
+                                                    {item.title}
                                                 </span>
                                                 <span className="text-black text-md text-shadow-white leading-[1.2] line-clamp-1">
-                                                    {item.auth}
+                                                    {item.Author}
                                                 </span>
                                             </div>
 

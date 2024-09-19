@@ -9,7 +9,12 @@ import {
   where,
   deleteDoc
 } from 'firebase/firestore';
-import { fireStore } from '../themes/firebase';
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from 'firebase/storage';
+import { fireStore,storage } from '../themes/firebase';
 const userFireBase = {
   async getALL() {
     const docSnap = await getDocs(collection(fireStore, 'Users'));
@@ -32,6 +37,39 @@ const userFireBase = {
     const update= doc(fireStore, 'Users', iduser);
 
     await updateDoc(update, data);
+  },
+  async uploadToFirebase(file, name, iduser) {
+
+    const storageRef = ref(storage, `cms_uploads/image/${iduser}/${name}`);
+
+    const uploadTask = uploadBytesResumable(storageRef, file);
+    new Promise((resolve, reject)=>{
+        uploadTask.on(
+            'state_changed',
+            (snapshot) => {
+              const progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              // console.log('Upload is ' + progress + '% done');
+      
+              return progress;
+            },
+            (error) => {
+              console.log(error);
+              reject(error); 
+            },
+            () => {
+             getDownloadURL(uploadTask.snapshot.ref).then(async (downloadUrl) => {
+              
+                 
+                 await this.update({ image: downloadUrl }, iduser);
+          
+                  resolve(downloadUrl); 
+            
+              });
+            }
+          );
+    }) 
+    return uploadTask;
   },
   async deleteAccount(id) {
     const Ref = collection(fireStore, "Users");

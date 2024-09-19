@@ -39,11 +39,27 @@ const RateFireBase = {
       return { message: "No such document!", success: false };
     }
   },
-  async getbyid(id,idcomic) {
+  async getbyid(id, idcomic) {
     const docRef = query(
       collection(fireStore, "rate"),
       where("uid", "==", id),
       where("idcomic", "==", idcomic)
+    );
+    const docSnap = await getDocs(docRef);
+    const rate = docSnap.docs?.map((item) => {
+      return { id: item.id, ...item.data() };
+    });
+    if (rate.length !== 0) {
+      return { rate, success: true };
+    } else {
+      return { message: "No such document!", success: false };
+    }
+  },
+  async getbyidvideo(id, idvideo) {
+    const docRef = query(
+      collection(fireStore, "rate"),
+      where("uid", "==", id),
+      where("idvideo", "==", idvideo)
     );
     const docSnap = await getDocs(docRef);
     const rate = docSnap.docs?.map((item) => {
@@ -70,7 +86,21 @@ const RateFireBase = {
       return { message: "No such document!", success: false };
     }
   },
-
+  async getbyvideo(idvideo) {
+    const docRef = query(
+      collection(fireStore, "rate"),
+      where("idvideo", "==", idvideo)
+    );
+    const docSnap = await getDocs(docRef);
+    const rate = docSnap.docs?.map((item) => {
+      return { id: item.id, ...item.data() };
+    });
+    if (rate.length !== 0) {
+      return { rate, success: true };
+    } else {
+      return { message: "No such document!", success: false };
+    }
+  },
   async Add(data) {
     await addDoc(collection(fireStore, "rate"), data);
   },
@@ -84,12 +114,12 @@ const RateFireBase = {
   },
   async deleteAccount(id) {
     const Ref = collection(fireStore, "rate");
-    const q = query(Ref, where("uid", "==", id)); 
-  
+    const q = query(Ref, where("uid", "==", id));
+
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach(async (doc) => {
       await deleteDoc(doc.ref);
     });
-  }
+  },
 };
 export default RateFireBase;

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 import StarIcon from '@mui/icons-material/Star';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -16,7 +15,17 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Rating from '@mui/material/Rating';
+import {  getchaptersVideo, getidVideo, getrandomVideo } from '../../../common/store/Video';
+import { useSelector, useDispatch } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
 
+import { useParams } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import { auth } from '../../../common/themes/firebase';
+import RateFireBase from '../../../common/services/Rate.services';
+import VideoFireBase from '../../../common/services/Video.services';
+import SubscribeFireBase from '../../../common/services/Subscribe.services';
 const dataSeries = [
     { id: 1, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 15", date: "jun 10, 2024", like: "23,789", number: "#15" },
     { id: 2, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 14", date: "jun 10, 2024", like: "23,789", number: "#14" },
@@ -35,24 +44,52 @@ const dataSeries = [
     { id: 15, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 1", date: "jun 10, 2024", like: "23,789", number: "#1" },
 ];
 
-const dataAlsoLike = [
-    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20231117_39/17001732047764nikV_JPEG/6LandingPage_mobile.jpg?type=crop540_540", name: "The Mafia Nanny", auth: "sh00 , Violet Matter", look: "88.8M" },
-];
-
 const VideoSeriesPage = () => {
 
     //Mở modal menu để chọn
+    const id = useParams();
+    const Videoid = useSelector(state => state.Video.videoid);
+    const chapters = useSelector(state => state.Video.Chapters);
+    const random = useSelector(state => state.Video.random);
     const [open, setOpen] = React.useState(false);
-    const anchorRef = React.useRef(null);
+    const [Rate, setRate] = useState(0);
 
+    const dispatch = useDispatch();
+    const [loading, setloading] = useState(false);
+ // Nhấn nút đăng ký
+ const [isSubscribe, setIsSubscribe] = useState(false);
+
+ //Lấy ngôn ngữ
+ const language = useSelector(state => state.hidden.language);
+    const anchorRef = React.useRef(null);
+    const [Subscribe, setSubscribe] = useState([[]]);
+    useEffect(() => {
+        const get = async () => {
+            try {
+                setloading(false)
+                const comicID = await dispatch(getidVideo(id.id))
+                const chap = await dispatch(getchaptersVideo(id.id))
+                const random= await  dispatch(getrandomVideo(9));
+        
+                unwrapResult(random)
+                unwrapResult(comicID)
+               const chaps= unwrapResult(chap)
+               await  VideoFireBase.update({views:chaps.success?chaps?.chaps?.reduce((a,b)=>a+b.views,0):0},id.id)
+               if (auth.currentUser) {
+                const subscribe = await SubscribeFireBase.getbyvideo(auth.currentUser.uid, id.id)
+                const rateuser = await RateFireBase.getbyid(auth.currentUser.uid, id.id)
+                setRate(rateuser.success ? rateuser.rate[0].rate : 0);
+                subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
+                subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
+            }
+                setloading(true)
+              
+            } catch (error) {
+                
+            }
+        }
+        get()
+    }, [dispatch, id]);
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
     };
@@ -83,15 +120,71 @@ const VideoSeriesPage = () => {
         prevOpen.current = open;
     }, [open]);
 
-    // Nhấn nút đăng ký
-    const [isSubscribe, setIsSubscribe] = useState(false);
+    const handlesubscribe = async () => {
+        try {
 
-    //Lấy ngôn ngữ
-    const language = useSelector(state => state.hidden.language);
+            if (auth.currentUser) {
+                await SubscribeFireBase.Add({ uid: auth.currentUser.uid, idvideo: id.id, createTime: new Date(Date.now()),type:'video' })
+                await VideoFireBase.update({ totalSubscribed: Videoid.totalSubscribed + 1 }, id.id)
+                await dispatch(getidVideo(id.id))
 
+                const subscribe = await SubscribeFireBase.getbyvideo(auth.currentUser.uid, id.id)
+
+                subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
+                subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
+            }
+        } catch (error) {
+        }
+    }
+    const handleDeleteSub = async () => {
+        try {
+            if (auth.currentUser) {
+                await SubscribeFireBase.Delete(Subscribe[0]?.id)
+                await VideoFireBase.update({ totalSubscribed: Videoid.totalSubscribed - 1 }, id.id)
+                await dispatch(getidVideo(id.id))
+                const subscribe = await SubscribeFireBase.getbyvideo(auth.currentUser.uid, id.id)
+                subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
+                subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
+            }
+        } catch (error) {
+
+        }
+    }
+    const handleRate=async (event, newValue) => {
+        if(auth.currentUser){
+            setRate(newValue);
+            try {
+                const rateuser=await RateFireBase.getbyidvideo( auth.currentUser.uid,id.id)
+              
+                if(!rateuser.success){
+                await RateFireBase.Add({
+                    createTime: new Date(Date.now()),
+                    idvideo:id.id,
+                    uid: auth.currentUser.uid,
+                    rate:parseFloat( newValue),
+                    type:'video',
+                })
+                const videorate=await RateFireBase.getbyvideo( id.id)
+                const averageRating =videorate.success? (videorate.rate.reduce((accumulator, currentValue) =>  accumulator + currentValue.rate, 0) / videorate.rate.length)*2:0;
+              await  VideoFireBase.update({rate:parseFloat( averageRating.toFixed(2))},id.id)
+              const idvideo= await dispatch(getidVideo(id.id))
+              unwrapResult(idvideo)
+            }else{
+                await RateFireBase.update({rate:parseFloat( newValue),createTime: new Date(Date.now())},rateuser.rate[0].id)
+                const videorate=await RateFireBase.getbyvideo( id.id)
+                const averageRating =videorate.success? (videorate.rate.reduce((accumulator, currentValue) =>  accumulator + currentValue.rate, 0) / videorate.rate.length)*2:0;
+                await  VideoFireBase.update({rate:parseFloat( averageRating.toFixed(2))},id.id)
+                const idvideo= await dispatch(getidVideo(id.id))
+                unwrapResult(idvideo)
+            }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+      };
     return (
         <div>
-
+            {loading?
             <div className="w-full h-full bg-gradient-to-b from-white via-yellow-50 to-gray-100">
                 {/* Hiển thị ảnh nền */}
 
@@ -107,14 +200,14 @@ const VideoSeriesPage = () => {
                             <div className="w-[1200px] overflow-hidden">
 
                                 <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.3] line-clamp-3 flex justify-center">
-                                    The Witcher
+                                {Videoid.title}
                                 </span>
 
-                                <Link to="/channel/creator">
+                                <Link to={`/channel/creator/${Videoid.uid}`}>
                                     <div className="w-full flex items-center justify-center gap-2">
                                         <div className="w-[250px] px-2 rounded-md overflow-hidden flex items-center justify-center gap-2">
                                             <span className="text-lg font-semibold text-yellow-500 hover:text-yellow-600 text-shadow-black line-clamp-1">
-                                                Lee Nakeum , seewater
+                                                {Videoid.Author}
                                             </span>
                                             <button className="w-[20px] h-[20px] bg-white rounded-full text-black flex items-center justify-center">
                                                 i
@@ -130,16 +223,16 @@ const VideoSeriesPage = () => {
                         <div className="absolute px-10 py-5 bottom-0 right-0 flex gap-2">
                             {!isSubscribe ?
                                 <button
-                                    onClick={() => setIsSubscribe(true)}
-                                    className="text-white hover:text-yellow-500 bg-black bg-opacity-30 py-2 px-2 rounded-full flex gap-1 items-center justify-center"
+                                onClick={handlesubscribe}
+                                className="text-white hover:text-yellow-500 bg-black bg-opacity-30 py-2 px-2 rounded-full flex gap-1 items-center justify-center"
                                 >
                                     <AddCircleOutlineIcon />
                                     {!language ? <span> Subscribe </span> : <span> 구독하다 </span>}
                                 </button>
                                 :
                                 <button
-                                    onClick={() => setIsSubscribe(false)}
-                                    className="text-white hover:text-yellow-500 bg-black bg-opacity-30 py-2 px-2 rounded-full flex gap-1 items-center justify-center"
+                                onClick={handleDeleteSub}
+                                className="text-white hover:text-yellow-500 bg-black bg-opacity-30 py-2 px-2 rounded-full flex gap-1 items-center justify-center"
                                 >
                                     <CheckIcon />
                                 </button>
@@ -226,7 +319,7 @@ const VideoSeriesPage = () => {
                                             <VisibilityIcon />
                                         </span>
                                         <span className="mx-1">
-                                            8.5M
+                                            {Videoid.views}
                                         </span>
                                     </li>
                                     <li className="flex items-center justify-center" >
@@ -234,7 +327,7 @@ const VideoSeriesPage = () => {
                                             <GroupAddSharpIcon />
                                         </span>
                                         <span className="mx-1">
-                                            450,229
+                                        {Videoid.totalSubscribed}
                                         </span>
                                     </li>
                                     <li className="flex items-center justify-center" >
@@ -242,7 +335,7 @@ const VideoSeriesPage = () => {
                                             <StarIcon />
                                         </span>
                                         <span className="mx-1">
-                                            9.74
+                                        {Videoid.rate}
                                         </span>
 
                                     </li>
@@ -285,11 +378,12 @@ const VideoSeriesPage = () => {
                                                                 onKeyDown={handleListKeyDown}
                                                             >
                                                                 <MenuItem onClick={handleClose}><ClickAwayListener onClickAway={handleClose}>
-                                                                    <Rating
-                                                                        name="half-rating-read"
-                                                                        defaultValue={0}
-                                                                        precision={0.5}
-                                                                    />
+                                                                <Rating
+                                                                            name="half-rating-read"
+                                                                            defaultValue={parseInt(Rate)}
+                                                                            precision={0.5}
+                                                                            onChange={handleRate}
+                                                                        />
                                                                 </ClickAwayListener></MenuItem>
                                                             </MenuList>
                                                         </ClickAwayListener>
@@ -314,14 +408,7 @@ const VideoSeriesPage = () => {
                                 </div>
                                 <div className="w-full">
                                     <span className="">
-                                        The Etruscan Kingdom is stained with blood when the king’s illegitimate
-                                        son Cesare conspires with his fiancée Ariadne to usurp the throne from
-                                        his half-brother Alfonso. Despite Ariadne’s devotion to the new king,
-                                        her faith is shattered when she is betrayed by him and eventually murdered
-                                        by her own sister, who wishes to be queen. To her surprise, Ariadne finds
-                                        herself sent back in time to her 17-year-old self. As she navigates the
-                                        perils and opportunities of palace intrigue, Ariadne must make the most
-                                        of her guile and grit to ensure that her tragic future does not repeat itself.
+                                   {Videoid.summary}
                                     </span>
                                 </div>
 
@@ -340,18 +427,18 @@ const VideoSeriesPage = () => {
                             <ul className="w-full h-full grid grid-cols-3 gap-3">
 
                                 {/* khung danh sách */}
-                                {dataAlsoLike.map(item => (
+                                {random?.Video?.map(item => (
                                     <Link
                                         key={item.id}
-                                        to={`/videos/video/series`}
-                                    >
+                                        to={`/videos/video/series/${item.id}`}
+                                        >
                                         <li
                                             className="w-[375px] h-[120px] flex bg-gray-100 rounded shadow cursor-pointer hover:bg-gray-200"
                                         >
 
                                             <div className="w-[120px] h-[120px] rounded flex items-center justify-center">
                                                 <img
-                                                    src={item.img}
+                                                    src={item.squareThumbnail}
                                                     alt="img"
                                                     className="object-fill w-[100px] h-[100px] rounded"
                                                 />
@@ -360,17 +447,17 @@ const VideoSeriesPage = () => {
                                             <div className="h-full rounded-xl px-3 py-3">
                                                 <div className="w-[230px] h-[75px] overflow-hidden">
                                                     <span className="w-full text-lg font-semibold leading-[1.2] line-clamp-2">
-                                                        {item.name}
+                                                        {item.title}
                                                     </span>
                                                     <span className="w-full line-clamp-1">
-                                                        {item.auth}
+                                                        {item.Author}
                                                     </span>
                                                 </div>
 
                                                 <div className="w-full">
                                                     <span className=" flex gap-1 text-yellow-500">
                                                         <VisibilityIcon />
-                                                        {item.look}
+                                                        {item.views}
                                                     </span>
                                                 </div>
                                             </div>
@@ -383,7 +470,9 @@ const VideoSeriesPage = () => {
                     </div>
                 </div>
             </div>
-
+:<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5 }}>
+<CircularProgress />
+</Box>}
         </div>
 
     );

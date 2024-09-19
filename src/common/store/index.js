@@ -5,12 +5,14 @@ import AuthJs from './Auth.js';
 import comic from './comic/index.js';
 import Comment from './Comment/index.js';
 import hidden from './hidden';
+import Video from './Video/index.js';
 const reducer = combineReducers({
   hidden,
   AuthJs,
   comic,
   Account,
-  Comment
+  Comment,
+  Video
 
 });
 const store = configureStore({

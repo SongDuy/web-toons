@@ -70,13 +70,13 @@ function App() {
           <Route path="/originals" element={<Loading> <OriginalsPage /></Loading>} />
           <Route path="/originals/original/series/:id" element={<OriginalSeriesPage />} />
 
-          <Route path="/videos" element={<VideosPage />} />
-          <Route path="/videos/video/series" element={<VideoSeriesPage />} />
+          <Route path="/videos" element={<Loading><VideosPage /></Loading>} />
+          <Route path="/videos/video/series/:id" element={<VideoSeriesPage />} />
 
           <Route path="/genres" element={<Loading><GenresPage /></Loading>} />
           <Route path="/popular" element={<PopularPage />} />
 
-          <Route path="/publish/video" element={<PublishVideoPage />} />
+      
 
           <Route path="/channel/creator/:id" element={<CreatorChannelPage />} />
 
@@ -109,6 +109,8 @@ function App() {
           <Route path="/channel/my" element={<MyChannelPage />} />
           <Route path="/publish/original" element={<PublishOriginalPage />} />
           <Route path="/publish/original/:id" element={<PublishOriginalPage />} />
+          <Route path="/publish/video" element={<PublishVideoPage />} />
+          <Route path="/publish/video/:id" element={<PublishVideoPage />} />
 
         </Route>
         {/* Trang hiển thị truyện và video */}

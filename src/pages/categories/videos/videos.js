@@ -16,21 +16,14 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink, Element as ScrollElement } from 'react-scroll';
 
-const dataOngoing = [
-    { id: 1, img: "https://i.pinimg.com/736x/f9/8c/c5/f98cc52a70dea95af4677e97f984add9.jpg", dayOfWeek: 'Mon', genre: "Action", name: "The Witcher", auth: "Lee Nakeum , seewater", like: "200k", },
-];
 
-const dataCompleted = [
-    { id: 1, img: "https://i.pinimg.com/736x/f9/8c/c5/f98cc52a70dea95af4677e97f984add9.jpg", dayOfWeek: 'Mon', genre: "Action", name: "The Witcher", auth: "Lee Nakeum , seewater", like: "200k", },
-];
-
-const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
 
 const VideosPage = () => {
 
     //kích hoạt dính vào trên cùng
     const [isSticky, setIsSticky] = useState(false);
-
+    const Video = useSelector(state => state.Video.video);
+    const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
     useEffect(() => {
         const threshold = 100; // Ngưỡng để kích hoạt dính vào trên cùng
 
@@ -64,7 +57,7 @@ const VideosPage = () => {
         setCurrentDay(day);
     };
 
-    const filteredData = dataOngoing.filter(data => data.dayOfWeek === currentDay);
+    const filteredData = Video?.Video.filter(data => data.schedule === currentDay);
 
     //Chọn nội dung theo tiêu đề
     const [selectedSection, setSelectedSection] = useState("section1");
@@ -262,11 +255,11 @@ const VideosPage = () => {
                                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                     {/* khung nội dung */}
-                                    {filteredData.map(item => (
+                                    {filteredData?.map(item => (
                                         <Link
                                             key={item.id}
-                                            to={`/videos/video/series`}
-                                        >
+                                            to={`/videos/video/series/${item.id}`}
+                                            >
                                             <li
                                                 onMouseEnter={() => setHoveredOngoingItem(item.id)}
                                                 onMouseLeave={() => setHoveredOngoingItem(null)}
@@ -275,7 +268,7 @@ const VideosPage = () => {
 
                                                 <div className="w-full h-[130px] relative" >
                                                     <img
-                                                        src={item.img}
+                                                        src={item.squareThumbnail}
                                                         alt="img"
                                                         className="object-fill w-full h-full rounded-md"
                                                     />
@@ -291,10 +284,10 @@ const VideosPage = () => {
 
                                                     <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                         <span className="text-lg font-semibold text-black text-shadow-white leading-[1.2] line-clamp-2">
-                                                            {item.name}
+                                                            {item.title}
                                                         </span>
                                                         <span className="text-md text-black text-shadow-white leading-[1.2] line-clamp-1">
-                                                            {item.auth}
+                                                            {item.Author}
                                                         </span>
                                                     </div>
 
@@ -322,11 +315,11 @@ const VideosPage = () => {
                                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                     {/* khung nội dung */}
-                                    {dataCompleted.map(item => (
+                                    {Video.Video?.map(item => (
                                         <Link
                                             key={item.id}
-                                            to={`/videos/video/series`}
-                                        >
+                                            to={`/videos/video/series/${item.id}`}
+                                            >
                                             <li
                                                 onMouseEnter={() => setHoveredCompletedItem(item.id)}
                                                 onMouseLeave={() => setHoveredCompletedItem(null)}
@@ -335,7 +328,7 @@ const VideosPage = () => {
 
                                                 <div className="w-full h-[130px] relative" >
                                                     <img
-                                                        src={item.img}
+                                                        src={item.squareThumbnail}
                                                         alt="img"
                                                         className="object-fill w-full h-full rounded-md"
                                                     />
@@ -351,10 +344,10 @@ const VideosPage = () => {
 
                                                     <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                         <span className="text-lg font-semibold text-black text-shadow-white leading-[1.2] line-clamp-2">
-                                                            {item.name}
+                                                            {item.title}
                                                         </span>
                                                         <span className="text-md text-black text-shadow-white leading-[1.2] line-clamp-1">
-                                                            {item.auth}
+                                                            {item.Author}
                                                         </span>
                                                     </div>
 

@@ -7,7 +7,9 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import NorthIcon from '@mui/icons-material/North';
 import CheckIcon from '@mui/icons-material/Check';
-
+import VideoFireBase from '../../../common/services/Video.services';
+import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 const dataListGenre = [
     { id: 1, name: "DRAMA", translatedName: "(드라마)" },
     { id: 2, name: "FANTASY", translatedName: "(판타지)" },
@@ -35,9 +37,17 @@ const dataListGenre = [
 dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 
 const SeriesVideoPage = ({ goToEposodes }) => {
+    const Account = useSelector((state) => state.Account.Account);
+    const navigate = useNavigate();
 
     // Tiêu đề video
     const [valueTitle, setValueTile] = useState('');
+    const [photos, setPhotos] = useState(""); // Lưu các ảnh đã chọn
+    const [photos1, setPhotos1] = useState(""); // Lưu các ảnh đã chọn
+    const [squareThumbnail, setsquareThumbnail] = useState();
+    const [horizontalThumbnail, sethorizontalThumbnail] = useState();
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
     const handleTitle = (event) => {
         const inputValueTitle = event.target.value;
         if (inputValueTitle.length <= 50) { // Giới hạn số ký tự nhập vào là 50
@@ -114,7 +124,49 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                 setIsAge('Unrated');
         }
     }, [selections]);
-
+    const handlePhotoChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            let newPhotos = URL.createObjectURL(file); // Tạo URL tạm thời cho ảnh
+            setPhotos(newPhotos);
+            setsquareThumbnail(file)
+        }
+    };
+    const handlePhotoChange1 = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            let newPhotos = URL.createObjectURL(file); // Tạo URL tạm thời cho ảnh
+            setPhotos1(newPhotos);
+            sethorizontalThumbnail(file)
+        }
+    };
+    const handleAdd = async () => {
+        try {
+            const data = {
+                title: valueTitle,
+                summary: valueSummary,
+                totalChapters: 0,
+                totalSubscribed: 0,
+                createTime: new Date(Date.now()),
+                lock: true,
+                check: true,
+                random: Math.random().toFixed(2),
+                Age: isAge,
+                Author: Account.name,
+                uid: Account.uid,
+                rate: 0,
+                views:0,
+                schedule: dayNames[new Date(Date.now()).getDay()]
+            };
+            const id = await VideoFireBase.Add(data)
+            await VideoFireBase.uploadToFirebase(squareThumbnail, squareThumbnail.name, Account.id, id, 'squareThumbnail')
+            await VideoFireBase.uploadToFirebase(horizontalThumbnail, horizontalThumbnail.name, Account.uid, id, 'horizontalThumbnail')
+            navigate(`/publish/video/${id}`)
+            goToEposodes()
+        } catch (error) {
+            console.log(error)
+        }
+    };
     return (
         <div>
 
@@ -165,20 +217,36 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                 </div>
 
                                 <div className="w-[350px] flex items-center justify-center">
-                                    {/* Nút tải ảnh đại diện cho series video */}
-                                    <button className="w-[200px] h-[200px] shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
-                                        <div>
-                                            <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
-                                                <NorthIcon />
-                                            </span>
-                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                Select an image to upload.
-                                            </span>
-                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                Or drag the image file here.
-                                            </span>
-                                        </div>
-                                    </button>
+                                    {/* Nút tải ảnh đại diện cho series truyện */}
+                                    {photos ? (
+                                        <img
+                                            src={photos}
+                                            alt="Selected"
+                                            className="w-[200px] h-[200px] object-cover rounded"
+                                        />
+                                    ) : (
+                                        <>
+                                            <button className="w-[200px] h-[200px] relative  shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
+                                                <div>
+                                                    <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
+                                                        <NorthIcon />
+                                                    </span>
+                                                    <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                        Select an image to upload.
+                                                    </span>
+                                                    <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                        Or drag the image file here.
+                                                    </span>
+                                                    <input
+                                                        type="file"
+                                                        accept="image/*"
+                                                        onChange={(e) => handlePhotoChange(e)}
+                                                        className="absolute inset-0 opacity-0 cursor-pointer "
+                                                    />
+                                                </div>
+                                            </button>
+                                        </>
+                                    )}
                                 </div>
 
                                 <div className="w-full py-3">
@@ -207,19 +275,36 @@ const SeriesVideoPage = ({ goToEposodes }) => {
 
                                 <div className="w-[350px] shadow flex items-center justify-center">
                                     {/* Nút tải ảnh nền cho serise video*/}
-                                    <button className="w-[350px] h-[200px] shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
-                                        <div>
-                                            <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
-                                                <NorthIcon />
-                                            </span>
-                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                Select an image to upload.
-                                            </span>
-                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                Or drag the image file here.
-                                            </span>
-                                        </div>
-                                    </button>
+                                    {photos1 ? (
+                                        <img
+                                            src={photos1}
+                                            alt="Selected"
+                                            className="w-[350px] h-[200px] object-cover rounded"
+                                        />
+                                    ) : (
+                                        <>
+                                            <button className="w-[350px] h-[200px]  relative shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
+                                                <div>
+                                                    <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
+                                                        <NorthIcon />
+                                                    </span>
+                                                    <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                        Select an image to upload.
+                                                    </span>
+                                                    <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                        Or drag the image file here.
+                                                    </span>
+                                                    <input
+                                                        type="file"
+                                                        accept="image/*"
+                                                        onChange={(e) => handlePhotoChange1(e)}
+                                                        className="absolute inset-0 opacity-0 cursor-pointer "
+                                                    />
+                                                </div>
+                                            </button>
+
+                                        </>
+                                    )}
                                 </div>
 
                                 <div className="w-full py-3">
@@ -565,9 +650,10 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                             {/* Nút để qua tập video */}
                             <div className="w-full pl-5 mt-[50px]">
                                 <button
-                                    onClick={goToEposodes}
+                                    onClick={handleAdd}
                                     className={`w-[200px] h-[50px] ${isChecked ? 'bg-green-500' : 'bg-gray-200 cursor-not-allowed'} pl-2 rounded-full shadow text-white font-semibold flex items-center justify-center gap-5`}
                                     disabled={!isChecked}
+
                                 >
                                     Create Series
                                     <NavigateNextIcon className="mt-1" />

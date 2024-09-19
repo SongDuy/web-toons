@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import { getAllComic } from '../../../common/store/comic';
+import { getAllVideo } from '../../../common/store/Video';
 
 const Loading = ({ children }) => {
     const dispatch = useDispatch();
@@ -14,8 +15,10 @@ const Loading = ({ children }) => {
         const get = async () => {
             try {
                 setloading(false)
-                const lg = await dispatch(getAllComic())
-                unwrapResult(lg)
+                const comic = await dispatch(getAllComic())
+                const video = await dispatch(getAllVideo())
+                unwrapResult(comic)
+                unwrapResult(video)
                 setloading(true)
             } catch (error) {
 

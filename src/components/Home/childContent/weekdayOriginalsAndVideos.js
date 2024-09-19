@@ -21,10 +21,7 @@ const WeekdayOriginalsAndVideosPage = () => {
 
     const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
     const comic = useSelector(state => state.comic.comic);
-
-    const dataVideos = [
-        { id: 1, img: "https://i.pinimg.com/736x/f9/8c/c5/f98cc52a70dea95af4677e97f984add9.jpg", dayOfWeek: 'Mon', genre: "Action", name: "The Witcher", auth: "Lee Nakeum , seewater", like: "200k", },
-    ];
+    const Video = useSelector(state => state.Video.video);
 
     //Chọn nội dung theo thứ
     const [currentDay, setCurrentDay] = useState('');
@@ -41,7 +38,7 @@ const WeekdayOriginalsAndVideosPage = () => {
     //chọn nội dung truyện theo thứ hiện tại
     const filteredOriginals = comic.comic?.filter(data => data.schedule === currentDay);
     //chọn nội dung videos theo thứ hiện tại
-    const filteredVideos = dataVideos.filter(data => data.dayOfWeek === currentDay);
+    const filteredVideos = Video.Video.filter(data => data.schedule === currentDay);
 
     // Mở modal menu để chọn Điều hướng đến trang truyện và videos
     const [open, setOpen] = React.useState(false);
@@ -280,7 +277,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                             {filteredVideos?.slice(0, 5)?.map((item) => (
                                 <Link
                                     key={item.id}
-                                    to={`/videos/video/series`}
+                                    to={`/videos/video/series/${item.id}`}
                                     className="max-w-[210px] h-[210px]"
                                 >
                                     <li
@@ -291,7 +288,7 @@ const WeekdayOriginalsAndVideosPage = () => {
 
                                         <div className="w-full h-[120px] relative" >
                                             <img
-                                                src={item.img}
+                                                src={item.squareThumbnail}
                                                 alt="img"
                                                 className="object-fill w-full h-full rounded-md"
                                             />
@@ -306,10 +303,10 @@ const WeekdayOriginalsAndVideosPage = () => {
                                         <div className="w-full flex flex-wrap items-center px-3 py-3">
                                             <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                 <span className="text-black text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
-                                                    {item.name}
+                                                    {item.title}
                                                 </span>
                                                 <span className="text-black text-md text-shadow-white leading-[1.2] line-clamp-1">
-                                                    {item.auth}
+                                                    {item.Author}
                                                 </span>
                                             </div>
 

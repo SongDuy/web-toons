@@ -10,9 +10,9 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { fireStore } from "../themes/firebase";
-const SubscribeFireBase = {
+const FollowFireBase = {
   async getALL() {
-    const docSnap = await getDocs(collection(fireStore, "subscribe"));
+    const docSnap = await getDocs(collection(fireStore, "follow"));
     const subscribe = docSnap.docs.map((item) => {
       //   console.log(item.ref)
       //   const subcollectionRef = collection(item.ref, 'YZOoN8D6Ued98MSS7xEF');
@@ -30,7 +30,7 @@ const SubscribeFireBase = {
     }
   },
   async getbysub(id) {
-    const docRef = doc(fireStore, "subscribe", id);
+    const docRef = doc(fireStore, "follow", id);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -41,65 +41,48 @@ const SubscribeFireBase = {
   },
   async getbyid(id) {
     const docRef = query(
-      collection(fireStore, "subscribe"),
+      collection(fireStore, "follow"),
       where("uid", "==", id)
     );
     const docSnap = await getDocs(docRef);
-    const subscribe = docSnap.docs?.map((item) => {
+    const follow = docSnap.docs?.map((item) => {
       return { id: item.id, ...item.data() };
     });
-    if (subscribe.length !== 0) {
-      return { subscribe, success: true };
+    if (follow.length !== 0) {
+      return { follow, success: true };
     } else {
       return { message: "No such document!", success: false };
     }
   },
-  async getbycomic(id, idcomic) {
+  async getbychannel(id, idchannel) {
     const docRef = query(
-      collection(fireStore, "subscribe"),
+      collection(fireStore, "follow"),
       where("uid", "==", id),
-      where("idcomic", "==", idcomic)
+      where("idchannel", "==", idchannel)
     );
     const docSnap = await getDocs(docRef);
-    const subscribe = docSnap.docs?.map((item) => {
+    const follow = docSnap.docs?.map((item) => {
       return { id: item.id, ...item.data() };
     });
-    if (subscribe.length !== 0) {
-      return { subscribe, success: true };
+    if (follow.length !== 0) {
+      return { follow, success: true };
     } else {
       return { message: "No such document!", success: false };
     }
   },
-  async getbyvideo(id, idvideo) {
-    const docRef = query(
-      collection(fireStore, "subscribe"),
-      where("uid", "==", id),
-      where("idvideo", "==", idvideo)
-    );
-    const docSnap = await getDocs(docRef);
-    const subscribe = docSnap.docs?.map((item) => {
-      return { id: item.id, ...item.data() };
-    });
-    if (subscribe.length !== 0) {
-      return { subscribe, success: true };
-    } else {
-      return { message: "No such document!", success: false };
-    }
-  },
-
   async Add(data, id) {
-    await addDoc(collection(fireStore, "subscribe"), data);
+    await addDoc(collection(fireStore, "follow"), data);
   },
   async update(data, iduser) {
-    const update = doc(fireStore, "subscribe", iduser);
+    const update = doc(fireStore, "follow", iduser);
 
     await updateDoc(update, data);
   },
   async Delete(id) {
-    await deleteDoc(doc(fireStore, "subscribe", id));
+    await deleteDoc(doc(fireStore, "follow", id));
   },
   async deleteAccount(id) {
-    const Ref = collection(fireStore, "subscribe");
+    const Ref = collection(fireStore, "follow");
     const q = query(Ref, where("uid", "==", id));
 
     const querySnapshot = await getDocs(q);
@@ -108,4 +91,4 @@ const SubscribeFireBase = {
     });
   },
 };
-export default SubscribeFireBase;
+export default FollowFireBase;

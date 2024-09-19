@@ -57,15 +57,15 @@ const OriginalSeriesPage = () => {
                 unwrapResult(comicID)
                const chaps= unwrapResult(chap)
              await  comicFireBase.update({views:chaps.success?chaps?.chaps?.reduce((a,b)=>a+b.views,0):0},id.id)
-
+             if (auth.currentUser) {
+                const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid, id.id)
+                const rateuser = await RateFireBase.getbyid(auth.currentUser.uid, id.id)
+                setRate(rateuser.success ? rateuser.rate[0].rate : 0);
+                subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
+                subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
+            }
                 setloading(true)
-                if (auth.currentUser) {
-                    const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid, id.id)
-                    const rateuser = await RateFireBase.getbyid(auth.currentUser.uid, id.id)
-                    setRate(rateuser.success ? rateuser.rate[0].rate : 0);
-                    subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
-                    subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
-                }
+               
             } catch (error) {
             }
         }
@@ -112,7 +112,7 @@ const OriginalSeriesPage = () => {
         try {
 
             if (auth.currentUser) {
-                await SubscribeFireBase.Add({ uid: auth.currentUser.uid, idcomic: id.id, createTime: new Date(Date.now()) })
+                await SubscribeFireBase.Add({ uid: auth.currentUser.uid, idcomic: id.id, createTime: new Date(Date.now()),type:'comic', })
                 await comicFireBase.update({ totalSubscribed: comicid.totalSubscribed + 1 }, id.id)
                 await dispatch(getidComic(id.id))
 
@@ -127,7 +127,7 @@ const OriginalSeriesPage = () => {
     const handleDeleteSub = async () => {
         try {
             if (auth.currentUser) {
-                await SubscribeFireBase.Delete(Subscribe[0].id)
+                await SubscribeFireBase.Delete(Subscribe[0]?.id)
                 await comicFireBase.update({ totalSubscribed: comicid.totalSubscribed - 1 }, id.id)
                 await dispatch(getidComic(id.id))
                 const subscribe = await SubscribeFireBase.getbycomic(auth.currentUser.uid, id.id)
@@ -150,7 +150,8 @@ const handleRate=async (event, newValue) => {
                 createTime: new Date(Date.now()),
                 idcomic:id.id,
                 uid: auth.currentUser.uid,
-                rate:parseFloat( newValue)
+                rate:parseFloat( newValue),
+                type:'comic',
             })
             const comicrate=await RateFireBase.getbycomic( id.id)
             const averageRating =comicrate.success? (comicrate.rate.reduce((accumulator, currentValue) =>  accumulator + currentValue.rate, 0) / comicrate.rate.length)*2:0;

@@ -11,18 +11,11 @@ import postFireBase from '../../common/services/post.services';
 import { auth } from '../../common/themes/firebase';
 import { getAccount } from '../../common/store/Account';
 import { onAuthStateChanged } from 'firebase/auth';
-
-const dataOriginals = [
-    { id: 1, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 2, img: "https://wallpapercave.com/wp/wp3788226.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 3, img: "https://i.pinimg.com/originals/f5/50/17/f550170d7e4650ee076975204a7e6c93.jpg", dayOfWeek: 'Mon', genre: "Animals", name: "Peace Restaurant", auth: "Lee Nakeum , seewater", like: "200k", },
-]
-
-const dataVideos = [
-    { id: 1, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Doraemon", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 2, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Action", name: "Doraemon", auth: "Lee Nakeum , seewater", like: "200k", },
-    { id: 3, img: "https://i.pinimg.com/474x/b2/a2/9e/b2a29e2b8afb0f473476ea8a0d5da671.jpg", dayOfWeek: 'Mon', genre: "Animals", name: "Doraemon", auth: "Lee Nakeum , seewater", like: "200k", },
-];
+import VideoFireBase from '../../common/services/Video.services';
+import comicFireBase from '../../common/services/Comic.services';
+import { Link } from "react-router-dom";
+import userFireBase from '../../common/services/User.services';
+import FollowFireBase from '../../common/services/Follow.services';
 
 const CreatorChannelPage = () => {
 
@@ -38,21 +31,35 @@ const CreatorChannelPage = () => {
     const language = useSelector(state => state.hidden.language);
     const [posts, setposts] = useState([]);
     // Nhấn nút thả tim
-
+    const [Video, setVideo] = useState([]);
+    const [comic, setcomic] = useState([]);
     const [iLike, setILike] = useState([]);
     // State để lưu chỉ số hiện tại cho mỗi bài viết
     const [currentIndices, setCurrentIndices] = useState({});
+    const [Follow, setFollow] = useState([[]]);
+
     useEffect(() => {
         const get = async () => {
             try {
                 setloading(false)
                 if (id.id) {
                     const post = await postFireBase.getAllid(id.id);
-
+                    const videos = await VideoFireBase.getbyuser(id.id);
+                    const comics = await comicFireBase.getbyuser(id.id);
+                   
+                    setVideo(videos.success ? videos?.Video : []);
+                    setcomic(comics.success ? comics?.comic : []);
                     await dispatch(getAccount(id.id));
 
                     setposts(post.success ? post?.post : []);
+                    if (auth.currentUser) {
+                        const Follows = await FollowFireBase.getbychannel(auth.currentUser.uid, id.id)
+                            console.log(Follows)
+                            Follows.success ? setIsFollow(true) : setIsFollow(false)
+                        Follows.success ? setFollow(Follows.follow) : setFollow([])
+                    }
                 }
+                
                 setloading(true)
 
             } catch (error) {
@@ -112,6 +119,37 @@ const CreatorChannelPage = () => {
             console.log(error);
         }
     };
+    const handleFollow = async () => {
+        try {
+
+            if (auth.currentUser) {
+                await FollowFireBase.Add({ uid: auth.currentUser.uid, idchannel: id.id, createTime: new Date(Date.now()),type:'channel' })
+                await userFireBase.update({ follow: create.follow + 1 }, id.id)
+                await dispatch(getAccount(id.id));
+
+                const Follows = await FollowFireBase.getbychannel(auth.currentUser.uid, id.id)
+
+                Follows.success ? setIsFollow(true) : setIsFollow(false)
+                Follows.success ? setFollow(Follows.follow) : setFollow([])
+            }
+        } catch (error) {
+        }
+    }
+    const handleDeleteFollow = async () => {
+        try {
+            if (auth.currentUser) {
+                await FollowFireBase.Delete(Follow[0]?.id)
+                await userFireBase.update({ follow: create.follow - 1  }, id.id)
+                await dispatch(getAccount(id.id));
+                const Follows = await FollowFireBase.getbychannel(auth.currentUser.uid, id.id)
+
+                Follows.success ? setIsFollow(true) : setIsFollow(false)
+                Follows.success ? setFollow(Follow.follow) : setFollow([])
+            }
+        } catch (error) {
+
+        }
+    }
     return (
         <>
             {loading &&
@@ -130,7 +168,11 @@ const CreatorChannelPage = () => {
                                 <div className="w-[185px] h-[185px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
                                     <Avatar
                                         alt="Remy Sharp"
-                                        src="https://taoanhdep.com/wp-content/uploads/2023/10/ai-350x265.jpg"
+                                        src={
+                                            create?.image
+                                              ? create?.image
+                                              : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
+                                          }
                                         sx={{ width: 180, height: 180 }}
                                     />
                                 </div>
@@ -149,15 +191,15 @@ const CreatorChannelPage = () => {
                                     <div className="px-1 py-4 flex">
                                         <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
                                             {!language ? <span> Original Series: </span> : <span> 시리즈 오리지널: </span>}
-                                            {' '} 15
+                                            {' '} {comic?.length}
                                         </div>
                                         <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
                                             {!language ? <span> Video Series: </span> : <span> 시리즈 비디오: </span>}
-                                            {' '} 15
+                                            {' '} {Video?.length}
                                         </div>
                                         <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
                                             {!language ? <span> Followers: </span> : <span> 추종자: </span>}
-                                            {' '} 80,135
+                                            {' '} {create?.follow}
                                         </div>
                                     </div>
                                 </div>
@@ -165,14 +207,14 @@ const CreatorChannelPage = () => {
                                 <div className="ml-auto flex items-center justify-center">
                                     {!isFollow ?
                                         <button
-                                            onClick={() => setIsFollow(true)}
+                                            onClick={handleFollow}
                                             className="w-[150px] h-[50px] font-semibold text-white bg-green-500 hover:bg-green-600 shadow  rounded-full"
                                         >
                                             {!language ? <span> Follow </span> : <span> 따르다 </span>}
                                         </button>
                                         :
                                         <button
-                                            onClick={() => setIsFollow(false)}
+                                            onClick={handleDeleteFollow}
                                             className="w-[150px] h-[50px] font-semibold text-black bg-gray-50 hover:bg-gray-100 shadow border rounded-full"
                                         >
                                             {!language ? <span> Following </span> : <span> 수행원 </span>}
@@ -209,15 +251,17 @@ const CreatorChannelPage = () => {
 
                                     <div className="mt-5 h-[450px] custom-scrollbar">
                                         <ul className="w-full">
-                                            {dataOriginals.map(item => (
-                                                <li
+                                            {comic?.slice(0, 5)?.map(item => (
+                                                <Link
                                                     className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer"
                                                     key={item.id}
+                                                    to={`/originals/original/series/${item.id}`}
+
                                                 >
 
                                                     <div className="w-[80px] h-[80px] rounded">
                                                         <img
-                                                            src={item.img}
+                                                            src={item.squareThumbnail}
                                                             alt="img"
                                                             className="object-fill w-full h-full rounded"
                                                         />
@@ -226,15 +270,15 @@ const CreatorChannelPage = () => {
                                                     <div className="h-full rounded-xl px-3 py-3 flex items-center">
                                                         <div className="w-[200px] overflow-hidden ">
                                                             <span className="w-full text-lg font-semibold line-clamp-1">
-                                                                {item.name}
+                                                                {item.title}
                                                             </span>
                                                             <span className="w-full text-[15px] line-clamp-1">
-                                                                {item.genre}
+                                                                {item.genre1}
                                                             </span>
                                                         </div>
 
                                                     </div>
-                                                </li>
+                                                </Link>
                                             ))}
                                         </ul>
                                     </div>
@@ -248,15 +292,17 @@ const CreatorChannelPage = () => {
 
                                     <div className="mt-5 h-[450px] custom-scrollbar">
                                         <ul className="w-full">
-                                            {dataVideos.map(item => (
-                                                <li
+                                            {Video?.slice(0, 5)?.map(item => (
+                                                <Link
                                                     className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer"
                                                     key={item.id}
+                                                    to={`/videos/video/series/${item.id}`}
+
                                                 >
 
                                                     <div className="w-[80px] h-[80px] rounded">
                                                         <img
-                                                            src={item.img}
+                                                            src={item.squareThumbnail}
                                                             alt="img"
                                                             className="object-fill w-full h-full rounded"
                                                         />
@@ -265,15 +311,13 @@ const CreatorChannelPage = () => {
                                                     <div className="h-full rounded-xl px-3 py-3 flex items-center">
                                                         <div className="w-[200px] overflow-hidden ">
                                                             <span className="w-full text-lg font-semibold line-clamp-1">
-                                                                {item.name}
+                                                                {item.title}
                                                             </span>
-                                                            <span className="w-full text-[15px] line-clamp-1">
-                                                                {item.genre}
-                                                            </span>
+                                                          
                                                         </div>
 
                                                     </div>
-                                                </li>
+                                                </Link>
                                             ))}
                                         </ul>
                                     </div>
@@ -301,7 +345,11 @@ const CreatorChannelPage = () => {
                                                     <div className="">
                                                         <Avatar
                                                             alt="Creator Avatar"
-                                                            src="https://www.ausp.edu.vn/uploads/blog/2024/05/16/1ecf77502b3bc514b2f535533d7b01f03a772174-1715817458.jpg"
+                                                            src={
+                                                                create?.image
+                                                                  ? create?.image
+                                                                  : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
+                                                              }
                                                             sx={{ width: 50, height: 50 }}
                                                         />
                                                     </div>
