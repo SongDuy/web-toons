@@ -160,7 +160,7 @@ const VideoFireBase = {
     }
   },
   async getidlikechap(id,idchap,uid) {
-    const parentDocRef = doc(fireStore, "Comic", id);
+    const parentDocRef = doc(fireStore, "Video", id);
     const repcollectionRef = collection(parentDocRef,id);
     const subrepRef=doc(repcollectionRef,idchap)
     const subcollectionRef = collection(subrepRef, "like");
@@ -173,7 +173,7 @@ const VideoFireBase = {
     }
   },
   async Addlikechap(data) {
-    const parentDocRef = doc(fireStore, "Comic", data.id);
+    const parentDocRef = doc(fireStore, "Video", data.id);
     const repcollectionRef = collection(parentDocRef,data.id);
     const subrepRef=doc(repcollectionRef,data.idseries)
     const subcollectionRef = collection(subrepRef, "like");
@@ -228,9 +228,9 @@ const VideoFireBase = {
     // Set the "capital" field of the city 'DC'
     await updateDoc(update, data);
   },
-  async updateep(data, idseries,idchap) {
-    const parentDocRef = doc(fireStore, "Comic", idseries);
-    const subcollec = collection(parentDocRef, idseries);
+  async updateep(data, idvideo,idchap) {
+    const parentDocRef = doc(fireStore, "Video", idvideo);
+    const subcollec = collection(parentDocRef, idvideo);
     const parentDoc = doc(subcollec, idchap);
     await updateDoc(parentDoc, data);
   },
@@ -275,7 +275,7 @@ const VideoFireBase = {
     return uploadTask;
   },
   async uploadToFirebaseep(file, name, iduser, id, idchap,key) {
-    const storageRef = key==="fileURL"?ref(storage, `cms_uploads/comic/episodes/${iduser}/${id}/chap/${idchap}/${name}`):ref(storage, `cms_uploads/comic/episodes/${iduser}/${id}/${name}`);
+    const storageRef = key==="fileURL"?ref(storage, `cms_uploads/Video/episodes/${iduser}/${id}/chap/${idchap}/${name}`):ref(storage, `cms_uploads/Video/${iduser}/${name}`);
 
     const uploadTask = uploadBytesResumable(storageRef, file);
     new Promise((resolve, reject) => {

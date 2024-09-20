@@ -11,6 +11,7 @@ import { unwrapResult } from "@reduxjs/toolkit";
 import { getAllComic, getrandomComic } from "../../common/store/comic";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import VideoFireBase from "../../common/services/Video.services";
 const Subscribed = () => {
   const [EditSubscribed, setEditSubscribed] = useState(false);
   const [Subscribed, setSubscribed] = useState([]);
@@ -48,7 +49,7 @@ const Subscribed = () => {
         if (subscribe.success) {
           const sub = await Promise.all(
             subscribe.subscribe?.map(async (item) => {
-              const comicid = await comicFireBase.getbyid(item.idcomic);
+              const comicid =item.idcomic? await comicFireBase.getbyid(item.idcomic):await VideoFireBase.getbyid(item.idvideo);
               return {
                 ...item,
                 ...comicid,

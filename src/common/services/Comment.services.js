@@ -57,6 +57,27 @@ const CommentFireBase = {
       return { message: "No such document!", success: false };
     }
   },
+  async getbyidseriesVideo(id) {
+    const docRef = query(
+      collection(fireStore, "comment"),
+      where("id", "==", id),
+      where("type", "==", "Video")
+    );
+
+    const docSnap = await getDocs(docRef);
+    const Comment = docSnap.docs.map((item) => {
+      return {
+        idcomment: item.id,
+        ...item.data(),
+        createTime: new Date(item.data().createTime?.toDate()).toISOString(),
+      };
+    });
+    if (Comment.length !== 0) {
+      return { Comment, success: true };
+    } else {
+      return { message: "No such document!", success: false };
+    }
+  },
   async getbyid(id) {
     const docRef = query(
       collection(fireStore, "comment"),
@@ -66,7 +87,7 @@ const CommentFireBase = {
     const docSnap = await getDocs(docRef);
     const Comment = await Promise.all(
       docSnap.docs.map(async (item) => {
-        const comicRef = doc(fireStore, "Comic", item.data().idcomic);
+        const comicRef = item.data()?.idcomic? doc(fireStore, "Comic", item.data().idcomic):doc(fireStore, "Video", item.data().idVideo);
 
         const commicSnap = await getDoc(comicRef);
         if (commicSnap.exists()) {
@@ -122,7 +143,17 @@ const CommentFireBase = {
     const parentDocRef = doc(fireStore, "comment", data.idcomment);
     const subcollectionRef = collection(parentDocRef, data.idcomment);
 
-    const getdata = {
+    const getdata = data?.idVideo?{
+      idcomment: data.idcomment,
+      nameUser: data.nameUser,
+      uid: data.uid,
+      dislike: data.dislike,
+      like: data.like,
+      idVideo: data.idVideo,
+      idseries: data.idseries,
+      createTime: data.createTime,
+      rep: data.rep,
+    }:{
       idcomment: data.idcomment,
       nameUser: data.nameUser,
       uid: data.uid,

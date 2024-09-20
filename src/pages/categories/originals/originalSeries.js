@@ -253,7 +253,7 @@ const handleRate=async (event, newValue) => {
                                     <ul className="w-full h-full ">
 
                                         {/* khung danh sách */}
-                                        {chapters.chaps?.map(item => (
+                                        {chapters?.chaps?.map(item => (
                                             <Link to={`/originals/original/series/display/${id.id}/${item.id}`} key={item.id}>
                                                 <li
                                                     className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"

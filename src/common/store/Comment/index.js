@@ -11,6 +11,16 @@ export const getidseries = createAsyncThunk("Comment/idseries", async (id) => {
      
     }
 });
+export const getidseriesVideo = createAsyncThunk("Comment/idseriesVideo", async (id) => {
+  try {
+      const comment =await CommentFireBase.getbyidseriesVideo(id)
+      return comment.success?comment:[]
+    
+    } catch (error) {
+      throw error
+     
+    }
+});
 export const idusercomment = createAsyncThunk("Comment/iduser", async (id) => {
   try {
       const comment =await CommentFireBase.getbyid(id)
@@ -26,7 +36,7 @@ export const idusercomment = createAsyncThunk("Comment/iduser", async (id) => {
 export const AddComment = createAsyncThunk("Comment/Add", async (payload) => {
     try {
         await CommentFireBase.Add(payload)
-        const comment =await CommentFireBase.getbyidseries(payload.id)
+        const comment =payload.type==="Video"?await CommentFireBase.getbyidseriesVideo(payload.id):await CommentFireBase.getbyidseries(payload.id)
         return comment.success?comment:[]
        
       } catch (error) {
@@ -55,7 +65,15 @@ const commentRedux = createSlice({
       state.comment = {}; // Kết thúc quá trình đăng nhập
       state.error = action.error; // Lưu thông báo lỗi để hiển thị cho người dùng
     });
-   
+    builder
+    .addCase(getidseriesVideo.fulfilled, (state, action) => {
+      state.error = null;
+      state.comment = action.payload;
+    })
+    .addCase(getidseriesVideo.rejected, (state, action) => {
+      state.comment = {}; // Kết thúc quá trình đăng nhập
+      state.error = action.error; // Lưu thông báo lỗi để hiển thị cho người dùng
+    });
     builder
       .addCase(AddComment.fulfilled, (state, action) => {
         state.error = null;

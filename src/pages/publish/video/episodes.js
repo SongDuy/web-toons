@@ -1,15 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import NorthIcon from '@mui/icons-material/North';
 
 import Radio from '@mui/material/Radio';
-
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { unwrapResult } from '@reduxjs/toolkit';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import VideoFireBase from '../../../common/services/Video.services';
+import { getidVideo } from '../../../common/store/Video';
 const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
     // hàm material nút chọn ở mục comment
     const [selectedValue, setSelectedValue] = React.useState('Enable');
+    const Account = useSelector((state) => state.Account.Account);
+    const videoid = useSelector(state => state.Video?.videoid);
+    const [loading, setloading] = useState(false);
+    const [fileURL, setfileURL] = useState();
+    const dispatch = useDispatch();
 
+    const navigate = useNavigate();
+
+    const id = useParams();
+    const [photos1, setPhotos1] = useState("");
+    const [horizontalThumbnail, sethorizontalThumbnail] = useState();
+    useEffect(() => {
+        const get = async () => {
+            try {
+                setloading(false)
+                const videoID = await dispatch(getidVideo(id.id))
+                unwrapResult(videoID)
+                setloading(true)
+
+            } catch (error) {
+            }
+        }
+        get()
+    }, [dispatch, id]);
     const handleChange = (event) => {
         setSelectedValue(event.target.value);
     };
@@ -31,10 +61,51 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
             setValueNote(inputValueNote);
         }
     };
-
+    const handlePhotoChange1 = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            let newPhotos = URL.createObjectURL(file); 
+            setPhotos1(newPhotos);
+          sethorizontalThumbnail(file)
+        }
+      };
+      const handlefileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+        
+          setfileURL(file)
+        }
+      };
+      const handleEp=async ()=>{
+        try {
+            console.log()
+           if(horizontalThumbnail?.name && fileURL?.name  ){
+            const getdata = {
+                valueEpisodeTitle,
+                idseries: id.id,
+                uid: Account.uid,
+                valueNote,
+                fileURL: '',
+                likes: 0,
+                num: 0,
+                checkcomment: selectedValue,
+                views: 0,
+                createTime: new Date(Date.now()),
+              };
+            const docid=  await VideoFireBase.Addep(getdata)
+            await VideoFireBase.uploadToFirebaseep(horizontalThumbnail,horizontalThumbnail.name,Account.uid,id.id,docid,'horizontalThumbnail')
+            await VideoFireBase.uploadToFirebaseep(fileURL,fileURL.name,Account.uid,id.id,docid,'fileURL')
+            navigate('/')
+           }
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
         <div>
-
+    {!loading ? <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5 }}>
+                <CircularProgress />
+            </Box>:
             <div className="w-full h-full bg-gray-100 pb-10">
 
                 <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
@@ -79,19 +150,38 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                     </span>
                                 </div>
 
-                                <button className="w-[200px] h-[200px] shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
-                                    <div>
-                                        <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
-                                            <NorthIcon />
-                                        </span>
-                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                            Select an image to upload.
-                                        </span>
-                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                            Or drag the image file here.
-                                        </span>
-                                    </div>
-                                </button>
+                                {photos1 ? (
+                                        <img
+                                            src={photos1}
+                                            alt="Selected"
+                                            className="w-[200px] h-[200px] object-cover rounded"
+                                        />
+                                    ) : (
+                                        <>
+                                            <button className="w-[200px] h-[200px] relative shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
+                                                <div>
+                                                    <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
+                                                        <NorthIcon />
+                                                    </span>
+                                                    <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                        Select an image to upload.
+                                                    </span>
+                                                    <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                        Or drag the image file here.
+                                                    </span>
+                                                    <input
+                                                        type="file"
+                                                        accept="image/*"
+                                                        onChange={(e) => handlePhotoChange1(e)}
+                                                        className="absolute inset-0 opacity-0 cursor-pointer "
+                                                    />
+                                                </div>
+                                            </button>
+
+
+
+                                        </>
+                                    )}
 
                                 <div className="w-full py-3">
                                     <span className="block w-full font-semibold text-sm text-gray-500">
@@ -120,11 +210,11 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                 {/* Tiêu đề của series */}
                                 <div className="w-full flex items-center gap-2">
                                     <h1 className="font-semibold text-xl flex items-center">
-                                        Series title :
+                                        Video title :
                                     </h1>
 
                                     <span className="font-semibold text-xl flex items-center">
-                                        kkkk
+                                        {videoid?.title}
                                     </span>
                                 </div>
 
@@ -157,9 +247,17 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
                                     {/* Nút tải file */}
                                     <div className="flex gap-3">
+                                    <div className="relative">
                                         <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
                                             Select File To Upload
                                         </button>
+                                        <input
+                              type="file"
+                              accept="video/*"
+                              onChange={(e) => handlefileChange(e)}
+                              className="absolute inset-0 opacity-0 cursor-pointer "
+                            />
+                                        </div>
 
                                         <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
                                             Delete All
@@ -275,7 +373,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
                             {/* Nút đăng tập truyện */}
                             <div className="w-full mt-10 py-3 pl-5">
-                                <button className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4">
+                                <button   onClick={handleEp} className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4">
                                     Publish episode
                                 </button>
                             </div>
@@ -286,6 +384,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                 </div>
 
             </div>
+}
         </div >
 
     );

@@ -26,23 +26,7 @@ import { auth } from '../../../common/themes/firebase';
 import RateFireBase from '../../../common/services/Rate.services';
 import VideoFireBase from '../../../common/services/Video.services';
 import SubscribeFireBase from '../../../common/services/Subscribe.services';
-const dataSeries = [
-    { id: 1, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 15", date: "jun 10, 2024", like: "23,789", number: "#15" },
-    { id: 2, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 14", date: "jun 10, 2024", like: "23,789", number: "#14" },
-    { id: 3, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 13", date: "jun 10, 2024", like: "23,789", number: "#13" },
-    { id: 4, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 12", date: "jun 10, 2024", like: "23,789", number: "#12" },
-    { id: 5, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 11", date: "jun 10, 2024", like: "23,789", number: "#11" },
-    { id: 6, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 10", date: "jun 10, 2024", like: "23,789", number: "#10" },
-    { id: 7, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 9", date: "jun 10, 2024", like: "23,789", number: "#9" },
-    { id: 8, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 8", date: "jun 10, 2024", like: "23,789", number: "#8" },
-    { id: 9, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 7", date: "jun 10, 2024", like: "23,789", number: "#7" },
-    { id: 10, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 6", date: "jun 10, 2024", like: "23,789", number: "#6" },
-    { id: 11, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 5", date: "jun 10, 2024", like: "23,789", number: "#5" },
-    { id: 12, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 4", date: "jun 10, 2024", like: "23,789", number: "#4" },
-    { id: 13, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 3", date: "jun 10, 2024", like: "23,789", number: "#3" },
-    { id: 14, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 2", date: "jun 10, 2024", like: "23,789", number: "#2" },
-    { id: 15, img: "https://bizweb.dktcdn.net/100/488/040/products/the-witcher-3-wild-hunt-complete-edition-ps5.jpg?v=1697281891410", name: "Episode 1", date: "jun 10, 2024", like: "23,789", number: "#1" },
-];
+
 
 const VideoSeriesPage = () => {
 
@@ -63,6 +47,10 @@ const VideoSeriesPage = () => {
  const language = useSelector(state => state.hidden.language);
     const anchorRef = React.useRef(null);
     const [Subscribe, setSubscribe] = useState([[]]);
+    const monthNames = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
     useEffect(() => {
         const get = async () => {
             try {
@@ -255,10 +243,10 @@ const VideoSeriesPage = () => {
                                 <ul className="w-full h-full ">
 
                                     {/* khung danh sách */}
-                                    {dataSeries.map(item => (
+                                    {chapters?.chaps?.map(item => (
                                         <Link
                                             key={item.id}
-                                            to={`/videos/video/series/display`}
+                                            to={`/videos/video/series/display/${id.id}/${item.id}`}
                                         >
                                             <li
                                                 className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2"
@@ -267,7 +255,7 @@ const VideoSeriesPage = () => {
 
                                                     <div className="w-[80px] h-[80px]">
                                                         <img
-                                                            src={item.img}
+                                                            src={item.horizontalThumbnail}
                                                             alt="img"
 
                                                             className="object-fill w-full h-full rounded-md"
@@ -276,13 +264,14 @@ const VideoSeriesPage = () => {
 
                                                     <div className="w-[350px] mr-auto ml-3 overflow-hidden">
                                                         <span className="text-black text-md leading-[1.2] line-clamp-2">
-                                                            {item.name}
+                                                            {item.chapterTitle}
                                                         </span>
                                                     </div>
 
                                                     <div className="ml-auto">
                                                         <span className="text-gray-400 text-md">
-                                                            {item.date}
+                                                        {monthNames[new Date(item.createTime).getMonth()]} {new Date(item.createTime).getDate()},
+                                                                {new Date(item.createTime)?.getFullYear()}
                                                         </span>
                                                     </div>
 
@@ -291,13 +280,13 @@ const VideoSeriesPage = () => {
                                                             <FavoriteBorderSharpIcon />
                                                         </span>
                                                         <span className="text-gray-400 text-md line-clamp-1">
-                                                            {item.like}
+                                                            {item.likes}
                                                         </span>
                                                     </div>
 
                                                     <div className="ml-auto">
                                                         <span className="text-gray-400 text-md line-clamp-1">
-                                                            {item.number}
+                                                        {item.num}#
                                                         </span>
                                                     </div>
                                                 </div>

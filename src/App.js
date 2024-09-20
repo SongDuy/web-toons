@@ -115,7 +115,7 @@ function App() {
         </Route>
         {/* Trang hiển thị truyện và video */}
         <Route path="/originals/original/series/display/:id/:idseries" element={<DisplayOriginalPage />} />
-        <Route path="/videos/video/series/display" element={<DisplayVideoPage />} />
+        <Route path="/videos/video/series/display/:id/:idseries" element={<DisplayVideoPage />} />
 
         {/* Đăng nhập Admin */}
         <Route path="/admin/login" element={<AdminLoginPage />} />

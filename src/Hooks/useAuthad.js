@@ -26,7 +26,6 @@ export const AuthadProvider = ({ children }) => {
           navigate('/admin/login');
         }
     
-        console.log(admin);
       } catch (error) {
         // Xử lý lỗi nếu có (ví dụ: không tìm thấy tài khoản)
         console.error("Lỗi khi lấy thông tin tài khoản:", error);

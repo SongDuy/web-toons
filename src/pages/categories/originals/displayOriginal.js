@@ -54,10 +54,10 @@ const DisplayOriginalPage = () => {
   const comic = useSelector((state) => state.comic.comic);
   const [selectedOriginalGenre, setSelectedOriginalGenre] = useState("All");
 
-  const filteredcomic = comic.comic
+  const filteredcomic = comic?.comic
     ?.slice()
     ?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
-  const searchedcomic = comic.comic
+  const searchedcomic = comic?.comic
     ?.filter((item) =>
       selectedOriginalGenre === "All"
         ? item
@@ -156,7 +156,7 @@ const DisplayOriginalPage = () => {
     () => ({
       url: chapid?.fileURL
         ? chapid?.fileURL
-        : "https://firebasestorage.googleapis.com/v0/b/webtoons-2ae20.appspot.com/o/cms_uploads%2Fcomic%2Fepisodes%2FIAsCigDN5La3LV2GtFOl0YnL9kG3%2Fp21CPp0sVnIMjq2zgX0o%2Fchap%2FAcAZk1jdc9XeLkSSugQW%2F1720871752506000.pdf?alt=media&token=38d9263f-1e88-4e54-bfe7-0efb1f01b305",
+        : "https://firebasestorage.googleapis.com/v0/b/webtoons-2ae20.appspot.com/o/cms_uploads%2Fcomic%2Fepisodes%2FIAsCigDN5La3LV2GtFOl0YnL9kG3%2Fp21CPp0sVnIMjq2zgX0o%2Fchap%2F9fNgdUbNDG7mV5bi7dkf%2Fnhasachmienphi-truyen-tranh-doremon.pdf?alt=media&token=7543361b-cddf-4e4f-9aaa-9bfe8a91ce14",
     }),
     [chapid]
   );
@@ -759,13 +759,7 @@ const DisplayOriginalPage = () => {
                                                   {item.nameUser}
                                                 </span>
                                                 <span className="text-gray-400 mx-2 line-clamp-1">
-                                                  {item.rep}
-                                                </span>
-                                              </div>
-
-                                              {/* Hiển thị nội dung bình luận */}
-                                              <div className="h-[120px] px-2 custom-scrollbar">
-                                                <span className="">
+                                                 
                                                   {
                                                     monthNames[
                                                       new Date(
@@ -780,6 +774,13 @@ const DisplayOriginalPage = () => {
                                                   {new Date(
                                                     item.createTime
                                                   )?.getFullYear()}
+                                                </span>
+                                              </div>
+
+                                              {/* Hiển thị nội dung bình luận */}
+                                              <div className="h-[120px] px-2 custom-scrollbar">
+                                                <span className="">
+                                                {item.rep}
                                                 </span>
                                               </div>
 

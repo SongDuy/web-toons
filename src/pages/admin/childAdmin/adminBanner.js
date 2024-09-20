@@ -1,70 +1,150 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-
-// Dữ liệu mẫu
-const data = [
-    { id: 1, img: 'https://image.baophapluat.vn/1200x630/Uploaded/2024/gznrxgmabianhgzmath/2022_05_30/doraemon-9528.jpg', name: 'John Doe', date: '23/05/2024', },
-    { id: 2, img: 'https://wallpapers.com/images/hd/one-piece-pictures-bjm9tdff9yzguoup.jpg', name: 'Jane Smith', date: '23/05/2024', },
-    { id: 3, img: 'https://i.redd.it/5mqp7trvxov51.jpg', name: 'Tom Brown',  date: '23/05/2024', },
-    { id: 4, img: 'https://images.alphacoders.com/135/1353040.jpeg', name: 'Tom Brown', date: '23/05/2024', },
-    { id: 5, img: 'https://wallpapergod.com/images/hd/anime-4k-5760X3240-wallpaper-par00nk6228xf5xm.jpeg', name: 'Tom Brown', date: '23/05/2024', },
-    { id: 6, img: 'https://i.pinimg.com/originals/52/83/59/5283594dd6b1d0dd4b8a59c723a35024.gif', name: 'Tom Brown', date: '23/05/2024', },
-    { id: 7, img: 'https://i.pinimg.com/originals/ef/7f/b1/ef7fb1b37078b6a2aef8e40710446bfa.jpg', name: 'Tom Brown', date: '23/05/2024', },
-    { id: 8, img: 'https://i.redd.it/b5jec682hfk61.jpg', name: 'Tom Brown', date: '23/05/2024', },
-    { id: 9, img: 'https://images.hdqwalls.com/download/alone-standing-at-roof-ff-1920x1080.jpg', name: 'Tom Brown', date: '23/05/2024', },
-    { id: 10, img: 'https://i.redd.it/5mqp7trvxov51.jpg', name: 'Tom Brown', date: '23/05/2024', },
-    { id: 11, img: 'https://i.pinimg.com/originals/82/bb/bf/82bbbffb0ee24320a2d8c4e7a35e9ea3.jpg', name: 'Tom Brown', date: '23/05/2024', },
-    { id: 12, img: 'https://4kwallpapers.com/images/wallpapers/anime-girl-surreal-1920x1080-10028.jpg', name: 'Tom Brown', date: '23/05/2024', },
-];
-
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import bannerFireBase from "../../../common/services/Banner.services";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 const AdminBannerPage = () => {
-    return (
+  const [loading, setloading] = useState(false);
+  const [banner, setbanner] = useState([]);
+  useEffect(() => {
+    const get = async () => {
+      try {
+        setloading(false);
+        const banners = await bannerFireBase.getAll();
+        setbanner(banners.success ? banners.banner : []);
+        setloading(true);
+      } catch (error) {}
+    };
+    get();
+  }, []);
+  const handlePhotoChange1 = async (e) => {
+    try {
+      setloading(false);
+      const file = e.target.files[0];
+      if (file) {
+        await bannerFireBase.uploadToAdd(file, file.name, {
+          createTime: new Date(Date.now()),
+        });
+      }
+      const banners=await bannerFireBase.getAll()
+      setbanner(banners.success?banners.banner:[])
+      setloading(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleupdate = async (e, id) => {
+    try {
+      console.log(e.target.files[0], id);
+
+      setloading(false);
+      const file = e.target.files[0];
+              if (file) {
+               await   bannerFireBase.uploadToFirebase(file,file.name,id)
+              }
+        const banners=await bannerFireBase.getAll()
+        setbanner(banners.success?banners.banner:[])
+      setloading(true);
+    } catch (error) {}
+  };
+  const handledelete = async (id) => {
+    try {
+      let result = window.confirm("Do you want to delete this comic?");
+      if (result) {
+        setloading(false);
+        await bannerFireBase.Delete(id);
+        const banners = await bannerFireBase.getAll();
+        setbanner(banners.success ? banners.banner : []);
+        setloading(true);
+      }
+    } catch (error) {}
+  };
+  return (
+    <>
+      {!loading ? (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: 5,
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      ) : (
         <div className="w-full h-[600px] py-5 bg-white custom-scrollbar">
-            <table className="w-full">
-                <thead className="bg-gray-100">
-                    <tr className="w-full">
-                        <th className="w-[50px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">ID</th>
-                        <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Image</th>
-                        <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Image Name</th>
-                        <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Date created</th>
-                        <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Manager</th>
-                    </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                    {data.map((item) => (
-                        <tr key={item.id}>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-center font-medium text-gray-900">
-                                {item.id}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                <img
-                                    src={item.img}
-                                    alt="img"
-                                    className="object-fill w-full h-full rounded-md"
-                                />
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                {item.name}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                {item.date}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                <button className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
-                                    <EditIcon />
-                                </button>
-                                <button className="w-[35px] h-[35px] text-red-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
-                                    <DeleteIcon />
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+          <table className="w-full">
+            <thead className="bg-gray-100">
+              <tr className="w-full">
+                <th className="w-[50px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
+                  ID
+                </th>
+                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
+                  Image
+                </th>
+                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
+                  Date created
+                </th>
+                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
+                  Manager
+                </th>
+                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
+                  <button className="w-[35px] h-[35px] text-red-500 mx-1 relative bg-gray-100 hover:bg-gray-200 rounded-full">
+                    Add
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => handlePhotoChange1(e)}
+                      className="absolute inset-0 opacity-0 cursor-pointer "
+                    />
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {banner?.map((item) => (
+                <tr key={item.id}>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-center font-medium text-gray-900">
+                    {item.id}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
+                    <img
+                      src={item.image}
+                      alt="img"
+                      className="object-fill w-full h-full rounded-md"
+                    />
+                  </td>
+
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
+                    {new Date(item.createTime).getDate()}/
+                    {new Date(item.createTime).getMonth() + 1}/
+                    {new Date(item.createTime)?.getFullYear()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
+                    <button className="w-[35px] h-[35px] relative text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
+                      <EditIcon />
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => handleupdate(e, item.id)}
+                        className="absolute inset-0 opacity-0 cursor-pointer "
+                      />
+                    </button>
+                    <button onClick={()=>handledelete(item.id)} className="w-[35px] h-[35px] text-red-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
+                      <DeleteIcon />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-    );
-}
+      )}
+    </>
+  );
+};
 
 export default AdminBannerPage;
