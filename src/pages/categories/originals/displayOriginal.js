@@ -62,7 +62,7 @@ const DisplayOriginalPage = () => {
       selectedOriginalGenre === "All"
         ? item
         : item.genre1 === selectedOriginalGenre ||
-          item.genre2 === selectedOriginalGenre
+        item.genre2 === selectedOriginalGenre
     )
     .slice()
     ?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
@@ -92,7 +92,7 @@ const DisplayOriginalPage = () => {
         id.id,
         id.idseries
       );
-    } catch (error) {}
+    } catch (error) { }
   }, 10000);
   useEffect(() => {
     const getcomments = async () => {
@@ -114,10 +114,10 @@ const DisplayOriginalPage = () => {
             ? chapid?.chaps.filter((item) => item.id === id.idseries)[0].likes
             : 0
         );
-          const lg = await dispatch(getAllComic());
-         unwrapResult(lg);
-        
-    
+        const lg = await dispatch(getAllComic());
+        unwrapResult(lg);
+
+
         unwrapResult(comments);
         if (auth.currentUser) {
           const subscribe = await SubscribeFireBase.getbycomic(
@@ -136,11 +136,11 @@ const DisplayOriginalPage = () => {
             : setSubscribe([]);
         }
         setloading(true);
-      } catch (error) {}
+      } catch (error) { }
     };
     getcomments();
   }, [dispatch, id]);
-  
+
   const options = useMemo(
     () => ({
       cMapUrl: "cmaps/",
@@ -172,8 +172,8 @@ const DisplayOriginalPage = () => {
   };
 
   const startIndex = currentPage * itemsPerPage;
-  const endIndex = Math.min(startIndex + itemsPerPage, chapters?.chaps?.length );
-  
+  const endIndex = Math.min(startIndex + itemsPerPage, chapters?.chaps?.length);
+
   const currentItems = chapters?.chaps?.slice(startIndex, endIndex);
   const closeLoginModal = () => {
     dispatch(setIsLoginModal(false));
@@ -242,7 +242,7 @@ const DisplayOriginalPage = () => {
           ? setSubscribe(subscribe.subscribe)
           : setSubscribe([]);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   const handleDeleteSub = async () => {
     try {
@@ -262,7 +262,7 @@ const DisplayOriginalPage = () => {
           ? setSubscribe(subscribe.subscribe)
           : setSubscribe([]);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   const handlelike = async (idcomment, togglelike) => {
     try {
@@ -388,7 +388,7 @@ const DisplayOriginalPage = () => {
         setcountlike(
           getchapid.success
             ? getchapid?.chaps.filter((item) => item.id === id.idseries)[0]
-                .likes
+              .likes
             : 0
         );
         // const pot = await postFireBase.getlike(Account.uid);
@@ -423,13 +423,13 @@ const DisplayOriginalPage = () => {
               <ul className="w-full h-[30px] flex">
                 <li className="w-[550px] flex gap-2 items-center overflow-hidden">
                   <div>
-                  <Link
-        to={`/`}>
-                    <img
-                      src={logo}
-                      alt="Logo của website"
-                      className="w-[40px] h-auto rounded-md bg-white"
-                    />
+                    <Link
+                      to={`/`}>
+                      <img
+                        src={logo}
+                        alt="Logo của website"
+                        className="w-[40px] h-auto rounded-md bg-white"
+                      />
                     </Link>
                   </div>
 
@@ -473,17 +473,19 @@ const DisplayOriginalPage = () => {
             {/* Hiển thị nội dung truyện */}
             <div className="w-full h-full bg-white flex items-center justify-center">
               <div>
-                <Document
-                  options={options}
-                  file={file}
-                  onLoadSuccess={onDocumentLoadSuccess}
-                  loading={ <CircularProgress />}
-                  
-                >
-                  {Array.from(new Array(numPages), (el, index) => (
-                    <Page key={`page_${index + 1}`} pageNumber={index + 1} />
-                  ))}
-                </Document>
+                {file &&
+                  <Document
+                    options={options}
+                    file={file}
+                    onLoadSuccess={onDocumentLoadSuccess}
+                    loading={<CircularProgress />}
+
+                  >
+                    {Array.from(new Array(numPages), (el, index) => (
+                      <Page key={`page_${index + 1}`} pageNumber={index + 1} />
+                    ))}
+                  </Document>
+                }
               </div>
             </div>
 
@@ -657,7 +659,7 @@ const DisplayOriginalPage = () => {
                                       <span className="text-gray-400 mx-2 line-clamp-1">
                                         {
                                           monthNames[
-                                            new Date(item.createTime).getMonth()
+                                          new Date(item.createTime).getMonth()
                                           ]
                                         }{" "}
                                         {new Date(item.createTime).getDate()},
@@ -759,12 +761,12 @@ const DisplayOriginalPage = () => {
                                                   {item.nameUser}
                                                 </span>
                                                 <span className="text-gray-400 mx-2 line-clamp-1">
-                                                 
+
                                                   {
                                                     monthNames[
-                                                      new Date(
-                                                        item.createTime
-                                                      ).getMonth()
+                                                    new Date(
+                                                      item.createTime
+                                                    ).getMonth()
                                                     ]
                                                   }{" "}
                                                   {new Date(
@@ -780,7 +782,7 @@ const DisplayOriginalPage = () => {
                                               {/* Hiển thị nội dung bình luận */}
                                               <div className="h-[120px] px-2 custom-scrollbar">
                                                 <span className="">
-                                                {item.rep}
+                                                  {item.rep}
                                                 </span>
                                               </div>
 
