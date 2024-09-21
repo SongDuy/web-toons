@@ -19,8 +19,9 @@ const Dashboard = () => {
                         </div>
 
                         <div className="w-full h-full mt-4">
-                            <ul className="grid grid-cols-2 gap-y-4">
-                                <li className="w-[550px] h-[210px] bg-green-200 rounded flex">
+                            <ul className="grid grid-cols-2 gap-4">
+
+                                <li className="w-full h-[210px] bg-white rounded flex shadow">
                                     <div className="w-[210px] h-[210px] bg-red-200 rounded">
                                         <img
                                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIwJC19pR5MRoGAUw2-MW4DGgiUAuNZUd1dQ&s"
@@ -30,50 +31,226 @@ const Dashboard = () => {
                                     </div>
 
                                     <div className="h-full px-3 py-3">
-                                        <div className="w-[310px] h-full">
+                                        <div className="w-[310px]">
                                             <div className="flex items-center">
-                                                <span className="text-gray-500 text-xs">
+                                                <span className="text-gray-500">
                                                     Fantasy
                                                 </span>
 
-                                                <div className="flex border ml-auto gap-2">
-                                                    <button className="flex items-center">
-                                                        kk
+                                                <div className="flex ml-auto gap-2">
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Edit
                                                     </button>
 
-                                                    <button className="flex items-center">
-                                                        ll
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Delete
                                                     </button>
                                                 </div>
                                             </div>
 
-                                            <div className="w-full h-full">
-                                                <h1 className="font-semibold">
+                                            <div className="w-full mt-2">
+                                                <h1 className="font-semibold text-xl">
                                                     kkkkk
                                                 </h1>
                                             </div>
                                         </div>
 
-                                        <div className="w-full h-full">
-
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-red-500">
+                                                Not Yet Rated
+                                            </h1>
                                         </div>
 
-                                        <div className="">
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-gray-500 text-sm">
+                                                Add episodes to publish your title.
+                                            </h1>
 
+                                            <div className="mt-2 flex ml-auto gap-2">
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Edit Episode
+                                                </button>
+
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Add Episode
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
 
-                                <li className="w-[550px] h-[210px] bg-green-200 rounded-xl">
+                                <li className="w-full h-[210px] bg-white rounded flex shadow">
+                                    <div className="w-[210px] h-[210px] bg-red-200 rounded">
+                                        <img
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIwJC19pR5MRoGAUw2-MW4DGgiUAuNZUd1dQ&s"
+                                            alt="img"
+                                            className="w-full h-full object-fill rounded"
+                                        />
+                                    </div>
 
+                                    <div className="h-full px-3 py-3">
+                                        <div className="w-[310px]">
+                                            <div className="flex items-center">
+                                                <span className="text-gray-500">
+                                                    Fantasy
+                                                </span>
+
+                                                <div className="flex ml-auto gap-2">
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Edit
+                                                    </button>
+
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div className="w-full mt-2">
+                                                <h1 className="font-semibold text-xl">
+                                                    kkkkk
+                                                </h1>
+                                            </div>
+                                        </div>
+
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-red-500">
+                                                Not Yet Rated
+                                            </h1>
+                                        </div>
+
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-gray-500 text-sm">
+                                                Add episodes to publish your title.
+                                            </h1>
+
+                                            <div className="mt-2 flex ml-auto gap-2">
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Edit Episode
+                                                </button>
+
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Add Episode
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
 
-                                <li className="w-[550px] h-[210px] bg-green-200 rounded-xl">
+                                <li className="w-full h-[210px] bg-white rounded flex shadow">
+                                    <div className="w-[210px] h-[210px] bg-red-200 rounded">
+                                        <img
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIwJC19pR5MRoGAUw2-MW4DGgiUAuNZUd1dQ&s"
+                                            alt="img"
+                                            className="w-full h-full object-fill rounded"
+                                        />
+                                    </div>
 
+                                    <div className="h-full px-3 py-3">
+                                        <div className="w-[310px]">
+                                            <div className="flex items-center">
+                                                <span className="text-gray-500">
+                                                    Fantasy
+                                                </span>
+
+                                                <div className="flex ml-auto gap-2">
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Edit
+                                                    </button>
+
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div className="w-full mt-2">
+                                                <h1 className="font-semibold text-xl">
+                                                    kkkkk
+                                                </h1>
+                                            </div>
+                                        </div>
+
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-red-500">
+                                                Not Yet Rated
+                                            </h1>
+                                        </div>
+
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-gray-500 text-sm">
+                                                Add episodes to publish your title.
+                                            </h1>
+
+                                            <div className="mt-2 flex ml-auto gap-2">
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Edit Episode
+                                                </button>
+
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Add Episode
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
 
-                                <li className="w-[550px] h-[210px] bg-green-200 rounded-xl">
+                                <li className="w-full h-[210px] bg-white rounded flex shadow">
+                                    <div className="w-[210px] h-[210px] bg-red-200 rounded">
+                                        <img
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIwJC19pR5MRoGAUw2-MW4DGgiUAuNZUd1dQ&s"
+                                            alt="img"
+                                            className="w-full h-full object-fill rounded"
+                                        />
+                                    </div>
 
+                                    <div className="h-full px-3 py-3">
+                                        <div className="w-[310px]">
+                                            <div className="flex items-center">
+                                                <span className="text-gray-500">
+                                                    Fantasy
+                                                </span>
+
+                                                <div className="flex ml-auto gap-2">
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Edit
+                                                    </button>
+
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div className="w-full mt-2">
+                                                <h1 className="font-semibold text-xl">
+                                                    kkkkk
+                                                </h1>
+                                            </div>
+                                        </div>
+
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-red-500">
+                                                Not Yet Rated
+                                            </h1>
+                                        </div>
+
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-gray-500 text-sm">
+                                                Add episodes to publish your title.
+                                            </h1>
+
+                                            <div className="mt-2 flex ml-auto gap-2">
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Edit Episode
+                                                </button>
+
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Add Episode
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -91,27 +268,238 @@ const Dashboard = () => {
                         </div>
 
                         <div className="w-full h-full mt-4">
-                            <ul className="grid grid-cols-2 gap-y-4">
-                                <li className="w-[550px] h-[210px] bg-green-200 rounded-xl">
-                                    <div className="w-[210px] h-[210px] bg-slate-200 rounded-l-xl">
+                            <ul className="grid grid-cols-2 gap-4">
 
+                                <li className="w-full h-[210px] bg-white rounded flex shadow">
+                                    <div className="w-[210px] h-[210px] bg-red-200 rounded">
+                                        <img
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIwJC19pR5MRoGAUw2-MW4DGgiUAuNZUd1dQ&s"
+                                            alt="img"
+                                            className="w-full h-full object-fill rounded"
+                                        />
                                     </div>
 
-                                    <div className="">
+                                    <div className="h-full px-3 py-3">
+                                        <div className="w-[310px]">
+                                            <div className="flex items-center">
+                                                <span className="text-gray-500">
+                                                    Fantasy
+                                                </span>
 
+                                                <div className="flex ml-auto gap-2">
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Edit
+                                                    </button>
+
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div className="w-full mt-2">
+                                                <h1 className="font-semibold text-xl">
+                                                    kkkkk
+                                                </h1>
+                                            </div>
+                                        </div>
+
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-red-500">
+                                                Not Yet Rated
+                                            </h1>
+                                        </div>
+
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-gray-500 text-sm">
+                                                Add episodes to publish your title.
+                                            </h1>
+
+                                            <div className="mt-2 flex ml-auto gap-2">
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Edit Episode
+                                                </button>
+
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Add Episode
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </li>
 
-                                <li className="w-[550px] h-[210px] bg-green-200 rounded-xl">
+                                <li className="w-full h-[210px] bg-white rounded flex shadow">
+                                    <div className="w-[210px] h-[210px] bg-red-200 rounded">
+                                        <img
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIwJC19pR5MRoGAUw2-MW4DGgiUAuNZUd1dQ&s"
+                                            alt="img"
+                                            className="w-full h-full object-fill rounded"
+                                        />
+                                    </div>
 
+                                    <div className="h-full px-3 py-3">
+                                        <div className="w-[310px]">
+                                            <div className="flex items-center">
+                                                <span className="text-gray-500">
+                                                    Fantasy
+                                                </span>
+
+                                                <div className="flex ml-auto gap-2">
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Edit
+                                                    </button>
+
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div className="w-full mt-2">
+                                                <h1 className="font-semibold text-xl">
+                                                    kkkkk
+                                                </h1>
+                                            </div>
+                                        </div>
+
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-red-500">
+                                                Not Yet Rated
+                                            </h1>
+                                        </div>
+
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-gray-500 text-sm">
+                                                Add episodes to publish your title.
+                                            </h1>
+
+                                            <div className="mt-2 flex ml-auto gap-2">
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Edit Episode
+                                                </button>
+
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Add Episode
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
 
-                                <li className="w-[550px] h-[210px] bg-green-200 rounded-xl">
+                                <li className="w-full h-[210px] bg-white rounded flex shadow">
+                                    <div className="w-[210px] h-[210px] bg-red-200 rounded">
+                                        <img
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIwJC19pR5MRoGAUw2-MW4DGgiUAuNZUd1dQ&s"
+                                            alt="img"
+                                            className="w-full h-full object-fill rounded"
+                                        />
+                                    </div>
 
+                                    <div className="h-full px-3 py-3">
+                                        <div className="w-[310px]">
+                                            <div className="flex items-center">
+                                                <span className="text-gray-500">
+                                                    Fantasy
+                                                </span>
+
+                                                <div className="flex ml-auto gap-2">
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Edit
+                                                    </button>
+
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div className="w-full mt-2">
+                                                <h1 className="font-semibold text-xl">
+                                                    kkkkk
+                                                </h1>
+                                            </div>
+                                        </div>
+
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-red-500">
+                                                Not Yet Rated
+                                            </h1>
+                                        </div>
+
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-gray-500 text-sm">
+                                                Add episodes to publish your title.
+                                            </h1>
+
+                                            <div className="mt-2 flex ml-auto gap-2">
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Edit Episode
+                                                </button>
+
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Add Episode
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
 
-                                <li className="w-[550px] h-[210px] bg-green-200 rounded-xl">
+                                <li className="w-full h-[210px] bg-white rounded flex shadow">
+                                    <div className="w-[210px] h-[210px] bg-red-200 rounded">
+                                        <img
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIwJC19pR5MRoGAUw2-MW4DGgiUAuNZUd1dQ&s"
+                                            alt="img"
+                                            className="w-full h-full object-fill rounded"
+                                        />
+                                    </div>
 
+                                    <div className="h-full px-3 py-3">
+                                        <div className="w-[310px]">
+                                            <div className="flex items-center">
+                                                <span className="text-gray-500">
+                                                    Fantasy
+                                                </span>
+
+                                                <div className="flex ml-auto gap-2">
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Edit
+                                                    </button>
+
+                                                    <button className="px-2 flex items-center bg-gray-200 rounded shadow">
+                                                        Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div className="w-full mt-2">
+                                                <h1 className="font-semibold text-xl">
+                                                    kkkkk
+                                                </h1>
+                                            </div>
+                                        </div>
+
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-red-500">
+                                                Not Yet Rated
+                                            </h1>
+                                        </div>
+
+                                        <div className="w-full mt-5">
+                                            <h1 className="text-gray-500 text-sm">
+                                                Add episodes to publish your title.
+                                            </h1>
+
+                                            <div className="mt-2 flex ml-auto gap-2">
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Edit Episode
+                                                </button>
+
+                                                <button className="px-2 py-1 flex items-center bg-gray-200 rounded shadow">
+                                                    Add Episode
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
