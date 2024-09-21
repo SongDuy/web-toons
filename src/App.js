@@ -75,8 +75,6 @@ function App() {
           <Route path="/genres" element={<Loading><GenresPage /></Loading>} />
           <Route path="/popular" element={<PopularPage />} />
 
-      
-
           <Route path="/channel/creator/:id" element={<CreatorChannelPage />} />
 
           {/* Trang thanh toán */}
