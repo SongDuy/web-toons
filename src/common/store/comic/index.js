@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import comicFireBase from "../../services/Comic.services";
-export const getAllComic = createAsyncThunk("comic/get", async () => {
+export const getAllComic = createAsyncThunk("comic/get", async (id) => {
     try {
-      const comic=  await comicFireBase.get()
+      const comic=  await comicFireBase.get(id&&id)
         return comic.success?comic:[]
     } catch (error) {
       // console.log(error);
@@ -34,7 +34,8 @@ export const getAllComic = createAsyncThunk("comic/get", async () => {
   });
   export const getrandomComic = createAsyncThunk("comic/getrandom", async (getlimit) => {
     try {
-      const comic=  await comicFireBase.getrandom(getlimit)
+    
+      const comic= getlimit?.age?await comicFireBase.getrandom(getlimit.limit,getlimit.age) :await comicFireBase.getrandom(getlimit.limit)
         return comic.success?comic:[]
     } catch (error) {
       throw error

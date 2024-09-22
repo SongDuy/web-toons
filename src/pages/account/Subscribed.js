@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import SubscribeFireBase from "../../common/services/Subscribe.services";
 import comicFireBase from "../../common/services/Comic.services";
 import { unwrapResult } from "@reduxjs/toolkit";
-import { getAllComic, getrandomComic } from "../../common/store/comic";
+import { getAllComic } from "../../common/store/comic";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import VideoFireBase from "../../common/services/Video.services";
@@ -41,12 +41,12 @@ const Subscribed = () => {
       try {
         setloading(false);
 
-        const subscribe = await SubscribeFireBase.getbyid(Account.id);
-        const randoms = await dispatch(getrandomComic(3));
-        const lg = await dispatch(getAllComic());
+        const subscribe = await SubscribeFireBase.getbyid(Account?.uid);
+        const age= Account?.birthday? new Date(Date.now())?.getFullYear()-new Date(Account.birthday)?.getFullYear():15
+      
+        const lg = await dispatch(getAllComic(age));
         unwrapResult(lg);
 
-        unwrapResult(randoms);
         if (subscribe.success) {
           const sub = await Promise.all(
             subscribe.subscribe?.map(async (item) => {
@@ -66,10 +66,12 @@ const Subscribed = () => {
           setSubscribed([]);
         }
         setloading(true);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error)
+      }
     };
     get();
-  }, [dispatch, Account, replay]);
+  }, [dispatch,Account, replay]);
   const HandleDelete = async () => {
     try {
       setloading(false);

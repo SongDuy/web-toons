@@ -15,9 +15,11 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { fireStore, storage } from "../themes/firebase";
 
 const comicFireBase = {
-  async get() {
-    const docSnap = await getDocs(
-      query(collection(fireStore, "Comic"), where("lock", "==", true), where("check", "==", true))
+  async get(age) {
+    const docSnap =age?await getDocs(
+      query(collection(fireStore, "Comic"), where("lock", "==", true), where("check", "==", true),where("Age", "<=", age))
+    ): await getDocs(
+      query(collection(fireStore, "Comic"), where("lock", "==", true), where("check", "==", true),where("Age", "<=", 15))
     );
     const comic = docSnap.docs.map((item) => {
       //   console.log(item.ref)
@@ -61,10 +63,20 @@ const comicFireBase = {
       return { message: "No such document!", success: false };
     }
   },
-  async getrandom(setlimit) {
-    const randomValue = Math.random();
-    const q = query(
+  async getrandom(setlimit,age) {
+    const randomValue = Math.random().toFixed(2);
+    const q =age?query(
       collection(fireStore, "Comic"),
+      where("lock", "==", true),
+      where("check", "==", true),
+      where("Age", "<=", age),
+      where("random", ">=", randomValue),
+      limit(setlimit)
+    ): query(
+      collection(fireStore, "Comic"),
+      where("lock", "==", true),
+      where("check", "==", true),
+      where("Age", "<=", 15),
       where("random", ">=", randomValue),
       limit(setlimit)
     );

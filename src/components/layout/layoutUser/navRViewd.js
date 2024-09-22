@@ -1,32 +1,46 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,memo } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch,useSelector } from 'react-redux';
 import { getrandomComic } from "../../../common/store/comic";
+import { getAccount } from "../../../common/store/Account";
+import { auth } from "../../../common/themes/firebase";
 
 const NavRViewd = () => {
   const [OpennavRVivew, setOpennavRVivew] = useState(false);
   const [OpenoAnimation, setnoAnimation] = useState(false);
   const   dispatch = useDispatch();
   const comic = useSelector(state => state.comic.random);
+  const User = useSelector(state => state.AuthJs.User);
+
   useEffect(() => {
     const getRandom = async ()=>{
       if (!comic.comic) {
        try {
       
-        const random= await  dispatch(getrandomComic(5));
+        if(User){
+          const account= await  dispatch(getAccount(auth?.currentUser?.uid));
+          const user=  unwrapResult(account)
+          const age= account?.payload?.birthday? new Date(Date.now())?.getFullYear()-new Date(user.birthday)?.getFullYear():15
+          const random= await  dispatch(getrandomComic({limit:5,age}));
+        
+          unwrapResult(random)
+         }else{
+          const random= await  dispatch(getrandomComic(5));
         
        unwrapResult(random)
+         }
+       
          
        } catch (error) {
-        console.log(error)
+        // console.log(error)
 
        }
       }
     };
     getRandom()
-  }, [dispatch,comic]);
+  }, [dispatch,comic,User]);
  
   const OpenRView = () => {
     setOpennavRVivew(true)
@@ -103,4 +117,4 @@ const NavRViewd = () => {
   );
 };
 
-export default NavRViewd;
+export default memo( NavRViewd);

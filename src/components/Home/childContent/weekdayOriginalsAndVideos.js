@@ -38,7 +38,7 @@ const WeekdayOriginalsAndVideosPage = () => {
     //chọn nội dung truyện theo thứ hiện tại
     const filteredOriginals = comic.comic?.filter(data => data.schedule === currentDay);
     //chọn nội dung videos theo thứ hiện tại
-    const filteredVideos = Video.Video.filter(data => data.schedule === currentDay);
+    const filteredVideos = Video.Video?.filter(data => data.schedule === currentDay);
 
     // Mở modal menu để chọn Điều hướng đến trang truyện và videos
     const [open, setOpen] = React.useState(false);

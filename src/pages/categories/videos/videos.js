@@ -57,7 +57,7 @@ const VideosPage = () => {
         setCurrentDay(day);
     };
 
-    const filteredData = Video?.Video.filter(data => data.schedule === currentDay);
+    const filteredData = Video?.Video?.filter(data => data.schedule === currentDay);
 
     //Chọn nội dung theo tiêu đề
     const [selectedSection, setSelectedSection] = useState("section1");

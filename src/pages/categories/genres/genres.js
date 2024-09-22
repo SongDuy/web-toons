@@ -45,10 +45,9 @@ dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 
 const GenresPage = () => {
     const comic = useSelector(state => state.comic.comic);
-
     //Chọn nội dung truyện theo thể loại
     const [selectedOriginalsByGenre, setSelectedOriginalsByGenre] = useState('Action');
-    const filteredOriginalsByGenre = comic.comic?.filter(data => data.genre1 === selectedOriginalsByGenre || data.genre2 === selectedOriginalsByGenre);
+    const filteredOriginalsByGenre = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase());
 
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);

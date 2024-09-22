@@ -14,6 +14,8 @@ const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setdisplayName] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const err = useSelector(state => state.AuthJs.errorregister);
@@ -23,7 +25,8 @@ const RegisterPage = () => {
 
   const getRegister = async () => {
     try {
-      const rg = await dispatch(handleRegister({ email, password, displayName }));
+      console.log(selectedDate)
+      const rg = await dispatch(handleRegister({ email, password, displayName,birthday:selectedDate }));
       unwrapResult(rg)
 
       navigate('/')
@@ -34,7 +37,6 @@ const RegisterPage = () => {
   }
 
   //chọn ngày tháng năm sinh
-  const [selectedDate, setSelectedDate] = useState(null);
 
   return (
     <div className="w-full h-full bg-gray-100 flex items-center justify-center">
