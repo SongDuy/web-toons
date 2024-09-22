@@ -11,39 +11,56 @@ const PaymentPage = ({ closeModal }) => {
         }
     };
 
-    // Hàm copy giá trị vào clipboard
-    const copyToClipboard = (text) => {
-        navigator.clipboard.writeText(text).then(() => {
-            alert('Copied: ' + text);
-        }).catch((err) => {
-            console.error('Failed to copy: ', err);
-        });
-    };
-
     return (
         <div className="w-screen h-screen bg-black bg-opacity-30 flex items-center justify-center fixed inset-0 z-50" onClick={handleBackdropClick}> {/* backdrop-blur-sm */}
 
             <div className="w-[940px] h-auto bg-white rounded-xl shadow flex items-center justify-center">
+
                 <div className="w-full h-full px-5 py-5">
-                    <div className="w-full h-full">
-                        <h1 className="font-semibold text-2xl">Manual transfer</h1>
+
+                    <h1 className="flex items-center justify-center text-2xl">
+                        Payment Video Series
+                    </h1>
+
+                    <div className="w-full h-full mt-3">
+                        <h1 className="font-semibold text-xl">
+                            Receiving account
+                        </h1>
                         <div className="grid grid-cols-2 gap-3 py-3 mt-3">
 
                             <div className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
                                 <div className="w-full h-auto space-y-2">
                                     <h1 className="font-semibold">
-                                        Selling price
+                                        Account number
                                     </h1>
                                     <div className="ml-auto flex items-center space-x-2">
                                         {/* Giá tiền */}
                                         <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
-                                            255.000
+                                            011xx90890xx567
                                         </span>
 
                                         {/* Icon copy */}
                                         <ContentCopyIcon
                                             className="cursor-pointer text-gray-600 hover:text-black"
-                                            onClick={() => copyToClipboard("255.000")}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
+                                <div className="w-full h-auto space-y-2">
+                                    <h1 className="font-semibold">
+                                        Account name
+                                    </h1>
+                                    <div className="ml-auto flex items-center space-x-2">
+                                        {/* Giá tiền */}
+                                        <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
+                                            Nguyen Van A
+                                        </span>
+
+                                        {/* Icon copy */}
+                                        <ContentCopyIcon
+                                            className="cursor-pointer text-gray-600 hover:text-black"
                                         />
                                     </div>
                                 </div>
@@ -63,7 +80,6 @@ const PaymentPage = ({ closeModal }) => {
                                         {/* Icon copy */}
                                         <ContentCopyIcon
                                             className="cursor-pointer text-gray-600 hover:text-black"
-                                            onClick={() => copyToClipboard("255.000")}
                                         />
                                     </div>
                                 </div>
@@ -72,42 +88,44 @@ const PaymentPage = ({ closeModal }) => {
                             <div className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
                                 <div className="w-full h-auto space-y-2">
                                     <h1 className="font-semibold">
-                                        Selling price
+                                        Bank name
                                     </h1>
                                     <div className="ml-auto flex items-center space-x-2">
                                         {/* Giá tiền */}
                                         <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
-                                            255.000
+                                            Bank Korea
                                         </span>
 
                                         {/* Icon copy */}
                                         <ContentCopyIcon
                                             className="cursor-pointer text-gray-600 hover:text-black"
-                                            onClick={() => copyToClipboard("255.000")}
                                         />
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
-                                <div className="w-full h-auto space-y-2">
-                                    <h1 className="font-semibold">
-                                        Selling price
-                                    </h1>
-                                    <div className="ml-auto flex items-center space-x-2">
-                                        {/* Giá tiền */}
-                                        <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
-                                            255.000
-                                        </span>
+                        </div>
+                    </div>
 
-                                        {/* Icon copy */}
-                                        <ContentCopyIcon
-                                            className="cursor-pointer text-gray-600 hover:text-black"
-                                            onClick={() => copyToClipboard("255.000")}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
+                    <div className="w-full h-full mt-3">
+                        <h1 className="font-semibold text-xl">
+                            Remittance account
+                        </h1>
+                        <div className="grid grid-cols-2 gap-3 py-3 mt-3">
+
+                            <input
+                                type="text"
+                                className="w-full h-[50px] px-2 border rounded shadow"
+                                placeholder="Account name"
+                                form="off"
+                            />
+
+                            <input
+                                type="text"
+                                className="w-full h-[50px] px-2 border rounded shadow"
+                                placeholder="Account number"
+                                form="off"
+                            />
 
                         </div>
                     </div>
@@ -128,7 +146,7 @@ const PaymentPage = ({ closeModal }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
