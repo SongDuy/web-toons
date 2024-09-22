@@ -57,7 +57,7 @@ const GenresPage = () => {
     const language = useSelector(state => state.hidden.language);
 
     // Mở và đóng menu originals
-    
+
     const [openOriginals, setOpenOriginals] = React.useState(false);
     const anchorRefOriginals = React.useRef(null);
 
@@ -96,188 +96,188 @@ const GenresPage = () => {
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
 
-           
+
             <div className="w-full h-full ">
                 <div className="max-w-[1200px] h-full ml-auto mr-auto">
 
-                        <div className="max-w-full h-full">
+                    <div className="max-w-full h-full">
 
-                            {/* Tiêu đề */}
-                            <div className="h-[70px] border-b-2 flex items-center">
-                                <span className="font-semibold text-md">
-                                    {!language ? <span> Originals Series </span> : <span> 오리지널 시리즈 </span>}
-                                </span>
-                                <span className="ml-auto text-md flex items-center justify-center gap-1">
-                                    <button
-                                        ref={anchorRefOriginals}
-                                        id="composition-button-originals"
-                                        aria-controls={openOriginals ? 'composition-menu-originals' : undefined}
-                                        aria-expanded={openOriginals ? 'true' : undefined}
-                                        aria-haspopup="true"
-                                        onClick={handleToggleOriginals}
-                                    >
-                                        {selectedMenuOriginalList}
-                                    </button>
+                        {/* Tiêu đề */}
+                        <div className="h-[70px] border-b-2 flex items-center">
+                            <span className="font-semibold text-md">
+                                {!language ? <span> Originals Series </span> : <span> 오리지널 시리즈 </span>}
+                            </span>
+                            <span className="ml-auto text-md flex items-center justify-center gap-1">
+                                <button
+                                    ref={anchorRefOriginals}
+                                    id="composition-button-originals"
+                                    aria-controls={openOriginals ? 'composition-menu-originals' : undefined}
+                                    aria-expanded={openOriginals ? 'true' : undefined}
+                                    aria-haspopup="true"
+                                    onClick={handleToggleOriginals}
+                                >
+                                    {selectedMenuOriginalList}
+                                </button>
 
-                                    {/* Originals Menu */}
-                                    <Popper
-                                        open={openOriginals}
-                                        anchorEl={anchorRefOriginals.current}
-                                        role={undefined}
-                                        placement="bottom-start"
-                                        transition
-                                        disablePortal
-                                    >
-                                        {({ TransitionProps, placement }) => (
-                                            <Grow
-                                                {...TransitionProps}
-                                                style={{
-                                                    transformOrigin:
-                                                        placement === 'bottom-start' ? 'left top' : 'left bottom',
-                                                }}
-                                            >
-                                                <Paper>
-                                                    <ClickAwayListener onClickAway={handleCloseOriginals}>
-                                                        <MenuList
-                                                            className="bg-white rounded-lg text-black font-semibold"
-                                                            autoFocusItem={openOriginals}
-                                                            id="composition-menu-originals"
-                                                            aria-labelledby="composition-button-originals"
-                                                            onKeyDown={handleListKeyDownOriginals}
-                                                        >
-
-                                                            <MenuItem onClick={handleCloseOriginals}>
-                                                                <span
-                                                                    onClick={() => setSelectedMenuOriginalList("by Popularity")}
-                                                                    className={`w-full h-full ${selectedMenuOriginalList === "by Popularity" ? "text-yellow-500" : ""}`}
-                                                                >
-                                                                    by Popularity
-                                                                </span>
-                                                            </MenuItem>
-
-                                                            <MenuItem onClick={handleCloseOriginals}>
-                                                                <span
-                                                                    onClick={() => setSelectedMenuOriginalList("by Likes")}
-                                                                    className={`w-full h-full ${selectedMenuOriginalList === "by Likes" ? "text-yellow-500" : ""}`}
-                                                                >
-                                                                    by Likes
-                                                                </span>
-                                                            </MenuItem>
-
-                                                            <MenuItem onClick={handleCloseOriginals}>
-                                                                <span
-                                                                    onClick={() => setSelectedMenuOriginalList("by Date")}
-                                                                    className={`w-full h-full ${selectedMenuOriginalList === "by Date" ? "text-yellow-500" : ""}`}
-                                                                >
-                                                                    by Date
-                                                                </span>
-                                                            </MenuItem>
-                                                            {/* Add more menu items here */}
-                                                        </MenuList>
-                                                    </ClickAwayListener>
-                                                </Paper>
-                                            </Grow>
-                                        )}
-                                    </Popper>
-
-                                    <CheckIcon />
-                                </span>
-                            </div>
-
-                            <div className="w-full h-full py-5 flex items-center justify-center">
-                                <div>
-                                    {/* Danh mục thể loại */}
-                                    <div className="h-[70px] mb-5 flex items-center justify-center">
-                                        <ul
-                                            className="grid grid-cols-10 gap-2"
+                                {/* Originals Menu */}
+                                <Popper
+                                    open={openOriginals}
+                                    anchorEl={anchorRefOriginals.current}
+                                    role={undefined}
+                                    placement="bottom-start"
+                                    transition
+                                    disablePortal
+                                >
+                                    {({ TransitionProps, placement }) => (
+                                        <Grow
+                                            {...TransitionProps}
+                                            style={{
+                                                transformOrigin:
+                                                    placement === 'bottom-start' ? 'left top' : 'left bottom',
+                                            }}
                                         >
-                                            {/* khung nội dung */}
-                                            {dataListGenre.map(genre => (
-                                                <li
-                                                    key={genre.id}
-                                                    onClick={() => setSelectedOriginalsByGenre(genre.name)}
-                                                    className={`w-[115px] uppercase font-semibold shadow text-xs py-2 px-2 rounded hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
-                                                >
-                                                    {!language ? <span> {genre.name} </span> : <span> {genre.nameKorean} </span>}
-                                                </li>
-                                            ))}
+                                            <Paper>
+                                                <ClickAwayListener onClickAway={handleCloseOriginals}>
+                                                    <MenuList
+                                                        className="bg-white rounded-lg text-black font-semibold"
+                                                        autoFocusItem={openOriginals}
+                                                        id="composition-menu-originals"
+                                                        aria-labelledby="composition-button-originals"
+                                                        onKeyDown={handleListKeyDownOriginals}
+                                                    >
 
-                                        </ul>
-                                    </div>
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedMenuOriginalList("by Popularity")}
+                                                                className={`w-full h-full ${selectedMenuOriginalList === "by Popularity" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                by Popularity
+                                                            </span>
+                                                        </MenuItem>
 
-                                    {/* Danh mục nội dung originals theo thể loại */}
-                                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedMenuOriginalList("by Likes")}
+                                                                className={`w-full h-full ${selectedMenuOriginalList === "by Likes" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                by Likes
+                                                            </span>
+                                                        </MenuItem>
 
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => setSelectedMenuOriginalList("by Date")}
+                                                                className={`w-full h-full ${selectedMenuOriginalList === "by Date" ? "text-yellow-500" : ""}`}
+                                                            >
+                                                                by Date
+                                                            </span>
+                                                        </MenuItem>
+                                                        {/* Add more menu items here */}
+                                                    </MenuList>
+                                                </ClickAwayListener>
+                                            </Paper>
+                                        </Grow>
+                                    )}
+                                </Popper>
+
+                                <CheckIcon />
+                            </span>
+                        </div>
+
+                        <div className="w-full h-full py-5 flex items-center justify-center">
+                            <div>
+                                {/* Danh mục thể loại */}
+                                <div className="h-[70px] mb-5 flex items-center justify-center">
+                                    <ul
+                                        className="grid grid-cols-10 gap-2"
+                                    >
                                         {/* khung nội dung */}
-                                        {filteredOriginalsByGenre?.map(item => (
-                                            <Link
-                                                key={item.id}
-                                                to={`/originals/original/series/${item.id}`}
+                                        {dataListGenre.map(genre => (
+                                            <li
+                                                key={genre.id}
+                                                onClick={() => setSelectedOriginalsByGenre(genre.name)}
+                                                className={`w-[115px] uppercase font-semibold shadow text-xs py-2 px-2 rounded hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                             >
-
-                                                <li
-                                                    onMouseEnter={() => setHoveredOriginalItem(item.id)}
-                                                    onMouseLeave={() => setHoveredOriginalItem(null)}
-                                                    className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
-                                                >
-
-                                                    <div className="w-full h-full" >
-                                                        <img
-                                                            src={item.squareThumbnail}
-                                                            alt="img"
-                                                            className="object-fill w-full h-full rounded-md"
-                                                        />
-
-                                                        {hoveredOriginalItem === item.id && (
-                                                            <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
-                                                                <AutoStoriesIcon sx={{ fontSize: 40 }} />
-                                                            </div>
-                                                        )}
-                                                    </div>
-
-                                                    <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-
-                                                        <div className="w-full h-[65px] mb-auto overflow-hidden">
-                                                            <span className="text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
-                                                                {item.title}
-                                                            </span>
-                                                            <span className="text-md text-shadow-white leading-[1.2] line-clamp-1">
-                                                                {item.Author}
-                                                            </span>
-                                                        </div>
-
-                                                        <div className="w-full mb-[40px] mr-auto">
-                                                            <span className="w-[75px] text-rose-300 rounded-full gap-1 text-sm font-semibold flex items-center">
-                                                                <FavoriteIcon />
-                                                                {item.like}
-                                                            </span>
-                                                            <div className="flex mt-2 gap-1">
-                                                                <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                                    Up
-                                                                </span>
-                                                                {/* <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                                    New
-                                                                </span> */}
-                                                            </div>
-                                                        </div>
-
-                                                        {/*Trong component React của bạn */}
-                                                        <div className="w-full h-[30px]">
-                                                            <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
-                                                                {selectedOriginalsByGenre}
-                                                            </span>
-                                                        </div>
-
-                                                    </div>
-
-                                                </li>
-                                            </Link>
+                                                {!language ? <span> {genre.name} </span> : <span> {genre.nameKorean} </span>}
+                                            </li>
                                         ))}
 
                                     </ul>
                                 </div>
+
+                                {/* Danh mục nội dung originals theo thể loại */}
+                                <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
+
+                                    {/* khung nội dung */}
+                                    {filteredOriginalsByGenre?.map(item => (
+                                        <Link
+                                            key={item.id}
+                                            to={`/originals/original/series/${item.id}`}
+                                        >
+
+                                            <li
+                                                onMouseEnter={() => setHoveredOriginalItem(item.id)}
+                                                onMouseLeave={() => setHoveredOriginalItem(null)}
+                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                                            >
+
+                                                <div className="w-full h-full" >
+                                                    <img
+                                                        src={item.squareThumbnail}
+                                                        alt="img"
+                                                        className="object-fill w-full h-full rounded-md"
+                                                    />
+
+                                                    {hoveredOriginalItem === item.id && (
+                                                        <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                            <AutoStoriesIcon sx={{ fontSize: 40 }} />
+                                                        </div>
+                                                    )}
+                                                </div>
+
+                                                <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+
+                                                    <div className="w-full h-[65px] mb-auto overflow-hidden">
+                                                        <span className="text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
+                                                            {item.title}
+                                                        </span>
+                                                        <span className="text-md text-shadow-white leading-[1.2] line-clamp-1">
+                                                            {item.Author}
+                                                        </span>
+                                                    </div>
+
+                                                    <div className="w-full mb-[40px] mr-auto">
+                                                        <span className="w-[75px] text-rose-300 rounded-full gap-1 text-sm font-semibold flex items-center">
+                                                            <FavoriteIcon />
+                                                            {item.like}
+                                                        </span>
+                                                        <div className="flex mt-2 gap-1">
+                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                                Up
+                                                            </span>
+                                                            {/* <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                                    New
+                                                                </span> */}
+                                                        </div>
+                                                    </div>
+
+                                                    {/*Trong component React của bạn */}
+                                                    <div className="w-full h-[30px]">
+                                                        <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
+                                                            {selectedOriginalsByGenre}
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+
+                                            </li>
+                                        </Link>
+                                    ))}
+
+                                </ul>
                             </div>
                         </div>
+                    </div>
 
                 </div>
             </div>
