@@ -3,6 +3,8 @@ import Nav from "../../components/Account/nav";
 import AddIcon from '@mui/icons-material/Add';
 import StarIcon from '@mui/icons-material/Star';
 
+import { Link } from "react-router-dom";
+
 const dataComic = [
     { id: 1, title: 'Dragon Ball', genre1: 'Fantasy', genre2: '', rate: '0.5', totalChapters: 10, createTime: "Aug 31, 2024", },
     { id: 2, title: 'Dragon Ball', genre1: 'Fantasy', genre2: '', rate: '0.5', totalChapters: 10, createTime: "Aug 31, 2024", },
@@ -20,17 +22,21 @@ const Dashboard = () => {
         <div>
             <Nav />
             <div className="w-full h-full border bg-gray-100 flex items-center justify-center pb-10">
-                <div className="w-[1130px] ">
+                <div className="w-[1130px] min-h-[550px]">
                     <div className="w-full h-full mt-4">
                         <div className="w-full h-full flex items-center">
-                            <h1 className="font-semibold">
+                            <h1 className="font-semibold text-xl">
                                 Select the original series
                             </h1>
-
-                            <button className="w-[150px] h-[35px] text-white font-semibold bg-black ml-auto rounded-full flex items-center justify-center">
-                                <AddIcon />
-                                Create Series
-                            </button>
+                            <Link
+                                to={`/publish/original`}
+                                className="w-[150px] h-[35px] text-white font-semibold bg-black ml-auto rounded-full flex items-center justify-center"
+                            >
+                                <button className="w-full h-full">
+                                    <AddIcon />
+                                    Create Series
+                                </button>
+                            </Link>
                         </div>
 
                         <div className="w-full h-full mt-4">
@@ -110,10 +116,11 @@ const Dashboard = () => {
                                                 }
 
                                                 <div className="mt-2 flex ml-auto gap-2">
-                                                    <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                                        Edit Episode
-                                                    </button>
-
+                                                    <Link to="/dashboard/original/episode">
+                                                        <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                                            Edit Episode
+                                                        </button>
+                                                    </Link>
                                                     <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                                                         <AddIcon />
                                                         Add Episode
@@ -129,14 +136,18 @@ const Dashboard = () => {
 
                     <div className="w-full h-full mt-4">
                         <div className="w-full h-full flex items-center">
-                            <h1 className="font-semibold">
+                            <h1 className="font-semibold text-xl">
                                 Select the video series
                             </h1>
-
-                            <button className="w-[150px] h-[35px] text-white font-semibold bg-black ml-auto rounded-full flex items-center justify-center">
-                                <AddIcon />
-                                Create Series
-                            </button>
+                            <Link
+                                to={`/publish/video`}
+                                className="w-[150px] h-[35px] text-white font-semibold bg-black ml-auto rounded-full flex items-center justify-center"
+                            >
+                                <button className="w-full h-full">
+                                    <AddIcon />
+                                    Create Series
+                                </button>
+                            </Link>
                         </div>
 
                         <div className="w-full h-full mt-4">
@@ -213,9 +224,11 @@ const Dashboard = () => {
                                                 }
 
                                                 <div className="mt-2 flex ml-auto gap-2">
-                                                    <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                                        Edit Episode
-                                                    </button>
+                                                    <Link to="/dashboard/video/episode">
+                                                        <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                                            Edit Episode
+                                                        </button>
+                                                    </Link>
 
                                                     <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                                                         <AddIcon />

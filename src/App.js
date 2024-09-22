@@ -41,6 +41,8 @@ import Account from './pages/account/Account';
 import Comment from './pages/account/Comment';
 import Subscribed from './pages/account/Subscribed';
 import Dashboard from './pages/account/Dashboard';
+import EpisodeOriginal from './pages/account/Episode/episodeOriginal';
+import EpisodeVideo from './pages/account/Episode/episodeVideo';
 import Creators from './pages/account/Creators';
 import DeletePage from './pages/account/Delete';
 import PaymentPage from './pages/payment/index';
@@ -102,6 +104,8 @@ function App() {
           <Route path="/account/delete" element={<DeletePage />} />
           <Route path="/mycomment" element={<Comment />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/original/episode" element={<EpisodeOriginal />} />
+          <Route path="/dashboard/video/episode" element={<EpisodeVideo />} />
           <Route path="/subscribed" element={<Subscribed />} />
           <Route path="/creators" element={<Creators />} />
           <Route path="/channel/my" element={<MyChannelPage />} />
