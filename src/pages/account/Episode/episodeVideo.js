@@ -2,14 +2,14 @@ import React from 'react';
 import Nav from "../../../components/Account/nav";
 import AddIcon from '@mui/icons-material/Add';
 import StarIcon from '@mui/icons-material/Star';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 import { Link } from "react-router-dom";
 
 const dataEpisode = [
-    { id: 1, title: 'Dragon Ball', genre1: 'Fantasy', genre2: '', rate: '0.5', totalChapters: 10, createTime: "Aug 31, 2024", },
-    { id: 2, title: 'Dragon Ball', genre1: 'Fantasy', genre2: '', rate: '0.5', totalChapters: 10, createTime: "Aug 31, 2024", },
-    { id: 3, title: 'Dragon Ball', genre1: 'Fantasy', genre2: '', rate: '0.5', totalChapters: 10, createTime: "Aug 31, 2024", },
+    { id: 1, title: 'Draemon', rate: '0.5', likes: 10, views: 15, createTime: "Aug 31, 2024", },
+    { id: 2, title: 'Draemon', rate: '0.5', likes: 10, views: 15, createTime: "Aug 31, 2024", },
+    { id: 3, title: 'Draemon', rate: '0.5', likes: 10, views: 15, createTime: "Aug 31, 2024", },
 ]
 
 const EpisodeVideo = () => {
@@ -21,17 +21,22 @@ const EpisodeVideo = () => {
                     <div className="w-full h-full mt-4">
                         <div className="w-full h-full flex items-center">
                             <h1 className="font-semibold text-xl">
-                                Episode Video Management
+                                <Link to={`/dashboard`} className="hover:text-yellow-500">
+                                    Video Series
+                                </Link>
+
+                                <NavigateNextIcon sx={{ fontSize: 30 }} />
+
+                                Episode Management
                             </h1>
-                            <Link
-                                to={`/dashboard`}
-                                className="w-[120px] h-[35px] text-white font-semibold bg-black ml-auto rounded-full flex items-center justify-center"
-                            >
-                                <button className="w-full h-full">
-                                    <ArrowBackIosIcon />
-                                    Previous
+
+                            <div className="ml-auto flex gap-5">
+                                <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
+                                    <AddIcon />
+                                    Add Episode
                                 </button>
-                            </Link>
+                            </div>
+
                         </div>
 
                         <div className="w-full h-full mt-4">
@@ -51,9 +56,6 @@ const EpisodeVideo = () => {
                                         <div className="h-full px-3 py-3">
                                             <div className="w-[320px]">
                                                 <div className="flex items-center">
-                                                    <span className="text-gray-500">
-                                                        {item.genre1}, {item.genre2}
-                                                    </span>
 
                                                     <div className="flex ml-auto gap-2">
                                                         <button className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
@@ -73,7 +75,7 @@ const EpisodeVideo = () => {
                                                 </div>
                                             </div>
 
-                                            <div className="w-full mt-5">
+                                            <div className="w-full mt-8">
                                                 {(item.rate > 0) ?
                                                     <div className="w-full">
                                                         <span className="text-yellow-500 flex items-center gap-2">
@@ -90,31 +92,20 @@ const EpisodeVideo = () => {
                                                 }
                                             </div>
 
-                                            <div className="w-full mt-5">
+                                            <div className="w-full mt-12">
 
-                                                {(item.totalChapters > 0) ?
-                                                    <div className="flex gap-5">
-                                                        <span className="text-gray-500 text-sm flex gap-2">
-                                                            Published {item.createTime}
-                                                        </span>
+                                                <div className="flex gap-5">
+                                                    <span className="text-gray-500 text-sm flex gap-2">
+                                                        Published {item.createTime}
+                                                    </span>
 
-                                                        <span className="text-gray-500 text-sm">
-                                                            Episodes {item.totalChapters}
-                                                        </span>
-                                                    </div>
-                                                    :
-                                                    <div className="flex gap-5">
-                                                        <span className="text-gray-500 text-sm">
-                                                            Add episodes to publish your title.
-                                                        </span>
-                                                    </div>
-                                                }
+                                                    <span className="text-gray-500 text-sm">
+                                                        Likes {item.likes}
+                                                    </span>
 
-                                                <div className="mt-2 ml-auto">
-                                                    <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                                        <AddIcon />
-                                                        Add Episode
-                                                    </button>
+                                                    <span className="text-gray-500 text-sm">
+                                                        Views {item.views}
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
