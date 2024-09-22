@@ -40,10 +40,12 @@ import Layout from './components/layout/layoutUser';
 import Account from './pages/account/Account';
 import Comment from './pages/account/Comment';
 import Subscribed from './pages/account/Subscribed';
+import Dashboard from './pages/account/Dashboard';
+import EpisodeOriginal from './pages/account/Episode/episodeOriginal';
+import EpisodeVideo from './pages/account/Episode/episodeVideo';
 import Creators from './pages/account/Creators';
 import DeletePage from './pages/account/Delete';
 import PaymentPage from './pages/payment/index';
-import PaymentInformationPage from './pages/payment/paymentInformation';
 import TermsOfUse from './pages/Policys/TermsOfUse';
 import PrivacyPolicy from './pages/Policys/PrivacyPolicy';
 import CommunityPolicy from './pages/Policys/CommunityPolicy';
@@ -80,13 +82,10 @@ function App() {
           <Route path="/genres" element={<Loading><GenresPage /></Loading>} />
           <Route path="/popular" element={<PopularPage />} />
 
-      
-
           <Route path="/channel/creator/:id" element={<CreatorChannelPage />} />
 
           {/* Trang thanh toán */}
           <Route path="/payment" element={<PaymentPage />} />
-          <Route path="/payment/information" element={<PaymentInformationPage />} />
 
           {/* Trang đăng ký */}
           <Route path="/register" element={<RegisterPage />} />
@@ -108,6 +107,9 @@ function App() {
           {/* Xóa tài khoản */}
           <Route path="/account/delete" element={<DeletePage />} />
           <Route path="/mycomment" element={<Comment />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/original/episode" element={<EpisodeOriginal />} />
+          <Route path="/dashboard/video/episode" element={<EpisodeVideo />} />
           <Route path="/subscribed" element={<Subscribed />} />
           <Route path="/creators" element={<Creators />} />
           <Route path="/channel/my" element={<MyChannelPage />} />
