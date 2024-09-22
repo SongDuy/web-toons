@@ -236,6 +236,12 @@ const comicFireBase = {
   async Delete(id) {
     await deleteDoc(doc(fireStore, "Comic", id));
   },
+   async Deletechap(id,idchap) {
+    const parentDocRef = doc(fireStore, "Comic", id);
+    const subcollec = collection(parentDocRef, id);
+    const parentDoc = doc(subcollec, idchap);
+    await deleteDoc(parentDoc);
+  },
   async uploadToFirebase(file, name, iduser, id, key) {
     const storageRef =ref(storage, `cms_uploads/comic/${iduser}/${name}`);
 

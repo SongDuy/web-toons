@@ -53,6 +53,10 @@ import SuperLikeTerms from './pages/Policys/SuperLikeTerms';
 import { AuthProvider } from './Hooks/useAuth';
 import Loading from './components/layout/layoutUser/loading';
 import { AuthadProvider } from './Hooks/useAuthad';
+import AdminOriginalsidPage from './pages/admin/childAdmin/adminOriginalsid';
+import AdminOriginalsidchap from './pages/admin/childAdmin/adminOriginalsidchap';
+import AdminVideosPageid from './pages/admin/childAdmin/adminVideosid';
+import AdminVideosPageidchap from './pages/admin/childAdmin/adminVideosidchap';
 
 function App() {
 
@@ -130,7 +134,13 @@ function App() {
           <Route path="users" element={<AdminUsersPage />} />
           <Route path="categories" element={<AdminCategoriesPage />} />
           <Route path="originals" element={<AdminOriginalsPage />} />
+          <Route path="originals/:id" element={<AdminOriginalsidPage />} />
+          <Route path="originals/:id/:idchap" element={<AdminOriginalsidchap />} />
+
           <Route path="videos" element={<AdminVideosPage />} />
+          <Route path="videos/:id" element={<AdminVideosPageid />} />
+          <Route path="videos/:id/:idchap" element={<AdminVideosPageidchap />} />
+
           <Route path="reports" element={<AdminReportsPage />} />
           <Route path="payments" element={<AdminPaymentsPage />} />
           <Route path="notifications" element={<AdminNotificationsPage />} />

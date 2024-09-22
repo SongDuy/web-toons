@@ -237,6 +237,12 @@ const VideoFireBase = {
   async Delete(id) {
     await deleteDoc(doc(fireStore, "Video", id));
   },
+  async Deletechap(id,idchap) {
+    const parentDocRef = doc(fireStore, "Video", id);
+    const subcollec = collection(parentDocRef, id);
+    const parentDoc = doc(subcollec, idchap);
+    await deleteDoc(parentDoc);
+  },
   async uploadToFirebase(file, name, iduser, id, key) {
     const storageRef =ref(storage, `cms_uploads/Video/${iduser}/${name}`);
 

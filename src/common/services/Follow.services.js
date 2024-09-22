@@ -29,7 +29,7 @@ const FollowFireBase = {
       return { message: "No such document!", success: false };
     }
   },
-  async getbysub(id) {
+  async getbyfollow(id) {
     const docRef = doc(fireStore, "follow", id);
     const docSnap = await getDoc(docRef);
 

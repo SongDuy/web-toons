@@ -9,11 +9,15 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import VideoFireBase from '../../../common/services/Video.services';
 import  { getAlladVideo } from '../../../common/store/Video';
+import CheckIcon from "@mui/icons-material/Check";
+import { useNavigate } from 'react-router-dom';
 
 const AdminVideosPage = () => {
     const Video = useSelector(state => state.Video.video);
     const [loading, setloading] = useState(false);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     useEffect(() => {    
 
         const get=async ()=>{
@@ -59,6 +63,21 @@ const AdminVideosPage = () => {
             
         }
     }
+    const handlecheck=async (idchap,check)=>{
+        try {
+            let result = window.confirm(`Do you want to ${check?"lock":"Unlocked"} this comic?`);
+            if(result){
+            setloading(false)
+
+      await VideoFireBase.update({check:!check},idchap)
+      const lg=await dispatch(getAlladVideo())
+      unwrapResult(lg)
+           setloading(true)
+            }
+        } catch (error) {
+            
+        }
+    }
     return (
         <>
            {loading?
@@ -98,10 +117,12 @@ const AdminVideosPage = () => {
                                                         {new Date(item.createTime)?.getFullYear()}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                <button className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
+                                <button onClick={()=>navigate(`/admin/videos/${item.id}`)} className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
                                     <RemoveRedEyeIcon />
                                 </button>
-
+                                <button onClick={()=>handlecheck(item.id,item.check)} className={`w-[35px] h-[35px] ${item.check? "text-blue-500":"text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
+                                <CheckIcon />
+                                </button>
                                 <button onClick={()=>handlelock(item.id,item.lock)} className={`w-[35px] h-[35px] ${item.lock? "text-blue-500":"text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
                                     <LockClockIcon />
                                 </button>

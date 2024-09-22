@@ -3,19 +3,20 @@ import React,{useEffect,useState} from 'react';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import LockClockIcon from '@mui/icons-material/LockClock';
+import CheckIcon from "@mui/icons-material/Check";
 import { useSelector,useDispatch} from 'react-redux';
-import { getAlladComic } from '../../../common/store/comic';
+import {  getchaptersComic } from '../../../common/store/comic';
 import { unwrapResult } from '@reduxjs/toolkit';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import comicFireBase from '../../../common/services/Comic.services';
+
+import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import CheckIcon from "@mui/icons-material/Check";
 
-
-const AdminOriginalsPage = () => {
-    const comic = useSelector(state => state.comic.comic);
+const AdminOriginalsidPage = () => {
+    const id = useParams();
+    const chapters = useSelector(state => state.comic.Chapters);
     const [loading, setloading] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -25,8 +26,8 @@ const AdminOriginalsPage = () => {
         const get=async ()=>{
             try {
                 setloading(false)
-                const lg=await dispatch(getAlladComic())
-              unwrapResult(lg)
+                const chap = await dispatch(getchaptersComic(id.id))
+                unwrapResult(chap)
               
                 setloading(true)
             } catch (error) {
@@ -34,46 +35,31 @@ const AdminOriginalsPage = () => {
             }
         }
         get()
-    }, [dispatch]);
-    const handlelock=async (id,lock)=>{
+    }, [dispatch,id.id]);
+    const handlecheck=async (idchap,check)=>{
         try {
-            let result = window.confirm(`Do you want to ${lock?"lock":"Unlocked"} this comic?`);
+            let result = window.confirm(`Do you want to ${check?"Check":"Uncheck"} this comic?`);
             if(result){
             setloading(false)
 
-      await comicFireBase.update({lock:!lock},id)
-           const lg=await dispatch(getAlladComic())
-           unwrapResult(lg)
+      await comicFireBase.updateep({check:!check},id.id,idchap)
+      const chap = await dispatch(getchaptersComic(id.id))
+      unwrapResult(chap)
            setloading(true)
             }
         } catch (error) {
             
         }
     }
-    const handledelete=async (id)=>{
+    const handledelete=async (idchap)=>{
         try {
-            let result = window.confirm("Do you want to delete this comic?");
+            let result = window.confirm("Do you want to delete this chap comic?");
             if(result){
             setloading(false)
 
-      await comicFireBase.Delete(id)
-           const lg=await dispatch(getAlladComic())
-           unwrapResult(lg)
-           setloading(true)
-            }
-        } catch (error) {
-            
-        }
-    }
-    const handlecheck=async (id,check)=>{
-        try {
-            let result = window.confirm(`Do you want to ${check?"lock":"Unlocked"} this comic?`);
-            if(result){
-            setloading(false)
-
-      await comicFireBase.update({check:!check},id)
-      const lg=await dispatch(getAlladComic())
-           unwrapResult(lg)
+      await comicFireBase.Deletechap(id.id,idchap)
+      const chap = await dispatch(getchaptersComic(id.id))
+      unwrapResult(chap)
            setloading(true)
             }
         } catch (error) {
@@ -96,38 +82,35 @@ const AdminOriginalsPage = () => {
                     </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                    {comic.comic?.map((item) => (
+                    {chapters?.chaps?.map((item) => (
                         <tr key={item.id}>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center font-medium text-gray-900">
                                 {item.id}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap flex items-center justify-center text-gray-500">
                                 <img
-                                    src={item.squareThumbnail}
+                                    src={item.horizontalThumbnail}
                                     alt="img"
                                     className="object-fill w-[100px] h-[100px] rounded-md"
                                 />
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                {item.title}
+                                {item.chapterTitle}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                {item.schedule}
+                                {item.uid}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                             {new Date(item.createTime).getDate()}/{new Date(item.createTime).getMonth()+1}/
                                                         {new Date(item.createTime)?.getFullYear()}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                <button onClick={()=>navigate(`/admin/originals/${item.id}`)} className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
+                                <button  onClick={()=>navigate(`/admin/originals/${id.id}/${item.id}`)} className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
                                     <RemoveRedEyeIcon />
                                 </button>
+
                                 <button onClick={()=>handlecheck(item.id,item.check)} className={`w-[35px] h-[35px] ${item.check? "text-blue-500":"text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
                                 <CheckIcon />
-                                </button>
-
-                                <button onClick={()=>handlelock(item.id,item.lock)} className={`w-[35px] h-[35px] ${item.lock? "text-blue-500":"text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
-                                    <LockClockIcon />
                                 </button>
 
                                 <button onClick={()=>handledelete(item.id)} className="w-[35px] h-[35px] text-red-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
@@ -146,4 +129,4 @@ const AdminOriginalsPage = () => {
     );
 }
 
-export default AdminOriginalsPage;
+export default AdminOriginalsidPage;
