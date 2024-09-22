@@ -11,7 +11,7 @@ import { unwrapResult } from '@reduxjs/toolkit';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import VideoFireBase from '../../../common/services/Video.services';
-import { getidVideo } from '../../../common/store/Video';
+import { getchaptersVideo, getidVideo } from '../../../common/store/Video';
 const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
     // hàm material nút chọn ở mục comment
@@ -21,6 +21,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
     const [loading, setloading] = useState(false);
     const [fileURL, setfileURL] = useState();
     const dispatch = useDispatch();
+    const chapters = useSelector((state) => state.Video.Chapters);
 
     const navigate = useNavigate();
 
@@ -32,7 +33,10 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
             try {
                 setloading(false)
                 const videoID = await dispatch(getidVideo(id.id))
+                const chap = await dispatch(getchaptersVideo(id.id));
                 unwrapResult(videoID)
+                unwrapResult(chap)
+
                 setloading(true)
 
             } catch (error) {
@@ -87,7 +91,8 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                 valueNote,
                 fileURL: '',
                 likes: 0,
-                num: 0,
+                num:chapters?.success?chapters?.chaps?.length+1:0,
+                check:false,
                 checkcomment: selectedValue,
                 views: 0,
                 createTime: new Date(Date.now()),

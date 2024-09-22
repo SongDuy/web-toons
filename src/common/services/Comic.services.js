@@ -97,7 +97,7 @@ const comicFireBase = {
     );
     const docSnap = await getDocs(docRef);
     const comic = docSnap.docs?.map((item) => {
-      return { id: item.id, ...item.data() };
+      return { id: item.id, ...item.data(), createTime: new Date(item.data().createTime?.toDate()).toISOString() };
     });
     if (comic.length !== 0) {
       return { comic, success: true };

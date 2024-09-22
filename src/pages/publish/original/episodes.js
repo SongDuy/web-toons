@@ -9,7 +9,7 @@ import comicFireBase from '../../../common/services/Comic.services';
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { unwrapResult } from '@reduxjs/toolkit';
-import { getidComic } from '../../../common/store/comic';
+import { getchaptersComic, getidComic } from '../../../common/store/comic';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 const EpisodesOriginalPage = ({ goToPreviousStep }) => {
@@ -26,12 +26,17 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
     const id = useParams();
     const [photos1, setPhotos1] = useState("");
     const [horizontalThumbnail, sethorizontalThumbnail] = useState();
+    const chapters = useSelector((state) => state.comic.Chapters);
+
     useEffect(() => {
         const get = async () => {
             try {
                 setloading(false)
                 const comicID = await dispatch(getidComic(id.id))
+                const chap = await dispatch(getchaptersComic(id.id));
+
                 unwrapResult(comicID)
+                unwrapResult(chap)
                 setloading(true)
 
             } catch (error) {
@@ -77,7 +82,6 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
       };
       const handleEp=async ()=>{
         try {
-            console.log()
            if(horizontalThumbnail?.name && fileURL?.name  ){
             const getdata = {
                 valueEpisodeTitle,
@@ -86,7 +90,8 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                 valueNote,
                 fileURL: '',
                 likes: 0,
-                num: 0,
+                num:chapters?.success?chapters?.chaps?.length+1:0,
+                check:false,
                 checkcomment: selectedValue,
                 views: 0,
                 createTime: new Date(Date.now()),

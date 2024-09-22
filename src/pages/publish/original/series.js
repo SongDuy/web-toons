@@ -7,10 +7,14 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import NorthIcon from "@mui/icons-material/North";
 import CheckIcon from "@mui/icons-material/Check";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import comicFireBase from "../../../common/services/Comic.services";
 import { useNavigate } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { getidComic } from "../../../common/store/comic";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 const dataListGenre = [
     { id: 1, name: "DRAMA", translatedName: "(드라마)" },
     { id: 2, name: "FANTASY", translatedName: "(판타지)" },
@@ -40,27 +44,54 @@ dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 const SeriesOriginalPage = ({ goToEposodes }) => {
     const Account = useSelector((state) => state.Account.Account);
     const navigate = useNavigate();
-
+    const id = useParams();
     // thể loại 1
     const [genre1, setGenre1] = React.useState("");
     const [photos, setPhotos] = useState(""); // Lưu các ảnh đã chọn
     const [photos1, setPhotos1] = useState(""); // Lưu các ảnh đã chọn
     const [squareThumbnail, setsquareThumbnail] = useState();
     const [horizontalThumbnail, sethorizontalThumbnail] = useState();
+    const [genre2, setGenre2] = useState("");
+    const [valueTitle, setValueTile] = useState("");
+    const [valueSummary, setValueSummary] = useState("");
+    const comicid = useSelector(state => state.comic.comicid);
     const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const [loading, setloading] = useState(true);
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        const get = async () => {
+            try {
+              if(id.id){
+                setloading(false)
+                const comicID = await dispatch(getidComic(id.id))
+               const getcomic= unwrapResult(comicID)
+                setPhotos(getcomic?.squareThumbnail)
+                setPhotos1(getcomic?.horizontalThumbnail)
+                setValueTile(getcomic?.title)
+                setIsAge(getcomic?.Age)
+                setGenre1(getcomic?.genre1)
+                setGenre2(getcomic?.genre2)
+                setValueSummary(getcomic?.summary)
+                setloading(true)
+              }
+
+            } catch (error) {
+            }
+        }
+        get()
+    }, [dispatch, id]);
     const handleChangeGenre1 = (event) => {
         setGenre1(event.target.value);
     };
 
     // thể loại 2
-    const [genre2, setGenre2] = React.useState("");
+
     const handleChangeGenre2 = (event) => {
         setGenre2(event.target.value);
     };
 
     // Tiêu đề
-    const [valueTitle, setValueTile] = useState("");
     const handleTitle = (event) => {
         const inputValueTitle = event.target.value;
         if (inputValueTitle.length <= 50) {
@@ -70,7 +101,6 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
     };
 
     // Mô tả
-    const [valueSummary, setValueSummary] = useState("");
     const handleSummary = (event) => {
         const inputValueSummary = event.target.value;
         if (inputValueSummary.length <= 500) {
@@ -156,6 +186,28 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
     };
     const handleAdd = async () => {
         try {
+         if(id.id){
+            const data = {
+                title: valueTitle,
+                summary: valueSummary,
+                genre2,
+                genre1,
+                totalChapters: comicid?.totalChapters,
+                totalSubscribed: comicid?.totalSubscribed,
+                createTime: new Date(Date.now()),
+                lock: comicid?.lock,
+                check:  comicid?.check,
+                Age: isAge,
+                Author: Account.name,
+                uid: Account.uid,
+                rate: comicid?.rate,
+                views: comicid?.views,
+                schedule: dayNames[new Date(Date.now()).getDay()]
+            };
+            await comicFireBase.update(data,id.id)
+            navigate(`/publish/original/${id.id}`)
+            goToEposodes()
+         }else{
             const data = {
                 title: valueTitle,
                 summary: valueSummary,
@@ -165,7 +217,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                 totalSubscribed: 0,
                 createTime: new Date(Date.now()),
                 lock: true,
-                check: true,
+                check: false,
                 random: Math.random().toFixed(2),
                 Age: isAge,
                 Author: Account.name,
@@ -174,17 +226,22 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                 views:0,
                 schedule: dayNames[new Date(Date.now()).getDay()]
             };
-            const id = await comicFireBase.Add(data)
-            await comicFireBase.uploadToFirebase(squareThumbnail, squareThumbnail.name, Account.id, id, 'squareThumbnail')
-            await comicFireBase.uploadToFirebase(horizontalThumbnail, horizontalThumbnail.name, Account.uid, id, 'horizontalThumbnail')
-            navigate(`/publish/original/${id}`)
+            const idcom = await comicFireBase.Add(data)
+            await comicFireBase.uploadToFirebase(squareThumbnail, squareThumbnail.name, Account.id, idcom, 'squareThumbnail')
+            await comicFireBase.uploadToFirebase(horizontalThumbnail, horizontalThumbnail.name, Account.uid, idcom, 'horizontalThumbnail')
+            navigate(`/publish/original/${idcom}`)
             goToEposodes()
+        }
+          
         } catch (error) {
             console.log(error)
         }
     };
     return (
         <div>
+             {!loading ? <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5 }}>
+                <CircularProgress />
+            </Box> :
             <div className="w-full h-full bg-gray-100">
                 {/* Phần tiêu đề mục */}
                 <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
@@ -756,6 +813,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                     </div>
                 </div>
             </div>
+}
         </div>
     );
 };

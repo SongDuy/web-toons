@@ -109,7 +109,8 @@ function App() {
           <Route path="/mycomment" element={<Comment />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/original/episode" element={<EpisodeOriginal />} />
-          <Route path="/dashboard/video/episode" element={<EpisodeVideo />} />
+          <Route path="/dashboard/original/episode/:id" element={<EpisodeOriginal />} />
+          <Route path="/dashboard/video/episode/:id" element={<EpisodeVideo />} />
           <Route path="/subscribed" element={<Subscribed />} />
           <Route path="/creators" element={<Creators />} />
           <Route path="/channel/my" element={<MyChannelPage />} />

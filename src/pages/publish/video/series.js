@@ -8,8 +8,13 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import NorthIcon from '@mui/icons-material/North';
 import CheckIcon from '@mui/icons-material/Check';
 import VideoFireBase from '../../../common/services/Video.services';
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
+import { getidVideo } from '../../../common/store/Video';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { useParams } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 const dataListGenre = [
     { id: 1, name: "DRAMA", translatedName: "(드라마)" },
     { id: 2, name: "FANTASY", translatedName: "(판타지)" },
@@ -39,6 +44,7 @@ dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 const SeriesVideoPage = ({ goToEposodes }) => {
     const Account = useSelector((state) => state.Account.Account);
     const navigate = useNavigate();
+    const id = useParams();
 
     // Tiêu đề video
     const [valueTitle, setValueTile] = useState('');
@@ -47,7 +53,32 @@ const SeriesVideoPage = ({ goToEposodes }) => {
     const [squareThumbnail, setsquareThumbnail] = useState();
     const [horizontalThumbnail, sethorizontalThumbnail] = useState();
     const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const Videoid = useSelector((state) => state.Video.videoid);
 
+    const [loading, setloading] = useState(true);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const get = async () => {
+            try {
+              if(id.id){
+                setloading(false)
+                const VideoID = await dispatch(getidVideo(id.id))
+               const getvideo= unwrapResult(VideoID)
+                setPhotos(getvideo?.squareThumbnail)
+                setPhotos1(getvideo?.horizontalThumbnail)
+                setValueTile(getvideo?.title)
+                setIsAge(getvideo?.Age)
+                
+                setValueSummary(getvideo?.summary)
+                setloading(true)
+              }
+
+            } catch (error) {
+            }
+        }
+        get()
+    }, [dispatch, id]);
     const handleTitle = (event) => {
         const inputValueTitle = event.target.value;
         if (inputValueTitle.length <= 50) { // Giới hạn số ký tự nhập vào là 50
@@ -142,6 +173,27 @@ const SeriesVideoPage = ({ goToEposodes }) => {
     };
     const handleAdd = async () => {
         try {
+           if(id.id){
+            const data = {
+                title: valueTitle,
+                summary: valueSummary,
+                totalChapters: Videoid?.totalChapters,
+                totalSubscribed: Videoid?.totalSubscribed,
+                createTime: new Date(Date.now()),
+                lock: Videoid?.lock,
+                check: Videoid?.check,
+                random: Math.random().toFixed(2),
+                Age: isAge,
+                Author: Account.name,
+                uid: Account.uid,
+                rate: Videoid?.rate,
+                views:Videoid?.views,
+                schedule: dayNames[new Date(Date.now()).getDay()]
+            };
+             await VideoFireBase.update(data,id.id)
+             navigate(`/publish/video/${id.id}`)
+             goToEposodes()
+           }else{
             const data = {
                 title: valueTitle,
                 summary: valueSummary,
@@ -149,7 +201,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                 totalSubscribed: 0,
                 createTime: new Date(Date.now()),
                 lock: true,
-                check: true,
+                check: false,
                 random: Math.random().toFixed(2),
                 Age: isAge,
                 Author: Account.name,
@@ -158,18 +210,21 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                 views:0,
                 schedule: dayNames[new Date(Date.now()).getDay()]
             };
-            const id = await VideoFireBase.Add(data)
-            await VideoFireBase.uploadToFirebase(squareThumbnail, squareThumbnail.name, Account.id, id, 'squareThumbnail')
-            await VideoFireBase.uploadToFirebase(horizontalThumbnail, horizontalThumbnail.name, Account.uid, id, 'horizontalThumbnail')
-            navigate(`/publish/video/${id}`)
+            const idvideo = await VideoFireBase.Add(data)
+            await VideoFireBase.uploadToFirebase(squareThumbnail, squareThumbnail.name, Account.id, idvideo, 'squareThumbnail')
+            await VideoFireBase.uploadToFirebase(horizontalThumbnail, horizontalThumbnail.name, Account.uid, idvideo, 'horizontalThumbnail')
+            navigate(`/publish/video/${idvideo}`)
             goToEposodes()
+           }
         } catch (error) {
             console.log(error)
         }
     };
     return (
         <div>
-
+  {!loading ? <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5 }}>
+                <CircularProgress />
+            </Box> :
             <div className="w-full h-full bg-gray-100">
 
                 {/* Phần tiêu đề mục */}
@@ -666,6 +721,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                 </div>
 
             </div>
+}
         </div >
 
     );

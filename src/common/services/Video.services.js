@@ -68,7 +68,7 @@ const VideoFireBase = {
     );
     const docSnap = await getDocs(docRef);
     const Video = docSnap.docs?.map((item) => {
-      return { id: item.id, ...item.data() };
+      return { id: item.id, ...item.data(), createTime: new Date(item.data().createTime?.toDate()).toISOString() };
     });
     if (Video.length !== 0) {
       return { Video, success: true };

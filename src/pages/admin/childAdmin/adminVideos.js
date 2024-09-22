@@ -50,7 +50,7 @@ const AdminVideosPage = () => {
     }
     const handledelete=async (id)=>{
         try {
-            let result = window.confirm("Do you want to delete this comic?");
+            let result = window.confirm("Do you want to delete this Video?");
             if(result){
             setloading(false)
 

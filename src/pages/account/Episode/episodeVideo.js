@@ -1,19 +1,74 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import Nav from "../../../components/Account/nav";
 import AddIcon from '@mui/icons-material/Add';
-import StarIcon from '@mui/icons-material/Star';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 import { Link } from "react-router-dom";
-
-const dataEpisode = [
-    { id: 1, title: 'Draemon', rate: '0.5', likes: 10, views: 15, createTime: "Aug 31, 2024", },
-    { id: 2, title: 'Draemon', rate: '0.5', likes: 10, views: 15, createTime: "Aug 31, 2024", },
-    { id: 3, title: 'Draemon', rate: '0.5', likes: 10, views: 15, createTime: "Aug 31, 2024", },
-]
+import { useSelector,useDispatch} from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import { useParams } from 'react-router-dom';
+import { getchaptersVideo } from '../../../common/store/Video';
+import VideoFireBase from '../../../common/services/Video.services';
+import { useNavigate } from 'react-router-dom';
 
 const EpisodeVideo = () => {
+    const chapters = useSelector(state => state.Video.Chapters);
+    const [loading, setloading] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const id = useParams();
+    const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+    useEffect(() => {    
+
+        const get=async ()=>{
+            try {
+                setloading(false)
+                const chap = await dispatch(getchaptersVideo(id.id))
+                unwrapResult(chap)
+              
+                setloading(true)
+            } catch (error) {
+                
+            }
+        }
+        get()
+    }, [dispatch,id]);
+    const handledelete=async (idchap)=>{
+        try {
+            let result = window.confirm("Do you want to delete this chap video?");
+            if(result){
+            setloading(false)
+
+      await VideoFireBase.Deletechap(id.id,idchap)
+      const chap = await dispatch(getchaptersVideo(id.id))
+      unwrapResult(chap)
+           setloading(true)
+            }
+        } catch (error) {
+            
+        }
+    }
     return (
+        <>
+        {!loading? <Box sx={{ display: 'flex',justifyContent:'center',alignItems:'center',margin:5 }}>
+        <CircularProgress />
+        </Box>:
         <div>
             <Nav />
             <div className="w-full h-full border bg-gray-100 flex items-center justify-center pb-10">
@@ -31,7 +86,7 @@ const EpisodeVideo = () => {
                             </h1>
 
                             <div className="ml-auto flex gap-5">
-                                <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
+                                <button onClick={()=>navigate(`/publish/video/${id.id}`)} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
                                     <AddIcon />
                                     Add Episode
                                 </button>
@@ -43,11 +98,11 @@ const EpisodeVideo = () => {
                             <ul className="grid grid-cols-2 gap-4">
 
                                 {/* khung nội dung */}
-                                {dataEpisode.map((item) => (
+                                {chapters?.chaps?.map((item) => (
                                     <li className="w-full h-[210px] bg-white rounded flex shadow">
                                         <div className="w-[210px] h-[210px] bg-red-200 rounded">
                                             <img
-                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIwJC19pR5MRoGAUw2-MW4DGgiUAuNZUd1dQ&s"
+                                                   src={item.horizontalThumbnail}
                                                 alt="img"
                                                 className="w-full h-full object-fill rounded"
                                             />
@@ -62,7 +117,7 @@ const EpisodeVideo = () => {
                                                             Edit
                                                         </button>
 
-                                                        <button className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                                        <button onClick={()=>handledelete(item.id)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                                                             Delete
                                                         </button>
                                                     </div>
@@ -70,33 +125,20 @@ const EpisodeVideo = () => {
 
                                                 <div className="w-full mt-2">
                                                     <h1 className="font-semibold text-xl">
-                                                        {item.title}
+                                                        {item.chapterTitle}
                                                     </h1>
                                                 </div>
                                             </div>
 
-                                            <div className="w-full mt-8">
-                                                {(item.rate > 0) ?
-                                                    <div className="w-full">
-                                                        <span className="text-yellow-500 flex items-center gap-2">
-                                                            <StarIcon />
-                                                            {item.rate}
-                                                        </span>
-                                                    </div>
-                                                    :
-                                                    <div className="w-full">
-                                                        <span className="text-red-500 flex items-center">
-                                                            Not Yet Rated
-                                                        </span>
-                                                    </div>
-                                                }
-                                            </div>
+                                            
 
                                             <div className="w-full mt-12">
 
                                                 <div className="flex gap-5">
                                                     <span className="text-gray-500 text-sm flex gap-2">
-                                                        Published {item.createTime}
+                                                        Published   {monthNames[new Date(item.createTime).getMonth()]}{" "}
+                              {new Date(item.createTime).getDate()},
+                              {new Date(item.createTime)?.getFullYear()}
                                                     </span>
 
                                                     <span className="text-gray-500 text-sm">
@@ -118,6 +160,8 @@ const EpisodeVideo = () => {
                 </div>
             </div>
         </div>
+}
+</>
     );
 }
 
