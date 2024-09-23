@@ -78,6 +78,24 @@ const VideoFireBase = {
       return { message: "No such document!", success: false };
     }
   },
+  async checkvideouser(uid,idseries) {
+    const dc = doc(fireStore, "Video", idseries);
+
+    const docS = await getDoc(dc);
+    const docRef = query(
+      collection(docS.ref,idseries),
+      where("uid", "==", uid)    
+      );
+    const docSnap = await getDocs(docRef);
+    const video = docSnap.docs?.map((item) => {
+      return { id: item.id, ...item.data(), createTime: new Date(item.data().createTime?.toDate()).toISOString() };
+    });
+    if (video.length !== 0) {
+      return { video, success: true };
+    } else {
+      return { message: "No such document!", success: false };
+    }
+  },
   async getrandom(setlimit,age) {
     const randomValue = Math.random();
     const q =age? query(

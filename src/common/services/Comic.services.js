@@ -117,6 +117,24 @@ const comicFireBase = {
       return { message: "No such document!", success: false };
     }
   },
+  async checkcomicuser(uid,idseries) {
+    const dc = doc(fireStore, "Comic", idseries);
+
+    const docS = await getDoc(dc);
+    const docRef = query(
+      collection(docS.ref,idseries),
+      where("uid", "==", uid)    
+      );
+    const docSnap = await getDocs(docRef);
+    const comic = docSnap.docs?.map((item) => {
+      return { id: item.id, ...item.data(), createTime: new Date(item.data().createTime?.toDate()).toISOString() };
+    });
+    if (comic.length !== 0) {
+      return { comic, success: true };
+    } else {
+      return { message: "No such document!", success: false };
+    }
+  },
   async getbyid(id) {
     const docRef = doc(fireStore, "Comic", id);
 

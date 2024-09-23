@@ -816,7 +816,7 @@ const DisplayVideoPage = () => {
                   <ul className="w-full h-full py-2">
                     {/* khung nội dung */}
                     {Video?.Video?.slice()
-                      ?.sort((a, b) => a.totalSubscribed - b.totalSubscribed)
+                      ?.sort((a, b) => b.views - a.views)
                       .map((item, index) => (
                         <Link
                           key={item.id}

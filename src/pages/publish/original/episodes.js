@@ -32,18 +32,25 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
         const get = async () => {
             try {
                 setloading(false)
-                const comicID = await dispatch(getidComic(id.id))
-                const chap = await dispatch(getchaptersComic(id.id));
-
-                unwrapResult(comicID)
-                unwrapResult(chap)
+                const check=await comicFireBase.checkcomicuser(Account?.uid,id.id)
+                if(check.success){
+                    const comicID = await dispatch(getidComic(id.id))
+                    const chap = await dispatch(getchaptersComic(id.id));
+    
+                    unwrapResult(comicID)
+                    unwrapResult(chap)
+                }else{
+                    navigate('/')
+                }
+            
                 setloading(true)
 
             } catch (error) {
+                console.log(error)
             }
         }
         get()
-    }, [dispatch, id]);
+    }, [dispatch,id,Account,navigate]);
     const handleChange = (event) => {
         setSelectedValue(event.target.value);
     };

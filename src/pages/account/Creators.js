@@ -21,8 +21,8 @@ const Creators = () => {
       try {
         setloading(false);
 
-        const Follow = await FollowFireBase.getbyid(Account.id);
-
+        const Follow = await FollowFireBase.getbyid(Account?.uid);
+        
         if (Follow.success) {
           const Follows = await Promise.all(
             Follow?.follow?.map(async (item) => {

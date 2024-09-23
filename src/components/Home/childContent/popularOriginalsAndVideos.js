@@ -21,7 +21,7 @@ const PopularOriginalsAndVideosPage = () => {
     const Video = useSelector(state => state.Video.video);
 
     //Chọn thể loại videos
-    const filteredcomic = comic.comic?.slice()?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
+    const filteredcomic = comic.comic?.slice()?.sort((a, b) =>  b.views - a.views);
     const searchedcomic = comic.comic?.filter(item => selectedOriginalGenre === 'All' ? item : item.genre1 === selectedOriginalGenre || item.genre2 === selectedOriginalGenre).slice()?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
@@ -141,7 +141,7 @@ const PopularOriginalsAndVideosPage = () => {
                         <div className="w-full h-full">
                             <ul className="w-full h-full ">
                                 {/* khung nội dung */}
-                                {Video?.Video?.slice()?.sort((a, b) => a.totalSubscribed - b.totalSubscribed)?.map((item, index) => (
+                                {Video?.Video?.slice()?.sort((a, b) =>  b.views - a.views)?.map((item, index) => (
                                     <Link
                                         key={item.id}
                                         to={`/videos/video/series/${item.id}`}

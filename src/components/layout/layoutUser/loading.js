@@ -20,6 +20,7 @@ const Loading = ({ children }) => {
                 setloading(false)
                if(User){
                 const account= await  dispatch(getAccount(auth?.currentUser?.uid));
+
                 const user=  unwrapResult(account)
                 const age= account?.payload?.birthday? new Date(Date.now())?.getFullYear()-new Date(user.birthday)?.getFullYear():15
                 const comic = await dispatch(getAllComic(age))

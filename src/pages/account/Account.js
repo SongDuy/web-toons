@@ -7,19 +7,25 @@ import { auth } from "../../common/themes/firebase";
 import { updateAccount } from "../../common/store/Account";
 import { unwrapResult } from '@reduxjs/toolkit';
 import { Link } from 'react-router-dom';
-
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css"; 
 const Account = () => {
   const [openName, setopenName] = useState(false);
   const [openEmail, setopenEmail] = useState(false);
+  const [openDate, setopenDate] = useState(false);
+
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);
+
   const Account = useSelector(state => state.Account.Account);
   const dispatch = useDispatch();
 
   useEffect(() => {
     setName(Account?.name)
     setEmail(Account?.email)
+    setSelectedDate(Account?.birthday?new Date(Account?.birthday):null)
   }, [Account]);
   const handleName = async () => {
     try {
@@ -38,6 +44,20 @@ const Account = () => {
       }
     } catch (error) {
 
+    }
+  };
+  const handleBirthday= async () => {
+    try {
+        const updatename = await dispatch(updateAccount({
+          birthday:selectedDate,
+          id: Account.uid
+        }))
+
+        unwrapResult(updatename)
+        setopenDate(!openDate)
+      
+    } catch (error) {
+      console.log(error)
     }
   };
   const handleEmail = async () => {
@@ -87,6 +107,73 @@ const Account = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="py-[30px] flex-row justify-center items-center container mx-auto">
+          <div className="  m-2">
+            <span className="font-semibold text-2xl text-black">Birthday</span>
+          </div>
+
+          {openDate ? (
+            <div className="w-full h-full flex   bg-white border border-white p-5">
+              <div className=" flex justify-center items-center p-2 w-[10%]">
+                <span className="font-semibold  text-black"></span>
+              </div>
+
+              <div className="flex  ml-5 my-5">
+                <div className="flex-row ml-5 my-8">
+                  <div>
+                  <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                dateFormat="dd/MM/yyyy"  // Định dạng ngày
+                className="w-full h-[50px] px-2 border rounded shadow "  // Sử dụng Tailwind CSS để style
+                placeholderText="Select Date"
+                showYearDropdown  // Hiển thị danh sách năm
+                showMonthDropdown  // Hiển thị danh sách tháng
+                dropdownMode="select"  // Chuyển dropdown sang chế độ select để dễ chọn
+              />
+                  </div>
+                 
+                </div>
+                <button
+                  onClick={handleBirthday}
+                  className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[50px]  text-gray-400"
+                >
+                  Add
+                </button>
+              
+              </div>
+            </div>
+          ) : (
+            <div className="w-full h-full flex-row justify-center items-center  bg-white border border-white p-5">
+              <div className=" flex justify-center items-center p-2 w-[10%] ">
+                <span className="font-semibold  text-black"></span>
+              </div>
+              <div className="w-[80%] h-full mx-auto my-auto   bg-white border border-white p-2">
+                <div className=" flex justify-center items-center p-2 w-[10%]">
+                  <span className="font-semibold  text-black"></span>
+                </div>
+                <div className="grid grid-cols-8 gap-4   ml-5 my-5 p-5 border-b border-gray-300">
+                  <div className="my-2 col-span-7">
+                    {selectedDate?
+                    <p className="font-semibold  text-lg text-black">
+                       {new Date(selectedDate).getDate()}/{new Date(selectedDate).getMonth()+1}/
+                                                        {new Date(selectedDate)?.getFullYear()}
+                    </p>
+:      <p className="font-semibold  text-lg text-black">
+Not Birthday
+</p>}
+                  </div>
+                  <button
+                    onClick={() => setopenDate(!openDate)}
+                    className="font-semibold bg-gray-200 w-[90px] h-[35px]  text-base text-gray-400"
+                  >
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
         <div className="py-[30px] flex-row justify-center items-center container mx-auto">
           <div className="  m-2">
@@ -208,6 +295,7 @@ const Account = () => {
                   </button>
                 </div>
               }
+              
               <div className="  ml-5 my-5 border-b border-gray-300 ">
                 <div className="grid grid-cols-8 gap-4  ml-5 my-5">
                   <div className="my-2 col-span-7">

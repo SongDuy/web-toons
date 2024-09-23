@@ -17,15 +17,31 @@ import {
 import { fireStore,storage } from '../themes/firebase';
 const userFireBase = {
   async getALL() {
-    const docSnap = await getDocs(collection(fireStore, 'Users'));
-    return docSnap;
+    const docSnap = await getDocs(query(collection(fireStore, 'Users'),where("role", "==", 'user')));
+    
+    const Users = docSnap.docs.map((item) => {
+      //   console.log(item.ref)
+      //   const subcollectionRef = collection(item.ref, 'YZOoN8D6Ued98MSS7xEF');
+      //   const subcollectionSnapshot = await getDocs(subcollectionRef)
+      //   subcollectionSnapshot.forEach((chapterDoc) => {
+      //     Xử lý dữ liệu từ subcollection ở đây
+      //     console.log(chapterDoc.id, chapterDoc.data());
+      // });
+      return   item.data()?.birthday ?{  id: item.id,
+        ...item.data(),  birthday: new Date(item.data()?.birthday?.toDate()).toISOString(), success: true }:{...item.data(), success: true }
+    });
+    if (Users.length !== 0) {
+      return { Users, success: true };
+    } else {
+      return { message: "No such document!", success: false };
+    }
   },
   async getbyid(iduser) {
     const docRef = doc(fireStore, 'Users', iduser);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      return { ...docSnap.data(), birthday: new Date(docSnap.data().birthday?.toDate()).toISOString(), success: true };
+      return docSnap.data()?.birthday ?{ ...docSnap.data(), birthday: new Date(docSnap.data()?.birthday?.toDate()).toISOString(), success: true }:{ ...docSnap.data(), success: true };
     } else {
       return { message: 'No such document!', success: false };
     }

@@ -5,7 +5,6 @@ export const getAccount = createAsyncThunk("Account/get", async (id) => {
       const User=  await userFireBase.getbyid(id)
         return User.success?User:[]
     } catch (error) {
-      // console.log(error);
       throw error
       // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
     }

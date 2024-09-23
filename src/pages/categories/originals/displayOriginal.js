@@ -57,7 +57,7 @@ const DisplayOriginalPage = () => {
 
   const filteredcomic = comic?.comic
     ?.slice()
-    ?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
+    ?.sort((a, b) => b.views - a.views);
   const searchedcomic = comic?.comic
     ?.filter((item) =>
       selectedOriginalGenre === "All"
@@ -66,7 +66,7 @@ const DisplayOriginalPage = () => {
         item.genre2 === selectedOriginalGenre
     )
     .slice()
-    ?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
+    ?.sort((a, b) => b.views - a.views);
   //Xem các tập tiếp theo trong series
   const dispatch = useDispatch();
   pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;

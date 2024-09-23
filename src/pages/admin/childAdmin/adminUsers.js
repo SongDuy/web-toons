@@ -1,18 +1,44 @@
-import React from 'react';
-
-import DeleteIcon from '@mui/icons-material/Delete';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import React,{useEffect,useState} from 'react';
 import LockClockIcon from '@mui/icons-material/LockClock';
-
-// Dữ liệu mẫu
-const data = [
-    { id: 1, name: 'John Doe', email: 'john.doe@example.com', age: 28 },
-    { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', age: 34 },
-    { id: 3, name: 'Tom Brown', email: 'tom.brown@example.com', age: 45 },
-];
+import userFireBase from '../../../common/services/User.services';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const AdminUsersPage = () => {
+    const [loading, setloading] = useState(false);
+    const [Users, setUsers] = useState([]);
+
+    useEffect(() => {    
+
+        const get=async ()=>{
+            try {
+                setloading(false)
+                const lg=await userFireBase.getALL()
+                console.log(lg)
+                setUsers(lg.success?lg?.Users:[])
+                setloading(true)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        get()
+    }, []);
+    const handlelock=async (id,lock)=>{
+        try {
+            let result = window.confirm(`Do you want to ${lock?"lock":"Unlocked"} this User?`);
+            if(result){
+            setloading(false)
+            await userFireBase.update({lock:!lock},id)
+            const lg=await userFireBase.getALL()
+            setUsers(lg.success?lg?.Users:[])
+           setloading(true)
+            }        } catch (error) {
+            
+        }
+    }
     return (
+        <>
+         {loading?
         <div className="w-full h-full py-5 bg-white">
             <table className="w-full">
                 <thead className="bg-gray-100">
@@ -25,10 +51,10 @@ const AdminUsersPage = () => {
                     </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                    {data.map((item) => (
-                        <tr key={item.id}>
+                    {Users?.map((item) => (
+                        <tr key={item.uid}>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center font-medium text-gray-900">
-                                {item.id}
+                                {item.uid}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                                 {item.name}
@@ -37,24 +63,24 @@ const AdminUsersPage = () => {
                                 {item.email}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                {item.age}
+                                {item?.birthday? new Date(Date.now())?.getFullYear()-new Date(item.birthday)?.getFullYear():'Not Birthday '}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                <button className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
-                                    <RemoveRedEyeIcon />
-                                </button>
-                                <button className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
+                              
+                                <button onClick={()=>handlelock(item.uid,item.lock)} className={`w-[35px] h-[35px] ${item?.lock? "text-blue-500":"text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
                                     <LockClockIcon />
                                 </button>
-                                <button className="w-[35px] h-[35px] text-red-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
-                                    <DeleteIcon />
-                                </button>
+                                
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
         </div>
+           : <Box sx={{ display: 'flex',justifyContent:'center',alignItems:'center',margin:5 }}>
+           <CircularProgress />
+           </Box>}
+                   </>
     );
 }
 

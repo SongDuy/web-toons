@@ -11,7 +11,7 @@ const Suggestsubscribed = () => {
 
   const filteredcomic = comic.comic
     ?.slice(0,3)
-    ?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
+    ?.sort((a, b) => b.views - a.views);
   const searchedcomic = comic.comic
     ?.filter((item) =>
       selectedOriginalGenre === "All"

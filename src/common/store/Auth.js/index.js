@@ -11,7 +11,12 @@ import { auth } from "../../themes/firebase";
 export const handleLogin = createAsyncThunk("user/login", async (payload) => {
   try {
    const userCredential = await signInWithEmailAndPassword(auth, payload.email, payload.password);
-   if(userCredential.user.emailVerified){
+   const finduser=await userFireBase.getbyid(userCredential?.user?.uid)
+   const lock=finduser.success?finduser?.lock:true
+   if(userCredential.user.emailVerified ){
+     if(!lock){
+        throw new Error('401')
+     }
     const token = await auth.currentUser.getIdToken(true);
     localStorage.setItem("sadsadas", token);
     return true;
@@ -24,7 +29,14 @@ export const handleLogin = createAsyncThunk("user/login", async (payload) => {
    
   } catch (error) {
     // console.log(error);
-    throw error.message === '400'? new Error ( "Please verify your email before logging in."):new Error ( "Incorrect email or password.");
+    if (error.message === '400') {
+      throw new Error("Please verify your email before logging in.");
+    } else if (error.message === '401') {
+      throw new Error("Account Locked");
+    } else {
+      throw new Error("Incorrect email or password.");
+    }
+    
     // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
   }
   //throw error
@@ -57,7 +69,7 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
       const userCredential = await createUserWithEmailAndPassword (auth, payload.email, payload.password);
          await updateProfile(userCredential.user,{ displayName: payload.displayName })
         await sendEmailVerification(auth.currentUser)
-        await userFireBase.Add({email:payload.email,uid: userCredential?.user?.uid,role:'user',name: payload?.displayName,follow:0,birthday:payload?.birthday}, userCredential.user.uid)
+        await userFireBase.Add({email:payload.email,uid: userCredential?.user?.uid,role:'user',name: payload?.displayName,follow:0,birthday:payload?.birthday,lock:true}, userCredential.user.uid)
         if(!auth.currentUser.emailVerified){
           auth.signOut()
           return false
@@ -97,11 +109,16 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
       const token = await auth.currentUser.getIdToken(true);
       localStorage.setItem('sadsadas', token);
       const finduser=await userFireBase.getbyid(result?.user?.uid)
-console.log(result.user.providerData[0].hasOwnProperty('birthday'))
       if(!finduser?.success){
         console.log(result)
-        await userFireBase.Add({email:result?.user?.email,uid: result?.user?.uid,role:'user',name: result?.user?.displayName,follow:0},result?.user?.uid)
+        await userFireBase.Add({email:result?.user?.email,uid: result?.user?.uid,role:'user',name: result?.user?.displayName,follow:0,lock:true},result?.user?.uid)
+      }else{
+        if(!finduser.lock){
+          auth.signOut()
+          return false
+        }
       }
+      
       return true
       // console.log(token, result.user);
     } catch (error) {

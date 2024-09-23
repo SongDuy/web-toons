@@ -32,10 +32,16 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
         const get = async () => {
             try {
                 setloading(false)
-                const videoID = await dispatch(getidVideo(id.id))
-                const chap = await dispatch(getchaptersVideo(id.id));
-                unwrapResult(videoID)
-                unwrapResult(chap)
+                const check=await VideoFireBase.checkvideouser(Account?.uid,id.id)
+                if(check.success){
+                    const videoID = await dispatch(getidVideo(id.id))
+                    const chap = await dispatch(getchaptersVideo(id.id));
+                    unwrapResult(videoID)
+                    unwrapResult(chap)
+                }else{
+                    navigate('/')
+                }
+            
 
                 setloading(true)
 
@@ -43,7 +49,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
             }
         }
         get()
-    }, [dispatch, id]);
+    }, [dispatch,Account,navigate ,id]);
     const handleChange = (event) => {
         setSelectedValue(event.target.value);
     };
