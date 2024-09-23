@@ -132,7 +132,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
     };
 
     // lưu độ tuổi truyện
-    const [isAge, setIsAge] = useState("");
+    const [isAge, setIsAge] = useState(0);
 
     // Sử dụng useEffect để cập nhật isAge mỗi khi selections thay đổi
     useEffect(() => {
@@ -153,19 +153,19 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
         // Dựa vào giá trị cao nhất để xác định isAge
         switch (maxSelectionValue) {
             case 0:
-                setIsAge("All Ages");
+                setIsAge(0);
                 break;
             case 1:
-                setIsAge("Teen");
+                setIsAge(16);
                 break;
             case 2:
-                setIsAge("Young Adult");
+                setIsAge(20);
                 break;
             case 3:
-                setIsAge("Mature");
+                setIsAge(36);
                 break;
             default:
-                setIsAge("Unrated");
+                setIsAge(99);
         }
     }, [selections]);
     const handlePhotoChange = (e) => {

@@ -15,9 +15,11 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { fireStore, storage } from "../themes/firebase";
 
 const VideoFireBase = {
-  async get() {
-    const docSnap = await getDocs(
-      query(collection(fireStore, "Video"), where("lock", "==", true), where("check", "==", true))
+  async get(age) {
+    const docSnap =age?await getDocs(
+      query(collection(fireStore, "Video"), where("lock", "==", true), where("check", "==", true),where("Age", "<=", age))
+    ): await getDocs(
+      query(collection(fireStore, "Video"), where("lock", "==", true), where("check", "==", true),where("Age", "<=", 15))
     );
     const Video = docSnap.docs.map((item) => {
       //   console.log(item.ref)
@@ -76,12 +78,21 @@ const VideoFireBase = {
       return { message: "No such document!", success: false };
     }
   },
-  async getrandom(setlimit) {
+  async getrandom(setlimit,age) {
     const randomValue = Math.random();
-    const q = query(
+    const q =age? query(
       collection(fireStore, "Video"),
+      where("lock", "==", true), 
+      where("check", "==", true),
+      where("Age", "<=", age),
       where("random", ">=", randomValue),
-      limit(setlimit)
+      limit(setlimit)):query(
+        collection(fireStore, "Video"),
+        where("lock", "==", true), 
+        where("check", "==", true),
+        where("Age", "<=", 15),
+        where("random", ">=", randomValue),
+        limit(setlimit)
     );
     const querySnapshot = await getDocs(q);
 

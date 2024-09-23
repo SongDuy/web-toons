@@ -51,6 +51,8 @@ const DisplayVideoPage = () => {
   const Videoid = useSelector((state) => state.Video.videoid);
   const chapters = useSelector((state) => state.Video.Chapters);
   const Video = useSelector((state) => state.Video.video);
+  const Account = useSelector((state) => state.Account.Account);
+
   const monthNames = [
     "January",
     "February",
@@ -105,11 +107,15 @@ const DisplayVideoPage = () => {
             ? chapid?.chaps.filter((item) => item.id === id.idseries)[0].likes
             : 0
         );
-        const lg = await dispatch(getAllVideo());
-        unwrapResult(lg);
+       
 
         unwrapResult(comments);
         if (auth.currentUser) {
+          const account= await  dispatch(getAccount(auth?.currentUser?.uid));
+          const user=  unwrapResult(account)
+          const age= account?.payload?.birthday? new Date(Date.now())?.getFullYear()-new Date(user.birthday)?.getFullYear():15
+          const lg = await dispatch(getAllVideo(age));
+          unwrapResult(lg);
           const subscribe = await SubscribeFireBase.getbyvideo(
             auth.currentUser.uid,
             id.id
@@ -124,6 +130,9 @@ const DisplayVideoPage = () => {
           subscribe.success
             ? setSubscribe(subscribe.subscribe)
             : setSubscribe([]);
+        }else{
+          const lg = await dispatch(getAllVideo());
+          unwrapResult(lg);
         }
         setloading(true);
       } catch (error) {}
@@ -299,8 +308,7 @@ const DisplayVideoPage = () => {
   const handlerep = async (idcomment) => {
     try {
       if (auth?.currentUser) {
-        const account = await dispatch(getAccount(auth?.currentUser?.uid));
-        const getacc = unwrapResult(account);
+       
         const data = {
           rep: getrep,
           idcomment,
@@ -310,7 +318,7 @@ const DisplayVideoPage = () => {
           idseries: id.idseries,
           uid: auth?.currentUser?.uid,
           idVideo: id.id,
-          nameUser: getacc?.name,
+          nameUser: Account?.name,
         };
         await CommentFireBase.AddRep(data);
         const rep = await CommentFireBase.getidrep(idcomment);
@@ -524,7 +532,7 @@ const DisplayVideoPage = () => {
                 <Link
                   className="w-[120px] h-[165px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
                   key={item.id}
-                  to={`/originals/original/series/display/${id.id}/${item.id}`}
+                  to={`/videos/video/series/display/${id.id}/${item.id}`}
                 >
                   <div className="w-[100px] h-[100px] mb-auto">
                     <img
@@ -812,7 +820,7 @@ const DisplayVideoPage = () => {
                       .map((item, index) => (
                         <Link
                           key={item.id}
-                          to={`/originals/original/series/${item.id}`}
+                          to={`/videos/video/series/${item.id}`}
                         >
                           <li className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100">
                             <div className="w-full h-full flex items-center">

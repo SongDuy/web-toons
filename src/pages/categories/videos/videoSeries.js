@@ -18,7 +18,7 @@ import Rating from '@mui/material/Rating';
 import { getchaptersVideo, getidVideo, getrandomVideo } from '../../../common/store/Video';
 import { useSelector, useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
-
+import PaymentPage from '../../payment/index'
 import { useParams } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
@@ -26,7 +26,7 @@ import { auth } from '../../../common/themes/firebase';
 import RateFireBase from '../../../common/services/Rate.services';
 import VideoFireBase from '../../../common/services/Video.services';
 import SubscribeFireBase from '../../../common/services/Subscribe.services';
-import PaymentPage from '../../payment/index';
+import { getAccount } from '../../../common/store/Account';
 
 const VideoSeriesPage = () => {
 
@@ -57,19 +57,27 @@ const VideoSeriesPage = () => {
                 setloading(false)
                 const comicID = await dispatch(getidVideo(id.id))
                 const chap = await dispatch(getchaptersVideo(id.id))
-                const random = await dispatch(getrandomVideo(9));
-
-                unwrapResult(random)
+             
                 unwrapResult(comicID)
-                const chaps = unwrapResult(chap)
-                await VideoFireBase.update({ views: chaps.success ? chaps?.chaps?.reduce((a, b) => a + b.views, 0) : 0 }, id.id)
-                if (auth.currentUser) {
-                    const subscribe = await SubscribeFireBase.getbyvideo(auth.currentUser.uid, id.id)
-                    const rateuser = await RateFireBase.getbyid(auth.currentUser.uid, id.id)
-                    setRate(rateuser.success ? rateuser.rate[0].rate : 0);
-                    subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
-                    subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
-                }
+               const chaps= unwrapResult(chap)
+               await  VideoFireBase.update({views:chaps.success?chaps?.chaps?.reduce((a,b)=>a+b.views,0):0},id.id)
+               if (auth.currentUser) {
+                const subscribe = await SubscribeFireBase.getbyvideo(auth.currentUser.uid, id.id)
+                const rateuser = await RateFireBase.getbyid(auth.currentUser.uid, id.id)
+                const account= await  dispatch(getAccount(auth?.currentUser?.uid));
+                const user=  unwrapResult(account)
+                const age= account?.payload?.birthday? new Date(Date.now())?.getFullYear()-new Date(user.birthday)?.getFullYear():15
+                const random= await  dispatch(getrandomVideo({limit:9,age}));
+        
+                unwrapResult(random)
+                setRate(rateuser.success ? rateuser.rate[0].rate : 0);
+                subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false)
+                subscribe.success ? setSubscribe(subscribe.subscribe) : setSubscribe([])
+            }else{
+                const random= await  dispatch(getrandomVideo(9));
+        
+                unwrapResult(random)
+            }
                 setloading(true)
 
             } catch (error) {

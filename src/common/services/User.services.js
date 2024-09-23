@@ -25,7 +25,7 @@ const userFireBase = {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      return { ...docSnap.data(), success: true };
+      return { ...docSnap.data(), birthday: new Date(docSnap.data().birthday?.toDate()).toISOString(), success: true };
     } else {
       return { message: 'No such document!', success: false };
     }

@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import VideoFireBase from "../../services/Video.services";
-export const getAllVideo = createAsyncThunk("Video/get", async () => {
+export const getAllVideo = createAsyncThunk("Video/get", async (id) => {
     try {
-      const Video=  await VideoFireBase.get()
+      const Video=  await VideoFireBase.get(id&&id)
         return Video.success?Video:[]
     } catch (error) {
       // console.log(error);
@@ -34,7 +34,7 @@ export const getAllVideo = createAsyncThunk("Video/get", async () => {
   });
   export const getrandomVideo = createAsyncThunk("Video/getrandom", async (getlimit) => {
     try {
-      const Video=  await VideoFireBase.getrandom(getlimit)
+      const Video=getlimit?.age?  await VideoFireBase.getrandom(getlimit.limit,getlimit.age):await VideoFireBase.getrandom(getlimit.limit)
         return Video.success?Video:[]
     } catch (error) {
       throw error

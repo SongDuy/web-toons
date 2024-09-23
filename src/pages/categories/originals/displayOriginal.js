@@ -53,6 +53,7 @@ const DisplayOriginalPage = () => {
   const chapters = useSelector((state) => state.comic.Chapters);
   const comic = useSelector((state) => state.comic.comic);
   const [selectedOriginalGenre, setSelectedOriginalGenre] = useState("All");
+  const Account = useSelector((state) => state.Account.Account);
 
   const filteredcomic = comic?.comic
     ?.slice()
@@ -114,12 +115,16 @@ const DisplayOriginalPage = () => {
             ? chapid?.chaps.filter((item) => item.id === id.idseries)[0].likes
             : 0
         );
-        const lg = await dispatch(getAllComic());
-        unwrapResult(lg);
+     
 
 
         unwrapResult(comments);
         if (auth.currentUser) {
+          const account= await  dispatch(getAccount(auth?.currentUser?.uid));
+          const user=  unwrapResult(account)
+          const age= account?.payload?.birthday? new Date(Date.now())?.getFullYear()-new Date(user.birthday)?.getFullYear():15
+          const lg = await dispatch(getAllComic(age));
+          unwrapResult(lg);
           const subscribe = await SubscribeFireBase.getbycomic(
             auth.currentUser.uid,
             id.id
@@ -134,6 +139,9 @@ const DisplayOriginalPage = () => {
           subscribe.success
             ? setSubscribe(subscribe.subscribe)
             : setSubscribe([]);
+        }else{
+          const lg = await dispatch(getAllComic());
+          unwrapResult(lg);
         }
         setloading(true);
       } catch (error) { }
@@ -333,8 +341,7 @@ const DisplayOriginalPage = () => {
   const handlerep = async (idcomment) => {
     try {
       if (auth?.currentUser) {
-        const account = await dispatch(getAccount(auth?.currentUser?.uid));
-        const getacc = unwrapResult(account);
+       
         const data = {
           rep: getrep,
           idcomment,
@@ -344,7 +351,7 @@ const DisplayOriginalPage = () => {
           idseries: id.idseries,
           uid: auth?.currentUser?.uid,
           idcomic: id.id,
-          nameUser: getacc?.name,
+          nameUser: Account?.name,
         };
         await CommentFireBase.AddRep(data);
         const rep = await CommentFireBase.getidrep(idcomment);
