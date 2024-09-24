@@ -45,7 +45,6 @@ import EpisodeOriginal from './pages/account/Episode/episodeOriginal';
 import EpisodeVideo from './pages/account/Episode/episodeVideo';
 import Creators from './pages/account/Creators';
 import DeletePage from './pages/account/Delete';
-import PaymentPage from './pages/payment/index';
 import TermsOfUse from './pages/Policys/TermsOfUse';
 import PrivacyPolicy from './pages/Policys/PrivacyPolicy';
 import CommunityPolicy from './pages/Policys/CommunityPolicy';
@@ -83,9 +82,6 @@ function App() {
           <Route path="/popular" element={<PopularPage />} />
 
           <Route path="/channel/creator/:id" element={<CreatorChannelPage />} />
-
-          {/* Trang thanh toán */}
-          <Route path="/payment" element={<PaymentPage />} />
 
           {/* Trang đăng ký */}
           <Route path="/register" element={<RegisterPage />} />
