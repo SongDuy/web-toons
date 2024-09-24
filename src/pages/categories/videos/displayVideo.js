@@ -33,6 +33,7 @@ import {
   getidVideo,
 } from "../../../common/store/Video";
 import VideoFireBase from "../../../common/services/Video.services";
+import PaymentFireBase from "../../../common/services/Payment.services";
 
 const DisplayVideoPage = () => {
   //Xem các tập tiếp theo trong series
@@ -52,6 +53,7 @@ const DisplayVideoPage = () => {
   const chapters = useSelector((state) => state.Video.Chapters);
   const Video = useSelector((state) => state.Video.video);
   const Account = useSelector((state) => state.Account.Account);
+  const [payment, setpayment] = useState([]);
 
   const monthNames = [
     "January",
@@ -125,6 +127,11 @@ const DisplayVideoPage = () => {
             id.idseries,
             auth.currentUser.uid
           );
+          const payment = await PaymentFireBase.getbyuser(
+            auth.currentUser.uid,
+            id.id
+          );
+          setpayment(payment.success ? payment.payment : []);
           setIsLike(like.success);
           subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false);
           subscribe.success

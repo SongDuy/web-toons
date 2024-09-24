@@ -21,23 +21,12 @@ const Hidden = createSlice({
     getlanguage: (state) => {
       state.language = !state.language;
     },
-    getWithDrawal: (state) => {
-      state.WithDrawal = !state.WithDrawal;
-    },
-    getBage: (state, action) => {
-      state.Bage = action.payload;
-    },
-    getAccess: (state, action) => {
-      state.Access = action.payload;
-    },
+  
   },
 });
 export const {
   setIsLoginModal,
   getHidden,
   getlanguage,
-  getWithDrawal,
-  getBage,
-  getAccess
 } = Hidden.actions;
 export default Hidden.reducer;
