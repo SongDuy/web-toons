@@ -11,10 +11,16 @@ import VideoFireBase from '../../../common/services/Video.services';
 import  { getAlladVideo } from '../../../common/store/Video';
 import CheckIcon from "@mui/icons-material/Check";
 import { useNavigate } from 'react-router-dom';
+import PaymentDialog from '../../../components/Admin/PaymentDialog';
+import { setIspayment } from '../../../common/store/hidden';
 
 const AdminVideosPage = () => {
     const Video = useSelector(state => state.Video.video);
     const [loading, setloading] = useState(false);
+    const [price, setprice] = useState(0);
+    const [payment, setpayment] = useState(false);
+    const [check, setcheck] = useState(false);
+    const [idchap, setid] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -63,21 +69,32 @@ const AdminVideosPage = () => {
             
         }
     }
-    const handlecheck=async (idchap,check)=>{
+    const handlecheck=async ()=>{
         try {
-            let result = window.confirm(`Do you want to ${check?"lock":"Unlocked"} this comic?`);
+            let result = window.confirm(`Do you want to edit this Video?`);
             if(result){
             setloading(false)
-
-      await VideoFireBase.update({check:!check},idchap)
+      await VideoFireBase.update({check:true,price,payment},idchap)
       const lg=await dispatch(getAlladVideo())
       unwrapResult(lg)
+      
            setloading(true)
+           dispatch(setIspayment(false))
+            setpayment(false)
+            setprice(0)    
             }
         } catch (error) {
             
         }
     }
+    const handleClickOpen = (idchap,check) => {
+        setcheck(check)
+        setid(idchap)
+        setpayment(false)
+        setprice(0)    
+        dispatch(setIspayment(true))
+    };
+  
     return (
         <>
            {loading?
@@ -120,7 +137,7 @@ const AdminVideosPage = () => {
                                 <button onClick={()=>navigate(`/admin/videos/${item.id}`)} className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
                                     <RemoveRedEyeIcon />
                                 </button>
-                                <button onClick={()=>handlecheck(item.id,item.check)} className={`w-[35px] h-[35px] ${item.check? "text-blue-500":"text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
+                                <button onClick={()=>handleClickOpen(item.id,item.check)} className={`w-[35px] h-[35px] ${item.check? "text-blue-500":"text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
                                 <CheckIcon />
                                 </button>
                                 <button onClick={()=>handlelock(item.id,item.lock)} className={`w-[35px] h-[35px] ${item.lock? "text-blue-500":"text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
@@ -135,6 +152,8 @@ const AdminVideosPage = () => {
                     ))}
                 </tbody>
             </table>
+           
+            <PaymentDialog handlecheck={handlecheck} price={price} setprice={setprice} setpayment={setpayment} payment={payment}/>
         </div>
         : <Box sx={{ display: 'flex',justifyContent:'center',alignItems:'center',margin:5 }}>
         <CircularProgress />

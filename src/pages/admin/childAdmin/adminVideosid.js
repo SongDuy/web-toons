@@ -7,7 +7,7 @@ import { unwrapResult } from '@reduxjs/toolkit';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import VideoFireBase from '../../../common/services/Video.services';
-import  {  getchaptersVideo } from '../../../common/store/Video';
+import  {  getchaptersadVideo } from '../../../common/store/Video';
 import CheckIcon from "@mui/icons-material/Check";
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -24,7 +24,7 @@ const AdminVideosPageid = () => {
         const get=async ()=>{
             try {
                 setloading(false)
-                const chap = await dispatch(getchaptersVideo(id.id))
+                const chap = await dispatch(getchaptersadVideo(id.id))
                 unwrapResult(chap)
               
                 setloading(true)
@@ -42,7 +42,7 @@ const AdminVideosPageid = () => {
             setloading(false)
 
       await VideoFireBase.Deletechap(id.id,idchap)
-      const chap = await dispatch(getchaptersVideo(id.id))
+      const chap = await dispatch(getchaptersadVideo(id.id))
       unwrapResult(chap)
            setloading(true)
             }
@@ -52,13 +52,13 @@ const AdminVideosPageid = () => {
     }
     const handlecheck=async (idchap,check)=>{
         try {
-            let result = window.confirm(`Do you want to ${check?"Check":"Uncheck"} this comic?`);
+            let result = window.confirm(`Do you want to ${check?"Check":"Uncheck"} this Video?`);
             if(result){
             setloading(false)
 
       await VideoFireBase.updateep({check:!check},id.id,idchap)
-      const chap = await dispatch(getchaptersVideo(id.id))
-                unwrapResult(chap)
+      const chap = await dispatch(getchaptersadVideo(id.id))
+      unwrapResult(chap)
            setloading(true)
             }
         } catch (error) {

@@ -52,6 +52,16 @@ export const getAllVideo = createAsyncThunk("Video/get", async (id) => {
     }
     //throw error
   });
+  export const getchaptersadVideo = createAsyncThunk("Video/chaptersad", async (id) => {
+    try {
+      const Chapters=  await VideoFireBase.getchaptersad(id)
+        return Chapters.success?Chapters:[]
+    } catch (error) {
+      throw error
+      // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
+    }
+    //throw error
+  });
   export const getchaptersidVideo = createAsyncThunk("Video/chaptersid", async (payload) => {
     try {
       const Chapters=  await VideoFireBase.getchapters(payload.id)
@@ -116,6 +126,15 @@ export const getAllVideo = createAsyncThunk("Video/get", async (id) => {
           state.Chapters = action.payload;
         })
         .addCase(getchaptersVideo.rejected, (state, action) => {
+          state.Chapters = {};
+          state.error = action.error;
+        });
+        builder
+        .addCase(getchaptersadVideo.fulfilled, (state, action) => {
+          state.error = null;
+          state.Chapters = action.payload;
+        })
+        .addCase(getchaptersadVideo.rejected, (state, action) => {
           state.Chapters = {};
           state.error = action.error;
         });

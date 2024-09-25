@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import PaymentFireBase from "../../common/services/Payment.services";
 import { auth } from "../../common/themes/firebase";
 
-const PaymentPage = ({ closeModal }) => {
+const PaymentPage = ({ closeModal,price }) => {
   const [Accountname, setAccountname] = useState("");
   const [Account, setAccount] = useState(0);
   const id = useParams();
@@ -103,7 +103,7 @@ const PaymentPage = ({ closeModal }) => {
                       <div className="ml-auto flex items-center space-x-2">
                         {/* Giá tiền */}
                         <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
-                          255.000
+                          {price}
                         </span>
 
                         {/* Icon copy */}

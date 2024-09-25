@@ -34,6 +34,7 @@ import SubscribeFireBase from "../../../common/services/Subscribe.services";
 import { getAccount } from "../../../common/store/Account";
 import PaymentFireBase from "../../../common/services/Payment.services";
 import { setIsLoginModal } from "../../../common/store/hidden";
+import { useNavigate } from "react-router-dom";
 
 const VideoSeriesPage = () => {
   //Mở modal menu để chọn
@@ -44,11 +45,13 @@ const VideoSeriesPage = () => {
   const [open, setOpen] = React.useState(false);
   const [Rate, setRate] = useState(0);
   const [payment, setpayment] = useState([]);
+  const User = useSelector((state) => state.AuthJs.User);
 
   const dispatch = useDispatch();
   const [loading, setloading] = useState(false);
   // Nhấn nút đăng ký
   const [isSubscribe, setIsSubscribe] = useState(false);
+  const navigate = useNavigate();
 
   //Lấy ngôn ngữ
   const language = useSelector((state) => state.hidden.language);
@@ -72,20 +75,21 @@ const VideoSeriesPage = () => {
     const get = async () => {
       try {
         setloading(false);
-        const comicID = await dispatch(getidVideo(id.id));
-        const chap = await dispatch(getchaptersVideo(id.id));
 
-        unwrapResult(comicID);
-        const chaps = unwrapResult(chap);
-        await VideoFireBase.update(
-          {
-            views: chaps.success
-              ? chaps?.chaps?.reduce((a, b) => a + b.views, 0)
-              : 0,
-          },
-          id.id
-        );
         if (auth.currentUser) {
+          const Videoid = await dispatch(getidVideo(id.id));
+          const chap = await dispatch(getchaptersVideo(id.id));
+
+          const videoid = unwrapResult(Videoid);
+          const chaps = unwrapResult(chap);
+          await VideoFireBase.update(
+            {
+              views: chaps.success
+                ? chaps?.chaps?.reduce((a, b) => a + b.views, 0)
+                : 0,
+            },
+            id.id
+          );
           const subscribe = await SubscribeFireBase.getbyvideo(
             auth.currentUser.uid,
             id.id
@@ -100,6 +104,8 @@ const VideoSeriesPage = () => {
             ? new Date(Date.now())?.getFullYear() -
               new Date(user.birthday)?.getFullYear()
             : 15;
+          videoid.success && videoid.Age > age && navigate(`/`);
+
           const random = await dispatch(getrandomVideo({ limit: 9, age }));
           const payment = await PaymentFireBase.getbyuser(
             auth.currentUser.uid,
@@ -113,8 +119,22 @@ const VideoSeriesPage = () => {
             ? setSubscribe(subscribe.subscribe)
             : setSubscribe([]);
         } else {
-          const random = await dispatch(getrandomVideo(9));
+          const Videoid = await dispatch(getidVideo(id.id));
+          const chap = await dispatch(getchaptersVideo(id.id));
 
+          const videoid = unwrapResult(Videoid);
+          videoid.success && videoid.Age > 15 && navigate(`/`);
+          const chaps = unwrapResult(chap);
+          await VideoFireBase.update(
+            {
+              views: chaps.success
+                ? chaps?.chaps?.reduce((a, b) => a + b.views, 0)
+                : 0,
+            },
+            id.id
+          );
+          const random = await dispatch(getrandomVideo(9));
+          setpayment([]);
           unwrapResult(random);
         }
         setloading(true);
@@ -123,7 +143,7 @@ const VideoSeriesPage = () => {
       }
     };
     get();
-  }, [dispatch, id]);
+  }, [dispatch, User, navigate, id]);
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -267,8 +287,7 @@ const VideoSeriesPage = () => {
     if (auth?.currentUser) {
       setIsPaymentModal(true);
     } else {
-        dispatch(setIsLoginModal(true));
-
+      dispatch(setIsLoginModal(true));
     }
   };
 
@@ -285,7 +304,7 @@ const VideoSeriesPage = () => {
           <div className="w-full flex items-center justify-center">
             <div className="w-[1200px] h-[320px] relative ">
               <img
-                src="https://i.redd.it/0hwfsqufm3w41.jpg"
+                src={Videoid?.horizontalThumbnail}
                 className="object-cover w-full h-full rounded-t"
                 alt="img"
               />
@@ -347,15 +366,19 @@ const VideoSeriesPage = () => {
                   ) : (
                     <span> 시리즈 영상 </span>
                   )}
-
-                  <button
-                    className="w-[80px] h-[35px] bg-red-500 ml-auto rounded-full shadow text-white flex items-center justify-center"
-                    onClick={openPaymentModal}
-                  >
-                    Buy
-                  </button>
+                  {Videoid?.payment && (
+                    <button
+                      className="w-[80px] h-[35px] bg-red-500 ml-auto rounded-full shadow text-white flex items-center justify-center"
+                      onClick={openPaymentModal}
+                    >
+                      Buy
+                    </button>
+                  )}
                   {isPaymentModal && (
-                    <PaymentPage closeModal={closePaymentModal} />
+                    <PaymentPage
+                      closeModal={closePaymentModal}
+                      price={Videoid?.price}
+                    />
                   )}
                 </div>
 
@@ -363,84 +386,136 @@ const VideoSeriesPage = () => {
                   {/* danh sach series */}
                   <ul className="w-full h-full ">
                     {/* khung danh sách */}
-                    {chapters?.chaps?.map((item) => (
-                      <Link
-                        key={item.id}
-                        to={
-                          payment.length !== 0
-                            ? payment[0].status === "success"
-                              ? `/videos/video/series/display/${id.id}/${item.id}`
+                    {chapters?.chaps?.map((item) =>
+                      Videoid?.payment ? (
+                        <Link
+                          key={item.id}
+                          to={
+                            payment.length !== 0
+                              ? payment[0].status === "success"
+                                ? `/videos/video/series/display/${id.id}/${item.id}`
+                                : "#"
                               : "#"
-                            : "#"
-                        }
-                      >
-                        <li className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2">
-                          <div className="w-full h-full flex items-center">
-                            <div className="w-[80px] h-[80px]">
-                              <img
-                                src={item.horizontalThumbnail}
-                                alt="img"
-                                className="object-fill w-full h-full rounded-md"
-                              />
-                            </div>
+                          }
+                        >
+                          <li className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2">
+                            <div className="w-full h-full flex items-center">
+                              <div className="w-[80px] h-[80px]">
+                                <img
+                                  src={item.horizontalThumbnail}
+                                  alt="img"
+                                  className="object-fill w-full h-full rounded-md"
+                                />
+                              </div>
 
-                            <div className="w-[350px] mr-auto ml-3 overflow-hidden">
-                              <span className="text-black text-md leading-[1.2] line-clamp-2">
-                                {item.chapterTitle}
-                              </span>
-                            </div>
+                              <div className="w-[350px] mr-auto ml-3 overflow-hidden">
+                                <span className="text-black text-md leading-[1.2] line-clamp-2">
+                                  {item.chapterTitle}
+                                </span>
+                              </div>
 
-                            <div className="ml-auto">
-                              <span className="text-gray-400 text-md">
-                                {
-                                  monthNames[
-                                    new Date(item.createTime).getMonth()
-                                  ]
-                                }{" "}
-                                {new Date(item.createTime).getDate()},
-                                {new Date(item.createTime)?.getFullYear()}
-                              </span>
-                            </div>
+                              <div className="ml-auto">
+                                <span className="text-gray-400 text-md">
+                                  {
+                                    monthNames[
+                                      new Date(item.createTime).getMonth()
+                                    ]
+                                  }{" "}
+                                  {new Date(item.createTime).getDate()},
+                                  {new Date(item.createTime)?.getFullYear()}
+                                </span>
+                              </div>
 
-                            <div className="ml-auto flex gap-1">
-                              <span className="text-gray-400">
-                                <FavoriteBorderSharpIcon />
-                              </span>
-                              <span className="text-gray-400 text-md line-clamp-1">
-                                {item.likes}
-                              </span>
-                            </div>
+                              <div className="ml-auto flex gap-1">
+                                <span className="text-gray-400">
+                                  <FavoriteBorderSharpIcon />
+                                </span>
+                                <span className="text-gray-400 text-md line-clamp-1">
+                                  {item.likes}
+                                </span>
+                              </div>
 
-                            <div className="ml-auto">
-                              <span className="text-gray-400 text-md line-clamp-1">
-                                {item.num}#
-                              </span>
-                            </div>
-                            {payment.length !== 0 ? (
-                              payment[0].status === "success" ? (
-                                <div className="ml-auto flex gap-1">
-                                  <span className="text-gray-400">
-                                    <LockOpenIcon />
-                                  </span>
-                                </div>
+                              <div className="ml-auto">
+                                <span className="text-gray-400 text-md line-clamp-1">
+                                  {item.num}#
+                                </span>
+                              </div>
+                              {payment.length !== 0 ? (
+                                payment[0].status === "success" ? (
+                                  <div className="ml-auto flex gap-1">
+                                    <span className="text-gray-400">
+                                      <LockOpenIcon />
+                                    </span>
+                                  </div>
+                                ) : (
+                                  <div className="ml-auto flex gap-1">
+                                    <span className="text-gray-400">
+                                      <LockIcon />
+                                    </span>
+                                  </div>
+                                )
                               ) : (
                                 <div className="ml-auto flex gap-1">
                                   <span className="text-gray-400">
                                     <LockIcon />
                                   </span>
                                 </div>
-                              )
-                            ) : (
-                              <div className="ml-auto flex gap-1">
-                                <span className="text-gray-400">
-                                  <LockIcon />
+                              )}
+                            </div>
+                          </li>
+                        </Link>
+                      ) : (
+                        <Link
+                          key={item.id}
+                          to={`/videos/video/series/display/${id.id}/${item.id}`}
+                        >
+                          <li className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2">
+                            <div className="w-full h-full flex items-center">
+                              <div className="w-[80px] h-[80px]">
+                                <img
+                                  src={item.horizontalThumbnail}
+                                  alt="img"
+                                  className="object-fill w-full h-full rounded-md"
+                                />
+                              </div>
+
+                              <div className="w-[350px] mr-auto ml-3 overflow-hidden">
+                                <span className="text-black text-md leading-[1.2] line-clamp-2">
+                                  {item.chapterTitle}
                                 </span>
                               </div>
-                            )}
-                          </div>
-                        </li>
-                      </Link>
-                    ))}
+
+                              <div className="ml-auto">
+                                <span className="text-gray-400 text-md">
+                                  {
+                                    monthNames[
+                                      new Date(item.createTime).getMonth()
+                                    ]
+                                  }{" "}
+                                  {new Date(item.createTime).getDate()},
+                                  {new Date(item.createTime)?.getFullYear()}
+                                </span>
+                              </div>
+
+                              <div className="ml-auto flex gap-1">
+                                <span className="text-gray-400">
+                                  <FavoriteBorderSharpIcon />
+                                </span>
+                                <span className="text-gray-400 text-md line-clamp-1">
+                                  {item.likes}
+                                </span>
+                              </div>
+
+                              <div className="ml-auto">
+                                <span className="text-gray-400 text-md line-clamp-1">
+                                  {item.num}#
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+                        </Link>
+                      )
+                    )}
                   </ul>
                 </div>
               </div>

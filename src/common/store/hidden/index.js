@@ -4,9 +4,8 @@ const initialState = {
   hidden: true,
   isLoginModal: false,
   language: false,
-  WithDrawal: true,
-  Access:false,
-  Bage: false,
+  payment: false,
+
 } ;
 const Hidden = createSlice({
   name: 'hidden',
@@ -21,6 +20,9 @@ const Hidden = createSlice({
     getlanguage: (state) => {
       state.language = !state.language;
     },
+    setIspayment: (state,action) => {
+      state.payment= action.payload;
+    },
   
   },
 });
@@ -28,5 +30,6 @@ export const {
   setIsLoginModal,
   getHidden,
   getlanguage,
+  setIspayment
 } = Hidden.actions;
 export default Hidden.reducer;

@@ -34,6 +34,7 @@ import {
 } from "../../../common/store/Video";
 import VideoFireBase from "../../../common/services/Video.services";
 import PaymentFireBase from "../../../common/services/Payment.services";
+import { useNavigate } from 'react-router-dom';
 
 const DisplayVideoPage = () => {
   //Xem các tập tiếp theo trong series
@@ -53,7 +54,7 @@ const DisplayVideoPage = () => {
   const chapters = useSelector((state) => state.Video.Chapters);
   const Video = useSelector((state) => state.Video.video);
   const Account = useSelector((state) => state.Account.Account);
-  const [payment, setpayment] = useState([]);
+  const navigate = useNavigate();
 
   const monthNames = [
     "January",
@@ -93,26 +94,25 @@ const DisplayVideoPage = () => {
     const getcomments = async () => {
       try {
         setloading(false);
-        const comments = await dispatch(getidseriesVideo(id.idseries));
-        const VideoID = await dispatch(getidVideo(id.id));
-        const chap = await dispatch(getchaptersVideo(id.id));
-
-        unwrapResult(VideoID);
-        const chapid = unwrapResult(chap);
-        setchapid(
-          chapid.success
-            ? chapid?.chaps.filter((item) => item.id === id.idseries)[0]
-            : []
-        );
-        setcountlike(
-          chapid.success
-            ? chapid?.chaps.filter((item) => item.id === id.idseries)[0].likes
-            : 0
-        );
-       
-
-        unwrapResult(comments);
         if (auth.currentUser) {
+          const comments = await dispatch(getidseriesVideo(id.idseries));
+          const VideoID = await dispatch(getidVideo(id.id));
+          const chap = await dispatch(getchaptersVideo(id.id));
+          unwrapResult(VideoID)
+          const chapid = unwrapResult(chap);
+          setchapid(
+            chapid.success
+              ? chapid?.chaps.filter((item) => item.id === id.idseries)[0]
+              : []
+          );
+          setcountlike(
+            chapid.success
+              ? chapid?.chaps.filter((item) => item.id === id.idseries)[0].likes
+              : 0
+          );
+         
+  
+          unwrapResult(comments);
           const account= await  dispatch(getAccount(auth?.currentUser?.uid));
           const user=  unwrapResult(account)
           const age= account?.payload?.birthday? new Date(Date.now())?.getFullYear()-new Date(user.birthday)?.getFullYear():15
@@ -131,13 +131,39 @@ const DisplayVideoPage = () => {
             auth.currentUser.uid,
             id.id
           );
-          setpayment(payment.success ? payment.payment : []);
+          if(payment.success){
+            payment.payment[0]?.status!=='success'&& navigate(`/videos/video/series/${id.id}`)
+          }else{
+            navigate(`/videos/video/series/${id.id}`)
+          }
           setIsLike(like.success);
           subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false);
           subscribe.success
             ? setSubscribe(subscribe.subscribe)
             : setSubscribe([]);
         }else{
+          const comments = await dispatch(getidseriesVideo(id.idseries));
+          const VideoID = await dispatch(getidVideo(id.id));
+          const chap = await dispatch(getchaptersVideo(id.id));
+  
+          const videoid= unwrapResult(VideoID);
+          if(videoid?.payment){
+            navigate(`/videos/video/series/${id.id}`); 
+          }
+          const chapid = unwrapResult(chap);
+          setchapid(
+            chapid.success
+              ? chapid?.chaps.filter((item) => item.id === id.idseries)[0]
+              : []
+          );
+          setcountlike(
+            chapid.success
+              ? chapid?.chaps.filter((item) => item.id === id.idseries)[0].likes
+              : 0
+          );
+         
+  
+          unwrapResult(comments);
           const lg = await dispatch(getAllVideo());
           unwrapResult(lg);
         }
@@ -145,7 +171,8 @@ const DisplayVideoPage = () => {
       } catch (error) {}
     };
     getcomments();
-  }, [dispatch, id]);
+  }, [dispatch,navigate, id]);
+
   const closeLoginModal = () => {
     dispatch(setIsLoginModal(false));
   };
@@ -377,6 +404,7 @@ const DisplayVideoPage = () => {
       console.log(error);
     }
   };
+
   return (
     <div>
       {!loading ? (
@@ -391,6 +419,7 @@ const DisplayVideoPage = () => {
           <CircularProgress />
         </Box>
       ) : (
+        <>
         <div className="w-full h-full bg-white">
           {/* Thanh công cụ */}
           <div className="w-full h-[50px] px-5 bg-black flex items-center">
@@ -864,6 +893,7 @@ const DisplayVideoPage = () => {
           </div>
           {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
         </div>
+        </>
       )}
     </div>
   );

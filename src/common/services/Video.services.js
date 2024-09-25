@@ -155,7 +155,9 @@ const VideoFireBase = {
 
     const docSnap = await getDoc(docRef);
     const ChaptersnRef = collection(docSnap.ref, id);
-    const Chapters = await getDocs(ChaptersnRef);
+    const Chapters = await getDocs(query(
+      ChaptersnRef,
+      where("check", "==", true)));
     const chaps = Chapters.docs.map((item) => {
       return {
         id: item.id,
@@ -169,8 +171,8 @@ const VideoFireBase = {
       return { message: "No such document!", success: false };
     }
   },
-  async getchaptersid(id,idchap) {
-    const docRef = doc(fireStore, "Comic", id);
+  async getchaptersad(id) {
+    const docRef = doc(fireStore, "Video", id);
 
     const docSnap = await getDoc(docRef);
     const ChaptersnRef = collection(docSnap.ref, id);
