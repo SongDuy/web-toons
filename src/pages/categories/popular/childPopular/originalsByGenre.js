@@ -1,20 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
-const dataPopular = [
-    { id: 1, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "2", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
-    { id: 2, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "3", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
-    { id: 3, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "4", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
-    { id: 4, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "5", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
-    { id: 5, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "6", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
-    { id: 6, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "7", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
-    { id: 7, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "8", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
-    { id: 8, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "9", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
-    { id: 9, img: "https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540", number: "10", genre: "Fantasy", name: "Peace Restaurant", auth: "Lee Nakeum , seewater" },
-];
 
 const dataListGenre = [
     { id: 1, name: "DRAMA" },
@@ -43,10 +31,14 @@ const dataListGenre = [
 dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 
 const OriginalsByGenrePage = () => {
-
+    const comic = useSelector((state) => state.comic.comic);
+    const [selectedOriginalsByGenre, setSelectedOriginalsByGenre] = useState('Action');
+    const [comicid, setcomicid] = useState(comic?.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).slice(0,1)?.sort((a, b) => b.views - a.views)[0]);
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
-
+useEffect(() => {
+    setcomicid(comic?.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).slice(0,1)?.sort((a, b) => b.views - a.views)[0])
+}, [selectedOriginalsByGenre,comic.comic]);
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
 
@@ -65,6 +57,7 @@ const OriginalsByGenrePage = () => {
                     {dataListGenre.map(item => (
                         <li
                             key={item.id}
+                            onClick={() => setSelectedOriginalsByGenre(item.name)}
                             className="uppercase font-semibold text-sm text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
                         >
                             {item.name}
@@ -75,10 +68,11 @@ const OriginalsByGenrePage = () => {
             </div>
 
             <div className="w-full flex gap-[60px]">
+                                {/* Hien thị top 1 */}
 
-                {/* Hien thị top 1 */}
+                {comicid?.id &&
                 <Link
-                    to={`/originals/original/series`}
+                    to={`/originals/original/series/${comicid?.id}`}
                     className="h-[815px] bg-white py-1"
                 >
                     <div
@@ -91,7 +85,8 @@ const OriginalsByGenrePage = () => {
                             <div className="w-[500px] mr-auto h-[500px] rounded-md bg-green-500 flex items-center justify-center relative">
                                 <div>
                                     <img
-                                        src="https://swebtoon-phinf.pstatic.net/20240625_57/1719286876300gluny_JPEG/2EpisodeList_Mobile.jpg?type=crop540_540"
+                                                          src={comicid?.squareThumbnail}
+
                                         alt="img"
                                         className="object-fill w-full h-full rounded-md"
                                     />
@@ -117,38 +112,27 @@ const OriginalsByGenrePage = () => {
                             <div className="w-full h-[150px] mt-3">
                                 <div className="w-full">
                                     <span className="block text-gray-400">
-                                        Fantasy
+                                    {comicid?.genre1},{comicid?.genre2}
                                     </span>
                                 </div>
 
 
                                 <div className="w-full h-[75px] overflow-hidden">
                                     <span className="text-[30px] font-semibold leading-[1.2] line-clamp-2">
-                                        Monster Princess of the Snowy Mountain
+                                    {comicid?.title}
+
                                     </span>
                                 </div>
 
                                 <div>
                                     <span className="block">
-                                        Lee Nakeum , seewater
+                                    {comicid?.Author}
                                     </span>
                                 </div>
 
                                 <div className=" w-full h-full mt-5 overflow-hidden">
                                     <span className="w-full line-clamp-6">
-                                        Valerie Beloff, a princess in exile, decides to take her
-                                        own life on her 19th birthday. Abused by her own mother
-                                        and exiled for her mother’s crimes, she had to live in
-                                        the freezing Makleroad palace by herself, and she somehow
-                                        acquired the powers of an ancient monster - the power to
-                                        freeze things. Hopeless, she seeks an escape in death… only
-                                        to find herself before her cruel mother, yelling at her once
-                                        again. Is she dead? Is she reliving a memory? When her mother
-                                        strikes her, the throbbing pain lets her know that this is neither
-                                        a dream nor a memory! This series contains themes regarding child
-                                        abuse that may not be suitable for all readers. Viewer discretion
-                                        is advised. If you or someone you know is struggling or in crisis,
-                                        please reach out for help at Crisis Text Line
+                                    {comicid?.summary}
                                     </span>
                                 </div>
 
@@ -156,17 +140,17 @@ const OriginalsByGenrePage = () => {
                         </div>
                     </div>
                 </Link>
-
+}
                 {/* Hien thị danh sách */}
                 <div className="w-full h-[815px] bg-white">
                     <div className="w-full h-full">
                         <ul className="w-full h-full ">
 
                             {/* khung nội dung */}
-                            {dataPopular?.map((item, index) => (
+                            { comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase())?.slice(1,9).sort((a,b)=>b?.views-a?.views).map((item, index) => (
                                 <Link
                                     key={item.id}
-                                    to={`/originals/original/series`}
+                                    to={`/originals/original/series/${item.id}`}
                                 >
                                     <li
                                         className="w-full h-[90px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
@@ -174,7 +158,7 @@ const OriginalsByGenrePage = () => {
                                         <div className="w-full h-full flex items-center">
                                             <div className="w-[80px] h-[80px]">
                                                 <img
-                                                    src={item.img}
+                                                    src={item.squareThumbnail}
                                                     alt="img"
                                                     className="object-fill w-full h-full rounded-md"
                                                 />
@@ -186,13 +170,14 @@ const OriginalsByGenrePage = () => {
                                             </div>
                                             <div className="w-[420px] mt-auto mb-auto overflow-hidden">
                                                 <span className="text-gray-400 text-sm">
-                                                    {item.genre}
+                                                    {item.genre1},{item.genre2}
+
                                                 </span>
                                                 <span className="text-md font-semibold line-clamp-1">
-                                                    {item.name}
+                                                    {item.title}
                                                 </span>
                                                 <span className="text-sm line-clamp-1">
-                                                    {item.auth}
+                                                    {item.Author}
                                                 </span>
                                             </div>
 

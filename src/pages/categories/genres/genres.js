@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 import CheckIcon from '@mui/icons-material/Check';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -45,10 +45,19 @@ dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 
 const GenresPage = () => {
     const comic = useSelector(state => state.comic.comic);
+    const [Comic, setComic] = useState([]);
+     //Chọn menu cho thể loại truyện và video
+     const [selectedMenuOriginalList, setSelectedMenuOriginalList] = React.useState("by Popularity"); // Originals genre list
     //Chọn nội dung truyện theo thể loại
     const [selectedOriginalsByGenre, setSelectedOriginalsByGenre] = useState('Action');
-    const filteredOriginalsByGenre = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase());
+    
 
+    useEffect(() => {
+        const filteredOriginalsByGenre = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase());
+        const filteredOriginalsByLikes = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).sort((a,b)=>b.views-a.views);
+        const filteredOriginalsByDate = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).sort((a, b) => new Date(b.createTime) - new Date(a.createTime));
+        setComic(selectedMenuOriginalList==="by Popularity"?filteredOriginalsByGenre:selectedMenuOriginalList==="by Likes"?filteredOriginalsByLikes:filteredOriginalsByDate)
+    }, [selectedOriginalsByGenre,comic.comic,selectedMenuOriginalList]);
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
 
@@ -89,8 +98,7 @@ const GenresPage = () => {
         prevOpenOriginals.current = openOriginals;
     }, [openOriginals]);
 
-    //Chọn menu cho thể loại truyện và video
-    const [selectedMenuOriginalList, setSelectedMenuOriginalList] = React.useState("by Popularity"); // Originals genre list
+   
 
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
@@ -208,7 +216,7 @@ const GenresPage = () => {
                                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                     {/* khung nội dung */}
-                                    {filteredOriginalsByGenre?.map(item => (
+                                    { Comic?.map(item => (
                                         <Link
                                             key={item.id}
                                             to={`/originals/original/series/${item.id}`}

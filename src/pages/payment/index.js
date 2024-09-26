@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy"; // Import icon copy
+import ContentCopyIcon from "@mui/icons-material/ContentCopy"; 
 import { useParams } from "react-router-dom";
 import PaymentFireBase from "../../common/services/Payment.services";
 import { auth } from "../../common/themes/firebase";
+import BankFireBase from "../../common/services/Bank.services";
 
 const PaymentPage = ({ closeModal,price }) => {
+  const [Bank, setBank] = useState([]);
   const [Accountname, setAccountname] = useState("");
   const [Account, setAccount] = useState(0);
   const id = useParams();
@@ -18,8 +20,10 @@ const PaymentPage = ({ closeModal,price }) => {
             auth?.currentUser?.uid,
             id?.id
           );
-          console.log(payment.success ? payment.payment : [])
           setpayment(payment.success ? payment.payment : []);
+          const banks = await BankFireBase.getAll();
+          console.log(banks)
+          setBank(banks.success ? banks.bank : []);
         }
       } catch (error) {
         console.log(error);
@@ -73,7 +77,7 @@ const PaymentPage = ({ closeModal,price }) => {
                       <div className="ml-auto flex items-center space-x-2">
                         {/* Giá tiền */}
                         <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
-                          011xx90890xx567
+                          {Bank.length!==0&& Bank[0]?.Accountnumber}
                         </span>
 
                         {/* Icon copy */}
@@ -88,7 +92,7 @@ const PaymentPage = ({ closeModal,price }) => {
                       <div className="ml-auto flex items-center space-x-2">
                         {/* Giá tiền */}
                         <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
-                          Nguyen Van A
+                        { Bank.length!==0&&  Bank[0]?.Accountname}
                         </span>
 
                         {/* Icon copy */}
@@ -118,7 +122,8 @@ const PaymentPage = ({ closeModal,price }) => {
                       <div className="ml-auto flex items-center space-x-2">
                         {/* Giá tiền */}
                         <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
-                          Bank Korea
+                        {Bank.length!==0&&  Bank[0]?.Bankname}
+
                         </span>
 
                         {/* Icon copy */}

@@ -16,7 +16,7 @@ import TextField from "@mui/material/TextField";
 const AdminNotificationsPage = () => {
   const [loading, setloading] = useState(false);
   const [bank, setbank] = useState([]);
-  const [open, setopen] = useState([]);
+  const [open, setopen] = useState(false);
   const [Bankname, setBankname] = useState("");
   const [Accountnumber, setAccountnumber] = useState("");
   const [Accountname, setAccountname] = useState("");
@@ -43,7 +43,6 @@ const AdminNotificationsPage = () => {
   const handleid=async (id)=>{
     try {
         const getidbank=await BankFireBase.getbyid(id)
-        console.log(getidbank)
         setBankname(getidbank.success?getidbank.Bankname:'');
         setAccountname(getidbank.success?getidbank.Accountname:'');
         setAccountnumber(getidbank.success?getidbank.Accountnumber:'');
@@ -143,6 +142,7 @@ const AdminNotificationsPage = () => {
                   <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
                     Manager
                   </th>
+                  {bank?.length===0 &&
                   <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
                     <button
                       onClick={() => setopen(true)}
@@ -151,6 +151,7 @@ const AdminNotificationsPage = () => {
                       Add
                     </button>
                   </th>
+}
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">

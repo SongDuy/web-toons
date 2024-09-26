@@ -24,7 +24,21 @@ const OriginalsPage = () => {
     //kích hoạt dính vào trên cùng
     const [isSticky, setIsSticky] = useState(false);
     const comic = useSelector(state => state.comic.comic);
+    const [Comics, setComics] = useState([]);
+    
+    //Chọn menu cho thể loại
+    const [selectedMenuOriginalList, setSelectedMenuOriginalList] = useState("by Popularity");
 
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+      //Chọn nội dung theo thứ
+      const [currentDay, setCurrentDay] = useState('');
+    useEffect(() => {
+        const filteredOriginalsByGenre = comic.comic?.filter(data => data.schedule === currentDay);
+        const filteredOriginalsByLikes = comic.comic?.filter(data => data.schedule === currentDay).sort((a,b)=>b.views-a.views);
+        const filteredOriginalsByDate = comic.comic?.filter(data => data.schedule === currentDay).sort((a, b) => new Date(b.createTime) - new Date(a.createTime));
+        setComics(setSelectedMenuOriginalList==="by Popularity"?filteredOriginalsByGenre:setSelectedMenuOriginalList==="by Likes"?filteredOriginalsByLikes:filteredOriginalsByDate)
+    }, [currentDay,comic.comic,setSelectedMenuOriginalList]);
     useEffect(() => {
         const threshold = 100; // Ngưỡng để kích hoạt dính vào trên cùng
 
@@ -43,8 +57,7 @@ const OriginalsPage = () => {
         };
     }, []);
 
-    //Chọn nội dung theo thứ
-    const [currentDay, setCurrentDay] = useState('');
+  
 
     useEffect(() => {
         const today = new Date();
@@ -57,7 +70,6 @@ const OriginalsPage = () => {
         setCurrentDay(day);
     };
 
-    const filteredData = comic.comic?.filter(data => data.schedule === currentDay);
 
     //Chọn nội dung theo tiêu đề
     const [selectedSection, setSelectedSection] = useState("section1");
@@ -101,11 +113,6 @@ const OriginalsPage = () => {
         prevOpenOriginals.current = openOriginals;
     }, [openOriginals]);
 
-    //Chọn menu cho thể loại
-    const [selectedMenuOriginalList, setSelectedMenuOriginalList] = useState("by Popularity");
-
-    //Lấy ngôn ngữ
-    const language = useSelector(state => state.hidden.language);
 
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
@@ -259,7 +266,7 @@ const OriginalsPage = () => {
                                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                     {/* khung nội dung */}
-                                    {filteredData?.map(item => (
+                                    {Comics?.map(item => (
                                         <Link
                                             key={item.id}
                                             to={`/originals/original/series/${item.id}`}

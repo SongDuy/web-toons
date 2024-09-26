@@ -79,7 +79,7 @@ function App() {
           <Route path="/videos/video/series/:id" element={<VideoSeriesPage />} />
 
           <Route path="/genres" element={<Loading><GenresPage /></Loading>} />
-          <Route path="/popular" element={<PopularPage />} />
+          <Route path="/popular" element={<Loading><PopularPage /></Loading>} />
 
           <Route path="/channel/creator/:id" element={<CreatorChannelPage />} />
 

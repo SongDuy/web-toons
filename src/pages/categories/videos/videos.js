@@ -23,7 +23,22 @@ const VideosPage = () => {
     //kích hoạt dính vào trên cùng
     const [isSticky, setIsSticky] = useState(false);
     const Video = useSelector(state => state.Video.video);
+    const [Videos, setVideos] = useState([]);
     const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
+    
+    //Chọn menu cho loại
+    const [selectedMenuVideoList, setSelectedMenuVideoList] = useState("by Popularity");
+
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+      //Chọn nội dung theo thứ
+      const [currentDay, setCurrentDay] = useState('');
+    useEffect(() => {
+        const filteredVideosByGenre = Video.Video?.filter(data => data.schedule === currentDay);
+        const filteredVideolsByLikes = Video.Video?.filter(data => data.schedule === currentDay).sort((a,b)=>b.views-a.views);
+        const filteredVideosByDate = Video.Video?.filter(data => data.schedule === currentDay).sort((a, b) => new Date(b.createTime) - new Date(a.createTime));
+        setVideos(selectedMenuVideoList==="by Popularity"?filteredVideosByGenre:selectedMenuVideoList==="by Likes"?filteredVideolsByLikes:filteredVideosByDate)
+    }, [currentDay, Video.Video,selectedMenuVideoList]);
     useEffect(() => {
         const threshold = 100; // Ngưỡng để kích hoạt dính vào trên cùng
 
@@ -42,8 +57,7 @@ const VideosPage = () => {
         };
     }, []);
 
-    //Chọn nội dung theo thứ
-    const [currentDay, setCurrentDay] = useState('');
+  
 
     useEffect(() => {
         const today = new Date();
@@ -56,8 +70,6 @@ const VideosPage = () => {
     const handleSelectDay = (day) => {
         setCurrentDay(day);
     };
-
-    const filteredData = Video?.Video?.filter(data => data.schedule === currentDay);
 
     //Chọn nội dung theo tiêu đề
     const [selectedSection, setSelectedSection] = useState("section1");
@@ -97,12 +109,6 @@ const VideosPage = () => {
         }
         prevOpenVideos.current = openVideos;
     }, [openVideos]);
-
-    //Chọn menu cho loại
-    const [selectedMenuVideoList, setSelectedMenuVideoList] = useState("by Popularity");
-
-    //Lấy ngôn ngữ
-    const language = useSelector(state => state.hidden.language);
 
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
@@ -255,7 +261,7 @@ const VideosPage = () => {
                                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                     {/* khung nội dung */}
-                                    {filteredData?.map(item => (
+                                    {Videos?.map(item => (
                                         <Link
                                             key={item.id}
                                             to={`/videos/video/series/${item.id}`}
