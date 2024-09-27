@@ -75,7 +75,7 @@ const GenresOriginalsAndVideosPage = () => {
             </div>
 
             {/* Hiển thị nội dung thể loại */}
-            <div className="w-full min-h-[500px] py-[30px] flex justify-center">
+            <div className="w-full min-h-[600px] py-[30px] flex justify-center">
                 <div className="grid grid-cols-1 gap-y-[30px]">
 
                     {/* khung nội dung dành cho truyện */}
