@@ -27,9 +27,10 @@ const AdminBannerPage = () => {
         await bannerFireBase.uploadToAdd(file, file.name, {
           createTime: new Date(Date.now()),
         });
+      
       }
-      const banners = await bannerFireBase.getAll()
-      setbanner(banners.success ? banners.banner : [])
+      const banners = await bannerFireBase.getAll();
+      setbanner(banners.success ? banners.banner : []);
       setloading(true);
     } catch (error) {
       console.log(error);

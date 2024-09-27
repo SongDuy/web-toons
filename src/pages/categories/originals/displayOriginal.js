@@ -63,7 +63,7 @@ const DisplayOriginalPage = () => {
       selectedOriginalGenre === "All"
         ? item
         : item.genre1 === selectedOriginalGenre ||
-        item.genre2 === selectedOriginalGenre
+          item.genre2 === selectedOriginalGenre
     )
     .slice()
     ?.sort((a, b) => b.views - a.views);
@@ -93,7 +93,7 @@ const DisplayOriginalPage = () => {
         id.id,
         id.idseries
       );
-    } catch (error) { }
+    } catch (error) {}
   }, 10000);
   useEffect(() => {
     const getcomments = async () => {
@@ -115,16 +115,23 @@ const DisplayOriginalPage = () => {
             ? chapid?.chaps.filter((item) => item.id === id.idseries)[0].likes
             : 0
         );
-     
-
 
         unwrapResult(comments);
         if (auth.currentUser) {
-          const account= await  dispatch(getAccount(auth?.currentUser?.uid));
-          const user=  unwrapResult(account)
-          const age= account?.payload?.birthday? new Date(Date.now())?.getFullYear()-new Date(user.birthday)?.getFullYear():15
-          const lg = await dispatch(getAllComic(age));
-          unwrapResult(lg);
+          const account = await dispatch(getAccount(auth?.currentUser?.uid));
+          const user = unwrapResult(account);
+          if (user?.checkage) {
+            const age = account?.payload?.birthday
+              ? new Date(Date.now())?.getFullYear() -
+                new Date(user.birthday)?.getFullYear()
+              : 15;
+            const lg = await dispatch(getAllComic(age));
+            unwrapResult(lg);
+          } else {
+            const lg = await dispatch(getAllComic());
+            unwrapResult(lg);
+          }
+
           const subscribe = await SubscribeFireBase.getbycomic(
             auth.currentUser.uid,
             id.id
@@ -139,12 +146,12 @@ const DisplayOriginalPage = () => {
           subscribe.success
             ? setSubscribe(subscribe.subscribe)
             : setSubscribe([]);
-        }else{
+        } else {
           const lg = await dispatch(getAllComic());
           unwrapResult(lg);
         }
         setloading(true);
-      } catch (error) { }
+      } catch (error) {}
     };
     getcomments();
   }, [dispatch, id]);
@@ -195,7 +202,7 @@ const DisplayOriginalPage = () => {
       const rep = await CommentFireBase.getidrep(commentId);
       setreps(rep.success ? rep?.rep : []);
       setReplyCommentId(commentId === replyCommentId ? null : commentId);
-    } catch (error) { }
+    } catch (error) {}
   };
 
   //new
@@ -223,7 +230,7 @@ const DisplayOriginalPage = () => {
         dispatch(setIsLoginModal(true));
         setComment("");
       }
-    } catch (error) { }
+    } catch (error) {}
   };
 
   const handlesubscribe = async () => {
@@ -250,7 +257,7 @@ const DisplayOriginalPage = () => {
           ? setSubscribe(subscribe.subscribe)
           : setSubscribe([]);
       }
-    } catch (error) { }
+    } catch (error) {}
   };
   const handleDeleteSub = async () => {
     try {
@@ -270,7 +277,7 @@ const DisplayOriginalPage = () => {
           ? setSubscribe(subscribe.subscribe)
           : setSubscribe([]);
       }
-    } catch (error) { }
+    } catch (error) {}
   };
   const handlelike = async (idcomment, togglelike) => {
     try {
@@ -341,7 +348,6 @@ const DisplayOriginalPage = () => {
   const handlerep = async (idcomment) => {
     try {
       if (auth?.currentUser) {
-       
         const data = {
           rep: getrep,
           idcomment,
@@ -395,7 +401,7 @@ const DisplayOriginalPage = () => {
         setcountlike(
           getchapid.success
             ? getchapid?.chaps.filter((item) => item.id === id.idseries)[0]
-              .likes
+                .likes
             : 0
         );
         // const pot = await postFireBase.getlike(Account.uid);
@@ -430,8 +436,7 @@ const DisplayOriginalPage = () => {
               <ul className="w-full h-[30px] flex">
                 <li className="w-[550px] flex gap-2 items-center overflow-hidden">
                   <div>
-                    <Link
-                      to={`/`}>
+                    <Link to={`/`}>
                       <img
                         src={logo}
                         alt="Logo của website"
@@ -480,19 +485,18 @@ const DisplayOriginalPage = () => {
             {/* Hiển thị nội dung truyện */}
             <div className="w-full h-full bg-white flex items-center justify-center">
               <div>
-                {file &&
+                {file && (
                   <Document
                     options={options}
                     file={file}
                     onLoadSuccess={onDocumentLoadSuccess}
                     loading={<CircularProgress />}
-
                   >
                     {Array.from(new Array(numPages), (el, index) => (
                       <Page key={`page_${index + 1}`} pageNumber={index + 1} />
                     ))}
                   </Document>
-                }
+                )}
               </div>
             </div>
 
@@ -666,7 +670,7 @@ const DisplayOriginalPage = () => {
                                       <span className="text-gray-400 mx-2 line-clamp-1">
                                         {
                                           monthNames[
-                                          new Date(item.createTime).getMonth()
+                                            new Date(item.createTime).getMonth()
                                           ]
                                         }{" "}
                                         {new Date(item.createTime).getDate()},
@@ -768,12 +772,11 @@ const DisplayOriginalPage = () => {
                                                   {item.nameUser}
                                                 </span>
                                                 <span className="text-gray-400 mx-2 line-clamp-1">
-
                                                   {
                                                     monthNames[
-                                                    new Date(
-                                                      item.createTime
-                                                    ).getMonth()
+                                                      new Date(
+                                                        item.createTime
+                                                      ).getMonth()
                                                     ]
                                                   }{" "}
                                                   {new Date(

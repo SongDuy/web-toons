@@ -54,7 +54,7 @@ const userFireBase = {
 
     await updateDoc(update, data);
   },
-  async uploadToFirebase(file, name, iduser) {
+  async uploadToFirebase(file, name, iduser,key) {
 
     const storageRef = ref(storage, `cms_uploads/image/${iduser}/${name}`);
 
@@ -75,9 +75,16 @@ const userFireBase = {
             },
             () => {
              getDownloadURL(uploadTask.snapshot.ref).then(async (downloadUrl) => {
-              
-                 
-                 await this.update({ image: downloadUrl }, iduser);
+              const imageKeyMapping = {
+                image: "image",
+                horizontalThumbnail: "horizontalThumbnail",
+              };
+  
+              const imageToUpdate = imageKeyMapping[key];
+              if (imageToUpdate) {
+           
+                await this.update({ [imageToUpdate]: downloadUrl }, iduser);
+            }
           
                   resolve(downloadUrl); 
             
