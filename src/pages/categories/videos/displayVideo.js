@@ -98,7 +98,7 @@ const DisplayVideoPage = () => {
           const comments = await dispatch(getidseriesVideo(id.idseries));
           const VideoID = await dispatch(getidVideo(id.id));
           const chap = await dispatch(getchaptersVideo(id.id));
-          unwrapResult(VideoID)
+          const videoid= unwrapResult(VideoID)
           const chapid = unwrapResult(chap);
           setchapid(
             chapid.success
@@ -131,10 +131,12 @@ const DisplayVideoPage = () => {
             auth.currentUser.uid,
             id.id
           );
-          if(payment.success){
-            payment.payment[0]?.status!=='success'&& navigate(`/videos/video/series/${id.id}`)
-          }else{
-            navigate(`/videos/video/series/${id.id}`)
+          if(videoid?.payment){
+            if(payment.success){
+              payment.payment[0]?.status!=='success'&& navigate(`/videos/video/series/${id.id}`)
+            }else{
+              navigate(`/videos/video/series/${id.id}`)
+            }
           }
           setIsLike(like.success);
           subscribe.success ? setIsSubscribe(true) : setIsSubscribe(false);

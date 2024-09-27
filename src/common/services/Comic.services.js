@@ -119,21 +119,21 @@ const comicFireBase = {
   },
   async checkcomicuser(uid,idseries) {
     const dc = doc(fireStore, "Comic", idseries);
-
     const docS = await getDoc(dc);
-    const docRef = query(
-      collection(docS.ref,idseries),
-      where("uid", "==", uid)    
-      );
-    const docSnap = await getDocs(docRef);
-    const comic = docSnap.docs?.map((item) => {
-      return { id: item.id, ...item.data(), createTime: new Date(item.data().createTime?.toDate()).toISOString() };
-    });
-    if (comic.length !== 0) {
-      return { comic, success: true };
-    } else {
+
+    // Kiểm tra nếu tài liệu không tồn tại
+    if (!docS.exists()) { 
       return { message: "No such document!", success: false };
     }
+    const comicData = docS.data();
+    if (comicData.uid === uid) {
+      return { 
+        comic: { id: docS.id, ...comicData, createTime: new Date(comicData.createTime?.toDate()).toISOString() }, 
+        success: true 
+      };
+  } else {
+      return { message: "UID does not match!", success: false };
+  }
   },
   async getbyid(id) {
     const docRef = doc(fireStore, "Comic", id);

@@ -77,7 +77,7 @@ const MyChannelPage = () => {
     const file = e.target.files[0];
     if (file) {
         
-        await userFireBase.uploadToFirebase(file,file.name,Account.uid)
+        await userFireBase.uploadToFirebase(file,file.name,Account.uid,"image")
         const account=  await  dispatch(getAccount(Account.uid));
         unwrapResult(account)
     }
@@ -85,6 +85,19 @@ const MyChannelPage = () => {
        
    }
   };
+  const handlehorizontalThumbnailChange = async (e) => {
+    try {
+     const file = e.target.files[0];
+     if (file) {
+         
+         await userFireBase.uploadToFirebase(file,file.name,Account.uid,"horizontalThumbnail")
+         const account=  await  dispatch(getAccount(Account.uid));
+         unwrapResult(account)
+     }
+    } catch (error) {
+        
+    }
+   };
   // Hàm xử lý việc điều chỉnh chỉ số hiện tại cho một bài viết cụ thể để xem ảnh cuộn bài post
   const handlePrev = (postId) => {
     setCurrentIndices((prevIndices) => ({
@@ -193,7 +206,11 @@ const MyChannelPage = () => {
               {/* Hiển thị ảnh nền */}
               <div className="w-full h-[400px] bg-green-200 rounded-lg relative">
                 <img
-                  src="https://wallpapers.com/images/hd/chill-anime-girl-during-winter-n65e3iefecsy01if.jpg"
+                  src={
+                    Account?.horizontalThumbnail
+                      ? Account?.horizontalThumbnail
+                      : "https://wallpapers.com/images/hd/chill-anime-girl-during-winter-n65e3iefecsy01if.jpg"
+                  }
                   className="object-cover w-[1200px] h-full rounded-t-lg"
                   alt="img"
                 />
@@ -209,7 +226,7 @@ const MyChannelPage = () => {
                     <input
                       type="file"
                       accept="image/*"
-                      onChange={(e) => handleimageChange(e)}
+                      onChange={(e) => handlehorizontalThumbnailChange(e)}
                       className="absolute inset-0 opacity-0 cursor-pointer "
                     />
                   </button>
