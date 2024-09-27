@@ -360,10 +360,10 @@ const VideoSeriesPage = () => {
           <div className="w-full h-full flex items-center justify-center">
             <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-6 pb-10 rounded-b">
               <div className="col-span-2 h-full">
-                
+
                 <div className="w-full px-5 font-semibold text-md flex pb-2">
                   {!language ? (
-                    <span> Video Series Episodes </span>
+                    <span> Episodes </span>
                   ) : (
                     <span> 시리즈 영상 </span>
                   )}

@@ -15,7 +15,7 @@ const AdminBannerPage = () => {
         const banners = await bannerFireBase.getAll();
         setbanner(banners.success ? banners.banner : []);
         setloading(true);
-      } catch (error) {}
+      } catch (error) { }
     };
     get();
   }, []);
@@ -28,8 +28,8 @@ const AdminBannerPage = () => {
           createTime: new Date(Date.now()),
         });
       }
-      const banners=await bannerFireBase.getAll()
-      setbanner(banners.success?banners.banner:[])
+      const banners = await bannerFireBase.getAll()
+      setbanner(banners.success ? banners.banner : [])
       setloading(true);
     } catch (error) {
       console.log(error);
@@ -41,13 +41,13 @@ const AdminBannerPage = () => {
 
       setloading(false);
       const file = e.target.files[0];
-              if (file) {
-               await   bannerFireBase.uploadToFirebase(file,file.name,id)
-              }
-        const banners=await bannerFireBase.getAll()
-        setbanner(banners.success?banners.banner:[])
+      if (file) {
+        await bannerFireBase.uploadToFirebase(file, file.name, id)
+      }
+      const banners = await bannerFireBase.getAll()
+      setbanner(banners.success ? banners.banner : [])
       setloading(true);
-    } catch (error) {}
+    } catch (error) { }
   };
   const handledelete = async (id) => {
     try {
@@ -59,7 +59,7 @@ const AdminBannerPage = () => {
         setbanner(banners.success ? banners.banner : []);
         setloading(true);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   return (
     <>
@@ -75,7 +75,20 @@ const AdminBannerPage = () => {
           <CircularProgress />
         </Box>
       ) : (
-        <div className="w-full h-[600px] py-5 bg-white custom-scrollbar">
+        <div className="w-full h-[600px] pb-5 bg-white custom-scrollbar">
+
+          <div className="w-full flex justify-end">
+            <button className="w-[100px] h-[35px] mb-3 mr-3 text-white mx-1 font-semibold relative bg-green-500 hover:bg-green-600 rounded-xl">
+              Add
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => handlePhotoChange1(e)}
+                className="absolute inset-0 opacity-0 cursor-pointer "
+              />
+            </button>
+          </div>
+
           <table className="w-full">
             <thead className="bg-gray-100">
               <tr className="w-full">
@@ -90,17 +103,6 @@ const AdminBannerPage = () => {
                 </th>
                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
                   Manager
-                </th>
-                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
-                  <button className="w-[35px] h-[35px] text-red-500 mx-1 relative bg-gray-100 hover:bg-gray-200 rounded-full">
-                    Add
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={(e) => handlePhotoChange1(e)}
-                      className="absolute inset-0 opacity-0 cursor-pointer "
-                    />
-                  </button>
                 </th>
               </tr>
             </thead>
@@ -124,16 +126,16 @@ const AdminBannerPage = () => {
                     {new Date(item.createTime)?.getFullYear()}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                    <button className="w-[35px] h-[35px] relative text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
+                    <button className="w-[35px] h-[35px] relative text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full cursor-pointer">
                       <EditIcon />
                       <input
                         type="file"
                         accept="image/*"
                         onChange={(e) => handleupdate(e, item.id)}
-                        className="absolute inset-0 opacity-0 cursor-pointer "
+                        className="absolute inset-0 opacity-0 cursor-pointer"
                       />
                     </button>
-                    <button onClick={()=>handledelete(item.id)} className="w-[35px] h-[35px] text-red-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
+                    <button onClick={() => handledelete(item.id)} className="w-[35px] h-[35px] text-red-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
                       <DeleteIcon />
                     </button>
                   </td>

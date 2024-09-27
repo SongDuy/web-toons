@@ -350,7 +350,7 @@ const OriginalSeriesPage = () => {
               <div className="col-span-2 h-full">
                 <div className="w-full px-5 pb-3 font-semibold text-md">
                   {!language ? (
-                    <span> Original Series Episodes </span>
+                    <span> Episodes </span>
                   ) : (
                     <span> 시리즈 오리지널 </span>
                   )}
