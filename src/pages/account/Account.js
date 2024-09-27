@@ -8,7 +8,7 @@ import { updateAccount } from "../../common/store/Account";
 import { unwrapResult } from '@reduxjs/toolkit';
 import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css"; 
+import "react-datepicker/dist/react-datepicker.css";
 const Account = () => {
   const [openName, setopenName] = useState(false);
   const [openEmail, setopenEmail] = useState(false);
@@ -25,8 +25,8 @@ const Account = () => {
   useEffect(() => {
     setName(Account?.name)
     setEmail(Account?.email)
-    setSelectedDate(Account?.birthday?new Date(Account?.birthday):null)
-  }, [Account]);
+    // setSelectedDate(Account?.birthday ? new Date(Account?.birthday) : selectedDate)
+  }, [Account, selectedDate]);
   const handleName = async () => {
     try {
       // Kiểm tra độ dài và các ký tự hợp lệ
@@ -46,16 +46,16 @@ const Account = () => {
 
     }
   };
-  const handleBirthday= async () => {
+  const handleBirthday = async () => {
     try {
-        const updatename = await dispatch(updateAccount({
-          birthday:selectedDate,
-          id: Account.uid
-        }))
+      const updatename = await dispatch(updateAccount({
+        birthday: selectedDate,
+        id: Account.uid
+      }))
 
-        unwrapResult(updatename)
-        setopenDate(!openDate)
-      
+      unwrapResult(updatename)
+      setopenDate(!openDate)
+
     } catch (error) {
       console.log(error)
     }
@@ -122,18 +122,18 @@ const Account = () => {
               <div className="flex  ml-5 my-5">
                 <div className="flex-row ml-5 my-8">
                   <div>
-                  <DatePicker
-                selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-                dateFormat="dd/MM/yyyy"  // Định dạng ngày
-                className="w-full h-[50px] px-2 border rounded shadow "  // Sử dụng Tailwind CSS để style
-                placeholderText="Select Date"
-                showYearDropdown  // Hiển thị danh sách năm
-                showMonthDropdown  // Hiển thị danh sách tháng
-                dropdownMode="select"  // Chuyển dropdown sang chế độ select để dễ chọn
-              />
+                    <DatePicker
+                      selected={selectedDate}
+                      onChange={(date) => setSelectedDate(date)}
+                      dateFormat="dd/MM/yyyy"  // Định dạng ngày
+                      className="w-full h-[50px] px-2 border rounded shadow "  // Sử dụng Tailwind CSS để style
+                      placeholderText="Select Date"
+                      showYearDropdown  // Hiển thị danh sách năm
+                      showMonthDropdown  // Hiển thị danh sách tháng
+                      dropdownMode="select"  // Chuyển dropdown sang chế độ select để dễ chọn
+                    />
                   </div>
-                 
+
                 </div>
                 <button
                   onClick={handleBirthday}
@@ -141,7 +141,7 @@ const Account = () => {
                 >
                   Add
                 </button>
-              
+
               </div>
             </div>
           ) : (
@@ -155,14 +155,14 @@ const Account = () => {
                 </div>
                 <div className="grid grid-cols-8 gap-4   ml-5 my-5 p-5 border-b border-gray-300">
                   <div className="my-2 col-span-7">
-                    {selectedDate?
-                    <p className="font-semibold  text-lg text-black">
-                       {new Date(selectedDate).getDate()}/{new Date(selectedDate).getMonth()+1}/
-                                                        {new Date(selectedDate)?.getFullYear()}
-                    </p>
-:      <p className="font-semibold  text-lg text-black">
-Not Birthday
-</p>}
+                    {selectedDate ?
+                      <p className="font-semibold  text-lg text-black">
+                        {new Date(selectedDate).getDate()}/{new Date(selectedDate).getMonth() + 1}/
+                        {new Date(selectedDate)?.getFullYear()}
+                      </p>
+                      : <p className="font-semibold  text-lg text-black">
+                        Not Birthday
+                      </p>}
                   </div>
                   <button
                     onClick={() => setopenDate(!openDate)}
@@ -295,7 +295,7 @@ Not Birthday
                   </button>
                 </div>
               }
-              
+
               <div className="  ml-5 my-5 border-b border-gray-300 ">
                 <div className="grid grid-cols-8 gap-4  ml-5 my-5">
                   <div className="my-2 col-span-7">

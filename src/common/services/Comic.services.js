@@ -16,10 +16,10 @@ import { fireStore, storage } from "../themes/firebase";
 
 const comicFireBase = {
   async get(age) {
-    const docSnap =age?await getDocs(
-      query(collection(fireStore, "Comic"), where("lock", "==", true), where("check", "==", true),where("Age", "<=", age))
-    ): await getDocs(
-      query(collection(fireStore, "Comic"), where("lock", "==", true), where("check", "==", true),where("Age", "<=", 15))
+    const docSnap = age ? await getDocs(
+      query(collection(fireStore, "Comic"), where("lock", "==", true), where("check", "==", true), where("Age", "<=", age))
+    ) : await getDocs(
+      query(collection(fireStore, "Comic"), where("lock", "==", true), where("check", "==", true), where("Age", "<=", 15))
     );
     const comic = docSnap.docs.map((item) => {
       //   console.log(item.ref)
@@ -63,16 +63,16 @@ const comicFireBase = {
       return { message: "No such document!", success: false };
     }
   },
-  async getrandom(setlimit,age) {
+  async getrandom(setlimit, age) {
     const randomValue = Math.random().toFixed(2);
-    const q =age?query(
+    const q = age ? query(
       collection(fireStore, "Comic"),
       where("lock", "==", true),
       where("check", "==", true),
       where("Age", "<=", age),
       where("random", ">=", randomValue),
       limit(setlimit)
-    ): query(
+    ) : query(
       collection(fireStore, "Comic"),
       where("lock", "==", true),
       where("check", "==", true),
@@ -117,14 +117,13 @@ const comicFireBase = {
       return { message: "No such document!", success: false };
     }
   },
-  async checkcomicuser(uid,idseries) {
+  async checkcomicuser(uid, idseries) {
     const dc = doc(fireStore, "Comic", idseries);
-
     const docS = await getDoc(dc);
     const docRef = query(
-      collection(docS.ref,idseries),
-      where("uid", "==", uid)    
-      );
+      collection(docS.ref, idseries),
+      where("uid", "==", uid)
+    );
     const docSnap = await getDocs(docRef);
     const comic = docSnap.docs?.map((item) => {
       return { id: item.id, ...item.data(), createTime: new Date(item.data().createTime?.toDate()).toISOString() };
@@ -136,6 +135,7 @@ const comicFireBase = {
     }
   },
   async getbyid(id) {
+
     const docRef = doc(fireStore, "Comic", id);
 
     const docSnap = await getDoc(docRef);
@@ -169,7 +169,7 @@ const comicFireBase = {
       return { message: "No such document!", success: false };
     }
   },
-  async getchaptersid(id,idchap) {
+  async getchaptersid(id, idchap) {
     const docRef = doc(fireStore, "Comic", id);
 
     const docSnap = await getDoc(docRef);
@@ -188,10 +188,10 @@ const comicFireBase = {
       return { message: "No such document!", success: false };
     }
   },
-  async getidlikechap(id,idchap,uid) {
+  async getidlikechap(id, idchap, uid) {
     const parentDocRef = doc(fireStore, "Comic", id);
-    const repcollectionRef = collection(parentDocRef,id);
-    const subrepRef=doc(repcollectionRef,idchap)
+    const repcollectionRef = collection(parentDocRef, id);
+    const subrepRef = doc(repcollectionRef, idchap)
     const subcollectionRef = collection(subrepRef, "like");
     const docRef = doc(subcollectionRef, uid);
     const docSnap = await getDoc(docRef);
@@ -203,14 +203,14 @@ const comicFireBase = {
   },
   async Addlikechap(data) {
     const parentDocRef = doc(fireStore, "Comic", data.id);
-    const repcollectionRef = collection(parentDocRef,data.id);
-    const subrepRef=doc(repcollectionRef,data.idseries)
+    const repcollectionRef = collection(parentDocRef, data.id);
+    const subrepRef = doc(repcollectionRef, data.idseries)
     const subcollectionRef = collection(subrepRef, "like");
     const docRef = doc(subcollectionRef, data.uid);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       await deleteDoc(docRef);
-     
+
 
       await updateDoc(subrepRef, {
         likes: data.togglelike === 0 ? 0 : data.togglelike - 1,
@@ -219,12 +219,12 @@ const comicFireBase = {
       const getdata = {
         id: data.id,
         uid: data.uid,
-        idrep:data.idseries,
+        idrep: data.idseries,
         like: data.like,
       };
-    
+
       await setDoc(docRef, getdata);
-    
+
 
       await updateDoc(subrepRef, { likes: data.togglelike + 1 });
     }
@@ -243,9 +243,9 @@ const comicFireBase = {
       fileURL: data.fileURL,
       likes: data.likes,
       num: data.num,
-      note:data.valueNote,
+      note: data.valueNote,
       views: data.views,
-      checkcomment:data.checkcomment,
+      checkcomment: data.checkcomment,
       createTime: data.createTime,
     };
     const docid = await addDoc(subcollectionRef, getdata);
@@ -257,7 +257,7 @@ const comicFireBase = {
     // Set the "capital" field of the city 'DC'
     await updateDoc(update, data);
   },
-  async updateep(data, idseries,idchap) {
+  async updateep(data, idseries, idchap) {
     const parentDocRef = doc(fireStore, "Comic", idseries);
     const subcollec = collection(parentDocRef, idseries);
     const parentDoc = doc(subcollec, idchap);
@@ -266,14 +266,14 @@ const comicFireBase = {
   async Delete(id) {
     await deleteDoc(doc(fireStore, "Comic", id));
   },
-   async Deletechap(id,idchap) {
+  async Deletechap(id, idchap) {
     const parentDocRef = doc(fireStore, "Comic", id);
     const subcollec = collection(parentDocRef, id);
     const parentDoc = doc(subcollec, idchap);
     await deleteDoc(parentDoc);
   },
   async uploadToFirebase(file, name, iduser, id, key) {
-    const storageRef =ref(storage, `cms_uploads/comic/${iduser}/${name}`);
+    const storageRef = ref(storage, `cms_uploads/comic/${iduser}/${name}`);
 
     const uploadTask = uploadBytesResumable(storageRef, file);
     new Promise((resolve, reject) => {
@@ -299,8 +299,8 @@ const comicFireBase = {
 
             const imageToUpdate = imageKeyMapping[key];
             if (imageToUpdate) {
-           
-                await this.update({ [imageToUpdate]: downloadUrl }, id);
+
+              await this.update({ [imageToUpdate]: downloadUrl }, id);
             }
             resolve(downloadUrl);
           });
@@ -309,8 +309,8 @@ const comicFireBase = {
     });
     return uploadTask;
   },
-  async uploadToFirebaseep(file, name, iduser, id, idchap,key) {
-    const storageRef = key==="fileURL"?ref(storage, `cms_uploads/comic/episodes/${iduser}/${id}/chap/${idchap}/${name}`):ref(storage, `cms_uploads/comic/episodes/${iduser}/${id}/${name}`);
+  async uploadToFirebaseep(file, name, iduser, id, idchap, key) {
+    const storageRef = key === "fileURL" ? ref(storage, `cms_uploads/comic/episodes/${iduser}/${id}/chap/${idchap}/${name}`) : ref(storage, `cms_uploads/comic/episodes/${iduser}/${id}/${name}`);
 
     const uploadTask = uploadBytesResumable(storageRef, file);
     new Promise((resolve, reject) => {
@@ -332,14 +332,14 @@ const comicFireBase = {
             const imageKeyMapping = {
               squareThumbnail: "squareThumbnail",
               horizontalThumbnail: "horizontalThumbnail",
-              fileURL:"fileURL"
+              fileURL: "fileURL"
 
             };
 
             const imageToUpdate = imageKeyMapping[key];
             if (imageToUpdate) {
-          
-                await this.updateep({ [imageToUpdate]: downloadUrl }, id,idchap);
+
+              await this.updateep({ [imageToUpdate]: downloadUrl }, id, idchap);
             }
             resolve(downloadUrl);
           });
@@ -350,8 +350,8 @@ const comicFireBase = {
   },
   async deleteAccount(id) {
     const Ref = collection(fireStore, "Comic");
-    const q = query(Ref, where("uid", "==", id)); 
-  
+    const q = query(Ref, where("uid", "==", id));
+
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach(async (doc) => {
       await deleteDoc(doc.ref);
