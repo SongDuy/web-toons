@@ -58,7 +58,7 @@ const OriginalsByGenrePage = () => {
                         <li
                             key={item.id}
                             onClick={() => setSelectedOriginalsByGenre(item.name)}
-                            className="uppercase font-semibold text-sm text-gray-400 hover:text-black cursor-pointer flex items-center justify-center"
+                            className={`uppercase font-semibold text-sm hover:text-black cursor-pointer flex items-center justify-center ${ selectedOriginalsByGenre === (item.name || "Action") ? 'text-black' : 'text-gray-400'}`}
                         >
                             {item.name}
                         </li>
@@ -111,7 +111,7 @@ const OriginalsByGenrePage = () => {
                                 <div className="w-full h-[150px] mt-3">
                                     <div className="w-full">
                                         <span className="block text-gray-400">
-                                            {comicid?.genre1},{comicid?.genre2}
+                                            {comicid?.genre1}, {comicid?.genre2}
                                         </span>
                                     </div>
 
@@ -169,8 +169,7 @@ const OriginalsByGenrePage = () => {
                                             </div>
                                             <div className="w-[420px] mt-auto mb-auto overflow-hidden">
                                                 <span className="text-gray-400 text-sm">
-                                                    {item.genre1},{item.genre2}
-
+                                                    {item.genre1}, {item.genre2}
                                                 </span>
                                                 <span className="text-md font-semibold line-clamp-1">
                                                     {item.title}

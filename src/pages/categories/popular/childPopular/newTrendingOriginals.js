@@ -62,7 +62,7 @@ const NewTrendingOriginalsPage = () => {
 
               <div className="w-full h-[150px] mt-3">
                 <div className="w-full">
-                  <span className="block text-gray-400">{comicid?.genre1},{comicid?.genre2}</span>
+                  <span className="block text-gray-400">{comicid?.genre1}, {comicid?.genre2}</span>
                 </div>
 
                 <div className="w-full h-[75px] overflow-hidden">
@@ -115,7 +115,7 @@ const NewTrendingOriginalsPage = () => {
                         </div>
                         <div className="w-[420px] mt-auto mb-auto overflow-hidden">
                           <span className="text-gray-400 text-sm">
-                          {item.genre1},{item.genre2}
+                          {item.genre1}, {item.genre2}
                           </span>
                           <span className="text-md font-semibold line-clamp-1">
                             {item.title}

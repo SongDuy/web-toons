@@ -297,7 +297,7 @@ const OriginalSeriesPage = () => {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-[1200px] overflow-hidden">
                   <span className="font-semibold text-xl text-black text-shadow-white flex items-center justify-center">
-                    {comicid.genre1},{comicid.genre2}
+                    {comicid.genre1}, {comicid.genre2}
                   </span>
 
                   <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.3] line-clamp-3 flex justify-center">
