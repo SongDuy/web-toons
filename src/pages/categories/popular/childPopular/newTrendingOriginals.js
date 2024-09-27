@@ -35,8 +35,8 @@ const NewTrendingOriginalsPage = () => {
             onMouseLeave={() => setHoveredOriginalItem(null)}
           >
             <div className="w-full h-full">
-              <div className="w-[500px] mr-auto h-[500px] rounded-md bg-green-500 flex items-center justify-center relative">
-                <div>
+              <div className="w-[500px] mr-auto h-[500px] rounded-md flex items-center justify-center relative">
+                <div className="w-full h-full">
                   <img
                     src={comicid?.squareThumbnail}
                     alt="img"

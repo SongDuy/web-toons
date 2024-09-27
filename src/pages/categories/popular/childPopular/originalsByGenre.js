@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import { Link } from 'react-router-dom';
@@ -33,12 +33,12 @@ dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 const OriginalsByGenrePage = () => {
     const comic = useSelector((state) => state.comic.comic);
     const [selectedOriginalsByGenre, setSelectedOriginalsByGenre] = useState('Action');
-    const [comicid, setcomicid] = useState(comic?.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).slice(0,1)?.sort((a, b) => b.views - a.views)[0]);
+    const [comicid, setcomicid] = useState(comic?.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).slice(0, 1)?.sort((a, b) => b.views - a.views)[0]);
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
-useEffect(() => {
-    setcomicid(comic?.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).slice(0,1)?.sort((a, b) => b.views - a.views)[0])
-}, [selectedOriginalsByGenre,comic.comic]);
+    useEffect(() => {
+        setcomicid(comic?.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).slice(0, 1)?.sort((a, b) => b.views - a.views)[0])
+    }, [selectedOriginalsByGenre, comic.comic]);
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
 
@@ -68,86 +68,85 @@ useEffect(() => {
             </div>
 
             <div className="w-full flex gap-[60px]">
-                                {/* Hien thị top 1 */}
+                {/* Hien thị top 1 */}
 
                 {comicid?.id &&
-                <Link
-                    to={`/originals/original/series/${comicid?.id}`}
-                    className="h-[815px] bg-white py-1"
-                >
-                    <div
-                        className="w-[500px] h-full"
-                        onMouseEnter={() => setHoveredOriginalItem("choice")}
-                        onMouseLeave={() => setHoveredOriginalItem(null)}
+                    <Link
+                        to={`/originals/original/series/${comicid?.id}`}
+                        className="h-[815px] bg-white py-1"
                     >
+                        <div
+                            className="w-[500px] h-full"
+                            onMouseEnter={() => setHoveredOriginalItem("choice")}
+                            onMouseLeave={() => setHoveredOriginalItem(null)}
+                        >
 
-                        <div className="w-full h-full">
-                            <div className="w-[500px] mr-auto h-[500px] rounded-md bg-green-500 flex items-center justify-center relative">
-                                <div>
-                                    <img
-                                                          src={comicid?.squareThumbnail}
+                            <div className="w-full h-full">
+                                <div className="w-[500px] mr-auto h-[500px] rounded-md flex items-center justify-center relative">
+                                    <div className="w-full h-full">
+                                        <img
+                                            src={comicid?.squareThumbnail}
+                                            alt="img"
+                                            className="object-fill w-full h-full rounded-md"
+                                        />
 
-                                        alt="img"
-                                        className="object-fill w-full h-full rounded-md"
-                                    />
+                                        {hoveredOriginalItem === "choice" && (
+                                            <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                <AutoStoriesIcon sx={{ fontSize: 60 }} />
+                                            </div>
+                                        )}
+                                    </div>
 
-                                    {hoveredOriginalItem === "choice" && (
-                                        <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
-                                            <AutoStoriesIcon sx={{ fontSize: 60 }} />
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                    <div className="w-full h-[120px] mb-auto overflow-hidden">
-                                        <div className="w-[80px] h-[80px] flex items-center justify-center mx-2">
-                                            <span className="mx-3 text-[60px] text-white text-shadow-black font-bold">
-                                                1
-                                            </span>
+                                    <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                        <div className="w-full h-[120px] mb-auto overflow-hidden">
+                                            <div className="w-[80px] h-[80px] flex items-center justify-center mx-2">
+                                                <span className="mx-3 text-[60px] text-white text-shadow-black font-bold">
+                                                    1
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="w-full h-[150px] mt-3">
-                                <div className="w-full">
-                                    <span className="block text-gray-400">
-                                    {comicid?.genre1},{comicid?.genre2}
-                                    </span>
+                                <div className="w-full h-[150px] mt-3">
+                                    <div className="w-full">
+                                        <span className="block text-gray-400">
+                                            {comicid?.genre1},{comicid?.genre2}
+                                        </span>
+                                    </div>
+
+
+                                    <div className="w-full h-[75px] overflow-hidden">
+                                        <span className="text-[30px] font-semibold leading-[1.2] line-clamp-2">
+                                            {comicid?.title}
+
+                                        </span>
+                                    </div>
+
+                                    <div>
+                                        <span className="block">
+                                            {comicid?.Author}
+                                        </span>
+                                    </div>
+
+                                    <div className=" w-full h-full mt-5 overflow-hidden">
+                                        <span className="w-full line-clamp-6">
+                                            {comicid?.summary}
+                                        </span>
+                                    </div>
+
                                 </div>
-
-
-                                <div className="w-full h-[75px] overflow-hidden">
-                                    <span className="text-[30px] font-semibold leading-[1.2] line-clamp-2">
-                                    {comicid?.title}
-
-                                    </span>
-                                </div>
-
-                                <div>
-                                    <span className="block">
-                                    {comicid?.Author}
-                                    </span>
-                                </div>
-
-                                <div className=" w-full h-full mt-5 overflow-hidden">
-                                    <span className="w-full line-clamp-6">
-                                    {comicid?.summary}
-                                    </span>
-                                </div>
-
                             </div>
                         </div>
-                    </div>
-                </Link>
-}
+                    </Link>
+                }
                 {/* Hien thị danh sách */}
                 <div className="w-full h-[815px] bg-white">
                     <div className="w-full h-full">
                         <ul className="w-full h-full ">
 
                             {/* khung nội dung */}
-                            { comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase())?.slice(1,9).sort((a,b)=>b?.views-a?.views).map((item, index) => (
+                            {comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase())?.slice(1, 9).sort((a, b) => b?.views - a?.views).map((item, index) => (
                                 <Link
                                     key={item.id}
                                     to={`/originals/original/series/${item.id}`}
