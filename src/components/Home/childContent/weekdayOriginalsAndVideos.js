@@ -229,7 +229,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                             />
 
                                             {hoveredOriginalItem === item.id && (
-                                                <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                <div className="absolute inset-0 border-2 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                     <AutoStoriesIcon sx={{ fontSize: 40 }} />
                                                 </div>
                                             )}
@@ -283,7 +283,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                     <li
                                         onMouseEnter={() => setHoveredVideoItem(item.id)}
                                         onMouseLeave={() => setHoveredVideoItem(null)}
-                                        className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white  cursor-pointer transition-shadow duration-300 hover:shadow"
+                                        className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white cursor-pointer transition-shadow duration-300 hover:shadow"
                                     >
 
                                         <div className="w-full h-[120px] relative" >

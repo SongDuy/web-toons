@@ -16,6 +16,10 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
     // hàm material nút chọn ở mục comment
     const [selectedValue, setSelectedValue] = React.useState('Enable');
+
+    // hàm material nút chọn ở mục episodes
+    const [selectedEpisodesValue, setSelectedEpisodesValue] = React.useState('Ongoing');
+
     const Account = useSelector((state) => state.Account.Account);
     const videoid = useSelector(state => state.Video?.videoid);
     const [loading, setloading] = useState(false);
@@ -51,8 +55,14 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
         }
         get()
     }, [dispatch, Account, navigate, id]);
+
     const handleChange = (event) => {
         setSelectedValue(event.target.value);
+    };
+
+    // chỉnh trạng thái các tập
+    const handleEpisodesChange = (event) => {
+        setSelectedEpisodesValue(event.target.value);
     };
 
     // Tiêu đề tập truyện
@@ -335,7 +345,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                             PRO TIPS
                                         </h1>
 
-                                        <div className="w-full h-[100px] flex items-center gap-3">
+                                        <div className="w-full h-[80px] flex items-center gap-3">
                                             <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
                                                 Preview PC
                                             </button>
@@ -379,8 +389,39 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 <span>Disable</span>
                                             </label>
                                         </div>
-
                                     </div>
+
+                                    {/* Phần hiệu chỉnh episode */}
+                                    <div className="w-full flex items-center gap-10">
+                                        {/* Tiêu đề */}
+                                        <h1 className="h-full font-semibold text-xl flex items-center">
+                                            Episodes
+                                        </h1>
+
+                                        <div className="flex gap-6 mt-1 ml-[20px] items-center">
+                                            <label className="flex items-center">
+                                                <Radio
+                                                    checked={selectedEpisodesValue === 'Ongoing'}
+                                                    onChange={handleEpisodesChange}
+                                                    value="Ongoing"
+                                                    name="radio-buttons"
+                                                    sx={{ '& .MuiSvgIcon-root': { fontSize: 30, }, }}
+                                                />
+                                                <span>Ongoing</span>
+                                            </label>
+                                            <label className="flex items-center">
+                                                <Radio
+                                                    checked={selectedEpisodesValue === 'Completed'}
+                                                    onChange={handleEpisodesChange}
+                                                    value="Completed"
+                                                    name="radio-buttons"
+                                                    sx={{ '& .MuiSvgIcon-root': { fontSize: 30, }, }}
+                                                />
+                                                <span>Completed</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 {/* Nút đăng tập truyện */}

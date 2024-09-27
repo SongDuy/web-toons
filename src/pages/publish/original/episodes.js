@@ -15,6 +15,10 @@ import Box from '@mui/material/Box';
 const EpisodesOriginalPage = ({ goToPreviousStep }) => {
     // hàm material nút chọn ở mục comment
     const [selectedValue, setSelectedValue] = React.useState('Enable');
+
+    // hàm material nút chọn ở mục episodes
+    const [selectedEpisodesValue, setSelectedEpisodesValue] = React.useState('Ongoing');
+
     const Account = useSelector((state) => state.Account.Account);
     const comicid = useSelector(state => state.comic.comicid);
     const [loading, setloading] = useState(false);
@@ -52,8 +56,14 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
         }
         get()
     }, [dispatch, id, Account, navigate]);
+
     const handleChange = (event) => {
         setSelectedValue(event.target.value);
+    };
+
+    // chỉnh trạng thái các tập
+    const handleEpisodesChange = (event) => {
+        setSelectedEpisodesValue(event.target.value);
     };
 
     // Tiêu đề tập truyện
@@ -215,8 +225,8 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                             </div>
 
                             {/* Phần ghi chú của tác giả */}
-                            <div className="w-full py-3 pl-5 grid grid-cols-1 gap-5 border-b-2 pb-10">
-                                <div>
+                            <div className="w-full py-3 pl-5 border-b-2 pb-10">
+                                <div className="grid grid-cols-1 gap-5">
                                     <div className="w-full flex items-center gap-2">
                                         <h1 className="font-semibold text-xl flex items-center">
                                             Series title :
@@ -331,7 +341,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                                             PRO TIPS
                                         </h1>
 
-                                        <div className="w-full h-[100px] flex items-center gap-3">
+                                        <div className="w-full h-[80px] flex items-center gap-3">
                                             <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
                                                 Preview PC
                                             </button>
@@ -346,11 +356,11 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                                         </div>
                                     </div>
 
-                                    <div className="w-full">
+                                    {/* <div className="w-full">
                                         <button className="">
 
                                         </button>
-                                    </div>
+                                    </div> */}
 
                                     {/* Phần hiệu chỉnh comment */}
                                     <div className="w-full flex items-center gap-10">
@@ -359,7 +369,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                                             Comments
                                         </h1>
 
-                                        <div className="flex gap-10 items-center">
+                                        <div className="flex gap-10 mt-1 items-center">
                                             <label className="flex items-center">
                                                 <Radio
                                                     checked={selectedValue === 'Enable'}
@@ -381,12 +391,43 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                                                 <span>Disable</span>
                                             </label>
                                         </div>
-
                                     </div>
+
+                                    {/* Phần hiệu chỉnh episode */}
+                                    <div className="w-full flex items-center gap-10">
+                                        {/* Tiêu đề */}
+                                        <h1 className="h-full font-semibold text-xl flex items-center">
+                                            Episodes
+                                        </h1>
+
+                                        <div className="flex gap-6 mt-1 ml-[20px] items-center">
+                                            <label className="flex items-center">
+                                                <Radio
+                                                    checked={selectedEpisodesValue === 'Ongoing'}
+                                                    onChange={handleEpisodesChange}
+                                                    value="Ongoing"
+                                                    name="radio-buttons"
+                                                    sx={{ '& .MuiSvgIcon-root': { fontSize: 30, }, }}
+                                                />
+                                                <span>Ongoing</span>
+                                            </label>
+                                            <label className="flex items-center">
+                                                <Radio
+                                                    checked={selectedEpisodesValue === 'Completed'}
+                                                    onChange={handleEpisodesChange}
+                                                    value="Completed"
+                                                    name="radio-buttons"
+                                                    sx={{ '& .MuiSvgIcon-root': { fontSize: 30, }, }}
+                                                />
+                                                <span>Completed</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 {/* Nút đăng tập truyện */}
-                                <div className="w-full mt-10 py-3 pl-5">
+                                <div className="w-full mt-10 py-3">
                                     <button onClick={handleEp} className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4">
                                         Publish episode
                                     </button>
