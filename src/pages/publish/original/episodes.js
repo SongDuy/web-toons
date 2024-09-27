@@ -346,6 +346,12 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                                         </div>
                                     </div>
 
+                                    <div className="w-full">
+                                        <button className="">
+
+                                        </button>
+                                    </div>
+
                                     {/* Phần hiệu chỉnh comment */}
                                     <div className="w-full flex items-center gap-10">
                                         {/* Tiêu đề */}

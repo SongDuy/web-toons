@@ -118,7 +118,7 @@ const comicFireBase = {
     }
   },
   async checkcomicuser(uid, idseries) {
-    const dc = doc(fireStore, "Comic", idseries);
+    const dc = doc(fireStore, "comic", idseries);
     const docS = await getDoc(dc);
     const docRef = query(
       collection(docS.ref, idseries),
