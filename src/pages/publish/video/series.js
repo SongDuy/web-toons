@@ -410,7 +410,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                     CONTENT RATING SELF ASSESSMENT
                                 </h1>
 
-                                <div className="w-full mt-2 flex flex-wrap">
+                                {/* <div className="w-full mt-2 flex flex-wrap">
                                     <span className="w-full">
                                         All series on WEBTOON must now display a Content Rating.
                                         With visible Content Ratings, we can help users discover
@@ -424,7 +424,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                         WEBTOON's sole discretion and without prior notice.
                                         The WEBTOON Community Policy and Uploading Guidelines will remain the same. Content Rating Guide.
                                     </span>
-                                </div>
+                                </div> */}
                             </div>
 
                             {/* Phần chọn nội dung video buộc chọn xong mới có thể nhấn nút check*/}
