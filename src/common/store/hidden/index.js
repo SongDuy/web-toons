@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   hidden: true,
   isLoginModal: false,
+  isLogin19Modal: false,
   language: false,
   payment: false,
 
@@ -13,6 +14,9 @@ const Hidden = createSlice({
   reducers: {
     setIsLoginModal: (state,action) => {
       state.isLoginModal= action.payload;
+    },
+    setIsLogin19Modal: (state,action) => {
+      state.isLogin19Modal= action.payload;
     },
     getHidden: (state) => {
       state.hidden = !state.hidden;
@@ -30,6 +34,7 @@ export const {
   setIsLoginModal,
   getHidden,
   getlanguage,
-  setIspayment
+  setIspayment,
+  setIsLogin19Modal
 } = Hidden.actions;
 export default Hidden.reducer;

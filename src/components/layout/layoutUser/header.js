@@ -23,9 +23,10 @@ import logo from "../../../img/logonew.png";
 import { Link, useLocation} from "react-router-dom";
 import { auth } from "../../../common/themes/firebase";
 import { useDispatch, useSelector } from 'react-redux';
-import { getlanguage, setIsLoginModal } from "../../../common/store/hidden";
+import { getlanguage, setIsLoginModal,setIsLogin19Modal } from "../../../common/store/hidden";
 import { logout, setuser } from "../../../common/store/Auth.js";
 import { onAuthStateChanged } from 'firebase/auth';
+import userFireBase from "../../../common/services/User.services";
 
 const HeaderPage = () => {
 
@@ -124,7 +125,29 @@ const HeaderPage = () => {
   const closeLoginModal = () => {
     dispatch(setIsLoginModal(false));
   };
+  const openLogin19Modal = () => {
+    dispatch(setIsLoginModal(true));
+    dispatch(setIsLogin19Modal(true));
 
+  };
+
+  const closeLogin19Modal = () => {
+    dispatch(setIsLoginModal(false));
+    dispatch(setIsLogin19Modal(false));
+
+  };
+  const logouts=async ()=>{
+      try {
+        if(auth?.currentUser){
+          await userFireBase.update({checkage:false},auth?.currentUser?.uid) 
+       await dispatch(logout())
+        dispatch(setIsLogin19Modal(false));
+        }
+       
+      } catch (error) {
+        
+      }
+  }
   //new
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -163,15 +186,15 @@ const HeaderPage = () => {
 
           <button
             className="w-[25px] h-[25px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
-            onClick={openLoginModal}
+            onClick={openLogin19Modal}
           >
             19
           </button>
           <button
             className="border h-[5px] bg-gray-500 w-[20px] rounded-r-full"
-            onClick={openLoginModal}
-          />
-
+            onClick={closeLogin19Modal}
+          >
+</button>
           {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
         </div>
         :
@@ -179,11 +202,11 @@ const HeaderPage = () => {
 
           <button
             className="border h-[5px] bg-gray-500 w-[20px] rounded-l-full"
-            onClick={() => dispatch(logout())}
+            onClick={()=>logouts()}
           />
           <button
             className="w-[25px] h-[25px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
-            onClick={() => dispatch(logout())}
+            onClick={()=>logouts()}
           >
             19
           </button>
@@ -425,7 +448,7 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <MenuItem onClick={() =>{ dispatch(logout())}} className="flex gap-x-3">
+                          <MenuItem onClick={()=>logouts()} className="flex gap-x-3">
                             <LogoutIcon />
                             {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
                           </MenuItem>

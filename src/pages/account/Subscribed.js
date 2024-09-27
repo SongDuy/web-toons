@@ -42,10 +42,18 @@ const Subscribed = () => {
         setloading(false);
 
         const subscribe = await SubscribeFireBase.getbyid(Account?.uid);
-        const age= Account?.birthday? new Date(Date.now())?.getFullYear()-new Date(Account.birthday)?.getFullYear():15
-      
-        const lg = await dispatch(getAllComic(age));
-        unwrapResult(lg);
+        if (Account?.checkage) {
+          const age = Account?.birthday
+            ? new Date(Date.now())?.getFullYear() -
+              new Date(Account.birthday)?.getFullYear()
+            : 15;
+
+          const lg = await dispatch(getAllComic(age));
+          unwrapResult(lg);
+        } else {
+          const lg = await dispatch(getAllComic());
+          unwrapResult(lg);
+        }
 
         if (subscribe.success) {
           const sub = await Promise.all(
@@ -67,11 +75,11 @@ const Subscribed = () => {
         }
         setloading(true);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     };
     get();
-  }, [dispatch,Account, replay]);
+  }, [dispatch, Account, replay]);
   const HandleDelete = async () => {
     try {
       setloading(false);

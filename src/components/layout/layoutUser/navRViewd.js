@@ -1,8 +1,8 @@
-import React, { useState, useEffect,memo } from "react";
+import React, { useState, useEffect, memo } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { unwrapResult } from '@reduxjs/toolkit';
-import { useDispatch,useSelector } from 'react-redux';
+import { unwrapResult } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
 import { getrandomComic } from "../../../common/store/comic";
 import { getAccount } from "../../../common/store/Account";
 import { auth } from "../../../common/themes/firebase";
@@ -10,42 +10,47 @@ import { auth } from "../../../common/themes/firebase";
 const NavRViewd = () => {
   const [OpennavRVivew, setOpennavRVivew] = useState(false);
   const [OpenoAnimation, setnoAnimation] = useState(false);
-  const   dispatch = useDispatch();
-  const comic = useSelector(state => state.comic.random);
-  const User = useSelector(state => state.AuthJs.User);
+  const dispatch = useDispatch();
+  const comic = useSelector((state) => state.comic.random);
+  const User = useSelector((state) => state.AuthJs.User);
 
   useEffect(() => {
-    const getRandom = async ()=>{
+    const getRandom = async () => {
       if (!comic.comic) {
-       try {
-      
-        if(User){
-          const account= await  dispatch(getAccount(auth?.currentUser?.uid));
-          const user=  unwrapResult(account)
-          const age= account?.payload?.birthday? new Date(Date.now())?.getFullYear()-new Date(user.birthday)?.getFullYear():15
-          const random= await  dispatch(getrandomComic({limit:5,age}));
-        
-          unwrapResult(random)
-         }else{
-          const random= await  dispatch(getrandomComic(5));
-        
-       unwrapResult(random)
-         }
-       
-         
-       } catch (error) {
-        // console.log(error)
+        try {
+          if (User) {
+            const account = await dispatch(getAccount(auth?.currentUser?.uid));
+            const user = unwrapResult(account);
+            if (user?.checkage) {
+              const age = account?.payload?.birthday
+                ? new Date(Date.now())?.getFullYear() -
+                  new Date(user.birthday)?.getFullYear()
+                : 15;
+              const random = await dispatch(getrandomComic({ limit: 5, age }));
 
-       }
+              unwrapResult(random);
+            } else {
+              const random = await dispatch(getrandomComic(5));
+
+              unwrapResult(random);
+            }
+          } else {
+            const random = await dispatch(getrandomComic(5));
+
+            unwrapResult(random);
+          }
+        } catch (error) {
+          // console.log(error)
+        }
       }
     };
-    getRandom()
-  }, [dispatch,comic,User]);
- 
+    getRandom();
+  }, [dispatch, comic, User]);
+
   const OpenRView = () => {
-    setOpennavRVivew(true)
-    setnoAnimation(true)
-  }
+    setOpennavRVivew(true);
+    setnoAnimation(true);
+  };
   return (
     <div>
       <button
@@ -58,11 +63,12 @@ const NavRViewd = () => {
           <ArrowForwardIosIcon sx={{ fontSize: 12 }} />
         </div>
       </button>
-      {OpenoAnimation &&
+      {OpenoAnimation && (
         <div>
           <button
-            className={`fixed top-[50%] right-[3%]     ${!OpennavRVivew ? " animate-slideLeft " : "animate-slideRight "
-              } `}
+            className={`fixed top-[50%] right-[3%]     ${
+              !OpennavRVivew ? " animate-slideLeft " : "animate-slideRight "
+            } `}
             onClick={() => setOpennavRVivew(false)}
           >
             <div className="transform rotate-90 bg-white   p-3 rounded-br-lg rounded-bl-lg flex text-white">
@@ -76,8 +82,9 @@ const NavRViewd = () => {
           </button>
 
           <div
-            className={`fixed top-0 h-screen right-[-2%]  w-[9%] bg-white p-8 ${!OpennavRVivew ? " animate-slideLeft " : "animate-slideRight "
-              }`}
+            className={`fixed top-0 h-screen right-[-2%]  w-[9%] bg-white p-8 ${
+              !OpennavRVivew ? " animate-slideLeft " : "animate-slideRight "
+            }`}
           >
             <div className="flex justify-center items-center ">
               <div>
@@ -112,9 +119,9 @@ const NavRViewd = () => {
             </div>
           </div>
         </div>
-      }
+      )}
     </div>
   );
 };
 
-export default memo( NavRViewd);
+export default memo(NavRViewd);

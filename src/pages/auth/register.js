@@ -32,7 +32,7 @@ const RegisterPage = () => {
       navigate('/')
 
     } catch (error) {
-
+      console.log(error)
     }
   }
 

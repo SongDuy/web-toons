@@ -41,6 +41,40 @@ export const handleLogin = createAsyncThunk("user/login", async (payload) => {
   }
   //throw error
 });
+export const handleLogin19 = createAsyncThunk("user/login19", async (payload) => {
+  try {
+   const userCredential = await signInWithEmailAndPassword(auth, payload.email, payload.password);
+   await userFireBase.update({checkage:true},userCredential?.user?.uid)
+   const finduser=await userFireBase.getbyid(userCredential?.user?.uid)
+   const lock=finduser.success?finduser?.lock:true
+   if(userCredential.user.emailVerified ){
+     if(!lock){
+        throw new Error('401')
+     }
+    const token = await auth.currentUser.getIdToken(true);
+    localStorage.setItem("sadsadas", token);
+    return true;
+
+   }else{
+    auth.signOut()
+    throw new Error ( '400');
+
+   }
+   
+  } catch (error) {
+    // console.log(error);
+    if (error.message === '400') {
+      throw new Error("Please verify your email before logging in.");
+    } else if (error.message === '401') {
+      throw new Error("Account Locked");
+    } else {
+      throw new Error("Incorrect email or password.");
+    }
+    
+    // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
+  }
+  //throw error
+});
 export const handleAdmin = createAsyncThunk("user/loginadmin", async (payload) => {
   try {
    const userCredential = await signInWithEmailAndPassword(auth, payload.email, payload.password);
@@ -126,6 +160,34 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
       throw error
     }
   });
+  export const handleGoogle19 = createAsyncThunk("user/loginGoogle19", async () => {
+    const provider = new GoogleAuthProvider();
+
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const token = await auth.currentUser.getIdToken(true);
+
+      localStorage.setItem('sadsadas', token);
+      const finduser=await userFireBase.getbyid(result?.user?.uid)
+      if(!finduser?.success){
+        await userFireBase.Add({email:result?.user?.email,uid: result?.user?.uid,role:'user',name: result?.user?.displayName,follow:0,lock:true,checkage:false},result?.user?.uid)
+      }else{
+        await userFireBase.update({checkage:true},result?.user?.uid)
+
+        if(!finduser.lock){
+          auth.signOut()
+          return false
+        }
+      }
+      
+      return true
+      // console.log(token, result.user);
+    } catch (error) {
+      // Xử lý lỗi đăng nhập
+   
+      throw error
+    }
+  });
 const authRedux = createSlice({
   name: "AuthRedux",
   initialState: {
@@ -160,6 +222,15 @@ const authRedux = createSlice({
         state.User = action.payload;
       })
       .addCase(handleLogin.rejected, (state, action) => {
+        state.User = false; // Kết thúc quá trình đăng nhập
+        state.error = action.error; // Lưu thông báo lỗi để hiển thị cho người dùng
+      });
+      builder
+      .addCase(handleLogin19.fulfilled, (state, action) => {
+        state.error = null;
+        state.User = action.payload;
+      })
+      .addCase(handleLogin19.rejected, (state, action) => {
         state.User = false; // Kết thúc quá trình đăng nhập
         state.error = action.error; // Lưu thông báo lỗi để hiển thị cho người dùng
       });
@@ -199,6 +270,14 @@ const authRedux = createSlice({
         state.User = action.payload;
       })
       .addCase(handleGoogle.rejected, (state, action) => {
+        state.User = false; // Kết thúc quá trình đăng nhập
+        state.error = action.error; // Lưu thông báo lỗi để hiển thị cho người dùng
+      });
+      builder
+      .addCase(handleGoogle19.fulfilled, (state, action) => {
+        state.User = action.payload;
+      })
+      .addCase(handleGoogle19.rejected, (state, action) => {
         state.User = false; // Kết thúc quá trình đăng nhập
         state.error = action.error; // Lưu thông báo lỗi để hiển thị cho người dùng
       });

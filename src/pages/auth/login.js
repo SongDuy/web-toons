@@ -7,8 +7,8 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { useDispatch, useSelector } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 
-import { setIsLoginModal } from '../../common/store/hidden';
-import { handleLogin, handleGoogle, seterr } from '../../common/store/Auth.js';
+import { setIsLoginModal,setIsLogin19Modal } from '../../common/store/hidden';
+import { handleLogin, handleGoogle, seterr, handleLogin19, handleGoogle19 } from '../../common/store/Auth.js';
 import useTimeout from '../../Hooks/useTimeout';
 
 const LoginPage = ({ closeModal }) => {
@@ -16,6 +16,8 @@ const LoginPage = ({ closeModal }) => {
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
     const err = useSelector(state => state.AuthJs.error);
+    const isLogin19Modal = useSelector(state => state.hidden.isLogin19Modal);
+
     useTimeout(() => {
         dispatch(seterr(null));
     }, err ? 3000 : null);
@@ -27,17 +29,43 @@ const LoginPage = ({ closeModal }) => {
     };
     const GetLogin = async () => {
         try {
+          if(isLogin19Modal){
+            const lg = await dispatch(handleLogin19({ email, password }));
+            unwrapResult(lg)
+            if (err === null) {
+                dispatch(setIsLoginModal(false))
+                dispatch(setIsLogin19Modal(false));
+            }
+            
+          }else{
             const lg = await dispatch(handleLogin({ email, password }));
             unwrapResult(lg)
             if (err === null) {
                 dispatch(setIsLoginModal(false))
 
             }
+          }
         } catch (error) {
         }
 
     }
-   
+    const GetGoogle = async () => {
+        try {
+          if(isLogin19Modal){
+            const lg = await dispatch(handleGoogle19());
+            unwrapResult(lg)
+            console.log(lg)
+                dispatch(setIsLoginModal(false))
+                dispatch(setIsLogin19Modal(false));
+
+          }else{
+            dispatch(handleGoogle());
+            dispatch(setIsLoginModal(false)) 
+          }
+        } catch (error) {
+        }
+
+    }
     // useEffect(() => {
     //     onIdTokenChanged(auth, (user) => {
     //         if (user) {
@@ -124,7 +152,7 @@ const LoginPage = ({ closeModal }) => {
 
                     <div className="w-full h-full grid grid-cols-1 gap-y-5">
 
-                        <button onClick={() => { dispatch(handleGoogle()); dispatch(setIsLoginModal(false)) }}
+                        <button onClick={GetGoogle}
                             className="w-full h-[50px] cursor-pointer px-5 py-2 bg-red-50 hover:bg-red-100 shadow-md flex items-center justify-center rounded">
                             <span className="mr-auto">
                                 <GoogleIcon />
