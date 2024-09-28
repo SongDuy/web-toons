@@ -28,7 +28,7 @@ const AdminNotificationsPage = () => {
         const banks = await BankFireBase.getAll();
         setbank(banks.success ? banks.bank : []);
         setloading(true);
-      } catch (error) {}
+      } catch (error) { }
     };
     get();
   }, []);
@@ -40,39 +40,39 @@ const AdminNotificationsPage = () => {
     setAccountname("");
     setAccountnumber("");
   };
-  const handleid=async (id)=>{
+  const handleid = async (id) => {
     try {
-        const getidbank=await BankFireBase.getbyid(id)
-        setBankname(getidbank.success?getidbank.Bankname:'');
-        setAccountname(getidbank.success?getidbank.Accountname:'');
-        setAccountnumber(getidbank.success?getidbank.Accountnumber:'');
-        setidbank(id)
-        setopen(true)
+      const getidbank = await BankFireBase.getbyid(id)
+      setBankname(getidbank.success ? getidbank.Bankname : '');
+      setAccountname(getidbank.success ? getidbank.Accountname : '');
+      setAccountnumber(getidbank.success ? getidbank.Accountnumber : '');
+      setidbank(id)
+      setopen(true)
     } catch (error) {
-        
+
     }
   }
   const handleupdate = async () => {
     try {
-    
-        if (Bankname && Accountnumber && Accountname) {
-      setloading(false);
+
+      if (Bankname && Accountnumber && Accountname) {
+        setloading(false);
         await BankFireBase.update({
-            Bankname,
-            Accountnumber,
-            Accountname,
-            createTime: new Date(Date.now()),
-          }, idbank);
-      const banks = await BankFireBase.getAll();
-      setbank(banks.success ? banks.bank : []);
-      setloading(true);
-      setopen(false);
-      setBankname("");
-      setAccountname("");
-      setAccountnumber("");
-      setidbank('')
-    }
-    } catch (error) {}
+          Bankname,
+          Accountnumber,
+          Accountname,
+          createTime: new Date(Date.now()),
+        }, idbank);
+        const banks = await BankFireBase.getAll();
+        setbank(banks.success ? banks.bank : []);
+        setloading(true);
+        setopen(false);
+        setBankname("");
+        setAccountname("");
+        setAccountnumber("");
+        setidbank('')
+      }
+    } catch (error) { }
   };
   const handledelete = async (id) => {
     try {
@@ -83,9 +83,9 @@ const AdminNotificationsPage = () => {
         const banks = await BankFireBase.getAll();
         setbank(banks.success ? banks.bank : []);
         setloading(true);
-        
+
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   const handleAdd = async () => {
     try {
@@ -106,7 +106,7 @@ const AdminNotificationsPage = () => {
         setAccountnumber("");
         setidbank('')
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   return (
     <>
@@ -123,7 +123,22 @@ const AdminNotificationsPage = () => {
         </Box>
       ) : (
         <>
-          <div className="w-full h-full py-5 bg-white">
+          <div className="w-full h-full pb-5 bg-white">
+
+            {/* Ô tìm kiếm */}
+            <div className="w-full flex justify-end">
+
+              <input
+                className="w-[250px] h-[35px] px-2 border-2 rounded-l"
+                // onChange={handleSearch}
+                placeholder="Search..."
+              />
+
+              <button className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
+                Search
+              </button>
+            </div>
+
             <table className="w-full">
               <thead className="bg-gray-100">
                 <tr className="w-full">
@@ -142,16 +157,16 @@ const AdminNotificationsPage = () => {
                   <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
                     Manager
                   </th>
-                  {bank?.length===0 &&
-                  <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
-                    <button
-                      onClick={() => setopen(true)}
-                      className="w-[35px] h-[35px] text-red-500 mx-1 relative bg-gray-100 hover:bg-gray-200 rounded-full"
-                    >
-                      Add
-                    </button>
-                  </th>
-}
+                  {bank?.length === 0 &&
+                    <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
+                      <button
+                        onClick={() => setopen(true)}
+                        className="w-[35px] h-[35px] text-red-500 mx-1 relative bg-gray-100 hover:bg-gray-200 rounded-full"
+                      >
+                        Add
+                      </button>
+                    </th>
+                  }
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -170,7 +185,7 @@ const AdminNotificationsPage = () => {
                       {item.Accountnumber}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                      <button onClick={()=>handleid(item.id)} className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
+                      <button onClick={() => handleid(item.id)} className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
                         <EditIcon />
                       </button>
                       <button
@@ -243,7 +258,7 @@ const AdminNotificationsPage = () => {
               </DialogContent>
               <DialogActions>
                 <Button onClick={handleClose}>Disagree</Button>
-                <Button onClick={idbank?handleupdate:handleAdd} autoFocus>
+                <Button onClick={idbank ? handleupdate : handleAdd} autoFocus>
                   Agree
                 </Button>
               </DialogActions>

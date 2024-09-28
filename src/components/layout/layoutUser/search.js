@@ -42,6 +42,7 @@ const SearchPage = ({ closeModal }) => {
         }
         get()
     }, [dispatch,comic]);
+    
     // Hiển thị nội dung giống nội dung cần tìm
     const [searchTerm, setSearchTerm] = useState('');
     const handleSearch = (e) => {

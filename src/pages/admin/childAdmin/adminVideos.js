@@ -98,7 +98,22 @@ const AdminVideosPage = () => {
     return (
         <>
             {loading ?
-                <div className="w-full h-[600px] py-5 bg-white custom-scrollbar">
+                <div className="w-full h-[600px] pb-5 bg-white custom-scrollbar">
+
+                    {/* Ô tìm kiếm */}
+                    <div className="w-full flex justify-end">
+
+                        <input
+                            className="w-[250px] h-[35px] px-2 border-2 rounded-l"
+                            // onChange={handleSearch}
+                            placeholder="Search..."
+                        />
+
+                        <button className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
+                            Search
+                        </button>
+                    </div>
+
                     <table className="w-full">
                         <thead className="bg-gray-100">
                             <tr className="w-full">

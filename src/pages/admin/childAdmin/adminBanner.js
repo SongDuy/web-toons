@@ -79,7 +79,7 @@ const AdminBannerPage = () => {
         <div className="w-full h-[600px] pb-5 bg-white custom-scrollbar">
 
           <div className="w-full flex justify-end">
-            <button className="w-[100px] h-[35px] mb-3 mr-3 text-white mx-1 font-semibold relative bg-green-500 hover:bg-green-600 rounded-xl">
+            <button className="w-[100px] h-[35px] mb-3 mr-3 text-white mx-1 font-semibold relative bg-green-500 hover:bg-green-600 rounded">
               Add
               <input
                 type="file"
