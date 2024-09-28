@@ -115,6 +115,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                     createTime: new Date(Date.now()),
                 };
                 const docid = await VideoFireBase.Addep(getdata)
+                await VideoFireBase.update({   Completed:selectedEpisodesValue==="Ongoing"?false:true},id.id)
                 await VideoFireBase.uploadToFirebaseep(horizontalThumbnail, horizontalThumbnail.name, Account.uid, id.id, docid, 'horizontalThumbnail')
                 await VideoFireBase.uploadToFirebaseep(fileURL, fileURL.name, Account.uid, id.id, docid, 'fileURL')
                 navigate('/')

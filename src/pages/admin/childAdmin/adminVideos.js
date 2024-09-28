@@ -17,12 +17,13 @@ import { setIspayment } from '../../../common/store/hidden';
 const AdminVideosPage = () => {
     const Video = useSelector(state => state.Video.video);
     const [loading, setloading] = useState(false);
+    const [Videos, setVideos] = useState();
     const [price, setprice] = useState(0);
     const [payment, setpayment] = useState(false);
-    const [check, setcheck] = useState(false);
     const [idchap, setid] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
 
@@ -31,7 +32,8 @@ const AdminVideosPage = () => {
                 setloading(false)
                 const lg = await dispatch(getAlladVideo())
                 unwrapResult(lg)
-
+                const getVideo= unwrapResult(lg)
+                setVideos(getVideo.success?getVideo?.Video:[])
                 setloading(true)
             } catch (error) {
 
@@ -47,7 +49,8 @@ const AdminVideosPage = () => {
 
                 await VideoFireBase.update({ lock: !lock }, id)
                 const lg = await dispatch(getAlladVideo())
-                unwrapResult(lg)
+                const getVideo= unwrapResult(lg)
+                setVideos(getVideo.success?getVideo?.Video:[])
                 setloading(true)
             }
         } catch (error) {
@@ -62,7 +65,8 @@ const AdminVideosPage = () => {
 
                 await VideoFireBase.Delete(id)
                 const lg = await dispatch(getAlladVideo())
-                unwrapResult(lg)
+                const getVideo= unwrapResult(lg)
+                setVideos(getVideo.success?getVideo?.Video:[])
                 setloading(true)
             }
         } catch (error) {
@@ -76,7 +80,8 @@ const AdminVideosPage = () => {
                 setloading(false)
                 await VideoFireBase.update({ check: true, price, payment }, idchap)
                 const lg = await dispatch(getAlladVideo())
-                unwrapResult(lg)
+                const getVideo= unwrapResult(lg)
+                setVideos(getVideo.success?getVideo?.Video:[])
 
                 setloading(true)
                 dispatch(setIspayment(false))
@@ -87,14 +92,22 @@ const AdminVideosPage = () => {
 
         }
     }
-    const handleClickOpen = (idchap, check) => {
-        setcheck(check)
+    const handleClickOpen = (idchap) => {
         setid(idchap)
         setpayment(false)
         setprice(0)
         dispatch(setIspayment(true))
     };
-
+    const handleSearch = () => {
+        if(searchTerm===""){
+            setVideos(Video?.Video)
+    
+        }
+    const filteredTop30Films =Video?.Video?.filter(item =>
+        item.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setVideos(filteredTop30Films)
+    };
     return (
         <>
             {loading ?
@@ -105,11 +118,12 @@ const AdminVideosPage = () => {
 
                         <input
                             className="w-[250px] h-[35px] px-2 border-2 rounded-l"
-                            // onChange={handleSearch}
+                            onChange={(e)=>   setSearchTerm(e.target.value)}
+                            value={searchTerm}
                             placeholder="Search..."
                         />
 
-                        <button className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
+                        <button  onClick={handleSearch} className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
                             Search
                         </button>
                     </div>
@@ -126,7 +140,7 @@ const AdminVideosPage = () => {
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
-                            {Video?.Video?.map((item) => (
+                            {Videos?.map((item) => (
                                 <tr key={item.id}>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-center font-medium text-gray-900">
                                         {item.id}
@@ -152,7 +166,7 @@ const AdminVideosPage = () => {
                                         <button onClick={() => navigate(`/admin/videos/${item.id}`)} className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
                                             <RemoveRedEyeIcon />
                                         </button>
-                                        <button onClick={() => handleClickOpen(item.id, item.check)} className={`w-[35px] h-[35px] ${item.check ? "text-blue-500" : "text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
+                                        <button onClick={() => handleClickOpen(item.id)} className={`w-[35px] h-[35px] ${item.check ? "text-blue-500" : "text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
                                             <CheckIcon />
                                         </button>
                                         <button onClick={() => handlelock(item.id, item.lock)} className={`w-[35px] h-[35px] ${item.lock ? "text-blue-500" : "text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>

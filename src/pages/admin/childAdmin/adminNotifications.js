@@ -125,19 +125,7 @@ const AdminNotificationsPage = () => {
         <>
           <div className="w-full h-full pb-5 bg-white">
 
-            {/* Ô tìm kiếm */}
-            <div className="w-full flex justify-end">
-
-              <input
-                className="w-[250px] h-[35px] px-2 border-2 rounded-l"
-                // onChange={handleSearch}
-                placeholder="Search..."
-              />
-
-              <button className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
-                Search
-              </button>
-            </div>
+          
 
             <table className="w-full">
               <thead className="bg-gray-100">

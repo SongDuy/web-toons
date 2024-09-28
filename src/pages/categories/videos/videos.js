@@ -321,7 +321,7 @@ const VideosPage = () => {
                                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                     {/* khung nội dung */}
-                                    {Video.Video?.map(item => (
+                                    {Video.Video?.filter(item=>item?.Completed===true)?.map(item => (
                                         <Link
                                             key={item.id}
                                             to={`/videos/video/series/${item.id}`}

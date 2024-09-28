@@ -43,6 +43,7 @@ const PaymentPage = ({ closeModal, price }) => {
           status: "other",
           Account,
           Accountname,
+          price,
           uid: auth?.currentUser?.uid,
           idseries: id.id,
           createTime: new Date(Date.now()),

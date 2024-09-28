@@ -16,9 +16,13 @@ import CheckIcon from "@mui/icons-material/Check";
 
 const AdminOriginalsPage = () => {
     const comic = useSelector(state => state.comic.comic);
+    const [Comics, setComics] = useState([]);
     const [loading, setloading] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+// Hiển thị nội dung giống nội dung cần tìm
+const [searchTerm, setSearchTerm] = useState('');
+
 
     useEffect(() => {
 
@@ -26,8 +30,8 @@ const AdminOriginalsPage = () => {
             try {
                 setloading(false)
                 const lg = await dispatch(getAlladComic())
-                unwrapResult(lg)
-
+             const getcomic= unwrapResult(lg)
+                setComics(getcomic.success?getcomic?.comic:[])
                 setloading(true)
             } catch (error) {
 
@@ -43,7 +47,8 @@ const AdminOriginalsPage = () => {
 
                 await comicFireBase.update({ lock: !lock }, id)
                 const lg = await dispatch(getAlladComic())
-                unwrapResult(lg)
+                const getcomic= unwrapResult(lg)
+                setComics(getcomic.success?getcomic?.comic:[])
                 setloading(true)
             }
         } catch (error) {
@@ -58,7 +63,8 @@ const AdminOriginalsPage = () => {
 
                 await comicFireBase.Delete(id)
                 const lg = await dispatch(getAlladComic())
-                unwrapResult(lg)
+                const getcomic= unwrapResult(lg)
+                setComics(getcomic.success?getcomic?.comic:[])
                 setloading(true)
             }
         } catch (error) {
@@ -73,13 +79,25 @@ const AdminOriginalsPage = () => {
 
                 await comicFireBase.update({ check: !check }, id)
                 const lg = await dispatch(getAlladComic())
-                unwrapResult(lg)
+                const getcomic= unwrapResult(lg)
+                setComics(getcomic.success?getcomic?.comic:[])
                 setloading(true)
             }
         } catch (error) {
 
         }
     }
+    const handleSearch = () => {
+        if(searchTerm===""){
+            console.log(comic?.comic)
+            setComics(comic?.comic)
+    
+        }
+    const filteredTop30Films = comic.comic?.filter(item =>
+        item.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setComics(filteredTop30Films)
+    };
     return (
         <>
             {loading ?
@@ -90,11 +108,12 @@ const AdminOriginalsPage = () => {
 
                         <input
                             className="w-[250px] h-[35px] px-2 border-2 rounded-l"
-                            // onChange={handleSearch}
+                            onChange={(e)=>   setSearchTerm(e.target.value)}
+                            value={searchTerm}
                             placeholder="Search..."
                         />
 
-                        <button className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
+                        <button onClick={handleSearch} className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
                             Search
                         </button>
                     </div>
@@ -111,7 +130,7 @@ const AdminOriginalsPage = () => {
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
-                            {comic.comic?.map((item) => (
+                            {Comics?.map((item) => (
                                 <tr key={item.id}>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-center font-medium text-gray-900">
                                         {item.id}

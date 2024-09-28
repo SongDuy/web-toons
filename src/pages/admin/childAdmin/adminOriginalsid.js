@@ -17,9 +17,12 @@ import { useNavigate } from 'react-router-dom';
 const AdminOriginalsidPage = () => {
     const id = useParams();
     const chapters = useSelector(state => state.comic.Chapters);
+    const [Chapters, setChapters] = useState([]);
+
     const [loading, setloading] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
 
@@ -27,7 +30,8 @@ const AdminOriginalsidPage = () => {
             try {
                 setloading(false)
                 const chap = await dispatch(getchaptersComic(id.id))
-                unwrapResult(chap)
+                const chaps=  unwrapResult(chap)
+                setChapters(chaps?.success?chaps?.chaps:[])
 
                 setloading(true)
             } catch (error) {
@@ -44,7 +48,8 @@ const AdminOriginalsidPage = () => {
 
                 await comicFireBase.updateep({ check: !check }, id.id, idchap)
                 const chap = await dispatch(getchaptersComic(id.id))
-                unwrapResult(chap)
+                const chaps=  unwrapResult(chap)
+                setChapters(chaps?.success?chaps?.chaps:[])
                 setloading(true)
             }
         } catch (error) {
@@ -59,13 +64,24 @@ const AdminOriginalsidPage = () => {
 
                 await comicFireBase.Deletechap(id.id, idchap)
                 const chap = await dispatch(getchaptersComic(id.id))
-                unwrapResult(chap)
+                const chaps=  unwrapResult(chap)
+                setChapters(chaps?.success?chaps?.chaps:[])
                 setloading(true)
             }
         } catch (error) {
 
         }
     }
+    const handleSearch = () => {
+        if(searchTerm===""){
+            setChapters(chapters?.chaps)
+    
+        }
+    const filteredTop30Films =chapters?.chaps?.filter(item =>
+        item.chapterTitle.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setChapters(filteredTop30Films)
+    };
     return (
         <>
             {loading ?
@@ -76,11 +92,12 @@ const AdminOriginalsidPage = () => {
 
                         <input
                             className="w-[250px] h-[35px] px-2 border-2 rounded-l"
-                            // onChange={handleSearch}
+                            onChange={(e)=>   setSearchTerm(e.target.value)}
+                            value={searchTerm}
                             placeholder="Search..."
                         />
 
-                        <button className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
+                        <button onClick={handleSearch} className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
                             Search
                         </button>
                     </div>
@@ -97,7 +114,7 @@ const AdminOriginalsidPage = () => {
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
-                            {chapters?.chaps?.map((item) => (
+                            {Chapters?.map((item) => (
                                 <tr key={item.id}>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-center font-medium text-gray-900">
                                         {item.id}

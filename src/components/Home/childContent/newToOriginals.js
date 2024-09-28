@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 const NewToOriginalsPage = () => {
     const comic = useSelector(state => state.comic.comic);
+    
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredItem, setHoveredItem] = useState(null);
 
@@ -41,7 +42,7 @@ const NewToOriginalsPage = () => {
             <div className="w-full min-h-[500px] py-[30px] flex justify-center">
                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
                     {/* khung nội dung */}
-                    {comic.comic?.slice(0, 10)?.map((item) => (
+                    {comic.comic?.slice()?.sort((a, b) => new Date(b.createTime) - new Date(a.createTime))?.slice(0, 10)?.map((item) => (
                         <Link
                             key={item.id}
                             to={`/originals/original/series/${item.id}`}

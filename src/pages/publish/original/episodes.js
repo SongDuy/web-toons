@@ -115,6 +115,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     createTime: new Date(Date.now()),
                 };
                 const docid = await comicFireBase.Addep(getdata)
+                await comicFireBase.update({   Completed:selectedEpisodesValue==="Ongoing"?false:true},id.id)
                 await comicFireBase.uploadToFirebaseep(horizontalThumbnail, horizontalThumbnail.name, Account.uid, id.id, docid, 'horizontalThumbnail')
                 await comicFireBase.uploadToFirebaseep(fileURL, fileURL.name, Account.uid, id.id, docid, 'fileURL')
                 navigate('/')
@@ -122,6 +123,11 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    const handleDeleteAll=()=>{
+        setPhotos1("");
+        sethorizontalThumbnail()
     }
     return (
         <div>
@@ -277,7 +283,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                                                     className="absolute inset-0 opacity-0 cursor-pointer "
                                                 />
                                             </div>
-                                            <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                                            <button onClick={()=>handleDeleteAll()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
                                                 Delete All
                                             </button>
                                         </div>
