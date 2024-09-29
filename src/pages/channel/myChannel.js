@@ -302,9 +302,9 @@ const MyChannelPage = () => {
             </div>
 
             <div className="w-full h-full flex gap-3 mt-3">
-              <div className="w-[420px] h-[1480px] grid grid-cols-1 gap-3">
+              <div className="w-[420px] h-full grid grid-cols-1 gap-3">
                 {/* Khung hiển thị các liên kết của tác giả */}
-                <div className="w-full h-[340px] px-5 py-3 bg-white rounded-lg">
+                {/* <div className="w-full h-[340px] px-5 py-3 bg-white rounded-lg">
                   <div className="font-semibold text-[20px] text-black">
                     {!language ? <span> Link </span> : <span> 링크 </span>}
                   </div>
@@ -316,7 +316,7 @@ const MyChannelPage = () => {
                       </li>
                     </ul>
                   </div>
-                </div>
+                </div> */}
 
                 {/* Khung hiển thị các Series truyện của tác giả */}
                 <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
