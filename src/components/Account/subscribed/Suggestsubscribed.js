@@ -3,12 +3,20 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import CheckIcon from "@mui/icons-material/Check";
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-
+import Grow from "@mui/material/Grow";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
+import MenuItem from "@mui/material/MenuItem";
+import MenuList from "@mui/material/MenuList";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 const Suggestsubscribed = () => {
 
   const [selectedOriginalGenre, setSelectedOriginalGenre] = useState("All");
   const comic = useSelector((state) => state.comic.comic);
-
+//Mở modal menu original by genre để chọn
+const [openOriginals, setOpenOriginals] = useState(false);
+const anchorRefOriginals = React.useRef(null);
+const prevOpenOriginals = React.useRef(openOriginals);
   const filteredcomic = comic.comic
     ?.slice(0,3)
     ?.sort((a, b) => b.views - a.views);
@@ -16,12 +24,39 @@ const Suggestsubscribed = () => {
     ?.filter((item) =>
       selectedOriginalGenre === "All"
         ? item
-        : item.genre1 === selectedOriginalGenre ||
-          item.genre2 === selectedOriginalGenre
+        : item.genre1.toLowerCase() === selectedOriginalGenre.toLowerCase() ||
+          item.genre2.toLowerCase() === selectedOriginalGenre.toLowerCase()
     )
-    .slice(0,3)
+    .slice(0,3)?.sort((a, b) => b.views - a.views);
   ;
- 
+  const handleToggleOriginals = () => {
+    setOpenOriginals((prevOpen) => !prevOpen);
+  };
+
+  const handleCloseOriginals = (event) => {
+    if (
+      anchorRefOriginals.current &&
+      anchorRefOriginals.current.contains(event.target)
+    ) {
+      return;
+    }
+    setOpenOriginals(false);
+  };
+
+  React.useEffect(() => {
+    if (prevOpenOriginals.current === true && openOriginals === false) {
+      anchorRefOriginals.current.focus();
+    }
+    prevOpenOriginals.current = openOriginals;
+  }, [openOriginals]);
+  function handleListKeyDownOriginals(event) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setOpenOriginals(false);
+    } else if (event.key === "Escape") {
+      setOpenOriginals(false);
+    }
+  }
   return (
       <div className="grid grid-cols-2     container  mx-auto">
       <div className=" flex-row  justify-center items-center container">
@@ -89,10 +124,245 @@ const Suggestsubscribed = () => {
           <span className="font-semibold text-lg text-black">
             ORIGINALS by Genre <NavigateNextIcon />
           </span>
-          <button className="font-semibold text-basg text-gray-400">
-            FANTASY <CheckIcon />
-          </button>
-        </div>
+          {/* Chọn menu thể loại originals*/}
+          <div className="ml-auto flex gap-1 text-green-500 cursor-pointer">
+                        <button
+                          ref={anchorRefOriginals}
+                          id="originals-button"
+                          aria-controls={
+                            openOriginals ? "originals-menu" : undefined
+                          }
+                          aria-expanded={openOriginals ? "true" : undefined}
+                          aria-haspopup="true"
+                          onClick={handleToggleOriginals}
+                        >
+                          <span>
+                            {selectedOriginalGenre} <CheckIcon />
+                          </span>
+                        </button>
+                        <Popper
+                          open={openOriginals}
+                          anchorEl={anchorRefOriginals.current}
+                          role={undefined}
+                          placement="bottom-start"
+                          transition
+                          disablePortal
+                        >
+                          {({ TransitionProps, placement }) => (
+                            <Grow
+                              {...TransitionProps}
+                              style={{
+                                transformOrigin:
+                                  placement === "bottom-start"
+                                    ? "left top"
+                                    : "left bottom",
+                              }}
+                            >
+                              <Paper>
+                                <ClickAwayListener
+                                  onClickAway={handleCloseOriginals}
+                                >
+                                  <MenuList
+                                    autoFocusItem={openOriginals}
+                                    id="originals-menu"
+                                    aria-labelledby="originals-button"
+                                    onKeyDown={handleListKeyDownOriginals}
+                                  >
+                                    {/* Hiển thị danh sách thể loại original xếp hạng */}
+
+                                    <MenuItem onClick={handleCloseOriginals}>
+                                      <span
+                                        onClick={() =>
+                                          setSelectedOriginalGenre("All")
+                                        }
+                                        className={`w-full h-full ${
+                                          selectedOriginalGenre === "All"
+                                            ? "text-green-500"
+                                            : ""
+                                        }`}
+                                      >
+                                        All
+                                      </span>
+                                    </MenuItem>
+
+                                    <MenuItem onClick={handleCloseOriginals}>
+                                      <span
+                                        onClick={() =>
+                                          setSelectedOriginalGenre("Action")
+                                        }
+                                        className={`w-full h-full ${
+                                          selectedOriginalGenre === "Action"
+                                            ? "text-green-500"
+                                            : ""
+                                        }`}
+                                      >
+                                        Action
+                                      </span>
+                                    </MenuItem>
+
+                                    <MenuItem onClick={handleCloseOriginals}>
+                                      <span
+                                        onClick={() =>
+                                          setSelectedOriginalGenre("Romance")
+                                        }
+                                        className={`w-full h-full ${
+                                          selectedOriginalGenre === "Romance"
+                                            ? "text-green-500"
+                                            : ""
+                                        }`}
+                                      >
+                                        Romance
+                                      </span>
+                                    </MenuItem>
+
+                                    <MenuItem onClick={handleCloseOriginals}>
+                                      <span
+                                        onClick={() =>
+                                          setSelectedOriginalGenre("Fantasy")
+                                        }
+                                        className={`w-full h-full ${
+                                          selectedOriginalGenre === "Fantasy"
+                                            ? "text-green-500"
+                                            : ""
+                                        }`}
+                                      >
+                                        Fantasy
+                                      </span>
+                                    </MenuItem>
+
+                                    <MenuItem onClick={handleCloseOriginals}>
+                                      <span
+                                        onClick={() =>
+                                          setSelectedOriginalGenre("Drama")
+                                        }
+                                        className={`w-full h-full ${
+                                          selectedOriginalGenre === "Drama"
+                                            ? "text-green-500"
+                                            : ""
+                                        }`}
+                                      >
+                                        Drama
+                                      </span>
+                                    </MenuItem>
+
+                                    <MenuItem onClick={handleCloseOriginals}>
+                                      <span
+                                        onClick={() =>
+                                          setSelectedOriginalGenre("Comedy")
+                                        }
+                                        className={`w-full h-full ${
+                                          selectedOriginalGenre === "Comedy"
+                                            ? "text-green-500"
+                                            : ""
+                                        }`}
+                                      >
+                                        Comedy
+                                      </span>
+                                    </MenuItem>
+
+                                    <MenuItem onClick={handleCloseOriginals}>
+                                      <span
+                                        onClick={() =>
+                                          setSelectedOriginalGenre("Thriller")
+                                        }
+                                        className={`w-full h-full ${
+                                          selectedOriginalGenre === "Thriller"
+                                            ? "text-green-500"
+                                            : ""
+                                        }`}
+                                      >
+                                        Thriller
+                                      </span>
+                                    </MenuItem>
+
+                                    <MenuItem onClick={handleCloseOriginals}>
+                                      <span
+                                        onClick={() =>
+                                          setSelectedOriginalGenre(
+                                            "Slice of life"
+                                          )
+                                        }
+                                        className={`w-full h-full ${
+                                          selectedOriginalGenre ===
+                                          "Slice of life"
+                                            ? "text-green-500"
+                                            : ""
+                                        }`}
+                                      >
+                                        Slice of life
+                                      </span>
+                                    </MenuItem>
+
+                                    <MenuItem onClick={handleCloseOriginals}>
+                                      <span
+                                        onClick={() =>
+                                          setSelectedOriginalGenre(
+                                            "Supernatural"
+                                          )
+                                        }
+                                        className={`w-full h-full ${
+                                          selectedOriginalGenre ===
+                                          "Supernatural"
+                                            ? "text-green-500"
+                                            : ""
+                                        }`}
+                                      >
+                                        Supernatural
+                                      </span>
+                                    </MenuItem>
+
+                                    <MenuItem onClick={handleCloseOriginals}>
+                                      <span
+                                        onClick={() =>
+                                          setSelectedOriginalGenre("Sci-fi")
+                                        }
+                                        className={`w-full h-full ${
+                                          selectedOriginalGenre === "Sci-fi"
+                                            ? "text-green-500"
+                                            : ""
+                                        }`}
+                                      >
+                                        Sci-fi
+                                      </span>
+                                    </MenuItem>
+
+                                    <MenuItem onClick={handleCloseOriginals}>
+                                      <span
+                                        onClick={() =>
+                                          setSelectedOriginalGenre("Horror")
+                                        }
+                                        className={`w-full h-full ${
+                                          selectedOriginalGenre === "Horror"
+                                            ? "text-green-500"
+                                            : ""
+                                        }`}
+                                      >
+                                        Horror
+                                      </span>
+                                    </MenuItem>
+
+                                    <MenuItem onClick={handleCloseOriginals}>
+                                      <span
+                                        onClick={() =>
+                                          setSelectedOriginalGenre("Others")
+                                        }
+                                        className={`w-full h-full ${
+                                          selectedOriginalGenre === "Others"
+                                            ? "text-green-500"
+                                            : ""
+                                        }`}
+                                      >
+                                        Others
+                                      </span>
+                                    </MenuItem>
+                                  </MenuList>
+                                </ClickAwayListener>
+                              </Paper>
+                            </Grow>
+                          )}
+                        </Popper>
+                      </div>
+          </div>
 
         <div className=" flex    p-5">
           <div className="w-full h-full     ">

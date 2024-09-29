@@ -22,7 +22,7 @@ const PopularOriginalsAndVideosPage = () => {
 
     //Chọn thể loại videos
     const filteredcomic = comic.comic?.slice()?.sort((a, b) =>  b.views - a.views);
-    const searchedcomic = comic.comic?.filter(item => selectedOriginalGenre === 'All' ? item : item.genre1 === selectedOriginalGenre || item.genre2 === selectedOriginalGenre).slice()?.sort((a, b) => a.totalSubscribed - b.totalSubscribed);
+    const searchedcomic = comic.comic?.filter(item => selectedOriginalGenre === 'All' ? item : item.genre1.toLowerCase() === selectedOriginalGenre.toLowerCase() || item.genre2.toLowerCase() === selectedOriginalGenre.toLowerCase()).slice()?.sort((a, b) =>  b.views - a.views);
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
 
