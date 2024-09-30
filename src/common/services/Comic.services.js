@@ -173,18 +173,17 @@ const comicFireBase = {
   async getchaptersid(id, idchap) {
     const docRef = doc(fireStore, "Comic", id);
 
-    const docSnap = await getDoc(docRef);
-    const ChaptersnRef = collection(docSnap.ref, id);
-    const Chapters = await getDocs(ChaptersnRef);
-    const chaps = Chapters.docs.map((item) => {
+    const ChaptersnRef = collection(docRef, id);
+    const docRefchap = doc(ChaptersnRef,idchap);
+
+    const Chapters = await getDoc(docRefchap);
+   
+    if (Chapters.exists()) {
       return {
-        id: item.id,
-        ...item.data(),
-        createTime: new Date(item.data().createTime?.toDate()).toISOString(),
+        ...Chapters.data(),
+        createTime: new Date(Chapters.data().createTime?.toDate()).toISOString(),
+        success: true,
       };
-    });
-    if (chaps.length !== 0) {
-      return { chaps, success: true };
     } else {
       return { message: "No such document!", success: false };
     }
@@ -244,6 +243,7 @@ const comicFireBase = {
       fileURL: data.fileURL,
       likes: data.likes,
       num: data.num,
+      check:data.check,
       note: data.valueNote,
       views: data.views,
       checkcomment: data.checkcomment,

@@ -6,7 +6,8 @@ const initialState = {
   isLogin19Modal: false,
   language: false,
   payment: false,
-
+  currentStepOriginal:1,
+  currentStepVideo:1,
 } ;
 const Hidden = createSlice({
   name: 'hidden',
@@ -27,7 +28,12 @@ const Hidden = createSlice({
     setIspayment: (state,action) => {
       state.payment= action.payload;
     },
-  
+    setcurrentStepOriginal: (state,action) => {
+      state.currentStepOriginal= action.payload;
+    },
+    setcurrentStepVideo: (state,action) => {
+      state.currentStepVideo= action.payload;
+    },
   },
 });
 export const {
@@ -35,6 +41,8 @@ export const {
   getHidden,
   getlanguage,
   setIspayment,
-  setIsLogin19Modal
+  setIsLogin19Modal,
+  setcurrentStepOriginal,
+  setcurrentStepVideo
 } = Hidden.actions;
 export default Hidden.reducer;

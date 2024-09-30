@@ -26,7 +26,9 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
     const [fileURL, setfileURL] = useState();
     const dispatch = useDispatch();
     const chapters = useSelector((state) => state.Video.Chapters);
-
+    const [likes, setlike] = useState(0);
+    const [views, setviews] = useState(0);
+    const [check, setcheck] = useState(false);
     const navigate = useNavigate();
 
     const id = useParams();
@@ -40,6 +42,16 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                 if (check.success) {
                     const videoID = await dispatch(getidVideo(id.id))
                     const chap = await dispatch(getchaptersVideo(id.id));
+                    if(id?.idchap){
+                        const chapid=await VideoFireBase.getchaptersid(id.id,id.idchap)
+                        setPhotos1(chapid?.horizontalThumbnail)
+                        setSelectedValue(chapid?.checkcomment)
+                        setValueNote(chapid?.note)
+                        setValueEpisodeTitle(chapid?.chapterTitle)
+                        setlike(chapid?.likes)
+                        setviews(chapid?.views)
+                        setcheck(chapid?.check)
+                    }
                     unwrapResult(videoID)
                     unwrapResult(chap)
                 } else {
@@ -123,6 +135,52 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
         } catch (error) {
             console.log(error)
         }
+    }
+    const handleedit=async ()=>{
+        try {
+            if (fileURL?.name || horizontalThumbnail?.name) {
+              
+                const getdata = {
+                    chapterTitle: valueEpisodeTitle,
+                    uid: Account.uid,
+                    note: valueNote,
+                    likes,
+                    num: chapters?.success ? chapters?.chaps?.length + 1 : 0,
+                    check,
+                    checkcomment: selectedValue,
+                    views,
+                    createTime: new Date(Date.now()),
+                };
+                await VideoFireBase.updateep(getdata,id.id,id.idchap)
+                horizontalThumbnail?.name&& await VideoFireBase.uploadToFirebaseep(horizontalThumbnail, horizontalThumbnail.name, Account.uid, id.id, id.idchap, 'horizontalThumbnail')
+                fileURL?.name && await VideoFireBase.uploadToFirebaseep(fileURL, fileURL.name, Account.uid, id.id, id.idchap, 'fileURL')
+                navigate('/')
+            }else{
+               
+                const getdata = {
+                    chapterTitle: valueEpisodeTitle,
+                    uid: Account.uid,
+                    note: valueNote,
+                    likes,
+                    num: chapters?.success ? chapters?.chaps?.length + 1 : 0,
+                    check,
+                    checkcomment: selectedValue,
+                    views,
+                    createTime: new Date(Date.now()),
+                };
+                 await VideoFireBase.updateep(getdata,id.id,id.idchap)
+                navigate('/')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const handleDeleteAll=()=>{
+        
+            setPhotos1("");
+            sethorizontalThumbnail()
+            setfileURL()
+       
     }
     return (
         <div>
@@ -282,7 +340,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 />
                                             </div>
 
-                                            <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                                            <button  onClick={()=>handleDeleteAll()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
                                                 Delete All
                                             </button>
                                         </div>
@@ -427,7 +485,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
                                 {/* Nút đăng tập truyện */}
                                 <div className="w-full mt-10 py-3 pl-5">
-                                    <button onClick={handleEp} className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4">
+                                    <button onClick={id?.idchap?handleedit:handleEp} className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4">
                                         Publish episode
                                     </button>
                                 </div>

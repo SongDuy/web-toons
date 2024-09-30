@@ -12,6 +12,7 @@ import { useParams } from 'react-router-dom';
 import { getchaptersVideo } from '../../../common/store/Video';
 import VideoFireBase from '../../../common/services/Video.services';
 import { useNavigate } from 'react-router-dom';
+import { setcurrentStepVideo } from '../../../common/store/hidden';
 
 const EpisodeVideo = () => {
     const chapters = useSelector(state => state.Video.Chapters);
@@ -41,7 +42,7 @@ const EpisodeVideo = () => {
                 setloading(false)
                 const chap = await dispatch(getchaptersVideo(id.id))
                 unwrapResult(chap)
-
+console.log(chap)
                 setloading(true)
             } catch (error) {
 
@@ -113,7 +114,7 @@ const EpisodeVideo = () => {
                                                         <div className="flex items-center">
 
                                                             <div className="flex ml-auto gap-2">
-                                                                <button className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                                                <button onClick={() =>{ navigate(`/publish/video/${id.id}/${item.id}`);      dispatch(setcurrentStepVideo(2)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                                                                     Edit
                                                                 </button>
 
