@@ -152,14 +152,29 @@ const postFireBase = {
     }) 
     return uploadTask;
   },
-  async deleteAccount(id) {
-    const Ref = collection(fireStore, "post");
-    const q = query(Ref, where("uid", "==", id)); 
-  
+  async  deleteSubcollection(subcollectionRef, uid) {
+    const q = query(subcollectionRef, where("uid", "==", uid));
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach(async (doc) => {
-      await deleteDoc(doc.ref);
-    });
+  
+    for (const subDoc of querySnapshot.docs) {
+      await deleteDoc(doc(subDoc.ref.firestore, subDoc.ref.path));
+    }
+  },
+  async deleteAccount(id) {
+    const commentsRef = collection(fireStore, "post");
+    const q = query(commentsRef, where("uid", "==", id));
+    const querySnapshot = await getDocs(q);
+    
+    for (const document of querySnapshot.docs) {
+      // Xóa các subcollections 'like', 'dislike', và 'comment'
+      const subcollectionRef = collection(document.ref, "like");
+    
+      // Xóa tất cả tài liệu trong các subcollections
+      await this.deleteSubcollection(subcollectionRef, id);
+    
+      // Cuối cùng, xóa tài liệu chính trong 'comments'
+      await deleteDoc(doc(document.ref.firestore, document.ref.path));
+  }
   }
 };
 export default postFireBase;

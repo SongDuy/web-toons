@@ -26,13 +26,15 @@ import TextField from "@mui/material/TextField";
 import DialogContentText from "@mui/material/DialogContentText";
 import VideoFireBase from "../../common/services/Video.services";
 import FollowFireBase from "../../common/services/Follow.services";
+import PaymentFireBase from "../../common/services/Payment.services";
+
 
 const Delete = () => {
   // Nhấn vào ô check đồng ý xóa tài khoản
   const [isChecked, setIsChecked] = useState(false);
   const [Password, setPassword] = useState("");
   const [error, seterror] = useState("");
-
+const [checkgoogle, setcheckgoogle] = useState(false);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
@@ -42,7 +44,7 @@ const Delete = () => {
     const isGoogleProvider = user.providerData.some(
       (provider) => provider.providerId === "google.com"
     );
-    console.log(isGoogleProvider);
+    setcheckgoogle(isGoogleProvider)
   };
 
   const handleClose = () => {
@@ -57,8 +59,8 @@ const Delete = () => {
 
     if (user) {
       try {
-        const credential = EmailAuthProvider.credential(user.email, Password); // Giả sử bạn đã lấy được mật khẩu từ người dùng
-        await reauthenticateWithCredential(user, credential);
+         const credential =!checkgoogle&& EmailAuthProvider.credential(user.email, Password); // Giả sử bạn đã lấy được mật khẩu từ người dùng
+        !checkgoogle&&  await reauthenticateWithCredential(user, credential);
         await CommentFireBase.deleteAccount(auth.currentUser.uid);
         await comicFireBase.deleteAccount(auth.currentUser.uid);
         await postFireBase.deleteAccount(auth.currentUser.uid);
@@ -67,9 +69,10 @@ const Delete = () => {
         await userFireBase.deleteAccount(auth.currentUser.uid);
         await VideoFireBase.deleteAccount(auth.currentUser.uid);
         await FollowFireBase.deleteAccount(auth.currentUser.uid);
-        await deleteUser(user);
+        await PaymentFireBase.deleteAccount(auth.currentUser.uid)
+        !checkgoogle&&await deleteUser(user);
         dispatch(logout());
-        setOpen(false);
+          setOpen(false);
 
         // Thực hiện các hành động cần thiết sau khi xóa tài khoản, ví dụ: chuyển hướng người dùng, xóa dữ liệu liên quan, ...
       } catch (error) {
@@ -192,7 +195,9 @@ const Delete = () => {
         <DialogTitle id="alert-dialog-title">
           {"Re-enter password?"}
         </DialogTitle>
+        {!checkgoogle&&
         <DialogContent>
+    
           <TextField
             autoFocus
             margin="dense"
@@ -208,7 +213,9 @@ const Delete = () => {
               {error}
             </DialogContentText>
           )}
+          
         </DialogContent>
+}
         <DialogActions>
           <Button onClick={handleClose}>Disagree</Button>
           <Button onClick={deleteAccount} autoFocus>
