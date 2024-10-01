@@ -155,9 +155,7 @@ const VideoFireBase = {
 
     const docSnap = await getDoc(docRef);
     const ChaptersnRef = collection(docSnap.ref, id);
-    const Chapters = await getDocs(query(
-      ChaptersnRef,
-      where("check", "==", true)));
+    const Chapters = await getDocs(ChaptersnRef);
     const chaps = Chapters.docs.map((item) => {
       return {
         id: item.id,
@@ -167,6 +165,24 @@ const VideoFireBase = {
     });
     if (chaps.length !== 0) {
       return { chaps, success: true };
+    } else {
+      return { message: "No such document!", success: false };
+    }
+  },
+  async getchaptersid(id, idchap) {
+    const docRef = doc(fireStore, "Video", id);
+
+    const ChaptersnRef = collection(docRef, id);
+    const docRefchap = doc(ChaptersnRef,idchap);
+
+    const Chapters = await getDoc(docRefchap);
+   
+    if (Chapters.exists()) {
+      return {
+        ...Chapters.data(),
+        createTime: new Date(Chapters.data().createTime?.toDate()).toISOString(),
+        success: true,
+      };
     } else {
       return { message: "No such document!", success: false };
     }
@@ -245,6 +261,7 @@ const VideoFireBase = {
       fileURL: data.fileURL,
       likes: data.likes,
       num: data.num,
+      check:data.check,
       note:data.valueNote,
       views: data.views,
       checkcomment:data.checkcomment,

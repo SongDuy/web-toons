@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import comicFireBase from '../../../common/services/Comic.services';
+import { setcurrentStepOriginal } from '../../../common/store/hidden';
 
 const EpisodeOriginal = () => {
     const id = useParams();
@@ -20,6 +21,7 @@ const EpisodeOriginal = () => {
     const [loading, setloading] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    
     const monthNames = [
         "January",
         "February",
@@ -116,7 +118,7 @@ const EpisodeOriginal = () => {
                                                             </span>
 
                                                             <div className="flex ml-auto gap-2">
-                                                                <button className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                                                <button  onClick={() =>{ navigate(`/publish/original/${id.id}/${item.id}`);      dispatch(setcurrentStepOriginal(2)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                                                                     Edit
                                                                 </button>
 

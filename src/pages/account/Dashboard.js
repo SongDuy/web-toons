@@ -4,18 +4,20 @@ import AddIcon from "@mui/icons-material/Add";
 import StarIcon from "@mui/icons-material/Star";
 
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import VideoFireBase from "../../common/services/Video.services";
 import comicFireBase from "../../common/services/Comic.services";
 import { useNavigate } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import { setcurrentStepOriginal, setcurrentStepVideo } from "../../common/store/hidden";
 const Dashboard = () => {
   const Account = useSelector((state) => state.Account.Account);
   const [videos, setvideos] = useState([]);
   const [comics, setcomics] = useState([]);
   const navigate = useNavigate();
   const [loading, setloading] = useState(false);
+  const dispatch = useDispatch();
 
   const monthNames = [
     "January",
@@ -128,7 +130,7 @@ setvideos(videos.success ? videos.Video : []);
                           </span>
 
                           <div className="flex ml-auto gap-2">
-                            <button className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                            <button  onClick={() =>{ navigate(`/publish/original/${item.id}`);   dispatch(setcurrentStepOriginal(1))} } className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                               Edit
                             </button>
 
@@ -190,7 +192,7 @@ setvideos(videos.success ? videos.Video : []);
                               Edit Episode
                             </button>
                           </Link>
-                          <button    onClick={()=>navigate(`/publish/original/${item.id}`)} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                          <button     onClick={() =>{ navigate(`/publish/original/${item.id}`);   dispatch(setcurrentStepOriginal(2))} }  className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                             <AddIcon />
                             Add Episode
                           </button>
@@ -237,7 +239,7 @@ setvideos(videos.success ? videos.Video : []);
                       <div className="w-[320px]">
                         <div className="flex items-center">
                           <div className="flex ml-auto gap-2">
-                            <button className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                            <button onClick={() =>{ navigate(`/publish/video/${item.id}`);   dispatch(setcurrentStepVideo(1))} }  className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                               Edit
                             </button>
 
@@ -300,7 +302,7 @@ setvideos(videos.success ? videos.Video : []);
                             </button>
                           </Link>
 
-                          <button  onClick={()=>navigate(`/publish/video/${item.id}`)} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                          <button  onClick={() =>{ navigate(`/publish/video/${item.id}`);   dispatch(setcurrentStepVideo(2))} }  className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                             <AddIcon />
                             Add Episode
                           </button>

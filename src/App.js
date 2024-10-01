@@ -112,8 +112,11 @@ function App() {
           <Route path="/channel/my" element={<MyChannelPage />} />
           <Route path="/publish/original" element={<PublishOriginalPage />} />
           <Route path="/publish/original/:id" element={<PublishOriginalPage />} />
+          <Route path="/publish/original/:id/:idchap" element={<PublishOriginalPage />} />
+
           <Route path="/publish/video" element={<PublishVideoPage />} />
           <Route path="/publish/video/:id" element={<PublishVideoPage />} />
+          <Route path="/publish/video/:id/:idchap" element={<PublishVideoPage />} />
 
         </Route>
         {/* Trang hiển thị truyện và video */}

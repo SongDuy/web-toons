@@ -23,6 +23,14 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
     const comicid = useSelector(state => state.comic.comicid);
     const [loading, setloading] = useState(false);
     const [fileURL, setfileURL] = useState();
+     // Tiêu đề tập truyện
+     const [valueEpisodeTitle, setValueEpisodeTitle] = useState('');
+     const [likes, setlike] = useState(0);
+     const [views, setviews] = useState(0);
+     const [check, setcheck] = useState(false);
+
+    // Ghi chú của tác giả
+    const [valueNote, setValueNote] = useState('');
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -41,7 +49,16 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     const comicID = await dispatch(getidComic(id.id))
 
                     const chap = await dispatch(getchaptersComic(id.id));
-
+                    if(id?.idchap){
+                        const chapid=await comicFireBase.getchaptersid(id.id,id.idchap)
+                        setPhotos1(chapid?.horizontalThumbnail)
+                        setSelectedValue(chapid?.checkcomment)
+                        setValueNote(chapid?.note)
+                        setValueEpisodeTitle(chapid?.chapterTitle)
+                        setlike(chapid?.likes)
+                        setviews(chapid?.views)
+                        setcheck(chapid?.check)
+                    }
                     unwrapResult(comicID)
                     unwrapResult(chap)
                 } else {
@@ -66,8 +83,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
         setSelectedEpisodesValue(event.target.value);
     };
 
-    // Tiêu đề tập truyện
-    const [valueEpisodeTitle, setValueEpisodeTitle] = useState('');
+   
     const handleEpisodeTitle = (event) => {
         const inputValueEpisodeTitle = event.target.value;
         if (inputValueEpisodeTitle.length <= 60) { // Giới hạn số ký tự nhập vào là 60
@@ -75,8 +91,6 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
         }
     };
 
-    // Ghi chú của tác giả
-    const [valueNote, setValueNote] = useState('');
     const handleNote = (event) => {
         const inputValueNote = event.target.value;
         if (inputValueNote.length <= 400) { // Giới hạn số ký tự nhập vào là 400
@@ -124,10 +138,49 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
             console.log(error)
         }
     }
-
+const handleedit=async ()=>{
+    try {
+        if (fileURL?.name || horizontalThumbnail?.name) {
+          
+            const getdata = {
+                chapterTitle: valueEpisodeTitle,
+                uid: Account.uid,
+                note: valueNote,
+                likes,
+                num: chapters?.success ? chapters?.chaps?.length + 1 : 0,
+                check,
+                checkcomment: selectedValue,
+                views,
+                createTime: new Date(Date.now()),
+            };
+            await comicFireBase.updateep(getdata,id.id,id.idchap)
+            horizontalThumbnail?.name&&   await comicFireBase.uploadToFirebaseep(horizontalThumbnail, horizontalThumbnail.name, Account.uid, id.id, id.idchap, 'horizontalThumbnail')
+            fileURL?.name &&await comicFireBase.uploadToFirebaseep(fileURL, fileURL.name, Account.uid, id.id, id.idchap, 'fileURL')
+            navigate('/')
+        }else{
+           
+            const getdata = {
+                chapterTitle: valueEpisodeTitle,
+                uid: Account.uid,
+                note: valueNote,
+                likes,
+                num: chapters?.success ? chapters?.chaps?.length + 1 : 0,
+                check,
+                checkcomment: selectedValue,
+                views,
+                createTime: new Date(Date.now()),
+            };
+             await comicFireBase.updateep(getdata,id.id,id.idchap)
+            navigate('/')
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
     const handleDeleteAll=()=>{
-        setPhotos1("");
-        sethorizontalThumbnail()
+            setPhotos1("");
+            sethorizontalThumbnail()
+            setfileURL()
     }
     return (
         <div>
@@ -434,7 +487,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
 
                                 {/* Nút đăng tập truyện */}
                                 <div className="w-full mt-10 py-3">
-                                    <button onClick={handleEp} className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4">
+                                    <button onClick={id?.idchap?handleedit:handleEp} className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4">
                                         Publish episode
                                     </button>
                                 </div>
