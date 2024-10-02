@@ -330,7 +330,7 @@ const OriginalSeriesPage = () => {
                     {!language ? (
                       <span> Subscribe </span>
                     ) : (
-                      <span> 구독하다 </span>
+                      <span> 구독하기 </span>
                     )}
                   </button>
                 ) : (
@@ -352,7 +352,7 @@ const OriginalSeriesPage = () => {
                   {!language ? (
                     <span> Episodes </span>
                   ) : (
-                    <span> 시리즈 오리지널 </span>
+                    <span> 에피소드 </span>
                   )}
                 </div>
                 <div className="w-full h-[900px] px-3 custom-scrollbar">
@@ -449,7 +449,7 @@ const OriginalSeriesPage = () => {
                         aria-haspopup="true"
                         onClick={handleToggle}
                       >
-                        {!language ? <span>RATE</span> : <span>비율</span>}
+                        {!language ? <span>RATE</span> : <span>평가하기</span>}
                       </button>
 
                       {/* Chọn đánh giá */}
@@ -525,7 +525,7 @@ const OriginalSeriesPage = () => {
                 {!language ? (
                   <span> You may also like </span>
                 ) : (
-                  <span> 당신은 또한 좋아할 수도 있습니다 </span>
+                  <span> 이것도 좋아할 수 있습니다 </span>
                 )}
               </div>
               <div className="w-full min-h-[160px] bg-white my-5 px-5 py-5 rounded-md">

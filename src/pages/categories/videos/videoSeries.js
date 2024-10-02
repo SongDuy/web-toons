@@ -342,7 +342,7 @@ const VideoSeriesPage = () => {
                     {!language ? (
                       <span> Subscribe </span>
                     ) : (
-                      <span> 구독하다 </span>
+                      <span> 구독하기 </span>
                     )}
                   </button>
                 ) : (
@@ -362,17 +362,13 @@ const VideoSeriesPage = () => {
               <div className="col-span-2 h-full">
 
                 <div className="w-full px-5 font-semibold text-md flex pb-2">
-                  {!language ? (
-                    <span> Episodes </span>
-                  ) : (
-                    <span> 시리즈 영상 </span>
-                  )}
+                  {!language ? (<span> Episodes </span>) : (<span> 에피소드 </span>)}
                   {Videoid?.payment && (
                     <button
                       className="w-[80px] h-[35px] bg-red-500 ml-auto rounded-full shadow text-white flex items-center justify-center"
                       onClick={openPaymentModal}
                     >
-                      Buy
+                      {!language ? (<span> Buy </span>) : (<span> 구입하다 </span>)}
                     </button>
                   )}
                   {isPaymentModal && (
@@ -554,7 +550,7 @@ const VideoSeriesPage = () => {
                         aria-haspopup="true"
                         onClick={handleToggle}
                       >
-                        {!language ? <span> RATE </span> : <span> 비율 </span>}
+                        {!language ? <span> RATE </span> : <span> 평가하기 </span>}
                       </button>
                       <Popper
                         open={open}
@@ -627,7 +623,7 @@ const VideoSeriesPage = () => {
                 {!language ? (
                   <span> You may also like </span>
                 ) : (
-                  <span> 당신은 또한 좋아할 수도 있습니다 </span>
+                  <span> 이것도 좋아할 수 있습니다 </span>
                 )}
               </div>
               <div className="w-full min-h-[160px] bg-white my-5 px-5 py-5 rounded-md">

@@ -25,20 +25,20 @@ const OriginalsPage = () => {
     const [isSticky, setIsSticky] = useState(false);
     const comic = useSelector(state => state.comic.comic);
     const [Comics, setComics] = useState([]);
-    
+
     //Chọn menu cho thể loại
     const [selectedMenuOriginalList, setSelectedMenuOriginalList] = useState("by Popularity");
 
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
-      //Chọn nội dung theo thứ
-      const [currentDay, setCurrentDay] = useState('');
+    //Chọn nội dung theo thứ
+    const [currentDay, setCurrentDay] = useState('');
     useEffect(() => {
         const filteredOriginalsByGenre = comic.comic?.filter(data => data.schedule === currentDay);
-        const filteredOriginalsByLikes = comic.comic?.filter(data => data.schedule === currentDay).sort((a,b)=>b.views-a.views);
+        const filteredOriginalsByLikes = comic.comic?.filter(data => data.schedule === currentDay).sort((a, b) => b.views - a.views);
         const filteredOriginalsByDate = comic.comic?.filter(data => data.schedule === currentDay).sort((a, b) => new Date(b.createTime) - new Date(a.createTime));
-        setComics(setSelectedMenuOriginalList==="by Popularity"?filteredOriginalsByGenre:setSelectedMenuOriginalList==="by Likes"?filteredOriginalsByLikes:filteredOriginalsByDate)
-    }, [currentDay,comic.comic,setSelectedMenuOriginalList]);
+        setComics(setSelectedMenuOriginalList === "by Popularity" ? filteredOriginalsByGenre : setSelectedMenuOriginalList === "by Likes" ? filteredOriginalsByLikes : filteredOriginalsByDate)
+    }, [currentDay, comic.comic, setSelectedMenuOriginalList]);
     useEffect(() => {
         const threshold = 100; // Ngưỡng để kích hoạt dính vào trên cùng
 
@@ -57,7 +57,7 @@ const OriginalsPage = () => {
         };
     }, []);
 
-  
+
 
     useEffect(() => {
         const today = new Date();
@@ -124,7 +124,7 @@ const OriginalsPage = () => {
                             onClick={() => setSelectedSection("section1")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            {!language ? <span> ONGOING </span> : <span> 전진 </span>}
+                            {!language ? <span> ONGOING </span> : <span> 진행 중 </span>}
                         </li>
                     </ScrollLink >
 
@@ -133,7 +133,7 @@ const OriginalsPage = () => {
                             onClick={() => setSelectedSection("section2")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            {!language ? <span> COMPLETED </span> : <span> 완전한 </span>}
+                            {!language ? <span> COMPLETED </span> : <span> 완료됨 </span>}
                         </li>
                     </ScrollLink >
                 </ul>
@@ -148,7 +148,7 @@ const OriginalsPage = () => {
 
                             <div className="h-[70px] border-b-2 flex items-center">
                                 <span className="font-semibold text-md">
-                                    {!language ? <span> Ongoing Series </span> : <span> 진행중인 시리즈 </span>}
+                                    {!language ? <span> Ongoing Series </span> : <span> 진행 중인 시리즈 </span>}
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
                                     <button
@@ -194,7 +194,8 @@ const OriginalsPage = () => {
                                                                     onClick={() => setSelectedMenuOriginalList("by Popularity")}
                                                                     className={`w-full h-full ${selectedMenuOriginalList === "by Popularity" ? "text-yellow-500" : ""}`}
                                                                 >
-                                                                    by Popularity
+                                                                    {!language ? <span>by Popularity</span> : <span> 인기도 기준으로 </span>}
+
                                                                 </span>
                                                             </MenuItem>
 
@@ -203,7 +204,7 @@ const OriginalsPage = () => {
                                                                     onClick={() => setSelectedMenuOriginalList("by Likes")}
                                                                     className={`w-full h-full ${selectedMenuOriginalList === "by Likes" ? "text-yellow-500" : ""}`}
                                                                 >
-                                                                    by Likes
+                                                                    {!language ? <span> by Likes </span> : <span> 좋아요 기준으로 </span>}
                                                                 </span>
                                                             </MenuItem>
 
@@ -212,7 +213,7 @@ const OriginalsPage = () => {
                                                                     onClick={() => setSelectedMenuOriginalList("by Date")}
                                                                     className={`w-full h-full ${selectedMenuOriginalList === "by Date" ? "text-yellow-500" : ""}`}
                                                                 >
-                                                                    by Date
+                                                                    {!language ? <span> by Date </span> : <span> 날짜별로 </span>}
                                                                 </span>
                                                             </MenuItem>
                                                             {/* Add more menu items here */}
@@ -341,7 +342,7 @@ const OriginalsPage = () => {
                     <ScrollElement name="section2" >
                         <div className="w-full h-full pt-[70px]">
                             <div className="h-[70px] border-b-2 flex items-center font-semibold text-md">
-                                {!language ? <span> Completed Series </span> : <span> 완성된 시리즈 </span>}
+                                {!language ? <span> Completed Series </span> : <span> 완료된 시리즈 </span>}
                             </div>
 
                             <div className="w-full h-full mt-[25px] flex items-center justify-center">
@@ -349,7 +350,7 @@ const OriginalsPage = () => {
                                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                     {/* khung nội dung */}
-                                    {comic.comic?.filter(item=>item?.Completed===true)?.map(item => (
+                                    {comic.comic?.filter(item => item?.Completed === true)?.map(item => (
                                         <Link
                                             key={item.id}
                                             to={`/originals/original/series/${item.id}`}
