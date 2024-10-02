@@ -54,7 +54,7 @@ const PopularPage = () => {
                                 </span>
                                 :
                                 <span>
-                                    원본의 새로운 기능
+                                    새로운 및 인기 오리지널
                                 </span>
                             }
 
@@ -72,7 +72,7 @@ const PopularPage = () => {
                                 </span>
                                 :
                                 <span>
-                                    새로운 동영상
+                                    새로운 및 인기 동영상
                                 </span>
                             }
 

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import CheckIcon from '@mui/icons-material/Check';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -24,19 +24,19 @@ const dataListGenre = [
     { id: 5, name: "Slice Of Life", nameKorean: "일상" },
     { id: 6, name: "Romance", nameKorean: "로맨스" },
     { id: 7, name: "Superhero", nameKorean: "슈퍼히어로" },
-    { id: 8, name: "Sci-Fi", nameKorean: "SF" },
+    { id: 8, name: "Sci-Fi", nameKorean: "공상 과학" },
     { id: 9, name: "Thriller", nameKorean: "스릴러" },
-    { id: 10, name: "Supernatural", nameKorean: "초자연" },
+    { id: 10, name: "Supernatural", nameKorean: "초자연적" },
     { id: 11, name: "Mystery", nameKorean: "미스터리" },
     { id: 12, name: "Sports", nameKorean: "스포츠" },
-    { id: 13, name: "Historical", nameKorean: "역사" },
-    { id: 14, name: "Heartwarming", nameKorean: "훈훈한" },
+    { id: 13, name: "Historical", nameKorean: "역사적" },
+    { id: 14, name: "Heartwarming", nameKorean: "따뜻한 이야기" },
     { id: 15, name: "Horror", nameKorean: "호러" },
-    { id: 16, name: "Informative", nameKorean: "정보" },
+    { id: 16, name: "Informative", nameKorean: "정보성" },
     { id: 17, name: "School", nameKorean: "학교" },
     { id: 18, name: "Animals", nameKorean: "동물" },
     { id: 19, name: "Zombies", nameKorean: "좀비" },
-    { id: 20, name: "Short Story", nameKorean: "단편" },
+    { id: 20, name: "Short Story", nameKorean: "단편 소설" },
 
 ];
 
@@ -46,18 +46,18 @@ dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 const GenresPage = () => {
     const comic = useSelector(state => state.comic.comic);
     const [Comic, setComic] = useState([]);
-     //Chọn menu cho thể loại truyện và video
-     const [selectedMenuOriginalList, setSelectedMenuOriginalList] = React.useState("by Popularity"); // Originals genre list
+    //Chọn menu cho thể loại truyện và video
+    const [selectedMenuOriginalList, setSelectedMenuOriginalList] = React.useState("by Popularity"); // Originals genre list
     //Chọn nội dung truyện theo thể loại
     const [selectedOriginalsByGenre, setSelectedOriginalsByGenre] = useState('Action');
-    
+
 
     useEffect(() => {
         const filteredOriginalsByGenre = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase());
-        const filteredOriginalsByLikes = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).sort((a,b)=>b.views-a.views);
+        const filteredOriginalsByLikes = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).sort((a, b) => b.views - a.views);
         const filteredOriginalsByDate = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).sort((a, b) => new Date(b.createTime) - new Date(a.createTime));
-        setComic(selectedMenuOriginalList==="by Popularity"?filteredOriginalsByGenre:selectedMenuOriginalList==="by Likes"?filteredOriginalsByLikes:filteredOriginalsByDate)
-    }, [selectedOriginalsByGenre,comic.comic,selectedMenuOriginalList]);
+        setComic(selectedMenuOriginalList === "by Popularity" ? filteredOriginalsByGenre : selectedMenuOriginalList === "by Likes" ? filteredOriginalsByLikes : filteredOriginalsByDate)
+    }, [selectedOriginalsByGenre, comic.comic, selectedMenuOriginalList]);
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
 
@@ -98,7 +98,7 @@ const GenresPage = () => {
         prevOpenOriginals.current = openOriginals;
     }, [openOriginals]);
 
-   
+
 
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
@@ -158,7 +158,7 @@ const GenresPage = () => {
                                                                 onClick={() => setSelectedMenuOriginalList("by Popularity")}
                                                                 className={`w-full h-full ${selectedMenuOriginalList === "by Popularity" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                by Popularity
+                                                                {!language ? <span>by Popularity</span> : <span> 인기도 기준으로 </span>}
                                                             </span>
                                                         </MenuItem>
 
@@ -167,7 +167,7 @@ const GenresPage = () => {
                                                                 onClick={() => setSelectedMenuOriginalList("by Likes")}
                                                                 className={`w-full h-full ${selectedMenuOriginalList === "by Likes" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                by Likes
+                                                                {!language ? <span> by Likes </span> : <span> 좋아요 기준으로 </span>}
                                                             </span>
                                                         </MenuItem>
 
@@ -176,7 +176,7 @@ const GenresPage = () => {
                                                                 onClick={() => setSelectedMenuOriginalList("by Date")}
                                                                 className={`w-full h-full ${selectedMenuOriginalList === "by Date" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                by Date
+                                                                {!language ? <span> by Date </span> : <span> 날짜별로 </span>}
                                                             </span>
                                                         </MenuItem>
                                                         {/* Add more menu items here */}
@@ -216,7 +216,7 @@ const GenresPage = () => {
                                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                     {/* khung nội dung */}
-                                    { Comic?.map(item => (
+                                    {Comic?.map(item => (
                                         <Link
                                             key={item.id}
                                             to={`/originals/original/series/${item.id}`}

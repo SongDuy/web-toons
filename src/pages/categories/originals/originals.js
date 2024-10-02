@@ -195,7 +195,6 @@ const OriginalsPage = () => {
                                                                     className={`w-full h-full ${selectedMenuOriginalList === "by Popularity" ? "text-yellow-500" : ""}`}
                                                                 >
                                                                     {!language ? <span>by Popularity</span> : <span> 인기도 기준으로 </span>}
-
                                                                 </span>
                                                             </MenuItem>
 

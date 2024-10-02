@@ -18,7 +18,7 @@ const NewTrendingVideosPage = () => {
         <div className="w-full h-full pt-[70px]">
 
             <div className="h-[70px] flex items-center uppercase font-semibold text-xl">
-                {!language ? <span> NEW & TRENDING VIDEOS </span> : <span> 새로운 동영상 </span>}
+                {!language ? <span> NEW & TRENDING VIDEOS </span> : <span> 새로운 및 인기 동영상 </span>}
             </div>
 
             <div className="w-full flex gap-[60px]">
