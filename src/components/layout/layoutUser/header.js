@@ -20,10 +20,10 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SearchPage from "./search";
 import LoginPage from "../../../../src/pages/auth/login";
 import logo from "../../../img/logonew.png";
-import { Link, useLocation} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { auth } from "../../../common/themes/firebase";
 import { useDispatch, useSelector } from 'react-redux';
-import { getlanguage, setIsLoginModal,setIsLogin19Modal } from "../../../common/store/hidden";
+import { getlanguage, setIsLoginModal, setIsLogin19Modal } from "../../../common/store/hidden";
 import { logout, setuser } from "../../../common/store/Auth.js";
 import { onAuthStateChanged } from 'firebase/auth';
 import userFireBase from "../../../common/services/User.services";
@@ -136,17 +136,17 @@ const HeaderPage = () => {
     dispatch(setIsLogin19Modal(false));
 
   };
-  const logouts=async ()=>{
-      try {
-        if(auth?.currentUser){
-          await userFireBase.update({checkage:false},auth?.currentUser?.uid) 
-       await dispatch(logout())
+  const logouts = async () => {
+    try {
+      if (auth?.currentUser) {
+        await userFireBase.update({ checkage: false }, auth?.currentUser?.uid)
+        await dispatch(logout())
         dispatch(setIsLogin19Modal(false));
-        }
-       
-      } catch (error) {
-        
       }
+
+    } catch (error) {
+
+    }
   }
   //new
   useEffect(() => {
@@ -194,7 +194,7 @@ const HeaderPage = () => {
             className="border h-[5px] bg-gray-500 w-[20px] rounded-r-full"
             onClick={closeLogin19Modal}
           >
-</button>
+          </button>
           {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
         </div>
         :
@@ -202,11 +202,11 @@ const HeaderPage = () => {
 
           <button
             className="border h-[5px] bg-gray-500 w-[20px] rounded-l-full"
-            onClick={()=>logouts()}
+            onClick={() => logouts()}
           />
           <button
             className="w-[25px] h-[25px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
-            onClick={()=>logouts()}
+            onClick={() => logouts()}
           >
             19
           </button>
@@ -224,7 +224,7 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-              {!language ? <span> Originals </span> : <span> 원본 </span>}
+              {!language ? <span> Originals </span> : <span> 오리지널 </span>}
             </li>
           </Link>
           <Link to={`/videos`}>
@@ -254,7 +254,7 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-              {!language ? <span> Popular </span> : <span> 인기 있는 </span>}
+              {!language ? <span> Popular </span> : <span> 인기 </span>}
             </li>
           </Link>
         </ul>
@@ -275,7 +275,7 @@ const HeaderPage = () => {
                 className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
                 onClick={() => { openLoginModal(); handleCloseAccount(); }}
               >
-                {!language ? <span> Publish </span> : <span> 게시 </span>}
+                {!language ? <span> Publish </span> : <span> 게시하다 </span>}
               </button>
 
               {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
@@ -311,7 +311,7 @@ const HeaderPage = () => {
                 onClick={handleToggle}
               >
                 {/* Publish {process.env.REACT_APP_HOME} */}
-                {!language ? <span> Publish </span> : <span> 게시 </span>}
+                {!language ? <span> Publish </span> : <span> 게시하다 </span>}
               </button>
 
               {/* Chọn menu */}
@@ -344,7 +344,7 @@ const HeaderPage = () => {
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <PictureAsPdfOutlinedIcon />
 
-                              {!language ? <span> Original </span> : <span> 원래의 </span>}
+                              {!language ? <span> Original </span> : <span> 원본 </span>}
 
                             </MenuItem>
                           </Link>
@@ -409,14 +409,14 @@ const HeaderPage = () => {
                           <Link to={``}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <GroupAddIcon />
-                              {!language ? <span> Subscribed </span> : <span> 구독함 </span>}
+                              {!language ? <span> Subscribed </span> : <span> 구독 중 </span>}
                             </MenuItem>
                           </Link>
 
                           <Link to={`/dashboard`}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <PieChartIcon />
-                              {!language ? <span> Dashboard </span> : <span> 계기반 </span>}
+                              {!language ? <span> Dashboard </span> : <span> 대시보드 </span>}
                             </MenuItem>
                           </Link>
 
@@ -430,7 +430,7 @@ const HeaderPage = () => {
                           <Link to={``}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <EditNoteIcon />
-                              {!language ? <span> Creators </span> : <span> 크리에이터 </span>}
+                              {!language ? <span> Creators </span> : <span> 창작자 </span>}
                             </MenuItem>
                           </Link>
 
@@ -448,12 +448,12 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <MenuItem onClick={()=>logouts()} className="flex gap-x-3">
+                          <MenuItem onClick={() => logouts()} className="flex gap-x-3">
                             <LogoutIcon />
                             {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
                           </MenuItem>
                         </MenuList>
-                        
+
                       </ClickAwayListener>
                     </Paper>
                   </Grow>

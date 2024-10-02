@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom';
 
 const NewToOriginalsPage = () => {
     const comic = useSelector(state => state.comic.comic);
-    
+
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredItem, setHoveredItem] = useState(null);
 
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
-    
+
     return (
         <div className="w-full min-h-[560px]">
             <div className="w-full h-[60px] bg-white shadow flex items-center justify-center">
@@ -30,8 +30,7 @@ const NewToOriginalsPage = () => {
                             </span>
                             :
                             <span>
-
-                                오리지널의 새로운 기능
+                                오리지널 신규
                             </span>
                         }
 

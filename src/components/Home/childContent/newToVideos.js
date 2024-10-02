@@ -30,7 +30,7 @@ const NewToVideosPage = () => {
                             </span>
                             :
                             <span>
-                                동영상의 새로운 기능
+                                동영상 신규
                             </span>
                         }
 
@@ -47,37 +47,37 @@ const NewToVideosPage = () => {
                             to={`/videos/video/series/${item.id}`}
                             className="max-w-[210px] h-[210px]"
                         >
-                             <li
-                                        onMouseEnter={() => setHoveredVideoItem(item.id)}
-                                        onMouseLeave={() => setHoveredVideoItem(null)}
-                                        className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white  cursor-pointer transition-shadow duration-300 hover:shadow"
-                                    >
+                            <li
+                                onMouseEnter={() => setHoveredVideoItem(item.id)}
+                                onMouseLeave={() => setHoveredVideoItem(null)}
+                                className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white  cursor-pointer transition-shadow duration-300 hover:shadow"
+                            >
 
-                                        <div className="w-full h-[120px] relative" >
-                                            <img
-                                                src={item.squareThumbnail}
-                                                alt="img"
-                                                className="object-fill w-full h-full rounded-md"
-                                            />
+                                <div className="w-full h-[120px] relative" >
+                                    <img
+                                        src={item.squareThumbnail}
+                                        alt="img"
+                                        className="object-fill w-full h-full rounded-md"
+                                    />
 
-                                            {hoveredVideoItem === item.id && (
-                                                <div className="absolute inset-0 rounded-md flex items-center justify-center text-yellow-500 z-10">
-                                                    <PlayArrowIcon sx={{ fontSize: 60 }} />
-                                                </div>
-                                            )}
+                                    {hoveredVideoItem === item.id && (
+                                        <div className="absolute inset-0 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                            <PlayArrowIcon sx={{ fontSize: 60 }} />
                                         </div>
+                                    )}
+                                </div>
 
-                                        <div className="w-full flex flex-wrap items-center px-3 py-3">
-                                            <div className="w-full h-[65px] mb-auto overflow-hidden">
-                                                <span className="text-black text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
-                                                    {item.title}
-                                                </span>
-                                                <span className="text-black text-md text-shadow-white leading-[1.2] line-clamp-1">
-                                                    {item.Author}
-                                                </span>
-                                            </div>
+                                <div className="w-full flex flex-wrap items-center px-3 py-3">
+                                    <div className="w-full h-[65px] mb-auto overflow-hidden">
+                                        <span className="text-black text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
+                                            {item.title}
+                                        </span>
+                                        <span className="text-black text-md text-shadow-white leading-[1.2] line-clamp-1">
+                                            {item.Author}
+                                        </span>
+                                    </div>
 
-                                            {/* <div className="w-full mb-[20px]">
+                                    {/* <div className="w-full mb-[20px]">
                                                 <span className="w-[75px] text-rose-300 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
                                                     <FavoriteIcon />
                                                     {item.like}
@@ -87,9 +87,9 @@ const NewToVideosPage = () => {
                                                 </span>
                                             </div> */}
 
-                                        </div>
+                                </div>
 
-                                    </li>
+                            </li>
                         </Link>
                     ))}
 

@@ -173,7 +173,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                                         </span>
                                                         :
                                                         <span>
-                                                            원본
+                                                            오리지널
                                                         </span>
                                                     }
                                                 </MenuItem>

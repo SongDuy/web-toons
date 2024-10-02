@@ -21,8 +21,8 @@ const PopularOriginalsAndVideosPage = () => {
     const Video = useSelector(state => state.Video.video);
 
     //Chọn thể loại videos
-    const filteredcomic = comic.comic?.slice()?.sort((a, b) =>  b.views - a.views);
-    const searchedcomic = comic.comic?.filter(item => selectedOriginalGenre === 'All' ? item : item.genre1.toLowerCase() === selectedOriginalGenre.toLowerCase() || item.genre2.toLowerCase() === selectedOriginalGenre.toLowerCase()).slice()?.sort((a, b) =>  b.views - a.views);
+    const filteredcomic = comic.comic?.slice()?.sort((a, b) => b.views - a.views);
+    const searchedcomic = comic.comic?.filter(item => selectedOriginalGenre === 'All' ? item : item.genre1.toLowerCase() === selectedOriginalGenre.toLowerCase() || item.genre2.toLowerCase() === selectedOriginalGenre.toLowerCase()).slice()?.sort((a, b) => b.views - a.views);
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
 
@@ -70,7 +70,7 @@ const PopularOriginalsAndVideosPage = () => {
                         <div className="w-full px-2 py-5 flex items-center border-b">
                             <div className="mr-auto">
                                 <span className="font-semibold text-lg hover:text-yellow-500 cursor-pointer">
-                                    {!language ? <span> New & Trending Originals </span> : <span> 원본의 새로운 기능 </span>}
+                                    {!language ? <span> New & Trending Originals </span> : <span> 새로운 및 인기 오리지널 </span>}
                                     <NavigateNextIcon />
                                 </span>
                             </div>
@@ -131,7 +131,7 @@ const PopularOriginalsAndVideosPage = () => {
                         <div className="w-full px-2 py-5 flex items-center border-b">
                             <div className="mr-auto">
                                 <span className="font-semibold text-lg hover:text-yellow-500 cursor-pointer">
-                                    {!language ? <span> New & Trending Videos </span> : <span> 새로운 동영상 </span>}
+                                    {!language ? <span> New & Trending Videos </span> : <span> 새로운 및 인기 동영상 </span>}
                                     <NavigateNextIcon />
                                 </span>
                             </div>
@@ -141,11 +141,11 @@ const PopularOriginalsAndVideosPage = () => {
                         <div className="w-full h-full">
                             <ul className="w-full h-full ">
                                 {/* khung nội dung */}
-                                {Video?.Video?.slice()?.sort((a, b) =>  b.views - a.views)?.map((item, index) => (
+                                {Video?.Video?.slice()?.sort((a, b) => b.views - a.views)?.map((item, index) => (
                                     <Link
                                         key={item.id}
                                         to={`/videos/video/series/${item.id}`}
-                                        >
+                                    >
                                         <li
                                             className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100"
                                         >
@@ -165,7 +165,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                 </div>
 
                                                 <div className="w-[230px] mt-auto mb-auto overflow-hidden">
-                                                   
+
                                                     <span className="text-md font-semibold line-clamp-1">
                                                         {item.title}
                                                     </span>
@@ -237,7 +237,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                                 onClick={() => setSelectedOriginalGenre("All")}
                                                                 className={`w-full h-full ${selectedOriginalGenre === "All" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                All
+                                                                {!language ? <span>All</span> : <span> 모두 </span>}
                                                             </span>
                                                         </MenuItem>
 
@@ -246,7 +246,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                                 onClick={() => setSelectedOriginalGenre("Action")}
                                                                 className={`w-full h-full ${selectedOriginalGenre === "Action" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                Action
+                                                                {!language ? <span>Action</span> : <span> 액션 </span>} 
                                                             </span>
                                                         </MenuItem>
 
@@ -255,7 +255,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                                 onClick={() => setSelectedOriginalGenre("Romance")}
                                                                 className={`w-full h-full ${selectedOriginalGenre === "Romance" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                Romance
+                                                                {!language ? <span>Romance</span> : <span> 로맨스 </span>}   
                                                             </span>
                                                         </MenuItem>
 
@@ -264,7 +264,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                                 onClick={() => setSelectedOriginalGenre("Fantasy")}
                                                                 className={`w-full h-full ${selectedOriginalGenre === "Fantasy" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                Fantasy
+                                                                {!language ? <span>Fantasy</span> : <span> 판타지 </span>}
                                                             </span>
                                                         </MenuItem>
 
@@ -273,7 +273,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                                 onClick={() => setSelectedOriginalGenre("Drama")}
                                                                 className={`w-full h-full ${selectedOriginalGenre === "Drama" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                Drama
+                                                                {!language ? <span>Drama</span> : <span> 드라마 </span>}
                                                             </span>
                                                         </MenuItem>
 
@@ -282,7 +282,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                                 onClick={() => setSelectedOriginalGenre("Comedy")}
                                                                 className={`w-full h-full ${selectedOriginalGenre === "Comedy" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                Comedy
+                                                                {!language ? <span>Comedy</span> : <span> 코미디 </span>}
                                                             </span>
                                                         </MenuItem>
 
@@ -291,7 +291,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                                 onClick={() => setSelectedOriginalGenre("Thriller")}
                                                                 className={`w-full h-full ${selectedOriginalGenre === "Thriller" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                Thriller
+                                                                {!language ? <span>Thriller</span> : <span> 스릴러 </span>}
                                                             </span>
                                                         </MenuItem>
 
@@ -300,7 +300,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                                 onClick={() => setSelectedOriginalGenre("Slice of life")}
                                                                 className={`w-full h-full ${selectedOriginalGenre === "Slice of life" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                Slice of life
+                                                                {!language ? <span>Slice of life</span> : <span> 일상 </span>}                                                               
                                                             </span>
                                                         </MenuItem>
 
@@ -309,7 +309,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                                 onClick={() => setSelectedOriginalGenre("Supernatural")}
                                                                 className={`w-full h-full ${selectedOriginalGenre === "Supernatural" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                Supernatural
+                                                                {!language ? <span>Supernatural</span> : <span> 초자연적 </span>}
                                                             </span>
                                                         </MenuItem>
 
@@ -318,7 +318,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                                 onClick={() => setSelectedOriginalGenre("Sci-fi")}
                                                                 className={`w-full h-full ${selectedOriginalGenre === "Sci-fi" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                Sci-fi
+                                                                {!language ? <span>Sci-fi</span> : <span> 공상 과학 </span>}
                                                             </span>
                                                         </MenuItem>
 
@@ -327,7 +327,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                                 onClick={() => setSelectedOriginalGenre("Horror")}
                                                                 className={`w-full h-full ${selectedOriginalGenre === "Horror" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                Horror
+                                                                {!language ? <span>Horror</span> : <span> 호러 </span>}
                                                             </span>
                                                         </MenuItem>
 
@@ -336,7 +336,7 @@ const PopularOriginalsAndVideosPage = () => {
                                                                 onClick={() => setSelectedOriginalGenre("Others")}
                                                                 className={`w-full h-full ${selectedOriginalGenre === "Others" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                Others
+                                                                {!language ? <span>Others</span> : <span> 기타 </span>}
                                                             </span>
                                                         </MenuItem>
 
