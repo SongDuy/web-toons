@@ -5,26 +5,26 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const dataListGenre = [
-    { id: 1, name: "DRAMA" },
-    { id: 2, name: "FANTASY" },
-    { id: 3, name: "COMEDY" },
-    { id: 4, name: "ACTION" },
-    { id: 5, name: "SLICE OF LIFE" },
-    { id: 6, name: "ROMANCE" },
-    { id: 7, name: "SUPERHERO" },
-    { id: 8, name: "SCI-FI" },
-    { id: 9, name: "THRILLER" },
-    { id: 10, name: "SUPERNATURAL" },
-    { id: 11, name: "MYSTERY" },
-    { id: 12, name: "SPORTS" },
-    { id: 13, name: "HISTORICAL" },
-    { id: 14, name: "HEARTWARMING" },
-    { id: 15, name: "HORROR" },
-    { id: 16, name: "INFORMATIVE" },
-    { id: 17, name: "SCHOOL" },
-    { id: 18, name: "ANIMALS" },
-    { id: 19, name: "ZOMBIES" },
-    { id: 20, name: "SHORT STORY" },
+    { id: 1, name: "Drama", nameKorean: "드라마" },
+    { id: 2, name: "Fantasy", nameKorean: "판타지" },
+    { id: 3, name: "Comedy", nameKorean: "코미디" },
+    { id: 4, name: "Action", nameKorean: "액션" },
+    { id: 5, name: "Slice Of Life", nameKorean: "일상" },
+    { id: 6, name: "Romance", nameKorean: "로맨스" },
+    { id: 7, name: "Superhero", nameKorean: "슈퍼히어로" },
+    { id: 8, name: "Sci-Fi", nameKorean: "공상 과학" },
+    { id: 9, name: "Thriller", nameKorean: "스릴러" },
+    { id: 10, name: "Supernatural", nameKorean: "초자연적" },
+    { id: 11, name: "Mystery", nameKorean: "미스터리" },
+    { id: 12, name: "Sports", nameKorean: "스포츠" },
+    { id: 13, name: "Historical", nameKorean: "역사적" },
+    { id: 14, name: "Heartwarming", nameKorean: "따뜻한 이야기" },
+    { id: 15, name: "Horror", nameKorean: "호러" },
+    { id: 16, name: "Informative", nameKorean: "정보성" },
+    { id: 17, name: "School", nameKorean: "학교" },
+    { id: 18, name: "Animals", nameKorean: "동물" },
+    { id: 19, name: "Zombies", nameKorean: "좀비" },
+    { id: 20, name: "Short Story", nameKorean: "단편 소설" },
 
 ];
 // Sắp xếp mảng theo tên thể loại theo bảng chữ cái
@@ -60,7 +60,7 @@ const OriginalsByGenrePage = () => {
                             onClick={() => setSelectedOriginalsByGenre(item.name)}
                             className={`uppercase font-semibold text-sm hover:text-black cursor-pointer flex items-center justify-center ${ selectedOriginalsByGenre === (item.name || "ACTION") ? 'text-black' : 'text-gray-400'}`}
                         >
-                            {item.name}
+                            {!language ? item.name : item.nameKorean}
                         </li>
                     ))}
 
