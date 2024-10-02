@@ -544,7 +544,7 @@ const DisplayVideoPage = () => {
                       {!language ? (
                         <span> Subscribe </span>
                       ) : (
-                        <span> 구독하다 </span>
+                        <span> 구독하기 </span>
                       )}
                     </button>
                   ) : (
@@ -638,7 +638,7 @@ const DisplayVideoPage = () => {
                           {!language ? (
                             <span> Send </span>
                           ) : (
-                            <span> 보내다 </span>
+                            <span> 보내기 </span>
                           )}
                         </button>
                       </div>
@@ -651,7 +651,7 @@ const DisplayVideoPage = () => {
                               {!language ? (
                                 <span> TOP </span>
                               ) : (
-                                <span> 맨 위 </span>
+                                <span> 최고 </span>
                               )}
                             </li>
                             <li className="px-5 py-5 cursor-pointer hover:text-green-500 font-semibold">
@@ -706,7 +706,7 @@ const DisplayVideoPage = () => {
                                         {!language ? (
                                           <span> Replies </span>
                                         ) : (
-                                          <span> 답글 </span>
+                                          <span> 답글하다 </span>
                                         )}
 
                                         {item.replies}
@@ -762,7 +762,7 @@ const DisplayVideoPage = () => {
                                           {!language ? (
                                             <span> Reply </span>
                                           ) : (
-                                            <span> 회신하다 </span>
+                                            <span> 답장하다 </span>
                                           )}
                                         </button>
                                       </div>
@@ -860,9 +860,9 @@ const DisplayVideoPage = () => {
                     <div className="flex items-center pb-2">
                       <span className="px-2 font-semibold text-lg hover:text-green-500 cursor-pointer">
                         {!language ? (
-                          <span>New & Trending</span>
+                          <span>New & Trending Videos</span>
                         ) : (
-                          <span>신규 및 인기</span>
+                          <span>새로운 및 인기 동영상</span>
                         )}
                         <NavigateNextIcon />
                       </span>

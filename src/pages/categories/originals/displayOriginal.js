@@ -60,10 +60,10 @@ const DisplayOriginalPage = () => {
   const comic = useSelector((state) => state.comic.comic);
   const [selectedOriginalGenre, setSelectedOriginalGenre] = useState("All");
   const Account = useSelector((state) => state.Account.Account);
-//Mở modal menu original by genre để chọn
-const [openOriginals, setOpenOriginals] = useState(false);
-const anchorRefOriginals = React.useRef(null);
-const prevOpenOriginals = React.useRef(openOriginals);
+  //Mở modal menu original by genre để chọn
+  const [openOriginals, setOpenOriginals] = useState(false);
+  const anchorRefOriginals = React.useRef(null);
+  const prevOpenOriginals = React.useRef(openOriginals);
 
   const filteredcomic = comic?.comic
     ?.slice()
@@ -73,7 +73,7 @@ const prevOpenOriginals = React.useRef(openOriginals);
       selectedOriginalGenre === "All"
         ? item
         : item.genre1.toLowerCase() === selectedOriginalGenre.toLowerCase() ||
-          item.genre2.toLowerCase() === selectedOriginalGenre.toLowerCase()
+        item.genre2.toLowerCase() === selectedOriginalGenre.toLowerCase()
     )
     .slice()
     ?.sort((a, b) => b.views - a.views);
@@ -103,8 +103,8 @@ const prevOpenOriginals = React.useRef(openOriginals);
         id.id,
         id.idseries
       );
-    } catch (error) {}
-  }, 10000); 
+    } catch (error) { }
+  }, 10000);
 
   const handleToggleOriginals = () => {
     setOpenOriginals((prevOpen) => !prevOpen);
@@ -155,7 +155,7 @@ const prevOpenOriginals = React.useRef(openOriginals);
           if (user?.checkage) {
             const age = account?.payload?.birthday
               ? new Date(Date.now())?.getFullYear() -
-                new Date(user.birthday)?.getFullYear()
+              new Date(user.birthday)?.getFullYear()
               : 15;
             const lg = await dispatch(getAllComic(age));
             unwrapResult(lg);
@@ -183,7 +183,7 @@ const prevOpenOriginals = React.useRef(openOriginals);
           unwrapResult(lg);
         }
         setloading(true);
-      } catch (error) {}
+      } catch (error) { }
     };
     getcomments();
   }, [dispatch, id]);
@@ -234,7 +234,7 @@ const prevOpenOriginals = React.useRef(openOriginals);
       const rep = await CommentFireBase.getidrep(commentId);
       setreps(rep.success ? rep?.rep : []);
       setReplyCommentId(commentId === replyCommentId ? null : commentId);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   //new
@@ -262,7 +262,7 @@ const prevOpenOriginals = React.useRef(openOriginals);
         dispatch(setIsLoginModal(true));
         setComment("");
       }
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const handlesubscribe = async () => {
@@ -289,7 +289,7 @@ const prevOpenOriginals = React.useRef(openOriginals);
           ? setSubscribe(subscribe.subscribe)
           : setSubscribe([]);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   const handleDeleteSub = async () => {
     try {
@@ -309,7 +309,7 @@ const prevOpenOriginals = React.useRef(openOriginals);
           ? setSubscribe(subscribe.subscribe)
           : setSubscribe([]);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   const handlelike = async (idcomment, togglelike) => {
     try {
@@ -433,7 +433,7 @@ const prevOpenOriginals = React.useRef(openOriginals);
         setcountlike(
           getchapid.success
             ? getchapid?.chaps.filter((item) => item.id === id.idseries)[0]
-                .likes
+              .likes
             : 0
         );
         // const pot = await postFireBase.getlike(Account.uid);
@@ -588,7 +588,7 @@ const prevOpenOriginals = React.useRef(openOriginals);
                       {!language ? (
                         <span>Subscribe</span>
                       ) : (
-                        <span>구독하다</span>
+                        <span>구독하기</span>
                       )}
                     </button>
                   ) : (
@@ -672,7 +672,7 @@ const prevOpenOriginals = React.useRef(openOriginals);
                           className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center"
                         >
                           <SendRoundedIcon className="transform rotate-200" />
-                          {!language ? <span>Send</span> : <span>보내다</span>}
+                          {!language ? <span>Send</span> : <span>보내기</span>}
                         </button>
                       </div>
 
@@ -684,7 +684,7 @@ const prevOpenOriginals = React.useRef(openOriginals);
                               {!language ? (
                                 <span>TOP</span>
                               ) : (
-                                <span>맨 위</span>
+                                <span>최고</span>
                               )}
                             </li>
                             <li className="px-5 py-5 cursor-pointer hover:text-green-500 font-semibold">
@@ -710,7 +710,7 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                       <span className="text-gray-400 mx-2 line-clamp-1">
                                         {
                                           monthNames[
-                                            new Date(item.createTime).getMonth()
+                                          new Date(item.createTime).getMonth()
                                           ]
                                         }{" "}
                                         {new Date(item.createTime).getDate()},
@@ -736,7 +736,7 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                         {!language ? (
                                           <span>Replies</span>
                                         ) : (
-                                          <span>답글</span>
+                                          <span>답글하다</span>
                                         )}
                                         {item.replies}
                                       </button>
@@ -792,7 +792,7 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                           {!language ? (
                                             <span>Reply</span>
                                           ) : (
-                                            <span>회신하다</span>
+                                            <span>답장하다</span>
                                           )}
                                         </button>
                                       </div>
@@ -814,9 +814,9 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                                 <span className="text-gray-400 mx-2 line-clamp-1">
                                                   {
                                                     monthNames[
-                                                      new Date(
-                                                        item.createTime
-                                                      ).getMonth()
+                                                    new Date(
+                                                      item.createTime
+                                                    ).getMonth()
                                                     ]
                                                   }{" "}
                                                   {new Date(
@@ -889,9 +889,9 @@ const prevOpenOriginals = React.useRef(openOriginals);
                     <div className="flex items-center pb-2">
                       <span className="px-2 font-semibold text-lg hover:text-green-500 cursor-pointer">
                         {!language ? (
-                          <span>New & Trending</span>
+                          <span> New & Trending Originals </span>
                         ) : (
-                          <span>신규 및 인기</span>
+                          <span> 새로운 및 인기 오리지널 </span>
                         )}
                         <NavigateNextIcon />
                       </span>
@@ -945,12 +945,12 @@ const prevOpenOriginals = React.useRef(openOriginals);
                         {!language ? (
                           <span>Originals by Genre</span>
                         ) : (
-                          <span>장르별 원작</span>
+                          <span>장르별 오리지널</span>
                         )}
 
                         <NavigateNextIcon />
                       </span>
-                     
+
                       {/* Chọn menu thể loại originals*/}
                       <div className="ml-auto flex gap-1 text-green-500 cursor-pointer">
                         <button
@@ -1002,13 +1002,12 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                         onClick={() =>
                                           setSelectedOriginalGenre("All")
                                         }
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "All"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "All"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
-                                        All
+                                        {!language ? <span>All</span> : <span> 모두 </span>}
                                       </span>
                                     </MenuItem>
 
@@ -1017,13 +1016,12 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                         onClick={() =>
                                           setSelectedOriginalGenre("Action")
                                         }
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Action"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Action"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
-                                        Action
+                                        {!language ? <span>Action</span> : <span> 액션 </span>}
                                       </span>
                                     </MenuItem>
 
@@ -1032,13 +1030,12 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                         onClick={() =>
                                           setSelectedOriginalGenre("Romance")
                                         }
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Romance"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Romance"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
-                                        Romance
+                                        {!language ? <span>Romance</span> : <span> 로맨스 </span>}
                                       </span>
                                     </MenuItem>
 
@@ -1047,13 +1044,12 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                         onClick={() =>
                                           setSelectedOriginalGenre("Fantasy")
                                         }
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Fantasy"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Fantasy"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
-                                        Fantasy
+                                        {!language ? <span>Fantasy</span> : <span> 판타지 </span>}
                                       </span>
                                     </MenuItem>
 
@@ -1062,13 +1058,12 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                         onClick={() =>
                                           setSelectedOriginalGenre("Drama")
                                         }
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Drama"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Drama"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
-                                        Drama
+                                        {!language ? <span>Drama</span> : <span> 드라마 </span>}
                                       </span>
                                     </MenuItem>
 
@@ -1077,13 +1072,12 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                         onClick={() =>
                                           setSelectedOriginalGenre("Comedy")
                                         }
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Comedy"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Comedy"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
-                                        Comedy
+                                        {!language ? <span>Comedy</span> : <span> 코미디 </span>}
                                       </span>
                                     </MenuItem>
 
@@ -1092,13 +1086,12 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                         onClick={() =>
                                           setSelectedOriginalGenre("Thriller")
                                         }
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Thriller"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Thriller"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
-                                        Thriller
+                                        {!language ? <span>Thriller</span> : <span> 스릴러 </span>}
                                       </span>
                                     </MenuItem>
 
@@ -1109,14 +1102,13 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                             "Slice of life"
                                           )
                                         }
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre ===
+                                        className={`w-full h-full ${selectedOriginalGenre ===
                                           "Slice of life"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
-                                        Slice of life
+                                        {!language ? <span>Slice of life</span> : <span> 일상 </span>}
                                       </span>
                                     </MenuItem>
 
@@ -1127,14 +1119,13 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                             "Supernatural"
                                           )
                                         }
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre ===
+                                        className={`w-full h-full ${selectedOriginalGenre ===
                                           "Supernatural"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
-                                        Supernatural
+                                        {!language ? <span>Supernatural</span> : <span> 초자연적 </span>}
                                       </span>
                                     </MenuItem>
 
@@ -1143,13 +1134,12 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                         onClick={() =>
                                           setSelectedOriginalGenre("Sci-fi")
                                         }
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Sci-fi"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Sci-fi"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
-                                        Sci-fi
+                                        {!language ? <span>Sci-fi</span> : <span> 공상 과학 </span>}
                                       </span>
                                     </MenuItem>
 
@@ -1158,13 +1148,12 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                         onClick={() =>
                                           setSelectedOriginalGenre("Horror")
                                         }
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Horror"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Horror"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
-                                        Horror
+                                        {!language ? <span>Horror</span> : <span> 호러 </span>}
                                       </span>
                                     </MenuItem>
 
@@ -1173,13 +1162,12 @@ const prevOpenOriginals = React.useRef(openOriginals);
                                         onClick={() =>
                                           setSelectedOriginalGenre("Others")
                                         }
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Others"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Others"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
-                                        Others
+                                        {!language ? <span>Others</span> : <span> 기타 </span>}
                                       </span>
                                     </MenuItem>
                                   </MenuList>
