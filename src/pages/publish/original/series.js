@@ -620,9 +620,15 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     {/* Khi chọn xong nội dung các ô thì sẽ trả về độ tuổi truyện */}
                                     <ul className="grid grid-cols-1 gap-4">
                                         <li className="w-full h-[50px] flex items-center">
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
-                                                Violent and graphic content
-                                            </h1>
+                                            {!language ? (
+                                                <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                                    Violent and graphic content
+                                                </h1>
+                                            ) : (
+                                                <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                                    폭력적이고 프래픽 풍부한 콘텐츠
+                                                </h1>
+                                            )}
 
                                             <FormControl className="w-full">
                                                 <Select
@@ -638,37 +644,79 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                     }}
                                                 >
                                                     <MenuItem value="">
-                                                        <span className="whitespace-normal">
-                                                            Please select one
-                                                        </span>
+                                                        {!language ? (
+                                                            <span className="whitespace-normal">
+                                                                Please select one
+                                                            </span>
+                                                        ) : (
+                                                            <span className="whitespace-normal">
+                                                                하나를 선택하세요
+                                                            </span>
+                                                        )}
+
                                                     </MenuItem>
                                                     <MenuItem value="0">
-                                                        <span className="whitespace-normal text-red-500">
-                                                            0: No violence, blood or gore
-                                                        </span>
+                                                        {!language ? (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                0: No violence, blood or gore.
+                                                            </span>
+                                                        ) : (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                0: 폭력, 피 또는 고어가 없음.
+                                                            </span>
+                                                        )}
+
                                                     </MenuItem>
                                                     <MenuItem value="1">
-                                                        <span className="whitespace-normal text-red-500">
-                                                            1: Mild or fantasy blood in a few episodes
-                                                        </span>
+                                                        {!language ? (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                1: Mild or fantasy blood in a few episodes.
+                                                            </span>
+                                                        ) : (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                1: 일부 에피소드에 약간의 피 또는 판타지적 피를 묘사.
+                                                            </span>
+                                                        )}
+
                                                     </MenuItem>
                                                     <MenuItem value="2">
-                                                        <span className="whitespace-normal text-red-500">
-                                                            2: Violent themes with moderate blood or gore
-                                                        </span>
+                                                        {!language ? (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                2: Violent themes with moderate blood or gore.
+                                                            </span>
+                                                        ) : (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                2: 중간 정도의 피 또는 고어가 있는 폭력적인 주제.
+                                                            </span>
+                                                        )}
+
                                                     </MenuItem>
                                                     <MenuItem value="3">
-                                                        <span className="whitespace-normal text-red-500">
-                                                            3: Detailed violence, blood or gore
-                                                        </span>
+                                                        {!language ? (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                3: Detailed violence, blood or gore.
+                                                            </span>
+                                                        ) : (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                3: 상세한 폭력, 피 또는 고어가 있는 장면.
+                                                            </span>
+                                                        )}
+
                                                     </MenuItem>
                                                 </Select>
                                             </FormControl>
                                         </li>
                                         <li className="w-full h-[50px] flex items-center">
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
-                                                Nudity
-                                            </h1>
+
+                                            {!language ? (
+                                                <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                                    Nudity
+                                                </h1>
+                                            ) : (
+                                                <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                                    누드
+                                                </h1>
+                                            )}
 
                                             <FormControl className="w-full">
                                                 <Select
@@ -684,39 +732,81 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                     }}
                                                 >
                                                     <MenuItem value="">
-                                                        <span className="whitespace-normal">
-                                                            Please select one
-                                                        </span>
+                                                        {!language ? (
+                                                            <span className="whitespace-normal">
+                                                                Please select one
+                                                            </span>
+                                                        ) : (
+                                                            <span className="whitespace-normal">
+                                                                하나를 선택하세요
+                                                            </span>
+                                                        )}
                                                     </MenuItem>
                                                     <MenuItem value="0">
-                                                        <span className="whitespace-normal text-red-500">
-                                                            0: No nudity (partial and full)
-                                                        </span>
+                                                        {!language ? (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                0: No nudity (partial and full).
+                                                            </span>
+                                                        ) : (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                0: No nudity (partial and full).
+                                                            </span>
+                                                        )}
+
                                                     </MenuItem>
                                                     <MenuItem value="1">
-                                                        <span className="whitespace-normal text-red-500">
-                                                            1: Some characters in minimal clothing (e.g.,
-                                                            bathing suit, lingerie), non-sexual themes
-                                                        </span>
+                                                        {!language ? (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                1: Some characters in minimal clothing (e.g.,
+                                                                bathing suit, lingerie), non-sexual themes.
+                                                            </span>
+                                                        ) : (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                1: 일부 캐릭터가 최소한의 옷을 입고 있음 (예: 수영복, 속옷), 비성적 주제.
+                                                            </span>
+                                                        )}
+
                                                     </MenuItem>
                                                     <MenuItem value="2">
-                                                        <span className="whitespace-normal text-red-500">
-                                                            2: Comedic nudity with strategic censoring
-                                                        </span>
+                                                        {!language ? (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                2: Comedic nudity with strategic censoring.
+                                                            </span>
+                                                        ) : (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                2: 전략적 검열이 있는 코믹한 누드.
+                                                            </span>
+                                                        )}
+
                                                     </MenuItem>
                                                     <MenuItem value="3">
-                                                        <span className="whitespace-normal text-red-500">
-                                                            3: Fan-service panels (e.g., minimal clothing in
-                                                            sexual posing). Sexually suggestive themes
-                                                        </span>
+                                                        {!language ? (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                3: Fan-service panels (e.g., minimal clothing in
+                                                                sexual posing). Sexually suggestive themes.
+                                                            </span>
+                                                        ) : (
+                                                            <span className="whitespace-normal text-red-500">
+                                                                3: 팬 서비스를 위한 장면 (예: 성적인 포즈를 취한 최소한의 옷).
+                                                                성적으로 암시하는 주제.
+                                                            </span>
+                                                        )}
+
                                                     </MenuItem>
                                                 </Select>
                                             </FormControl>
                                         </li>
                                         <li className="w-full h-[50px] flex items-center">
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
-                                                Sexual content
-                                            </h1>
+
+                                            {!language ? (
+                                                <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                                    Sexual content
+                                                </h1>
+                                            ) : (
+                                                <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                                    성적 콘텐츠
+                                                </h1>
+                                            )}
 
                                             <FormControl className="w-full">
                                                 <Select
@@ -732,9 +822,15 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                     }}
                                                 >
                                                     <MenuItem value="">
-                                                        <span className="whitespace-normal">
-                                                            Please select one
-                                                        </span>
+                                                        {!language ? (
+                                                            <span className="whitespace-normal">
+                                                                Please select one
+                                                            </span>
+                                                        ) : (
+                                                            <span className="whitespace-normal">
+                                                                하나를 선택하세요
+                                                            </span>
+                                                        )}
                                                     </MenuItem>
                                                     <MenuItem value="0">
                                                         <span className="whitespace-normal text-red-500">
@@ -761,9 +857,16 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                             </FormControl>
                                         </li>
                                         <li className="w-full h-[50px] flex items-center">
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
-                                                Profanity
-                                            </h1>
+
+                                            {!language ? (
+                                                <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                                    Profanity
+                                                </h1>
+                                            ) : (
+                                                <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                                    욕설
+                                                </h1>
+                                            )}
 
                                             <FormControl className="w-full">
                                                 <Select
@@ -779,9 +882,15 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                     }}
                                                 >
                                                     <MenuItem value="">
-                                                        <span className="whitespace-normal">
-                                                            Please select one
-                                                        </span>
+                                                        {!language ? (
+                                                            <span className="whitespace-normal">
+                                                                Please select one
+                                                            </span>
+                                                        ) : (
+                                                            <span className="whitespace-normal">
+                                                                하나를 선택하세요
+                                                            </span>
+                                                        )}
                                                     </MenuItem>
                                                     <MenuItem value="0">
                                                         <span className="whitespace-normal text-red-500">
@@ -809,9 +918,16 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                             </FormControl>
                                         </li>
                                         <li className="w-full h-[50px] flex items-center">
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
-                                                Alcohol, drugs or tobacco
-                                            </h1>
+
+                                            {!language ? (
+                                                <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                                    Alcohol, drugs or tobacco
+                                                </h1>
+                                            ) : (
+                                                <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                                    알코올, 마약 또는 담배
+                                                </h1>
+                                            )}
 
                                             <FormControl className="w-full">
                                                 <Select
@@ -827,9 +943,15 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                     }}
                                                 >
                                                     <MenuItem value="">
-                                                        <span className="whitespace-normal">
-                                                            Please select one
-                                                        </span>
+                                                        {!language ? (
+                                                            <span className="whitespace-normal">
+                                                                Please select one
+                                                            </span>
+                                                        ) : (
+                                                            <span className="whitespace-normal">
+                                                                하나를 선택하세요
+                                                            </span>
+                                                        )}
                                                     </MenuItem>
                                                     <MenuItem value="0">
                                                         <span className="whitespace-normal text-red-500">
@@ -857,9 +979,16 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                             </FormControl>
                                         </li>
                                         <li className="w-full h-[50px] flex items-center">
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
-                                                Sensitive themes and topics
-                                            </h1>
+
+                                            {!language ? (
+                                                <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                                    Sensitive themes and topics
+                                                </h1>
+                                            ) : (
+                                                <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                                    민감한 주제와 토픽
+                                                </h1>
+                                            )}
 
                                             <FormControl className="w-full">
                                                 <Select
@@ -875,9 +1004,15 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                     }}
                                                 >
                                                     <MenuItem value="">
-                                                        <span className="whitespace-normal">
-                                                            Please select one
-                                                        </span>
+                                                        {!language ? (
+                                                            <span className="whitespace-normal">
+                                                                Please select one
+                                                            </span>
+                                                        ) : (
+                                                            <span className="whitespace-normal">
+                                                                하나를 선택하세요
+                                                            </span>
+                                                        )}
                                                     </MenuItem>
                                                     <MenuItem value="0">
                                                         <span className="whitespace-normal text-red-500">
