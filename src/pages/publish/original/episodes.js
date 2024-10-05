@@ -197,9 +197,9 @@ const handleedit=async ()=>{
                                         1
                                     </span>
                                 </div>
-                                <span className="text-gray-400">
-                                    SERIES ORIGINAL
-                                </span>
+                                <h1 className="text-gray-400">
+                                   ORIGINAL SERIES 
+                                </h1>
                             </li>
                             <li className="uppercase font-semibold text-md flex items-center justify-center">
                                 <span className="text-gray-400">
@@ -212,9 +212,9 @@ const handleedit=async ()=>{
                                         2
                                     </span>
                                 </div>
-                                <span className="text-black">
+                                <h1 className="text-black">
                                     ORIGINAL EPISODES
-                                </span>
+                                </h1>
                             </li>
                         </ul>
                     </div>
