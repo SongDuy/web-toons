@@ -277,7 +277,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                         <img
                                             src={photos}
                                             alt="Selected"
-                                            className="w-[200px] h-[200px] object-cover rounded"
+                                            className="w-[350px] h-[200px] object-cover rounded"
                                         />
                                     ) : (
                                         <>
@@ -306,7 +306,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
 
                                 <div className="w-full py-3">
                                     <span className="block w-full font-semibold text-sm text-gray-500">
-                                        Image size must be 1080x1080.
+                                        Image size must be 1920x1080.
                                     </span>
                                     <span className="block w-full font-semibold text-sm text-gray-500">
                                         Image must be less than 500KB.
