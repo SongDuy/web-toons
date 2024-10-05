@@ -406,7 +406,7 @@ const HeaderPage = () => {
                           aria-labelledby="composition-button"
                           onKeyDown={handleListAccountKeyDown}
                         >
-                          <Link to={``}>
+                          <Link to={`/subscribed`}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <GroupAddIcon />
                               {!language ? <span> Subscribed </span> : <span> 구독 중 </span>}
@@ -427,7 +427,7 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <Link to={``}>
+                          <Link to={`/creators`}>
                             <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
                               <EditNoteIcon />
                               {!language ? <span> Creators </span> : <span> 창작자 </span>}
