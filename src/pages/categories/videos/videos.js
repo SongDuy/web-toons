@@ -143,7 +143,7 @@ const VideosPage = () => {
                         <div className="w-full h-full pt-[70px]">
                             <div className="h-[70px] border-b-2 flex items-center">
                                 <span className="font-semibold text-md">
-                                    {!language ? <span> Ongoing Series </span> : <span> 진행중인 시리즈 </span>}
+                                    {!language ? <span> Ongoing Series </span> : <span> 진행 중인 시리즈 </span>}
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
                                     {/* Button for Video Genre List */}
