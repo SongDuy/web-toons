@@ -371,6 +371,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                                                 에피소드 제목
                                             </h1>
                                         )}
+
                                         <div className="flex mt-3">
                                             <button className="w-[90px] h-[40px] border-2 bg-white flex items-center justify-center">
                                                 1
@@ -519,35 +520,39 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                                             </h1>
                                         )}
 
-                                        {!language ? (
-                                            <div className="w-full h-[40px] flex items-center gap-3 mt-3">
+
+                                        <div className="w-full h-[40px] flex items-center gap-3 mt-3">
+                                            {!language ? (
                                                 <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
                                                     Preview PC
                                                 </button>
-
-                                                <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                    Preview Mobile
-                                                </button>
-
-                                                <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                    Save Draft
-                                                </button>
-                                            </div>
-                                        ) : (
-                                            <div className="w-full h-[40px] flex items-center gap-3 mt-3">
+                                            ) : (
                                                 <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
                                                     PC 미리보기
                                                 </button>
+                                            )}
 
+                                            {!language ? (
+                                                <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                                                    Preview Mobile
+                                                </button>
+                                            ) : (
                                                 <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
                                                     모바일 미리보기
                                                 </button>
+                                            )}
 
+                                            {!language ? (
                                                 <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                    초안 저장
-                                                </button>
-                                            </div>
-                                        )}
+                                                Save Draft
+                                            </button>
+                                            ) : (
+                                                <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                                                초안 저장
+                                            </button>
+                                            )}
+                                           
+                                        </div>
 
                                     </div>
 
