@@ -168,6 +168,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                 setIsAge(99);
         }
     }, [selections]);
+
     const handlePhotoChange = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -184,6 +185,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
             sethorizontalThumbnail(file)
         }
     };
+
     const handleAdd = async () => {
         try {
             if (id.id) {
@@ -254,14 +256,16 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                 <div className="w-[40px] h-[40px] bg-green-500 rounded-full border flex items-center justify-center mx-2">
                                     <span className="mx-3 text-2xl text-white font-bold">1</span>
                                 </div>
-                                <h1 className="text-black">
-                                    {!language ? (
-                                        <span> ORIGINAL SERIES</span>
-                                    ) : (
-                                        <span> 오리지널 시리즈 </span>
-                                    )}
 
-                                </h1>
+                                {!language ? (
+                                    <h1 className="text-black">
+                                        ORIGINAL SERIES
+                                    </h1>
+                                ) : (
+                                    <h1 className="text-black">
+                                        오리지널 시리즈
+                                    </h1>
+                                )}
                             </li>
                             <li className="uppercase font-semibold text-md flex items-center justify-center">
                                 <span className="text-gray-400">
@@ -335,7 +339,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                             </span>
                                                         ) : (
                                                             <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                                chưa có.
+                                                                또는 이미지를 여기로 드래그하세요.
                                                             </span>
                                                         )}
 
@@ -426,10 +430,16 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                             </span>
                                                         )}
 
-                                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                            Or drag the image file here.
-                                                        </span>
-
+                                                        {!language ? (
+                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                                Or drag the image file here.
+                                                            </span>
+                                                        ) : (
+                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                                또는 이미지를 여기로 드래그하세요.
+                                                            </span>
+                                                        )}
+                                                        
                                                         <input
                                                             type="file"
                                                             accept="image/*"
