@@ -358,7 +358,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                             </span>
                                         ) : (
                                             <span className="block w-full font-semibold text-sm text-gray-500">
-                                                이미지 크기는 1080x1080이어야 합니다.
+                                                이미지 크기는 1080x1080 이어야 합니다.
                                             </span>
                                         )}
 
@@ -388,9 +388,16 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                 {/* Phần tải ảnh nền cho series */}
                                 <div className="w-full h-full ">
                                     <div className="w-full py-3">
-                                        <span className="w-full font-semibold text-xl">
-                                            Horizontal Thumbnail
-                                        </span>
+                                        {!language ? (
+                                            <span className="w-full font-semibold text-xl">
+                                                Horizontal Thumbnail
+                                            </span>
+                                        ) : (
+                                            <span className="w-full font-semibold text-xl">
+                                                가로형 썸네일
+                                            </span>
+                                        )}
+
                                     </div>
 
                                     <div className="w-[350px] shadow flex items-center justify-center">
@@ -408,12 +415,21 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                         <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
                                                             <NorthIcon />
                                                         </span>
-                                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                            Select an image to upload.
-                                                        </span>
+
+                                                        {!language ? (
+                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                                Select an image to upload.
+                                                            </span>
+                                                        ) : (
+                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                                업로드할 이미지를 선택하세요.
+                                                            </span>
+                                                        )}
+
                                                         <span className="block w-full font-semibold text-sm hover:text-gray-500">
                                                             Or drag the image file here.
                                                         </span>
+
                                                         <input
                                                             type="file"
                                                             accept="image/*"
@@ -429,16 +445,38 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     </div>
 
                                     <div className="w-full py-3">
-                                        <span className="block w-full font-semibold text-sm text-gray-500">
-                                            Image size must be 1920x1080.
-                                        </span>
-                                        <span className="block w-full font-semibold text-sm text-gray-500">
-                                            Image must be less than 700KB.
-                                        </span>
-                                        <span className="block w-full font-semibold text-sm text-gray-500">
-                                            Only JPG, JPEG, and PNG formats are allowed.
-                                        </span>
+                                        {!language ? (
+                                            <span className="block w-full font-semibold text-sm text-gray-500">
+                                                Image size must be 1920x1080.
+                                            </span>
+                                        ) : (
+                                            <span className="block w-full font-semibold text-sm text-gray-500">
+                                                이미지 크기는 1920x1080 이어야 합니다.
+                                            </span>
+                                        )}
+
+                                        {!language ? (
+                                            <span className="block w-full font-semibold text-sm text-gray-500">
+                                                Image must be less than 700KB.
+                                            </span>
+                                        ) : (
+                                            <span className="block w-full font-semibold text-sm text-gray-500">
+                                                이미지는 700KB 이하이어야 합니다.
+                                            </span>
+                                        )}
+
+                                        {!language ? (
+                                            <span className="block w-full font-semibold text-sm text-gray-500">
+                                                Only JPG, JPEG, and PNG formats are allowed.
+                                            </span>
+                                        ) : (
+                                            <span className="block w-full font-semibold text-sm text-gray-500">
+                                                JPG, JPEG, PNG 형식만 허용됩니다.
+                                            </span>
+                                        )}
+
                                     </div>
+
                                 </div>
                             </div>
 
