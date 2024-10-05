@@ -108,17 +108,25 @@ const Delete = () => {
           <div className="w-full grid grid-cols-1 gap-2">
             <h1 className="text-[18px] font-semibold">
               {!language ?
-                (<span> Are you sure you want to delete your account? </span>)
+                (<span>
+                  Are you sure you want to delete your account?
+                </span>)
                 :
-                (<span> 정말로 계정을 삭제하시겠습니까? </span>)
+                (<span>
+                  정말로 계정을 삭제하시겠습니까?
+                </span>)
               }
 
             </h1>
             <span className="w-full">
               {!language ?
-                (<span> Deleting your account is permanent and will remove all subscription history. </span>)
+                (<span>
+                  Deleting your account is permanent and will remove all subscription history.
+                </span>)
                 :
-                (<span> 계정을 삭제하면 구독 기록이 영구적으로 삭제됩니다.</span>)
+                (<span>
+                  계정을 삭제하면 구독 기록이 영구적으로 삭제됩니다.
+                </span>)
               }
 
             </span>
@@ -127,18 +135,26 @@ const Delete = () => {
           <div className="w-full mt-[60px] grid grid-cols-1 gap-2">
             <h1 className="text-[18px] font-semibold">
               {!language ?
-                (<span> Before you go... </span>)
+                (<span>
+                  Before you go...
+                </span>)
                 :
-                (<span> 가기 전에... </span>)
+                (<span>
+                  가기 전에...
+                </span>)
               }
 
             </h1>
             <ul className="grid grid-cols-1 gap-1">
               <li className="flex flex-wrap">
                 {!language ?
-                  (<span className="min-w-full"> &#9679; If you wish to unsubscribe from receiving email notifications, you can change your </span>)
+                  (<span className="min-w-full">
+                    &#9679; If you wish to unsubscribe from receiving email notifications, you can change your
+                  </span>)
                   :
-                  (<span className="min-w-full"> &#9679; 이메일 알림 수신 구독을 취소하려면 다음을 변경할 수 있습니다 </span>)
+                  (<span className="min-w-full">
+                    &#9679; 이메일 알림 수신 구독을 취소하려면 다음을 변경할 수 있습니다
+                  </span>)
                 }
 
                 {!language ?
@@ -161,33 +177,70 @@ const Delete = () => {
 
               </li>
               <li className="flex flex-wrap">
-                <span>
-                  &#9679; Any comments you wrote will not be deleted automatically.
-                </span>
-                
-                <span>
-                  &nbsp;&nbsp; Please go to{" "}
-                  <Link to={`/mycomment`} className="text-blue-500">
-                    {" "}
-                    MY <NavigateNextIcon /> Comments{" "}
-                  </Link>{" "}
-                  to delete any comments before deleting your account.
-                </span>
+                {!language ?
+                  (<span className="min-w-full">
+                    &#9679; Any comments you wrote will not be deleted automatically.
+                  </span>)
+                  :
+                  (<span className="min-w-full">
+                    &#9679; 작성하신 댓글은 자동으로 삭제되지 않습니다.
+                  </span>)
+                }
+
+                {!language ?
+                  (<span>
+                    &nbsp;&nbsp; Please go to{" "}
+                    <Link to={`/mycomment`} className="text-blue-500">
+                      {" "}
+                      MY <NavigateNextIcon /> Comments{" "}
+                    </Link>{" "}
+                    to delete any comments before deleting your account.
+                  </span>)
+                  :
+                  (<span>
+                    &nbsp;&nbsp; 가주세요{" "}
+                    <Link to={`/mycomment`} className="text-blue-500">
+                      {" "}
+                      나의 <NavigateNextIcon /> 댓글{" "}
+                    </Link>{" "}
+                    계정을 삭제하기 전에 댓글을 삭제합니다.
+                  </span>)
+                }
               </li>
               <li className="flex flex-wrap">
-                <span>
-                  &#9679; Coins remaining on your account will be permanently
-                  deleted upon account deletion.
-                </span>
+                {!language ?
+                  (<span>
+                    &#9679; Coins remaining on your account will be permanently
+                    deleted upon account deletion.
+                  </span>)
+                  :
+                  (<span>
+                    &#9679; 계정 삭제 시 남은 코인은 영구적으로 삭제됩니다.
+                  </span>)
+                }
               </li>
               <li className="flex flex-wrap">
-                <span>
-                  &#9679; By deleting your account, you will also lose access to
-                  all digital content including your unlocked episodes.
-                </span>
-                <span>
-                  &nbsp;&nbsp; Once deleted, your access cannot be restored.
-                </span>
+                {!language ?
+                  (<span>
+                    &#9679; By deleting your account, you will also lose access to
+                    all digital content including your unlocked episodes.
+                  </span>)
+                  :
+                  (<span>
+                    &#9679; 계정을 삭제하면 잠금 해제된 에피소드를 포함한 모든 디지털 콘텐츠에 대한 액세스 권한을 잃게 됩니다.
+                  </span>)
+                }
+
+                {!language ?
+                  (<span>
+                    &nbsp;&nbsp; Once deleted, your access cannot be restored.
+                  </span>)
+                  :
+                  (<span>
+                    &nbsp;&nbsp; 삭제되면 복구할 수 없습니다.
+                  </span>)
+                }
+               
               </li>
             </ul>
           </div>
@@ -201,15 +254,23 @@ const Delete = () => {
               >
                 <CheckIcon />
               </button>
-              <span className="ml-2">
-                I understand and want to delete my account
-              </span>
+              {!language ?
+                  (<span className="ml-2"> I understand and want to delete my account. </span>)
+                  :
+                  (<span className="ml-2"> 이해했으며 내 계정을 삭제하고 싶습니다. </span>)
+                }
+               
             </div>
 
             <div className="w-full mt-[60px] flex gap-3 items-center justify-center">
               <Link to={`/`}>
                 <button className="w-[240px] h-[50px] bg-green-500 rounded-full shadow text-white font-semibold">
-                  Keep My Account
+                  
+                  {!language ?
+                  (<span className="ml-2"> Keep My Account </span>)
+                  :
+                  (<span className="ml-2"> 내 계정을 유지합니다 </span>)
+                }
                 </button>
               </Link>
 
@@ -219,7 +280,12 @@ const Delete = () => {
                 disabled={!isChecked}
                 onClick={handleClickOpen}
               >
-                Delete My Account
+               
+                {!language ?
+                  (<span className="ml-2">  Delete My Account </span>)
+                  :
+                  (<span className="ml-2"> 내 계정을 삭제합니다 </span>)
+                }
               </button>
             </div>
           </div>
