@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import Avatar from "@mui/material/Avatar";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -52,7 +52,7 @@ const MyChannelPage = () => {
           const pot = await postFireBase.getlike(Account.uid);
           const videos = await VideoFireBase.getbyuser(Account.uid);
           const comics = await comicFireBase.getbyuser(Account.uid);
-         
+
           setVideo(videos.success ? videos?.Video : []);
           setcomic(comics.success ? comics?.comic : []);
           const like = pot.post
@@ -62,7 +62,7 @@ const MyChannelPage = () => {
             });
           setILike(like);
           setposts(post.success ? post?.post : []);
-          const account=  await  dispatch(getAccount(Account.uid));
+          const account = await dispatch(getAccount(Account.uid));
           unwrapResult(account)
           setloading(true);
         }
@@ -71,33 +71,33 @@ const MyChannelPage = () => {
       }
     };
     getpost();
-  }, [Account,dispatch]);
+  }, [Account, dispatch]);
   const handleimageChange = async (e) => {
-   try {
-    const file = e.target.files[0];
-    if (file) {
-        
-        await userFireBase.uploadToFirebase(file,file.name,Account.uid,"image")
-        const account=  await  dispatch(getAccount(Account.uid));
+    try {
+      const file = e.target.files[0];
+      if (file) {
+
+        await userFireBase.uploadToFirebase(file, file.name, Account.uid, "image")
+        const account = await dispatch(getAccount(Account.uid));
         unwrapResult(account)
+      }
+    } catch (error) {
+
     }
-   } catch (error) {
-       
-   }
   };
   const handlehorizontalThumbnailChange = async (e) => {
     try {
-     const file = e.target.files[0];
-     if (file) {
-         
-         await userFireBase.uploadToFirebase(file,file.name,Account.uid,"horizontalThumbnail")
-         const account=  await  dispatch(getAccount(Account.uid));
-         unwrapResult(account)
-     }
+      const file = e.target.files[0];
+      if (file) {
+
+        await userFireBase.uploadToFirebase(file, file.name, Account.uid, "horizontalThumbnail")
+        const account = await dispatch(getAccount(Account.uid));
+        unwrapResult(account)
+      }
     } catch (error) {
-        
+
     }
-   };
+  };
   // Hàm xử lý việc điều chỉnh chỉ số hiện tại cho một bài viết cụ thể để xem ảnh cuộn bài post
   const handlePrev = (postId) => {
     setCurrentIndices((prevIndices) => ({
@@ -251,11 +251,11 @@ const MyChannelPage = () => {
                     <button className="w-[40px] h-[40px] relative    border-2 rounded-full shadow bg-white hover:bg-gray-100 flex items-center justify-center">
                       <PhotoCameraIcon />
                       <input
-                      type="file"
-                      accept="image/*"
-                      onChange={(e) => handleimageChange(e)}
-                      className="absolute inset-0 opacity-0  cursor-pointer "
-                    />
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => handleimageChange(e)}
+                        className="absolute inset-0 opacity-0  cursor-pointer "
+                      />
                     </button>
                   </div>
                 </div>
@@ -268,7 +268,7 @@ const MyChannelPage = () => {
                   </div>
                   <div className="px-1">
                     <span className="text-[18px] text-yellow-400 text-shadow-black">
-                      Commic, video
+                      {!language ? (<span> Commic, video </span>) : (<span> 만화, 동영상 </span>)}
                     </span>
                   </div>
                   <div className="px-1 py-4 flex">
@@ -407,11 +407,7 @@ const MyChannelPage = () => {
                   {/* Tiêu đề */}
                   <div className="w-full h-[40px] border-b-2 border-bg-black">
                     <div className="font-semibold text-[20px] text-black">
-                      {!language ? (
-                        <span> Create Articles </span>
-                      ) : (
-                        <span> 글 작성하기 </span>
-                      )}
+                      {!language ? (<span> Create Articles </span>) : (<span> 글 작성하기 </span>)}
                     </div>
                   </div>
 

@@ -46,7 +46,7 @@ const CreatorChannelPage = () => {
                     const post = await postFireBase.getAllid(id.id);
                     const videos = await VideoFireBase.getbyuser(id.id);
                     const comics = await comicFireBase.getbyuser(id.id);
-                   
+
                     setVideo(videos.success ? videos?.Video : []);
                     setcomic(comics.success ? comics?.comic : []);
                     await dispatch(getAccount(id.id));
@@ -54,12 +54,12 @@ const CreatorChannelPage = () => {
                     setposts(post.success ? post?.post : []);
                     if (auth.currentUser) {
                         const Follows = await FollowFireBase.getbychannel(auth.currentUser.uid, id.id)
-                            console.log(Follows)
-                            Follows.success ? setIsFollow(true) : setIsFollow(false)
+                        console.log(Follows)
+                        Follows.success ? setIsFollow(true) : setIsFollow(false)
                         Follows.success ? setFollow(Follows.follow) : setFollow([])
                     }
                 }
-                
+
                 setloading(true)
 
             } catch (error) {
@@ -123,7 +123,7 @@ const CreatorChannelPage = () => {
         try {
 
             if (auth.currentUser) {
-                await FollowFireBase.Add({ uid: auth.currentUser.uid, idchannel: id.id, createTime: new Date(Date.now()),type:'channel' })
+                await FollowFireBase.Add({ uid: auth.currentUser.uid, idchannel: id.id, createTime: new Date(Date.now()), type: 'channel' })
                 await userFireBase.update({ follow: create.follow + 1 }, id.id)
                 await dispatch(getAccount(id.id));
 
@@ -139,7 +139,7 @@ const CreatorChannelPage = () => {
         try {
             if (auth.currentUser) {
                 await FollowFireBase.Delete(Follow[0]?.id)
-                await userFireBase.update({ follow: create.follow - 1  }, id.id)
+                await userFireBase.update({ follow: create.follow - 1 }, id.id)
                 await dispatch(getAccount(id.id));
                 const Follows = await FollowFireBase.getbychannel(auth.currentUser.uid, id.id)
 
@@ -170,9 +170,9 @@ const CreatorChannelPage = () => {
                                         alt="Remy Sharp"
                                         src={
                                             create?.image
-                                              ? create?.image
-                                              : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
-                                          }
+                                                ? create?.image
+                                                : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
+                                        }
                                         sx={{ width: 180, height: 180 }}
                                     />
                                 </div>
@@ -185,7 +185,7 @@ const CreatorChannelPage = () => {
                                     </div>
                                     <div className="px-1">
                                         <span className="text-[18px] text-yellow-400 text-shadow-black">
-                                            Commic, video
+                                            {!language ? (<span> Commic, video </span>) : (<span> 만화, 동영상 </span>)}
                                         </span>
                                     </div>
                                     <div className="px-1 py-4 flex">
@@ -313,7 +313,7 @@ const CreatorChannelPage = () => {
                                                             <span className="w-full text-lg font-semibold line-clamp-1">
                                                                 {item.title}
                                                             </span>
-                                                          
+
                                                         </div>
 
                                                     </div>
@@ -347,9 +347,9 @@ const CreatorChannelPage = () => {
                                                             alt="Creator Avatar"
                                                             src={
                                                                 create?.image
-                                                                  ? create?.image
-                                                                  : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
-                                                              }
+                                                                    ? create?.image
+                                                                    : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
+                                                            }
                                                             sx={{ width: 50, height: 50 }}
                                                         />
                                                     </div>
