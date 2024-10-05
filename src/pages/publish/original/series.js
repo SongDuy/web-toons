@@ -1153,8 +1153,36 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                             <CheckIcon />
                                         </button>
                                         <span className="ml-2 font-semibold">
-                                            I acknowledge that the assigned Content Rating of my series
-                                            is <span className="text-red-500"> {isAge}. </span>
+                                            {!language ? (
+                                                <span>
+                                                    I acknowledge that the assigned Content Rating of my series is
+                                                </span>
+                                            ) : (
+                                                <span>
+                                                    내 시리즈의 콘텐츠 등급이 ...로 지정된 것을 확인합니다
+                                                </span>
+                                            )}
+
+                                            {!language ? (
+                                                <span>
+                                                    <span className="ml-1 text-red-500">
+                                                        {typeof isAge === 'string' ? `${isAge}`
+                                                            :
+                                                            typeof isAge === 'number' ? `${isAge}+` : ''}
+                                                    </span>
+                                                    {`.`}
+                                                </span>
+                                            ) : (
+                                                <span>
+                                                    <span className="ml-1 text-red-500">
+                                                        {typeof isAge === 'string' ? '결과를 얻으려면 위 자가 평가를 완료하십시오'
+                                                            :
+                                                            typeof isAge === 'number' ? `${isAge}+` : ''}
+                                                    </span>
+                                                    {`.`}
+                                                </span>
+                                            )}
+
                                         </span>
                                     </div>
                                 </div>
