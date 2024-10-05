@@ -185,20 +185,20 @@ const CreatorChannelPage = () => {
                                     </div>
                                     <div className="px-1">
                                         <span className="text-[18px] text-yellow-400 text-shadow-black">
-                                            Commic, game
+                                            Commic, video
                                         </span>
                                     </div>
                                     <div className="px-1 py-4 flex">
                                         <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                            {!language ? <span> Original Series: </span> : <span> 시리즈 오리지널: </span>}
+                                            {!language ? <span> Original Series: </span> : <span> 오리지널 시리즈: </span>}
                                             {' '} {comic?.length}
                                         </div>
                                         <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                            {!language ? <span> Video Series: </span> : <span> 시리즈 비디오: </span>}
+                                            {!language ? <span> Video Series: </span> : <span> 비디오 시리즈: </span>}
                                             {' '} {Video?.length}
                                         </div>
                                         <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                            {!language ? <span> Followers: </span> : <span> 추종자: </span>}
+                                            {!language ? <span> Followers: </span> : <span> 팔로워: </span>}
                                             {' '} {create?.follow}
                                         </div>
                                     </div>
@@ -210,14 +210,14 @@ const CreatorChannelPage = () => {
                                             onClick={handleFollow}
                                             className="w-[150px] h-[50px] font-semibold text-white bg-green-500 hover:bg-green-600 shadow  rounded-full"
                                         >
-                                            {!language ? <span> Follow </span> : <span> 따르다 </span>}
+                                            {!language ? <span> Follow </span> : <span> 팔로우 </span>}
                                         </button>
                                         :
                                         <button
                                             onClick={handleDeleteFollow}
                                             className="w-[150px] h-[50px] font-semibold text-black bg-gray-50 hover:bg-gray-100 shadow border rounded-full"
                                         >
-                                            {!language ? <span> Following </span> : <span> 수행원 </span>}
+                                            {!language ? <span> Following </span> : <span> 팔로잉 </span>}
                                         </button>
                                     }
                                 </div>
@@ -246,7 +246,7 @@ const CreatorChannelPage = () => {
                                 {/* Khung hiển thị các Series truyện của tác giả */}
                                 <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
                                     <div className="font-semibold text-[20px] text-black">
-                                        {!language ? <span> Original Series </span> : <span> 시리즈 오리지널 </span>}
+                                        {!language ? <span> Original Series </span> : <span> 오리지널 시리즈 </span>}
                                     </div>
 
                                     <div className="mt-5 h-[450px] custom-scrollbar">
@@ -287,7 +287,7 @@ const CreatorChannelPage = () => {
                                 {/* Khung hiển thị các Series Video của tác giả */}
                                 <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
                                     <div className="font-semibold text-[20px] text-black">
-                                        {!language ? <span> Video Series </span> : <span> 시리즈 비디오 </span>}
+                                        {!language ? <span> Video Series </span> : <span> 비디오 시리즈 </span>}
                                     </div>
 
                                     <div className="mt-5 h-[450px] custom-scrollbar">
@@ -329,7 +329,7 @@ const CreatorChannelPage = () => {
                                 {/* Tiêu đề */}
                                 <div className="w-full h-[40px] border-b-2 border-bg-black">
                                     <div className="font-semibold text-[20px] text-black">
-                                        {!language ? <span> Feed </span> : <span> 밥을 먹이다 </span>}
+                                        {!language ? <span> Feed </span> : <span> 피드 </span>}
                                     </div>
                                 </div>
 

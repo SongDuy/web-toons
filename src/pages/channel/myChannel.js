@@ -221,7 +221,7 @@ const MyChannelPage = () => {
                     {!language ? (
                       <span> Edit cover photo </span>
                     ) : (
-                      <span> 표지 사진 편집 </span>
+                      <span> 커버 사진 편집 </span>
                     )}
                     <input
                       type="file"
@@ -268,7 +268,7 @@ const MyChannelPage = () => {
                   </div>
                   <div className="px-1">
                     <span className="text-[18px] text-yellow-400 text-shadow-black">
-                      Commic, game
+                      Commic, video
                     </span>
                   </div>
                   <div className="px-1 py-4 flex">
@@ -276,7 +276,7 @@ const MyChannelPage = () => {
                       {!language ? (
                         <span> Original Series: </span>
                       ) : (
-                        <span> 시리즈 오리지널: </span>
+                        <span> 오리지널 시리즈: </span>
                       )}{" "}
                       {comic?.length}
                     </div>
@@ -284,7 +284,7 @@ const MyChannelPage = () => {
                       {!language ? (
                         <span> Video Series: </span>
                       ) : (
-                        <span> 시리즈 비디오: </span>
+                        <span> 비디오 시리즈: </span>
                       )}{" "}
                       {Video?.length}
                     </div>
@@ -292,7 +292,7 @@ const MyChannelPage = () => {
                       {!language ? (
                         <span> Followers: </span>
                       ) : (
-                        <span> 추종자: </span>
+                        <span> 팔로워: </span>
                       )}{" "}
                       {Account?.follow}
                     </div>
@@ -324,7 +324,7 @@ const MyChannelPage = () => {
                     {!language ? (
                       <span>Original Series </span>
                     ) : (
-                      <span> 시리즈 오리지널 </span>
+                      <span> 오리지널 시리즈 </span>
                     )}
                   </div>
 
@@ -366,7 +366,7 @@ const MyChannelPage = () => {
                     {!language ? (
                       <span>Video Series </span>
                     ) : (
-                      <span> 시리즈 비디오 </span>
+                      <span> 비디오 시리즈 </span>
                     )}
                   </div>
 
@@ -410,7 +410,7 @@ const MyChannelPage = () => {
                       {!language ? (
                         <span> Create Articles </span>
                       ) : (
-                        <span> 기사 작성 </span>
+                        <span> 글 작성하기 </span>
                       )}
                     </div>
                   </div>
@@ -515,7 +515,7 @@ const MyChannelPage = () => {
                       {!language ? (
                         <span> Post Article </span>
                       ) : (
-                        <span> 기사 게시 </span>
+                        <span> 글 작성 </span>
                       )}
                     </button>
                   </div>
@@ -529,7 +529,7 @@ const MyChannelPage = () => {
                       {!language ? (
                         <span> Feed </span>
                       ) : (
-                        <span> 밥을 먹이다 </span>
+                        <span> 피드 </span>
                       )}
                     </div>
                   </div>
