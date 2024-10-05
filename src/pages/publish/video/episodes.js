@@ -353,7 +353,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                         </div>
 
                                         {/* Phần mô tả */}
-                                        <div className="w-full grid grid-cols-1">
+                                        {/* <div className="w-full grid grid-cols-1">
                                             <span className="text-gray-500">
                                                 The system will automatically slice and reduce image(s) that exceed the maximum dimensions, 800x1280px.
                                             </span>
@@ -371,7 +371,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                             <span className="text-gray-500">
                                                 Only JPG, JPEG, PNG formats are supported.
                                             </span>
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                     {/* Phần ghi chú của tác giả */}
