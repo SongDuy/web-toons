@@ -439,7 +439,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                                 또는 이미지를 여기로 드래그하세요.
                                                             </span>
                                                         )}
-                                                        
+
                                                         <input
                                                             type="file"
                                                             accept="image/*"
@@ -1207,7 +1207,16 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                             } rounded-full shadow text-white font-semibold`}
                                         disabled={!isChecked}
                                     >
-                                        Create Series
+                                        {!language ? (
+                                            <span>
+                                                Create Series
+                                            </span>
+                                        ) : (
+                                            <span>
+                                                시리즈 만들기
+                                            </span>
+                                        )}
+
                                         <NavigateNextIcon />
                                     </button>
                                 </div>
