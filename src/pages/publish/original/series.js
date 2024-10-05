@@ -485,9 +485,16 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                 {/* Phần chọn thể loại 1 */}
                                 <div className="w-full py-3 pl-5 flex">
                                     <div className="w-full">
-                                        <h1 className="w-full font-semibold text-xl">
-                                            Genre 1
-                                        </h1>
+
+                                        {!language ? (
+                                            <h1 className="w-full font-semibold text-xl">
+                                                Genre 1
+                                            </h1>
+                                        ) : (
+                                            <h1 className="w-full font-semibold text-xl">
+                                                Genre 1
+                                            </h1>
+                                        )}
 
                                         <FormControl className="w-full">
                                             <Select
@@ -509,7 +516,15 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
 
                                     {/* Phần chọn thể loại 2 */}
                                     <div className="w-full ml-5">
-                                        <h1 className="w-full font-semibold text-xl">Genre 2</h1>
+                                        {!language ? (
+                                            <h1 className="w-full font-semibold text-xl">
+                                                Genre 2
+                                            </h1>
+                                        ) : (
+                                            <h1 className="w-full font-semibold text-xl">
+                                                Genre 2
+                                            </h1>
+                                        )}
 
                                         <FormControl className="w-full">
                                             <Select
@@ -531,7 +546,15 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
 
                                 {/* Phần tiêu đề series truyện  */}
                                 <div className="w-full py-3 pl-5">
-                                    <h1 className="w-full font-semibold text-xl">Series title</h1>
+                                    {!language ? (
+                                        <h1 className="w-full font-semibold text-xl">
+                                            Series Title
+                                        </h1>
+                                    ) : (
+                                        <h1 className="w-full font-semibold text-xl">
+                                            시리즈 제목
+                                        </h1>
+                                    )}
 
                                     <input
                                         className="w-full h-[40px] mt-3 bg-white px-3"
@@ -543,7 +566,15 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
 
                                 {/* Phần mô tả series truyện  */}
                                 <div className="w-full py-3 pl-5">
-                                    <h1 className="w-full font-semibold text-xl">Summary</h1>
+                                    {!language ? (
+                                        <h1 className="w-full font-semibold text-xl">
+                                            Summary
+                                        </h1>
+                                    ) : (
+                                        <h1 className="w-full font-semibold text-xl">
+                                            요약
+                                        </h1>
+                                    )}
 
                                     <textarea
                                         className="w-full h-[300px] mt-3 bg-white px-3 py-2"
@@ -555,9 +586,15 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
 
                                 {/* Phần hướng dẫn */}
                                 <div className="w-full py-3 pl-5">
-                                    <h1 className="w-full font-semibold text-xl">
-                                        CONTENT RATING SELF ASSESSMENT
-                                    </h1>
+                                    {!language ? (
+                                        <h1 className="w-full font-semibold text-xl">
+                                            Content Rating Self Assessment
+                                        </h1>
+                                    ) : (
+                                        <h1 className="w-full font-semibold text-xl">
+                                            콘텐츠 등급 자체 평가
+                                        </h1>
+                                    )}
 
                                     {/* <div className="w-full mt-2 flex flex-wrap">
                                     <span className="w-full">
