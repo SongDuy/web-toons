@@ -4,17 +4,19 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom';  // Import 
 import PieChartIcon from '@mui/icons-material/PieChart';
 import PeopleIcon from '@mui/icons-material/People';
 import CollectionsIcon from '@mui/icons-material/Collections';
-import CategoryIcon from '@mui/icons-material/Category';
+//import CategoryIcon from '@mui/icons-material/Category';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import FlagIcon from '@mui/icons-material/Flag';
+//import FlagIcon from '@mui/icons-material/Flag';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import SafetyCheckIcon from '@mui/icons-material/SafetyCheck';
+//import NotificationsIcon from '@mui/icons-material/Notifications';
+//import SafetyCheckIcon from '@mui/icons-material/SafetyCheck';
 import {  useDispatch,useSelector } from 'react-redux';
 import { auth } from '../../common/themes/firebase';
 import { logout } from '../../common/store/Auth.js';
+
 const AdminPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -80,13 +82,13 @@ const AdminPage = () => {
                                     <span className="mr-auto font-semibold">Users</span>
                                 </li>
 
-                                <li
+                                {/* <li
                                     onClick={() => handleNavigation('categories', '/admin/categories')}
                                     className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "categories" ? 'text-yellow-500 bg-red-50 border-t' : 'hover:text-yellow-500 bg-white'}`}
                                 >
                                     <span className="mr-auto"><CategoryIcon /></span>
                                     <span className="mr-auto font-semibold">Categories</span>
-                                </li>
+                                </li> */}
 
                                 <li
                                     onClick={() => handleNavigation('originals', '/admin/originals')}
@@ -104,13 +106,13 @@ const AdminPage = () => {
                                     <span className="mr-auto font-semibold">Videos</span>
                                 </li>
 
-                                <li
+                                {/* <li
                                     onClick={() => handleNavigation('censors', '/admin/censors')}
                                     className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "censors" ? 'text-yellow-500 bg-red-50 border-t' : 'hover:text-yellow-500 bg-white'}`}
                                 >
                                     <span className="mr-auto"><SafetyCheckIcon /></span>
                                     <span className="mr-auto font-semibold">Censors</span>
-                                </li>
+                                </li> */}
 
                                 <li
                                     onClick={() => handleNavigation('payments', '/admin/payments')}
@@ -121,20 +123,20 @@ const AdminPage = () => {
                                 </li>
 
                                 <li
-                                    onClick={() => handleNavigation('notifications', '/admin/notifications')}
-                                    className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "notifications" ? 'text-yellow-500 bg-red-50 border-t' : 'hover:text-yellow-500 bg-white'}`}
+                                    onClick={() => handleNavigation('bank', '/admin/bank')}
+                                    className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "bank" ? 'text-yellow-500 bg-red-50 border-t' : 'hover:text-yellow-500 bg-white'}`}
                                 >
-                                    <span className="mr-auto"><NotificationsIcon /></span>
-                                    <span className="mr-auto font-semibold">Notifications</span>
+                                    <span className="mr-auto"><AccountBalanceIcon /></span>
+                                    <span className="mr-auto font-semibold">Bank</span>
                                 </li>
 
-                                <li
+                                {/* <li
                                     onClick={() => handleNavigation('reports', '/admin/reports')}
                                     className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "reports" ? 'text-yellow-500 bg-red-50 border-t' : 'hover:text-yellow-500 bg-white'}`}
                                 >
                                     <span className="mr-auto"><FlagIcon /></span>
                                     <span className="mr-auto font-semibold">Reports</span>
-                                </li>
+                                </li> */}
 
                             </ul>
                         </div>

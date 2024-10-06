@@ -32,7 +32,7 @@ import AdminOriginalsPage from './pages/admin/childAdmin/adminOriginals';
 import AdminVideosPage from './pages/admin/childAdmin/adminVideos';
 import AdminReportsPage from './pages/admin/childAdmin/adminReports';
 import AdminPaymentsPage from './pages/admin/childAdmin/Payments';
-import AdminNotificationsPage from './pages/admin/childAdmin/adminNotifications';
+import AdminBankPage from './pages/admin/childAdmin/adminBank';
 import AdminCensorsPage from './pages/admin/childAdmin/adminCensors';
 
 import './App.css';
@@ -145,7 +145,7 @@ function App() {
 
           <Route path="reports" element={<AdminReportsPage />} />
           <Route path="payments" element={<AdminPaymentsPage />} />
-          <Route path="notifications" element={<AdminNotificationsPage />} />
+          <Route path="bank" element={<AdminBankPage />} />
           <Route path="censors" element={<AdminCensorsPage />} />
         </Route>
 
