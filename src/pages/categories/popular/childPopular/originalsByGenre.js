@@ -32,7 +32,7 @@ dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
 
 const OriginalsByGenrePage = () => {
     const comic = useSelector((state) => state.comic.comic);
-    const [selectedOriginalsByGenre, setSelectedOriginalsByGenre] = useState('ACTION');
+    const [selectedOriginalsByGenre, setSelectedOriginalsByGenre] = useState('Action');
     const [comicid, setcomicid] = useState(comic?.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).slice(0, 1)?.sort((a, b) => b.views - a.views)[0]);
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
@@ -58,7 +58,7 @@ const OriginalsByGenrePage = () => {
                         <li
                             key={item.id}
                             onClick={() => setSelectedOriginalsByGenre(item.name)}
-                            className={`uppercase font-semibold text-sm hover:text-black cursor-pointer flex items-center justify-center ${ selectedOriginalsByGenre === (item.name || "ACTION") ? 'text-black' : 'text-gray-400'}`}
+                            className={`uppercase font-semibold text-sm hover:text-black cursor-pointer flex items-center justify-center ${ selectedOriginalsByGenre === (item.name || "Action") ? 'text-black' : 'text-gray-400'}`}
                         >
                             {!language ? item.name : item.nameKorean}
                         </li>

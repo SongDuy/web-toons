@@ -125,7 +125,7 @@ setvideos(videos.success ? videos.Video : []);
                     <div className="h-full px-3 py-3">
                       <div className="w-[320px]">
                         <div className="flex items-center">
-                          <span className="text-gray-500">
+                          <span className="text-gray-500 text-sm">
                             {item.genre1}, {item.genre2}
                           </span>
 
@@ -140,14 +140,14 @@ setvideos(videos.success ? videos.Video : []);
                           </div>
                         </div>
 
-                        <div className="w-full mt-2">
-                          <h1 className="font-semibold text-xl">
-                            {item.title}
+                        <div className="w-full h-[50px] mt-2 overflow-hidden">
+                          <h1 className="font-semibold text-xl leading-[1.2] line-clamp-2">
+                            {item.title} k kk k  kk k k k k k k k k k k k k 
                           </h1>
                         </div>
                       </div>
 
-                      <div className="w-full mt-5">
+                      <div className="w-full mt-3">
                         {item.rate > 0 ? (
                           <div className="w-full">
                             <span className="text-yellow-500 flex items-center gap-2">
@@ -164,7 +164,7 @@ setvideos(videos.success ? videos.Video : []);
                         )}
                       </div>
 
-                      <div className="w-full mt-5">
+                      <div className="w-full mt-2">
                         {item.totalChapters > 0 ? (
                           <div className="flex gap-5">
                             <span className="text-gray-500 text-sm flex gap-2">
@@ -249,14 +249,14 @@ setvideos(videos.success ? videos.Video : []);
                           </div>
                         </div>
 
-                        <div className="w-full mt-2">
-                          <h1 className="font-semibold text-xl">
+                        <div className="w-full h-[50px] mt-2 overflow-hidden">
+                          <h1 className="font-semibold text-xl leading-[1.2] line-clamp-2">
                             {item.title}
                           </h1>
                         </div>
                       </div>
 
-                      <div className="w-full mt-5">
+                      <div className="w-full mt-3">
                         {item.rate > 0 ? (
                           <div className="w-full">
                             <span className="text-yellow-500 flex items-center gap-2">
@@ -273,7 +273,7 @@ setvideos(videos.success ? videos.Video : []);
                         )}
                       </div>
 
-                      <div className="w-full mt-5">
+                      <div className="w-full mt-2">
                         {item.totalChapters > 0 ? (
                           <div className="flex gap-5">
                             <span className="text-gray-500 text-sm flex gap-2">
