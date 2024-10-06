@@ -142,7 +142,7 @@ setvideos(videos.success ? videos.Video : []);
 
                         <div className="w-full h-[50px] mt-2 overflow-hidden">
                           <h1 className="font-semibold text-xl leading-[1.2] line-clamp-2">
-                            {item.title} k kk k  kk k k k k k k k k k k k k 
+                            {item.title}
                           </h1>
                         </div>
                       </div>
