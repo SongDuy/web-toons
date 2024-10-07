@@ -125,7 +125,7 @@ const AdminNotificationsPage = () => {
         <>
           <div className="w-full h-full pb-5 bg-white">
 
-          
+
 
             <table className="w-full">
               <thead className="bg-gray-100">
@@ -151,7 +151,7 @@ const AdminNotificationsPage = () => {
                         onClick={() => setopen(true)}
                         className="w-[35px] h-[35px] text-red-500 mx-1 relative bg-gray-100 hover:bg-gray-200 rounded-full"
                       >
-                        Add
+                        추가
                       </button>
                     </th>
                   }
@@ -245,7 +245,9 @@ const AdminNotificationsPage = () => {
                 />
               </DialogContent>
               <DialogActions>
-                <Button onClick={handleClose}>Disagree</Button>
+                <Button onClick={handleClose}>
+                  Disagree
+                </Button>
                 <Button onClick={idbank ? handleupdate : handleAdd} autoFocus>
                   Agree
                 </Button>
