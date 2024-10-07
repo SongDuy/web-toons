@@ -3,7 +3,7 @@ import React from 'react';
 
 const FooterPage = () => {
     return (
-        <footer className="w-full bg-gray-100 text-black pb-10">
+        <footer className="w-full border-t-2 bg-gray-100 text-black py-10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Column 1: Company Information */}
@@ -38,7 +38,7 @@ const FooterPage = () => {
                     </div>
                 </div>
 
-                <div className="mt-10 border-t border-gray-700 pt-6 text-center text-sm">
+                <div className="mt-10 pt-6 text-center text-sm">
                     ⓒ 2024 Rison Ltd. All rights reserved.
                 </div>
             </div>

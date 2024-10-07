@@ -82,11 +82,11 @@ const Account = () => {
     <div>
       <div className="w-full h-full bg-gray-100">
         <Nav />
-        <div className="py-[30px] flex-row justify-center items-center container mx-auto my-auto">
-          <div className="  m-2">
-            <span className="font-semibold text-2xl text-black">
+        <div className="py-[30px] px-[200px] flex-row justify-center items-center container mx-auto my-auto">
+          <div className="mb-5">
+            <h1 className="font-semibold text-2xl text-black">
               Login information
-            </span>
+            </h1>
           </div>
 
           <div className="w-full h-full flex   bg-white border border-white p-5">
@@ -108,9 +108,11 @@ const Account = () => {
             </div>
           </div>
         </div>
-        <div className="py-[30px] flex-row justify-center items-center container mx-auto">
-          <div className="  m-2">
-            <span className="font-semibold text-2xl text-black">Birthday</span>
+        <div className="py-[30px] px-[200px] flex-row justify-center items-center container mx-auto">
+          <div className="mb-5">
+            <h1 className="font-semibold text-2xl text-black">
+              Birthday
+            </h1>
           </div>
 
           {openDate ? (
@@ -175,15 +177,19 @@ const Account = () => {
             </div>
           )}
         </div>
-        <div className="py-[30px] flex-row justify-center items-center container mx-auto">
-          <div className="  m-2">
-            <span className="font-semibold text-2xl text-black">Nickname</span>
+        <div className="py-[30px] px-[200px] flex-row justify-center items-center container mx-auto">
+          <div className="mb-5">
+            <h1 className="font-semibold text-2xl text-black">
+              Nickname
+            </h1>
           </div>
 
           {openName ? (
             <div className="w-full h-full flex   bg-white border border-white p-5">
               <div className=" flex justify-center items-center p-2 w-[10%]">
-                <span className="font-semibold  text-black"></span>
+                <h1 className="font-semibold  text-black">
+
+                </h1>
               </div>
 
               <div className="flex  ml-5 my-5">
@@ -240,9 +246,11 @@ const Account = () => {
             </div>
           )}
         </div>
-        <div className="py-[30px] flex-row justify-center items-center container mx-auto">
-          <div className="  m-2">
-            <span className="font-semibold text-2xl text-black">Email</span>
+        <div className="py-[30px] px-[200px] flex-row justify-center items-center container mx-auto">
+          <div className="mb-5">
+            <h1 className="font-semibold text-2xl text-black">
+              Email
+            </h1>
           </div>
 
           <div className="w-full h-full flex-row justify-center items-center  bg-white border border-white p-5">
@@ -419,9 +427,11 @@ const Account = () => {
             </div>
           </div>
           <div className="py-[30px] flex-row justify-center items-center container mx-auto">
-            <div className="  m-2">
+            <div className="">
               <Link to={`/account/delete`}>
-                <span className="font-semibold text-2xl text-gray-400">Do you want to delete your account?</span>
+                <span className="font-semibold text-2xl text-gray-400 hover:text-black">
+                  Do you want to delete your account?
+                </span>
               </Link>
             </div>
           </div>
