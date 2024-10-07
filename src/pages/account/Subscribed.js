@@ -20,7 +20,6 @@ const Subscribed = () => {
   const [ALLSubcribed, setALLSubcribed] = useState(false);
   const [loading, setloading] = useState(false);
   const Account = useSelector((state) => state.Account.Account);
-  const [replay, setreplay] = useState(false);
 
   const dispatch = useDispatch();
   const monthNames = [
@@ -80,7 +79,7 @@ const Subscribed = () => {
       }
     };
     get();
-  }, [dispatch, Account, replay]);
+  }, [dispatch, Account]);
   const HandleDelete = async () => {
     try {
       setloading(false);
@@ -89,10 +88,11 @@ const Subscribed = () => {
           try {
             const sub = await SubscribeFireBase.getbysub(item);
             if (sub.success) {
-              const comicid = item.idcomic
+              const comicid = sub?.idcomic
                 ? await comicFireBase.getbyid(sub.idcomic)
                 : await VideoFireBase.getbyid(sub.idvideo);
-              item.idcomic
+
+                sub?.idcomic
                 ? await comicFireBase.update(
                     { totalSubscribed: comicid.totalSubscribed - 1 },
                     sub.idcomic
@@ -102,11 +102,12 @@ const Subscribed = () => {
                     sub.idvideo
                   );
               await SubscribeFireBase.Delete(item);
+              setSubscribed(Subscribed?.filter(item=>item?.idcomic?item.idcomic!==sub.idcomic:item.idvideo!==sub.idvideo))
             }
-          } catch (error) {}
+          } catch (error) {
+          }
         })
       );
-      setreplay(true);
 
       setloading(true);
     } catch (error) {}

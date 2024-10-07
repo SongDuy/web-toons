@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import GoogleIcon from "@mui/icons-material/Google";
-import Switch from "@mui/material/Switch";
+// import Switch from "@mui/material/Switch";
 import Nav from "../../components/Account/nav";
 import { useSelector, useDispatch } from 'react-redux';
 import { auth } from "../../common/themes/firebase";
@@ -25,7 +25,7 @@ const Account = () => {
   useEffect(() => {
     setName(Account?.name)
     setEmail(Account?.email)
-    // setSelectedDate(Account?.birthday ? new Date(Account?.birthday) : selectedDate)
+    setSelectedDate(Account?.birthday ? new Date(Account?.birthday) : selectedDate)
   }, [Account, selectedDate]);
   const handleName = async () => {
     try {
@@ -296,7 +296,7 @@ const Account = () => {
                 </div>
               }
 
-              <div className="  ml-5 my-5 border-b border-gray-300 ">
+              {/* <div className="  ml-5 my-5 border-b border-gray-300 ">
                 <div className="grid grid-cols-8 gap-4  ml-5 my-5">
                   <div className="my-2 col-span-7">
                     <p className="font-semibold  text-lg text-gray-700">
@@ -384,8 +384,8 @@ const Account = () => {
                     />
                   </div>
                 </div>
-              </div>
-              <div className=" ml-5 my-5">
+              </div> */}
+              {/* <div className=" ml-5 my-5">
                 <div className="grid grid-cols-8 gap-4  ml-5 my-5  ">
                   <div className="my-2 col-span-7">
                     <p className="font-semibold  text-lg text-gray-700">
@@ -415,7 +415,7 @@ const Account = () => {
                     />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="py-[30px] flex-row justify-center items-center container mx-auto">
