@@ -1,11 +1,11 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import CloseIcon from '@mui/icons-material/Close';
 import StarIcon from '@mui/icons-material/Star';
 
 import '../../../App.css';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { getAllComic } from '../../../common/store/comic';
 
@@ -29,20 +29,20 @@ const SearchPage = ({ closeModal }) => {
         }
     };
     useEffect(() => {
-        const get=async ()=>{
+        const get = async () => {
             try {
                 console.log(comic.comic)
-              if(!comic?.comic){  
-                const lg=await dispatch(getAllComic())
-              unwrapResult(lg)
-              }
+                if (!comic?.comic) {
+                    const lg = await dispatch(getAllComic())
+                    unwrapResult(lg)
+                }
             } catch (error) {
-                
+
             }
         }
         get()
-    }, [dispatch,comic]);
-    
+    }, [dispatch, comic]);
+
     // Hiển thị nội dung giống nội dung cần tìm
     const [searchTerm, setSearchTerm] = useState('');
     const handleSearch = (e) => {
@@ -54,6 +54,9 @@ const SearchPage = ({ closeModal }) => {
         //|| item.auth.toLowerCase().includes(searchTerm.toLowerCase())
     );
     const showNoResultsMessage = (searchTerm.trim() !== '' && filteredTop30Films?.length === 0) || searchTerm.trim() === '';
+
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
 
     return (
         <div className="w-screen h-screen bg-black bg-opacity-50 flex fixed inset-0 z-50 " onClick={handleBackdropClick}>
@@ -88,7 +91,17 @@ const SearchPage = ({ closeModal }) => {
                 <div className="w-full h-[630px] custom-scrollbar">
                     <ul className="grid grid-cols-1">
                         {showNoResultsMessage ? (
-                            <p className="text-center text-gray-500">No relevant results found.</p>
+                            <div className="w-full flex items-center justify-center ">
+                                {!language ?
+                                    <span className="text-gray-500">
+                                        No relevant results found.
+                                    </span>
+                                    :
+                                    <span className="text-gray-500">
+                                        관련 결과를 찾을 수 없습니다.
+                                    </span>
+                                }
+                            </div>
                         ) : (
                             filteredTop30Films?.map(item => (
                                 <Link to={`/originals/original/series/${item.id}`} key={item.id} onClick={handleBackdropClick}>

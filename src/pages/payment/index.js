@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
+
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useParams } from "react-router-dom";
 import PaymentFireBase from "../../common/services/Payment.services";
@@ -54,6 +56,10 @@ const PaymentPage = ({ closeModal, price }) => {
       console.log(error);
     }
   };
+
+  //Lấy ngôn ngữ
+  const language = useSelector(state => state.hidden.language);
+
   return (
     <>
       {payment.length === 0 ? (
@@ -65,16 +71,42 @@ const PaymentPage = ({ closeModal, price }) => {
           {/* backdrop-blur-sm */}
           <div className="w-[940px] h-auto bg-white rounded-xl shadow flex items-center justify-center">
             <div className="w-full h-full px-5 py-5">
-              <h1 className="flex items-center justify-center text-2xl">
-                Payment Video Series
-              </h1>
+
+              {!language ?
+                <h1 className="flex items-center justify-center text-2xl">
+                  Payment Video Series
+                </h1>
+                :
+                <h1 className="flex items-center justify-center text-2xl">
+                  결제 비디오 시리즈
+                </h1>
+              }
 
               <div className="w-full h-full mt-3">
-                <h1 className="font-semibold text-xl">Receiving account</h1>
-                <div className="grid grid-cols-2 gap-3 py-3 mt-3">
+
+                {!language ?
+                  <h1 className="font-semibold text-xl">
+                    Receiving account
+                  </h1>
+                  :
+                  <h1 className="font-semibold text-xl">
+                    수신 계좌
+                  </h1>
+                }
+                <div className="grid grid-cols-2 gap-3 py-3 mt-3 mx-2">
                   <div className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
                     <div className="w-full h-auto space-y-2">
-                      <h1 className="font-semibold">Account number</h1>
+
+                      {!language ?
+                        <h1 className="font-semibold">
+                          Account number
+                        </h1>
+                        :
+                        <h1 className="font-semibold">
+                          계좌 번호
+                        </h1>
+                      }
+
                       <div className="ml-auto flex items-center space-x-2">
                         {/* Giá tiền */}
                         <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
@@ -89,7 +121,17 @@ const PaymentPage = ({ closeModal, price }) => {
 
                   <div className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
                     <div className="w-full h-auto space-y-2">
-                      <h1 className="font-semibold">Account name</h1>
+
+                      {!language ?
+                        <h1 className="font-semibold">
+                          Account name
+                        </h1>
+                        :
+                        <h1 className="font-semibold">
+                          계좌 이름
+                        </h1>
+                      }
+
                       <div className="ml-auto flex items-center space-x-2">
                         {/* Giá tiền */}
                         <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
@@ -104,7 +146,17 @@ const PaymentPage = ({ closeModal, price }) => {
 
                   <div className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
                     <div className="w-full h-auto space-y-2">
-                      <h1 className="font-semibold">Selling price</h1>
+
+                      {!language ?
+                        <h1 className="font-semibold">
+                          Selling price
+                        </h1>
+                        :
+                        <h1 className="font-semibold">
+                          판매 가격
+                        </h1>
+                      }
+
                       <div className="ml-auto flex items-center space-x-2">
                         {/* Giá tiền */}
                         <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
@@ -119,7 +171,17 @@ const PaymentPage = ({ closeModal, price }) => {
 
                   <div className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
                     <div className="w-full h-auto space-y-2">
-                      <h1 className="font-semibold">Bank name</h1>
+
+                      {!language ?
+                        <h1 className="font-semibold">
+                          Bank name
+                        </h1>
+                        :
+                        <h1 className="font-semibold">
+                          은행 이름
+                        </h1>
+                      }
+
                       <div className="ml-auto flex items-center space-x-2">
                         {/* Giá tiền */}
                         <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
@@ -136,25 +198,61 @@ const PaymentPage = ({ closeModal, price }) => {
               </div>
 
               <div className="w-full h-full mt-3">
-                <h1 className="font-semibold text-xl">Remittance account</h1>
-                <div className="grid grid-cols-2 gap-3 py-3 mt-3">
-                  <input
-                    type="text"
-                    className="w-full h-[50px] px-2 border rounded shadow"
-                    placeholder="Account name"
-                    form="off"
-                    value={Accountname}
-                    onChange={(e) => setAccountname(e.target.value)}
-                  />
 
-                  <input
-                    type="text"
-                    className="w-full h-[50px] px-2 border rounded shadow"
-                    placeholder="Account number"
-                    form="off"
-                    value={Account}
-                    onChange={(e) => setAccount(e.target.value)}
-                  />
+                {!language ?
+                  <h1 className="font-semibold text-xl">
+                    Remittance account
+                  </h1>
+                  :
+                  <h1 className="font-semibold text-xl">
+                    송금 계좌
+                  </h1>
+                }
+
+                <div className="grid grid-cols-2 gap-3 py-3 mt-3 mx-2">
+                  <div className="w-full">
+
+                    {!language ?
+                      <label className="w-full">
+                        Account name
+                      </label>
+                      :
+                      <label className="w-full">
+                        계좌 이름
+                      </label>
+                    }
+
+                    <input
+                      type="text"
+                      className="w-full h-[50px] mt-2 px-2 border rounded shadow"
+                      placeholder="Account name"
+                      form="off"
+                      value={Accountname}
+                      onChange={(e) => setAccountname(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="w-full">
+                    {!language ?
+                      <label className="w-full">
+                        Account number
+                      </label>
+                      :
+                      <label className="w-full">
+                        계좌 번호
+                      </label>
+                    }
+
+                    <input
+                      type="text"
+                      className="w-full h-[50px] mt-2 px-2 border rounded shadow"
+                      placeholder="Account number"
+                      form="off"
+                      value={Account}
+                      onChange={(e) => setAccount(e.target.value)}
+                    />
+                  </div>
+
                 </div>
               </div>
 
