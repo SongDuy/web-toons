@@ -60,6 +60,23 @@ const PaymentPage = ({ closeModal, price }) => {
   //Lấy ngôn ngữ
   const language = useSelector(state => state.hidden.language);
 
+  // copy giá trị
+  const [copySuccess, setCopySuccess] = useState('');
+
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        setCopySuccess(true);
+        // Thông báo biến mất sau 3 giây
+        setTimeout(() => {
+          setCopySuccess(false);
+        }, 3000);
+      })
+      .catch(() => {
+        setCopySuccess(false);
+      });
+  };
+
   return (
     <>
       {payment.length === 0 ? (
@@ -69,7 +86,7 @@ const PaymentPage = ({ closeModal, price }) => {
         >
           {" "}
           {/* backdrop-blur-sm */}
-          <div className="w-[940px] h-auto bg-white rounded-xl shadow flex items-center justify-center">
+          <div className="w-[940px] h-auto bg-white rounded-xl shadow flex items-center justify-center pb-3">
             <div className="w-full h-full px-5 py-5">
 
               {!language ?
@@ -93,8 +110,11 @@ const PaymentPage = ({ closeModal, price }) => {
                     수신 계좌
                   </h1>
                 }
-                <div className="grid grid-cols-2 gap-3 py-3 mt-3 mx-2">
-                  <div className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
+                <ul className="grid grid-cols-2 gap-3 py-3 mt-3 mx-2">
+                  <li
+                    className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center"
+                    onClick={() => handleCopy(Bank.length !== 0 && Bank[0]?.Accountnumber)}
+                  >
                     <div className="w-full h-auto space-y-2">
 
                       {!language ?
@@ -107,19 +127,35 @@ const PaymentPage = ({ closeModal, price }) => {
                         </h1>
                       }
 
-                      <div className="ml-auto flex items-center space-x-2">
+                      <div className="w-full ml-auto flex items-center space-x-2">
                         {/* Giá tiền */}
-                        <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
+                        <span className="w-full font-semibold text-xl text-yellow-500 text-shadow-black">
                           {Bank.length !== 0 && Bank[0]?.Accountnumber}
                         </span>
 
                         {/* Icon copy */}
-                        <ContentCopyIcon className="cursor-pointer text-gray-600 hover:text-black" />
-                      </div>
-                    </div>
-                  </div>
+                        <button
+                          className="text-gray-600 hover:text-black"
+                          onClick={() => handleCopy(Bank.length !== 0 && Bank[0]?.Accountnumber)}
+                        >
+                          <ContentCopyIcon />
+                        </button>
 
-                  <div className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
+                        {/* Thông báo copy thành công */}
+                        {copySuccess && (
+                          <div className="fixed top-4 left-1/2 transform -translate-x-1/2 p-4 bg-gray-800 text-white rounded-lg shadow-lg transition-all duration-300 ease-in-out">
+                            Copy successfully!
+                          </div>
+                        )}
+                      </div>
+
+                    </div>
+                  </li>
+
+                  <li
+                    className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center"
+                    onClick={() => handleCopy(Bank.length !== 0 && Bank[0]?.Accountname)}
+                  >
                     <div className="w-full h-auto space-y-2">
 
                       {!language ?
@@ -134,17 +170,33 @@ const PaymentPage = ({ closeModal, price }) => {
 
                       <div className="ml-auto flex items-center space-x-2">
                         {/* Giá tiền */}
-                        <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
+                        <span className="w-full font-semibold text-xl text-yellow-500 text-shadow-black">
                           {Bank.length !== 0 && Bank[0]?.Accountname}
                         </span>
 
                         {/* Icon copy */}
-                        <ContentCopyIcon className="cursor-pointer text-gray-600 hover:text-black" />
+                        <button
+                          className="text-gray-600 hover:text-black"
+                          onClick={() => handleCopy(Bank.length !== 0 && Bank[0]?.Accountname)}
+                        >
+                          <ContentCopyIcon />
+                        </button>
+
+                        {/* Thông báo copy thành công */}
+                        {copySuccess && (
+                          <div className="fixed top-4 left-1/2 transform -translate-x-1/2 p-4 bg-gray-800 text-white rounded-lg shadow-lg transition-all duration-300 ease-in-out">
+                            Copy successfully!
+                          </div>
+                        )}
+
                       </div>
                     </div>
-                  </div>
+                  </li>
 
-                  <div className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
+                  <li
+                    className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center"
+                    onClick={() => handleCopy(price)}
+                  >
                     <div className="w-full h-auto space-y-2">
 
                       {!language ?
@@ -159,17 +211,34 @@ const PaymentPage = ({ closeModal, price }) => {
 
                       <div className="ml-auto flex items-center space-x-2">
                         {/* Giá tiền */}
-                        <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
+                        <span className="w-full font-semibold text-xl text-yellow-500 text-shadow-black">
                           {price}
                         </span>
 
                         {/* Icon copy */}
-                        <ContentCopyIcon className="cursor-pointer text-gray-600 hover:text-black" />
-                      </div>
-                    </div>
-                  </div>
+                        <button
+                          className="text-gray-600 hover:text-black"
+                          onClick={() => handleCopy(price)}
+                        >
+                          <ContentCopyIcon />
+                        </button>
 
-                  <div className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center">
+                        {/* Thông báo copy thành công */}
+                        {copySuccess && (
+                          <div className="fixed top-4 left-1/2 transform -translate-x-1/2 p-4 bg-gray-800 text-white rounded-lg shadow-lg transition-all duration-300 ease-in-out">
+                            Copy successfully!
+                          </div>
+                        )}
+
+                      </div>
+
+                    </div>
+                  </li>
+
+                  <li
+                    className="w-full h-[70px] bg-gray-100 border shadow rounded-xl px-3 flex items-center"
+                    onClick={() => handleCopy(Bank.length !== 0 && Bank[0]?.Bankname)}
+                  >
                     <div className="w-full h-auto space-y-2">
 
                       {!language ?
@@ -184,17 +253,29 @@ const PaymentPage = ({ closeModal, price }) => {
 
                       <div className="ml-auto flex items-center space-x-2">
                         {/* Giá tiền */}
-                        <span className="font-semibold text-xl text-yellow-500 text-shadow-black">
+                        <span className="w-full font-semibold text-xl text-yellow-500 text-shadow-black">
                           {Bank.length !== 0 && Bank[0]?.Bankname}
-
                         </span>
 
                         {/* Icon copy */}
-                        <ContentCopyIcon className="cursor-pointer text-gray-600 hover:text-black" />
+                        <button
+                          className="text-gray-600 hover:text-black"
+                          onClick={() => handleCopy(Bank.length !== 0 && Bank[0]?.Bankname)}
+                        >
+                          <ContentCopyIcon />
+                        </button>
+
+                        {/* Thông báo copy thành công */}
+                        {copySuccess && (
+                          <div className="fixed top-4 left-1/2 transform -translate-x-1/2 p-4 bg-gray-800 text-white rounded-lg shadow-lg transition-all duration-300 ease-in-out">
+                            Copy successfully!
+                          </div>
+                        )}
+
                       </div>
                     </div>
-                  </div>
-                </div>
+                  </li>
+                </ul>
               </div>
 
               <div className="w-full h-full mt-3">
@@ -209,8 +290,8 @@ const PaymentPage = ({ closeModal, price }) => {
                   </h1>
                 }
 
-                <div className="grid grid-cols-2 gap-3 py-3 mt-3 mx-2">
-                  <div className="w-full">
+                <ul className="grid grid-cols-2 gap-3 py-3 mt-3 mx-2">
+                  <li className="w-full">
 
                     {!language ?
                       <label className="w-full">
@@ -230,9 +311,9 @@ const PaymentPage = ({ closeModal, price }) => {
                       value={Accountname}
                       onChange={(e) => setAccountname(e.target.value)}
                     />
-                  </div>
+                  </li>
 
-                  <div className="w-full">
+                  <li className="w-full">
                     {!language ?
                       <label className="w-full">
                         Account number
@@ -251,9 +332,9 @@ const PaymentPage = ({ closeModal, price }) => {
                       value={Account}
                       onChange={(e) => setAccount(e.target.value)}
                     />
-                  </div>
+                  </li>
 
-                </div>
+                </ul>
               </div>
 
               <div className="w-full h-full mt-10 flex items-center justify-center">
