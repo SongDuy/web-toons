@@ -56,6 +56,8 @@ const EpisodeVideo = () => {
                 setloading(false)
 
                 await VideoFireBase.Deletechap(id.id, idchap)
+                await VideoFireBase.update({totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 1},id.id );
+
                 const chap = await dispatch(getchaptersVideo(id.id))
                 unwrapResult(chap)
                 setloading(true)
@@ -86,7 +88,7 @@ const EpisodeVideo = () => {
                                     </h1>
 
                                     <div className="ml-auto flex gap-5">
-                                        <button onClick={() => navigate(`/publish/video/${id.id}`)} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
+                                        <button onClick={() =>{ navigate(`/publish/video/${id.id}`);  dispatch(setcurrentStepVideo(2))}} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
                                             <AddIcon />
                                             Add Episode
                                         </button>

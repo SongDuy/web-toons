@@ -10,6 +10,7 @@ import {
   where,
   setDoc,
   limit,
+  getCountFromServer,
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { fireStore, storage } from "../themes/firebase";
@@ -63,6 +64,11 @@ const VideoFireBase = {
       return { message: "No such document!", success: false };
     }
   },
+ async getcountvideo(){
+  const coll = collection(fireStore, "Video");
+  const snapshot = await getCountFromServer(coll); 
+  return snapshot.data().count
+ },
   async getbyuser(uid) {
     const docRef = query(
       collection(fireStore, "Video"),

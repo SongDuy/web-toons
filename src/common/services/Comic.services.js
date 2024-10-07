@@ -10,6 +10,7 @@ import {
   where,
   setDoc,
   limit,
+  getCountFromServer
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { fireStore, storage } from "../themes/firebase";
@@ -63,6 +64,11 @@ const comicFireBase = {
       return { message: "No such document!", success: false };
     }
   },
+  async getcountcomic(){
+    const coll = collection(fireStore, "Comic");
+    const snapshot = await getCountFromServer(coll); 
+    return snapshot.data().count
+   },
   async getrandom(setlimit, age) {
     const randomValue = Math.random().toFixed(2);
     const q = age ? query(
