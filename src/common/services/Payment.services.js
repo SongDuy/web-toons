@@ -8,6 +8,7 @@ import {
     addDoc,
     query,
     where,
+    getCountFromServer
   } from "firebase/firestore";
   import { fireStore } from "../themes/firebase";
   
@@ -60,7 +61,11 @@ import {
         return { message: "No such document!", success: false };
       }
     },
-    
+    async getcountpayments(){
+      const coll = collection(fireStore, "payment");
+      const snapshot = await getCountFromServer(coll); 
+      return snapshot.data().count
+     },
     async getbyuser(uid,idseries) {
       const docRef = query(
         collection(fireStore, "payment"),

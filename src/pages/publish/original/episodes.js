@@ -169,6 +169,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
           docid,
           "fileURL"
         );
+        await comicFireBase.update({totalChapters: chapters?.success ? chapters?.chaps?.length + 1 : 1},id.id );
 
         navigate("/");
       }

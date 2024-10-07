@@ -58,6 +58,7 @@ const EpisodeOriginal = () => {
                 setloading(false)
 
                 await comicFireBase.Deletechap(id.id, idchap)
+                await comicFireBase.update({totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 1},id.id );
                 const chap = await dispatch(getchaptersComic(id.id))
                 unwrapResult(chap)
                 setloading(true)
@@ -88,7 +89,7 @@ const EpisodeOriginal = () => {
                                     </h1>
 
                                     <div className="ml-auto flex gap-5">
-                                        <button onClick={() => navigate(`/publish/original/${id.id}`)} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
+                                        <button onClick={() =>{ navigate(`/publish/original/${id.id}`);  dispatch(setcurrentStepOriginal(2))}} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
                                             <AddIcon />
                                             Add Episode
                                         </button>

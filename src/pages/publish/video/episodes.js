@@ -142,6 +142,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                 await VideoFireBase.update({ Completed: selectedEpisodesValue === "Ongoing" ? false : true }, id.id)
                 await VideoFireBase.uploadToFirebaseep(horizontalThumbnail, horizontalThumbnail.name, Account.uid, id.id, docid, 'horizontalThumbnail')
                 await VideoFireBase.uploadToFirebaseep(fileURL, fileURL.name, Account.uid, id.id, docid, 'fileURL')
+                await VideoFireBase.update({totalChapters: chapters?.success ? chapters?.chaps?.length + 1 : 1},id.id );
                 navigate('/')
             }
             setloading(true)

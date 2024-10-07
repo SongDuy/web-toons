@@ -7,7 +7,8 @@ import {
   updateDoc,
   query,
   where,
-  deleteDoc
+  deleteDoc,
+  getCountFromServer
 } from 'firebase/firestore';
 import {
   ref,
@@ -36,6 +37,11 @@ const userFireBase = {
       return { message: "No such document!", success: false };
     }
   },
+  async getcountUsers(){
+    const coll = collection(fireStore, "Users");
+    const snapshot = await getCountFromServer(coll); 
+    return snapshot.data().count
+   },
   async getbyid(iduser) {
     const docRef = doc(fireStore, 'Users', iduser);
     const docSnap = await getDoc(docRef);
