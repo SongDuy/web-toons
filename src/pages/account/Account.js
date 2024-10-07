@@ -78,15 +78,25 @@ const Account = () => {
     }
   };
 
+  //Lấy ngôn ngữ
+  const language = useSelector(state => state.hidden.language);
+
   return (
     <div>
       <div className="w-full h-full bg-gray-100">
         <Nav />
         <div className="py-[30px] px-[200px] flex-row justify-center items-center container mx-auto my-auto">
           <div className="mb-5">
-            <h1 className="font-semibold text-2xl text-black">
-              Login information
-            </h1>
+
+            {!language ?
+              <h1 className="font-semibold text-2xl text-black">
+                Login information
+              </h1>
+              :
+              <h1 className="font-semibold text-2xl text-black">
+                로그인 정보
+              </h1>
+            }
           </div>
 
           <div className="w-full h-full flex   bg-white border border-white p-5">
@@ -110,9 +120,16 @@ const Account = () => {
         </div>
         <div className="py-[30px] px-[200px] flex-row justify-center items-center container mx-auto">
           <div className="mb-5">
-            <h1 className="font-semibold text-2xl text-black">
-              Birthday
-            </h1>
+
+            {!language ?
+              <h1 className="font-semibold text-2xl text-black">
+                Birthday
+              </h1>
+              :
+              <h1 className="font-semibold text-2xl text-black">
+                생일
+              </h1>
+            }
           </div>
 
           {openDate ? (
@@ -137,13 +154,22 @@ const Account = () => {
                   </div>
 
                 </div>
-                <button
-                  onClick={handleBirthday}
-                  className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[50px]  text-gray-400"
-                >
-                  Add
-                </button>
 
+                {!language ?
+                  <button
+                    onClick={handleBirthday}
+                    className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[50px]  text-gray-400"
+                  >
+                    Add
+                  </button>
+                  :
+                  <button
+                    onClick={handleBirthday}
+                    className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[50px]  text-gray-400"
+                  >
+                    추가
+                  </button>
+                }
               </div>
             </div>
           ) : (
@@ -162,16 +188,36 @@ const Account = () => {
                         {new Date(selectedDate).getDate()}/{new Date(selectedDate).getMonth() + 1}/
                         {new Date(selectedDate)?.getFullYear()}
                       </p>
-                      : <p className="font-semibold  text-lg text-black">
-                        Not Birthday
-                      </p>}
+                      :
+                      <p>
+                        {!language ?
+                          <p className="font-semibold  text-lg text-black">
+                            Not Birthday
+                          </p>
+                          :
+                          <p className="font-semibold  text-lg text-black">
+                            생일 아님
+                          </p>
+                        }
+                      </p>
+                    }
                   </div>
-                  <button
-                    onClick={() => setopenDate(!openDate)}
-                    className="font-semibold bg-gray-200 w-[90px] h-[35px]  text-base text-gray-400"
-                  >
-                    Edit
-                  </button>
+                  {!language ?
+                    <button
+                      onClick={() => setopenDate(!openDate)}
+                      className="font-semibold bg-gray-200 w-[90px] h-[35px]  text-base text-gray-400"
+                    >
+                      Edit
+                    </button>
+                    :
+                    <button
+                      onClick={() => setopenDate(!openDate)}
+                      className="font-semibold bg-gray-200 w-[90px] h-[35px]  text-base text-gray-400"
+                    >
+                      편집
+                    </button>
+                  }
+
                 </div>
               </div>
             </div>
@@ -179,9 +225,16 @@ const Account = () => {
         </div>
         <div className="py-[30px] px-[200px] flex-row justify-center items-center container mx-auto">
           <div className="mb-5">
-            <h1 className="font-semibold text-2xl text-black">
-              Nickname
-            </h1>
+
+            {!language ?
+              <h1 className="font-semibold text-2xl text-black">
+                Nickname
+              </h1>
+              :
+              <h1 className="font-semibold text-2xl text-black">
+                별명
+              </h1>
+            }
           </div>
 
           {openName ? (
@@ -202,21 +255,47 @@ const Account = () => {
                     />
                   </div>
                   {isValid && <div className="my-2">
-                    <span className="font-semibold text-base text-gray-400 ">
-                      Nickname already exists.
-                    </span>
+
+                    {!language ?
+                      <span className="font-semibold text-base text-gray-400 ">
+                        Nickname already exists.
+                      </span>
+                      :
+                      <span className="font-semibold text-base text-gray-400 ">
+                        별명이 이미 있습니다.
+                      </span>
+                    }
                   </div>}
                 </div>
-                <button
-                  onClick={handleName}
-                  className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[35px]  text-gray-400"
-                >
-                  Check for availability
-                </button>
-                <p className=" text-sm ml-5  text-gray-400 w-1/3 my-5">
-                  Create your nickname for WEBTOON. - You may enter a maximum of
-                  20 characters containing alphabets, numbers, and symbols.
-                </p>
+
+                {!language ?
+                  <button
+                    onClick={handleName}
+                    className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[35px]  text-gray-400"
+                  >
+                    Check for availability
+                  </button>
+                  :
+                  <button
+                    onClick={handleName}
+                    className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[35px]  text-gray-400"
+                  >
+                    가용성 확인
+                  </button>
+                }
+
+                {!language ?
+                  <p className=" text-sm ml-5  text-gray-400 w-1/3 my-5">
+                    Create your nickname. - You may enter a maximum of
+                    20 characters containing alphabets, numbers, and symbols.
+                  </p>
+                  :
+                  <p className=" text-sm ml-5  text-gray-400 w-1/3 my-5">
+                    별명을 만듭니다. - 최대 다음 항목을 입력할 수 있습니다
+                    알파벳, 숫자 및 기호가 포함된 20글자입니다.
+                  </p>
+                }
+
               </div>
             </div>
           ) : (
@@ -235,12 +314,22 @@ const Account = () => {
                     </p>
 
                   </div>
-                  <button
-                    onClick={() => setopenName(!openName)}
-                    className="font-semibold bg-gray-200 w-[90px] h-[35px]  text-base text-gray-400"
-                  >
-                    Edit
-                  </button>
+
+                  {!language ?
+                    <button
+                      onClick={() => setopenName(!openName)}
+                      className="font-semibold bg-gray-200 w-[90px] h-[35px]  text-base text-gray-400"
+                    >
+                      Edit
+                    </button>
+                    :
+                    <button
+                      onClick={() => setopenName(!openName)}
+                      className="font-semibold bg-gray-200 w-[90px] h-[35px]  text-base text-gray-400"
+                    >
+                      편집
+                    </button>
+                  }
                 </div>
               </div>
             </div>
@@ -248,9 +337,16 @@ const Account = () => {
         </div>
         <div className="py-[30px] px-[200px] flex-row justify-center items-center container mx-auto">
           <div className="mb-5">
-            <h1 className="font-semibold text-2xl text-black">
-              Email
-            </h1>
+
+            {!language ?
+              <h1 className="font-semibold text-2xl text-black">
+                Email
+              </h1>
+              :
+              <h1 className="font-semibold text-2xl text-black">
+                이메일
+              </h1>
+            }
           </div>
 
           <div className="w-full h-full flex-row justify-center items-center  bg-white border border-white p-5">
@@ -273,17 +369,33 @@ const Account = () => {
                       />
                     </div>
                     <div className="my-2">
-                      <span className="font-semibold text-base text-gray-400 ">
-                        Enter your email address for new updates and latest news.
-                      </span>
+                      {!language ?
+                        <span className="font-semibold text-base text-gray-400 ">
+                          Enter your email address for new updates and latest news.
+                        </span>
+                        :
+                        <span className="font-semibold text-base text-gray-400 ">
+                          최신 업데이트 및 뉴스 수신을 위한 이메일 주소 입력하세요.
+                        </span>
+                      }
                     </div>
                   </div>
-                  <button
-                    onClick={handleEmail}
-                    className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[35px]  text-gray-400"
-                  >
-                    Verify
-                  </button>
+
+                  {!language ?
+                    <button
+                      onClick={handleEmail}
+                      className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[35px]  text-gray-400"
+                    >
+                      Verify
+                    </button>
+                    :
+                    <button
+                      onClick={handleEmail}
+                      className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[35px]  text-gray-400"
+                    >
+                      확인
+                    </button>
+                  }
 
                 </div> :
                 <div className="grid grid-cols-8 gap-4   ml-5 my-5 p-5 border-b border-gray-300">
@@ -291,16 +403,33 @@ const Account = () => {
                     <p className="font-semibold  text-lg text-black">
                       {email}
                     </p>
-                    <span className="font-semibold text-sm text-gray-400 ">
-                      Enter your email address for new updates and latest news.
-                    </span>
+
+                    {!language ?
+                      <span className="font-semibold text-base text-gray-400 ">
+                        Enter your email address for new updates and latest news.
+                      </span>
+                      :
+                      <span className="font-semibold text-base text-gray-400 ">
+                        최신 업데이트 및 뉴스 수신을 위한 이메일 주소 입력하세요.
+                      </span>
+                    }
                   </div>
-                  <button
-                    onClick={() => setopenEmail(!openEmail)}
-                    className="font-semibold bg-gray-200 w-[90px] h-[35px]  text-base text-gray-400"
-                  >
-                    Edit
-                  </button>
+
+                  {!language ?
+                    <button
+                      onClick={() => setopenEmail(!openEmail)}
+                      className="font-semibold bg-gray-200 w-[90px] h-[35px]  text-base text-gray-400"
+                    >
+                      Edit
+                    </button>
+                    :
+                    <button
+                      onClick={() => setopenEmail(!openEmail)}
+                      className="font-semibold bg-gray-200 w-[90px] h-[35px]  text-base text-gray-400"
+                    >
+                      편집
+                    </button>
+                  }
                 </div>
               }
 
@@ -429,9 +558,15 @@ const Account = () => {
           <div className="py-[30px] flex-row justify-center items-center container mx-auto">
             <div className="">
               <Link to={`/account/delete`}>
-                <span className="font-semibold text-2xl text-gray-400 hover:text-black">
-                  Do you want to delete your account?
-                </span>
+                {!language ?
+                  <h1 className="font-semibold text-2xl text-gray-400 hover:text-black">
+                    Do you want to delete your account?
+                  </h1>
+                  :
+                  <h1 className="font-semibold text-2xl text-gray-400 hover:text-black">
+                    계정을 삭제하시겠습니까?
+                  </h1>
+                }
               </Link>
             </div>
           </div>
