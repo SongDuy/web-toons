@@ -97,9 +97,10 @@ setvideos(videos.success ? videos.Video : []);
               </h1>
               <Link
                 to={`/publish/original`}
+            
                 className="w-[150px] h-[35px] text-white font-semibold bg-black ml-auto rounded-full flex items-center justify-center"
               >
-                <button className="w-full h-full">
+                <button className="w-full h-full"     onClick={()=>  dispatch(setcurrentStepOriginal(1))}>
                   <AddIcon />
                   Create Series
                 </button>
@@ -210,9 +211,10 @@ setvideos(videos.success ? videos.Video : []);
               <h1 className="font-semibold text-xl">Select the video series</h1>
               <Link
                 to={`/publish/video`}
+             
                 className="w-[150px] h-[35px] text-white font-semibold bg-black ml-auto rounded-full flex items-center justify-center"
               >
-                <button className="w-full h-full">
+                <button className="w-full h-full" onClick={()=>    dispatch(setcurrentStepVideo(1))}>
                   <AddIcon />
                   Create Series
                 </button>

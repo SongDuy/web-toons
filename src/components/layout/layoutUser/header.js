@@ -23,7 +23,7 @@ import logo from "../../../img/logonew.png";
 import { Link, useLocation } from "react-router-dom";
 import { auth } from "../../../common/themes/firebase";
 import { useDispatch, useSelector } from 'react-redux';
-import { getlanguage, setIsLoginModal, setIsLogin19Modal } from "../../../common/store/hidden";
+import { getlanguage, setIsLoginModal, setIsLogin19Modal, setcurrentStepOriginal, setcurrentStepVideo } from "../../../common/store/hidden";
 import { logout, setuser } from "../../../common/store/Auth.js";
 import { onAuthStateChanged } from 'firebase/auth';
 import userFireBase from "../../../common/services/User.services";
@@ -340,7 +340,7 @@ const HeaderPage = () => {
                           aria-labelledby="composition-button"
                           onKeyDown={handleListKeyDown}
                         >
-                          <Link to={`/publish/original`}>
+                          <Link to={`/publish/original`} onclick={ dispatch(setcurrentStepOriginal(1))}>
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <PictureAsPdfOutlinedIcon />
 
@@ -349,7 +349,7 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <Link to={`/publish/video`}>
+                          <Link to={`/publish/video`} onclick={ dispatch(setcurrentStepVideo(1))}>
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <VideoCallOutlinedIcon />
 

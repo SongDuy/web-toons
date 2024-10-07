@@ -25,8 +25,8 @@ const Account = () => {
   useEffect(() => {
     setName(Account?.name)
     setEmail(Account?.email)
-    setSelectedDate(Account?.birthday ? new Date(Account?.birthday) : selectedDate)
-  }, [Account, selectedDate]);
+    setSelectedDate(s => Account.birthday ? new Date(Account.birthday) : s);
+  }, [Account]);
   const handleName = async () => {
     try {
       // Kiểm tra độ dài và các ký tự hợp lệ

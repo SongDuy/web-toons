@@ -101,7 +101,7 @@ const EpisodeOriginal = () => {
 
                                         {/* khung nội dung */}
                                         {chapters?.chaps?.map((item) => (
-                                            <li className="w-full h-[210px] bg-white rounded flex shadow">
+                                            <li className="w-full h-[210px] bg-white rounded flex shadow" key={item.id}>
                                                 <div className="w-[210px] h-[210px] bg-red-200 rounded">
                                                     <img
                                                         src={item.horizontalThumbnail}

@@ -62,7 +62,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
     useEffect(() => {
         const get = async () => {
             try {
-                if (id.id) {
+                if (id?.id) {
                     setloading(false)
                     const comicID = await dispatch(getidComic(id.id))
                     const getcomic = unwrapResult(comicID)
@@ -188,6 +188,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
 
     const handleAdd = async () => {
         try {
+            setloading(false)
             if (id.id) {
                 const data = {
                     title: valueTitle,
@@ -234,6 +235,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                 navigate(`/publish/original/${idcom}`)
                 goToEposodes()
             }
+            setloading(true)
 
         } catch (error) {
             console.log(error)

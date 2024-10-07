@@ -173,6 +173,8 @@ const SeriesVideoPage = ({ goToEposodes }) => {
     };
     const handleAdd = async () => {
         try {
+            setloading(false)
+
             if (id.id) {
                 const data = {
                     title: valueTitle,
@@ -216,6 +218,8 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                 navigate(`/publish/video/${idvideo}`)
                 goToEposodes()
             }
+            setloading(true)
+
         } catch (error) {
             console.log(error)
         }

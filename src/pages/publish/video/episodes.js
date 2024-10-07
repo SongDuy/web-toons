@@ -12,6 +12,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import VideoFireBase from '../../../common/services/Video.services';
 import { getchaptersVideo, getidVideo } from '../../../common/store/Video';
+import ReactPlayer from "react-player";
+
 const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
     // hàm material nút chọn ở mục comment
@@ -30,6 +32,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
     const [views, setviews] = useState(0);
     const [check, setcheck] = useState(false);
     const navigate = useNavigate();
+    const [URLFile, setURLFile] = useState("");
 
     const id = useParams();
     const [photos1, setPhotos1] = useState("");
@@ -38,26 +41,31 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
         const get = async () => {
             try {
                 setloading(false)
-                const check = await VideoFireBase.checkvideouser(Account?.uid, id.id)
-                if (check.success) {
-                    const videoID = await dispatch(getidVideo(id.id))
-                    const chap = await dispatch(getchaptersVideo(id.id));
-                    if (id?.idchap) {
-                        const chapid = await VideoFireBase.getchaptersid(id.id, id.idchap)
-                        setPhotos1(chapid?.horizontalThumbnail)
-                        setSelectedValue(chapid?.checkcomment)
-                        setValueNote(chapid?.note)
-                        setValueEpisodeTitle(chapid?.chapterTitle)
-                        setlike(chapid?.likes)
-                        setviews(chapid?.views)
-                        setcheck(chapid?.check)
-                    }
-                    unwrapResult(videoID)
-                    unwrapResult(chap)
-                } else {
-                    navigate('/')
+                if(id?.id && Account?.uid){
+                    const check =Account&& await VideoFireBase.checkvideouser(Account?.uid, id.id)
+                    if (check?.success) {
+                        const videoID = await dispatch(getidVideo(id.id))
+                        const chap = await dispatch(getchaptersVideo(id.id));
+                        if (id?.idchap) {
+                            const chapid = await VideoFireBase.getchaptersid(id.id, id.idchap)
+                            setPhotos1(chapid?.horizontalThumbnail)
+                            setSelectedValue(chapid?.checkcomment)
+                            setValueNote(chapid?.note)
+                            setValueEpisodeTitle(chapid?.chapterTitle)
+                            setlike(chapid?.likes)
+                            setviews(chapid?.views)
+                            setcheck(chapid?.check)
+                            setURLFile(chapid?.fileURL);
 
+                        }
+                        unwrapResult(videoID)
+                        unwrapResult(chap)
+                    } else {
+                      navigate('/')
+    
+                    }
                 }
+            
 
 
                 setloading(true)
@@ -107,14 +115,15 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
     const handlefileChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-
+            let newPhotos = URL.createObjectURL(file);
+            setURLFile(newPhotos);
             setfileURL(file)
         }
     };
 
     const handleEp = async () => {
         try {
-            console.log()
+            setloading(false)
             if (horizontalThumbnail?.name && fileURL?.name) {
                 const getdata = {
                     valueEpisodeTitle,
@@ -135,6 +144,8 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                 await VideoFireBase.uploadToFirebaseep(fileURL, fileURL.name, Account.uid, id.id, docid, 'fileURL')
                 navigate('/')
             }
+            setloading(true)
+
         } catch (error) {
             console.log(error)
         }
@@ -142,6 +153,8 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
     const handleedit = async () => {
         try {
+            setloading(false)
+
             if (fileURL?.name || horizontalThumbnail?.name) {
 
                 const getdata = {
@@ -185,6 +198,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
         setPhotos1("");
         sethorizontalThumbnail()
         setfileURL()
+        setURLFile('')
 
     }
 
@@ -433,13 +447,23 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
                                         {/* Phần hiện nội dung tải lên*/}
                                         <div className="h-[500px] bg-white flex items-center justify-center">
-                                            {!language ? (
+                                       {URLFile? <ReactPlayer
+                url={
+               
+                     URLFile
+                }
+                controls={true}
+                width="80%"
+                height="100%"
+              />:
+                                            !language ? (
                                                 <span className="font-semibold text-gray-500">
-                                                    drag and drop image files.
+                                            render files.
                                                 </span>
                                             ) : (
                                                 <span className="font-semibold text-gray-500">
-                                                    이미지 파일을 드래그 앤 드롭하세요.
+                                                                              파일을 표시하다
+
                                                 </span>
                                             )}
                                         </div>
