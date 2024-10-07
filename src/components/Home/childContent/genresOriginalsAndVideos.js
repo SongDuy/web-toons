@@ -117,7 +117,7 @@ const GenresOriginalsAndVideosPage = () => {
                                             />
 
                                             {hoveredOriginalItem === item.id && (
-                                                <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                <div className="absolute inset-0 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                     <AutoStoriesIcon sx={{ fontSize: 40 }} />
                                                 </div>
                                             )}
@@ -125,12 +125,14 @@ const GenresOriginalsAndVideosPage = () => {
 
                                         <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
                                             <div className="w-full h-[65px] mb-auto overflow-hidden">
-                                                <span className="text-black text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
+                                                <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                                                     {item.title}
                                                 </span>
-                                                <span className="text-black text-md text-shadow-white leading-[1.2] line-clamp-1">
-                                                    {item.Author}
-                                                </span>
+                                                {/*
+                                                    <span className="text-black text-md text-shadow-white leading-[1.4] line-clamp-1">
+                                                        {item.Author}
+                                                    </span> 
+                                                */}
                                             </div>
 
                                             <div className="w-full mb-[20px]">

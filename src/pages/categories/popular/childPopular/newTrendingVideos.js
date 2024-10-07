@@ -45,7 +45,7 @@ const NewTrendingVideosPage = () => {
                                         />
 
                                         {hoveredVideoItem === "choice" && (
-                                            <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                            <div className="absolute inset-0 rounded-md flex items-center justify-center text-yellow-500 z-10">
                                                 <PlayArrowIcon sx={{ fontSize: 100 }} />
                                             </div>
                                         )}
