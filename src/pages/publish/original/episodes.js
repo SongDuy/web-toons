@@ -296,7 +296,12 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                 <div className="w-[40px] h-[40px] bg-green-500 rounded-full border flex items-center justify-center mx-2">
                   <span className="mx-3 text-2xl text-white font-bold">2</span>
                 </div>
-                <h1 className="text-black">ORIGINAL EPISODES</h1>
+               
+                {!language ? (
+                  <h1 className="text-black">ORIGINAL EPISODES</h1>
+                ) : (
+                  <h1 className="text-gray-400">원본 에피소드</h1>
+                )}
               </li>
             </ul>
           </div>
@@ -496,36 +501,36 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
 
                     {/* Phần hiện nội dung tải lên*/}
                     <div className="h-[500px] w-full bg-white flex items-center justify-center">
-                    {URLFile ?(
-                      <div className="h-full w-full bg-gray-100">
-                        <div className="w-full  h-full bg-white shadow-md rounded overflow-auto p-8">
-                          {URLFile && (
-                            <Document
-                              options={options}
-                              file={URLFile}
-                              onLoadSuccess={onDocumentLoadSuccess}
-                              loading={<CircularProgress />}
-                            >
-                              {Array.from(new Array(numPages), (el, index) => (
-                                <Page
-                                  key={`page_${index + 1}`}
-                                  pageNumber={index + 1}
-                                />
-                              ))}
-                            </Document>
-                          )}
+                      {URLFile ? (
+                        <div className="h-full w-full bg-gray-100">
+                          <div className="w-full  h-full bg-white shadow-md rounded overflow-auto p-8">
+                            {URLFile && (
+                              <Document
+                                options={options}
+                                file={URLFile}
+                                onLoadSuccess={onDocumentLoadSuccess}
+                                loading={<CircularProgress />}
+                              >
+                                {Array.from(new Array(numPages), (el, index) => (
+                                  <Page
+                                    key={`page_${index + 1}`}
+                                    pageNumber={index + 1}
+                                  />
+                                ))}
+                              </Document>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    ):(
-                      !language ? (
-                        <span className="font-semibold text-gray-500">
-                          render files.
-                        </span>
                       ) : (
-                        <span className="font-semibold text-gray-500">
-                          파일을 표시하다
-                        </span>
-                      ))}
+                        !language ? (
+                          <span className="font-semibold text-gray-500">
+                            render files.
+                          </span>
+                        ) : (
+                          <span className="font-semibold text-gray-500">
+                            파일을 표시하다
+                          </span>
+                        ))}
                     </div>
 
                     {/* Phần mô tả */}

@@ -282,7 +282,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     {!language ? (
                                         <span> ORIGINAL EPISODES</span>
                                     ) : (
-                                        <span> chưa có </span>
+                                        <span> 원본 에피소드 </span>
                                     )}
 
                                 </h1>

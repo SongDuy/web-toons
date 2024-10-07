@@ -41,8 +41,8 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
         const get = async () => {
             try {
                 setloading(false)
-                if(id?.id && Account?.uid){
-                    const check =Account&& await VideoFireBase.checkvideouser(Account?.uid, id.id)
+                if (id?.id && Account?.uid) {
+                    const check = Account && await VideoFireBase.checkvideouser(Account?.uid, id.id)
                     if (check?.success) {
                         const videoID = await dispatch(getidVideo(id.id))
                         const chap = await dispatch(getchaptersVideo(id.id));
@@ -61,11 +61,11 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                         unwrapResult(videoID)
                         unwrapResult(chap)
                     } else {
-                      navigate('/')
-    
+                        navigate('/')
+
                     }
                 }
-            
+
 
 
                 setloading(true)
@@ -222,13 +222,13 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                 </div>
 
                                 {!language ? (
-                                    <span className="text-gray-400">
+                                    <h1 className="text-gray-400">
                                         VIDEO SERIES
-                                    </span>
+                                    </h1>
                                 ) : (
-                                    <span className="text-gray-400">
+                                    <h1 className="text-gray-400">
                                         비디오 시리즈
-                                    </span>
+                                    </h1>
                                 )}
                             </li>
                             <li className="uppercase font-semibold text-md flex items-center justify-center">
@@ -242,9 +242,16 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                         2
                                     </span>
                                 </div>
-                                <span className="text-black">
-                                    VIDEO EPISODES
-                                </span>
+
+                                {!language ? (
+                                    <h1 className="text-black">
+                                        VIDEO EPISODES
+                                    </h1>
+                                ) : (
+                                    <h1 className="text-black">
+                                        비디오 에피소드
+                                    </h1>
+                                )}
                             </li>
                         </ul>
                     </div>
@@ -447,25 +454,25 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
                                         {/* Phần hiện nội dung tải lên*/}
                                         <div className="h-[500px] bg-white flex items-center justify-center">
-                                       {URLFile? <ReactPlayer
-                url={
-               
-                     URLFile
-                }
-                controls={true}
-                width="80%"
-                height="100%"
-              />:
-                                            !language ? (
-                                                <span className="font-semibold text-gray-500">
-                                            render files.
-                                                </span>
-                                            ) : (
-                                                <span className="font-semibold text-gray-500">
-                                                                              파일을 표시하다
+                                            {URLFile ? <ReactPlayer
+                                                url={
 
-                                                </span>
-                                            )}
+                                                    URLFile
+                                                }
+                                                controls={true}
+                                                width="80%"
+                                                height="100%"
+                                            /> :
+                                                !language ? (
+                                                    <span className="font-semibold text-gray-500">
+                                                        render files.
+                                                    </span>
+                                                ) : (
+                                                    <span className="font-semibold text-gray-500">
+                                                        파일을 표시하다
+
+                                                    </span>
+                                                )}
                                         </div>
 
                                         {/* Phần mô tả */}

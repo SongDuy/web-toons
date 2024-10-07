@@ -274,7 +274,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                     </h1>
                                 ) : (
                                     <h1 className="text-gray-400">
-                                        VIDEO EPISODES
+                                       비디오 에피소드
                                     </h1>
                                 )}
 
