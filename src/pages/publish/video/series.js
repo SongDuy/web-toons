@@ -146,7 +146,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                 setIsAge(12);
                 break;
             case 2:
-                setIsAge(16);
+                setIsAge(15);
                 break;
             case 3:
                 setIsAge(19);
