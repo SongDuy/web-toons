@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { auth } from '../../common/themes/firebase';
 import {
@@ -24,14 +25,40 @@ const ForgotPasswordPage = () => {
 
         }
     }
+
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <div className="w-full h-full bg-gray-100 flex items-center justify-center"> {/* backdrop-blur-sm */}
-            <div className="w-[400px] h-auto my-[170px] px-5 py-5 bg-white shadow rounded-lg">
+            <div className="w-[450px] h-auto my-[170px] px-5 py-5 bg-white shadow rounded-lg">
                 <div>
-                    <span className="text-[25px] flex justify-center font-semibold">Forgot Password?</span>
+                    <h1 className="text-[25px] flex justify-center font-semibold">
+                        {!language ?
+                            <span> Forgot Password? </span>
+                            :
+                            <span> 비밀번호를 잊어버리셨나요? </span>
+                        }
+                    </h1>
                     <div className="pt-3 pb-5">
-                        <span class="flex items-center justify-center mx-auto">We will send you a link to reset your password.</span>
-                        <span class="flex items-center justify-center mx-auto">Enter your email address below.</span>
+                        {!language ?
+                            <span class="flex items-center justify-center mx-auto">
+                                We will send you a link to reset your password.
+                            </span>
+                            :
+                            <span class="flex items-center justify-center mx-auto">
+                                비밀번호를 재설정할 수 있는 링크를 보내드리겠습니다.
+                            </span>
+                        }
+                        {!language ?
+                            <span class="flex items-center justify-center mx-auto">
+                                Enter your email address below.
+                            </span>
+                            :
+                            <span class="flex items-center justify-center mx-auto">
+                                아래에 이메일 주소를 입력합니다.
+                            </span>
+                        }
                     </div>
 
                     {/* Đăng nhập bằng email */}
@@ -41,29 +68,41 @@ const ForgotPasswordPage = () => {
                         <input
                             type="email"
                             className="w-full h-[50px] px-2 border rounded shadow"
-                            placeholder="Email Address"
+                            placeholder={!language ? "Email Address" : "이메일주소"}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
                         {error && <p style={{ color: 'red' }}>{error}</p>}
                         {success && <p>A password reset email has been sent. Please check your inbox.</p>}
+
                         <button
                             className="w-full h-[50px] bg-black text-white rounded font-semibold"
                             onClick={handleForgotPw}
                         >
-                            Continue
+                            {!language ?
+                                "Continue"
+                                :
+                                "계속해요"
+                            }
                         </button>
 
                         <div className="w-full h-[50px] flex gap-x-1 items-center justify-center border rounded">
-                            <span className="">
-                                Don't have an account?
-                            </span>
+                            {!language ?
+                                " Don't have an account?"
+                                :
+                                "계정이 없나요?"
+                            }
 
                             <Link
                                 to="/register"
                                 className="text-blue-800 font-semibold"
                             >
-                                Sign up
+                                {!language ?
+                                    "Sign up"
+                                    :
+                                    "등록해요"
+                                }
+                                
                             </Link>
 
                         </div>
