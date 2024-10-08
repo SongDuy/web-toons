@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 
 import GoogleIcon from '@mui/icons-material/Google';
@@ -7,7 +8,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { useDispatch, useSelector } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 
-import { setIsLoginModal,setIsLogin19Modal } from '../../common/store/hidden';
+import { setIsLoginModal, setIsLogin19Modal } from '../../common/store/hidden';
 import { handleLogin, handleGoogle, seterr, handleLogin19, handleGoogle19 } from '../../common/store/Auth.js';
 import useTimeout from '../../Hooks/useTimeout';
 
@@ -27,41 +28,42 @@ const LoginPage = ({ closeModal }) => {
             closeModal(); // Gọi hàm closeModal khi nhấp vào nền
         }
     };
+
     const GetLogin = async () => {
         try {
-          if(isLogin19Modal){
-            const lg = await dispatch(handleLogin19({ email, password }));
-            unwrapResult(lg)
-            if (err === null) {
-                dispatch(setIsLoginModal(false))
-                dispatch(setIsLogin19Modal(false));
-            }
-            
-          }else{
-            const lg = await dispatch(handleLogin({ email, password }));
-            unwrapResult(lg)
-            if (err === null) {
-                dispatch(setIsLoginModal(false))
+            if (isLogin19Modal) {
+                const lg = await dispatch(handleLogin19({ email, password }));
+                unwrapResult(lg)
+                if (err === null) {
+                    dispatch(setIsLoginModal(false))
+                    dispatch(setIsLogin19Modal(false));
+                }
 
+            } else {
+                const lg = await dispatch(handleLogin({ email, password }));
+                unwrapResult(lg)
+                if (err === null) {
+                    dispatch(setIsLoginModal(false))
+
+                }
             }
-          }
         } catch (error) {
         }
 
     }
     const GetGoogle = async () => {
         try {
-          if(isLogin19Modal){
-            const lg = await dispatch(handleGoogle19());
-            unwrapResult(lg)
-            console.log(lg)
+            if (isLogin19Modal) {
+                const lg = await dispatch(handleGoogle19());
+                unwrapResult(lg)
+                console.log(lg)
                 dispatch(setIsLoginModal(false))
                 dispatch(setIsLogin19Modal(false));
 
-          }else{
-            dispatch(handleGoogle());
-            dispatch(setIsLoginModal(false)) 
-          }
+            } else {
+                dispatch(handleGoogle());
+                dispatch(setIsLoginModal(false))
+            }
         } catch (error) {
         }
 
@@ -81,14 +83,40 @@ const LoginPage = ({ closeModal }) => {
     //         }
     //       });
     // }, []);
+
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <div className="w-screen h-screen bg-black bg-opacity-30 flex items-center justify-center fixed inset-0 z-50" onClick={handleBackdropClick}> {/* backdrop-blur-sm */}
 
             <div className="w-[400px] h-auto px-5 pt-5 pb-8 bg-white shadow rounded-lg">
                 <div>
-                    <span className="text-[25px] flex justify-center font-semibold">Log In</span>
 
-                    <span className="pt-3 pb-5 flex items-center justify-center">Welcome back! Let's take you to your account.</span>
+                    {!language ?
+                        <h1 className="text-[25px] flex justify-center font-semibold">
+                            Log In
+                        </h1>
+                        :
+                        <h1 className="text-[25px] flex justify-center font-semibold">
+                            로그인
+                        </h1>
+                    }
+
+                    {!language ?
+                        <span className="pt-3 pb-5 flex items-center justify-center">
+                            Welcome back! Let's take you to your account.
+                        </span>
+                        :
+                        <div className="pb-5">
+                            <span className="flex items-center justify-center">
+                                다시 오신 것을 환영합니다!
+                            </span>
+                            <span className="flex items-center justify-center">
+                                고객님의 계정으로 안내해 드리겠습니다.
+                            </span>
+                        </div>
+                    }
 
                     {/* Đăng nhập bằng email */}
                     <div className="w-full grid grid-cols-1 gap-y-3">
@@ -97,7 +125,7 @@ const LoginPage = ({ closeModal }) => {
                         <input
                             type="email"
                             className="w-full h-[50px] px-2 border rounded shadow"
-                            placeholder="Email Address"
+                            placeholder={!language ? "Email Address" : "이메일주소"}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -109,7 +137,7 @@ const LoginPage = ({ closeModal }) => {
                             form="off"
                             onChange={(e) => setPassword(e.target.value)}
                             className="w-full h-[50px] px-2 border rounded shadow"
-                            placeholder="Password"
+                            placeholder={!language ? "Password" : "비밀번호"}
                         />
 
                         <Link
@@ -117,20 +145,36 @@ const LoginPage = ({ closeModal }) => {
                             className="w-[160px] text-blue-800 cursor-pointer"
                             onClick={handleBackdropClick}
                         >
-                            Reset your password?
+                            {!language ?
+                                " Reset your password?"
+                                :
+                                "비밀번호 재설정?"
+                            }
+
                         </Link>
+
                         {err && <p>{err.message}</p>}
                         <button
                             className="w-full h-[50px] bg-black text-white rounded font-semibold"
                             onClick={GetLogin}
 
                         >
-                            Continue
+                            {!language ?
+                                " Continue"
+                                :
+                                "계속해요."
+                            }
+
                         </button>
 
                         <div className="w-full h-[50px] flex gap-x-1 items-center justify-center border rounded">
+
                             <span>
-                                Don't have an account?
+                                {!language ?
+                                    " Don't have an account?"
+                                    :
+                                    "계정이 없나요?"
+                                }
                             </span>
 
                             <Link
@@ -138,7 +182,12 @@ const LoginPage = ({ closeModal }) => {
                                 className="text-blue-800 font-semibold"
                                 onClick={handleBackdropClick}
                             >
-                                Sign up
+                                {!language ?
+                                    " Sign up"
+                                    :
+                                    "등록해요"
+                                }
+
                             </Link>
 
                         </div>
@@ -146,7 +195,14 @@ const LoginPage = ({ closeModal }) => {
 
                     <div className="w-full my-5 flex items-center">
                         <hr className="flex-1 border-t border-gray-300" />
-                        <span className="px-4">OR</span>
+                        <span className="px-4">
+
+                            {!language ?
+                                "OR"
+                                :
+                                "OR"
+                            }
+                        </span>
                         <hr className="flex-1 border-t border-gray-300" />
                     </div>
 
@@ -159,7 +215,11 @@ const LoginPage = ({ closeModal }) => {
                             </span>
 
                             <span className="mr-auto font-semibold">
-                                Continue with Google
+                                {!language ?
+                                    "Continue with Google"
+                                    :
+                                    "Google로 계속 진행"
+                                }
                             </span>
                         </button>
 

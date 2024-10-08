@@ -339,18 +339,39 @@ const PaymentPage = ({ closeModal, price }) => {
 
               <div className="w-full h-full mt-10 flex items-center justify-center">
                 <div className="w-1/2 h-[50px] flex gap-10">
-                  <button
-                    className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
-                    onClick={handleBackdropClick}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    onClick={() => handleAdd()}
-                    className="w-1/2 h-[50px] text-white font-semibold bg-green-500 hover:bg-green-600 shadow rounded-full flex items-center justify-center"
-                  >
-                    Completed
-                  </button>
+
+                  {!language ?
+                    <button
+                      className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
+                      onClick={handleBackdropClick}
+                    >
+                      Cancel
+                    </button>
+                    :
+                    <button
+                      className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
+                      onClick={handleBackdropClick}
+                    >
+                      취소
+                    </button>
+                  }
+
+                  {!language ?
+                    <button
+                      onClick={() => handleAdd()}
+                      className="w-1/2 h-[50px] text-white font-semibold bg-green-500 hover:bg-green-600 shadow rounded-full flex items-center justify-center"
+                    >
+                      Completed
+                    </button>
+                    :
+                    <button
+                      onClick={() => handleAdd()}
+                      className="w-1/2 h-[50px] text-white font-semibold bg-green-500 hover:bg-green-600 shadow rounded-full flex items-center justify-center"
+                    >
+                      완료됨
+                    </button>
+                  }
+
                 </div>
               </div>
             </div>

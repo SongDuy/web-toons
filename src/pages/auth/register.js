@@ -26,7 +26,7 @@ const RegisterPage = () => {
   const getRegister = async () => {
     try {
       console.log(selectedDate)
-      const rg = await dispatch(handleRegister({ email, password, displayName,birthday:selectedDate }));
+      const rg = await dispatch(handleRegister({ email, password, displayName, birthday: selectedDate }));
       unwrapResult(rg)
 
       navigate('/')
@@ -36,7 +36,8 @@ const RegisterPage = () => {
     }
   }
 
-  //chọn ngày tháng năm sinh
+  //Lấy ngôn ngữ
+  const language = useSelector(state => state.hidden.language);
 
   return (
     <div className="w-full h-full bg-gray-100 flex items-center justify-center">
@@ -44,12 +45,22 @@ const RegisterPage = () => {
       {/* backdrop-blur-sm */}
       <div className="w-[400px] h-auto my-10 px-5 pt-5 pb-8 bg-white shadow rounded-lg">
         <div>
-          <span className="text-[25px] flex justify-center font-semibold">
-            Sign Up
-          </span>
+          <h1 className="text-[25px] flex justify-center font-semibold">
+            {!language ?
+              "Sign Up"
+              :
+              "등록해요"
+            }
+
+          </h1>
 
           <span className="pt-3 pb-5 flex items-center justify-center">
-            Welcome! Let's take you to your registration page.
+            {!language ?
+              " Welcome! Let's take you to your registration page."
+              :
+              "어서 오세요! 등록 페이지로 이동하겠습니다."
+            }
+
           </span>
 
           {/* Đăng nhập bằng email */}
@@ -60,7 +71,7 @@ const RegisterPage = () => {
               <input
                 type="text"
                 className="w-full h-[50px] px-2 border rounded shadow"
-                placeholder="Full Name"
+                placeholder={!language ? "Full Name" : "전체 이름"}
                 value={displayName}
                 onChange={(e) => setdisplayName(e.target.value)}
               />
@@ -71,7 +82,8 @@ const RegisterPage = () => {
                 onChange={(date) => setSelectedDate(date)}
                 dateFormat="dd/MM/yyyy"  // Định dạng ngày
                 className="w-full h-[50px] px-2 border rounded shadow "  // Sử dụng Tailwind CSS để style
-                placeholderText="Select Date"
+                placeholderText={!language ? "Select Date" : "날짜 선택"}
+                //placeholderText="Select Date"
                 showYearDropdown  // Hiển thị danh sách năm
                 showMonthDropdown  // Hiển thị danh sách tháng
                 dropdownMode="select"  // Chuyển dropdown sang chế độ select để dễ chọn
@@ -82,7 +94,7 @@ const RegisterPage = () => {
             <input
               type="email"
               className="w-full h-[50px] px-2 border rounded shadow"
-              placeholder="Email Address"
+              placeholder={!language ? "Email Address" : "이메일주소"}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -91,7 +103,7 @@ const RegisterPage = () => {
             <input
               type="password"
               className="w-full h-[50px] px-2 border rounded shadow"
-              placeholder="Password"
+              placeholder={!language ? "Password" : "비밀번호"}
               value={password}
               form="off"
               onChange={(e) => setPassword(e.target.value)}
@@ -101,22 +113,44 @@ const RegisterPage = () => {
               to="/forgot-password"
               className="w-[160px] text-blue-800 cursor-pointer"
             >
-              Reset your password?
+              {!language ?
+                "Reset your password?"
+                :
+                "비밀번호 재설정?"
+              }
             </Link>
+
             {err && <p>{err.message}</p>}
 
             <button
               className="w-full h-[50px] bg-black text-white rounded font-semibold"
               onClick={getRegister}
             >
-              Continue to Verify Email
+              {!language ?
+                "Continue to Verify Email"
+                :
+                "계속해서 이메일 확인"
+              }
+
             </button>
 
             <div className="w-full h-[50px] flex gap-x-1 items-center justify-center border rounded">
-              <span className="">Already have an account?</span>
+              <span>
+                {!language ?
+                  " Already have an account?"
+                  :
+                  "이미 계정이 있습니까?"
+                }
+
+              </span>
 
               <Link to="/" className="text-blue-800 font-semibold">
-                Login
+                {!language ?
+                  " Login"
+                  :
+                  "로그 인"
+                }
+
               </Link>
             </div>
 
@@ -135,7 +169,12 @@ const RegisterPage = () => {
               </span>
 
               <span className="mr-auto font-semibold">
-                Continue with Google
+                {!language ?
+                  " Continue with Google"
+                  :
+                  "Google로 계속 진행"
+                }
+
               </span>
             </button>
           </div>
