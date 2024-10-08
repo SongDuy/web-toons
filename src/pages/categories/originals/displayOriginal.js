@@ -4,6 +4,8 @@ import logo from "../../../img/logonew.png";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import AddIcon from "@mui/icons-material/Add";
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import MusicOffIcon from '@mui/icons-material/MusicOff';
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -39,6 +41,7 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
+// import { Troubleshoot } from "@mui/icons-material";
 const DisplayOriginalPage = () => {
   const id = useParams();
   const [getcomment, setComment] = useState("");
@@ -455,6 +458,10 @@ const DisplayOriginalPage = () => {
       setOpenOriginals(false);
     }
   }
+
+  // Nhấn nút đăng ký
+  const [isMusic, setIsMusic] = useState(false);
+
   return (
     <>
       {!loading ? (
@@ -513,11 +520,21 @@ const DisplayOriginalPage = () => {
                 </li>
 
                 <li className="ml-auto">
-                  <div className="w-[30px] h-[30px] rounded-full bg-gray-800 flex items-center justify-center">
-                    <span className=" text-white">
-                      <AddIcon />
-                    </span>
-                  </div>
+                  {!isMusic ?
+                    <button
+                      className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
+                      onClick={() => setIsMusic(true)}
+                    >
+                      <MusicNoteIcon />
+                    </button>
+                    :
+                    <button
+                      className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
+                      onClick={() => setIsMusic(false)}
+                    >
+                      <MusicOffIcon />
+                    </button>
+                  }
                 </li>
               </ul>
             </div>
