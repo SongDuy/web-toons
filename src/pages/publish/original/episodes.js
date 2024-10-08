@@ -301,7 +301,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                 {!language ? (
                   <h1 className="text-black">ORIGINAL EPISODES</h1>
                 ) : (
-                  <h1 className="text-gray-400">원본 에피소드</h1>
+                  <h1 className="text-gray-400">오리지널 에피소드</h1>
                 )}
               </li>
             </ul>
@@ -441,7 +441,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                       </button>
                       <input
                         className="w-full h-[40px] px-2 border-r-2 border-t-2 border-b-2 outline-none bg-white"
-                        placeholder="Less than 60 characters"
+                        placeholder={!language ? "Less than 60 characters" : "60자 미만입니다"}
                         value={valueEpisodeTitle}
                         onChange={handleEpisodeTitle}
                       />
@@ -584,7 +584,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     <div className="w-full">
                       <textarea
                         className="w-full h-[90px] mt-3 bg-white px-3 py-2"
-                        placeholder="Less than 400 characters"
+                        placeholder={!language ? "Less than 400 characters" : "400자 미만입니다"}
                         value={valueNote}
                         onChange={handleNote}
                       />

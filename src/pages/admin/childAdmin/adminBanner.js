@@ -27,7 +27,7 @@ const AdminBannerPage = () => {
         await bannerFireBase.uploadToAdd(file, file.name, {
           createTime: new Date(Date.now()),
         });
-      
+
       }
       const banners = await bannerFireBase.getAll();
       setbanner(banners.success ? banners.banner : []);
@@ -52,7 +52,7 @@ const AdminBannerPage = () => {
   };
   const handledelete = async (id) => {
     try {
-      let result = window.confirm("Do you want to delete this comic?");
+      let result = window.confirm("이 배너를 삭제하시겠습니까?");
       if (result) {
         setloading(false);
         await bannerFireBase.Delete(id);
@@ -80,7 +80,7 @@ const AdminBannerPage = () => {
 
           <div className="w-full flex justify-end">
             <button className="w-[100px] h-[35px] mb-3 mr-3 text-white mx-1 font-semibold relative bg-green-500 hover:bg-green-600 rounded">
-              Add
+              추가
               <input
                 type="file"
                 accept="image/*"
@@ -97,13 +97,13 @@ const AdminBannerPage = () => {
                   ID
                 </th>
                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
-                  Image
+                  이미지
                 </th>
                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
-                  Date created
+                  생성일
                 </th>
                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
-                  Manager
+                  관리
                 </th>
               </tr>
             </thead>

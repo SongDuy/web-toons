@@ -76,7 +76,7 @@ const AdminNotificationsPage = () => {
   };
   const handledelete = async (id) => {
     try {
-      let result = window.confirm("Do you want to delete this bank?");
+      let result = window.confirm("이 은행을 삭제하시겠습니까?");
       if (result) {
         setloading(false);
         await BankFireBase.Delete(id);
@@ -134,16 +134,16 @@ const AdminNotificationsPage = () => {
                     ID
                   </th>
                   <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
-                    Bank
+                    은행
                   </th>
                   <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
-                    Accountname
+                    계좌 이름
                   </th>
                   <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
-                    Accountnumber
+                    계좌 번호
                   </th>
                   <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
-                    Manager
+                    관리
                   </th>
                   {bank?.length === 0 &&
                     <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
@@ -195,23 +195,17 @@ const AdminNotificationsPage = () => {
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
             >
-              <DialogTitle id="alert-dialog-title">
-                {"Use Google's location service?"}
-              </DialogTitle>
               <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                  set bank
-                </DialogContentText>
 
                 <TextField
                   autoFocus
                   required
                   margin="dense"
-                  id="Bankname"
-                  name="Bankname"
+                  id="은행 이름"
+                  name="은행 이름"
                   value={Bankname}
                   onChange={(e) => setBankname(e.target.value)}
-                  label="Bankname"
+                  label="은행 이름"
                   type="text"
                   fullWidth
                   variant="standard"
@@ -221,11 +215,11 @@ const AdminNotificationsPage = () => {
                   autoFocus
                   required
                   margin="dense"
-                  id="Accountname"
-                  name="Accountname"
+                  id="계좌 이름"
+                  name="계좌 이름"
                   value={Accountname}
                   onChange={(e) => setAccountname(e.target.value)}
-                  label="Accountname"
+                  label="계좌 이름"
                   type="text"
                   fullWidth
                   variant="standard"
@@ -234,11 +228,11 @@ const AdminNotificationsPage = () => {
                   autoFocus
                   required
                   margin="dense"
-                  id="Accountnumber"
-                  name="Accountnumber"
+                  id="계좌 번호"
+                  name="계좌 번호"
                   value={Accountnumber}
                   onChange={(e) => setAccountnumber(e.target.value)}
-                  label="Accountnumber"
+                  label="계좌 번호"
                   type="text"
                   fullWidth
                   variant="standard"
@@ -246,10 +240,10 @@ const AdminNotificationsPage = () => {
               </DialogContent>
               <DialogActions>
                 <Button onClick={handleClose}>
-                  Disagree
+                  비동의
                 </Button>
                 <Button onClick={idbank ? handleupdate : handleAdd} autoFocus>
-                  Agree
+                  동의
                 </Button>
               </DialogActions>
             </Dialog>

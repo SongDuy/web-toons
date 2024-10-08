@@ -20,8 +20,8 @@ const AdminOriginalsPage = () => {
     const [loading, setloading] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-// Hiển thị nội dung giống nội dung cần tìm
-const [searchTerm, setSearchTerm] = useState('');
+    // Hiển thị nội dung giống nội dung cần tìm
+    const [searchTerm, setSearchTerm] = useState('');
 
 
     useEffect(() => {
@@ -30,8 +30,8 @@ const [searchTerm, setSearchTerm] = useState('');
             try {
                 setloading(false)
                 const lg = await dispatch(getAlladComic())
-             const getcomic= unwrapResult(lg)
-                setComics(getcomic.success?getcomic?.comic:[])
+                const getcomic = unwrapResult(lg)
+                setComics(getcomic.success ? getcomic?.comic : [])
                 setloading(true)
             } catch (error) {
 
@@ -47,8 +47,8 @@ const [searchTerm, setSearchTerm] = useState('');
 
                 await comicFireBase.update({ lock: !lock }, id)
                 const lg = await dispatch(getAlladComic())
-                const getcomic= unwrapResult(lg)
-                setComics(getcomic.success?getcomic?.comic:[])
+                const getcomic = unwrapResult(lg)
+                setComics(getcomic.success ? getcomic?.comic : [])
                 setloading(true)
             }
         } catch (error) {
@@ -57,14 +57,14 @@ const [searchTerm, setSearchTerm] = useState('');
     }
     const handledelete = async (id) => {
         try {
-            let result = window.confirm("Do you want to delete this comic?");
+            let result = window.confirm("이 만화를 삭제하시겠습니까?");
             if (result) {
                 setloading(false)
 
                 await comicFireBase.Delete(id)
                 const lg = await dispatch(getAlladComic())
-                const getcomic= unwrapResult(lg)
-                setComics(getcomic.success?getcomic?.comic:[])
+                const getcomic = unwrapResult(lg)
+                setComics(getcomic.success ? getcomic?.comic : [])
                 setloading(true)
             }
         } catch (error) {
@@ -79,8 +79,8 @@ const [searchTerm, setSearchTerm] = useState('');
 
                 await comicFireBase.update({ check: !check }, id)
                 const lg = await dispatch(getAlladComic())
-                const getcomic= unwrapResult(lg)
-                setComics(getcomic.success?getcomic?.comic:[])
+                const getcomic = unwrapResult(lg)
+                setComics(getcomic.success ? getcomic?.comic : [])
                 setloading(true)
             }
         } catch (error) {
@@ -88,15 +88,15 @@ const [searchTerm, setSearchTerm] = useState('');
         }
     }
     const handleSearch = () => {
-        if(searchTerm===""){
+        if (searchTerm === "") {
             console.log(comic?.comic)
             setComics(comic?.comic)
-    
+
         }
-    const filteredTop30Films = comic.comic?.filter(item =>
-        item.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setComics(filteredTop30Films)
+        const filteredTop30Films = comic.comic?.filter(item =>
+            item.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setComics(filteredTop30Films)
     };
     return (
         <>
@@ -108,13 +108,13 @@ const [searchTerm, setSearchTerm] = useState('');
 
                         <input
                             className="w-[250px] h-[35px] px-2 border-2 rounded-l"
-                            onChange={(e)=>   setSearchTerm(e.target.value)}
+                            onChange={(e) => setSearchTerm(e.target.value)}
                             value={searchTerm}
                             placeholder="Search..."
                         />
 
                         <button onClick={handleSearch} className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
-                            Search
+                            검색
                         </button>
                     </div>
 
@@ -122,11 +122,11 @@ const [searchTerm, setSearchTerm] = useState('');
                         <thead className="bg-gray-100">
                             <tr className="w-full">
                                 <th className="w-[50px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">ID</th>
-                                <th className="w-[150px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Image</th>
-                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Originals Name</th>
-                                <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">ID User</th>
-                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Date created</th>
-                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Manager</th>
+                                <th className="w-[150px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">이미지</th>
+                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">오리지널 이름</th>
+                                <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">사용자 ID</th>
+                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">생성일</th>
+                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">관리</th>
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">

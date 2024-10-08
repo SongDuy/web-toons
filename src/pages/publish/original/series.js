@@ -504,7 +504,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                             </h1>
                                         ) : (
                                             <h1 className="w-full font-semibold text-xl">
-                                                Genre 1
+                                                장르 1
                                             </h1>
                                         )}
 
@@ -534,7 +534,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                             </h1>
                                         ) : (
                                             <h1 className="w-full font-semibold text-xl">
-                                                Genre 2
+                                                장르 2
                                             </h1>
                                         )}
 
@@ -570,7 +570,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
 
                                     <input
                                         className="w-full h-[40px] mt-3 bg-white px-3"
-                                        placeholder="Less than 50 characters"
+                                        placeholder={!language ? "Less than 50 characters" : "50자 미만입니다"}
                                         value={valueTitle}
                                         onChange={handleTitle}
                                     />
@@ -590,7 +590,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
 
                                     <textarea
                                         className="w-full h-[300px] mt-3 bg-white px-3 py-2"
-                                        placeholder="Less than 500 characters"
+                                        placeholder={!language ? "Less than 500 characters" : "500자 미만입니다"}
                                         value={valueSummary}
                                         onChange={handleSummary}
                                     />

@@ -27,13 +27,10 @@ import AdminPage from './pages/admin/admin';
 import AdminDashboardPage from './pages/admin/childAdmin/adminDashboard';
 import AdminBannerPage from './pages/admin/childAdmin/adminBanner';
 import AdminUsersPage from './pages/admin/childAdmin/adminUsers';
-import AdminCategoriesPage from './pages/admin/childAdmin/adminCategories';
 import AdminOriginalsPage from './pages/admin/childAdmin/adminOriginals';
 import AdminVideosPage from './pages/admin/childAdmin/adminVideos';
-import AdminReportsPage from './pages/admin/childAdmin/adminReports';
 import AdminPaymentsPage from './pages/admin/childAdmin/Payments';
 import AdminBankPage from './pages/admin/childAdmin/adminBank';
-import AdminCensorsPage from './pages/admin/childAdmin/adminCensors';
 
 import './App.css';
 import Layout from './components/layout/layoutUser';
@@ -134,7 +131,6 @@ function App() {
           <Route path="dashboard" element={<AdminDashboardPage />} />
           <Route path="banners" element={<AdminBannerPage />} />
           <Route path="users" element={<AdminUsersPage />} />
-          <Route path="categories" element={<AdminCategoriesPage />} />
           <Route path="originals" element={<AdminOriginalsPage />} />
           <Route path="originals/:id" element={<AdminOriginalsidPage />} />
           <Route path="originals/:id/:idchap" element={<AdminOriginalsidchap />} />
@@ -142,11 +138,8 @@ function App() {
           <Route path="videos" element={<AdminVideosPage />} />
           <Route path="videos/:id" element={<AdminVideosPageid />} />
           <Route path="videos/:id/:idchap" element={<AdminVideosPageidchap />} />
-
-          <Route path="reports" element={<AdminReportsPage />} />
           <Route path="payments" element={<AdminPaymentsPage />} />
           <Route path="bank" element={<AdminBankPage />} />
-          <Route path="censors" element={<AdminCensorsPage />} />
         </Route>
 
         {/* Xử lý trang lỗi */}
