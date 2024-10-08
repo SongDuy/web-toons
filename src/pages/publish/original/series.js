@@ -504,7 +504,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                             </h1>
                                         ) : (
                                             <h1 className="w-full font-semibold text-xl">
-                                                Genre 1
+                                                장르 1
                                             </h1>
                                         )}
 
@@ -534,7 +534,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                             </h1>
                                         ) : (
                                             <h1 className="w-full font-semibold text-xl">
-                                                Genre 2
+                                                장르 2
                                             </h1>
                                         )}
 

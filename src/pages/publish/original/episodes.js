@@ -301,7 +301,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                 {!language ? (
                   <h1 className="text-black">ORIGINAL EPISODES</h1>
                 ) : (
-                  <h1 className="text-gray-400">원본 에피소드</h1>
+                  <h1 className="text-gray-400">오리지널 에피소드</h1>
                 )}
               </li>
             </ul>

@@ -30,7 +30,7 @@ const NewToVideosPage = () => {
                             </span>
                             :
                             <span>
-                                동영상 신규
+                                새로운 비디오
                             </span>
                         }
 
