@@ -110,10 +110,10 @@ const LoginPage = ({ closeModal }) => {
                         :
                         <div className="pb-5">
                             <span className="flex items-center justify-center">
-                                다시 오신 것을 환영합니다!
+                            다시 오신 것을 환영합니다! 
                             </span>
                             <span className="flex items-center justify-center">
-                                고객님의 계정으로 안내해 드리겠습니다.
+                            계정으로 안내해 드리겠습니다
                             </span>
                         </div>
                     }
@@ -148,7 +148,7 @@ const LoginPage = ({ closeModal }) => {
                             {!language ?
                                 " Reset your password?"
                                 :
-                                "비밀번호 재설정?"
+                                "비밀번호를 재설정하시겠습니까?"
                             }
 
                         </Link>
@@ -171,7 +171,7 @@ const LoginPage = ({ closeModal }) => {
 
                             <span>
                                 {!language ?
-                                    " Don't have an account?"
+                                    "Don't have an account?"
                                     :
                                     "계정이 없나요?"
                                 }
