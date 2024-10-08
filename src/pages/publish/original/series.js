@@ -590,7 +590,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
 
                                     <textarea
                                         className="w-full h-[300px] mt-3 bg-white px-3 py-2"
-                                        placeholder={!language ? "Less than 500 characters" : "50자 미만입니다"}
+                                        placeholder={!language ? "Less than 500 characters" : "500자 미만입니다"}
                                         value={valueSummary}
                                         onChange={handleSummary}
                                     />
