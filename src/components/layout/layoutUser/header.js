@@ -340,7 +340,7 @@ const HeaderPage = () => {
                           aria-labelledby="composition-button"
                           onKeyDown={handleListKeyDown}
                         >
-                          <Link to={`/publish/original`} onclick={ dispatch(setcurrentStepOriginal(1))}>
+                          <Link to={`/publish/original`} onclick={dispatch(setcurrentStepOriginal(1))}>
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <PictureAsPdfOutlinedIcon />
 
@@ -349,7 +349,7 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <Link to={`/publish/video`} onclick={ dispatch(setcurrentStepVideo(1))}>
+                          <Link to={`/publish/video`} onclick={dispatch(setcurrentStepVideo(1))}>
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <VideoCallOutlinedIcon />
 

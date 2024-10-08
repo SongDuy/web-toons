@@ -142,7 +142,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                 await VideoFireBase.update({ Completed: selectedEpisodesValue === "Ongoing" ? false : true }, id.id)
                 await VideoFireBase.uploadToFirebaseep(horizontalThumbnail, horizontalThumbnail.name, Account.uid, id.id, docid, 'horizontalThumbnail')
                 await VideoFireBase.uploadToFirebaseep(fileURL, fileURL.name, Account.uid, id.id, docid, 'fileURL')
-                await VideoFireBase.update({totalChapters: chapters?.success ? chapters?.chaps?.length + 1 : 1},id.id );
+                await VideoFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length + 1 : 1 }, id.id);
                 navigate('/')
             }
             setloading(true)
@@ -505,7 +505,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                             {!language ? (
                                                 <div className="flex gap-2">
                                                     <h1 className="h-full font-semibold text-xl">
-                                                        Creator's note
+                                                        Note
                                                     </h1>
                                                     <span className="h-full text-gray-400 font-semibold mt-1">
                                                         (Optional)
@@ -514,14 +514,13 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                             ) : (
                                                 <div className="flex gap-2">
                                                     <h1 className="h-full font-semibold text-xl">
-                                                        제작자의 노트
+                                                        노트
                                                     </h1>
                                                     <span className="h-full text-gray-400 font-semibold mt-1">
                                                         (선댁 사항)
                                                     </span>
                                                 </div>
                                             )}
-
                                         </div>
 
                                         <div className="w-full">
@@ -531,53 +530,6 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 value={valueNote}
                                                 onChange={handleNote}
                                             />
-
-                                        </div>
-                                    </div>
-
-                                    {/* Phần pro tips */}
-                                    <div className="w-full">
-                                        {/* Tiêu đề */}
-                                        {!language ? (
-                                            <h1 className="w-full font-semibold text-xl">
-                                                PRO TIPS
-                                            </h1>
-                                        ) : (
-                                            <h1 className="w-full font-semibold text-xl">
-                                                전문가 팁
-                                            </h1>
-                                        )}
-
-                                        <div className="w-full h-[40px] flex items-center gap-3 mt-3">
-                                            {!language ? (
-                                                <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                    Preview PC
-                                                </button>
-                                            ) : (
-                                                <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                    PC 미리보기
-                                                </button>
-                                            )}
-
-                                            {!language ? (
-                                                <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                    Preview Mobile
-                                                </button>
-                                            ) : (
-                                                <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                    모바일 미리보기
-                                                </button>
-                                            )}
-
-                                            {!language ? (
-                                                <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                    Save Draft
-                                                </button>
-                                            ) : (
-                                                <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                    초안 저장
-                                                </button>
-                                            )}
 
                                         </div>
                                     </div>

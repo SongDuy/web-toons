@@ -169,7 +169,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
           docid,
           "fileURL"
         );
-        await comicFireBase.update({totalChapters: chapters?.success ? chapters?.chaps?.length + 1 : 1},id.id );
+        await comicFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length + 1 : 1 }, id.id);
 
         navigate("/");
       }
@@ -297,7 +297,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                 <div className="w-[40px] h-[40px] bg-green-500 rounded-full border flex items-center justify-center mx-2">
                   <span className="mx-3 text-2xl text-white font-bold">2</span>
                 </div>
-               
+
                 {!language ? (
                   <h1 className="text-black">ORIGINAL EPISODES</h1>
                 ) : (
@@ -563,7 +563,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                       {!language ? (
                         <div className="flex gap-2">
                           <h1 className="h-full font-semibold text-xl">
-                            Creator's note
+                            Note
                           </h1>
                           <span className="h-full text-gray-400 font-semibold mt-1">
                             (Optional)
@@ -572,7 +572,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                       ) : (
                         <div className="flex gap-2">
                           <h1 className="h-full font-semibold text-xl">
-                            제작자의 노트
+                            노트
                           </h1>
                           <span className="h-full text-gray-400 font-semibold mt-1">
                             (선댁 사항)
@@ -591,47 +591,51 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     </div>
                   </div>
 
-                  {/* Phần pro tips */}
+                  {/* Phần thêm âm thanh */}
                   <div className="w-full">
                     {/* Tiêu đề */}
                     {!language ? (
-                      <h1 className="w-full font-semibold text-xl">PRO TIPS</h1>
+                      <h1 className="w-full font-semibold text-xl">
+                        Add music
+                      </h1>
                     ) : (
                       <h1 className="w-full font-semibold text-xl">
-                        전문가 팁
+                        음악 추가
                       </h1>
                     )}
 
                     <div className="w-full h-[40px] flex items-center gap-3 mt-3">
-                      {!language ? (
-                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                          Preview PC
-                        </button>
-                      ) : (
-                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                          PC 미리보기
-                        </button>
-                      )}
+                      {!language ?
+                        (
+                          <button className="w-[200px] h-[40px] bg-black text-white font-semibold rounded-full">
+                            Select File To Upload
+                          </button>
+                        )
+                        :
+                        (
+                          <button className="w-[200px] h-[40px] bg-black text-white font-semibold rounded-full">
+                            업로드할 파일 선택
+                          </button>
+                        )
+                      }
 
                       {!language ? (
                         <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                          Preview Mobile
+                          Delete All
                         </button>
                       ) : (
                         <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                          모바일 미리보기
+                          모두 삭제
                         </button>
                       )}
 
-                      {!language ? (
-                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                          Save Draft
-                        </button>
-                      ) : (
-                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                          초안 저장
-                        </button>
-                      )}
+                    </div>
+
+                    {/* Hiện tên file âm thanh */}
+                    <div className="w-full h-[50px] bg-white mt-3 flex items-center justify-center">
+                      <span className="font-semibold text-gray-500">
+                        render files.
+                      </span>
                     </div>
                   </div>
 

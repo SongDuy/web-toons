@@ -30,7 +30,7 @@ const NewToOriginalsPage = () => {
                             </span>
                             :
                             <span>
-                                오리지널 신규
+                                새로운 오리지널
                             </span>
                         }
 
