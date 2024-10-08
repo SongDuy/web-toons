@@ -58,7 +58,7 @@ const RegisterPage = () => {
             {!language ?
               " Welcome! Let's take you to your registration page."
               :
-              "어서 오세요! 등록 페이지로 이동하겠습니다."
+              "환영합니다! 등록 페이지로 안내해 드리겠습니다."
             }
 
           </span>
@@ -116,7 +116,7 @@ const RegisterPage = () => {
               {!language ?
                 "Reset your password?"
                 :
-                "비밀번호 재설정?"
+                "비밀번호를 재설정하시겠습니까?"
               }
             </Link>
 
@@ -129,7 +129,7 @@ const RegisterPage = () => {
               {!language ?
                 "Continue to Verify Email"
                 :
-                "계속해서 이메일 확인"
+                "이메일 확인을 계속하세요"
               }
 
             </button>
@@ -139,7 +139,7 @@ const RegisterPage = () => {
                 {!language ?
                   " Already have an account?"
                   :
-                  "이미 계정이 있습니까?"
+                  "이미 계정이 있으신가요?"
                 }
 
               </span>

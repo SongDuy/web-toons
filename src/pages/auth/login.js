@@ -113,7 +113,7 @@ const LoginPage = ({ closeModal }) => {
                                 다시 오신 것을 환영합니다!
                             </span>
                             <span className="flex items-center justify-center">
-                                고객님의 계정으로 안내해 드리겠습니다.
+                                계정으로 안내해 드리겠습니다.
                             </span>
                         </div>
                     }
@@ -140,38 +140,44 @@ const LoginPage = ({ closeModal }) => {
                             placeholder={!language ? "Password" : "비밀번호"}
                         />
 
-                        <Link
-                            to="/forgot-password"
-                            className="w-[160px] text-blue-800 cursor-pointer"
-                            onClick={handleBackdropClick}
-                        >
-                            {!language ?
-                                " Reset your password?"
-                                :
-                                "비밀번호 재설정?"
-                            }
+                        {!language ?
+                            <Link
+                                to="/forgot-password"
+                                className="w-[160px] text-blue-800 cursor-pointer"
+                                onClick={handleBackdropClick}
+                            >
+                                Reset your password?
+                            </Link>
+                            :
 
-                        </Link>
+                            <Link
+                                to="/forgot-password"
+                                className="w-[240px] text-blue-800 cursor-pointer"
+                                onClick={handleBackdropClick}
+                            >
+                                비밀번호를 재설정하시겠습니까?
+                            </Link>
+                        }
+
+
 
                         {err && <p>{err.message}</p>}
                         <button
                             className="w-full h-[50px] bg-black text-white rounded font-semibold"
                             onClick={GetLogin}
-
                         >
                             {!language ?
                                 " Continue"
                                 :
                                 "계속해요."
                             }
-
                         </button>
 
                         <div className="w-full h-[50px] flex gap-x-1 items-center justify-center border rounded">
 
                             <span>
                                 {!language ?
-                                    " Don't have an account?"
+                                    "Don't have an account?"
                                     :
                                     "계정이 없나요?"
                                 }

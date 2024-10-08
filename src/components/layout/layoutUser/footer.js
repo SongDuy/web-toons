@@ -9,9 +9,9 @@ const FooterPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* Column 1: Company Information */}
                     <div>
-                        <h2 className="text-xl font-semibold mb-4">Rison Ltd.</h2>
+                        <h2 className="text-xl font-semibold mb-4">Rison</h2>
                         <p className="text-sm">
-                            Rison is a pioneering technology company, providing innovative solutions for the future.
+                            Rison
                         </p>
                     </div>
 
@@ -28,7 +28,7 @@ const FooterPage = () => {
 
                     {/* Column 3: Contact */}
                     <div>
-                        <h2 className="text-xl font-semibold mb-4">Contact</h2>
+                        <h2 className="text-xl font-semibold mb-4">연락하다</h2>
                         <p className="text-sm">Email: support@rison.com</p>
                         <p className="text-sm">Phone: +84 123 456 789</p>
                         <div className="mt-4 flex space-x-4">
@@ -40,7 +40,7 @@ const FooterPage = () => {
                 </div>
 
                 <div className="mt-10 pt-6 text-center text-sm">
-                    ⓒ 2024 Rison Ltd. All rights reserved.
+                    ⓒ 2024 Rison. 모든 권리는 보호됩니다.
                 </div>
             </div>
         </footer>
