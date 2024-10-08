@@ -38,7 +38,7 @@ const AdminVideosPageid = () => {
 
     const handledelete = async (idchap) => {
         try {
-            let result = window.confirm("Do you want to delete this chap video?");
+            let result = window.confirm("이 챕터 비디오를 삭제하시겠습니까?");
             if (result) {
                 setloading(false)
 
@@ -95,7 +95,7 @@ const AdminVideosPageid = () => {
                         />
 
                         <button onClick={handleSearch}  className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
-                            Search
+                        검색
                         </button>
                     </div>
 
@@ -103,11 +103,11 @@ const AdminVideosPageid = () => {
                         <thead className="bg-gray-100">
                             <tr className="w-full">
                                 <th className="w-[50px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">ID</th>
-                                <th className="w-[150px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Image</th>
-                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Videos Name</th>
-                                <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">ID User</th>
-                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Date created</th>
-                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Manager</th>
+                                <th className="w-[150px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">이미지</th>
+                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">비디오 이름</th>
+                                <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">사용자 ID</th>
+                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">생성일</th>
+                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">관리</th>
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">

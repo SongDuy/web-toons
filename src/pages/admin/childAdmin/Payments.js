@@ -42,11 +42,11 @@ const AdminPaymentsPage = () => {
         );
         setloading(true);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   const handledelete = async (id) => {
     try {
-      let result = window.confirm(`Do you want to delete this payment?`);
+      let result = window.confirm(`이 결제를 삭제하시겠습니까?`);
       if (result) {
         setloading(false);
         await PaymentFireBase.update({ status: "error" }, id);
@@ -58,30 +58,30 @@ const AdminPaymentsPage = () => {
         );
         setloading(true);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   const handleSearch = async () => {
- try {
-    const payment = await PaymentFireBase.getad();
-    if(payment.success){
-        if(searchTerm===""){
-       
-            setPayments(
-              payment.success
-                ? payment?.payment?.filter((item) => item?.status === "other")
-                : []
-            );
-    
+    try {
+      const payment = await PaymentFireBase.getad();
+      if (payment.success) {
+        if (searchTerm === "") {
+
+          setPayments(
+            payment.success
+              ? payment?.payment?.filter((item) => item?.status === "other")
+              : []
+          );
+
         }
-    const filteredTop30Films =payment?.payment?.filter((item) => item?.status === "other").filter(item =>
-        item.Account.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setPayments(filteredTop30Films)
+        const filteredTop30Films = payment?.payment?.filter((item) => item?.status === "other").filter(item =>
+          item.Account.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setPayments(filteredTop30Films)
+      }
+    } catch (error) {
+
     }
- } catch (error) {
-     
- }
-};
+  };
   return (
     <>
       {loading ? (
@@ -90,13 +90,13 @@ const AdminPaymentsPage = () => {
           <div className="w-full flex justify-end">
             <input
               className="w-[250px] h-[35px] px-2 border-2 rounded-l"
-              onChange={(e)=>   setSearchTerm(e.target.value)}
+              onChange={(e) => setSearchTerm(e.target.value)}
               value={searchTerm}
               placeholder="Search..."
             />
 
-            <button   onClick={handleSearch} className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
-              Search
+            <button onClick={handleSearch} className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
+              검색
             </button>
           </div>
 
@@ -107,19 +107,19 @@ const AdminPaymentsPage = () => {
                   ID
                 </th>
                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
-                  Accountname
+                  계좌 이름
                 </th>
                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
-                  Accountnumber
+                  계좌 번호
                 </th>
                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
-                  Price
+                  가격
                 </th>
                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
-                  Date created
+                  생성일
                 </th>
                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">
-                  Manager
+                  관리
                 </th>
               </tr>
             </thead>

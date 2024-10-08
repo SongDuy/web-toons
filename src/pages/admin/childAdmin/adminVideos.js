@@ -32,8 +32,8 @@ const AdminVideosPage = () => {
                 setloading(false)
                 const lg = await dispatch(getAlladVideo())
                 unwrapResult(lg)
-                const getVideo= unwrapResult(lg)
-                setVideos(getVideo.success?getVideo?.Video:[])
+                const getVideo = unwrapResult(lg)
+                setVideos(getVideo.success ? getVideo?.Video : [])
                 setloading(true)
             } catch (error) {
 
@@ -49,8 +49,8 @@ const AdminVideosPage = () => {
 
                 await VideoFireBase.update({ lock: !lock }, id)
                 const lg = await dispatch(getAlladVideo())
-                const getVideo= unwrapResult(lg)
-                setVideos(getVideo.success?getVideo?.Video:[])
+                const getVideo = unwrapResult(lg)
+                setVideos(getVideo.success ? getVideo?.Video : [])
                 setloading(true)
             }
         } catch (error) {
@@ -59,14 +59,14 @@ const AdminVideosPage = () => {
     }
     const handledelete = async (id) => {
         try {
-            let result = window.confirm("Do you want to delete this Video?");
+            let result = window.confirm("이 비디오를 삭제하시겠습니까?");
             if (result) {
                 setloading(false)
 
                 await VideoFireBase.Delete(id)
                 const lg = await dispatch(getAlladVideo())
-                const getVideo= unwrapResult(lg)
-                setVideos(getVideo.success?getVideo?.Video:[])
+                const getVideo = unwrapResult(lg)
+                setVideos(getVideo.success ? getVideo?.Video : [])
                 setloading(true)
             }
         } catch (error) {
@@ -80,8 +80,8 @@ const AdminVideosPage = () => {
                 setloading(false)
                 await VideoFireBase.update({ check: true, price, payment }, idchap)
                 const lg = await dispatch(getAlladVideo())
-                const getVideo= unwrapResult(lg)
-                setVideos(getVideo.success?getVideo?.Video:[])
+                const getVideo = unwrapResult(lg)
+                setVideos(getVideo.success ? getVideo?.Video : [])
 
                 setloading(true)
                 dispatch(setIspayment(false))
@@ -99,14 +99,14 @@ const AdminVideosPage = () => {
         dispatch(setIspayment(true))
     };
     const handleSearch = () => {
-        if(searchTerm===""){
+        if (searchTerm === "") {
             setVideos(Video?.Video)
-    
+
         }
-    const filteredTop30Films =Video?.Video?.filter(item =>
-        item.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setVideos(filteredTop30Films)
+        const filteredTop30Films = Video?.Video?.filter(item =>
+            item.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setVideos(filteredTop30Films)
     };
     return (
         <>
@@ -118,13 +118,13 @@ const AdminVideosPage = () => {
 
                         <input
                             className="w-[250px] h-[35px] px-2 border-2 rounded-l"
-                            onChange={(e)=>   setSearchTerm(e.target.value)}
+                            onChange={(e) => setSearchTerm(e.target.value)}
                             value={searchTerm}
                             placeholder="Search..."
                         />
 
-                        <button  onClick={handleSearch} className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
-                            Search
+                        <button onClick={handleSearch} className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">
+                            검색
                         </button>
                     </div>
 
@@ -132,11 +132,11 @@ const AdminVideosPage = () => {
                         <thead className="bg-gray-100">
                             <tr className="w-full">
                                 <th className="w-[50px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">ID</th>
-                                <th className="w-[150px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Image</th>
-                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Videos Name</th>
-                                <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">ID User</th>
-                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Date created</th>
-                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">Manager</th>
+                                <th className="w-[150px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">이미지</th>
+                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">비디오 이름</th>
+                                <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">사용자 ID</th>
+                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">생성일</th>
+                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">관리</th>
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">

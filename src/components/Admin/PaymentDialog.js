@@ -28,12 +28,9 @@ function PaymentDialog(props) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            is there payment
+            지불이 있나요?
             <Button onClick={() => props.setpayment(!props.payment)} className={`w-[35px] h-[35px] ${props.payment ? "text-blue-500" : "text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
               <CheckIcon />
             </Button>
@@ -43,20 +40,22 @@ function PaymentDialog(props) {
             autoFocus
             required
             margin="dense"
-            id="Price"
-            name="Price"
+            id="가격"
+            name="가격"
             value={props.price}
             onChange={(e) => props.setprice(e.target.value)}
-            label="Price"
+            label="가격"
             type="number"
             fullWidth
             variant="standard"
           />}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={handleClose}>
+            비동의
+          </Button>
           <Button onClick={props.handlecheck} autoFocus>
-            Agree
+            동의
           </Button>
         </DialogActions>
       </Dialog>
