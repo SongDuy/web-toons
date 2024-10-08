@@ -16,6 +16,7 @@ import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink, Element as ScrollElement } from 'react-scroll';
 import { useSelector } from 'react-redux';
+import dataListGenre from "../../../components/layout/layoutUser/dataListGenre";
 
 const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
 
@@ -323,7 +324,7 @@ const OriginalsPage = () => {
                                                     {/*Trong component React của bạn */}
                                                     <div className="w-full h-[30px]">
                                                         <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
-                                                            {item.genre1}
+                                                        {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
                                                         </span>
                                                     </div>
 
@@ -404,7 +405,7 @@ const OriginalsPage = () => {
                                                     {/*Trong component React của bạn */}
                                                     <div className="w-full h-[30px]">
                                                         <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
-                                                            {item.genre1}
+                                                            {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
                                                         </span>
                                                     </div>
 
