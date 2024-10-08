@@ -16,6 +16,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import dataListGenre from "../../../components/layout/layoutUser/dataListGenre";
 
 const WeekdayOriginalsAndVideosPage = () => {
 
@@ -239,7 +240,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                             <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                 <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                                                     {item.title}
-                                                </span> 
+                                                </span>
                                                 {/* <span className="text-black text-md text-shadow-white leading-[1.4] line-clamp-1">
                                                     {item.Author}
                                                 </span> */}
@@ -258,7 +259,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                             {/*Trong component React của bạn */}
                                             <div className="w-full h-[30px] mt-auto">
                                                 <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
-                                                    {item.genre1}
+                                                    {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
                                                 </span>
                                             </div>
 

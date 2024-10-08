@@ -1,3 +1,4 @@
+// Danh sách thể loại
 const dataListGenre = [
     { id: 1, name: "Drama", nameKorean: "드라마" },
     { id: 2, name: "Fantasy", nameKorean: "판타지" },
@@ -19,6 +20,6 @@ const dataListGenre = [
     { id: 18, name: "Animals", nameKorean: "동물" },
     { id: 19, name: "Zombies", nameKorean: "좀비" },
     { id: 20, name: "Short Story", nameKorean: "단편 소설" },
-
 ];
+
 export default dataListGenre;
