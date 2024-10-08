@@ -639,53 +639,6 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     </div>
                   </div>
 
-                  {/* Phần pro tips */}
-                  <div className="w-full">
-                    {/* Tiêu đề */}
-                    {!language ? (
-                      <h1 className="w-full font-semibold text-xl">PRO TIPS</h1>
-                    ) : (
-                      <h1 className="w-full font-semibold text-xl">
-                        전문가 팁
-                      </h1>
-                    )}
-
-                    <div className="w-full h-[40px] flex items-center gap-3 mt-3">
-                      {!language ? (
-                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                          Preview PC
-                        </button>
-                      )
-                        :
-                        (
-                          <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                            PC 미리보기
-                          </button>
-                        )
-                      }
-
-                      {!language ? (
-                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                          Preview Mobile
-                        </button>
-                      ) : (
-                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                          모바일 미리보기
-                        </button>
-                      )}
-
-                      {!language ? (
-                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                          Save Draft
-                        </button>
-                      ) : (
-                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                          초안 저장
-                        </button>
-                      )}
-                    </div>
-                  </div>
-
                   {/* <div className="w-full">
                                         <button className="">
 
