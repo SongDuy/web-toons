@@ -563,7 +563,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                       {!language ? (
                         <div className="flex gap-2">
                           <h1 className="h-full font-semibold text-xl">
-                            Creator's note
+                            Note
                           </h1>
                           <span className="h-full text-gray-400 font-semibold mt-1">
                             (Optional)
@@ -572,7 +572,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                       ) : (
                         <div className="flex gap-2">
                           <h1 className="h-full font-semibold text-xl">
-                            제작자의 노트
+                            노트
                           </h1>
                           <span className="h-full text-gray-400 font-semibold mt-1">
                             (선댁 사항)
@@ -605,11 +605,12 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     )}
 
                     <div className="w-full h-[40px] flex items-center gap-3 mt-3">
-                      {!language ? (
-                        <button className="w-[200px] h-[40px] bg-black text-white font-semibold rounded-full">
-                          Select File To Upload
-                        </button>
-                      )
+                      {!language ?
+                        (
+                          <button className="w-[200px] h-[40px] bg-black text-white font-semibold rounded-full">
+                            Select File To Upload
+                          </button>
+                        )
                         :
                         (
                           <button className="w-[200px] h-[40px] bg-black text-white font-semibold rounded-full">

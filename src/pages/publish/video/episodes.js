@@ -142,7 +142,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                 await VideoFireBase.update({ Completed: selectedEpisodesValue === "Ongoing" ? false : true }, id.id)
                 await VideoFireBase.uploadToFirebaseep(horizontalThumbnail, horizontalThumbnail.name, Account.uid, id.id, docid, 'horizontalThumbnail')
                 await VideoFireBase.uploadToFirebaseep(fileURL, fileURL.name, Account.uid, id.id, docid, 'fileURL')
-                await VideoFireBase.update({totalChapters: chapters?.success ? chapters?.chaps?.length + 1 : 1},id.id );
+                await VideoFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length + 1 : 1 }, id.id);
                 navigate('/')
             }
             setloading(true)
@@ -505,7 +505,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                             {!language ? (
                                                 <div className="flex gap-2">
                                                     <h1 className="h-full font-semibold text-xl">
-                                                        Creator's note
+                                                        Note
                                                     </h1>
                                                     <span className="h-full text-gray-400 font-semibold mt-1">
                                                         (Optional)
@@ -514,14 +514,13 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                             ) : (
                                                 <div className="flex gap-2">
                                                     <h1 className="h-full font-semibold text-xl">
-                                                        제작자의 노트
+                                                        노트
                                                     </h1>
                                                     <span className="h-full text-gray-400 font-semibold mt-1">
                                                         (선댁 사항)
                                                     </span>
                                                 </div>
                                             )}
-
                                         </div>
 
                                         <div className="w-full">
