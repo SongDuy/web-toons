@@ -410,7 +410,6 @@ const OriginalsPage = () => {
                                                     </div>
 
                                                 </div>
-
                                             </li>
                                         </Link >
                                     ))}
