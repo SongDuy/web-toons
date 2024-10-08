@@ -275,7 +275,7 @@ const HeaderPage = () => {
                 className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
                 onClick={() => { openLoginModal(); handleCloseAccount(); }}
               >
-                {!language ? <span> Publish </span> : <span> 게시하다 </span>}
+                {!language ? <span> Publish </span> : <span> 발행 </span>}
               </button>
 
               {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
@@ -311,7 +311,7 @@ const HeaderPage = () => {
                 onClick={handleToggle}
               >
                 {/* Publish {process.env.REACT_APP_HOME} */}
-                {!language ? <span> Publish </span> : <span> 게시하다 </span>}
+                {!language ? <span> Publish </span> : <span> 발행 </span>}
               </button>
 
               {/* Chọn menu */}
@@ -340,7 +340,7 @@ const HeaderPage = () => {
                           aria-labelledby="composition-button"
                           onKeyDown={handleListKeyDown}
                         >
-                          <Link to={`/publish/original`} onclick={ dispatch(setcurrentStepOriginal(1))}>
+                          <Link to={`/publish/original`} onclick={dispatch(setcurrentStepOriginal(1))}>
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <PictureAsPdfOutlinedIcon />
 
@@ -349,7 +349,7 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <Link to={`/publish/video`} onclick={ dispatch(setcurrentStepVideo(1))}>
+                          <Link to={`/publish/video`} onclick={dispatch(setcurrentStepVideo(1))}>
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <VideoCallOutlinedIcon />
 
