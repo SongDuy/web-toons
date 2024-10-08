@@ -41,6 +41,7 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
+import dataListGenre from "../../../components/layout/layoutUser/dataListGenre";
 // import { Troubleshoot } from "@mui/icons-material";
 const DisplayOriginalPage = () => {
   const id = useParams();
@@ -83,6 +84,7 @@ const DisplayOriginalPage = () => {
   //Xem các tập tiếp theo trong series
   const dispatch = useDispatch();
   pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+  const [hiddenselected, sethiddenSelected] = useState(!language?"All":"모두");
 
   const itemsPerPage = 9;
   const monthNames = [
@@ -108,7 +110,9 @@ const DisplayOriginalPage = () => {
       );
     } catch (error) { }
   }, 10000);
-
+  useEffect(() => {
+    sethiddenSelected(()=>!language?"All":"모두")
+  }, [language]);
   const handleToggleOriginals = () => {
     setOpenOriginals((prevOpen) => !prevOpen);
   };
@@ -981,218 +985,150 @@ const DisplayOriginalPage = () => {
                           onClick={handleToggleOriginals}
                         >
                           <span>
-                            {selectedOriginalGenre} <CheckIcon />
+                            {hiddenselected} <CheckIcon />
                           </span>
                         </button>
                         <Popper
-                          open={openOriginals}
-                          anchorEl={anchorRefOriginals.current}
-                          role={undefined}
-                          placement="bottom-start"
-                          transition
-                          disablePortal
-                        >
-                          {({ TransitionProps, placement }) => (
-                            <Grow
-                              {...TransitionProps}
-                              style={{
-                                transformOrigin:
-                                  placement === "bottom-start"
-                                    ? "left top"
-                                    : "left bottom",
-                              }}
-                            >
-                              <Paper>
-                                <ClickAwayListener
-                                  onClickAway={handleCloseOriginals}
+                                    open={openOriginals}
+                                    anchorEl={anchorRefOriginals.current}
+                                    role={undefined}
+                                    placement="bottom-start"
+                                    transition
+                                    disablePortal
                                 >
-                                  <MenuList
-                                    autoFocusItem={openOriginals}
-                                    id="originals-menu"
-                                    aria-labelledby="originals-button"
-                                    onKeyDown={handleListKeyDownOriginals}
-                                  >
-                                    {/* Hiển thị danh sách thể loại original xếp hạng */}
+                                    {({ TransitionProps, placement }) => (
+                                        <Grow
+                                            {...TransitionProps}
+                                            style={{
+                                                transformOrigin:
+                                                    placement === 'bottom-start' ? 'left top' : 'left bottom',
+                                            }}
+                                        >
+                                            <Paper>
+                                                <ClickAwayListener onClickAway={handleCloseOriginals}>
+                                                    <MenuList
+                                                        autoFocusItem={openOriginals}
+                                                        id="originals-menu"
+                                                        aria-labelledby="originals-button"
+                                                        onKeyDown={handleListKeyDownOriginals}
+                                                    >
 
-                                    <MenuItem onClick={handleCloseOriginals}>
-                                      <span
-                                        onClick={() =>
-                                          setSelectedOriginalGenre("All")
-                                        }
-                                        className={`w-full h-full ${selectedOriginalGenre === "All"
-                                          ? "text-green-500"
-                                          : ""
-                                          }`}
-                                      >
-                                        {!language ? <span>All</span> : <span> 모두 </span>}
-                                      </span>
-                                    </MenuItem>
+                                                        {/* Hiển thị danh sách thể loại original xếp hạng */}
 
-                                    <MenuItem onClick={handleCloseOriginals}>
-                                      <span
-                                        onClick={() =>
-                                          setSelectedOriginalGenre("Action")
-                                        }
-                                        className={`w-full h-full ${selectedOriginalGenre === "Action"
-                                          ? "text-green-500"
-                                          : ""
-                                          }`}
-                                      >
-                                        {!language ? <span>Action</span> : <span> 액션 </span>}
-                                      </span>
-                                    </MenuItem>
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() =>{ setSelectedOriginalGenre("All");sethiddenSelected( !language ? "All": "모두")}}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "All" ? "text-green-500" : ""}`}
+                                                            >
+                                                                {!language ? <span>All</span> : <span> 모두 </span>}
+                                                            </span>
+                                                        </MenuItem>
 
-                                    <MenuItem onClick={handleCloseOriginals}>
-                                      <span
-                                        onClick={() =>
-                                          setSelectedOriginalGenre("Romance")
-                                        }
-                                        className={`w-full h-full ${selectedOriginalGenre === "Romance"
-                                          ? "text-green-500"
-                                          : ""
-                                          }`}
-                                      >
-                                        {!language ? <span>Romance</span> : <span> 로맨스 </span>}
-                                      </span>
-                                    </MenuItem>
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => {setSelectedOriginalGenre("Action");sethiddenSelected( !language ? "Action": "액션")}}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Action" ? "text-green-500" : ""}`}
+                                                            >
+                                                                {!language ? <span>Action</span> : <span> 액션 </span>} 
+                                                            </span>
+                                                        </MenuItem>
 
-                                    <MenuItem onClick={handleCloseOriginals}>
-                                      <span
-                                        onClick={() =>
-                                          setSelectedOriginalGenre("Fantasy")
-                                        }
-                                        className={`w-full h-full ${selectedOriginalGenre === "Fantasy"
-                                          ? "text-green-500"
-                                          : ""
-                                          }`}
-                                      >
-                                        {!language ? <span>Fantasy</span> : <span> 판타지 </span>}
-                                      </span>
-                                    </MenuItem>
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() =>{ setSelectedOriginalGenre("Romance");sethiddenSelected( !language ? "Romance": "로맨스")}}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Romance" ? "text-green-500" : ""}`}
+                                                            >
+                                                                {!language ? <span>Romance</span> : <span> 로맨스 </span>}   
+                                                            </span>
+                                                        </MenuItem>
 
-                                    <MenuItem onClick={handleCloseOriginals}>
-                                      <span
-                                        onClick={() =>
-                                          setSelectedOriginalGenre("Drama")
-                                        }
-                                        className={`w-full h-full ${selectedOriginalGenre === "Drama"
-                                          ? "text-green-500"
-                                          : ""
-                                          }`}
-                                      >
-                                        {!language ? <span>Drama</span> : <span> 드라마 </span>}
-                                      </span>
-                                    </MenuItem>
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => {setSelectedOriginalGenre("Fantasy");sethiddenSelected( !language ? "Fantasy": "판타지")}}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Fantasy" ? "text-green-500" : ""}`}
+                                                            >
+                                                                {!language ? <span>Fantasy</span> : <span> 판타지 </span>}
+                                                            </span>
+                                                        </MenuItem>
 
-                                    <MenuItem onClick={handleCloseOriginals}>
-                                      <span
-                                        onClick={() =>
-                                          setSelectedOriginalGenre("Comedy")
-                                        }
-                                        className={`w-full h-full ${selectedOriginalGenre === "Comedy"
-                                          ? "text-green-500"
-                                          : ""
-                                          }`}
-                                      >
-                                        {!language ? <span>Comedy</span> : <span> 코미디 </span>}
-                                      </span>
-                                    </MenuItem>
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => {setSelectedOriginalGenre("Drama");sethiddenSelected( !language ? "Drama": "드라마")}}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Drama" ? "text-green-500" : ""}`}
+                                                            >
+                                                                {!language ? <span>Drama</span> : <span> 드라마 </span>}
+                                                            </span>
+                                                        </MenuItem>
 
-                                    <MenuItem onClick={handleCloseOriginals}>
-                                      <span
-                                        onClick={() =>
-                                          setSelectedOriginalGenre("Thriller")
-                                        }
-                                        className={`w-full h-full ${selectedOriginalGenre === "Thriller"
-                                          ? "text-green-500"
-                                          : ""
-                                          }`}
-                                      >
-                                        {!language ? <span>Thriller</span> : <span> 스릴러 </span>}
-                                      </span>
-                                    </MenuItem>
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() =>{setSelectedOriginalGenre("Comedy");sethiddenSelected( !language ? "Comedy": "코미디")}}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Comedy" ? "text-green-500" : ""}`}
+                                                            >
+                                                                {!language ? <span>Comedy</span> : <span> 코미디 </span>}
+                                                            </span>
+                                                        </MenuItem>
 
-                                    <MenuItem onClick={handleCloseOriginals}>
-                                      <span
-                                        onClick={() =>
-                                          setSelectedOriginalGenre(
-                                            "Slice of life"
-                                          )
-                                        }
-                                        className={`w-full h-full ${selectedOriginalGenre ===
-                                          "Slice of life"
-                                          ? "text-green-500"
-                                          : ""
-                                          }`}
-                                      >
-                                        {!language ? <span>Slice of life</span> : <span> 일상 </span>}
-                                      </span>
-                                    </MenuItem>
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => {setSelectedOriginalGenre("Thriller");sethiddenSelected( !language ? "Thriller": "스릴러")}}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Thriller" ? "text-green-500" : ""}`}
+                                                            >
+                                                                {!language ? <span>Thriller</span> : <span> 스릴러 </span>}
+                                                            </span>
+                                                        </MenuItem>
 
-                                    <MenuItem onClick={handleCloseOriginals}>
-                                      <span
-                                        onClick={() =>
-                                          setSelectedOriginalGenre(
-                                            "Supernatural"
-                                          )
-                                        }
-                                        className={`w-full h-full ${selectedOriginalGenre ===
-                                          "Supernatural"
-                                          ? "text-green-500"
-                                          : ""
-                                          }`}
-                                      >
-                                        {!language ? <span>Supernatural</span> : <span> 초자연적 </span>}
-                                      </span>
-                                    </MenuItem>
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() =>{setSelectedOriginalGenre("Slice of life");sethiddenSelected( !language ? "Slice of life": "일상")}}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Slice of life" ? "text-green-500" : ""}`}
+                                                            >
+                                                                {!language ? <span>Slice of life</span> : <span> 일상 </span>}                                                               
+                                                            </span>
+                                                        </MenuItem>
 
-                                    <MenuItem onClick={handleCloseOriginals}>
-                                      <span
-                                        onClick={() =>
-                                          setSelectedOriginalGenre("Sci-fi")
-                                        }
-                                        className={`w-full h-full ${selectedOriginalGenre === "Sci-fi"
-                                          ? "text-green-500"
-                                          : ""
-                                          }`}
-                                      >
-                                        {!language ? <span>Sci-fi</span> : <span> 공상 과학 </span>}
-                                      </span>
-                                    </MenuItem>
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() =>{setSelectedOriginalGenre("Slice of life");sethiddenSelected( !language ? "Slice of life": "초자연적")}}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Supernatural" ? "text-green-500" : ""}`}
+                                                            >
+                                                                {!language ? <span>Supernatural</span> : <span> 초자연적 </span>}
+                                                            </span>
+                                                        </MenuItem>
 
-                                    <MenuItem onClick={handleCloseOriginals}>
-                                      <span
-                                        onClick={() =>
-                                          setSelectedOriginalGenre("Horror")
-                                        }
-                                        className={`w-full h-full ${selectedOriginalGenre === "Horror"
-                                          ? "text-green-500"
-                                          : ""
-                                          }`}
-                                      >
-                                        {!language ? <span>Horror</span> : <span> 호러 </span>}
-                                      </span>
-                                    </MenuItem>
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() => {setSelectedOriginalGenre("Sci-fi");sethiddenSelected( !language ? "Sci-fi": "공상 과학")}}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Sci-fi" ? "text-green-500" : ""}`}
+                                                            >
+                                                                {!language ? <span>Sci-fi</span> : <span> 공상 과학 </span>}
+                                                            </span>
+                                                        </MenuItem>
 
-                                    <MenuItem onClick={handleCloseOriginals}>
-                                      <span
-                                        onClick={() =>
-                                          setSelectedOriginalGenre("Others")
-                                        }
-                                        className={`w-full h-full ${selectedOriginalGenre === "Others"
-                                          ? "text-green-500"
-                                          : ""
-                                          }`}
-                                      >
-                                        {!language ? <span>Others</span> : <span> 기타 </span>}
-                                      </span>
-                                    </MenuItem>
-                                  </MenuList>
-                                </ClickAwayListener>
-                              </Paper>
-                            </Grow>
-                          )}
-                        </Popper>
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() =>{setSelectedOriginalGenre("Horror");sethiddenSelected( !language ? "Horror": "호러")}}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Horror" ? "text-green-500" : ""}`}
+                                                            >
+                                                                {!language ? <span>Horror</span> : <span> 호러 </span>}
+                                                            </span>
+                                                        </MenuItem>
+
+                                                        <MenuItem onClick={handleCloseOriginals}>
+                                                            <span
+                                                                onClick={() =>{setSelectedOriginalGenre("Others");sethiddenSelected( !language ? "Others": "기타")}}
+                                                                className={`w-full h-full ${selectedOriginalGenre === "Others" ? "text-green-500" : ""}`}
+                                                            >
+                                                                {!language ? <span>Others</span> : <span> 기타 </span>}
+                                                            </span>
+                                                        </MenuItem>
+
+                                                    </MenuList>
+                                                </ClickAwayListener>
+                                            </Paper>
+                                        </Grow>
+                                    )}
+                                </Popper>
                       </div>
                     </div>
 
@@ -1221,7 +1157,7 @@ const DisplayOriginalPage = () => {
 
                               <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                 <span className="text-gray-400 text-sm">
-                                  {item.genre1}
+                                  {!language? dataListGenre?.filter(itm=>itm.name.toLowerCase()===item.genre1.toLowerCase())[0]?.nameKorean:item.genre1}
                                 </span>
                                 <span className="text-md font-semibold line-clamp-1">
                                   {item.title}

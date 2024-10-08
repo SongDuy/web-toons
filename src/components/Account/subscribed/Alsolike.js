@@ -4,12 +4,13 @@ import { useSelector } from "react-redux";
 
 const Alsolike = () => {
   const random = useSelector(state => state.comic.random);
+  const language = useSelector(state => state.hidden.language);
 
   return (
     <div className=" flex-row justify-center items-center container mx-auto my-auto">
       <div className="  m-2">
         <span className="font-semibold text-lg text-black">
-          You may also like
+       {!language?  "You may also like": "이것도 좋아할 수 있습니다.(추천 드립니다)"}
         </span>
       </div>
 

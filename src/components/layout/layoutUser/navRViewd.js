@@ -13,6 +13,7 @@ const NavRViewd = () => {
   const dispatch = useDispatch();
   const comic = useSelector((state) => state.comic.random);
   const User = useSelector((state) => state.AuthJs.User);
+    const language = useSelector(state => state.hidden.language);
 
   useEffect(() => {
     const getRandom = async () => {
@@ -57,7 +58,7 @@ const NavRViewd = () => {
         className="fixed top-[50%] right-[-4%] transform rotate-90  bg-white   p-3 rounded-br-lg rounded-bl-lg flex"
         onClick={() => OpenRView()}
       >
-        Recently viewed
+     {!language?  "Recently viewed":"최근 본 항목"}
         <div className="transform rotate-90 ml-3">
           {" "}
           <ArrowForwardIosIcon sx={{ fontSize: 12 }} />
@@ -88,8 +89,8 @@ const NavRViewd = () => {
           >
             <div className="flex justify-center items-center ">
               <div>
-                <p className="text-center">Recently</p>
-                <p className="text-center">viewed</p>
+                <p className="text-center">최근 </p>
+                <p className="text-center"> 본 항목</p>
               </div>
             </div>
             <div className="w-full h-full  mt-5 ">
