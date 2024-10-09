@@ -470,7 +470,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                     </span>
                                                 ) : (
                                                     <span className="font-semibold text-gray-500">
-                                                        파일을 표시하다
+                                                        파일 렌더링
 
                                                     </span>
                                                 )}

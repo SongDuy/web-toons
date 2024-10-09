@@ -29,7 +29,8 @@ const FooterPage = () => {
                     {/* Column 3: Contact */}
                     <div>
                         <h2 className="text-xl font-semibold mb-4">
-                            연락
+                            Contact
+                            문의하기
                         </h2>
                         <p className="text-sm">Email: support@rison.com</p>
                         <p className="text-sm">Phone: +84 123 456 789</p>

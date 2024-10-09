@@ -42,7 +42,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import dataListGenre from "../../../components/layout/layoutUser/dataListGenre";
-// import { Troubleshoot } from "@mui/icons-material";
+import ReactPlayer from "react-player";
 const DisplayOriginalPage = () => {
   const id = useParams();
   const [getcomment, setComment] = useState("");
@@ -522,7 +522,7 @@ const DisplayOriginalPage = () => {
                     </span>
                   </div>
                 </li>
-
+                {chapid?.audioUrl&&
                 <li className="ml-auto">
                   {!isMusic ?
                     <button
@@ -539,7 +539,15 @@ const DisplayOriginalPage = () => {
                       <MusicOffIcon />
                     </button>
                   }
+                   <ReactPlayer
+                url={chapid?.audioUrl}
+                controls={true}
+                width="0%"
+                height="0%"
+                playing={!isMusic}
+              />
                 </li>
+}
               </ul>
             </div>
 
