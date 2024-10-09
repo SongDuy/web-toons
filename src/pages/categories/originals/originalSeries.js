@@ -10,6 +10,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { unwrapResult } from "@reduxjs/toolkit";
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
 
 import { useParams } from "react-router-dom";
 import {
@@ -381,6 +382,7 @@ const OriginalSeriesPage = () => {
                                 className="object-fill w-full h-full rounded-md"
                               />
                             </div>
+                            
 
                             <div className="w-[350px] mr-auto ml-3 overflow-hidden">
                               <span className="text-black text-md leading-[1.2] line-clamp-2">
@@ -399,11 +401,16 @@ const OriginalSeriesPage = () => {
                                 {new Date(item.createTime)?.getFullYear()}
                               </span>
                             </div>
-
+                            {item.audioUrl&&
+                            <div className="ml-auto">
+                            <MusicNoteIcon />
+                            </div>
+}
                             <div className="ml-auto flex gap-1">
                               <span className="text-gray-400">
                                 <FavoriteBorderSharpIcon />
                               </span>
+                              
                               <span className="text-gray-400 text-md line-clamp-1">
                                 {item.likes}
                               </span>

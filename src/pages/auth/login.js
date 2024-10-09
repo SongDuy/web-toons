@@ -32,7 +32,7 @@ const LoginPage = ({ closeModal }) => {
     const GetLogin = async () => {
         try {
             if (isLogin19Modal) {
-                const lg = await dispatch(handleLogin19({ email, password }));
+                const lg = await dispatch(handleLogin19({ email, password,language }));
                 unwrapResult(lg)
                 if (err === null) {
                     dispatch(setIsLoginModal(false))
@@ -40,7 +40,7 @@ const LoginPage = ({ closeModal }) => {
                 }
 
             } else {
-                const lg = await dispatch(handleLogin({ email, password }));
+                const lg = await dispatch(handleLogin({ email, password,language }));
                 unwrapResult(lg)
                 if (err === null) {
                     dispatch(setIsLoginModal(false))

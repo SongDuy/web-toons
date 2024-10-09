@@ -26,7 +26,7 @@ const RegisterPage = () => {
   const getRegister = async () => {
     try {
       console.log(selectedDate)
-      const rg = await dispatch(handleRegister({ email, password, displayName, birthday: selectedDate }));
+      const rg = await dispatch(handleRegister({ email, password, displayName, birthday: selectedDate,language }));
       unwrapResult(rg)
 
       navigate('/')

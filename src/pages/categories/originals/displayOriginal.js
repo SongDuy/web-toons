@@ -545,6 +545,7 @@ const DisplayOriginalPage = () => {
                 width="0%"
                 height="0%"
                 playing={!isMusic}
+                loop={true}
               />
                 </li>
 }
