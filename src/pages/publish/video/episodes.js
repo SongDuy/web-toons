@@ -37,6 +37,8 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
     const id = useParams();
     const [photos1, setPhotos1] = useState("");
     const [horizontalThumbnail, sethorizontalThumbnail] = useState();
+    const [num, setnum] = useState(0);
+
     useEffect(() => {
         const get = async () => {
             try {
@@ -56,6 +58,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                             setviews(chapid?.views)
                             setcheck(chapid?.check)
                             setURLFile(chapid?.fileURL);
+                            setnum(chapid?.num)
 
                         }
                         unwrapResult(videoID)
@@ -163,8 +166,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                     uid: Account.uid,
                     note: valueNote,
                     likes,
-                    num: chapters?.success ? chapters?.chaps?.length + 1 : 0,
-                    check,
+                     check,
                     checkcomment: selectedValue,
                     views,
                     createTime: new Date(Date.now()),
@@ -180,7 +182,6 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                     uid: Account.uid,
                     note: valueNote,
                     likes,
-                    num: chapters?.success ? chapters?.chaps?.length + 1 : 0,
                     check,
                     checkcomment: selectedValue,
                     views,
@@ -218,7 +219,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                             <li onClick={goToPreviousStep} className="uppercase font-semibold cursor-pointer text-md flex items-center justify-center">
                                 <div className="w-[40px] h-[40px] bg-gray-500 rounded-full border flex items-center justify-center mx-2">
                                     <span className="mx-3 text-2xl text-white font-bold">
-                                        1
+                                   1
                                     </span>
                                 </div>
 
@@ -396,7 +397,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
                                         <div className="flex mt-3">
                                             <button className="w-[90px] h-[40px] border-2 bg-white flex items-center justify-center">
-                                                1
+                                            {id.idchap ?num:  chapters?.chaps?.length + 1}
                                             </button>
                                             <input
                                                 className="w-full h-[40px] px-2 border-r-2 border-t-2 border-b-2 outline-none bg-white"
