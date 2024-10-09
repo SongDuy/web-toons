@@ -28,13 +28,14 @@ export const handleLogin = createAsyncThunk("user/login", async (payload) => {
    }
    
   } catch (error) {
-    // console.log(error);
+  
     if (error.message === '400') {
-      throw new Error("Please verify your email before logging in.");
+  
+      throw new Error(!payload?.language?"Please verify your email before logging in.":"로그인하기 전에 이메일을 확인해 주세요.");
     } else if (error.message === '401') {
-      throw new Error("Account Locked");
+      throw new Error(!payload?.language?"Account Locked":"계정이 잠겼습니다.");
     } else {
-      throw new Error("Incorrect email or password.");
+      throw new Error(!payload?.language?"Incorrect email or password.":"잘못된 이메일 또는 비밀번호입니다.");
     }
     
     // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
@@ -64,11 +65,12 @@ export const handleLogin19 = createAsyncThunk("user/login19", async (payload) =>
   } catch (error) {
     // console.log(error);
     if (error.message === '400') {
-      throw new Error("Please verify your email before logging in.");
+  
+      throw new Error(!payload?.language?"Please verify your email before logging in.":"로그인하기 전에 이메일을 확인해 주세요.");
     } else if (error.message === '401') {
-      throw new Error("Account Locked");
+      throw new Error(!payload?.language?"Account Locked":"계정이 잠겼습니다.");
     } else {
-      throw new Error("Incorrect email or password.");
+      throw new Error(!payload?.language?"Incorrect email or password.":"잘못된 이메일 또는 비밀번호입니다.");
     }
     
     // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
@@ -92,8 +94,8 @@ export const handleAdmin = createAsyncThunk("user/loginadmin", async (payload) =
    }
   
   } catch (error) {
-    // console.log(error);
-    throw error.message === '400'? new Error ( "Please verify your email before logging in."):new Error ( "Incorrect email or password.");
+   
+    throw error.message === '400'? new Error ( "로그인하기 전에 이메일을 확인해 주세요."):new Error ( "잘못된 이메일 또는 비밀번호입니다.");
     // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
   }
   //throw error
@@ -113,7 +115,7 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
      
         // Ở đây, bạn có thể chuyển hướng người dùng đến trang khác hoặc thực hiện các hành động khác sau khi đăng ký thành công
       } catch (error) {
-        throw new Error('Email already exists.')
+        throw new Error(!payload?.language?'Email already exists.':"이미 이메일이 존재합니다")
         // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
       }
   });
