@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import dataListGenre from "../../../components/layout/layoutUser/dataListGenre";
 import StarIcon from "@mui/icons-material/Star";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import GroupAddSharpIcon from "@mui/icons-material/GroupAddSharp";
@@ -94,7 +94,7 @@ const OriginalSeriesPage = () => {
           const user = unwrapResult(account);
           const age = account?.payload?.birthday
             ? new Date(Date.now())?.getFullYear() -
-              new Date(user.birthday)?.getFullYear()
+            new Date(user.birthday)?.getFullYear()
             : 15;
           comicid.success && comicid.Age > age && navigate(`/`);
           const random = await dispatch(getrandomComic({ limit: 9, age }));
@@ -126,7 +126,7 @@ const OriginalSeriesPage = () => {
           unwrapResult(random);
         }
         setloading(true);
-      } catch (error) {}
+      } catch (error) { }
     };
     get();
   }, [dispatch, User, navigate, id]);
@@ -192,7 +192,7 @@ const OriginalSeriesPage = () => {
           ? setSubscribe(subscribe.subscribe)
           : setSubscribe([]);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   const handleDeleteSub = async () => {
     try {
@@ -212,7 +212,7 @@ const OriginalSeriesPage = () => {
           ? setSubscribe(subscribe.subscribe)
           : setSubscribe([]);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const handleRate = async (event, newValue) => {
@@ -235,11 +235,11 @@ const OriginalSeriesPage = () => {
           const comicrate = await RateFireBase.getbycomic(id.id);
           const averageRating = comicrate.success
             ? (comicrate.rate.reduce(
-                (accumulator, currentValue) => accumulator + currentValue.rate,
-                0
-              ) /
-                comicrate.rate.length) *
-              2
+              (accumulator, currentValue) => accumulator + currentValue.rate,
+              0
+            ) /
+              comicrate.rate.length) *
+            2
             : 0;
           await comicFireBase.update(
             { rate: parseFloat(averageRating.toFixed(2)) },
@@ -255,11 +255,11 @@ const OriginalSeriesPage = () => {
           const comicrate = await RateFireBase.getbycomic(id.id);
           const averageRating = comicrate.success
             ? (comicrate.rate.reduce(
-                (accumulator, currentValue) => accumulator + currentValue.rate,
-                0
-              ) /
-                comicrate.rate.length) *
-              2
+              (accumulator, currentValue) => accumulator + currentValue.rate,
+              0
+            ) /
+              comicrate.rate.length) *
+            2
             : 0;
           await comicFireBase.update(
             { rate: parseFloat(averageRating.toFixed(2)) },
@@ -296,10 +296,18 @@ const OriginalSeriesPage = () => {
               {/* Hiện thị tiêu đề và tác giả truyện */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-[1200px] overflow-hidden">
-                  <span className="font-semibold text-xl text-black text-shadow-white flex items-center justify-center">
-                    {comicid.genre1}, {comicid.genre2}
-                  </span>
+                  {(comicid.genre1 === comicid.genre2) ?
+                    <span className="font-semibold text-xl text-black text-shadow-white flex items-center justify-center">
 
+                      {!language ? comicid.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid.genre1.toLowerCase())[0]?.nameKorean}
+                    </span>
+                    :
+                    <span className="font-semibold text-xl text-black text-shadow-white flex items-center justify-center">
+                      {!language ? comicid.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid.genre1.toLowerCase())[0]?.nameKorean}
+                      {`, `}
+                      {!language ? comicid.genre2 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid.genre2.toLowerCase())[0]?.nameKorean}
+                    </span>
+                  }
                   <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.3] line-clamp-3 flex justify-center">
                     {comicid.title}
                   </span>
@@ -384,7 +392,7 @@ const OriginalSeriesPage = () => {
                               <span className="text-gray-400 text-md">
                                 {
                                   monthNames[
-                                    new Date(item.createTime).getMonth()
+                                  new Date(item.createTime).getMonth()
                                   ]
                                 }{" "}
                                 {new Date(item.createTime).getDate()},
