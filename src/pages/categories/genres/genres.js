@@ -31,14 +31,21 @@ const GenresPage = () => {
         const filteredOriginalsByGenre = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase());
         const filteredOriginalsByLikes = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).sort((a, b) => b.views - a.views);
         const filteredOriginalsByDate = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).sort((a, b) => new Date(b.createTime) - new Date(a.createTime));
+        console.log(selectedMenuOriginalList === "by Popularity" ? filteredOriginalsByGenre : selectedMenuOriginalList === "by Likes" ? filteredOriginalsByLikes : filteredOriginalsByDate)
         setComic(selectedMenuOriginalList === "by Popularity" ? filteredOriginalsByGenre : selectedMenuOriginalList === "by Likes" ? filteredOriginalsByLikes : filteredOriginalsByDate)
     }, [selectedOriginalsByGenre, comic.comic, selectedMenuOriginalList]);
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
-
+   
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
-
+    const [hiddenMenuOriginalList, sethiddenMenuOriginalList] = useState(
+        !language ? "by Popularity" : "인기순"
+      );
+    useEffect(() => {
+        sethiddenMenuOriginalList(() => (!language ? "by Popularity" : "인기순"));
+        setSelectedMenuOriginalList("by Popularity");
+      }, [language]);
     // Mở và đóng menu originals
 
     const [openOriginals, setOpenOriginals] = React.useState(false);
@@ -98,7 +105,7 @@ const GenresPage = () => {
                                     aria-haspopup="true"
                                     onClick={handleToggleOriginals}
                                 >
-                                    {selectedMenuOriginalList}
+                                    {hiddenMenuOriginalList}
                                 </button>
 
                                 {/* Originals Menu */}
@@ -130,28 +137,45 @@ const GenresPage = () => {
 
                                                         <MenuItem onClick={handleCloseOriginals}>
                                                             <span
-                                                                onClick={() => setSelectedMenuOriginalList("by Popularity")}
+                                                                  onClick={() => {
+                                                                    setSelectedMenuOriginalList(
+                                                                      "by Popularity"
+                                                                    );
+                                                                    sethiddenMenuOriginalList(
+                                                                      !language ? "by Popularity" : "인기순"
+                                                                    );
+                                                                  }}
                                                                 className={`w-full h-full ${selectedMenuOriginalList === "by Popularity" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                {!language ? <span>by Popularity</span> : <span> 인기도 기준으로 </span>}
+                                                                {!language ? <span>by Popularity</span> : <span>인기순 </span>}
                                                             </span>
                                                         </MenuItem>
 
                                                         <MenuItem onClick={handleCloseOriginals}>
                                                             <span
-                                                                onClick={() => setSelectedMenuOriginalList("by Likes")}
+                                                                onClick={() => {
+                                                                    setSelectedMenuOriginalList("by Likes");
+                                                                    sethiddenMenuOriginalList(
+                                                                      !language ? "by Likes" : "좋아요순"
+                                                                    );
+                                                                  }}
                                                                 className={`w-full h-full ${selectedMenuOriginalList === "by Likes" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                {!language ? <span> by Likes </span> : <span> 좋아요 기준으로 </span>}
+                                                                {!language ? <span> by Likes </span> : <span> 좋아요순 </span>}
                                                             </span>
                                                         </MenuItem>
 
                                                         <MenuItem onClick={handleCloseOriginals}>
                                                             <span
-                                                                onClick={() => setSelectedMenuOriginalList("by Date")}
+                                                                 onClick={() => {
+                                                                    setSelectedMenuOriginalList("by Date");
+                                                                    sethiddenMenuOriginalList(
+                                                                      !language ? "by Date" : "날짜순"
+                                                                    );
+                                                                  }}
                                                                 className={`w-full h-full ${selectedMenuOriginalList === "by Date" ? "text-yellow-500" : ""}`}
                                                             >
-                                                                {!language ? <span> by Date </span> : <span> 날짜별로 </span>}
+                                                                {!language ? <span> by Date </span> : <span> 날짜순 </span>}
                                                             </span>
                                                         </MenuItem>
                                                         {/* Add more menu items here */}
