@@ -124,11 +124,19 @@ const EpisodeVideo = () => {
 
                                                             <div className="flex ml-auto gap-2">
                                                                 <button onClick={() => { navigate(`/publish/video/${id.id}/${item.id}`); dispatch(setcurrentStepVideo(2)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                                                    Edit
+                                                                    {!language ?
+                                                                        "Edit"
+                                                                        :
+                                                                        "편집"
+                                                                    }
                                                                 </button>
 
                                                                 <button onClick={() => handledelete(item.id)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                                                    Delete
+                                                                    {!language ?
+                                                                        "Delete"
+                                                                        :
+                                                                        "삭제"
+                                                                    }
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -150,7 +158,12 @@ const EpisodeVideo = () => {
                                                             </span>
 
                                                             <span className="text-gray-500 text-sm">
-                                                                Likes {item.likes}
+                                                                {!language ?
+                                                                    "Likes"
+                                                                    :
+                                                                    "좋아요"
+                                                                }
+                                                                {item.likes}
                                                             </span>
 
                                                             <span className="text-gray-500 text-sm">

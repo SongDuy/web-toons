@@ -97,15 +97,14 @@ const Dashboard = () => {
               <div className="w-full h-full mt-4">
                 <div className="w-full h-full flex items-center">
 
-                  {!language ?
-                    <h1 className="font-semibold text-xl">
-                      Select the original series
-                    </h1>
-                    :
-                    <h1 className="font-semibold text-xl">
-                      오리지널 시리즈 선택
-                    </h1>
-                  }
+                  <h1 className="font-semibold text-xl">
+                    {!language ?
+                      "Select the original series"
+                      :
+                      "오리지널 시리즈 선택"
+                    }
+                  </h1>
+
                   <Link
                     to={`/publish/original`}
 
@@ -148,25 +147,23 @@ const Dashboard = () => {
                               </span>
 
                               <div className="flex ml-auto gap-2">
-                                {!language ?
-                                  <button onClick={() => { navigate(`/publish/original/${item.id}`); dispatch(setcurrentStepOriginal(1)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                    Edit
-                                  </button>
-                                  :
-                                  <button onClick={() => { navigate(`/publish/original/${item.id}`); dispatch(setcurrentStepOriginal(1)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                    편집
-                                  </button>
-                                }
+                                <button onClick={() => { navigate(`/publish/original/${item.id}`); dispatch(setcurrentStepOriginal(1)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
 
-                                {!language ?
-                                  <button onClick={() => handledeletecomic(item.id)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                    Delete
-                                  </button>
-                                  :
-                                  <button onClick={() => handledeletecomic(item.id)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                    삭제
-                                  </button>
-                                }
+                                  {!language ?
+                                    "Edit"
+                                    :
+                                    "편집"
+                                  }
+                                </button>
+
+                                <button onClick={() => handledeletecomic(item.id)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                  {!language ?
+                                    "Delete"
+                                    :
+                                    "삭제"
+                                  }
+                                </button>
+
                               </div>
                             </div>
 
@@ -187,15 +184,14 @@ const Dashboard = () => {
                               </div>
                             ) : (
                               <div className="w-full">
-                                {!language ?
-                                  <span className="text-red-500 flex items-center">
-                                    Not Yet Rated
-                                  </span>
-                                  :
-                                  <span className="text-red-500 flex items-center">
-                                    아직 평가되지 않음
-                                  </span>
-                                }
+                                <span className="text-red-500 flex items-center">
+                                  {!language ?
+                                    "   Not Yet Rated"
+                                    :
+                                    "아직 평가되지 않음"
+                                  }
+                                </span>
+
                               </div>
                             )}
                           </div>
@@ -204,47 +200,57 @@ const Dashboard = () => {
                             {item.totalChapters > 0 ? (
                               <div className="flex gap-5">
                                 <span className="text-gray-500 text-sm flex gap-2">
-                                  Published{" "}
+                                  {!language ?
+                                    " Published"
+                                    :
+                                    "발행됨"
+                                  } {" "}
                                   {monthNames[new Date(item.createTime).getMonth()]}{" "}
                                   {new Date(item.createTime).getDate()},
                                   {new Date(item.createTime)?.getFullYear()}
                                 </span>
 
                                 <span className="text-gray-500 text-sm">
-                                  Episodes {item.totalChapters}
+                                  {!language ?
+                                    " Episodes"
+                                    :
+                                    "에피소드"
+                                  }
+                                  {item.totalChapters}
                                 </span>
                               </div>
                             ) : (
                               <div className="flex gap-5">
-                                {!language ?
-                                  <span className="text-gray-500 text-sm">
-                                    Add episodes to publish your title.
-                                  </span>
-                                  :
-                                  <span className="text-gray-500 text-sm">
-                                    타이틀을 게시하려면 에피소드를 추가하세요.
-                                  </span>
-                                }
+                                <span className="text-gray-500 text-sm">
+                                  {!language ?
+                                    " Add episodes to publish your title."
+                                    :
+                                    "타이틀을 게시하려면 에피소드를 추가하세요."
+                                  }
+                                </span>
+
                               </div>
                             )}
 
                             <div className="mt-2 flex ml-auto gap-2">
                               <Link to={`/dashboard/original/episode/${item.id}`}>
-                                {!language ?
-                                  <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                    Edit Episode
-                                  </button>
-                                  :
-                                  <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                    에피소드 편집
-                                  </button>
-                                }
+                                <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                  {!language ?
+                                    "Edit Episode"
+                                    :
+                                    "에피소드 편집"
+                                  }
+                                </button>
                               </Link>
 
                               {!language ?
                                 <button onClick={() => { navigate(`/publish/original/${item.id}`); dispatch(setcurrentStepOriginal(2)) }} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                                   <AddIcon />
-                                  Add Episode
+                                  {!language ?
+                                    " Add Episode"
+                                    :
+                                    "에피소드 추가"
+                                  }
                                 </button>
                                 :
                                 <button onClick={() => { navigate(`/publish/original/${item.id}`); dispatch(setcurrentStepOriginal(2)) }} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
@@ -265,15 +271,14 @@ const Dashboard = () => {
               <div className="w-full h-full mt-4">
                 <div className="w-full h-full flex items-center">
 
-                  {!language ?
-                    <h1 className="font-semibold text-xl">
-                      Select the video series
-                    </h1>
-                    :
-                    <h1 className="font-semibold text-xl">
-                      비디오 시리즈 선택
-                    </h1>
-                  }
+                  <h1 className="font-semibold text-xl">
+                    {!language ?
+                      " Select the video series"
+                      :
+                      " 비디오 시리즈 선택"
+                    }
+                  </h1>
+
                   <Link
                     to={`/publish/video`}
 
@@ -312,25 +317,22 @@ const Dashboard = () => {
                             <div className="flex items-center">
                               <div className="flex ml-auto gap-2">
 
-                                {!language ?
-                                  <button onClick={() => { navigate(`/publish/video/${item.id}`); dispatch(setcurrentStepVideo(1)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                    Edit
-                                  </button>
-                                  :
-                                  <button onClick={() => { navigate(`/publish/video/${item.id}`); dispatch(setcurrentStepVideo(1)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                    편집
-                                  </button>
-                                }
+                                <button onClick={() => { navigate(`/publish/video/${item.id}`); dispatch(setcurrentStepVideo(1)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                  {!language ?
+                                    "Edit"
+                                    :
+                                    "편집"
+                                  }
+                                </button>
 
-                                {!language ?
-                                  <button onClick={() => handledeleteVideo(item.id)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                    Delete
-                                  </button>
-                                  :
-                                  <button onClick={() => handledeleteVideo(item.id)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                    삭제
-                                  </button>
-                                }
+                                <button onClick={() => handledeleteVideo(item.id)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                  {!language ?
+                                    "Delete"
+                                    :
+                                    "삭제"
+                                  }
+                                </button>
+
                               </div>
                             </div>
 
@@ -351,15 +353,15 @@ const Dashboard = () => {
                               </div>
                             ) : (
                               <div className="w-full">
-                                {!language ?
-                                  <span className="text-red-500 flex items-center">
-                                    Not Yet Rated
-                                  </span>
-                                  :
-                                  <span className="text-red-500 flex items-center">
-                                    아직 평가되지 않음
-                                  </span>
-                                }
+                                <span className="text-red-500 flex items-center">
+
+                                  {!language ?
+                                    " Not Yet Rated"
+                                    :
+                                    "아직 평가되지 않음"
+                                  }
+                                </span>
+
                               </div>
                             )}
                           </div>
@@ -368,57 +370,64 @@ const Dashboard = () => {
                             {item.totalChapters > 0 ? (
                               <div className="flex gap-5">
                                 <span className="text-gray-500 text-sm flex gap-2">
-                                  Published{" "}
+                                  {!language ?
+                                    " Published"
+                                    :
+                                    "발행됨"
+                                  }{" "}
                                   {monthNames[new Date(item.createTime).getMonth()]}{" "}
                                   {new Date(item.createTime).getDate()},
                                   {new Date(item.createTime)?.getFullYear()}
                                 </span>
 
                                 <span className="text-gray-500 text-sm">
-                                  Episodes {item.totalChapters}
+                                  {!language ?
+                                    " Episodes"
+                                    :
+                                    "에피소드"
+                                  }
+                                  {item.totalChapters}
                                 </span>
                               </div>
                             ) : (
                               <div className="flex gap-5">
 
-                                {!language ?
-                                  <span className="text-gray-500 text-sm">
-                                    Add episodes to publish your title.
-                                  </span>
-                                  :
-                                  <span className="text-gray-500 text-sm">
-                                    타이틀을 게시하려면 에피소드를 추가하세요.
-                                  </span>
-                                }
+                                <span className="text-gray-500 text-sm">
+
+                                  {!language ?
+                                    " Add episodes to publish your title."
+                                    :
+                                    "타이틀을 게시하려면 에피소드를 추가하세요."
+                                  }
+                                </span>
+
                               </div>
                             )}
 
                             <div className="mt-2 flex ml-auto gap-2">
                               <Link to={`/dashboard/video/episode/${item.id}`}>
 
-                                {!language ?
-                                  <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                    Edit Episode
-                                  </button>
-                                  :
-                                  <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                    에피소드 편집
-                                  </button>
-                                }
+                                <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+
+                                  <AddIcon />
+                                  {!language ?
+                                    "Edit Episode"
+                                    :
+                                    "에피소드 편집"
+                                  }
+                                </button>
+
                               </Link>
 
+                              <button onClick={() => { navigate(`/publish/video/${item.id}`); dispatch(setcurrentStepVideo(2)) }} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                <AddIcon />
+                                {!language ?
+                                  "Add Episode"
+                                  :
+                                  "에피소드 추가"
+                                }
+                              </button>
 
-                              {!language ?
-                                <button onClick={() => { navigate(`/publish/video/${item.id}`); dispatch(setcurrentStepVideo(2)) }} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                  <AddIcon />
-                                  Add Episode
-                                </button>
-                                :
-                                <button onClick={() => { navigate(`/publish/video/${item.id}`); dispatch(setcurrentStepVideo(2)) }} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                  <AddIcon />
-                                  에피소드 추가
-                                </button>
-                              }
                             </div>
                           </div>
                         </div>

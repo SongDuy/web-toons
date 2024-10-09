@@ -104,7 +104,11 @@ const EpisodeOriginal = () => {
                                     <div className="ml-auto flex gap-5">
                                         <button onClick={() => { navigate(`/publish/original/${id.id}`); dispatch(setcurrentStepOriginal(2)) }} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
                                             <AddIcon />
-                                            Add Episode
+                                            {!language ?
+                                                "Add Episode"
+                                                :
+                                                "에피소드 추가"
+                                            }
                                         </button>
                                     </div>
 
@@ -133,11 +137,19 @@ const EpisodeOriginal = () => {
 
                                                             <div className="flex ml-auto gap-2">
                                                                 <button onClick={() => { navigate(`/publish/original/${id.id}/${item.id}`); dispatch(setcurrentStepOriginal(2)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                                                    Edit
+                                                                    {!language ?
+                                                                        "Edit"
+                                                                        :
+                                                                        "편집"
+                                                                    }
                                                                 </button>
 
                                                                 <button onClick={() => handledelete(item.id)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                                                    Delete
+                                                                    {!language ?
+                                                                        "Delete"
+                                                                        :
+                                                                        "삭제"
+                                                                    }
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -155,17 +167,32 @@ const EpisodeOriginal = () => {
 
                                                         <div className="flex gap-5">
                                                             <span className="text-gray-500 text-sm flex gap-2">
-                                                                Published  {monthNames[new Date(item.createTime).getMonth()]}{" "}
+                                                                {!language ?
+                                                                    "Published"
+                                                                    :
+                                                                    "발행됨"
+                                                                }
+                                                                {monthNames[new Date(item.createTime).getMonth()]}{" "}
                                                                 {new Date(item.createTime).getDate()},
                                                                 {new Date(item.createTime)?.getFullYear()}
                                                             </span>
 
                                                             <span className="text-gray-500 text-sm">
-                                                                Likes {item.likes}
+                                                                {!language ?
+                                                                    "Likes"
+                                                                    :
+                                                                    "좋아요"
+                                                                }
+                                                                {item.likes}
                                                             </span>
 
                                                             <span className="text-gray-500 text-sm">
-                                                                Views {item.views}
+                                                                {!language ?
+                                                                    "Views"
+                                                                    :
+                                                                    "조회수"
+                                                                }
+                                                                {item.views}
                                                             </span>
                                                         </div>
                                                     </div>
