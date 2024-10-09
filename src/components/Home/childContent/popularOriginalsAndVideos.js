@@ -19,22 +19,23 @@ const PopularOriginalsAndVideosPage = () => {
     //Chọn thể loại originals
     const language = useSelector(state => state.hidden.language);
 
-    const [selectedOriginalGenre, setSelectedOriginalGenre] = useState(!language ? "All" : "모두");
+    const [selectedOriginalGenre, setSelectedOriginalGenre] = useState("All");
     const [hiddenselected, sethiddenSelected] = useState(!language ? "All" : "모두");
 
     const Video = useSelector(state => state.Video.video);
-    useEffect(() => {
-        sethiddenSelected(() => !language ? "All" : "모두")
-    }, [language]);
+    
     //Chọn thể loại videos
     const filteredcomic = comic.comic?.slice()?.sort((a, b) => b.views - a.views);
-    const searchedcomic = comic.comic?.filter(item => selectedOriginalGenre === 'All' || selectedOriginalGenre === '모두' ? item : item.genre1.toLowerCase() === selectedOriginalGenre.toLowerCase() || item.genre2.toLowerCase() === selectedOriginalGenre.toLowerCase()).slice()?.sort((a, b) => b.views - a.views);
+    const searchedcomic = comic.comic?.filter(item => selectedOriginalGenre === 'All' ? item : item.genre1.toLowerCase() === selectedOriginalGenre.toLowerCase() || item.genre2.toLowerCase() === selectedOriginalGenre.toLowerCase()).slice()?.sort((a, b) => b.views - a.views);
     //Lấy ngôn ngữ
 
     //Mở modal menu original by genre để chọn
     const [openOriginals, setOpenOriginals] = React.useState(false);
     const anchorRefOriginals = React.useRef(null);
-
+    useEffect(() => {
+        sethiddenSelected(() => !language ? "All" : "모두")
+        setSelectedOriginalGenre("All");
+    }, [language]);
     const handleToggleOriginals = () => {
         setOpenOriginals((prevOpen) => !prevOpen);
     };
