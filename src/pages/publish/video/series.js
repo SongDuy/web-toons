@@ -245,15 +245,14 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                     </span>
                                 </div>
 
-                                {!language ? (
-                                    <h1 className="text-black">
-                                        VIDEO SERIES
-                                    </h1>
-                                ) : (
-                                    <h1 className="text-black">
-                                        비디오 시리즈
-                                    </h1>
-                                )}
+
+                                <h1 className="text-black">
+                                    {!language ? (
+                                        "VIDEO SERIES"
+                                    ) : (
+                                        "비디오 시리즈"
+                                    )}
+                                </h1>
 
                             </li>
                             <li className="uppercase font-semibold text-md flex items-center justify-center">
@@ -268,16 +267,13 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                     </span>
                                 </div>
 
-                                {!language ? (
-                                    <h1 className="text-gray-400">
-                                        VIDEO EPISODES
-                                    </h1>
-                                ) : (
-                                    <h1 className="text-gray-400">
-                                        비디오 에피소드
-                                    </h1>
-                                )}
-
+                                <h1 className="text-gray-400">
+                                    {!language ? (
+                                        "VIDEO EPISODES"
+                                    ) : (
+                                        "비디오 에피소드"
+                                    )}
+                                </h1>
                             </li>
                         </ul>
                     </div>
@@ -290,15 +286,13 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                 {/* Phần tải ảnh đại diện cho series video */}
                                 <div className="w-full h-full">
                                     <div className="w-full py-3">
-                                        {!language ? (
-                                            <h1 className="w-full font-semibold text-xl">
-                                                Square Thumbnail
-                                            </h1>
-                                        ) : (
-                                            <h1 className="w-full font-semibold text-xl">
-                                                정사각형 썸네일
-                                            </h1>
-                                        )}
+                                        <h1 className="w-full font-semibold text-xl">
+                                            {!language ? (
+                                                "Square Thumbnail"
+                                            ) : (
+                                                "정사각형 썸네일"
+                                            )}
+                                        </h1>
                                     </div>
 
                                     <div className="w-[350px] flex items-center justify-center">
@@ -317,25 +311,22 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                                             <NorthIcon />
                                                         </span>
 
-                                                        {!language ? (
-                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                                Select an image to upload.
-                                                            </span>
-                                                        ) : (
-                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                                업로드할 이미지를 선택하세요.
-                                                            </span>
-                                                        )}
 
-                                                        {!language ? (
-                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                                Or drag the image file here.
-                                                            </span>
-                                                        ) : (
-                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                                또는 이미지를 여기로 드래그하세요.
-                                                            </span>
-                                                        )}
+                                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                            {!language ? (
+                                                                "Select an image to upload."
+                                                            ) : (
+                                                                "업로드할 이미지를 선택하세요."
+                                                            )}
+                                                        </span>
+
+                                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                            {!language ? (
+                                                                "Or drag the image file here."
+                                                            ) : (
+                                                                "또는 이미지를 여기로 드래그하세요."
+                                                            )}
+                                                        </span>
 
                                                         <input
                                                             type="file"
@@ -351,50 +342,43 @@ const SeriesVideoPage = ({ goToEposodes }) => {
 
                                     <div className="w-full py-3">
 
-                                        {!language ? (
-                                            <span className="block w-full font-semibold text-sm text-gray-500">
-                                                Image size must be 1920x1080.
-                                            </span>
-                                        ) : (
-                                            <span className="block w-full font-semibold text-sm text-gray-500">
-                                                이미지 크기는 1920x1080 이어야 합니다.
-                                            </span>
-                                        )}
+                                        <span className="block w-full font-semibold text-sm text-gray-500">
+                                            {!language ? (
+                                                "Image size must be 1920x1080."
+                                            ) : (
+                                                "이미지 크기는 1920x1080 이어야 합니다."
+                                            )}
+                                        </span>
 
-                                        {!language ? (
-                                            <span className="block w-full font-semibold text-sm text-gray-500">
-                                                Image must be less than 500KB.
-                                            </span>
-                                        ) : (
-                                            <span className="block w-full font-semibold text-sm text-gray-500">
-                                                이미지는 500KB 이하이어야 합니다.
-                                            </span>
-                                        )}
+                                        <span className="block w-full font-semibold text-sm text-gray-500">
+                                            {!language ? (
+                                                " Image must be less than 500KB."
+                                            ) : (
+                                                "이미지는 500KB 이하이어야 합니다."
+                                            )}
+                                        </span>
 
-                                        {!language ? (
-                                            <span className="block w-full font-semibold text-sm text-gray-500">
-                                                Only JPG, JPEG, and PNG formats are allowed.
-                                            </span>
-                                        ) : (
-                                            <span className="block w-full font-semibold text-sm text-gray-500">
-                                                JPG, JPEG, PNG 형식만 허용됩니다.
-                                            </span>
-                                        )}
+                                        <span className="block w-full font-semibold text-sm text-gray-500">
+                                            {!language ? (
+                                                "Only JPG, JPEG, and PNG formats are allowed."
+                                            ) : (
+                                                "JPG, JPEG, PNG 형식만 허용됩니다."
+                                            )}
+                                        </span>
+
                                     </div>
                                 </div>
 
                                 {/* Phần tải ảnh nền cho series video */}
                                 <div className="w-full h-full ">
                                     <div className="w-full py-3">
-                                        {!language ? (
-                                            <h1 className="w-full font-semibold text-xl">
-                                                Horizontal Thumbnail
-                                            </h1>
-                                        ) : (
-                                            <h1 className="w-full font-semibold text-xl">
-                                                가로형 썸네일
-                                            </h1>
-                                        )}
+                                        <h1 className="w-full font-semibold text-xl">
+                                            {!language ? (
+                                                "Horizontal Thumbnail"
+                                            ) : (
+                                                "가로형 썸네일"
+                                            )}
+                                        </h1>
                                     </div>
 
                                     <div className="w-[350px] shadow flex items-center justify-center">
@@ -413,25 +397,22 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                                             <NorthIcon />
                                                         </span>
 
-                                                        {!language ? (
-                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                                Select an image to upload.
-                                                            </span>
-                                                        ) : (
-                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                                업로드할 이미지를 선택하세요.
-                                                            </span>
-                                                        )}
 
-                                                        {!language ? (
-                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                                Or drag the image file here.
-                                                            </span>
-                                                        ) : (
-                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                                또는 이미지를 여기로 드래그하세요.
-                                                            </span>
-                                                        )}
+                                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                            {!language ? (
+                                                                "Select an image to upload."
+                                                            ) : (
+                                                                "업로드할 이미지를 선택하세요."
+                                                            )}
+                                                        </span>
+
+                                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                            {!language ? (
+                                                                "Or drag the image file here."
+                                                            ) : (
+                                                                "또는 이미지를 여기로 드래그하세요."
+                                                            )}
+                                                        </span>
 
                                                         <input
                                                             type="file"
