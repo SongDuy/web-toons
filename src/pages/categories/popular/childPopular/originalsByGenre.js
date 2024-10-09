@@ -3,32 +3,7 @@ import React, { useState, useEffect } from 'react';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
-const dataListGenre = [
-    { id: 1, name: "Drama", nameKorean: "드라마" },
-    { id: 2, name: "Fantasy", nameKorean: "판타지" },
-    { id: 3, name: "Comedy", nameKorean: "코미디" },
-    { id: 4, name: "Action", nameKorean: "액션" },
-    { id: 5, name: "Slice Of Life", nameKorean: "일상" },
-    { id: 6, name: "Romance", nameKorean: "로맨스" },
-    { id: 7, name: "Superhero", nameKorean: "슈퍼히어로" },
-    { id: 8, name: "Sci-Fi", nameKorean: "공상 과학" },
-    { id: 9, name: "Thriller", nameKorean: "스릴러" },
-    { id: 10, name: "Supernatural", nameKorean: "초자연적" },
-    { id: 11, name: "Mystery", nameKorean: "미스터리" },
-    { id: 12, name: "Sports", nameKorean: "스포츠" },
-    { id: 13, name: "Historical", nameKorean: "역사적" },
-    { id: 14, name: "Heartwarming", nameKorean: "따뜻한 이야기" },
-    { id: 15, name: "Horror", nameKorean: "호러" },
-    { id: 16, name: "Informative", nameKorean: "정보성" },
-    { id: 17, name: "School", nameKorean: "학교" },
-    { id: 18, name: "Animals", nameKorean: "동물" },
-    { id: 19, name: "Zombies", nameKorean: "좀비" },
-    { id: 20, name: "Short Story", nameKorean: "단편 소설" },
-
-];
-// Sắp xếp mảng theo tên thể loại theo bảng chữ cái
-dataListGenre.sort((a, b) => a.name.localeCompare(b.name));
+import dataListGenre from "../../../../components/layout/layoutUser/dataListGenre";
 
 const OriginalsByGenrePage = () => {
     const comic = useSelector((state) => state.comic.comic);
@@ -58,7 +33,7 @@ const OriginalsByGenrePage = () => {
                         <li
                             key={item.id}
                             onClick={() => setSelectedOriginalsByGenre(item.name)}
-                            className={`uppercase font-semibold text-sm hover:text-black cursor-pointer flex items-center justify-center ${ selectedOriginalsByGenre === (item.name || "Action") ? 'text-black' : 'text-gray-400'}`}
+                            className={`uppercase font-semibold text-sm hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === (item.name || "Action") ? 'text-black' : 'text-gray-400'}`}
                         >
                             {!language ? item.name : item.nameKorean}
                         </li>
@@ -110,9 +85,17 @@ const OriginalsByGenrePage = () => {
 
                                 <div className="w-full h-[150px] mt-3">
                                     <div className="w-full">
-                                        <span className="block text-gray-400">
-                                            {comicid?.genre1}, {comicid?.genre2}
-                                        </span>
+                                        {(comicid?.genre1 === comicid?.genre2) ?
+                                            <span className="text-gray-400">
+                                                {!language ? comicid?.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid?.genre1.toLowerCase())[0]?.nameKorean}
+                                            </span>
+                                            :
+                                            <span className="text-gray-400 text-sm">
+                                                {!language ? comicid?.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid?.genre1.toLowerCase())[0]?.nameKorean}
+                                                {`, `}
+                                                {!language ? comicid?.genre2 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid?.genre2.toLowerCase())[0]?.nameKorean}
+                                            </span>
+                                        }
                                     </div>
 
 
@@ -168,9 +151,17 @@ const OriginalsByGenrePage = () => {
                                                 </span>
                                             </div>
                                             <div className="w-[420px] mt-auto mb-auto overflow-hidden">
-                                                <span className="text-gray-400 text-sm">
-                                                    {item.genre1}, {item.genre2}
-                                                </span>
+                                                {(item.genre1 === item.genre2) ?
+                                                    <span className="text-gray-400 text-sm">
+                                                        {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
+                                                    </span>
+                                                    :
+                                                    <span className="text-gray-400 text-sm">
+                                                        {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
+                                                        {`, `}
+                                                        {!language ? item.genre2 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre2.toLowerCase())[0]?.nameKorean}
+                                                    </span>
+                                                }
                                                 <span className="text-md font-semibold line-clamp-1">
                                                     {item.title}
                                                 </span>

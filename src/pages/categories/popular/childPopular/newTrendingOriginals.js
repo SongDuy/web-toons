@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import dataListGenre from "../../../../components/layout/layoutUser/dataListGenre";
 
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import { Link } from "react-router-dom";
@@ -62,7 +63,17 @@ const NewTrendingOriginalsPage = () => {
 
                 <div className="w-full h-[150px] mt-3">
                   <div className="w-full">
-                    <span className="block text-gray-400">{comicid?.genre1}, {comicid?.genre2}</span>
+                    {(comicid?.genre1 === comicid?.genre2) ?
+                      <span className="text-gray-400">
+                        {!language ? comicid?.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid?.genre1.toLowerCase())[0]?.nameKorean}
+                      </span>
+                      :
+                      <span className="text-gray-400 text-sm">
+                        {!language ? comicid?.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid?.genre1.toLowerCase())[0]?.nameKorean}
+                        {`, `}
+                        {!language ? comicid?.genre2 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid?.genre2.toLowerCase())[0]?.nameKorean}
+                      </span>
+                    }
                   </div>
 
                   <div className="w-full h-[75px] overflow-hidden">
@@ -114,9 +125,17 @@ const NewTrendingOriginalsPage = () => {
                           </span>
                         </div>
                         <div className="w-[420px] mt-auto mb-auto overflow-hidden">
-                          <span className="text-gray-400 text-sm">
-                            {item.genre1}, {item.genre2}
-                          </span>
+                          {(item.genre1 === item.genre2) ?
+                            <span className="text-gray-400 text-sm">
+                              {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
+                            </span>
+                            :
+                            <span className="text-gray-400 text-sm">
+                              {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
+                              {`, `}
+                              {!language ? item.genre2 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre2.toLowerCase())[0]?.nameKorean}
+                            </span>
+                          }
                           <span className="text-md font-semibold line-clamp-1">
                             {item.title}
                           </span>

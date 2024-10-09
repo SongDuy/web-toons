@@ -16,6 +16,7 @@ import comicFireBase from '../../common/services/Comic.services';
 import { Link } from "react-router-dom";
 import userFireBase from '../../common/services/User.services';
 import FollowFireBase from '../../common/services/Follow.services';
+import dataListGenre from "../../components/layout/layoutUser/dataListGenre";
 
 const CreatorChannelPage = () => {
 
@@ -268,13 +269,24 @@ const CreatorChannelPage = () => {
                                                     </div>
 
                                                     <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                                                        <div className="w-[200px] overflow-hidden ">
+                                                        <div className="w-[250px] overflow-hidden ">
                                                             <span className="w-full text-lg font-semibold line-clamp-1">
                                                                 {item.title}
                                                             </span>
-                                                            <span className="w-full text-[15px] line-clamp-1">
+                                                            {(item.genre1 === item.genre2) ?
+                                                                <span className="w-full text-[15px] line-clamp-1">
+                                                                    {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
+                                                                </span>
+                                                                :
+                                                                <span className="w-full text-[15px] line-clamp-1">
+                                                                    {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
+                                                                    {`, `}
+                                                                    {!language ? item.genre2 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre2.toLowerCase())[0]?.nameKorean}
+                                                                </span>
+                                                            }
+                                                            {/* <span className="w-full text-[15px] line-clamp-1">
                                                                 {item.genre1}
-                                                            </span>
+                                                            </span> */}
                                                         </div>
 
                                                     </div>

@@ -15,7 +15,7 @@ import { auth } from "../../common/themes/firebase";
 import VideoFireBase from "../../common/services/Video.services";
 import comicFireBase from "../../common/services/Comic.services";
 import { Link } from "react-router-dom";
-
+import dataListGenre from "../../components/layout/layoutUser/dataListGenre";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import userFireBase from "../../common/services/User.services";
@@ -345,13 +345,21 @@ const MyChannelPage = () => {
                           </div>
 
                           <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                            <div className="w-[200px] overflow-hidden ">
+                            <div className="w-[250px] overflow-hidden ">
                               <span className="w-full text-lg font-semibold line-clamp-1">
-                                {item.title}
+                                {item.title} kk  kk  k k k kk  kk  kk k  k kk k 
                               </span>
-                              <span className="w-full text-[15px] line-clamp-1">
-                                {item.genre1}
-                              </span>
+                              {(item.genre1 === item.genre2) ?
+                                <span className="w-full border text-[15px] line-clamp-1">
+                                  {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
+                                </span>
+                                :
+                                <span className="w-full border text-[15px] line-clamp-1">
+                                  {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
+                                  {`, `}
+                                  {!language ? item.genre2 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre2.toLowerCase())[0]?.nameKorean}
+                                </span>
+                              }
                             </div>
                           </div>
                         </Link>
