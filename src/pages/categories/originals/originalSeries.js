@@ -514,9 +514,11 @@ const OriginalSeriesPage = () => {
                     <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
                       Up
                     </span>
-                    <span className="text-xl font-semibold flex items-center">
+
+                    {/* <span className="text-xl font-semibold flex items-center">
                       EVERY MONDAY
-                    </span>
+                      매주 월요일
+                    </span> */}
                   </div>
                   <div className="w-full">
                     <span className="">{comicid.summary}</span>

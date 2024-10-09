@@ -160,7 +160,15 @@ const OriginalsPage = () => {
                                         aria-haspopup="true"
                                         onClick={handleToggleOriginals}
                                     >
-                                        {selectedMenuOriginalList}
+                                        <span>
+                                            {!language ?
+                                                <span>
+                                                    {selectedMenuOriginalList}
+                                                </span>
+                                            :
+                                                "인기순"
+                                            }
+                                        </span>
                                     </button>
 
                                     {/* Originals Menu */}
@@ -193,9 +201,9 @@ const OriginalsPage = () => {
                                                             <MenuItem onClick={handleCloseOriginals}>
                                                                 <span
                                                                     onClick={() => setSelectedMenuOriginalList("by Popularity")}
-                                                                    className={`w-full h-full ${selectedMenuOriginalList === "by Popularity" ? "text-yellow-500" : ""}`}
+                                                                    className={`w-full h-full ${selectedMenuOriginalList === ("by Popularity") ? "text-yellow-500" : ""}`}
                                                                 >
-                                                                    {!language ? <span>by Popularity</span> : <span> 인기도 기준으로 </span>}
+                                                                    {!language ? <span>by Popularity</span> : <span> 인기순 </span>}
                                                                 </span>
                                                             </MenuItem>
 
@@ -204,7 +212,7 @@ const OriginalsPage = () => {
                                                                     onClick={() => setSelectedMenuOriginalList("by Likes")}
                                                                     className={`w-full h-full ${selectedMenuOriginalList === "by Likes" ? "text-yellow-500" : ""}`}
                                                                 >
-                                                                    {!language ? <span> by Likes </span> : <span> 좋아요 기준으로 </span>}
+                                                                    {!language ? <span> by Likes </span> : <span> 좋아요순 </span>}
                                                                 </span>
                                                             </MenuItem>
 
@@ -213,7 +221,7 @@ const OriginalsPage = () => {
                                                                     onClick={() => setSelectedMenuOriginalList("by Date")}
                                                                     className={`w-full h-full ${selectedMenuOriginalList === "by Date" ? "text-yellow-500" : ""}`}
                                                                 >
-                                                                    {!language ? <span> by Date </span> : <span> 날짜별로 </span>}
+                                                                    {!language ? <span> by Date </span> : <span> 날짜순 </span>}
                                                                 </span>
                                                             </MenuItem>
                                                             {/* Add more menu items here */}
@@ -324,7 +332,7 @@ const OriginalsPage = () => {
                                                     {/*Trong component React của bạn */}
                                                     <div className="w-full h-[30px]">
                                                         <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
-                                                        {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
+                                                            {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
                                                         </span>
                                                     </div>
 

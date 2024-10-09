@@ -240,7 +240,7 @@ const Delete = () => {
                     &nbsp;&nbsp; 삭제되면 복구할 수 없습니다.
                   </span>)
                 }
-               
+
               </li>
             </ul>
           </div>
@@ -255,22 +255,22 @@ const Delete = () => {
                 <CheckIcon />
               </button>
               {!language ?
-                  (<span className="ml-2"> I understand and want to delete my account. </span>)
-                  :
-                  (<span className="ml-2"> 이해했으며 내 계정을 삭제하고 싶습니다. </span>)
-                }
-               
+                (<span className="ml-2"> I understand and want to delete my account. </span>)
+                :
+                (<span className="ml-2"> 이해했으며 내 계정을 삭제하고 싶습니다. </span>)
+              }
+
             </div>
 
             <div className="w-full mt-[60px] flex gap-3 items-center justify-center">
               <Link to={`/`}>
                 <button className="w-[240px] h-[50px] bg-green-500 rounded-full shadow text-white font-semibold">
-                  
+
                   {!language ?
-                  (<span className="ml-2"> Keep My Account </span>)
-                  :
-                  (<span className="ml-2"> 내 계정을 유지합니다 </span>)
-                }
+                    (<span className="ml-2"> Keep My Account </span>)
+                    :
+                    (<span className="ml-2"> 내 계정을 유지합니다 </span>)
+                  }
                 </button>
               </Link>
 
@@ -280,7 +280,7 @@ const Delete = () => {
                 disabled={!isChecked}
                 onClick={handleClickOpen}
               >
-               
+
                 {!language ?
                   (<span className="ml-2">  Delete My Account </span>)
                   :
@@ -322,9 +322,20 @@ const Delete = () => {
           </DialogContent>
         }
         <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={handleClose}>
+            {!language ?
+              "Disagree"
+              :
+              "비동의"
+            }
+          </Button>
           <Button onClick={deleteAccount} autoFocus>
             Agree
+            {!language ?
+              "Agree"
+              :
+              "동의"
+            }
           </Button>
         </DialogActions>
       </Dialog>

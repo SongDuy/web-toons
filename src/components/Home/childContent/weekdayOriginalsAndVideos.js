@@ -124,15 +124,11 @@ const WeekdayOriginalsAndVideosPage = () => {
                         aria-haspopup="true"
                         onClick={handleToggle}
                     >
-                        <span className='w-[100px] h-full border-l-2 pl-10 uppercase font-semibold text-md text-gray-400 hover:text-yellow-500 flex items-center justify-center'>
+                        <span className='w-[120px] h-full border-l-2 pl-10 uppercase font-semibold text-md text-gray-400 hover:text-yellow-500 flex items-center justify-center'>
                             {!language ?
-                                <span>
-                                    More
-                                </span>
+                                "More"
                                 :
-                                <span>
-                                    더
-                                </span>
+                                "더보기"
                             }
 
                             <NavigateNextIcon />
@@ -169,13 +165,9 @@ const WeekdayOriginalsAndVideosPage = () => {
                                                 <MenuItem onClick={handleClose}>
 
                                                     {!language ?
-                                                        <span>
-                                                            Originals
-                                                        </span>
+                                                            "Originals"
                                                         :
-                                                        <span>
-                                                            오리지널
-                                                        </span>
+                                                            "오리지널"
                                                     }
                                                 </MenuItem>
                                             </Link>

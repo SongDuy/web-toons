@@ -22,7 +22,7 @@ const Creators = () => {
         setloading(false);
 
         const Follow = await FollowFireBase.getbyid(Account?.uid);
-        
+
         if (Follow.success) {
           const Follows = await Promise.all(
             Follow?.follow?.map(async (item) => {
@@ -60,13 +60,13 @@ const Creators = () => {
               );
               await FollowFireBase.Delete(item);
             }
-          } catch (error) {}
+          } catch (error) { }
         })
       );
       setreplay(true);
 
       setloading(true);
-    } catch (error) {}
+    } catch (error) { }
   };
   const getidSubscribed = (id) => {
     if (!checkFollow.includes(id)) {
@@ -86,6 +86,9 @@ const Creators = () => {
       setALLFollow(!ALLFollow);
     }
   };
+
+  //Lấy ngôn ngữ
+  const language = useSelector(state => state.hidden.language);
   return (
     <div>
       {loading ? (
@@ -94,8 +97,8 @@ const Creators = () => {
 
           {Creators.length === 0 ? (
             <NotfoundAcount
-              page="creators"
-              titlepage="Start following your favorite creators now."
+              page={!language ? "No creators." : "팔로우하는 창작자가 없습니다. "}
+              titlepage={!language ? "Start following your favorite creators now." : "지금 좋아하는 창작자를 팔로우하세요."}
             />
           ) : (
             <div className="w-full h-full bg-gray-100">
@@ -103,7 +106,12 @@ const Creators = () => {
                 <div className="py-[10px] flex-row justify-center items-center container mx-auto my-auto">
                   <div className="  m-2 flex justify-between ">
                     <span className="font-semibold text-lg text-black">
-                      CREATORS
+
+                      {!language ?
+                        "CREATORS"
+                        :
+                        "창작자"
+                      }
                     </span>
                     {EditFollow ? (
                       <div className="flex">
@@ -124,20 +132,35 @@ const Creators = () => {
                           className="font-semibold text-base     mr-2 ml-1 p-1 rounded-full text-gray-400"
                           onClick={getALLSubscribed}
                         >
-                          Select All
+                          {!language ?
+                            "  Select All"
+                            :
+                            "모두 선택"
+                          }
+
                         </button>
 
                         <button
                           className="font-semibold text-basg text-black border-gray-400 border py-2 px-7 rounded-full mr-5 ml-3"
                           onClick={() => HandleDelete()}
                         >
-                          Delete
+
+                          {!language ?
+                            "Delete"
+                            :
+                            "삭제"
+                          }
                         </button>
                         <button
                           className="font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
                           onClick={() => setEditFollow(!EditFollow)}
                         >
-                          Cancel
+
+                          {!language ?
+                            "Cancel"
+                            :
+                            "취소"
+                          }
                         </button>
                       </div>
                     ) : (
@@ -145,7 +168,11 @@ const Creators = () => {
                         className="font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
                         onClick={() => setEditFollow(!EditFollow)}
                       >
-                        Edit
+                        {!language ?
+                          "Edit"
+                          :
+                          "편집"
+                        }
                       </button>
                     )}
                   </div>
@@ -154,11 +181,10 @@ const Creators = () => {
                       {Creators?.map((item) => {
                         return (
                           <button
-                            className={` w-full h-full border-2 ${
-                              checkFollow?.includes(item.id)
-                                ? "border-emerald-400"
-                                : ""
-                            }  relative`}
+                            className={` w-full h-full border-2 ${checkFollow?.includes(item.id)
+                              ? "border-emerald-400"
+                              : ""
+                              }  relative`}
                             key={item?.id}
                             onClick={() => getidSubscribed(item.id)}
                           >
@@ -172,7 +198,12 @@ const Creators = () => {
                             </p>
 
                             <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
-                              Update
+
+                              {!language ?
+                                "Update"
+                                :
+                                "업데이트"
+                              }
                             </p>
 
                             <p className="absolute top-[65%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
@@ -205,9 +236,16 @@ const Creators = () => {
                               {item?.name}
                             </p>
 
+
                             <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
-                              Update
+                              {!language ?
+                                "Update"
+                                :
+                                "업데이트"
+                              }
                             </p>
+
+
                           </button>
                         );
                       })}

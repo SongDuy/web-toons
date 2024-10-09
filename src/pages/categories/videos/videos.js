@@ -190,7 +190,7 @@ const VideosPage = () => {
                                                                     onClick={() => setSelectedMenuVideoList("by Popularity")}
                                                                     className={`w-full h-full ${selectedMenuVideoList === "by Popularity" ? "text-yellow-500" : ""}`}
                                                                 >
-                                                                    {!language ? <span>by Popularity</span> : <span> 인기도 기준으로 </span>}
+                                                                    {!language ? <span>by Popularity</span> : <span> 인기순 </span>}
                                                                 </span>
                                                             </MenuItem>
 
@@ -199,14 +199,14 @@ const VideosPage = () => {
                                                                     onClick={() => setSelectedMenuVideoList("by Likes")}
                                                                     className={`w-full h-full ${selectedMenuVideoList === "by Likes" ? "text-yellow-500" : ""}`}
                                                                 >
-                                                                    {!language ? <span> by Likes </span> : <span> 좋아요 기준으로 </span>}
+                                                                    {!language ? <span> by Likes </span> : <span> 좋아요순 </span>}
                                                                 </span>
                                                             </MenuItem>
 
                                                             <MenuItem onClick={handleCloseVideos}>
                                                                 <span
                                                                     onClick={() => setSelectedMenuVideoList("by Date")}
-                                                                    className={`w-full h-full ${selectedMenuVideoList === "by Date" ? "text-yellow-500" : ""}`}
+                                                                    className={`w-full h-full ${selectedMenuVideoList === "날짜순" ? "text-yellow-500" : ""}`}
                                                                 >
                                                                     {!language ? <span> by Date </span> : <span> 날짜별로 </span>}
                                                                 </span>

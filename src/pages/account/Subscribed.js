@@ -45,7 +45,7 @@ const Subscribed = () => {
         if (Account?.checkage) {
           const age = Account?.birthday
             ? new Date(Date.now())?.getFullYear() -
-              new Date(Account.birthday)?.getFullYear()
+            new Date(Account.birthday)?.getFullYear()
             : 15;
 
           const lg = await dispatch(getAllComic(age));
@@ -92,17 +92,17 @@ const Subscribed = () => {
                 ? await comicFireBase.getbyid(sub.idcomic)
                 : await VideoFireBase.getbyid(sub.idvideo);
 
-                sub?.idcomic
+              sub?.idcomic
                 ? await comicFireBase.update(
-                    { totalSubscribed: comicid.totalSubscribed - 1 },
-                    sub.idcomic
-                  )
+                  { totalSubscribed: comicid.totalSubscribed - 1 },
+                  sub.idcomic
+                )
                 : await VideoFireBase.update(
-                    { totalSubscribed: comicid.totalSubscribed - 1 },
-                    sub.idvideo
-                  );
+                  { totalSubscribed: comicid.totalSubscribed - 1 },
+                  sub.idvideo
+                );
               await SubscribeFireBase.Delete(item);
-              setSubscribed(Subscribed?.filter(item=>item?.idcomic?item.idcomic!==sub.idcomic:item.idvideo!==sub.idvideo))
+              setSubscribed(Subscribed?.filter(item => item?.idcomic ? item.idcomic !== sub.idcomic : item.idvideo !== sub.idvideo))
             }
           } catch (error) {
           }
@@ -110,7 +110,7 @@ const Subscribed = () => {
       );
 
       setloading(true);
-    } catch (error) {}
+    } catch (error) { }
   };
   const getidSubscribed = (id) => {
     if (!checkSubcribed.includes(id)) {
@@ -132,6 +132,10 @@ const Subscribed = () => {
       setALLSubcribed(!ALLSubcribed);
     }
   };
+
+  //Lấy ngôn ngữ
+  const language = useSelector(state => state.hidden.language);
+
   return (
     <>
       {loading ? (
@@ -140,16 +144,23 @@ const Subscribed = () => {
 
           {Subscribed.length === 0 ? (
             <NotfoundAcount
-              page="Subscribed"
-              titlepage="Start following your favorite creators now."
+              page={!language ? "No subscriptions." : "구독한 콘텐츠가 없습니다."}
+              titlepage={!language ? "You haven’t subscribed to any series." : "구독한 콘텐츠가 없습니다."}
             />
           ) : (
             <div className="w-full h-full bg-gray-100">
               <div className="py-[10px] flex-row justify-center items-center container mx-auto my-auto">
                 <div className="  m-2 flex justify-between ">
-                  <span className="font-semibold text-lg text-black">
-                    ORIGINALS
-                  </span>
+                  {!language ?
+                    <h1 className="font-semibold text-lg text-black">
+                      ORIGINALS
+                    </h1>
+                    :
+                    <h1 className="font-semibold text-lg text-black">
+                      오리지널
+                    </h1>
+                  }
+
                   {EditSubscribed ? (
                     <div className="flex">
                       <button
@@ -169,20 +180,32 @@ const Subscribed = () => {
                         className="font-semibold text-base     mr-2 ml-1 p-1 rounded-full text-gray-400"
                         onClick={getALLSubscribed}
                       >
-                        Select All
+                        {!language ?
+                          "  Select All"
+                          :
+                          "모두 선택"
+                        }
                       </button>
 
                       <button
                         className="font-semibold text-basg text-black border-gray-400 border py-2 px-7 rounded-full mr-5 ml-3"
                         onClick={() => HandleDelete()}
                       >
-                        Delete
+                        {!language ?
+                          "Delete"
+                          :
+                          "삭제"
+                        }
                       </button>
                       <button
                         className="font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
                         onClick={() => setEditSubscribed(!EditSubscribed)}
                       >
-                        Cancel
+                        {!language ?
+                          "Cancel"
+                          :
+                          "취소"
+                        }
                       </button>
                     </div>
                   ) : (
@@ -190,7 +213,11 @@ const Subscribed = () => {
                       className="font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
                       onClick={() => setEditSubscribed(!EditSubscribed)}
                     >
-                      Edit
+                      {!language ?
+                        "Edit"
+                        :
+                        "편집"
+                      }
                     </button>
                   )}
                 </div>
@@ -199,11 +226,10 @@ const Subscribed = () => {
                     {Subscribed?.map((item) => {
                       return (
                         <button
-                          className={` w-full h-full border-2 ${
-                            checkSubcribed?.includes(item.id)
-                              ? "border-emerald-400"
-                              : ""
-                          }  relative`}
+                          className={` w-full h-full border-2 ${checkSubcribed?.includes(item.id)
+                            ? "border-emerald-400"
+                            : ""
+                            }  relative`}
                           key={item?.id}
                           onClick={() => getidSubscribed(item.id)}
                         >
@@ -219,7 +245,11 @@ const Subscribed = () => {
                             {item?.Author}
                           </p>
                           <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
-                            Update
+                            {!language ?
+                              "Update"
+                              :
+                              "업데이트"
+                            }
                           </p>
                           <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
                             {monthNames[new Date(item.createTime).getMonth()]}{" "}
@@ -259,7 +289,11 @@ const Subscribed = () => {
                             {item?.Author}
                           </p>
                           <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
-                            Update
+                            {!language ?
+                              "Update"
+                              :
+                              "업데이트"
+                            }
                           </p>
                           <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
                             {monthNames[new Date(item.createTime).getMonth()]}{" "}

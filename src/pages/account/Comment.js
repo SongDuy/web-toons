@@ -1,4 +1,4 @@
-import React, {  useEffect } from "react";
+import React, { useEffect } from "react";
 import Nav from "../../components/Account/nav";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
@@ -10,23 +10,23 @@ import { idusercomment } from "../../common/store/Comment";
 import CommentFireBase from "../../common/services/Comment.services";
 const Comment = () => {
   const gcomment = useSelector(state => state.Comment.commentid);
-    const Account = useSelector(state => state.Account.Account);
+  const Account = useSelector(state => state.Account.Account);
 
-    //Xem các tập tiếp theo trong series
-    const dispatch = useDispatch();
+  //Xem các tập tiếp theo trong series
+  const dispatch = useDispatch();
   useEffect(() => {
-    const getcomment=async ()=>{
+    const getcomment = async () => {
       try {
-        if (Account && Account.uid) { 
+        if (Account && Account.uid) {
           const comments = await dispatch(idusercomment(Account.uid));
           unwrapResult(comments);
         }
       } catch (error) {
-        
+
       }
     }
     getcomment()
-  }, [Account,dispatch]);
+  }, [Account, dispatch]);
   const formatTimeDifference = (create_time) => {
     const time = new Date();
     const itemTime = new Date(create_time);
@@ -53,26 +53,33 @@ const Comment = () => {
     } else {
       return 'Just now';
     }
-};
-const hanledelete= async (id)=>{
+  };
+  const hanledelete = async (id) => {
     try {
       let result = window.confirm("Do you want to delete this comment?");
-      if(result){
-      await CommentFireBase.Delete(id)
-      const comments = await dispatch(idusercomment(Account.uid));
-      unwrapResult(comments);
+      if (result) {
+        await CommentFireBase.Delete(id)
+        const comments = await dispatch(idusercomment(Account.uid));
+        unwrapResult(comments);
       }
     } catch (error) {
-      
+
     }
-}
+  }
+
+  //Lấy ngôn ngữ
+  const language = useSelector(state => state.hidden.language);
+
   return (
     <div>
       <div className="w-full h-full bg-gray-100">
         <Nav />
 
         {gcomment?.Comment?.length === 0 ? (
-          <NotfoundAcount page="comments." titlepage="You haven't posted any comments yet." />
+          <NotfoundAcount
+            page={!language ? "No comments." : "댓글이 없습니다. "}
+            titlepage={!language ? "You haven't posted any comments yet." : "아직 댓글을 작성하지 않았습니다."}
+          />
         ) : (
           <div className="w-full h-full bg-gray-100">
             <div className="py-[30px] flex-row justify-center items-center container mx-auto my-auto">
@@ -108,7 +115,7 @@ const hanledelete= async (id)=>{
                           />
                           {item.dislike}
                         </button>
-                        <button className="border border-gray-300 py-1 px-4 " onClick={()=>hanledelete(item.idcomment)}>
+                        <button className="border border-gray-300 py-1 px-4 " onClick={() => hanledelete(item.idcomment)}>
                           {" "}
                           <DeleteIcon sx={{ fontSize: 20 }} />
                         </button>

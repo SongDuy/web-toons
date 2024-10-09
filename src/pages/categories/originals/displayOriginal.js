@@ -943,7 +943,7 @@ const DisplayOriginalPage = () => {
 
                               <div className="w-[230px] mt-auto mb-auto overflow-hidden">
                                 <span className="text-gray-400 text-sm">
-                                  {item.genre1}
+                                  {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
                                 </span>
                                 <span className="text-md font-semibold line-clamp-1">
                                   {item.title}

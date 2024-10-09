@@ -410,7 +410,7 @@ const Account = () => {
                       </span>
                       :
                       <span className="font-semibold text-base text-gray-400 ">
-                        최신 업데이트 및 뉴스 수신을 위한 이메일 주소 입력하세요.
+                        새로운 업데이트 및 최신 소식을 받기 위해 이메일 주소를 입력하세요.
                       </span>
                     }
                   </div>

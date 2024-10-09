@@ -169,7 +169,7 @@ const LoginPage = ({ closeModal }) => {
                             {!language ?
                                 " Continue"
                                 :
-                                "계속해요."
+                                "계속하기"
                             }
                         </button>
 
@@ -179,7 +179,7 @@ const LoginPage = ({ closeModal }) => {
                                 {!language ?
                                     "Don't have an account?"
                                     :
-                                    "계정이 없나요?"
+                                    "계정이 없으신가요?"
                                 }
                             </span>
 
@@ -191,7 +191,7 @@ const LoginPage = ({ closeModal }) => {
                                 {!language ?
                                     " Sign up"
                                     :
-                                    "등록해요"
+                                    "가입하세요"
                                 }
 
                             </Link>
@@ -206,7 +206,7 @@ const LoginPage = ({ closeModal }) => {
                             {!language ?
                                 "OR"
                                 :
-                                "OR"
+                                "또는"
                             }
                         </span>
                         <hr className="flex-1 border-t border-gray-300" />
