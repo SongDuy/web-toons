@@ -21,7 +21,7 @@ const EpisodeOriginal = () => {
     const [loading, setloading] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+
     const monthNames = [
         "January",
         "February",
@@ -58,7 +58,7 @@ const EpisodeOriginal = () => {
                 setloading(false)
 
                 await comicFireBase.Deletechap(id.id, idchap)
-                await comicFireBase.update({totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 1},id.id );
+                await comicFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 1 }, id.id);
                 const chap = await dispatch(getchaptersComic(id.id))
                 unwrapResult(chap)
                 setloading(true)
@@ -67,6 +67,10 @@ const EpisodeOriginal = () => {
 
         }
     }
+
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <>
             {!loading ? <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5 }}>
@@ -80,18 +84,31 @@ const EpisodeOriginal = () => {
                                 <div className="w-full h-full flex items-center">
                                     <h1 className="font-semibold text-xl">
                                         <Link to={`/dashboard`} className="hover:text-yellow-500">
-                                            Original Series
+
+                                            {!language ?
+                                                "Original Series"
+                                                :
+                                                "오리지널 시리즈"
+                                            }
                                         </Link>
 
                                         <NavigateNextIcon sx={{ fontSize: 30 }} />
 
-                                        Episode Management
+                                        {!language ?
+                                            "Episode Management"
+                                            :
+                                            "에피소드 관리"
+                                        }
                                     </h1>
 
                                     <div className="ml-auto flex gap-5">
-                                        <button onClick={() =>{ navigate(`/publish/original/${id.id}`);  dispatch(setcurrentStepOriginal(2))}} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
+                                        <button onClick={() => { navigate(`/publish/original/${id.id}`); dispatch(setcurrentStepOriginal(2)) }} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
                                             <AddIcon />
-                                            Add Episode
+                                            {!language ?
+                                                "Add Episode"
+                                                :
+                                                "에피소드 추가"
+                                            }
                                         </button>
                                     </div>
 
@@ -119,12 +136,20 @@ const EpisodeOriginal = () => {
                                                             </span>
 
                                                             <div className="flex ml-auto gap-2">
-                                                                <button  onClick={() =>{ navigate(`/publish/original/${id.id}/${item.id}`);      dispatch(setcurrentStepOriginal(2)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                                                    Edit
+                                                                <button onClick={() => { navigate(`/publish/original/${id.id}/${item.id}`); dispatch(setcurrentStepOriginal(2)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                                                    {!language ?
+                                                                        "Edit"
+                                                                        :
+                                                                        "편집"
+                                                                    }
                                                                 </button>
 
                                                                 <button onClick={() => handledelete(item.id)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                                                    Delete
+                                                                    {!language ?
+                                                                        "Delete"
+                                                                        :
+                                                                        "삭제"
+                                                                    }
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -142,17 +167,32 @@ const EpisodeOriginal = () => {
 
                                                         <div className="flex gap-5">
                                                             <span className="text-gray-500 text-sm flex gap-2">
-                                                                Published  {monthNames[new Date(item.createTime).getMonth()]}{" "}
+                                                                {!language ?
+                                                                    "Published"
+                                                                    :
+                                                                    "발행됨"
+                                                                }
+                                                                {monthNames[new Date(item.createTime).getMonth()]}{" "}
                                                                 {new Date(item.createTime).getDate()},
                                                                 {new Date(item.createTime)?.getFullYear()}
                                                             </span>
 
                                                             <span className="text-gray-500 text-sm">
-                                                                Likes {item.likes}
+                                                                {!language ?
+                                                                    "Likes"
+                                                                    :
+                                                                    "좋아요"
+                                                                }
+                                                                {item.likes}
                                                             </span>
 
                                                             <span className="text-gray-500 text-sm">
-                                                                Views {item.views}
+                                                                {!language ?
+                                                                    "Views"
+                                                                    :
+                                                                    "조회수"
+                                                                }
+                                                                {item.views}
                                                             </span>
                                                         </div>
                                                     </div>

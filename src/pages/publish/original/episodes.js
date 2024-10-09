@@ -77,7 +77,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
               setviews(chapid?.views);
               setcheck(chapid?.check);
               setURLFile(chapid?.fileURL);
-              setURLMusic(chapid?.audioUrl?chapid?.audioUrl:"")
+              setURLMusic(chapid?.audioUrl ? chapid?.audioUrl : "")
               setnum(chapid?.num)
             }
             unwrapResult(comicID);
@@ -179,7 +179,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
           docid,
           "horizontalThumbnail"
         );
-        fileMusic?.name&& await comicFireBase.uploadToFirebaseep(
+        fileMusic?.name && await comicFireBase.uploadToFirebaseep(
           fileMusic,
           fileMusic.name,
           Account.uid,
@@ -230,14 +230,14 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
             id.idchap,
             "horizontalThumbnail"
           ));
-          fileMusic?.name&& await comicFireBase.uploadToFirebaseep(
-            fileMusic,
-            fileMusic.name,
-            Account.uid,
-            id.id,
-            id.idchap,
-            "audioUrl"
-          );
+        fileMusic?.name && await comicFireBase.uploadToFirebaseep(
+          fileMusic,
+          fileMusic.name,
+          Account.uid,
+          id.id,
+          id.idchap,
+          "audioUrl"
+        );
         fileURL?.name &&
           (await comicFireBase.uploadToFirebaseep(
             fileURL,
@@ -259,7 +259,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
           views,
           createTime: new Date(Date.now()),
         };
-        fileMusic?.name&& await comicFireBase.uploadToFirebaseep(
+        fileMusic?.name && await comicFireBase.uploadToFirebaseep(
           fileMusic,
           fileMusic.name,
           Account.uid,
@@ -293,8 +293,8 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
     setURLFile()
   };
   const handleDeleteMusic = () => {
- setURLMusic('')
- setMusicURL()
+    setURLMusic('')
+    setMusicURL()
   };
   //Lấy ngôn ngữ
   const language = useSelector((state) => state.hidden.language);
@@ -480,7 +480,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
 
                     <div className="flex mt-3">
                       <button className="w-[90px] h-[40px] border-2 bg-white flex items-center justify-center">
-                     {id.idchap ?num:  chapters?.chaps?.length + 1}
+                        {id.idchap ? num : chapters?.chaps?.length + 1}
                       </button>
                       <input
                         className="w-full h-[40px] px-2 border-r-2 border-t-2 border-b-2 outline-none bg-white"
@@ -572,7 +572,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                           </span>
                         ) : (
                           <span className="font-semibold text-gray-500">
-                           파일 렌더링
+                            파일 렌더링
                           </span>
                         ))}
                     </div>
@@ -648,7 +648,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     )}
 
                     <div className="w-full h-[40px] flex items-center gap-3 mt-3">
-                    <div className="relative">
+                      <div className="relative">
                         {!language ? (
                           <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
                             Select File To Upload
@@ -668,11 +668,11 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                       </div>
 
                       {!language ? (
-                        <button onClick={()=>handleDeleteMusic()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                        <button onClick={() => handleDeleteMusic()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
                           Delete All
                         </button>
                       ) : (
-                        <button onClick={()=>handleDeleteMusic()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                        <button onClick={() => handleDeleteMusic()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
                           모두 삭제
                         </button>
                       )}
@@ -681,37 +681,37 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
 
                     {/* Hiện tên file âm thanh */}
                     <div className="w-full h-[50px] bg-white mt-3 flex items-center justify-center">
-                     {!URLMusic?
-                     <span className="font-semibold text-gray-500">
-                      {!language ? "render files.":"파일 렌더링"}
-                      </span> 
-                      :
-                     <div>
-                  
-                      {!isMusic ?
-                    <button
-                      className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
-                      onClick={() => setIsMusic(true)}
-                    >
-                      <MusicNoteIcon />
-                    </button>
-                    :
-                    <button
-                      className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
-                      onClick={() => setIsMusic(false)}
-                    >
-                      <MusicOffIcon />
-                    </button>
-                  }
-                   <ReactPlayer
-                url={URLMusic}
-                controls={true}
-                width="0%"
-                height="0%"
-                playing={!isMusic}
-              />
-                      </div>
-}
+                      {!URLMusic ?
+                        <span className="font-semibold text-gray-500">
+                          {!language ? "render files." : "파일 렌더링"}
+                        </span>
+                        :
+                        <div>
+
+                          {!isMusic ?
+                            <button
+                              className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
+                              onClick={() => setIsMusic(true)}
+                            >
+                              <MusicNoteIcon />
+                            </button>
+                            :
+                            <button
+                              className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
+                              onClick={() => setIsMusic(false)}
+                            >
+                              <MusicOffIcon />
+                            </button>
+                          }
+                          <ReactPlayer
+                            url={URLMusic}
+                            controls={true}
+                            width="0%"
+                            height="0%"
+                            playing={!isMusic}
+                          />
+                        </div>
+                      }
                     </div>
                   </div>
 

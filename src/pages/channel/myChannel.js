@@ -15,7 +15,7 @@ import { auth } from "../../common/themes/firebase";
 import VideoFireBase from "../../common/services/Video.services";
 import comicFireBase from "../../common/services/Comic.services";
 import { Link } from "react-router-dom";
-
+import dataListGenre from "../../components/layout/layoutUser/dataListGenre";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import userFireBase from "../../common/services/User.services";
@@ -266,12 +266,12 @@ const MyChannelPage = () => {
                       {Account?.name}
                     </span>
                   </div>
-                  <div className="px-1">
+                  {/* <div className="px-1">
                     <span className="text-[18px] text-yellow-400 text-shadow-black">
                       {!language ? (<span> Commic, video </span>) : (<span> 만화, 동영상 </span>)}
                     </span>
-                  </div>
-                  <div className="px-1 py-4 flex">
+                  </div> */}
+                  <div className="px-1 pt-8 pb-4 flex">
                     <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
                       {!language ? (
                         <span> Original Series: </span>
@@ -345,13 +345,21 @@ const MyChannelPage = () => {
                           </div>
 
                           <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                            <div className="w-[200px] overflow-hidden ">
+                            <div className="w-[250px] overflow-hidden ">
                               <span className="w-full text-lg font-semibold line-clamp-1">
-                                {item.title}
+                                {item.title} kk  kk  k k k kk  kk  kk k  k kk k 
                               </span>
-                              <span className="w-full text-[15px] line-clamp-1">
-                                {item.genre1}
-                              </span>
+                              {(item.genre1 === item.genre2) ?
+                                <span className="w-full border text-[15px] line-clamp-1">
+                                  {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
+                                </span>
+                                :
+                                <span className="w-full border text-[15px] line-clamp-1">
+                                  {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
+                                  {`, `}
+                                  {!language ? item.genre2 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre2.toLowerCase())[0]?.nameKorean}
+                                </span>
+                              }
                             </div>
                           </div>
                         </Link>
@@ -443,7 +451,7 @@ const MyChannelPage = () => {
                     {/* Ô nhập nội dung bài viết */}
                     <div className="w-full mt-5 px-3">
                       <textarea
-                        placeholder="What are you thinking?"
+                        placeholder={!language ? "What are you thinking?" : "무엇을 생각하고 계세요?"}
                         className="w-full h-[160px] rounded-md px-3 py-3 border-2"
                         value={post}
                         onChange={(e) => setpost(e.target.value)}
@@ -509,9 +517,9 @@ const MyChannelPage = () => {
                       onClick={handlepost}
                     >
                       {!language ? (
-                        <span> Post Article </span>
+                        <span>Create Post </span>
                       ) : (
-                        <span> 글 작성 </span>
+                        <span> 포스트 작성 </span>
                       )}
                     </button>
                   </div>

@@ -330,7 +330,6 @@ const Delete = () => {
             }
           </Button>
           <Button onClick={deleteAccount} autoFocus>
-            Agree
             {!language ?
               "Agree"
               :
