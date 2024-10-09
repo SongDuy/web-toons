@@ -28,11 +28,16 @@ const VideosPage = () => {
 
     //Chọn menu cho loại
     const [selectedMenuVideoList, setSelectedMenuVideoList] = useState("by Popularity");
+    const [hiddenMenuVideoList, sethiddenMenuVideoList] = useState("by Popularity");
 
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
     //Chọn nội dung theo thứ
     const [currentDay, setCurrentDay] = useState('');
+    useEffect(() => {
+        sethiddenMenuVideoList(() => !language ? "by Popularity" : "인기순")
+        setSelectedMenuVideoList("by Popularity")
+    }, [language]);
     useEffect(() => {
         const filteredVideosByGenre = Video.Video?.filter(data => data.schedule === currentDay);
         const filteredVideolsByLikes = Video.Video?.filter(data => data.schedule === currentDay).sort((a, b) => b.views - a.views);
@@ -155,7 +160,7 @@ const VideosPage = () => {
                                         aria-haspopup="true"
                                         onClick={handleToggleVideos}
                                     >
-                                        {selectedMenuVideoList} {/* You'll need to define `selectedMenuVideoList` state */}
+                                        {hiddenMenuVideoList} {/* You'll need to define `selectedMenuVideoList` state */}
                                     </button>
 
                                     {/* Videos Menu */}
@@ -187,7 +192,7 @@ const VideosPage = () => {
 
                                                             <MenuItem onClick={handleCloseVideos}>
                                                                 <span
-                                                                    onClick={() => setSelectedMenuVideoList("by Popularity")}
+                                                                    onClick={() => {setSelectedMenuVideoList("by Popularity");sethiddenMenuVideoList( !language ? "by Popularity" : "인기순")}}
                                                                     className={`w-full h-full ${selectedMenuVideoList === "by Popularity" ? "text-yellow-500" : ""}`}
                                                                 >
                                                                     {!language ? <span>by Popularity</span> : <span> 인기순 </span>}
@@ -196,7 +201,7 @@ const VideosPage = () => {
 
                                                             <MenuItem onClick={handleCloseVideos}>
                                                                 <span
-                                                                    onClick={() => setSelectedMenuVideoList("by Likes")}
+                                                                    onClick={() =>  {setSelectedMenuVideoList("by Likes");sethiddenMenuVideoList(   !language ? "by Likes" : "좋아요순")}}
                                                                     className={`w-full h-full ${selectedMenuVideoList === "by Likes" ? "text-yellow-500" : ""}`}
                                                                 >
                                                                     {!language ? <span> by Likes </span> : <span> 좋아요순 </span>}
@@ -205,7 +210,7 @@ const VideosPage = () => {
 
                                                             <MenuItem onClick={handleCloseVideos}>
                                                                 <span
-                                                                    onClick={() => setSelectedMenuVideoList("by Date")}
+                                                                    onClick={() => {setSelectedMenuVideoList("by Likes");sethiddenMenuVideoList(!language ? "by Date" : "날짜순")}}
                                                                     className={`w-full h-full ${selectedMenuVideoList === "날짜순" ? "text-yellow-500" : ""}`}
                                                                 >
                                                                     {!language ? <span> by Date </span> : <span> 날짜별로 </span>}
