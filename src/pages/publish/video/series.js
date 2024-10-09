@@ -473,7 +473,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
 
                                     <input
                                         className="w-full h-[40px] mt-3 bg-white px-3"
-                                        placeholder="Less than 50 characters"
+                                        placeholder={!language ? "Less than 50 characters" : "50자 미만입니다"}
                                         value={valueTitle}
                                         onChange={handleTitle}
                                     />
@@ -492,7 +492,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
 
                                     <textarea
                                         className="w-full h-[300px] mt-3 bg-white px-3 py-2"
-                                        placeholder="Less than 500 characters"
+                                        placeholder={!language ? "Less than 500 characters" : "500자 미만입니다"}
                                         value={valueSummary}
                                         onChange={handleSummary}
                                     />
