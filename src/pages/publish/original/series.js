@@ -235,15 +235,16 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     <span className="mx-3 text-2xl text-white font-bold">1</span>
                                 </div>
 
-                                {!language ? (
-                                    <h1 className="text-black">
-                                        ORIGINAL SERIES
-                                    </h1>
-                                ) : (
-                                    <h1 className="text-black">
-                                        오리지널 시리즈
-                                    </h1>
-                                )}
+
+                                <h1 className="text-black">
+                                    {!language ? (
+                                        " ORIGINAL SERIES"
+                                    ) : (
+                                        "오리지널 시리즈"
+                                    )}
+                                </h1>
+
+
                             </li>
                             <li className="uppercase font-semibold text-md flex items-center justify-center">
                                 <span className="text-gray-400">
@@ -256,9 +257,9 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                 </div>
                                 <h1 className="text-gray-400">
                                     {!language ? (
-                                        <span> ORIGINAL EPISODES</span>
+                                        " ORIGINAL EPISODES"
                                     ) : (
-                                        <span> 원본 에피소드 </span>
+                                        " 원본 에피소드 "
                                     )}
 
                                 </h1>
@@ -273,15 +274,14 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                 {/* Phần tải ảnh đại diện cho series */}
                                 <div className="w-full h-full">
                                     <div className="w-full py-3">
-                                        {!language ? (
-                                            <span className="w-full font-semibold text-xl">
-                                                Square Thumbnail
-                                            </span>
-                                        ) : (
-                                            <span className="w-full font-semibold text-xl">
-                                                정사각형 썸네일
-                                            </span>
-                                        )}
+
+                                        <span className="w-full font-semibold text-xl">
+                                            {!language ? (
+                                                "Square Thumbnail"
+                                            ) : (
+                                                "정사각형 썸네일"
+                                            )}
+                                        </span>
 
                                     </div>
 
@@ -301,25 +301,21 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                             <NorthIcon />
                                                         </span>
 
-                                                        {!language ? (
-                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                                Select an image to upload.
-                                                            </span>
-                                                        ) : (
-                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                                업로드할 이미지를 선택하세요.
-                                                            </span>
-                                                        )}
+                                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                            {!language ? (
+                                                                " Select an image to upload."
+                                                            ) : (
+                                                                "업로드할 이미지를 선택하세요."
+                                                            )}
+                                                        </span>
 
-                                                        {!language ? (
-                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                                Or drag the image file here.
-                                                            </span>
-                                                        ) : (
-                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                                또는 이미지를 여기로 드래그하세요.
-                                                            </span>
-                                                        )}
+                                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                            {!language ? (
+                                                                "Or drag the image file here."
+                                                            ) : (
+                                                                "또는 이미지를 여기로 드래그하세요."
+                                                            )}
+                                                        </span>
 
                                                         <input
                                                             type="file"
