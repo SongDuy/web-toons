@@ -445,7 +445,7 @@ const CreatorChannelPage = () => {
                 >
                   <CircularProgress />
                 </Box>
-              )}}
+              )}
         </>
     );
 }
