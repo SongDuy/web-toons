@@ -35,6 +35,7 @@ const [hiddenselected, sethiddenSelected] = useState(!language?"All":"모두");
   ;
   useEffect(() => {
     sethiddenSelected(()=>!language?"All":"모두")
+    setSelectedOriginalGenre("All")
   }, [language]);
   const handleToggleOriginals = () => {
     setOpenOriginals((prevOpen) => !prevOpen);

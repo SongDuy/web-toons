@@ -16,16 +16,15 @@ import comicFireBase from '../../common/services/Comic.services';
 import { Link } from "react-router-dom";
 import userFireBase from '../../common/services/User.services';
 import FollowFireBase from '../../common/services/Follow.services';
-
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 const CreatorChannelPage = () => {
 
     // Nhấn nút đăng ký
     const [isFollow, setIsFollow] = useState(false);
 
     const id = useParams();
-    const create = useSelector((state) => state.Account.Account);
     const dispatch = useDispatch();
-
     const [loading, setloading] = useState(false);
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
@@ -34,6 +33,8 @@ const CreatorChannelPage = () => {
     const [Video, setVideo] = useState([]);
     const [comic, setcomic] = useState([]);
     const [iLike, setILike] = useState([]);
+    const [create, setcreate] = useState([]);
+
     // State để lưu chỉ số hiện tại cho mỗi bài viết
     const [currentIndices, setCurrentIndices] = useState({});
     const [Follow, setFollow] = useState([[]]);
@@ -49,8 +50,8 @@ const CreatorChannelPage = () => {
 
                     setVideo(videos.success ? videos?.Video : []);
                     setcomic(comics.success ? comics?.comic : []);
-                    await dispatch(getAccount(id.id));
-
+                    const User=  await userFireBase.getbyid(id.id)
+                    setcreate(User.success?User:[])
                     setposts(post.success ? post?.post : []);
                     if (auth.currentUser) {
                         const Follows = await FollowFireBase.getbychannel(auth.currentUser.uid, id.id)
@@ -152,7 +153,7 @@ const CreatorChannelPage = () => {
     }
     return (
         <>
-            {loading &&
+            {loading ?
                 <div className="w-full h-full pb-10 border bg-gray-100 flex items-center justify-center">
                     <div className="w-[1120px] h-full">
                         <div className="w-full h-full bg-white rounded-lg">
@@ -433,7 +434,18 @@ const CreatorChannelPage = () => {
                         </div>
                     </div>
                 </div>
-            }
+            : (
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    margin: 5,
+                  }}
+                >
+                  <CircularProgress />
+                </Box>
+              )}}
         </>
     );
 }

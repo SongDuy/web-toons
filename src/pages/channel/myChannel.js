@@ -46,7 +46,7 @@ const MyChannelPage = () => {
   useEffect(() => {
     const getpost = async () => {
       try {
-        if (Account) {
+        if (Account.uid) {
           setloading(false);
           const post = await postFireBase.getAllid(Account.uid);
           const pot = await postFireBase.getlike(Account.uid);
