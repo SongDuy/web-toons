@@ -15,6 +15,10 @@ import Box from "@mui/material/Box";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/TextLayer.css"; // Import the text layer CSS
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import MusicOffIcon from '@mui/icons-material/MusicOff';
+import ReactPlayer from "react-player";
+
 const EpisodesOriginalPage = ({ goToPreviousStep }) => {
   // hàm material nút chọn ở mục comment
   const [selectedValue, setSelectedValue] = React.useState("Enable");
@@ -27,7 +31,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
   const comicid = useSelector((state) => state.comic.comicid);
   const [loading, setloading] = useState(false);
   const [fileURL, setfileURL] = useState();
+  const [fileMusic, setMusicURL] = useState();
   const [URLFile, setURLFile] = useState("");
+  const [URLMusic, setURLMusic] = useState("");
   // Tiêu đề tập truyện
   const [valueEpisodeTitle, setValueEpisodeTitle] = useState("");
   const [likes, setlike] = useState(0);
@@ -45,6 +51,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
   const [photos1, setPhotos1] = useState("");
   const [horizontalThumbnail, sethorizontalThumbnail] = useState();
   const chapters = useSelector((state) => state.comic.Chapters);
+  const [isMusic, setIsMusic] = useState(false);
 
   useEffect(() => {
     const get = async () => {
@@ -69,6 +76,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
               setviews(chapid?.views);
               setcheck(chapid?.check);
               setURLFile(chapid?.fileURL);
+              setURLMusic(chapid?.audioUrl?chapid?.audioUrl:"")
             }
             unwrapResult(comicID);
             unwrapResult(chap);
@@ -127,6 +135,14 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
       setfileURL(file);
     }
   };
+  const handleMusicChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      let newPhotos = URL.createObjectURL(file);
+      setURLMusic(newPhotos);
+      setMusicURL(file);
+    }
+  };
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
   }
@@ -160,6 +176,14 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
           id.id,
           docid,
           "horizontalThumbnail"
+        );
+        fileMusic?.name&& await comicFireBase.uploadToFirebaseep(
+          fileMusic,
+          fileMusic.name,
+          Account.uid,
+          id.id,
+          docid,
+          "audioUrl"
         );
         await comicFireBase.uploadToFirebaseep(
           fileURL,
@@ -205,6 +229,14 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
             id.idchap,
             "horizontalThumbnail"
           ));
+          fileMusic?.name&& await comicFireBase.uploadToFirebaseep(
+            fileMusic,
+            fileMusic.name,
+            Account.uid,
+            id.id,
+            id.idchap,
+            "audioUrl"
+          );
         fileURL?.name &&
           (await comicFireBase.uploadToFirebaseep(
             fileURL,
@@ -227,6 +259,14 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
           views,
           createTime: new Date(Date.now()),
         };
+        fileMusic?.name&& await comicFireBase.uploadToFirebaseep(
+          fileMusic,
+          fileMusic.name,
+          Account.uid,
+          id.id,
+          id.idchap,
+          "audioUrl"
+        );
         await comicFireBase.updateep(getdata, id.id, id.idchap);
         navigate("/");
       }
@@ -252,7 +292,10 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
     setfileURL();
     setURLFile()
   };
-
+  const handleDeleteMusic = () => {
+ setURLMusic('')
+ setMusicURL()
+  };
   //Lấy ngôn ngữ
   const language = useSelector((state) => state.hidden.language);
 
@@ -529,7 +572,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                           </span>
                         ) : (
                           <span className="font-semibold text-gray-500">
-                            파일을 표시하다
+                           파일 렌더링
                           </span>
                         ))}
                     </div>
@@ -605,26 +648,31 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     )}
 
                     <div className="w-full h-[40px] flex items-center gap-3 mt-3">
-                      {!language ?
-                        (
-                          <button className="w-[200px] h-[40px] bg-black text-white font-semibold rounded-full">
+                    <div className="relative">
+                        {!language ? (
+                          <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
                             Select File To Upload
                           </button>
-                        )
-                        :
-                        (
-                          <button className="w-[200px] h-[40px] bg-black text-white font-semibold rounded-full">
+                        ) : (
+                          <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
                             업로드할 파일 선택
                           </button>
-                        )
-                      }
+                        )}
+
+                        <input
+                          type="file"
+                          accept="audio/*"
+                          onChange={(e) => handleMusicChange(e)}
+                          className="absolute inset-0 opacity-0 cursor-pointer "
+                        />
+                      </div>
 
                       {!language ? (
-                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                        <button onClick={()=>handleDeleteMusic()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
                           Delete All
                         </button>
                       ) : (
-                        <button className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                        <button onClick={()=>handleDeleteMusic()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
                           모두 삭제
                         </button>
                       )}
@@ -633,9 +681,37 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
 
                     {/* Hiện tên file âm thanh */}
                     <div className="w-full h-[50px] bg-white mt-3 flex items-center justify-center">
-                      <span className="font-semibold text-gray-500">
-                        render files.
-                      </span>
+                     {!URLMusic?
+                     <span className="font-semibold text-gray-500">
+                      {!language ? "render files.":"파일 렌더링"}
+                      </span> 
+                      :
+                     <div>
+                  
+                      {!isMusic ?
+                    <button
+                      className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
+                      onClick={() => setIsMusic(true)}
+                    >
+                      <MusicNoteIcon />
+                    </button>
+                    :
+                    <button
+                      className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
+                      onClick={() => setIsMusic(false)}
+                    >
+                      <MusicOffIcon />
+                    </button>
+                  }
+                   <ReactPlayer
+                url={URLMusic}
+                controls={true}
+                width="0%"
+                height="0%"
+                playing={!isMusic}
+              />
+                      </div>
+}
                     </div>
                   </div>
 

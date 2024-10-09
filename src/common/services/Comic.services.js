@@ -339,7 +339,8 @@ const comicFireBase = {
             const imageKeyMapping = {
               squareThumbnail: "squareThumbnail",
               horizontalThumbnail: "horizontalThumbnail",
-              fileURL: "fileURL"
+              fileURL: "fileURL",
+              audioUrl:"audioUrl"
 
             };
 
