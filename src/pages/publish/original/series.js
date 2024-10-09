@@ -515,7 +515,14 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 displayEmpty
                                                 className="w-full h-[40px] bg-white mt-3 rounded-md"
                                             >
-                                                <MenuItem value="">Select</MenuItem>
+                                                <MenuItem value="">
+                                                    {!language ? (
+                                                        "Select"
+                                                    ) : (
+                                                        "선택"
+                                                    )}
+
+                                                </MenuItem>
                                                 {/* khung nội dung */}
                                                 {dataListGenre.map((item) => (
                                                     <MenuItem key={item.id} value={item.name}>
@@ -545,7 +552,13 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 displayEmpty
                                                 className="w-full h-[40px] bg-white mt-3 rounded-md"
                                             >
-                                                <MenuItem value="">Select</MenuItem>
+                                                <MenuItem value="">
+                                                    {!language ? (
+                                                        "Select"
+                                                    ) : (
+                                                        "선택"
+                                                    )}
+                                                </MenuItem>
                                                 {dataListGenre.map((item) => (
                                                     <MenuItem key={item.id} value={item.name}>
                                                         {!language ? item.name : item.nameKorean}
