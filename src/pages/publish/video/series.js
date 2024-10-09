@@ -274,7 +274,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                     </h1>
                                 ) : (
                                     <h1 className="text-gray-400">
-                                       비디오 에피소드
+                                        비디오 에피소드
                                     </h1>
                                 )}
 
@@ -685,7 +685,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                                             </span>
                                                         ) : (
                                                             <span className="whitespace-normal text-red-500">
-                                                                0: No nudity (partial and full).
+                                                                0: 누드 없음 (부분 또는 전체).
                                                             </span>
                                                         )}
 

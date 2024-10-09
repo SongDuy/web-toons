@@ -62,8 +62,8 @@ const OriginalsPage = () => {
       setSelectedMenuOriginalList === "by Popularity"
         ? filteredOriginalsByGenre
         : setSelectedMenuOriginalList === "by Likes"
-        ? filteredOriginalsByLikes
-        : filteredOriginalsByDate
+          ? filteredOriginalsByLikes
+          : filteredOriginalsByDate
     );
   }, [currentDay, comic.comic, setSelectedMenuOriginalList]);
   useEffect(() => {
@@ -143,34 +143,39 @@ const OriginalsPage = () => {
   return (
     <div className="w-full h-full pb-10 bg-gray-100">
       <div
-        className={`w-full h-[70px] mb-[-70px] bg-white shadow flex items-center justify-center border-t ${
-          isSticky ? "sticky top-0 z-20" : ""
-        }`}
+        className={`w-full h-[70px] mb-[-70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? "sticky top-0 z-20" : ""
+          }`}
       >
         <ul className="h-full flex gap-10">
           <ScrollLink to="section1" smooth={true} duration={500}>
             <li
               onClick={() => setSelectedSection("section1")}
-              className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${
-                selectedSection === "section1"
-                  ? "text-black border-b-2 border-black"
-                  : "text-gray-400"
-              }`}
+              className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1"
+                ? "text-black border-b-2 border-black"
+                : "text-gray-400"
+                }`}
             >
-              {!language ? <span> ONGOING </span> : <span> 진행 중 </span>}
+              {!language ?
+                "ONGOING"
+                :
+                "진행 중"
+              }
             </li>
           </ScrollLink>
 
           <ScrollLink to="section2" smooth={true} duration={500}>
             <li
               onClick={() => setSelectedSection("section2")}
-              className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${
-                selectedSection === "section2"
-                  ? "text-black border-b-2 border-black"
-                  : "text-gray-400"
-              }`}
+              className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2"
+                ? "text-black border-b-2 border-black"
+                : "text-gray-400"
+                }`}
             >
-              {!language ? <span> COMPLETED </span> : <span> 완료됨 </span>}
+              {!language ?
+                "COMPLETED"
+                :
+                "완성된"
+              }
             </li>
           </ScrollLink>
         </ul>
@@ -184,9 +189,9 @@ const OriginalsPage = () => {
               <div className="h-[70px] border-b-2 flex items-center">
                 <span className="font-semibold text-md">
                   {!language ? (
-                    <span> Ongoing Series </span>
+                    "Ongoing Series"
                   ) : (
-                    <span> 진행 중인 시리즈 </span>
+                    "진행 중인 시리즈"
                   )}
                 </span>
                 <span className="ml-auto text-md flex items-center justify-center gap-1">
@@ -241,16 +246,15 @@ const OriginalsPage = () => {
                                       !language ? "by Popularity" : "인기순"
                                     );
                                   }}
-                                  className={`w-full h-full ${
-                                    selectedMenuOriginalList === "by Popularity"
-                                      ? "text-yellow-500"
-                                      : ""
-                                  }`}
+                                  className={`w-full h-full ${selectedMenuOriginalList === "by Popularity"
+                                    ? "text-yellow-500"
+                                    : ""
+                                    }`}
                                 >
                                   {!language ? (
-                                    <span>by Popularity</span>
+                                    "by Popularity"
                                   ) : (
-                                    <span> 인기순 </span>
+                                    "인기순"
                                   )}
                                 </span>
                               </MenuItem>
@@ -263,16 +267,15 @@ const OriginalsPage = () => {
                                       !language ? "by Likes" : "좋아요순"
                                     );
                                   }}
-                                  className={`w-full h-full ${
-                                    selectedMenuOriginalList === "by Likes"
-                                      ? "text-yellow-500"
-                                      : ""
-                                  }`}
+                                  className={`w-full h-full ${selectedMenuOriginalList === "by Likes"
+                                    ? "text-yellow-500"
+                                    : ""
+                                    }`}
                                 >
                                   {!language ? (
-                                    <span> by Likes </span>
+                                    "by Likes"
                                   ) : (
-                                    <span> 좋아요순 </span>
+                                    "좋아요순"
                                   )}
                                 </span>
                               </MenuItem>
@@ -285,16 +288,15 @@ const OriginalsPage = () => {
                                       !language ? "by Date" : "날짜순"
                                     );
                                   }}
-                                  className={`w-full h-full ${
-                                    selectedMenuOriginalList === "by Date"
-                                      ? "text-yellow-500"
-                                      : ""
-                                  }`}
+                                  className={`w-full h-full ${selectedMenuOriginalList === "by Date"
+                                    ? "text-yellow-500"
+                                    : ""
+                                    }`}
                                 >
                                   {!language ? (
-                                    <span> by Date </span>
+                                    "by Date"
                                   ) : (
-                                    <span> 날짜순 </span>
+                                    "날짜순"
                                   )}
                                 </span>
                               </MenuItem>
@@ -312,42 +314,25 @@ const OriginalsPage = () => {
 
               {/* Danh mục thứ trong tuần */}
               <div className="h-[70px] mt-5 flex items-center justify-center">
-                {!language ? (
-                  <ul className="w-11/12 grid grid-cols-7 gap-2">
-                    {days?.map((item, index) => (
-                      <li
-                        key={index}
-                        onClick={() => handleSelectDay(item.day)}
-                        className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${
-                          currentDay === item.day
-                            ? "bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white"
-                            : "bg-white text-black hover:text-yellow-500"
+
+                <ul className="w-11/12 grid grid-cols-7 gap-2">
+                  {days?.map((item, index) => (
+                    <li
+                      key={index}
+                      onClick={() => handleSelectDay(item.day)}
+                      className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day
+                        ? "bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white"
+                        : "bg-white text-black hover:text-yellow-500"
                         }`}
-                      >
-                        {item.day}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <ul className="w-11/12 grid grid-cols-7 gap-2">
-                    {days?.map((item, index) => (
-                      <li
-                        key={index}
-                        onClick={() => handleSelectDay(item.day)}
-                        className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${
-                          currentDay === item.day
-                            ? "bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white"
-                            : "bg-white text-black hover:text-yellow-500"
-                        }`}
-                      >
-                        {item.daysInKorean}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                    >
+                      {item && (!language ? item.day : item.daysInKorean)}
+                    </li>
+                  ))}
+                </ul>
+
               </div>
 
-              <div className="w-full h-full py-5 flex items-center justify-center">
+              <div className="w-full min-h-[500px] py-5 flex justify-center">
                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
                   {/* khung nội dung */}
                   {Comics?.map((item) => (
@@ -379,11 +364,7 @@ const OriginalsPage = () => {
                             <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                               {item.title}
                             </span>
-                            {/*
-                                                            <span className="text-black text-md text-shadow-white leading-[1.4] line-clamp-1">
-                                                                {item.Author}
-                                                            </span> 
-                                                        */}
+
                           </div>
 
                           <div className="w-full mb-[40px]">
@@ -396,9 +377,6 @@ const OriginalsPage = () => {
                                 Up
                               </span>
 
-                              {/* <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                                New
-                                                            </span> */}
                             </div>
                           </div>
 
@@ -408,10 +386,10 @@ const OriginalsPage = () => {
                               {!language
                                 ? item.genre1
                                 : dataListGenre?.filter(
-                                    (itm) =>
-                                      itm.name.toLowerCase() ===
-                                      item.genre1.toLowerCase()
-                                  )[0]?.nameKorean}
+                                  (itm) =>
+                                    itm.name.toLowerCase() ===
+                                    item.genre1.toLowerCase()
+                                )[0]?.nameKorean}
                             </span>
                           </div>
                         </div>
@@ -428,13 +406,13 @@ const OriginalsPage = () => {
             <div className="w-full h-full pt-[70px]">
               <div className="h-[70px] border-b-2 flex items-center font-semibold text-md">
                 {!language ? (
-                  <span> Completed Series </span>
+                  "Completed Series"
                 ) : (
-                  <span> 완료된 시리즈 </span>
+                  "완료된 시리즈"
                 )}
               </div>
 
-              <div className="w-full h-full mt-[25px] flex items-center justify-center">
+              <div className="w-full min-h-[500px] mt-[25px] flex justify-center">
                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
                   {/* khung nội dung */}
                   {comic.comic
@@ -493,10 +471,10 @@ const OriginalsPage = () => {
                                 {!language
                                   ? item.genre1
                                   : dataListGenre?.filter(
-                                      (itm) =>
-                                        itm.name.toLowerCase() ===
-                                        item.genre1.toLowerCase()
-                                    )[0]?.nameKorean}
+                                    (itm) =>
+                                      itm.name.toLowerCase() ===
+                                      item.genre1.toLowerCase()
+                                  )[0]?.nameKorean}
                               </span>
                             </div>
                           </div>

@@ -746,7 +746,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                             </span>
                                                         ) : (
                                                             <span className="whitespace-normal text-red-500">
-                                                                0: No nudity (partial and full).
+                                                                0: 누드 없음 (부분 또는 전체).
                                                             </span>
                                                         )}
 
