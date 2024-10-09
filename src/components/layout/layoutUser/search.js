@@ -83,7 +83,7 @@ const SearchPage = ({ closeModal }) => {
                     <input
                         className="w-full h-[35px] px-2 border-2 rounded-md"
                         onChange={handleSearch}
-                        placeholder="Search..."
+                        placeholder={!language ? "Search..." : ""}
                     />
                 </div>
 

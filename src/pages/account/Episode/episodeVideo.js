@@ -56,7 +56,7 @@ const EpisodeVideo = () => {
                 setloading(false)
 
                 await VideoFireBase.Deletechap(id.id, idchap)
-                await VideoFireBase.update({totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 1},id.id );
+                await VideoFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 1 }, id.id);
 
                 const chap = await dispatch(getchaptersVideo(id.id))
                 unwrapResult(chap)
@@ -66,6 +66,10 @@ const EpisodeVideo = () => {
 
         }
     }
+
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <>
             {!loading ? <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5 }}>
@@ -83,12 +87,16 @@ const EpisodeVideo = () => {
                                         </Link>
 
                                         <NavigateNextIcon sx={{ fontSize: 30 }} />
+                                        {!language ?
+                                            "Episode Management"
+                                            :
+                                            "에피소드 관리"
+                                        }
 
-                                        Episode Management
                                     </h1>
 
                                     <div className="ml-auto flex gap-5">
-                                        <button onClick={() =>{ navigate(`/publish/video/${id.id}`);  dispatch(setcurrentStepVideo(2))}} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
+                                        <button onClick={() => { navigate(`/publish/video/${id.id}`); dispatch(setcurrentStepVideo(2)) }} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
                                             <AddIcon />
                                             Add Episode
                                         </button>
@@ -115,7 +123,7 @@ const EpisodeVideo = () => {
                                                         <div className="flex items-center">
 
                                                             <div className="flex ml-auto gap-2">
-                                                                <button onClick={() =>{ navigate(`/publish/video/${id.id}/${item.id}`);      dispatch(setcurrentStepVideo(2)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                                                <button onClick={() => { navigate(`/publish/video/${id.id}/${item.id}`); dispatch(setcurrentStepVideo(2)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                                                                     Edit
                                                                 </button>
 

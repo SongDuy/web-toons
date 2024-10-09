@@ -21,7 +21,7 @@ const EpisodeOriginal = () => {
     const [loading, setloading] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+
     const monthNames = [
         "January",
         "February",
@@ -58,7 +58,7 @@ const EpisodeOriginal = () => {
                 setloading(false)
 
                 await comicFireBase.Deletechap(id.id, idchap)
-                await comicFireBase.update({totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 1},id.id );
+                await comicFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 1 }, id.id);
                 const chap = await dispatch(getchaptersComic(id.id))
                 unwrapResult(chap)
                 setloading(true)
@@ -67,6 +67,10 @@ const EpisodeOriginal = () => {
 
         }
     }
+
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     return (
         <>
             {!loading ? <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5 }}>
@@ -80,16 +84,25 @@ const EpisodeOriginal = () => {
                                 <div className="w-full h-full flex items-center">
                                     <h1 className="font-semibold text-xl">
                                         <Link to={`/dashboard`} className="hover:text-yellow-500">
-                                            Original Series
+
+                                            {!language ?
+                                                "Original Series"
+                                                :
+                                                "오리지널 시리즈"
+                                            }
                                         </Link>
 
                                         <NavigateNextIcon sx={{ fontSize: 30 }} />
 
-                                        Episode Management
+                                        {!language ?
+                                            "Episode Management"
+                                            :
+                                            "에피소드 관리"
+                                        }
                                     </h1>
 
                                     <div className="ml-auto flex gap-5">
-                                        <button onClick={() =>{ navigate(`/publish/original/${id.id}`);  dispatch(setcurrentStepOriginal(2))}} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
+                                        <button onClick={() => { navigate(`/publish/original/${id.id}`); dispatch(setcurrentStepOriginal(2)) }} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
                                             <AddIcon />
                                             Add Episode
                                         </button>
@@ -119,7 +132,7 @@ const EpisodeOriginal = () => {
                                                             </span>
 
                                                             <div className="flex ml-auto gap-2">
-                                                                <button  onClick={() =>{ navigate(`/publish/original/${id.id}/${item.id}`);      dispatch(setcurrentStepOriginal(2)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                                                <button onClick={() => { navigate(`/publish/original/${id.id}/${item.id}`); dispatch(setcurrentStepOriginal(2)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                                                                     Edit
                                                                 </button>
 

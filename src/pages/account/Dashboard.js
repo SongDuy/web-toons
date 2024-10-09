@@ -103,7 +103,7 @@ const Dashboard = () => {
                     </h1>
                     :
                     <h1 className="font-semibold text-xl">
-                      원본 시리즈 선택
+                      오리지널 시리즈 선택
                     </h1>
                   }
                   <Link
@@ -111,17 +111,16 @@ const Dashboard = () => {
 
                     className="w-[150px] h-[35px] text-white font-semibold bg-black ml-auto rounded-full flex items-center justify-center"
                   >
-                    {!language ?
-                      <button className="w-full h-full" onClick={() => dispatch(setcurrentStepOriginal(1))}>
-                        <AddIcon />
-                        Create Series
-                      </button>
-                      :
-                      <button className="w-full h-full" onClick={() => dispatch(setcurrentStepOriginal(1))}>
-                        <AddIcon />
-                        시리즈 만들기
-                      </button>
-                    }
+
+                    <button className="w-full h-full" onClick={() => dispatch(setcurrentStepOriginal(1))}>
+                      <AddIcon />
+                      {!language ?
+                        "Create Series"
+                        :
+                        "시리즈 만들기"
+                      }
+                    </button>
+
                   </Link>
                 </div>
 
@@ -280,18 +279,15 @@ const Dashboard = () => {
 
                     className="w-[150px] h-[35px] text-white font-semibold bg-black ml-auto rounded-full flex items-center justify-center"
                   >
+                    <button className="w-full h-full" onClick={() => dispatch(setcurrentStepVideo(1))}>
+                      <AddIcon />
+                      {!language ?
+                        "Create Series"
+                        :
+                        "시리즈 만들기"
+                      }
+                    </button>
 
-                    {!language ?
-                      <button className="w-full h-full" onClick={() => dispatch(setcurrentStepVideo(1))}>
-                        <AddIcon />
-                        Create Series
-                      </button>
-                      :
-                      <button className="w-full h-full" onClick={() => dispatch(setcurrentStepVideo(1))}>
-                        <AddIcon />
-                        시리즈 만들기
-                      </button>
-                    }
                   </Link>
                 </div>
 

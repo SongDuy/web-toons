@@ -266,12 +266,12 @@ const MyChannelPage = () => {
                       {Account?.name}
                     </span>
                   </div>
-                  <div className="px-1">
+                  {/* <div className="px-1">
                     <span className="text-[18px] text-yellow-400 text-shadow-black">
                       {!language ? (<span> Commic, video </span>) : (<span> 만화, 동영상 </span>)}
                     </span>
-                  </div>
-                  <div className="px-1 py-4 flex">
+                  </div> */}
+                  <div className="px-1 pt-8 pb-4 flex">
                     <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
                       {!language ? (
                         <span> Original Series: </span>
@@ -443,7 +443,7 @@ const MyChannelPage = () => {
                     {/* Ô nhập nội dung bài viết */}
                     <div className="w-full mt-5 px-3">
                       <textarea
-                        placeholder="What are you thinking?"
+                        placeholder={!language ? "What are you thinking?" : "무엇을 생각하고 계세요?"}
                         className="w-full h-[160px] rounded-md px-3 py-3 border-2"
                         value={post}
                         onChange={(e) => setpost(e.target.value)}
@@ -509,9 +509,9 @@ const MyChannelPage = () => {
                       onClick={handlepost}
                     >
                       {!language ? (
-                        <span> Post Article </span>
+                        <span>Create Post </span>
                       ) : (
-                        <span> 글 작성 </span>
+                        <span> 포스트 작성 </span>
                       )}
                     </button>
                   </div>

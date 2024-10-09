@@ -183,12 +183,12 @@ const CreatorChannelPage = () => {
                                             {create?.name}
                                         </span>
                                     </div>
-                                    <div className="px-1">
+                                    {/* <div className="px-1">
                                         <span className="text-[18px] text-yellow-400 text-shadow-black">
                                             {!language ? (<span> Commic, video </span>) : (<span> 만화, 동영상 </span>)}
                                         </span>
-                                    </div>
-                                    <div className="px-1 py-4 flex">
+                                    </div> */}
+                                    <div className="px-1 pt-8 pb-4 flex">
                                         <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
                                             {!language ? <span> Original Series: </span> : <span> 오리지널 시리즈: </span>}
                                             {' '} {comic?.length}
