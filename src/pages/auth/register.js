@@ -109,7 +109,7 @@ const RegisterPage = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <Link
+            {/* <Link
               to="/forgot-password"
               className="w-[160px] text-blue-800 cursor-pointer"
             >
@@ -118,8 +118,23 @@ const RegisterPage = () => {
                 :
                 "비밀번호를 재설정하시겠습니까?"
               }
-            </Link>
+            </Link> */}
+            {!language ?
+              <Link
+                to="/forgot-password"
+                className="w-[160px] text-blue-800 cursor-pointer"
+              >
+                Reset your password?
+              </Link>
+              :
 
+              <Link
+                to="/forgot-password"
+                className="w-[240px] text-blue-800 cursor-pointer"
+              >
+                비밀번호를 재설정하시겠습니까?
+              </Link>
+            }
             {err && <p>{err.message}</p>}
 
             <button
@@ -129,7 +144,7 @@ const RegisterPage = () => {
               {!language ?
                 "Continue to Verify Email"
                 :
-                "이메일 확인을 계속하세요"
+                "이메일 확인을 계속 진행하세요"
               }
 
             </button>
@@ -146,9 +161,9 @@ const RegisterPage = () => {
 
               <Link to="/" className="text-blue-800 font-semibold">
                 {!language ?
-                  " Login"
+                  "Login"
                   :
-                  "로그 인"
+                  "로그인"
                 }
 
               </Link>
@@ -156,13 +171,19 @@ const RegisterPage = () => {
 
           </div>
 
-          <div class="w-full my-5 flex items-center">
+          {/* <div class="w-full my-5 flex items-center">
             <hr class="flex-1 border-t border-gray-300" />
-            <span class="px-4">OR</span>
+            <span class="px-4">
+              {!language ?
+                "OR"
+                :
+                "또는"
+              }
+            </span>
             <hr class="flex-1 border-t border-gray-300" />
-          </div>
+          </div> */}
 
-          <div className="w-full h-full grid grid-cols-1 gap-y-5">
+          {/* <div className="w-full h-full grid grid-cols-1 gap-y-5">
             <button className="w-full h-[50px] cursor-pointer px-5 py-2 bg-red-50 hover:bg-red-100 shadow-md flex items-center justify-center rounded">
               <span className="mr-auto">
                 <GoogleIcon />
@@ -177,7 +198,7 @@ const RegisterPage = () => {
 
               </span>
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

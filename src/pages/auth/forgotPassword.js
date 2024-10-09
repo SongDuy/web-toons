@@ -87,10 +87,11 @@ const ForgotPasswordPage = () => {
                         </button>
 
                         <div className="w-full h-[50px] flex gap-x-1 items-center justify-center border rounded">
+
                             {!language ?
-                                " Don't have an account?"
+                                "Don't have an account?"
                                 :
-                                "계정이 없나요?"
+                                "계정이 없으신가요?"
                             }
 
                             <Link
@@ -100,9 +101,9 @@ const ForgotPasswordPage = () => {
                                 {!language ?
                                     "Sign up"
                                     :
-                                    "등록해요"
+                                    "가입하세요"
                                 }
-                                
+
                             </Link>
 
                         </div>
