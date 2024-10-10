@@ -8,6 +8,10 @@ import { useParams } from 'react-router-dom';
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/TextLayer.css"; // Import the text layer CSS
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import MusicOffIcon from "@mui/icons-material/MusicOff";
+import ReactPlayer from "react-player";
+
 const AdminOriginalsidchap = () => {
   const id = useParams();
   const [loading, setloading] = useState(false);
@@ -15,6 +19,7 @@ const AdminOriginalsidchap = () => {
   const [chapid, setchapid] = useState([]);
   const [numPages, setNumPages] = useState();
   pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+  const [isMusic, setIsMusic] = useState(false);
 
   useEffect(() => {
 
@@ -48,8 +53,36 @@ const AdminOriginalsidchap = () => {
   }
   return (
     <>
+    
       {loading ?
         <div className="w-full h-[600px] py-5 bg-white custom-scrollbar">
+           {chapid?.audioUrl&&
+           <div>
+           {!isMusic ? (
+                      <button
+                        className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
+                        onClick={() => setIsMusic(true)}
+                      >
+                        <MusicNoteIcon />
+                      </button>
+                    ) : (
+                      <button
+                        className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
+                        onClick={() => setIsMusic(false)}
+                      >
+                        <MusicOffIcon />
+                      </button>
+                    )}
+                    <ReactPlayer
+                      url={chapid?.audioUrl}
+                      controls={true}
+                      width="0%"
+                      height="0%"
+                      playing={!isMusic}
+                      loop={true}
+                    />
+           </div>
+}
           <div>
             <Document
               file={file}
