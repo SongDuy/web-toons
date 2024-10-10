@@ -45,13 +45,13 @@ const AdminVideosPage = () => {
         try {
             // let result = window.confirm(`Do you want to ${lock ? "lock" : "Unlocked"} this comic?`);
             // if (result) {
-                setloading(false)
+            setloading(false)
 
-                await VideoFireBase.update({ lock: !lock }, id)
-                const lg = await dispatch(getAlladVideo())
-                const getVideo = unwrapResult(lg)
-                setVideos(getVideo.success ? getVideo?.Video : [])
-                setloading(true)
+            await VideoFireBase.update({ lock: !lock }, id)
+            const lg = await dispatch(getAlladVideo())
+            const getVideo = unwrapResult(lg)
+            setVideos(getVideo.success ? getVideo?.Video : [])
+            setloading(true)
             // }
         } catch (error) {
 
@@ -77,25 +77,25 @@ const AdminVideosPage = () => {
         try {
             // let result = window.confirm(`Do you want to edit this Video?`);
             // if (result) {
-                setloading(false)
-                await VideoFireBase.update({ check:true, price, payment:price!=="0"? true:false }, idchap)
-                const lg = await dispatch(getAlladVideo())
-                const getVideo = unwrapResult(lg)
-                setVideos(getVideo.success ? getVideo?.Video : [])
+            setloading(false)
+            await VideoFireBase.update({ check: true, price, payment: price !== "0" ? true : false }, idchap)
+            const lg = await dispatch(getAlladVideo())
+            const getVideo = unwrapResult(lg)
+            setVideos(getVideo.success ? getVideo?.Video : [])
 
-                setloading(true)
-                dispatch(setIspayment(false))
-                setpayment(false)
-                setprice(0)
+            setloading(true)
+            dispatch(setIspayment(false))
+            setpayment(false)
+            setprice(0)
             // }
         } catch (error) {
 
         }
     }
-    const handleClickOpen = async (idchap,checkpayment,checkprice) => {
+    const handleClickOpen = async (idchap, checkpayment, checkprice) => {
         setid(idchap)
-        setpayment(checkpayment?checkpayment:false)
-        setprice(checkprice?checkprice:"0")
+        setpayment(checkpayment ? checkpayment : false)
+        setprice(checkprice ? checkprice : "0")
         dispatch(setIspayment(true))
     };
     const handleSearch = () => {
@@ -136,6 +136,7 @@ const AdminVideosPage = () => {
                                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">비디오 이름</th>
                                 <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">사용자 ID</th>
                                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">생성일</th>
+                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">생성일</th>
                                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">관리</th>
                             </tr>
                         </thead>
@@ -163,10 +164,13 @@ const AdminVideosPage = () => {
                                         {new Date(item.createTime)?.getFullYear()}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
+                                        {item.price}
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                                         <button onClick={() => navigate(`/admin/videos/${item.id}`)} className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
                                             <RemoveRedEyeIcon />
                                         </button>
-                                        <button onClick={() => handleClickOpen(item.id,item.payment,item.price)} className={`w-[35px] h-[35px] ${item.check ? "text-blue-500" : "text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
+                                        <button onClick={() => handleClickOpen(item.id, item.payment, item.price)} className={`w-[35px] h-[35px] ${item.check ? "text-blue-500" : "text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
                                             <CheckIcon />
                                         </button>
                                         <button onClick={() => handlelock(item.id, item.lock)} className={`w-[35px] h-[35px] ${item.lock ? "text-blue-500" : "text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
