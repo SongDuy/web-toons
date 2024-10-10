@@ -139,7 +139,7 @@ const HeaderPage = () => {
   const logouts = async () => {
     try {
       if (auth?.currentUser) {
-        await userFireBase.update({ checkage: false }, auth?.currentUser?.uid)
+        auth?.currentUser?.uid&& await userFireBase.update({ checkage: false }, auth?.currentUser?.uid)
         await dispatch(logout())
         dispatch(setIsLogin19Modal(false));
       }

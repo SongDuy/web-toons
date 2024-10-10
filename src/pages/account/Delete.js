@@ -7,7 +7,6 @@ import CheckIcon from "@mui/icons-material/Check";
 import {
   reauthenticateWithCredential,
   EmailAuthProvider,
-  deleteUser,
 } from "firebase/auth";
 import { auth } from "../../common/themes/firebase";
 import CommentFireBase from "../../common/services/Comment.services";
@@ -72,13 +71,13 @@ const Delete = () => {
         await VideoFireBase.deleteAccount(auth.currentUser.uid);
         await FollowFireBase.deleteAccount(auth.currentUser.uid);
         await PaymentFireBase.deleteAccount(auth.currentUser.uid)
-       await deleteUser(user);
+       await  user.delete()
         dispatch(logout());
         setOpen(false);
 
         // Thực hiện các hành động cần thiết sau khi xóa tài khoản, ví dụ: chuyển hướng người dùng, xóa dữ liệu liên quan, ...
       } catch (error) {
-        seterror('"Incorrect  password.');
+        seterror(   !language ?'Incorrect  password.':"잘못된 비밀번호입니다.");
         console.error("Lỗi khi xóa tài khoản:", error);
         // Xử lý lỗi, ví dụ: hiển thị thông báo lỗi cho người dùng
       }
@@ -299,7 +298,7 @@ const Delete = () => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Re-enter password?"}
+        {!language ?"Re-enter password?": "암호를 다시 입력하다"} 
         </DialogTitle>
         {checkgoogle &&
           <DialogContent>
@@ -308,7 +307,7 @@ const Delete = () => {
               autoFocus
               margin="dense"
               id="password"
-              label="Re-enter password"
+              label={!language ? "Password" : "비밀번호"}
               type="password"
               fullWidth
               value={Password}

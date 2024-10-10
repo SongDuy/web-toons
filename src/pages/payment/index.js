@@ -26,7 +26,6 @@ const PaymentPage = ({ closeModal, price }) => {
           );
           setpayment(payment.success ? payment.payment : []);
           const banks = await BankFireBase.getAll();
-          console.log(banks)
           setBank(banks.success ? banks.bank : []);
         }
       } catch (error) {
@@ -78,7 +77,18 @@ const PaymentPage = ({ closeModal, price }) => {
         setCopySuccess(false);
       });
   };
+const deletepayment= async ()=>{
+  try {
+    if (auth?.currentUser){     
+      await PaymentFireBase.Delete(payment[0].id)
+      closeModal();
 
+    }
+  } catch (error) {
+    
+  }
+
+}
   return (
     <>
       {payment.length === 0 ? (
@@ -473,7 +483,7 @@ const PaymentPage = ({ closeModal, price }) => {
             <div className="w-full mt-3 flex items-center justify-center">
               <button
                 className="w-1/3 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
-                onClick={handleBackdropClick}
+                onClick={deletepayment}
               >
                 {!language ?
                   "Cancel"
