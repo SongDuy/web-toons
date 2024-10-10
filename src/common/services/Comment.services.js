@@ -269,7 +269,6 @@ const CommentFireBase = {
     await updateDoc(updatepoint, data);
   },
   async Delete(id) {
-    console.log(id)
     const docRef = doc(fireStore, "comment", id);
     const subcollectionRef = collection(docRef, id);
     const subcollectionLike = collection(docRef, "like");
@@ -310,8 +309,7 @@ async  deleteSubcollection(subcollectionRef, uid) {
       const subcollectionRef = collection(document.ref, document.id);
       const subcollectionLike = collection(document.ref, "like");
       const subcollectionDislike = collection(document.ref, "dislike");
-      const q = query(subcollectionRef, where("uid", "==", id));
-      const querySnapshotid = await getDocs(q);
+      const querySnapshotid = await getDocs(subcollectionRef);
       for (const documentid of querySnapshotid.docs) {
         const subcollectionLike = collection(documentid.ref, "like");
         const subcollectionDislike = collection(documentid.ref, "dislike");
