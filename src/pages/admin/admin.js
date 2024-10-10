@@ -28,6 +28,26 @@ const AdminPage = () => {
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     };
 
+    const renderContent = (isTitle) => {
+        const capitalizedTitle = capitalizeFirstLetter(isTitle);
+
+        if (capitalizedTitle === 'Dashboard') {
+            return 'Một';
+        } else if (capitalizedTitle === 'Banners') {
+            return 'Hai';
+        } else if (capitalizedTitle === 'Users') {
+            return 'Ba'; // Ví dụ thêm nhiều giá trị khác
+        } else if (capitalizedTitle === 'Originals') {
+            return 'Hai';
+        } else if (capitalizedTitle === 'Videos') {
+            return 'Ba'; // Ví dụ thêm nhiều giá trị khác
+        } else if (capitalizedTitle === 'Payments') {
+            return 'Hai';
+        } else if (capitalizedTitle === 'Bank') {
+            return 'Ba'; // Ví dụ thêm nhiều giá trị khác
+        }
+    };
+
     // Lấy đường dẫn hiện tại từ URL
     const currentPath = location.pathname.split('/').pop() || 'dashboard';
     const [isTitle, setIsTitle] = useState(currentPath.toLowerCase());
@@ -195,7 +215,7 @@ const AdminPage = () => {
                             </h1>
                             <NavigateNextIcon />
                             <span className="font-semibold text-yellow-500">
-                                {capitalizeFirstLetter(isTitle)}
+                                {renderContent(isTitle)}
                             </span>
                         </div>
                         {admin &&
