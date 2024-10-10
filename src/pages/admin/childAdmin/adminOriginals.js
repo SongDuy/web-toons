@@ -73,8 +73,8 @@ const AdminOriginalsPage = () => {
     }
     const handlecheck = async (id, check) => {
         try {
-            let result = window.confirm(`Do you want to ${check ? "lock" : "Unlocked"} this comic?`);
-            if (result) {
+            // let result = window.confirm(`Do you want to ${check ? "check" : "Unlocked"} this comic?`);
+            // if (result) {
                 setloading(false)
 
                 await comicFireBase.update({ check: !check }, id)
@@ -82,7 +82,7 @@ const AdminOriginalsPage = () => {
                 const getcomic = unwrapResult(lg)
                 setComics(getcomic.success ? getcomic?.comic : [])
                 setloading(true)
-            }
+            // }
         } catch (error) {
 
         }
