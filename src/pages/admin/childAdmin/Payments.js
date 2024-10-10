@@ -29,7 +29,7 @@ const AdminPaymentsPage = () => {
   }, []);
   const handlecheck = async (id) => {
     try {
-      let result = window.confirm(`Do you want to check this payment?`);
+      let result = window.confirm(`이 결제를 확인하시겠습니까?`);
       if (result) {
         setloading(false);
         await PaymentFireBase.update({ status: "success" }, id);

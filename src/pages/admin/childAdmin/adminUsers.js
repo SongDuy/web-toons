@@ -25,7 +25,7 @@ const AdminUsersPage = () => {
     }, []);
     const handlelock = async (id, lock) => {
         try {
-            let result = window.confirm(`Do you want to ${lock ? "lock" : "Unlocked"} this User?`);
+            let result = window.confirm(` ${lock ? "이 사용자를 잠그시겠습니까?" : "이 사용자의 잠금을 해제하시겠습니까?"}` );
             if (result) {
                 setloading(false)
                 await userFireBase.update({ lock: !lock }, id)

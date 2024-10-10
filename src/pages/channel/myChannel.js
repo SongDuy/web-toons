@@ -347,7 +347,7 @@ const MyChannelPage = () => {
                           <div className="h-full rounded-xl px-3 py-3 flex items-center">
                             <div className="w-[250px] overflow-hidden ">
                               <span className="w-full text-lg font-semibold line-clamp-1">
-                                {item.title}
+                                {item.title} 
                               </span>
                               {(item.genre1 === item.genre2) ?
                                 <span className="w-full text-[15px] line-clamp-1">

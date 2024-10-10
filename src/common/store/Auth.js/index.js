@@ -15,6 +15,8 @@ export const handleLogin = createAsyncThunk("user/login", async (payload) => {
    const lock=finduser.success?finduser?.lock:true
    if(userCredential.user.emailVerified ){
      if(!lock){
+      auth.signOut()
+
         throw new Error('401')
      }
     const token = await auth.currentUser.getIdToken(true);
@@ -50,6 +52,8 @@ export const handleLogin19 = createAsyncThunk("user/login19", async (payload) =>
    const lock=finduser.success?finduser?.lock:true
    if(userCredential.user.emailVerified ){
      if(!lock){
+      auth.signOut()
+
         throw new Error('401')
      }
     const token = await auth.currentUser.getIdToken(true);
@@ -115,6 +119,10 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
      
         // Ở đây, bạn có thể chuyển hướng người dùng đến trang khác hoặc thực hiện các hành động khác sau khi đăng ký thành công
       } catch (error) {
+        if(!auth.currentUser.emailVerified){
+          await sendEmailVerification(auth.currentUser)
+
+        }
         throw new Error(!payload?.language?'Email already exists.':"이미 이메일이 존재합니다")
         // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
       }

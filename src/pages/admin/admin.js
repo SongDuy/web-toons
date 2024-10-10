@@ -16,6 +16,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { useDispatch, useSelector } from 'react-redux';
 import { auth } from '../../common/themes/firebase';
 import { logout } from '../../common/store/Auth.js';
+import URLadmin from '../../common/utils/URLadmin';
 
 const AdminPage = () => {
     const navigate = useNavigate();
@@ -26,26 +27,6 @@ const AdminPage = () => {
     // Hàm chuyển đổi chữ cái đầu thành chữ hoa
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-    };
-
-    const renderContent = (isTitle) => {
-        const capitalizedTitle = capitalizeFirstLetter(isTitle);
-
-        if (capitalizedTitle === 'Dashboard') {
-            return 'Một';
-        } else if (capitalizedTitle === 'Banners') {
-            return 'Hai';
-        } else if (capitalizedTitle === 'Users') {
-            return 'Ba'; // Ví dụ thêm nhiều giá trị khác
-        } else if (capitalizedTitle === 'Originals') {
-            return 'Hai';
-        } else if (capitalizedTitle === 'Videos') {
-            return 'Ba'; // Ví dụ thêm nhiều giá trị khác
-        } else if (capitalizedTitle === 'Payments') {
-            return 'Hai';
-        } else if (capitalizedTitle === 'Bank') {
-            return 'Ba'; // Ví dụ thêm nhiều giá trị khác
-        }
     };
 
     // Lấy đường dẫn hiện tại từ URL
@@ -215,7 +196,7 @@ const AdminPage = () => {
                             </h1>
                             <NavigateNextIcon />
                             <span className="font-semibold text-yellow-500">
-                                {renderContent(isTitle)}
+                                {capitalizeFirstLetter(URLadmin?.filter(item=>item.name===isTitle)[0].nameKorean)}
                             </span>
                         </div>
                         {admin &&
