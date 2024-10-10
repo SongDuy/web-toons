@@ -16,6 +16,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { useDispatch, useSelector } from 'react-redux';
 import { auth } from '../../common/themes/firebase';
 import { logout } from '../../common/store/Auth.js';
+import URLadmin from '../../common/utils/URLadmin';
 
 const AdminPage = () => {
     const navigate = useNavigate();
@@ -195,7 +196,7 @@ const AdminPage = () => {
                             </h1>
                             <NavigateNextIcon />
                             <span className="font-semibold text-yellow-500">
-                                {capitalizeFirstLetter(isTitle)}
+                                {capitalizeFirstLetter(URLadmin?.filter(item=>item.name===isTitle)[0].nameKorean)}
                             </span>
                         </div>
                         {admin &&
