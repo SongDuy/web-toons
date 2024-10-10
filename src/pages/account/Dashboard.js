@@ -19,6 +19,9 @@ const Dashboard = () => {
   const [loading, setloading] = useState(false);
   const dispatch = useDispatch();
 
+  //Lấy ngôn ngữ
+  const language = useSelector(state => state.hidden.language);
+
   const monthNames = [
     "January",
     "February",
@@ -51,7 +54,7 @@ const Dashboard = () => {
   }, [Account]);
   const handledeletecomic = async (idcomic) => {
     try {
-      let result = window.confirm("Do you want to delete this chap comic?");
+      let result = window.confirm(!language ? "Do you want to delete this chap comic?" : "이 남자 만화를 삭제하시겠습니까?");
       if (result) {
         setloading(false)
         await comicFireBase.Delete(idcomic)
@@ -66,10 +69,9 @@ const Dashboard = () => {
   }
   const handledeleteVideo = async (id) => {
     try {
-      let result = window.confirm("Do you want to delete this Video?");
+      let result = window.confirm(!language ? "Do you want to delete this Video?" : "이 동영상을 삭제하시겠습니까?");
       if (result) {
         setloading(false)
-
         await VideoFireBase.Delete(id)
         const videos = await VideoFireBase.getbyuser(Account.uid);
         setvideos(videos.success ? videos.Video : []);
@@ -80,9 +82,6 @@ const Dashboard = () => {
 
     }
   }
-
-  //Lấy ngôn ngữ
-  const language = useSelector(state => state.hidden.language);
 
   return (
     <>
@@ -408,8 +407,6 @@ const Dashboard = () => {
                               <Link to={`/dashboard/video/episode/${item.id}`}>
 
                                 <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-
-                                  <AddIcon />
                                   {!language ?
                                     "Edit Episode"
                                     :

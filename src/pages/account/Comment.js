@@ -12,6 +12,9 @@ const Comment = () => {
   const gcomment = useSelector(state => state.Comment.commentid);
   const Account = useSelector(state => state.Account.Account);
 
+ //Lấy ngôn ngữ
+  const language = useSelector(state => state.hidden.language);
+
   //Xem các tập tiếp theo trong series
   const dispatch = useDispatch();
   useEffect(() => {
@@ -56,7 +59,7 @@ const Comment = () => {
   };
   const hanledelete = async (id) => {
     try {
-      let result = window.confirm("Do you want to delete this comment?");
+      let result = window.confirm(!language ? "Do you want to delete this comment?" : "이 댓글을 삭제하시겠습니까?");
       if (result) {
         await CommentFireBase.Delete(id)
         const comments = await dispatch(idusercomment(Account.uid));
@@ -67,8 +70,7 @@ const Comment = () => {
     }
   }
 
-  //Lấy ngôn ngữ
-  const language = useSelector(state => state.hidden.language);
+ 
 
   return (
     <div>

@@ -36,6 +36,10 @@ const EpisodeOriginal = () => {
         "November",
         "December",
     ];
+
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     useEffect(() => {
 
         const get = async () => {
@@ -53,7 +57,7 @@ const EpisodeOriginal = () => {
     }, [dispatch, id.id]);
     const handledelete = async (idchap) => {
         try {
-            let result = window.confirm("Do you want to delete this chap comic?");
+            let result = window.confirm(!language ? "Do you want to delete this chap comic?" : "이 채프 코믹을 삭제하시겠습니까?");
             if (result) {
                 setloading(false)
 
@@ -68,8 +72,7 @@ const EpisodeOriginal = () => {
         }
     }
 
-    //Lấy ngôn ngữ
-    const language = useSelector(state => state.hidden.language);
+
 
     return (
         <>

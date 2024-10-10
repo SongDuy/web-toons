@@ -35,6 +35,10 @@ const EpisodeVideo = () => {
         "November",
         "December",
     ];
+
+    //Lấy ngôn ngữ
+    const language = useSelector(state => state.hidden.language);
+
     useEffect(() => {
 
         const get = async () => {
@@ -51,7 +55,7 @@ const EpisodeVideo = () => {
     }, [dispatch, id]);
     const handledelete = async (idchap) => {
         try {
-            let result = window.confirm("Do you want to delete this chap video?");
+            let result = window.confirm(!language ? "Do you want to delete this chap video?" : "이 채팅 동영상을 삭제하시겠습니까?");
             if (result) {
                 setloading(false)
 
@@ -67,8 +71,7 @@ const EpisodeVideo = () => {
         }
     }
 
-    //Lấy ngôn ngữ
-    const language = useSelector(state => state.hidden.language);
+
 
     return (
         <>
@@ -83,7 +86,12 @@ const EpisodeVideo = () => {
                                 <div className="w-full h-full flex items-center">
                                     <h1 className="font-semibold text-xl">
                                         <Link to={`/dashboard`} className="hover:text-yellow-500">
-                                            Video Series
+                                            {!language ?
+                                                "Video Series"
+                                                :
+                                                "비디오 시리즈"
+                                            }
+
                                         </Link>
 
                                         <NavigateNextIcon sx={{ fontSize: 30 }} />
@@ -98,7 +106,12 @@ const EpisodeVideo = () => {
                                     <div className="ml-auto flex gap-5">
                                         <button onClick={() => { navigate(`/publish/video/${id.id}`); dispatch(setcurrentStepVideo(2)) }} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded-full shadow">
                                             <AddIcon />
-                                            Add Episode
+                                            {!language ?
+                                                "Add Episode"
+                                                :
+                                                "에피소드 추가"
+                                            }
+
                                         </button>
                                     </div>
 
@@ -152,22 +165,33 @@ const EpisodeVideo = () => {
 
                                                         <div className="flex gap-5">
                                                             <span className="text-gray-500 text-sm flex gap-2">
-                                                                Published   {monthNames[new Date(item.createTime).getMonth()]}{" "}
+
+                                                                {!language ?
+                                                                    "Published "
+                                                                    :
+                                                                    "발행됨 "
+                                                                }
+                                                                {monthNames[new Date(item.createTime).getMonth()]}{" "}
                                                                 {new Date(item.createTime).getDate()},
                                                                 {new Date(item.createTime)?.getFullYear()}
                                                             </span>
 
                                                             <span className="text-gray-500 text-sm">
                                                                 {!language ?
-                                                                    "Likes"
+                                                                    "Likes "
                                                                     :
-                                                                    "좋아요"
+                                                                    "좋아요 "
                                                                 }
                                                                 {item.likes}
                                                             </span>
 
                                                             <span className="text-gray-500 text-sm">
-                                                                Views {item.views}
+                                                                {!language ?
+                                                                    "Views "
+                                                                    :
+                                                                    "조회수 "
+                                                                }
+                                                                {item.views}
                                                             </span>
                                                         </div>
                                                     </div>

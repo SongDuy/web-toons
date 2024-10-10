@@ -55,7 +55,7 @@ const AdminVideosPageid = () => {
     }
     const handlecheck = async (idchap, check) => {
         try {
-            let result = window.confirm(`Do you want to ${check ? "Check" : "Uncheck"} this Video?`);
+            let result = window.confirm(`원하시나요 ${check ? "Check" : "Uncheck"} 이 비디오?`);
             if (result) {
                 setloading(false)
 
