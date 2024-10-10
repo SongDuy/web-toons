@@ -177,7 +177,7 @@ const Creators = () => {
                     )}
                   </div>
                   {EditFollow ? (
-                    <div className="  grid grid-cols-5 gap-2  w-full h-full   px-5">
+                    <div className="  grid grid-cols-5 gap-2  w-full min-h-[500px]   px-5">
                       {Creators?.map((item) => {
                         return (
                           <button
