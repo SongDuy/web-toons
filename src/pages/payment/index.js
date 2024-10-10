@@ -423,9 +423,9 @@ const PaymentPage = ({ closeModal, price }) => {
           className="w-screen h-screen bg-black bg-opacity-30 flex items-center justify-center fixed inset-0 z-50"
           onClick={handleBackdropClick}
         >
-          <div className="bg-white rounded-lg shadow-lg p-6 w-[250px] text-center transform transition-all duration-300">
-            <h2 className="text-2xl font-bold">Processing Payment Verification...</h2>
-            <p className="text-gray-600">Please wait while we verify your payment.</p>
+          <div className="bg-white rounded-lg shadow-lg p-6 w-[450px] text-center transform transition-all duration-300">
+            <h2 className="text-2xl font-bold my-2">Processing Payment Verification...</h2>
+            <p className="text-gray-600 mb-3">Please wait while we verify your payment.</p>
             <CircularProgress />
             <div className="w-full mt-3 flex items-center justify-center">
               <button
