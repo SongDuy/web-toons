@@ -42,8 +42,9 @@ const Delete = () => {
   const handleClickOpen = () => {
     setOpen(true);
     const user = auth.currentUser;
+    console.log( user.providerData)
     const isGoogleProvider = user.providerData.some(
-      (provider) => provider.providerId === "google.com"
+      (provider) => provider.providerId === "password"
     );
     setcheckgoogle(isGoogleProvider)
   };
@@ -60,8 +61,8 @@ const Delete = () => {
 
     if (user) {
       try {
-        const credential = !checkgoogle && EmailAuthProvider.credential(user.email, Password); // Giả sử bạn đã lấy được mật khẩu từ người dùng
-        !checkgoogle && await reauthenticateWithCredential(user, credential);
+        const credential = checkgoogle && EmailAuthProvider.credential(user.email, Password); // Giả sử bạn đã lấy được mật khẩu từ người dùng
+        checkgoogle && await reauthenticateWithCredential(user, credential);
         await CommentFireBase.deleteAccount(auth.currentUser.uid);
         await comicFireBase.deleteAccount(auth.currentUser.uid);
         await postFireBase.deleteAccount(auth.currentUser.uid);
@@ -71,7 +72,7 @@ const Delete = () => {
         await VideoFireBase.deleteAccount(auth.currentUser.uid);
         await FollowFireBase.deleteAccount(auth.currentUser.uid);
         await PaymentFireBase.deleteAccount(auth.currentUser.uid)
-        !checkgoogle && await deleteUser(user);
+       await deleteUser(user);
         dispatch(logout());
         setOpen(false);
 
@@ -300,7 +301,7 @@ const Delete = () => {
         <DialogTitle id="alert-dialog-title">
           {"Re-enter password?"}
         </DialogTitle>
-        {!checkgoogle &&
+        {checkgoogle &&
           <DialogContent>
 
             <TextField

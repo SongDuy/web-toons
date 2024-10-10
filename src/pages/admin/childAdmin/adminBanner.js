@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 const AdminBannerPage = () => {
   const [loading, setloading] = useState(false);
   const [banner, setbanner] = useState([]);
+  const [relay, setrelay] = useState(false);
   useEffect(() => {
     const get = async () => {
       try {
@@ -18,19 +19,20 @@ const AdminBannerPage = () => {
       } catch (error) { }
     };
     get();
-  }, []);
+  }, [relay]);
   const handlePhotoChange1 = async (e) => {
     try {
       setloading(false);
       const file = e.target.files[0];
       if (file) {
-        await bannerFireBase.uploadToAdd(file, file.name, {
-          createTime: new Date(Date.now()),
+       await bannerFireBase.uploadToAdd(file, file.name, {
+          createTime: new Date(Date.now()), 
         });
-
       }
+    
       const banners = await bannerFireBase.getAll();
       setbanner(banners.success ? banners.banner : []);
+      setrelay(!relay)
       setloading(true);
     } catch (error) {
       console.log(error);
