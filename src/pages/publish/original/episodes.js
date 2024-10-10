@@ -470,7 +470,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
 
                     <div className="flex mt-3">
                       <button className="w-[90px] h-[40px] border-2 bg-white flex items-center justify-center">
-                        {id.idchap ? num : chapters?.chaps?.length + 1}
+                        {id.idchap ? num :chapters?.chaps?.length? chapters?.chaps?.length + 1:0}
                       </button>
                       <input
                         className="w-full h-[40px] px-2 border-r-2 border-t-2 border-b-2 outline-none bg-white"

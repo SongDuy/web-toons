@@ -43,8 +43,8 @@ const AdminVideosPage = () => {
     }, [dispatch]);
     const handlelock = async (id, lock) => {
         try {
-            let result = window.confirm(`Do you want to ${lock ? "lock" : "Unlocked"} this comic?`);
-            if (result) {
+            // let result = window.confirm(`Do you want to ${lock ? "lock" : "Unlocked"} this comic?`);
+            // if (result) {
                 setloading(false)
 
                 await VideoFireBase.update({ lock: !lock }, id)
@@ -52,7 +52,7 @@ const AdminVideosPage = () => {
                 const getVideo = unwrapResult(lg)
                 setVideos(getVideo.success ? getVideo?.Video : [])
                 setloading(true)
-            }
+            // }
         } catch (error) {
 
         }
@@ -75,10 +75,10 @@ const AdminVideosPage = () => {
     }
     const handlecheck = async () => {
         try {
-            let result = window.confirm(`Do you want to edit this Video?`);
-            if (result) {
+            // let result = window.confirm(`Do you want to edit this Video?`);
+            // if (result) {
                 setloading(false)
-                await VideoFireBase.update({ check: true, price, payment }, idchap)
+                await VideoFireBase.update({ check:true, price, payment:price!=="0"? true:false }, idchap)
                 const lg = await dispatch(getAlladVideo())
                 const getVideo = unwrapResult(lg)
                 setVideos(getVideo.success ? getVideo?.Video : [])
@@ -87,15 +87,15 @@ const AdminVideosPage = () => {
                 dispatch(setIspayment(false))
                 setpayment(false)
                 setprice(0)
-            }
+            // }
         } catch (error) {
 
         }
     }
-    const handleClickOpen = (idchap) => {
+    const handleClickOpen = async (idchap,checkpayment,checkprice) => {
         setid(idchap)
-        setpayment(false)
-        setprice(0)
+        setpayment(checkpayment?checkpayment:false)
+        setprice(checkprice?checkprice:"0")
         dispatch(setIspayment(true))
     };
     const handleSearch = () => {
@@ -166,7 +166,7 @@ const AdminVideosPage = () => {
                                         <button onClick={() => navigate(`/admin/videos/${item.id}`)} className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
                                             <RemoveRedEyeIcon />
                                         </button>
-                                        <button onClick={() => handleClickOpen(item.id)} className={`w-[35px] h-[35px] ${item.check ? "text-blue-500" : "text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
+                                        <button onClick={() => handleClickOpen(item.id,item.payment,item.price)} className={`w-[35px] h-[35px] ${item.check ? "text-blue-500" : "text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
                                             <CheckIcon />
                                         </button>
                                         <button onClick={() => handlelock(item.id, item.lock)} className={`w-[35px] h-[35px] ${item.lock ? "text-blue-500" : "text-red-500"} mx-1 bg-gray-100 hover:bg-gray-200 rounded-full`}>
