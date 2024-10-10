@@ -12,7 +12,7 @@ const checkIfOneDayLeft = (sentTime) => {
   const currentTime = new Date(Date.now());
   const oneDayInMs = 24 * 60 * 60 * 1000; 
 
-  const timeDifference = currentTime - sentTime; 
+  const timeDifference = currentTime - new Date(sentTime); 
 
   if (timeDifference >= oneDayInMs) {
     return false; 
@@ -112,6 +112,7 @@ export const handleAdmin = createAsyncThunk("user/loginadmin", async (payload) =
   try {
    const userCredential = await signInWithEmailAndPassword(auth, payload.email, payload.password);
    const finduser=await userFireBase.getbyid(userCredential?.user?.uid)
+   
    if(userCredential.user.emailVerified && finduser.success && finduser.role==='admin'){
 
     const token = await auth.currentUser.getIdToken(true);
