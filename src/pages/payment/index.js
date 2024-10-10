@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import PaymentFireBase from "../../common/services/Payment.services";
 import { auth } from "../../common/themes/firebase";
 import BankFireBase from "../../common/services/Bank.services";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const PaymentPage = ({ closeModal, price }) => {
   const [Bank, setBank] = useState([]);
@@ -306,7 +307,7 @@ const PaymentPage = ({ closeModal, price }) => {
                     <input
                       type="text"
                       className="w-full h-[50px] mt-2 px-2 border rounded shadow"
-                      placeholder="Account name"
+                      placeholder={!language ? "Account name" : "계좌 이름"}
                       form="off"
                       value={Accountname}
                       onChange={(e) => setAccountname(e.target.value)}
@@ -327,7 +328,7 @@ const PaymentPage = ({ closeModal, price }) => {
                     <input
                       type="text"
                       className="w-full h-[50px] mt-2 px-2 border rounded shadow"
-                      placeholder="Account number"
+                      placeholder={!language ? "Account number" : "계좌 번호"}
                       form="off"
                       value={Account}
                       onChange={(e) => setAccount(e.target.value)}
@@ -340,38 +341,28 @@ const PaymentPage = ({ closeModal, price }) => {
               <div className="w-full h-full mt-10 flex items-center justify-center">
                 <div className="w-1/2 h-[50px] flex gap-10">
 
-                  {!language ?
-                    <button
-                      className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
-                      onClick={handleBackdropClick}
-                    >
-                      Cancel
-                    </button>
-                    :
-                    <button
-                      className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
-                      onClick={handleBackdropClick}
-                    >
-                      취소
-                    </button>
-                  }
 
-                  {!language ?
-                    <button
-                      onClick={() => handleAdd()}
-                      className="w-1/2 h-[50px] text-white font-semibold bg-green-500 hover:bg-green-600 shadow rounded-full flex items-center justify-center"
-                    >
-                      Completed
-                    </button>
-                    :
-                    <button
-                      onClick={() => handleAdd()}
-                      className="w-1/2 h-[50px] text-white font-semibold bg-green-500 hover:bg-green-600 shadow rounded-full flex items-center justify-center"
-                    >
-                      완료됨
-                    </button>
-                  }
+                  <button
+                    className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
+                    onClick={handleBackdropClick}
+                  >
+                    {!language ?
+                      "Cancel"
+                      :
+                      "취소"
+                    }
+                  </button>
 
+                  <button
+                    onClick={() => handleAdd()}
+                    className="w-1/2 h-[50px] text-white font-semibold bg-green-500 hover:bg-green-600 shadow rounded-full flex items-center justify-center"
+                  >
+                    {!language ?
+                      "Completed"
+                      :
+                      "완료됨"
+                    }
+                  </button>
                 </div>
               </div>
             </div>
@@ -382,24 +373,73 @@ const PaymentPage = ({ closeModal, price }) => {
           className="w-screen h-screen bg-black bg-opacity-30 flex items-center justify-center fixed inset-0 z-50"
           onClick={handleBackdropClick}
         >
-          {" "}
-          {/* backdrop-blur-sm */}
+          <div className="bg-white rounded-lg shadow-lg p-6 w-80 text-center transform transition-all duration-300">
+            <h2 className="text-2xl font-bold mb-4">
+              Payment Successful!
+            </h2>
+            <p className="text-gray-600">
+              Your payment has been processed successfully.
+            </p>
+            <div className="w-full mt-3 flex items-center justify-center">
+              <button
+                className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
+                onClick={handleBackdropClick}
+              >
+                {!language ?
+                  "Cancel"
+                  :
+                  "취소"
+                }
+              </button>
+            </div>
+          </div>
         </div>
       ) : payment[0]?.status === "other" ? (
         <div
           className="w-screen h-screen bg-black bg-opacity-30 flex items-center justify-center fixed inset-0 z-50"
           onClick={handleBackdropClick}
         >
-          {" "}
-          {/* backdrop-blur-sm */}
+          <div className="bg-white rounded-lg shadow-lg p-6 w-[450px] text-center transform transition-all duration-300">
+            <h2 className="text-2xl font-bold my-2">Processing Payment Verification...</h2>
+            <p className="text-gray-600 mb-3">Please wait while we verify your payment.</p>
+            <CircularProgress />
+            <div className="w-full mt-3 flex items-center justify-center">
+              <button
+                className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
+                onClick={handleBackdropClick}
+              >
+                {!language ?
+                  "Cancel"
+                  :
+                  "취소"
+                }
+              </button>
+            </div>
+          </div>
         </div>
+
       ) : (
         <div
           className="w-screen h-screen bg-black bg-opacity-30 flex items-center justify-center fixed inset-0 z-50"
           onClick={handleBackdropClick}
         >
-          {" "}
-          {/* backdrop-blur-sm */}
+          <div className="bg-white rounded-lg shadow-lg p-6 w-[250px] text-center transform transition-all duration-300">
+            <h2 className="text-2xl font-bold">Processing Payment Verification...</h2>
+            <p className="text-gray-600">Please wait while we verify your payment.</p>
+            <CircularProgress />
+            <div className="w-full mt-3 flex items-center justify-center">
+              <button
+                className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
+                onClick={handleBackdropClick}
+              >
+                {!language ?
+                  "Cancel"
+                  :
+                  "취소"
+                }
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </>
