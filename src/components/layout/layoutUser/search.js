@@ -9,6 +9,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { getAllComic } from '../../../common/store/comic';
 import { getAllVideo } from '../../../common/store/Video';
+import { getAccount } from '../../../common/store/Account';
+import { auth } from '../../../common/themes/firebase';
 
 
 const SearchPage = ({ closeModal }) => {
@@ -17,6 +19,7 @@ const SearchPage = ({ closeModal }) => {
     const [isSearch, setIsSearch] = useState(false);
     const comic = useSelector(state => state.comic.comic);
     const Video = useSelector(state => state.Video.video);
+    const User = useSelector((state) => state.AuthJs.User);
 
     const dispatch = useDispatch();
 
@@ -34,20 +37,38 @@ const SearchPage = ({ closeModal }) => {
     useEffect(() => {
         const getComicsAndVideos = async () => {
             try {
-                if (!comic?.comic) {
-                    const comicResult = await dispatch(getAllComic());
-                    unwrapResult(comicResult);
-                }
-                if (!Video?.video) {
-                    const videoResult = await dispatch(getAllVideo());
-                    unwrapResult(videoResult);
-                }
+                if (User) {
+                    const account = await dispatch(getAccount(auth?.currentUser?.uid));
+          
+                    const user = unwrapResult(account);
+                    if (user?.checkage) {
+                      const age = account?.payload?.birthday
+                        ? new Date(Date.now())?.getFullYear() -
+                          new Date(user.birthday)?.getFullYear()
+                        : 15;
+                      const comic = await dispatch(getAllComic(age));
+                      const video = await dispatch(getAllVideo(age));
+          
+                      unwrapResult(comic);
+                      unwrapResult(video);
+                    } else {
+                      const comic = await dispatch(getAllComic());
+                      const video = await dispatch(getAllVideo());
+                      unwrapResult(comic);
+                      unwrapResult(video);
+                    }
+                  } else {
+                    const comic = await dispatch(getAllComic());
+                    const video = await dispatch(getAllVideo());
+                    unwrapResult(comic);
+                    unwrapResult(video);
+                  }
             } catch (error) {
                 console.error(error);
             }
         };
         getComicsAndVideos();
-    }, [dispatch, comic, Video]);
+    }, [dispatch,User]);
 
 
     // Hiển thị nội dung giống nội dung cần tìm
@@ -62,7 +83,7 @@ const SearchPage = ({ closeModal }) => {
     );
     const showNoResultsComicMessage = (searchTerm.trim() !== '' && listComics?.length === 0) || searchTerm.trim() === '';
 
-    const listVideos = Video.video?.filter(item =>
+    const listVideos = Video.Video?.filter(item =>
         item.title.toLowerCase().includes(searchTerm.toLowerCase())
         //|| item.auth.toLowerCase().includes(searchTerm.toLowerCase())
     );
