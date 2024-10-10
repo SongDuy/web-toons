@@ -179,6 +179,7 @@ const SearchPage = ({ closeModal }) => {
                         </ul>
                     </div>
                 ) : activeButton === "videos" ? (
+                    // hiện thị danh sách videos
                     <div className="w-full h-[630px] custom-scrollbar">
                         <ul className="grid grid-cols-1">
                             {showNoResultsVideoMessage ? (
