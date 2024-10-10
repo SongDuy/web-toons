@@ -77,18 +77,18 @@ const PaymentPage = ({ closeModal, price }) => {
         setCopySuccess(false);
       });
   };
-const deletepayment= async ()=>{
-  try {
-    if (auth?.currentUser){     
-      await PaymentFireBase.Delete(payment[0].id)
-      closeModal();
+  const deletepayment = async () => {
+    try {
+      if (auth?.currentUser) {
+        await PaymentFireBase.Delete(payment[0].id)
+        closeModal();
+
+      }
+    } catch (error) {
 
     }
-  } catch (error) {
-    
-  }
 
-}
+  }
   return (
     <>
       {payment.length === 0 ? (
@@ -466,34 +466,26 @@ const deletepayment= async ()=>{
         >
           <div className="bg-white rounded-lg shadow-lg pt-3 pb-6 w-[450px] text-center transform transition-all duration-300">
             <h2 className="text-2xl font-bold my-2">
-              {!language ?
-                " Processing Payment Verification"
-                :
-                "결제 확인 처리 중"
-              }
+              {!language ? "Payment Failed" : "결제 실패"}
             </h2>
             <p className="text-gray-600 mb-3">
-              {!language ?
-                " Please wait while we verify your payment."
-                :
-                "결제를 확인하는 동안 잠시만 기다려 주세요."
+              {!language
+                ? "Unfortunately, your payment could not be processed. Please try again."
+                : "안타깝게도 결제를 처리할 수 없습니다. 다시 시도해 주세요."
               }
             </p>
-            <CircularProgress />
             <div className="w-full mt-3 flex items-center justify-center">
               <button
                 className="w-1/3 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
                 onClick={deletepayment}
               >
-                {!language ?
-                  "Cancel"
-                  :
-                  "취소"
-                }
+                {!language ? "Cancel" : "취소"}
               </button>
+            
             </div>
           </div>
         </div>
+
       )}
     </>
   );
