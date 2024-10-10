@@ -224,7 +224,9 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-              {!language ? <span> Originals </span> : <span> 오리지널 </span>}
+              <div className="hidden sm:block">
+                {!language ? <span> Originals </span> : <span> 오리지널 </span>}
+              </div>
             </li>
           </Link>
           <Link to={`/videos`}>
@@ -234,7 +236,9 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-              {!language ? <span> Videos </span> : <span> 비디오 </span>}
+              <div className="hidden sm:block">
+                {!language ? <span> Videos </span> : <span> 비디오 </span>}
+              </div>
             </li>
           </Link>
           <Link to={`/genres`}>
@@ -244,7 +248,12 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-              {!language ? <span> Genres </span> : <span> 장르 </span>}
+              <div className="hidden sm:block">
+                {!language ? <span> Genres </span> : <span> 장르 </span>}
+              </div>
+              <div>
+
+              </div>
             </li>
           </Link>
           <Link to={`/popular`}>
@@ -254,7 +263,12 @@ const HeaderPage = () => {
                 : "hover:text-yellow-500"
                 }`}
             >
-              {!language ? <span> Popular </span> : <span> 인기 </span>}
+              <div className="hidden sm:block">
+                {!language ? "Popular" : "인기"}
+              </div>
+              <div className="block sm:hidden">
+                kkkkkkkkk
+              </div>
             </li>
           </Link>
         </ul>
