@@ -288,8 +288,21 @@ const VideoFireBase = {
     const parentDoc = doc(subcollec, idchap);
     await updateDoc(parentDoc, data);
   },
+  async  deletechaps( id) {
+    const docRef = doc(fireStore, "Video", id);
+
+    const docSnap = await getDoc(docRef);
+    const ChaptersnRef = collection(docSnap.ref, id);
+    const Chapters = await getDocs(ChaptersnRef);
+    Chapters.docs.map(async (item) => {
+      const parentDoc = doc(ChaptersnRef, item.id);
+      await deleteDoc(parentDoc);
+    });
+  },
   async Delete(id) {
     await deleteDoc(doc(fireStore, "Video", id));
+    await this.deletechaps(id)
+
   },
   async Deletechap(id,idchap) {
     const parentDocRef = doc(fireStore, "Video", id);

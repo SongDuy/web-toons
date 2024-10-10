@@ -26,7 +26,7 @@ const AdminPage = () => {
 
     // Hàm chuyển đổi chữ cái đầu thành chữ hoa
     const capitalizeFirstLetter = (string) => {
-        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+        return string?.charAt(0)?.toUpperCase() + string?.slice(1)?.toLowerCase();
     };
 
     // Lấy đường dẫn hiện tại từ URL
@@ -196,7 +196,7 @@ const AdminPage = () => {
                             </h1>
                             <NavigateNextIcon />
                             <span className="font-semibold text-yellow-500">
-                                {capitalizeFirstLetter(URLadmin?.filter(item=>item.name===isTitle)[0].nameKorean)}
+                                {capitalizeFirstLetter(URLadmin?.filter(item=>item.name===isTitle)[0]?.nameKorean?URLadmin?.filter(item=>item.name===isTitle)[0]?.nameKorean:isTitle)}
                             </span>
                         </div>
                         {admin &&
