@@ -166,7 +166,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                     uid: Account.uid,
                     note: valueNote,
                     likes,
-                     check,
+                    check,
                     checkcomment: selectedValue,
                     views,
                     createTime: new Date(Date.now()),
@@ -219,7 +219,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                             <li onClick={goToPreviousStep} className="uppercase font-semibold cursor-pointer text-md flex items-center justify-center">
                                 <div className="w-[40px] h-[40px] bg-gray-500 rounded-full border flex items-center justify-center mx-2">
                                     <span className="mx-3 text-2xl text-white font-bold">
-                                   1
+                                        1
                                     </span>
                                 </div>
 
@@ -397,11 +397,11 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
                                         <div className="flex mt-3">
                                             <button className="w-[90px] h-[40px] border-2 bg-white flex items-center justify-center">
-                                            {id.idchap ?num:  chapters?.chaps?.length + 1}
+                                                {id.idchap ? num : chapters?.chaps?.length + 1}
                                             </button>
                                             <input
                                                 className="w-full h-[40px] px-2 border-r-2 border-t-2 border-b-2 outline-none bg-white"
-                                                placeholder="Less than 60 characters"
+                                                placeholder={!language ? "Less than 60 characters" : "60자 미만입니다"}
                                                 value={valueEpisodeTitle}
                                                 onChange={handleEpisodeTitle}
                                             />
@@ -443,15 +443,13 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 />
                                             </div>
 
-                                            {!language ? (
-                                                <button onClick={() => handleDeleteAll()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                    Delete All
-                                                </button>
-                                            ) : (
-                                                <button onClick={() => handleDeleteAll()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                    모두 삭제
-                                                </button>
-                                            )}
+                                            <button onClick={() => handleDeleteAll()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                                                {!language ? (
+                                                    "Delete All"
+                                                ) : (
+                                                    "모두 삭제"
+                                                )}
+                                            </button>
                                         </div>
 
                                         {/* Phần hiện nội dung tải lên*/}
@@ -467,12 +465,12 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                             /> :
                                                 !language ? (
                                                     <span className="font-semibold text-gray-500">
+
                                                         render files.
                                                     </span>
                                                 ) : (
                                                     <span className="font-semibold text-gray-500">
                                                         파일 렌더링
-
                                                     </span>
                                                 )}
                                         </div>
@@ -503,25 +501,23 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                     <div>
                                         <div className="w-full flex items-center gap-2">
                                             {/* Tiêu đề */}
-                                            {!language ? (
-                                                <div className="flex gap-2">
-                                                    <h1 className="h-full font-semibold text-xl">
-                                                        Note
-                                                    </h1>
-                                                    <span className="h-full text-gray-400 font-semibold mt-1">
-                                                        (Optional)
-                                                    </span>
-                                                </div>
-                                            ) : (
-                                                <div className="flex gap-2">
-                                                    <h1 className="h-full font-semibold text-xl">
-                                                        노트
-                                                    </h1>
-                                                    <span className="h-full text-gray-400 font-semibold mt-1">
-                                                        (선댁 사항)
-                                                    </span>
-                                                </div>
-                                            )}
+
+                                            <div className="flex gap-2">
+                                                <h1 className="h-full font-semibold text-xl">
+                                                    {!language ? (
+                                                        "Note"
+                                                    ) : (
+                                                        "노트"
+                                                    )}
+                                                </h1>
+                                                <span className="h-full text-gray-400 font-semibold mt-1">
+                                                    {!language ? (
+                                                        "(Optional)"
+                                                    ) : (
+                                                        "(선댁 사항)"
+                                                    )}
+                                                </span>
+                                            </div>
                                         </div>
 
                                         <div className="w-full">
@@ -531,22 +527,20 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 value={valueNote}
                                                 onChange={handleNote}
                                             />
-
                                         </div>
                                     </div>
 
                                     {/* Phần hiệu chỉnh comment */}
                                     <div className="w-full flex items-center gap-10 mt-4">
                                         {/* Tiêu đề */}
-                                        {!language ? (
-                                            <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
-                                                Comments
-                                            </h1>
-                                        ) : (
-                                            <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
-                                                댓글
-                                            </h1>
-                                        )}
+
+                                        <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
+                                            {!language ? (
+                                                "Comments"
+                                            ) : (
+                                                " 댓글"
+                                            )}
+                                        </h1>
 
                                         <div className="flex gap-10 items-center">
                                             <label className="flex items-center">
@@ -559,9 +553,9 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 />
 
                                                 {!language ? (
-                                                    <span>Enable</span>
+                                                    "Enable"
                                                 ) : (
-                                                    <span>활성화</span>
+                                                    "활성화"
                                                 )}
                                             </label>
                                             <label className="flex items-center">
@@ -574,9 +568,9 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 />
 
                                                 {!language ? (
-                                                    <span>Disable</span>
+                                                    "Disable"
                                                 ) : (
-                                                    <span>비활성화</span>
+                                                    "비활성화"
                                                 )}
                                             </label>
                                         </div>
@@ -585,15 +579,13 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                     {/* Phần hiệu chỉnh episode */}
                                     <div className="w-full flex items-center gap-10">
                                         {/* Tiêu đề */}
-                                        {!language ? (
-                                            <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
-                                                Episodes
-                                            </h1>
-                                        ) : (
-                                            <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
-                                                에피소드
-                                            </h1>
-                                        )}
+                                        <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
+                                            {!language ? (
+                                                "Episodes"
+                                            ) : (
+                                                "에피소드"
+                                            )}
+                                        </h1>
 
                                         <div className="flex gap-6 mt-1 items-center">
                                             <label className="flex items-center">
@@ -606,9 +598,9 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 />
 
                                                 {!language ? (
-                                                    <span>Ongoing</span>
+                                                    "Ongoing"
                                                 ) : (
-                                                    <span>진행 중</span>
+                                                    "진행 중"
                                                 )}
                                             </label>
                                             <label className="flex items-center">
@@ -621,9 +613,9 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 />
 
                                                 {!language ? (
-                                                    <span>Completed</span>
+                                                    "Completed"
                                                 ) : (
-                                                    <span>완료됨</span>
+                                                    "완료됨"
                                                 )}
                                             </label>
                                         </div>
@@ -633,15 +625,13 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
                                 {/* Nút đăng tập truyện */}
                                 <div className="w-full mt-10 py-3 pl-5">
-                                    {!language ? (
-                                        <button onClick={id?.idchap ? handleedit : handleEp} className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4">
-                                            Publish episode
-                                        </button>
-                                    ) : (
-                                        <button onClick={id?.idchap ? handleedit : handleEp} className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4">
-                                            에피소드 게시
-                                        </button>
-                                    )}
+                                    <button onClick={id?.idchap ? handleedit : handleEp} className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4">
+                                        {!language ? (
+                                            "Publish episode"
+                                        ) : (
+                                            "에피소드 게시"
+                                        )}
+                                    </button>
                                 </div>
 
                             </div>

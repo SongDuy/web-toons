@@ -350,11 +350,11 @@ const MyChannelPage = () => {
                                 {item.title} 
                               </span>
                               {(item.genre1 === item.genre2) ?
-                                <span className="w-full border text-[15px] line-clamp-1">
+                                <span className="w-full text-[15px] line-clamp-1">
                                   {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
                                 </span>
                                 :
-                                <span className="w-full border text-[15px] line-clamp-1">
+                                <span className="w-full text-[15px] line-clamp-1">
                                   {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
                                   {`, `}
                                   {!language ? item.genre2 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre2.toLowerCase())[0]?.nameKorean}

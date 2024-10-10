@@ -125,7 +125,11 @@ const VideosPage = () => {
                             onClick={() => setSelectedSection("section1")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            {!language ? <span> ONGOING </span> : <span> 전진 </span>}
+                            {!language ?
+                                "ONGOING"
+                                :
+                                "진행 중"
+                            }
                         </li>
                     </ScrollLink >
 
@@ -134,7 +138,11 @@ const VideosPage = () => {
                             onClick={() => setSelectedSection("section2")}
                             className={`h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                         >
-                            {!language ? <span> COMPLETED </span> : <span> 완전한 </span>}
+                            {!language ?
+                                "COMPLETED"
+                                :
+                                "완성된"
+                            }
                         </li>
                     </ScrollLink >
                 </ul>
@@ -148,7 +156,11 @@ const VideosPage = () => {
                         <div className="w-full h-full pt-[70px]">
                             <div className="h-[70px] border-b-2 flex items-center">
                                 <span className="font-semibold text-md">
-                                    {!language ? <span> Ongoing Series </span> : <span> 진행 중인 시리즈 </span>}
+                                    {!language ?
+                                        "Ongoing Series"
+                                        :
+                                        "진행 중인 시리즈"
+                                    }
                                 </span>
                                 <span className="ml-auto text-md flex items-center justify-center gap-1">
                                     {/* Button for Video Genre List */}
@@ -192,25 +204,33 @@ const VideosPage = () => {
 
                                                             <MenuItem onClick={handleCloseVideos}>
                                                                 <span
-                                                                    onClick={() => {setSelectedMenuVideoList("by Popularity");sethiddenMenuVideoList( !language ? "by Popularity" : "인기순")}}
+                                                                    onClick={() => { setSelectedMenuVideoList("by Popularity"); sethiddenMenuVideoList(!language ? "by Popularity" : "인기순") }}
                                                                     className={`w-full h-full ${selectedMenuVideoList === "by Popularity" ? "text-yellow-500" : ""}`}
                                                                 >
-                                                                    {!language ? <span>by Popularity</span> : <span> 인기순 </span>}
+                                                                    {!language ?
+                                                                        "by Popularity"
+                                                                        :
+                                                                        "인기순"
+                                                                    }
                                                                 </span>
                                                             </MenuItem>
 
                                                             <MenuItem onClick={handleCloseVideos}>
                                                                 <span
-                                                                    onClick={() =>  {setSelectedMenuVideoList("by Likes");sethiddenMenuVideoList(   !language ? "by Likes" : "좋아요순")}}
+                                                                    onClick={() => { setSelectedMenuVideoList("by Likes"); sethiddenMenuVideoList(!language ? "by Likes" : "좋아요순") }}
                                                                     className={`w-full h-full ${selectedMenuVideoList === "by Likes" ? "text-yellow-500" : ""}`}
                                                                 >
-                                                                    {!language ? <span> by Likes </span> : <span> 좋아요순 </span>}
+                                                                    {!language ?
+                                                                        "by Likes"
+                                                                        :
+                                                                        "좋아요순"
+                                                                    }
                                                                 </span>
                                                             </MenuItem>
 
                                                             <MenuItem onClick={handleCloseVideos}>
                                                                 <span
-                                                                    onClick={() => {setSelectedMenuVideoList("by Likes");sethiddenMenuVideoList(!language ? "by Date" : "날짜순")}}
+                                                                    onClick={() => { setSelectedMenuVideoList("by Likes"); sethiddenMenuVideoList(!language ? "by Date" : "날짜순") }}
                                                                     className={`w-full h-full ${selectedMenuVideoList === "날짜순" ? "text-yellow-500" : ""}`}
                                                                 >
                                                                     {!language ? <span> by Date </span> : <span> 날짜별로 </span>}
@@ -229,7 +249,6 @@ const VideosPage = () => {
 
                             {/* Danh mục thứ trong tuần */}
                             <div className="h-[70px] mt-5 flex items-center justify-center">
-                                {!language ?
                                     <ul
                                         className="w-11/12 grid grid-cols-7 gap-2"
                                     >
@@ -239,30 +258,13 @@ const VideosPage = () => {
                                                 onClick={() => handleSelectDay(item.day)}
                                                 className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                             >
-                                                {item.day}
+                                                {item && (!language ? item.day : item.daysInKorean)}
                                             </li>
                                         ))}
-
-                                    </ul>
-                                    :
-                                    <ul
-                                        className="w-11/12 grid grid-cols-7 gap-2"
-                                    >
-                                        {days?.map((item, index) => (
-                                            <li
-                                                key={index}
-                                                onClick={() => handleSelectDay(item.day)}
-                                                className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500'}`}
-                                            >
-                                                {item.daysInKorean}
-                                            </li>
-                                        ))}
-
-                                    </ul>
-                                }
+                                    </ul>  
                             </div>
 
-                            <div className="w-full h-full py-5 flex items-center justify-center">
+                            <div className="w-full min-h-[500px] py-5 flex justify-center">
                                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                     {/* khung nội dung */}
@@ -317,10 +319,14 @@ const VideosPage = () => {
                     <ScrollElement name="section2" >
                         <div className="w-full h-full pt-[70px]">
                             <div className="h-[70px] border-b-2 flex items-center font-semibold text-md">
-                                {!language ? <span> Completed Series </span> : <span> 완성된 시리즈 </span>}
+                                {!language ?
+                                    "Completed Series"
+                                    :
+                                    "완성된 시리즈"
+                                }
                             </div>
 
-                            <div className="w-full h-full mt-[25px] flex items-center justify-center">
+                            <div className="w-full min-h-[500px] mt-[25px] flex justify-center">
 
                                 <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 

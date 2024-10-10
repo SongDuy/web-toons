@@ -25,13 +25,9 @@ const NewToVideosPage = () => {
                         className="w-full h-[60px] uppercase font-semibold text-lg hover:text-yellow-500 cursor-pointer flex items-center justify-center"
                     >
                         {!language ?
-                            <span>
-                                New to Videos
-                            </span>
+                            "New to Videos"
                             :
-                            <span>
-                                새로운 비디오
-                            </span>
+                            "새로운 비디오"
                         }
 
                     </li>

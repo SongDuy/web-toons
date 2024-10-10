@@ -36,16 +36,16 @@ const GenresPage = () => {
     }, [selectedOriginalsByGenre, comic.comic, selectedMenuOriginalList]);
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
-   
+
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
     const [hiddenMenuOriginalList, sethiddenMenuOriginalList] = useState(
         !language ? "by Popularity" : "인기순"
-      );
+    );
     useEffect(() => {
         sethiddenMenuOriginalList(() => (!language ? "by Popularity" : "인기순"));
         setSelectedMenuOriginalList("by Popularity");
-      }, [language]);
+    }, [language]);
     // Mở và đóng menu originals
 
     const [openOriginals, setOpenOriginals] = React.useState(false);
@@ -137,14 +137,14 @@ const GenresPage = () => {
 
                                                         <MenuItem onClick={handleCloseOriginals}>
                                                             <span
-                                                                  onClick={() => {
+                                                                onClick={() => {
                                                                     setSelectedMenuOriginalList(
-                                                                      "by Popularity"
+                                                                        "by Popularity"
                                                                     );
                                                                     sethiddenMenuOriginalList(
-                                                                      !language ? "by Popularity" : "인기순"
+                                                                        !language ? "by Popularity" : "인기순"
                                                                     );
-                                                                  }}
+                                                                }}
                                                                 className={`w-full h-full ${selectedMenuOriginalList === "by Popularity" ? "text-yellow-500" : ""}`}
                                                             >
                                                                 {!language ? <span>by Popularity</span> : <span>인기순 </span>}
@@ -156,9 +156,9 @@ const GenresPage = () => {
                                                                 onClick={() => {
                                                                     setSelectedMenuOriginalList("by Likes");
                                                                     sethiddenMenuOriginalList(
-                                                                      !language ? "by Likes" : "좋아요순"
+                                                                        !language ? "by Likes" : "좋아요순"
                                                                     );
-                                                                  }}
+                                                                }}
                                                                 className={`w-full h-full ${selectedMenuOriginalList === "by Likes" ? "text-yellow-500" : ""}`}
                                                             >
                                                                 {!language ? <span> by Likes </span> : <span> 좋아요순 </span>}
@@ -167,12 +167,12 @@ const GenresPage = () => {
 
                                                         <MenuItem onClick={handleCloseOriginals}>
                                                             <span
-                                                                 onClick={() => {
+                                                                onClick={() => {
                                                                     setSelectedMenuOriginalList("by Date");
                                                                     sethiddenMenuOriginalList(
-                                                                      !language ? "by Date" : "날짜순"
+                                                                        !language ? "by Date" : "날짜순"
                                                                     );
-                                                                  }}
+                                                                }}
                                                                 className={`w-full h-full ${selectedMenuOriginalList === "by Date" ? "text-yellow-500" : ""}`}
                                                             >
                                                                 {!language ? <span> by Date </span> : <span> 날짜순 </span>}
@@ -212,81 +212,83 @@ const GenresPage = () => {
                                 </div>
 
                                 {/* Danh mục nội dung originals theo thể loại */}
-                                <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
+                                <div className="w-full min-h-[500px]">
+                                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
-                                    {/* khung nội dung */}
-                                    {Comic?.map(item => (
-                                        <Link
-                                            key={item.id}
-                                            to={`/originals/original/series/${item.id}`}
-                                        >
-
-                                            <li
-                                                onMouseEnter={() => setHoveredOriginalItem(item.id)}
-                                                onMouseLeave={() => setHoveredOriginalItem(null)}
-                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                                        {/* khung nội dung */}
+                                        {Comic?.map(item => (
+                                            <Link
+                                                key={item.id}
+                                                to={`/originals/original/series/${item.id}`}
                                             >
 
-                                                <div className="w-full h-full" >
-                                                    <img
-                                                        src={item.squareThumbnail}
-                                                        alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
-                                                    />
+                                                <li
+                                                    onMouseEnter={() => setHoveredOriginalItem(item.id)}
+                                                    onMouseLeave={() => setHoveredOriginalItem(null)}
+                                                    className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                                                >
 
-                                                    {hoveredOriginalItem === item.id && (
-                                                        <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
-                                                            <AutoStoriesIcon sx={{ fontSize: 40 }} />
-                                                        </div>
-                                                    )}
-                                                </div>
+                                                    <div className="w-full h-full" >
+                                                        <img
+                                                            src={item.squareThumbnail}
+                                                            alt="img"
+                                                            className="object-fill w-full h-full rounded-md"
+                                                        />
 
-                                                <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-
-                                                    <div className="w-full h-[65px] mb-auto overflow-hidden">
-                                                        <span className="text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
-                                                            {item.title}
-                                                        </span>
-                                                        <span className="text-md text-shadow-white leading-[1.2] line-clamp-1">
-                                                            {item.Author}
-                                                        </span>
+                                                        {hoveredOriginalItem === item.id && (
+                                                            <div className="absolute inset-0 border-4 border-yellow-500 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                                <AutoStoriesIcon sx={{ fontSize: 40 }} />
+                                                            </div>
+                                                        )}
                                                     </div>
 
-                                                    <div className="w-full mb-[40px] mr-auto">
-                                                        <span className="w-[75px] text-rose-300 rounded-full gap-1 text-sm font-semibold flex items-center">
-                                                            <FavoriteIcon />
-                                                            {item.like}
-                                                        </span>
-                                                        <div className="flex mt-2 gap-1">
-                                                            <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                                Up
+                                                    <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+
+                                                        <div className="w-full h-[65px] mb-auto overflow-hidden">
+                                                            <span className="text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
+                                                                {item.title}
                                                             </span>
-                                                            {/* <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                            <span className="text-md text-shadow-white leading-[1.2] line-clamp-1">
+                                                                {item.Author}
+                                                            </span>
+                                                        </div>
+
+                                                        <div className="w-full mb-[40px] mr-auto">
+                                                            <span className="w-[75px] text-rose-300 rounded-full gap-1 text-sm font-semibold flex items-center">
+                                                                <FavoriteIcon />
+                                                                {item.like}
+                                                            </span>
+                                                            <div className="flex mt-2 gap-1">
+                                                                <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                                    Up
+                                                                </span>
+                                                                {/* <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-gray-500 via-black to-black  text-white text-xs font-semibold rounded-full flex items-center justify-center">
                                                                     New
                                                                 </span> */}
+                                                            </div>
                                                         </div>
+
+                                                        {/*Trong component React của bạn */}
+                                                        <div className="w-full h-[30px]">
+                                                            {!language ?
+                                                                <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
+                                                                    {selectedOriginalsByGenre}
+                                                                </span>
+                                                                :
+                                                                <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
+                                                                    {dataListGenre.filter(item => item.name === selectedOriginalsByGenre)[0].nameKorean}
+                                                                </span>
+                                                            }
+                                                        </div>
+
                                                     </div>
 
-                                                    {/*Trong component React của bạn */}
-                                                    <div className="w-full h-[30px]">
-                                                        {!language ?
-                                                            <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
-                                                                {selectedOriginalsByGenre}
-                                                            </span>
-                                                            :
-                                                            <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
-                                                                {dataListGenre.filter(item => item.name === selectedOriginalsByGenre)[0].nameKorean}
-                                                            </span>
-                                                        }
-                                                    </div>
+                                                </li>
+                                            </Link>
+                                        ))}
 
-                                                </div>
-
-                                            </li>
-                                        </Link>
-                                    ))}
-
-                                </ul>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>

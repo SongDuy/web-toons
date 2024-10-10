@@ -324,11 +324,14 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                   <span className="mx-3 text-2xl text-white font-bold">1</span>
                 </div>
 
-                {!language ? (
-                  <h1 className="text-gray-400">ORIGINAL SERIES</h1>
-                ) : (
-                  <h1 className="text-gray-400">오리지널 시리즈</h1>
-                )}
+                <h1 className="text-gray-400">
+                  {!language ? (
+                    "ORIGINAL SERIES"
+                  ) : (
+                    "오리지널 시리즈"
+                  )}
+                </h1>
+
               </li>
 
               <li className="uppercase font-semibold text-md flex items-center justify-center">
@@ -341,11 +344,13 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                   <span className="mx-3 text-2xl text-white font-bold">2</span>
                 </div>
 
-                {!language ? (
-                  <h1 className="text-black">ORIGINAL EPISODES</h1>
-                ) : (
-                  <h1 className="text-gray-400">오리지널 에피소드</h1>
-                )}
+                <h1 className="text-black">
+                  {!language ? (
+                    "ORIGINAL EPISODES"
+                  ) : (
+                    "오리지널 에피소드"
+                  )}
+                </h1>
               </li>
             </ul>
           </div>
@@ -356,15 +361,13 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                 {/* Phần tải ảnh cho tập truyện */}
                 <div className="w-[220px] h-full">
                   <div className="w-full py-3">
-                    {!language ? (
-                      <span className="w-full font-semibold text-xl">
-                        Episode Thumbnail
-                      </span>
-                    ) : (
-                      <span className="w-full font-semibold text-xl">
-                        에피소드 썸네일
-                      </span>
-                    )}
+                    <span className="w-full font-semibold text-xl">
+                      {!language ? (
+                        "Episode Thumbnail"
+                      ) : (
+                        "에피소드 썸네일"
+                      )}
+                    </span>
                   </div>
                   {photos1 ? (
                     <img
@@ -379,25 +382,22 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                           <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
                             <NorthIcon />
                           </span>
-                          {!language ? (
-                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                              Select an image to upload.
-                            </span>
-                          ) : (
-                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                              업로드할 이미지를 선택하세요.
-                            </span>
-                          )}
 
-                          {!language ? (
-                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                              Or drag the image file here.
-                            </span>
-                          ) : (
-                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                              또는 이미지를 여기로 드래그하세요.
-                            </span>
-                          )}
+                          <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                            {!language ? (
+                              "Select an image to upload."
+                            ) : (
+                              "업로드할 이미지를 선택하세요."
+                            )}
+                          </span>
+
+                          <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                            {!language ? (
+                              "Or drag the image file here."
+                            ) : (
+                              "또는 이미지를 여기로 드래그하세요."
+                            )}
+                          </span>
 
                           <input
                             type="file"
@@ -411,37 +411,30 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                   )}
 
                   <div className="w-full py-3">
-                    {!language ? (
-                      <span className="block w-full font-semibold text-[13.5px] text-gray-600">
-                        Recommended size is 160x151.
-                      </span>
-                    ) : (
-                      <span className="block w-full font-semibold text-[13.5px] text-gray-600">
-                        추천 사이즈는 160x151입니다.
-                      </span>
-                    )}
 
-                    {!language ? (
-                      <span className="block w-full font-semibold text-[13.5px] text-gray-600">
-                        Image must be less than 500KB.
-                      </span>
-                    ) : (
-                      <span className="block w-full font-semibold text-[13.5px] text-gray-600">
-                        이미지는 500KB 이하이어야 합니다.
-                      </span>
-                    )}
+                    <span className="block w-full font-semibold text-[13.5px] text-gray-600">
+                      {!language ? (
+                        "Recommended size is 160x151."
+                      ) : (
+                        "추천 사이즈는 160x151입니다."
+                      )}
+                    </span>
 
-                    {!language ? (
-                      <span className="block w-full font-semibold text-[13.5px] text-gray-600">
-                        Only JPG, JPEG, and PNG formats are allowed. File name
-                        can only be in English letters and numbers.
-                      </span>
-                    ) : (
-                      <span className="block w-full font-semibold text-[13.5px] text-gray-600">
-                        JPG, JPEG, PNG 형식만 허용됩니다. 파일 이름은 영어
-                        문자와 숫자만 사용할 수 있습니다.
-                      </span>
-                    )}
+                    <span className="block w-full font-semibold text-[13.5px] text-gray-600">
+                      {!language ? (
+                        "Image must be less than 500KB."
+                      ) : (
+                        "이미지는 500KB 이하이어야 합니다."
+                      )}
+                    </span>
+
+                    <span className="block w-full font-semibold text-[13.5px] text-gray-600">
+                      {!language ? (
+                        "Only JPG, JPEG, and PNG formats are allowed. File name can only be in English letters and numbers."
+                      ) : (
+                        "JPG, JPEG, PNG 형식만 허용됩니다. 파일 이름은 영어 문자와 숫자만 사용할 수 있습니다."
+                      )}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -450,15 +443,15 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
               <div className="w-full py-3 pl-5 border-b-2 pb-10">
                 <div className="grid grid-cols-1 gap-5">
                   <div className="w-full flex items-center gap-2">
-                    {!language ? (
-                      <h1 className="font-semibold text-xl flex items-center">
-                        Series title :
-                      </h1>
-                    ) : (
-                      <h1 className="font-semibold text-xl flex items-center">
-                        시리즈 제목 :
-                      </h1>
-                    )}
+
+                    <h1 className="font-semibold text-xl flex items-center">
+                      {!language ? (
+                        "Series title :"
+                      ) : (
+                        "시리즈 제목 :"
+                      )}
+                    </h1>
+
                     <span className="font-semibold text-xl flex items-center">
                       {comicid.title}
                     </span>
@@ -467,16 +460,13 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                   {/* Tiêu để của tập truyện */}
                   <div className="w-full">
                     {/* Tiêu đề */}
-
-                    {!language ? (
-                      <h1 className="w-full font-semibold text-xl">
-                        Episode title
-                      </h1>
-                    ) : (
-                      <h1 className="w-full font-semibold text-xl">
-                        에피소드 제목
-                      </h1>
-                    )}
+                    <h1 className="w-full font-semibold text-xl">
+                      {!language ? (
+                        "Episode title"
+                      ) : (
+                        "에피소드 제목"
+                      )}
+                    </h1>
 
                     <div className="flex mt-3">
                       <button className="w-[90px] h-[40px] border-2 bg-white flex items-center justify-center">
@@ -494,29 +484,25 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                   {/* Phần tải nội dung tập truyện */}
                   <div className="w-full grid grid-cols-1 gap-4">
                     {/* Tiêu đề */}
-
-                    {!language ? (
-                      <h1 className="w-full font-semibold text-xl">
-                        Upload file
-                      </h1>
-                    ) : (
-                      <h1 className="w-full font-semibold text-xl">
-                        파일 업로드
-                      </h1>
-                    )}
+                    <h1 className="w-full font-semibold text-xl">
+                      {!language ? (
+                        "Upload file"
+                      ) : (
+                        "파일 업로드"
+                      )}
+                    </h1>
 
                     {/* Nút tải file */}
                     <div className="flex gap-3 ">
                       <div className="relative">
-                        {!language ? (
-                          <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
-                            Select File To Upload
-                          </button>
-                        ) : (
-                          <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
-                            업로드할 파일 선택
-                          </button>
-                        )}
+
+                        <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
+                          {!language ? (
+                            "Select File To Upload"
+                          ) : (
+                            "업로드할 파일 선택"
+                          )}
+                        </button>
 
                         <input
                           type="file"
@@ -526,21 +512,17 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                         />
                       </div>
 
-                      {!language ? (
-                        <button
-                          onClick={() => handleDeleteAll()}
-                          className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full"
-                        >
-                          Delete All
-                        </button>
-                      ) : (
-                        <button
-                          onClick={() => handleDeleteAll()}
-                          className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full"
-                        >
-                          모두 삭제
-                        </button>
-                      )}
+                      <button
+                        onClick={() => handleDeleteAll()}
+                        className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full"
+                      >
+                        {!language ? (
+                          "Delete All"
+                        ) : (
+                          "모두 삭제"
+                        )}
+                      </button>
+
                     </div>
 
                     {/* Phần hiện nội dung tải lên*/}
@@ -603,25 +585,23 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                   <div>
                     <div className="w-full flex items-center gap-2">
                       {/* Tiêu đề */}
-                      {!language ? (
-                        <div className="flex gap-2">
-                          <h1 className="h-full font-semibold text-xl">
-                            Note
-                          </h1>
-                          <span className="h-full text-gray-400 font-semibold mt-1">
-                            (Optional)
-                          </span>
-                        </div>
-                      ) : (
-                        <div className="flex gap-2">
-                          <h1 className="h-full font-semibold text-xl">
-                            노트
-                          </h1>
-                          <span className="h-full text-gray-400 font-semibold mt-1">
-                            (선댁 사항)
-                          </span>
-                        </div>
-                      )}
+
+                      <div className="flex gap-2">
+                        <h1 className="h-full font-semibold text-xl">
+                          {!language ? (
+                            "Note"
+                          ) : (
+                            "노트"
+                          )}
+                        </h1>
+                        <span className="h-full text-gray-400 font-semibold mt-1">
+                          {!language ? (
+                            "(Optional)"
+                          ) : (
+                            "(선댁 사항)"
+                          )}
+                        </span>
+                      </div>
                     </div>
 
                     <div className="w-full">
@@ -637,27 +617,25 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                   {/* Phần thêm âm thanh */}
                   <div className="w-full">
                     {/* Tiêu đề */}
-                    {!language ? (
-                      <h1 className="w-full font-semibold text-xl">
-                        Add music
-                      </h1>
-                    ) : (
-                      <h1 className="w-full font-semibold text-xl">
-                        음악 추가
-                      </h1>
-                    )}
+
+                    <h1 className="w-full font-semibold text-xl">
+                      {!language ? (
+                        "Add music"
+                      ) : (
+                        "(음악 추가)"
+                      )}
+                    </h1>
 
                     <div className="w-full h-[40px] flex items-center gap-3 mt-3">
                       <div className="relative">
-                        {!language ? (
-                          <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
-                            Select File To Upload
-                          </button>
-                        ) : (
-                          <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
-                            업로드할 파일 선택
-                          </button>
-                        )}
+
+                        <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
+                          {!language ? (
+                            "Select File To Upload"
+                          ) : (
+                            "업로드할 파일 선택"
+                          )}
+                        </button>
 
                         <input
                           type="file"
@@ -667,23 +645,24 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                         />
                       </div>
 
-                      {!language ? (
-                        <button onClick={() => handleDeleteMusic()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                          Delete All
-                        </button>
-                      ) : (
-                        <button onClick={() => handleDeleteMusic()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
-                          모두 삭제
-                        </button>
-                      )}
-
+                      <button onClick={() => handleDeleteMusic()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
+                        {!language ? (
+                          "Delete All"
+                        ) : (
+                          "모두 삭제"
+                        )}
+                      </button>
                     </div>
 
                     {/* Hiện tên file âm thanh */}
                     <div className="w-full h-[50px] bg-white mt-3 flex items-center justify-center">
                       {!URLMusic ?
                         <span className="font-semibold text-gray-500">
-                          {!language ? "render files." : "파일 렌더링"}
+                          {!language ? (
+                            "render files."
+                          ) : (
+                            "파일 렌더링"
+                          )}
                         </span>
                         :
                         <div>
@@ -715,25 +694,16 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     </div>
                   </div>
 
-                  {/* <div className="w-full">
-                                        <button className="">
-
-                                        </button>
-                                    </div> */}
-
                   {/* Phần hiệu chỉnh comment */}
                   <div className="w-full flex items-center gap-x-10 mt-4">
                     {/* Tiêu đề */}
-
-                    {!language ? (
-                      <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
-                        Comments
-                      </h1>
-                    ) : (
-                      <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
-                        댓글
-                      </h1>
-                    )}
+                    <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
+                      {!language ? (
+                        "Comments"
+                      ) : (
+                        "댓글"
+                      )}
+                    </h1>
 
                     <div className="flex gap-x-10 mt-1 items-center">
                       <label className="flex items-center">
@@ -745,8 +715,13 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                           sx={{ "& .MuiSvgIcon-root": { fontSize: 30 } }}
                         />
 
-                        {!language ? <span>Enable</span> : <span>활성화</span>}
+                        {!language ? (
+                          "Enable"
+                        ) : (
+                          "활성화"
+                        )}
                       </label>
+
                       <label className="flex items-center">
                         <Radio
                           checked={selectedValue === "Disable"}
@@ -757,9 +732,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                         />
 
                         {!language ? (
-                          <span>Disable</span>
+                          "Disable"
                         ) : (
-                          <span>비활성화</span>
+                          "비활성화"
                         )}
                       </label>
                     </div>
@@ -768,16 +743,13 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                   {/* Phần hiệu chỉnh episode */}
                   <div className="w-full flex items-center gap-10">
                     {/* Tiêu đề */}
-
-                    {!language ? (
-                      <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
-                        Episodes
-                      </h1>
-                    ) : (
-                      <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
-                        에피소드
-                      </h1>
-                    )}
+                    <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
+                      {!language ? (
+                        "Episodes"
+                      ) : (
+                        "에피소드"
+                      )}
+                    </h1>
 
                     <div className="flex gap-6 mt-1 items-center">
                       <label className="flex items-center">
@@ -790,9 +762,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                         />
 
                         {!language ? (
-                          <span>Ongoing</span>
+                          "Ongoing"
                         ) : (
-                          <span>진행 중</span>
+                          "진행 중"
                         )}
                       </label>
                       <label className="flex items-center">
@@ -805,9 +777,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                         />
 
                         {!language ? (
-                          <span>Completed</span>
+                          "Completed"
                         ) : (
-                          <span>완료됨</span>
+                          "완료됨"
                         )}
                       </label>
                     </div>
@@ -816,21 +788,18 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
 
                 {/* Nút đăng tập truyện */}
                 <div className="w-full mt-10 py-3">
-                  {!language ? (
-                    <button
-                      onClick={id?.idchap ? handleedit : handleEp}
-                      className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4"
-                    >
-                      Publish episode
-                    </button>
-                  ) : (
-                    <button
-                      onClick={id?.idchap ? handleedit : handleEp}
-                      className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4"
-                    >
-                      에피소드 게시
-                    </button>
-                  )}
+
+                  <button
+                    onClick={id?.idchap ? handleedit : handleEp}
+                    className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4"
+                  >
+                    {!language ? (
+                      "Publish episode"
+                    ) : (
+                      "에피소드 게시"
+                    )}
+                  </button>
+
                 </div>
               </div>
             </div>
