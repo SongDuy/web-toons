@@ -7,6 +7,7 @@ import PaymentFireBase from "../../common/services/Payment.services";
 import { auth } from "../../common/themes/firebase";
 import BankFireBase from "../../common/services/Bank.services";
 import CircularProgress from "@mui/material/CircularProgress";
+import CheckIcon from '@mui/icons-material/Check';
 
 const PaymentPage = ({ closeModal, price }) => {
   const [Bank, setBank] = useState([]);
@@ -373,13 +374,31 @@ const PaymentPage = ({ closeModal, price }) => {
           className="w-screen h-screen bg-black bg-opacity-30 flex items-center justify-center fixed inset-0 z-50"
           onClick={handleBackdropClick}
         >
-          <div className="bg-white rounded-lg shadow-lg p-6 w-80 text-center transform transition-all duration-300">
-            <h2 className="text-2xl font-bold mb-4">
-              Payment Successful!
+          <div className="w-[450px] bg-white rounded-lg shadow-lg pt-3 pb-6 text-center transform transition-all duration-300">
+            <h2 className="text-2xl font-bold mb-2">
+              {!language ?
+                "Payment Successful!"
+                :
+                "결제 성공!"
+              }
             </h2>
             <p className="text-gray-600">
-              Your payment has been processed successfully.
+              {!language ?
+                " Your payment has been processed successfully."
+                :
+                "결제가 성공적으로 처리되었습니다."
+              }
             </p>
+
+            <div className="w-full mt-2 flex items-center justify-center gap-2">
+              <div className="w-[35px] h-[35px] text-white rounded-full bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 flex items-center justify-center">
+                <CheckIcon />
+              </div>
+              <h1 className="text-shadow-black text-yellow-500 text-xl">
+                VIP
+              </h1>
+            </div>
+
             <div className="w-full mt-3 flex items-center justify-center">
               <button
                 className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
@@ -399,13 +418,25 @@ const PaymentPage = ({ closeModal, price }) => {
           className="w-screen h-screen bg-black bg-opacity-30 flex items-center justify-center fixed inset-0 z-50"
           onClick={handleBackdropClick}
         >
-          <div className="bg-white rounded-lg shadow-lg p-6 w-[450px] text-center transform transition-all duration-300">
-            <h2 className="text-2xl font-bold my-2">Processing Payment Verification...</h2>
-            <p className="text-gray-600 mb-3">Please wait while we verify your payment.</p>
+          <div className="w-[450px] bg-white rounded-lg shadow-lg pt-3 pb-6 text-center transform transition-all duration-300">
+            <h2 className="text-2xl font-bold my-2">
+              {!language ?
+                " Processing Payment Verification"
+                :
+                "결제 확인 처리 중"
+              }
+            </h2>
+            <p className="text-gray-600 mb-3">
+              {!language ?
+                " Please wait while we verify your payment."
+                :
+                "결제를 확인하는 동안 잠시만 기다려 주세요."
+              }
+            </p>
             <CircularProgress />
             <div className="w-full mt-3 flex items-center justify-center">
               <button
-                className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
+                className="w-1/3 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
                 onClick={handleBackdropClick}
               >
                 {!language ?
@@ -423,13 +454,25 @@ const PaymentPage = ({ closeModal, price }) => {
           className="w-screen h-screen bg-black bg-opacity-30 flex items-center justify-center fixed inset-0 z-50"
           onClick={handleBackdropClick}
         >
-          <div className="bg-white rounded-lg shadow-lg p-6 w-[450px] text-center transform transition-all duration-300">
-            <h2 className="text-2xl font-bold my-2">Processing Payment Verification...</h2>
-            <p className="text-gray-600 mb-3">Please wait while we verify your payment.</p>
+          <div className="bg-white rounded-lg shadow-lg pt-3 pb-6 w-[450px] text-center transform transition-all duration-300">
+            <h2 className="text-2xl font-bold my-2">
+              {!language ?
+                " Processing Payment Verification"
+                :
+                "결제 확인 처리 중"
+              }
+            </h2>
+            <p className="text-gray-600 mb-3">
+              {!language ?
+                " Please wait while we verify your payment."
+                :
+                "결제를 확인하는 동안 잠시만 기다려 주세요."
+              }
+            </p>
             <CircularProgress />
             <div className="w-full mt-3 flex items-center justify-center">
               <button
-                className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
+                className="w-1/3 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
                 onClick={handleBackdropClick}
               >
                 {!language ?
