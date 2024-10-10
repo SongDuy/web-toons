@@ -73,7 +73,7 @@ const ForgotPasswordPage = () => {
                             onChange={(e) => setEmail(e.target.value)}
                         />
                         {error && <p style={{ color: 'red' }}>{error}</p>}
-                        {success && <p>비밀번호 재설정 이메일이 발송되었습니다. 받은 편지함을 확인해 주세요.</p>}
+                        {success && <p>  {!language ?"A password reset email has been sent. Please check your inbox.":"비밀번호 재설정 이메일이 발송되었습니다. 받은 편지함을 확인해 주세요."}</p>}
 
                         <button
                             className="w-full h-[50px] bg-black text-white rounded font-semibold"

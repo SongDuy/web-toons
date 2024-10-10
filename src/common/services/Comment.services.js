@@ -269,6 +269,26 @@ const CommentFireBase = {
     await updateDoc(updatepoint, data);
   },
   async Delete(id) {
+    console.log(id)
+    const docRef = doc(fireStore, "comment", id);
+    const subcollectionRef = collection(docRef, id);
+    const subcollectionLike = collection(docRef, "like");
+    const subcollectionDislike = collection(docRef, "dislike");
+    const querySnapshotid = await getDocs(subcollectionRef);
+    for (const documentid of querySnapshotid.docs) {
+      const subcollectionLike = collection(documentid.ref, "like");
+      const subcollectionDislike = collection(documentid.ref, "dislike");
+      await this.deleteSubcollection(subcollectionDislike, id);
+      await this.deleteSubcollection(subcollectionLike, id);
+    }
+    // Xóa tất cả tài liệu trong các subcollections
+    await this.deleteSubcollection(subcollectionRef, id);
+    await this.deleteSubcollection(subcollectionLike, id);
+    await this.deleteSubcollection(subcollectionDislike, id);
+  
+    // // Cuối cùng, xóa tài liệu chính trong 'comments'
+    // await deleteDoc(doc(document.ref.firestore, document.ref.path));
+
     await deleteDoc(doc(fireStore, "comment", id));
   },
 

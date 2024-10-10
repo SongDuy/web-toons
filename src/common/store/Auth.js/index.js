@@ -8,11 +8,24 @@ import {
 } from "firebase/auth";
 import userFireBase from "../../services/User.services";
 import { auth } from "../../themes/firebase";
+const checkIfOneDayLeft = (sentTime) => {
+  const currentTime = new Date(Date.now());
+  const oneDayInMs = 24 * 60 * 60 * 1000; 
+
+  const timeDifference = currentTime - sentTime; 
+
+  if (timeDifference >= oneDayInMs) {
+    return false; 
+  } else {
+    return true; 
+  }
+};
 export const handleLogin = createAsyncThunk("user/login", async (payload) => {
   try {
    const userCredential = await signInWithEmailAndPassword(auth, payload.email, payload.password);
    const finduser=await userFireBase.getbyid(userCredential?.user?.uid)
    const lock=finduser.success?finduser?.lock:true
+ 
    if(userCredential.user.emailVerified ){
      if(!lock){
       auth.signOut()
@@ -24,6 +37,13 @@ export const handleLogin = createAsyncThunk("user/login", async (payload) => {
     return true;
 
    }else{
+    if(finduser.success){
+      if(!checkIfOneDayLeft(finduser?.EmailVerification)){
+        await userFireBase.update({EmailVerification:new Date(Date.now())},auth?.currentUser?.uid)
+        await sendEmailVerification(auth.currentUser)
+
+      }
+    }
     auth.signOut()
     throw new Error ( '400');
 
@@ -61,6 +81,13 @@ export const handleLogin19 = createAsyncThunk("user/login19", async (payload) =>
     return true;
 
    }else{
+    if(finduser.success){
+      if(!checkIfOneDayLeft(finduser?.EmailVerification)){
+        await userFireBase.update({EmailVerification:new Date(Date.now())},auth?.currentUser?.uid)
+        await sendEmailVerification(auth.currentUser)
+
+      }
+    }
     auth.signOut()
     throw new Error ( '400');
 
@@ -92,6 +119,15 @@ export const handleAdmin = createAsyncThunk("user/loginadmin", async (payload) =
     return true;
 
    }else{
+     
+    if(finduser.success){
+      if(!checkIfOneDayLeft(finduser?.EmailVerification)){
+        await userFireBase.update({EmailVerification:new Date(Date.now())},auth?.currentUser?.uid)
+        await sendEmailVerification(auth.currentUser)
+
+      }
+    }
+
     auth.signOut()
     throw new Error ( '400');
 
@@ -109,7 +145,7 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
       const userCredential = await createUserWithEmailAndPassword (auth, payload.email, payload.password);
          await updateProfile(userCredential.user,{ displayName: payload.displayName })
         await sendEmailVerification(auth.currentUser)
-        await userFireBase.Add({email:payload.email,uid: userCredential?.user?.uid,role:'user',name: payload?.displayName,follow:0,birthday:payload?.birthday,lock:true,checkage:false}, userCredential.user.uid)
+        await userFireBase.Add({email:payload.email,uid: userCredential?.user?.uid,role:'user',name: payload?.displayName,follow:0,birthday:payload?.birthday,lock:true,checkage:false, createTime: new Date(Date.now()), EmailVerification:new Date(Date.now())}, userCredential.user.uid)
         if(!auth.currentUser.emailVerified){
           auth.signOut()
           return false
@@ -119,10 +155,7 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
      
         // Ở đây, bạn có thể chuyển hướng người dùng đến trang khác hoặc thực hiện các hành động khác sau khi đăng ký thành công
       } catch (error) {
-        if(!auth.currentUser.emailVerified){
-          await sendEmailVerification(auth.currentUser)
-
-        }
+      
         throw new Error(!payload?.language?'Email already exists.':"이미 이메일이 존재합니다")
         // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
       }
@@ -154,7 +187,7 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
       localStorage.setItem('sadsadas', token);
       const finduser=await userFireBase.getbyid(result?.user?.uid)
       if(!finduser?.success){
-        await userFireBase.Add({email:result?.user?.email,uid: result?.user?.uid,role:'user',name: result?.user?.displayName,follow:0,lock:true,checkage:false},result?.user?.uid)
+        await userFireBase.Add({email:result?.user?.email,uid: result?.user?.uid,role:'user',name: result?.user?.displayName,follow:0,lock:true,checkage:false,createTime: new Date(Date.now()), EmailVerification:new Date(Date.now())},result?.user?.uid)
       }else{
         if(!finduser.lock){
           auth.signOut()
@@ -180,7 +213,7 @@ export const handleRegister = createAsyncThunk("user/Register", async (payload) 
       localStorage.setItem('sadsadas', token);
       const finduser=await userFireBase.getbyid(result?.user?.uid)
       if(!finduser?.success){
-        await userFireBase.Add({email:result?.user?.email,uid: result?.user?.uid,role:'user',name: result?.user?.displayName,follow:0,lock:true,checkage:false},result?.user?.uid)
+        await userFireBase.Add({email:result?.user?.email,uid: result?.user?.uid,role:'user',name: result?.user?.displayName,follow:0,lock:true,checkage:true,createTime: new Date(Date.now()), EmailVerification:new Date(Date.now())},result?.user?.uid)
       }else{
         await userFireBase.update({checkage:true},result?.user?.uid)
 

@@ -56,14 +56,14 @@ const Comment = () => {
   };
   const hanledelete = async (id) => {
     try {
-      let result = window.confirm("Do you want to delete this comment?");
+      let result = window.confirm(!language ?"Do you want to delete this comment?":"이 댓글을 삭제하시겠습니까?");
       if (result) {
         await CommentFireBase.Delete(id)
         const comments = await dispatch(idusercomment(Account.uid));
         unwrapResult(comments);
       }
     } catch (error) {
-
+      console.log(error)
     }
   }
 
