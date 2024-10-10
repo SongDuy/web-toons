@@ -8,6 +8,7 @@ import '../../../App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { getAllComic } from '../../../common/store/comic';
+import { getAllVideo } from '../../../common/store/Video';
 
 
 const SearchPage = ({ closeModal }) => {
@@ -15,6 +16,8 @@ const SearchPage = ({ closeModal }) => {
     // Mở và đóng modal tìm kiếm
     const [isSearch, setIsSearch] = useState(false);
     const comic = useSelector(state => state.comic.comic);
+    const Video = useSelector(state => state.Video.video);
+
     const dispatch = useDispatch();
 
     const handleBackdropClick = (event) => {
@@ -29,19 +32,23 @@ const SearchPage = ({ closeModal }) => {
         }
     };
     useEffect(() => {
-        const get = async () => {
+        const getComicsAndVideos = async () => {
             try {
-                console.log(comic.comic)
                 if (!comic?.comic) {
-                    const lg = await dispatch(getAllComic())
-                    unwrapResult(lg)
+                    const comicResult = await dispatch(getAllComic());
+                    unwrapResult(comicResult);
+                }
+                if (!Video?.video) {
+                    const videoResult = await dispatch(getAllVideo());
+                    unwrapResult(videoResult);
                 }
             } catch (error) {
-
+                console.error(error);
             }
-        }
-        get()
-    }, [dispatch, comic]);
+        };
+        getComicsAndVideos();
+    }, [dispatch, comic, Video]);
+
 
     // Hiển thị nội dung giống nội dung cần tìm
     const [searchTerm, setSearchTerm] = useState('');
@@ -49,14 +56,27 @@ const SearchPage = ({ closeModal }) => {
         setSearchTerm(e.target.value);
     };
 
-    const filteredTop30Films = comic.comic?.filter(item =>
+    const listComics = comic.comic?.filter(item =>
         item.title.toLowerCase().includes(searchTerm.toLowerCase())
         //|| item.auth.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    const showNoResultsMessage = (searchTerm.trim() !== '' && filteredTop30Films?.length === 0) || searchTerm.trim() === '';
+    const showNoResultsComicMessage = (searchTerm.trim() !== '' && listComics?.length === 0) || searchTerm.trim() === '';
+
+    const listVideos = Video.video?.filter(item =>
+        item.title.toLowerCase().includes(searchTerm.toLowerCase())
+        //|| item.auth.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    const showNoResultsVideoMessage = (searchTerm.trim() !== '' && listVideos?.length === 0) || searchTerm.trim() === '';
 
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
+
+    // chọn loại tìm kiếm truyện hoặc video
+    const [activeButton, setActiveButton] = useState('originals');
+
+    const handleButtonClick = (buttonName) => {
+        setActiveButton(buttonName);
+    };
 
     return (
         <div className="w-screen h-screen bg-black bg-opacity-50 flex fixed inset-0 z-50 " onClick={handleBackdropClick}>
@@ -85,62 +105,135 @@ const SearchPage = ({ closeModal }) => {
                         onChange={handleSearch}
                         placeholder={!language ? "Search..." : ""}
                     />
+
+                    {/* Chọn loại truyện hoặc video */}
+                    <div className="w-full mt-5 flex items-center justify-center gap-4">
+                        <button
+                            className={`w-[120px] h-[35px] font-semibold rounded ${activeButton === 'originals' ? 'bg-black text-white' : 'bg-gray-200'}`}
+                            onClick={() => handleButtonClick('originals')}
+                        >
+                            Originals
+                        </button>
+                        <button
+                            className={`w-[120px] h-[35px] font-semibold rounded ${activeButton === 'videos' ? 'bg-black text-white' : 'bg-gray-200'}`}
+                            onClick={() => handleButtonClick('videos')}
+                        >
+                            Videos
+                        </button>
+                    </div>
                 </div>
 
                 {/* Danh sách nội dung phù hợp cần tìm */}
-                <div className="w-full h-[630px] custom-scrollbar">
-                    <ul className="grid grid-cols-1">
-                        {showNoResultsMessage ? (
-                            <div className="w-full flex items-center justify-center ">
-                                {!language ?
-                                    <span className="text-gray-500">
-                                        No relevant results found.
-                                    </span>
-                                    :
-                                    <span className="text-gray-500">
-                                        관련 결과를 찾을 수 없습니다.
-                                    </span>
-                                }
-                            </div>
-                        ) : (
-                            filteredTop30Films?.map(item => (
-                                <Link to={`/originals/original/series/${item.id}`} key={item.id} onClick={handleBackdropClick}>
-                                    <li className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer">
+                {activeButton === "originals" ? (
+                    <div className="w-full h-[630px] custom-scrollbar">
+                        <ul className="grid grid-cols-1">
+                            {showNoResultsComicMessage ? (
+                                <div className="w-full h-full mt-10 flex items-center justify-center ">
+                                    {!language ?
+                                        <span className="text-gray-500">
+                                            No related comic results found.
+                                        </span>
+                                        :
+                                        <span className="text-gray-500">
+                                            관련된 만화 결과를 찾을 수 없습니다.
+                                        </span>
+                                    }
+                                </div>
+                            ) : (
+                                listComics?.map(item => (
+                                    <Link to={`/originals/original/series/${item.id}`} key={item.id} onClick={handleBackdropClick}>
+                                        <li className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer">
 
-                                        <div className="w-[80px] h-[80px] rounded">
-                                            <img
-                                                src={item.squareThumbnail}
-                                                alt="img"
-                                                className="object-fill w-full h-full rounded"
-                                            />
-                                        </div>
-
-                                        <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                                            <div className="w-[280px] overflow-hidden ">
-                                                <span className="w-full text-[15px] font-semibold line-clamp-1">
-                                                    {item.title}
-                                                </span>
-                                                <div className="flex">
-                                                    <span className="max-w-[150px] pr-2 border-r-2 line-clamp-1">
-                                                        {item.Author}
-                                                    </span>
-                                                    <span className="max-w-[110px] px-2 border-l line-clamp-1">
-                                                        {item.genre1}
-                                                    </span>
-                                                </div>
-                                                <span className="w-full text-[15px] text-yellow-500 flex items-center gap-1 font-semibold line-clamp-1">
-                                                    <StarIcon />
-                                                    {item.totalSubscribed}
-                                                </span>
+                                            <div className="w-[80px] h-[80px] rounded">
+                                                <img
+                                                    src={item.squareThumbnail}
+                                                    alt="img"
+                                                    className="object-fill w-full h-full rounded"
+                                                />
                                             </div>
 
-                                        </div>
-                                    </li>
-                                </Link>
-                            ))
-                        )}
-                    </ul>
-                </div>
+                                            <div className="h-full rounded-xl px-3 py-3 flex items-center">
+                                                <div className="w-[280px] overflow-hidden ">
+                                                    <span className="w-full text-[15px] font-semibold line-clamp-1">
+                                                        {item.title}
+                                                    </span>
+                                                    <div className="flex">
+                                                        <span className="max-w-[150px] pr-2 border-r-2 line-clamp-1">
+                                                            {item.Author}
+                                                        </span>
+                                                        <span className="max-w-[110px] px-2 border-l line-clamp-1">
+                                                            {item.genre1}
+                                                        </span>
+                                                    </div>
+                                                    <span className="w-full text-[15px] text-yellow-500 flex items-center gap-1 font-semibold line-clamp-1">
+                                                        <StarIcon />
+                                                        {item.totalSubscribed}
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    </Link>
+                                ))
+                            )}
+                        </ul>
+                    </div>
+                ) : activeButton === "videos" ? (
+                    <div className="w-full h-[630px] custom-scrollbar">
+                        <ul className="grid grid-cols-1">
+                            {showNoResultsVideoMessage ? (
+                                <div className="w-full h-full mt-10 flex items-center justify-center ">
+                                    {!language ?
+                                        <span className="text-gray-500">
+                                            No related video results found.
+                                        </span>
+                                        :
+                                        <span className="text-gray-500">
+                                            관련된 비디오 결과를 찾을 수 없습니다.
+                                        </span>
+                                    }
+                                </div>
+                            ) : (
+                                listVideos?.map(item => (
+                                    <Link to={`/videos/video/series/${item.id}`} key={item.id} onClick={handleBackdropClick}>
+                                        <li className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer">
+
+                                            <div className="w-[80px] h-[80px] rounded">
+                                                <img
+                                                    src={item.squareThumbnail}
+                                                    alt="img"
+                                                    className="object-fill w-full h-full rounded"
+                                                />
+                                            </div>
+
+                                            <div className="h-full rounded-xl px-3 py-3 flex items-center">
+                                                <div className="w-[280px] overflow-hidden ">
+                                                    <span className="w-full text-[15px] font-semibold line-clamp-1">
+                                                        {item.title}
+                                                    </span>
+                                                    <div className="flex">
+                                                        <span className="max-w-[150px] pr-2 border-r-2 line-clamp-1">
+                                                            {item.Author}
+                                                        </span>
+                                                        <span className="max-w-[110px] px-2 border-l line-clamp-1">
+                                                            {item.genre1}
+                                                        </span>
+                                                    </div>
+                                                    <span className="w-full text-[15px] text-yellow-500 flex items-center gap-1 font-semibold line-clamp-1">
+                                                        <StarIcon />
+                                                        {item.totalSubscribed}
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    </Link>
+                                ))
+                            )}
+                        </ul>
+                    </div>
+                ) : null};
+
             </div>
 
         </div>
