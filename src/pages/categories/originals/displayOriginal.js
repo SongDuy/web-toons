@@ -589,7 +589,7 @@ const DisplayOriginalPage = () => {
                     Up
                   </span>
                   <span className="text-xl font-semibold flex items-center">
-                    EVERY MONDAY
+                    {/* EVERY MONDAY */}
                   </span>
                 </div>
 

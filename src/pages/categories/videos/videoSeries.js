@@ -294,7 +294,13 @@ const VideoSeriesPage = () => {
   const closePaymentModal = () => {
     setIsPaymentModal(false);
   };
-
+  function formatNumberWithM(number) {
+    if (number >= 1000000) {
+      const millions = number / 1000000;
+      return millions + "M";
+    }
+    return number;
+  }
   return (
     <div>
       {loading ? (
@@ -524,7 +530,7 @@ const VideoSeriesPage = () => {
                       <span className="mx-1 text-yellow-500">
                         <VisibilityIcon />
                       </span>
-                      <span className="mx-1">{Videoid.views}</span>
+                      <span className="mx-1">{formatNumberWithM(Videoid.views)}</span>
                     </li>
                     <li className="flex items-center justify-center">
                       <span className="mx-1 text-yellow-500">
@@ -606,7 +612,7 @@ const VideoSeriesPage = () => {
                       Up
                     </span>
                     <span className="text-xl font-semibold flex items-center">
-                      EVERY MONDAY
+                      {/* EVERY MONDAY */}
                     </span>
                   </div>
                   <div className="w-full">
