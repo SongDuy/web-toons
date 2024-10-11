@@ -209,13 +209,13 @@ const HeaderPage = () => {
         <div className="flex items-center justify-center">
 
           <button
-            className="w-[25px] h-[25px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
+            className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
             onClick={openLogin19Modal}
           >
             19
           </button>
           <button
-            className="border h-[5px] bg-gray-500 w-[20px] rounded-r-full"
+            className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full"
             onClick={closeLogin19Modal}
           >
           </button>
@@ -225,11 +225,11 @@ const HeaderPage = () => {
         <div className="flex items-center justify-center">
 
           <button
-            className="border h-[5px] bg-gray-500 w-[20px] rounded-l-full"
+            className="border h-[5px] bg-gray-500 w-[15px] rounded-l-full"
             onClick={() => logouts()}
           />
           <button
-            className="w-[25px] h-[25px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
+            className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
             onClick={() => logouts()}
           >
             19
@@ -452,6 +452,7 @@ const HeaderPage = () => {
                 </button>
 
                 {/* Chọn menu */}
+
                 <Popper
                   open={open}
                   anchorEl={anchorRef.current}
@@ -604,9 +605,95 @@ const HeaderPage = () => {
               <div className="block sm:hidden">
                 <button
                   className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
+                  ref={anchorAccountRef}
+                  id="composition-button"
+                  aria-controls={openAccount ? 'composition-menu' : undefined}
+                  aria-expanded={openAccount ? 'true' : undefined}
+                  aria-haspopup="true"
+                  onClick={handleToggleAccount}
                 >
                   <AccountCircleSharpIcon />
                 </button>
+
+                {/* Chọn menu Account*/}
+                <Popper
+                  className="w-[180px] rounded-lg flex items-center justify-center"
+                  open={openAccount}
+                  anchorEl={anchorAccountRef.current}
+                  role={undefined}
+                  placement="bottom-start"
+                  transition
+                  disablePortal
+                >
+                  {({ TransitionProps, placement }) => (
+                    <Grow
+                      {...TransitionProps}
+                      style={{
+                        transformOrigin:
+                          placement === 'bottom-start' ? 'left top' : 'left bottom',
+                      }}
+                    >
+                      <Paper>
+                        <ClickAwayListener onClickAway={handleCloseAccount}>
+                          <MenuList className="bg-gray-100 rounded-lg text-black font-semibold "
+                            autoFocusItem={openAccount}
+                            id="composition-menu"
+                            aria-labelledby="composition-button"
+                            onKeyDown={handleListAccountKeyDown}
+                          >
+                            <Link to={`/subscribed`}>
+                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                <GroupAddIcon />
+                                {!language ? <span> Subscribed </span> : <span> 구독 중 </span>}
+                              </MenuItem>
+                            </Link>
+
+                            <Link to={`/dashboard`}>
+                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                <PieChartIcon />
+                                {!language ? <span> Dashboard </span> : <span> 대시보드 </span>}
+                              </MenuItem>
+                            </Link>
+
+                            <Link to={`/mycomment`}>
+                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                <CommentIcon />
+                                {!language ? <span> Comments </span> : <span> 댓글 </span>}
+                              </MenuItem>
+                            </Link>
+
+                            <Link to={`/creators`}>
+                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                <EditNoteIcon />
+                                {!language ? <span> Creators </span> : <span> 창작자 </span>}
+                              </MenuItem>
+                            </Link>
+
+                            <Link to={`/channel/my`}>
+                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                <AssignmentIndIcon />
+                                {!language ? <span> My Channel Page</span> : <span> 내 채널 페이지 </span>}
+                              </MenuItem>
+                            </Link>
+
+                            <Link to={`/account`}>
+                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                <AccountCircleIcon />
+                                {!language ? <span> Account </span> : <span> 계정 </span>}
+                              </MenuItem>
+                            </Link>
+
+                            <MenuItem onClick={() => logouts()} className="flex gap-x-3">
+                              <LogoutIcon />
+                              {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
+                            </MenuItem>
+                          </MenuList>
+
+                        </ClickAwayListener>
+                      </Paper>
+                    </Grow>
+                  )}
+                </Popper>
               </div>
 
             </div>
