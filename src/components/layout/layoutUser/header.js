@@ -252,7 +252,7 @@ const HeaderPage = () => {
                 {!language ? <span> Originals </span> : <span> 오리지널 </span>}
               </div>
               <div className="block sm:hidden">
-                <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center rounded">
+                <button className="w-[30px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center rounded">
                   <AutoStoriesIcon />
                 </button>
               </div>
@@ -269,7 +269,7 @@ const HeaderPage = () => {
                 {!language ? <span> Videos </span> : <span> 비디오 </span>}
               </div>
               <div className="block sm:hidden">
-                <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center rounded">
+                <button className="w-[30px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center rounded">
                   <SmartDisplayIcon />
                 </button>
               </div>
@@ -286,7 +286,7 @@ const HeaderPage = () => {
                 {!language ? <span> Genres </span> : <span> 장르 </span>}
               </div>
               <div className="block sm:hidden">
-                <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center rounded">
+                <button className="w-[30px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center rounded">
                   <CategoryIcon />
                 </button>
 
@@ -304,7 +304,7 @@ const HeaderPage = () => {
                 {!language ? <span> Popular </span> : <span> 인기 </span>}
               </div>
               <div className="block sm:hidden">
-                <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center rounded">
+                <button className="w-[30px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center rounded">
                   <LocalActivityIcon />
                 </button>
 
@@ -370,7 +370,7 @@ const HeaderPage = () => {
           </div>
           :
           // Đã đăng nhập tài khoản
-          <div className="flex gap-1">
+          <div className="flex xs:gap-1 sm:gap-3">
 
             {/* Menu Publish */}
             < div className="flex items-center justify-center z-10">
@@ -440,7 +440,7 @@ const HeaderPage = () => {
               </div>
               <div className="block sm:hidden">
                 <button
-                  className=" w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
+                  className=" w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
                   ref={anchorRef}
                   id="composition-button"
                   aria-controls={open ? 'composition-menu' : undefined}
@@ -604,7 +604,7 @@ const HeaderPage = () => {
               </div>
               <div className="block sm:hidden">
                 <button
-                  className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
+                  className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
                   ref={anchorAccountRef}
                   id="composition-button"
                   aria-controls={openAccount ? 'composition-menu' : undefined}
@@ -701,16 +701,27 @@ const HeaderPage = () => {
         }
 
         {/* Chức năng tìm kiếm và chuyển ngữ */}
-        <div className="flex items-center gap-1">
+        <div className="flex items-center xs:gap-1 sm:gap-3">
 
           {/* Chức năng tìm kiếm */}
           <div className="w-full h-full">
-            <button
-              className="w-[35px] h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
-              onClick={openSearchModal}
-            >
-              <SearchIcon sx={{ fontSize: 18 }} />
-            </button>
+            <div className="hidden sm:block">
+              <button
+                className="w-[35px] h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
+                onClick={openSearchModal}
+              >
+                <SearchIcon sx={{ fontSize: 18 }} />
+              </button>
+            </div>
+            <div className="block sm:hidden">
+              <button
+                className="w-[30px] h-[30px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
+                onClick={openSearchModal}
+              >
+                <SearchIcon sx={{ fontSize: 18 }} />
+              </button>
+            </div>
+
             {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
           </div>
 
@@ -724,8 +735,8 @@ const HeaderPage = () => {
                   </button>
                 </div>
                 <div className="block sm:hidden">
-                  <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => dispatch(getlanguage())}>
-                    Eng
+                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => dispatch(getlanguage())}>
+                    En
                   </button>
                 </div>
 
@@ -738,7 +749,7 @@ const HeaderPage = () => {
                   </button>
                 </div>
                 <div className="block sm:hidden">
-                  <button className="w-[40px] h-[40px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => dispatch(getlanguage())}>
+                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => dispatch(getlanguage())}>
                     Ko
                   </button>
                 </div>
