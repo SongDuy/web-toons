@@ -96,9 +96,9 @@ const PopularOriginalsAndVideosPage = () => {
               <div className="mr-auto">
                 <span className="font-semibold text-lg hover:text-yellow-500 cursor-pointer">
                   {!language ? (
-                    "New & Trending Originals"
+                    <span> New & Trending Originals </span>
                   ) : (
-                    "새로운 및 인기 오리지널"
+                    <span> 새로운 및 인기 오리지널 </span>
                   )}
                   <NavigateNextIcon />
                 </span>
@@ -182,9 +182,9 @@ const PopularOriginalsAndVideosPage = () => {
               <div className="mr-auto">
                 <span className="font-semibold text-lg hover:text-yellow-500 cursor-pointer">
                   {!language ? (
-                    "New & Trending Videos"
+                    <span> New & Trending Videos </span>
                   ) : (
-                    "새로운 및 인기 동영상"
+                    <span> 새로운 및 인기 동영상 </span>
                   )}
                   <NavigateNextIcon />
                 </span>
@@ -237,9 +237,9 @@ const PopularOriginalsAndVideosPage = () => {
             <div className="w-full px-2 py-5 flex items-center border-b">
               <span className="mr-auto font-semibold text-lg hover:text-yellow-500 cursor-pointer">
                 {!language ? (
-                  "ORIGINALS by Genre"
+                  <span> ORIGINALS by Genre </span>
                 ) : (
-                  "장르별 오리지널"
+                  <span> 장르별 오리지널 </span>
                 )}
                 <NavigateNextIcon />
               </span>
