@@ -373,330 +373,183 @@ const HeaderPage = () => {
           <div className="flex xs:gap-1 sm:gap-3">
 
             {/* Menu Publish */}
-            < div className="flex items-center justify-center z-10">
-              <div className="hidden sm:block">
-                <button
-                  className="w-[100px] h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
-                  ref={anchorRef}
-                  id="composition-button"
-                  aria-controls={open ? 'composition-menu' : undefined}
-                  aria-expanded={open ? 'true' : undefined}
-                  aria-haspopup="true"
-                  onClick={handleToggle}
-                >
-                  {/* Publish {process.env.REACT_APP_HOME} */}
-                  {!language ? <span> Publish </span> : <span> 발행 </span>}
-                </button>
+            <div className="flex items-center justify-center z-10">
+              <button
+                ref={anchorRef}
+                id="composition-button"
+                aria-controls={open ? 'composition-menu' : undefined}
+                aria-expanded={open ? 'true' : undefined}
+                aria-haspopup="true"
+                onClick={handleToggle}
+              >
+                <div className="hidden sm:block">
+                  <button
+                    className="w-[100px] h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center">
+                    {!language ? <span> Publish </span> : <span> 발행 </span>}
+                  </button>
+                </div>
+                <div className="block sm:hidden">
+                  <button
+                    className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full">
+                    <BackupIcon />
+                  </button>
+                </div>
+              </button>
 
-                {/* Chọn menu */}
-                <Popper
-                  open={open}
-                  anchorEl={anchorRef.current}
-                  role={undefined}
-                  placement="bottom-start"
-                  transition
-                  disablePortal
-                >
-                  {({ TransitionProps, placement }) => (
-                    <Grow
-                      {...TransitionProps}
-                      style={{
-                        transformOrigin:
-                          placement === 'bottom-start' ? 'left top' : 'left bottom',
-                      }}
-                    >
-                      <Paper>
-                        <ClickAwayListener onClickAway={handleClose}>
-                          <MenuList
-                            className="bg-gray-100 rounded-lg text-black font-semibold "
-                            autoFocusItem={open}
-                            id="composition-menu"
-                            aria-labelledby="composition-button"
-                            onKeyDown={handleListKeyDown}
-                          >
-                            <Link to={`/publish/original`} onclick={dispatch(setcurrentStepOriginal(1))}>
-                              <MenuItem onClick={handleClose} className="flex gap-x-1">
-                                <PictureAsPdfOutlinedIcon />
+              {/* Chọn menu */}
+              <Popper
+                open={open}
+                anchorEl={anchorRef.current}
+                role={undefined}
+                placement="bottom-start"
+                transition
+                disablePortal
+              >
+                {({ TransitionProps, placement }) => (
+                  <Grow
+                    {...TransitionProps}
+                    style={{
+                      transformOrigin:
+                        placement === 'bottom-start' ? 'left top' : 'left bottom',
+                    }}
+                  >
+                    <Paper>
+                      <ClickAwayListener onClickAway={handleClose}>
+                        <MenuList
+                          className="bg-gray-100 rounded-lg text-black font-semibold "
+                          autoFocusItem={open}
+                          id="composition-menu"
+                          aria-labelledby="composition-button"
+                          onKeyDown={handleListKeyDown}
+                        >
+                          <Link to={`/publish/original`} onclick={dispatch(setcurrentStepOriginal(1))}>
+                            <MenuItem onClick={handleClose} className="flex gap-x-1">
+                              <PictureAsPdfOutlinedIcon />
 
-                                {!language ? <span> Original </span> : <span> 원본 </span>}
+                              {!language ? <span> Original </span> : <span> 원본 </span>}
 
-                              </MenuItem>
-                            </Link>
+                            </MenuItem>
+                          </Link>
 
-                            <Link to={`/publish/video`} onclick={dispatch(setcurrentStepVideo(1))}>
-                              <MenuItem onClick={handleClose} className="flex gap-x-1">
-                                <VideoCallOutlinedIcon />
+                          <Link to={`/publish/video`} onclick={dispatch(setcurrentStepVideo(1))}>
+                            <MenuItem onClick={handleClose} className="flex gap-x-1">
+                              <VideoCallOutlinedIcon />
 
-                                {!language ? <span> Video </span> : <span> 동영상 </span>}
+                              {!language ? <span> Video </span> : <span> 동영상 </span>}
 
-                              </MenuItem>
-                            </Link>
-                          </MenuList>
-                        </ClickAwayListener>
-                      </Paper>
-                    </Grow>
-                  )}
-                </Popper>
-              </div>
-              <div className="block sm:hidden">
-                <button
-                  className=" w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
-                  ref={anchorRef}
-                  id="composition-button"
-                  aria-controls={open ? 'composition-menu' : undefined}
-                  aria-expanded={open ? 'true' : undefined}
-                  aria-haspopup="true"
-                  onClick={handleToggle}
-                >
-                  <BackupIcon />
-                </button>
-
-                {/* Chọn menu */}
-
-                <Popper
-                  open={open}
-                  anchorEl={anchorRef.current}
-                  role={undefined}
-                  placement="bottom-start"
-                  transition
-                  disablePortal
-                >
-                  {({ TransitionProps, placement }) => (
-                    <Grow
-                      {...TransitionProps}
-                      style={{
-                        transformOrigin:
-                          placement === 'bottom-start' ? 'left top' : 'left bottom',
-                      }}
-                    >
-                      <Paper>
-                        <ClickAwayListener onClickAway={handleClose}>
-                          <MenuList
-                            className="bg-gray-100 rounded-lg text-black font-semibold "
-                            autoFocusItem={open}
-                            id="composition-menu"
-                            aria-labelledby="composition-button"
-                            onKeyDown={handleListKeyDown}
-                          >
-                            <Link to={`/publish/original`} onclick={dispatch(setcurrentStepOriginal(1))}>
-                              <MenuItem onClick={handleClose} className="flex gap-x-1">
-                                <PictureAsPdfOutlinedIcon />
-
-                                {!language ? <span> Original </span> : <span> 원본 </span>}
-
-                              </MenuItem>
-                            </Link>
-
-                            <Link to={`/publish/video`} onclick={dispatch(setcurrentStepVideo(1))}>
-                              <MenuItem onClick={handleClose} className="flex gap-x-1">
-                                <VideoCallOutlinedIcon />
-
-                                {!language ? <span> Video </span> : <span> 동영상 </span>}
-
-                              </MenuItem>
-                            </Link>
-                          </MenuList>
-                        </ClickAwayListener>
-                      </Paper>
-                    </Grow>
-                  )}
-                </Popper>
-              </div>
-
+                            </MenuItem>
+                          </Link>
+                        </MenuList>
+                      </ClickAwayListener>
+                    </Paper>
+                  </Grow>
+                )}
+              </Popper>
             </div>
 
             {/* Menu Account */}
 
             <div className="flex items-center justify-center z-10">
-              <div className="hidden sm:block">
-                <button
-                  className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
-                  ref={anchorAccountRef}
-                  id="composition-button"
-                  aria-controls={openAccount ? 'composition-menu' : undefined}
-                  aria-expanded={openAccount ? 'true' : undefined}
-                  aria-haspopup="true"
-                  onClick={handleToggleAccount}
-                >
-                  {auth?.currentUser.displayName}
-                </button>
-
-                {/* Chọn menu Account*/}
-                <Popper
-                  className="w-[180px] rounded-lg flex items-center justify-center"
-                  open={openAccount}
-                  anchorEl={anchorAccountRef.current}
-                  role={undefined}
-                  placement="bottom-start"
-                  transition
-                  disablePortal
-                >
-                  {({ TransitionProps, placement }) => (
-                    <Grow
-                      {...TransitionProps}
-                      style={{
-                        transformOrigin:
-                          placement === 'bottom-start' ? 'left top' : 'left bottom',
-                      }}
-                    >
-                      <Paper>
-                        <ClickAwayListener onClickAway={handleCloseAccount}>
-                          <MenuList className="bg-gray-100 rounded-lg text-black font-semibold "
-                            autoFocusItem={openAccount}
-                            id="composition-menu"
-                            aria-labelledby="composition-button"
-                            onKeyDown={handleListAccountKeyDown}
-                          >
-                            <Link to={`/subscribed`}>
-                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                <GroupAddIcon />
-                                {!language ? <span> Subscribed </span> : <span> 구독 중 </span>}
-                              </MenuItem>
-                            </Link>
-
-                            <Link to={`/dashboard`}>
-                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                <PieChartIcon />
-                                {!language ? <span> Dashboard </span> : <span> 대시보드 </span>}
-                              </MenuItem>
-                            </Link>
-
-                            <Link to={`/mycomment`}>
-                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                <CommentIcon />
-                                {!language ? <span> Comments </span> : <span> 댓글 </span>}
-                              </MenuItem>
-                            </Link>
-
-                            <Link to={`/creators`}>
-                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                <EditNoteIcon />
-                                {!language ? <span> Creators </span> : <span> 창작자 </span>}
-                              </MenuItem>
-                            </Link>
-
-                            <Link to={`/channel/my`}>
-                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                <AssignmentIndIcon />
-                                {!language ? <span> My Channel Page</span> : <span> 내 채널 페이지 </span>}
-                              </MenuItem>
-                            </Link>
-
-                            <Link to={`/account`}>
-                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                <AccountCircleIcon />
-                                {!language ? <span> Account </span> : <span> 계정 </span>}
-                              </MenuItem>
-                            </Link>
-
-                            <MenuItem onClick={() => logouts()} className="flex gap-x-3">
-                              <LogoutIcon />
-                              {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
+              <button
+                ref={anchorAccountRef}
+                id="composition-button"
+                aria-controls={openAccount ? 'composition-menu' : undefined}
+                aria-expanded={openAccount ? 'true' : undefined}
+                aria-haspopup="true"
+                onClick={handleToggleAccount}
+              >
+                <div className="hidden sm:block">
+                  <button className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500">
+                    {auth?.currentUser.displayName}
+                  </button>
+                </div>
+                <div className="block sm:hidden">
+                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black rounded-full">
+                    <AccountCircleSharpIcon />
+                  </button>
+                </div>
+              </button>
+              {/* Chọn menu Account*/}
+              <Popper
+                className="w-[180px] rounded-lg flex items-center justify-center"
+                open={openAccount}
+                anchorEl={anchorAccountRef.current}
+                role={undefined}
+                placement="bottom-start"
+                transition
+                disablePortal
+              >
+                {({ TransitionProps, placement }) => (
+                  <Grow
+                    {...TransitionProps}
+                    style={{
+                      transformOrigin:
+                        placement === 'bottom-start' ? 'left top' : 'left bottom',
+                    }}
+                  >
+                    <Paper>
+                      <ClickAwayListener onClickAway={handleCloseAccount}>
+                        <MenuList className="bg-gray-100 rounded-lg text-black font-semibold "
+                          autoFocusItem={openAccount}
+                          id="composition-menu"
+                          aria-labelledby="composition-button"
+                          onKeyDown={handleListAccountKeyDown}
+                        >
+                          <Link to={`/subscribed`}>
+                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                              <GroupAddIcon />
+                              {!language ? <span> Subscribed </span> : <span> 구독 중 </span>}
                             </MenuItem>
-                          </MenuList>
+                          </Link>
 
-                        </ClickAwayListener>
-                      </Paper>
-                    </Grow>
-                  )}
-                </Popper>
-
-              </div>
-              <div className="block sm:hidden">
-                <button
-                  className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
-                  ref={anchorAccountRef}
-                  id="composition-button"
-                  aria-controls={openAccount ? 'composition-menu' : undefined}
-                  aria-expanded={openAccount ? 'true' : undefined}
-                  aria-haspopup="true"
-                  onClick={handleToggleAccount}
-                >
-                  <AccountCircleSharpIcon />
-                </button>
-
-                {/* Chọn menu Account*/}
-                <Popper
-                  className="w-[180px] rounded-lg flex items-center justify-center"
-                  open={openAccount}
-                  anchorEl={anchorAccountRef.current}
-                  role={undefined}
-                  placement="bottom-start"
-                  transition
-                  disablePortal
-                >
-                  {({ TransitionProps, placement }) => (
-                    <Grow
-                      {...TransitionProps}
-                      style={{
-                        transformOrigin:
-                          placement === 'bottom-start' ? 'left top' : 'left bottom',
-                      }}
-                    >
-                      <Paper>
-                        <ClickAwayListener onClickAway={handleCloseAccount}>
-                          <MenuList className="bg-gray-100 rounded-lg text-black font-semibold "
-                            autoFocusItem={openAccount}
-                            id="composition-menu"
-                            aria-labelledby="composition-button"
-                            onKeyDown={handleListAccountKeyDown}
-                          >
-                            <Link to={`/subscribed`}>
-                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                <GroupAddIcon />
-                                {!language ? <span> Subscribed </span> : <span> 구독 중 </span>}
-                              </MenuItem>
-                            </Link>
-
-                            <Link to={`/dashboard`}>
-                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                <PieChartIcon />
-                                {!language ? <span> Dashboard </span> : <span> 대시보드 </span>}
-                              </MenuItem>
-                            </Link>
-
-                            <Link to={`/mycomment`}>
-                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                <CommentIcon />
-                                {!language ? <span> Comments </span> : <span> 댓글 </span>}
-                              </MenuItem>
-                            </Link>
-
-                            <Link to={`/creators`}>
-                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                <EditNoteIcon />
-                                {!language ? <span> Creators </span> : <span> 창작자 </span>}
-                              </MenuItem>
-                            </Link>
-
-                            <Link to={`/channel/my`}>
-                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                <AssignmentIndIcon />
-                                {!language ? <span> My Channel Page</span> : <span> 내 채널 페이지 </span>}
-                              </MenuItem>
-                            </Link>
-
-                            <Link to={`/account`}>
-                              <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                <AccountCircleIcon />
-                                {!language ? <span> Account </span> : <span> 계정 </span>}
-                              </MenuItem>
-                            </Link>
-
-                            <MenuItem onClick={() => logouts()} className="flex gap-x-3">
-                              <LogoutIcon />
-                              {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
+                          <Link to={`/dashboard`}>
+                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                              <PieChartIcon />
+                              {!language ? <span> Dashboard </span> : <span> 대시보드 </span>}
                             </MenuItem>
-                          </MenuList>
+                          </Link>
 
-                        </ClickAwayListener>
-                      </Paper>
-                    </Grow>
-                  )}
-                </Popper>
-              </div>
+                          <Link to={`/mycomment`}>
+                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                              <CommentIcon />
+                              {!language ? <span> Comments </span> : <span> 댓글 </span>}
+                            </MenuItem>
+                          </Link>
 
+                          <Link to={`/creators`}>
+                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                              <EditNoteIcon />
+                              {!language ? <span> Creators </span> : <span> 창작자 </span>}
+                            </MenuItem>
+                          </Link>
+
+                          <Link to={`/channel/my`}>
+                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                              <AssignmentIndIcon />
+                              {!language ? <span> My Channel Page</span> : <span> 내 채널 페이지 </span>}
+                            </MenuItem>
+                          </Link>
+
+                          <Link to={`/account`}>
+                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                              <AccountCircleIcon />
+                              {!language ? <span> Account </span> : <span> 계정 </span>}
+                            </MenuItem>
+                          </Link>
+
+                          <MenuItem onClick={() => logouts()} className="flex gap-x-3">
+                            <LogoutIcon />
+                            {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
+                          </MenuItem>
+                        </MenuList>
+
+                      </ClickAwayListener>
+                    </Paper>
+                  </Grow>
+                )}
+              </Popper>
             </div>
+
           </div>
         }
 
@@ -739,7 +592,6 @@ const HeaderPage = () => {
                     En
                   </button>
                 </div>
-
               </div>
               :
               <div>
@@ -753,7 +605,6 @@ const HeaderPage = () => {
                     Ko
                   </button>
                 </div>
-
               </div>
 
             }
