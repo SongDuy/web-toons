@@ -26,13 +26,9 @@ const NewToOriginalsPage = () => {
                         className="w-full h-[60px] uppercase font-semibold text-lg hover:text-yellow-500 cursor-pointer flex items-center justify-center"
                     >
                         {!language ?
-                            <span>
-                                New to Originals
-                            </span>
+                                <span> New to Originals </span>
                             :
-                            <span>
-                                새로운 오리지널
-                            </span>
+                                <span> 새로운 오리지널 </span>
                         }
 
                     </li>

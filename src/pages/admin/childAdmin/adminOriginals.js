@@ -105,12 +105,11 @@ const AdminOriginalsPage = () => {
 
                     {/* Ô tìm kiếm */}
                     <div className="w-full flex justify-end">
-
                         <input
                             className="w-[250px] h-[35px] px-2 border-2 rounded-l"
                             onChange={(e) => setSearchTerm(e.target.value)}
                             value={searchTerm}
-                            placeholder="Search..."
+                            placeholder="검색..."
                         />
 
                         <button onClick={handleSearch} className="w-[100px] h-[35px] mb-3 mr-3 text-white font-semibold relative bg-black rounded-r">

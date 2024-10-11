@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import dataListGenre from "../../../components/layout/layoutUser/dataListGenre";
 
 import CloseIcon from '@mui/icons-material/Close';
 import StarIcon from '@mui/icons-material/Star';
@@ -39,36 +40,36 @@ const SearchPage = ({ closeModal }) => {
             try {
                 if (User) {
                     const account = await dispatch(getAccount(auth?.currentUser?.uid));
-          
+
                     const user = unwrapResult(account);
                     if (user?.checkage) {
-                      const age = account?.payload?.birthday
-                        ? new Date(Date.now())?.getFullYear() -
-                          new Date(user.birthday)?.getFullYear()
-                        : 15;
-                      const comic = await dispatch(getAllComic(age));
-                      const video = await dispatch(getAllVideo(age));
-          
-                      unwrapResult(comic);
-                      unwrapResult(video);
+                        const age = account?.payload?.birthday
+                            ? new Date(Date.now())?.getFullYear() -
+                            new Date(user.birthday)?.getFullYear()
+                            : 15;
+                        const comic = await dispatch(getAllComic(age));
+                        const video = await dispatch(getAllVideo(age));
+
+                        unwrapResult(comic);
+                        unwrapResult(video);
                     } else {
-                      const comic = await dispatch(getAllComic());
-                      const video = await dispatch(getAllVideo());
-                      unwrapResult(comic);
-                      unwrapResult(video);
+                        const comic = await dispatch(getAllComic());
+                        const video = await dispatch(getAllVideo());
+                        unwrapResult(comic);
+                        unwrapResult(video);
                     }
-                  } else {
+                } else {
                     const comic = await dispatch(getAllComic());
                     const video = await dispatch(getAllVideo());
                     unwrapResult(comic);
                     unwrapResult(video);
-                  }
+                }
             } catch (error) {
                 console.error(error);
             }
         };
         getComicsAndVideos();
-    }, [dispatch,User]);
+    }, [dispatch, User]);
 
 
     // Hiển thị nội dung giống nội dung cần tìm
@@ -124,22 +125,31 @@ const SearchPage = ({ closeModal }) => {
                     <input
                         className="w-full h-[35px] px-2 border-2 rounded-md"
                         onChange={handleSearch}
-                        placeholder={!language ? "Search..." : ""}
+                        placeholder={!language ? "Search..." : "검색..."}
                     />
 
                     {/* Chọn loại truyện hoặc video */}
                     <div className="w-full mt-5 flex items-center justify-center gap-4">
                         <button
-                            className={`w-[120px] h-[35px] font-semibold rounded ${activeButton === 'originals' ? 'bg-black text-white' : 'bg-gray-200'}`}
+                            className={`w-1/2 h-[35px] font-semibold rounded ${activeButton === 'originals' ? 'bg-black text-white' : 'bg-gray-200'}`}
                             onClick={() => handleButtonClick('originals')}
                         >
-                            Originals
+                            {!language ?
+                                "Originals"
+                                :
+                                "오리지널"
+                            }
                         </button>
                         <button
-                            className={`w-[120px] h-[35px] font-semibold rounded ${activeButton === 'videos' ? 'bg-black text-white' : 'bg-gray-200'}`}
+                            className={`w-1/2 h-[35px] font-semibold rounded ${activeButton === 'videos' ? 'bg-black text-white' : 'bg-gray-200'}`}
                             onClick={() => handleButtonClick('videos')}
                         >
-                            Videos
+                            {!language ?
+                                "Videos"
+                                :
+                                "비디오"
+                            }
+
                         </button>
                     </div>
                 </div>
@@ -150,15 +160,13 @@ const SearchPage = ({ closeModal }) => {
                         <ul className="grid grid-cols-1">
                             {showNoResultsComicMessage ? (
                                 <div className="w-full h-full mt-10 flex items-center justify-center ">
-                                    {!language ?
-                                        <span className="text-gray-500">
-                                            No related comic results found.
-                                        </span>
-                                        :
-                                        <span className="text-gray-500">
-                                            관련된 만화 결과를 찾을 수 없습니다.
-                                        </span>
-                                    }
+                                    <span className="text-gray-500">
+                                        {!language ?
+                                            "No related comic results found."
+                                            :
+                                            "관련된 만화 결과를 찾을 수 없습니다."
+                                        }
+                                    </span>
                                 </div>
                             ) : (
                                 listComics?.map(item => (
@@ -178,13 +186,28 @@ const SearchPage = ({ closeModal }) => {
                                                     <span className="w-full text-[15px] font-semibold line-clamp-1">
                                                         {item.title}
                                                     </span>
-                                                    <div className="flex">
-                                                        <span className="max-w-[150px] pr-2 border-r-2 line-clamp-1">
-                                                            {item.Author}
-                                                        </span>
-                                                        <span className="max-w-[110px] px-2 border-l line-clamp-1">
-                                                            {item.genre1}
-                                                        </span>
+                                                    <div className="w-full">
+                                                        {item.genre1 === item.genre2 ?
+                                                            <div className="flex">
+                                                                <span className="max-w-[150px] pr-2 border-r-2 line-clamp-1">
+                                                                    {item.Author}
+                                                                </span>
+                                                                <span className="max-w-full px-2 border-l line-clamp-1">
+                                                                    {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
+                                                                </span>
+                                                            </div>
+                                                            :
+                                                            <div className="flex">
+                                                                <span className="max-w-[150px] pr-2 border-r-2 line-clamp-1">
+                                                                    {item.Author}
+                                                                </span>
+                                                                <span className="max-w-full px-2 border-l line-clamp-1">
+                                                                    {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
+                                                                    {`, `}
+                                                                    {!language ? item.genre2 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre2.toLowerCase())[0]?.nameKorean}
+                                                                </span>
+                                                            </div>
+                                                        }
                                                     </div>
                                                     <span className="w-full text-[15px] text-yellow-500 flex items-center gap-1 font-semibold line-clamp-1">
                                                         <StarIcon />
@@ -205,15 +228,13 @@ const SearchPage = ({ closeModal }) => {
                         <ul className="grid grid-cols-1">
                             {showNoResultsVideoMessage ? (
                                 <div className="w-full h-full mt-10 flex items-center justify-center ">
-                                    {!language ?
-                                        <span className="text-gray-500">
-                                            No related video results found.
-                                        </span>
-                                        :
-                                        <span className="text-gray-500">
-                                            관련된 비디오 결과를 찾을 수 없습니다.
-                                        </span>
-                                    }
+                                    <span className="text-gray-500">
+                                        {!language ?
+                                            "No related video results found."
+                                            :
+                                            "관련된 비디오 결과를 찾을 수 없습니다."
+                                        }
+                                    </span>
                                 </div>
                             ) : (
                                 listVideos?.map(item => (

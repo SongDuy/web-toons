@@ -95,11 +95,11 @@ const WeekdayOriginalsAndVideosPage = () => {
                             onClick={() => handleSelectDay(item.day)}
                             className={`max-w-[120px] h-[60px] uppercase font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white' : 'bg-white text-black hover:text-yellow-500 '}`}
                         >
-                           { item && (!language ? item.day : item.daysInKorean) }
+                            {item && (!language ? item.day : item.daysInKorean)}
                         </li>
                     ))}
                 </ul>
-                
+
                 <div className="w-[150px] h-full flex items-center justify-center">
 
                     <button
@@ -112,9 +112,9 @@ const WeekdayOriginalsAndVideosPage = () => {
                     >
                         <span className='w-[120px] h-full border-l-2 pl-10 uppercase font-semibold text-md text-gray-400 hover:text-yellow-500 flex items-center justify-center'>
                             {!language ?
-                                "More"
+                                <span> More </span>
                                 :
-                                "더보기"
+                                <span> 더보기 </span>
                             }
 
                             <NavigateNextIcon />
@@ -151,9 +151,9 @@ const WeekdayOriginalsAndVideosPage = () => {
                                                 <MenuItem onClick={handleClose}>
 
                                                     {!language ?
-                                                        "Originals"
+                                                        <span> Originals </span>
                                                         :
-                                                        "오리지널"
+                                                        <span> 오리지널 </span>
                                                     }
                                                 </MenuItem>
                                             </Link>
@@ -162,13 +162,9 @@ const WeekdayOriginalsAndVideosPage = () => {
                                                 <MenuItem onClick={handleClose}>
 
                                                     {!language ?
-                                                        <span>
-                                                            Videos
-                                                        </span>
+                                                        <span> Videos </span>
                                                         :
-                                                        <span>
-                                                            비디오
-                                                        </span>
+                                                        <span> 비디오 </span>
                                                     }
                                                 </MenuItem>
                                             </Link>

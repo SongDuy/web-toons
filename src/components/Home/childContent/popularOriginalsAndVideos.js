@@ -34,12 +34,12 @@ const PopularOriginalsAndVideosPage = () => {
       selectedOriginalGenre === "All"
         ? item
         : selectedOriginalGenre === "Others"
-        ? !dataGenreSearch.some(
+          ? !dataGenreSearch.some(
             (i) =>
               i.name.toLowerCase() === item.genre2.toLowerCase() ||
               i.name.toLowerCase() === item.genre1.toLowerCase()
           )
-        : item.genre1.toLowerCase() === selectedOriginalGenre.toLowerCase() ||
+          : item.genre1.toLowerCase() === selectedOriginalGenre.toLowerCase() ||
           item.genre2.toLowerCase() === selectedOriginalGenre.toLowerCase()
     )
     .slice()
@@ -136,28 +136,28 @@ const PopularOriginalsAndVideosPage = () => {
                               {!language
                                 ? item.genre1
                                 : dataListGenre?.filter(
-                                    (itm) =>
-                                      itm.name.toLowerCase() ===
-                                      item.genre1.toLowerCase()
-                                  )[0]?.nameKorean}
+                                  (itm) =>
+                                    itm.name.toLowerCase() ===
+                                    item.genre1.toLowerCase()
+                                )[0]?.nameKorean}
                             </span>
                           ) : (
                             <span className="text-gray-400 text-sm">
                               {!language
                                 ? item.genre1
                                 : dataListGenre?.filter(
-                                    (itm) =>
-                                      itm.name.toLowerCase() ===
-                                      item.genre1.toLowerCase()
-                                  )[0]?.nameKorean}
+                                  (itm) =>
+                                    itm.name.toLowerCase() ===
+                                    item.genre1.toLowerCase()
+                                )[0]?.nameKorean}
                               {`, `}
                               {!language
                                 ? item.genre2
                                 : dataListGenre?.filter(
-                                    (itm) =>
-                                      itm.name.toLowerCase() ===
-                                      item.genre2.toLowerCase()
-                                  )[0]?.nameKorean}
+                                  (itm) =>
+                                    itm.name.toLowerCase() ===
+                                    item.genre2.toLowerCase()
+                                )[0]?.nameKorean}
                             </span>
                           )}
                           <span className="text-md font-semibold line-clamp-1">
@@ -292,14 +292,13 @@ const PopularOriginalsAndVideosPage = () => {
                                   setSelectedOriginalGenre("All");
                                   sethiddenSelected(!language ? "All" : "모두");
                                 }}
-                                className={`w-full h-full ${
-                                  selectedOriginalGenre === "All"
-                                    ? "text-yellow-500"
-                                    : ""
-                                }`}
+                                className={`w-full h-full ${selectedOriginalGenre === "All"
+                                  ? "text-yellow-500"
+                                  : ""
+                                  }`}
                               >
                                 {!language ? (
-                                  <span>All</span>
+                                  <span> All </span>
                                 ) : (
                                   <span> 모두 </span>
                                 )}
@@ -314,14 +313,13 @@ const PopularOriginalsAndVideosPage = () => {
                                     !language ? "Action" : "액션"
                                   );
                                 }}
-                                className={`w-full h-full ${
-                                  selectedOriginalGenre === "Action"
-                                    ? "text-yellow-500"
-                                    : ""
-                                }`}
+                                className={`w-full h-full ${selectedOriginalGenre === "Action"
+                                  ? "text-yellow-500"
+                                  : ""
+                                  }`}
                               >
                                 {!language ? (
-                                  <span>Action</span>
+                                  <span> Action </span>
                                 ) : (
                                   <span> 액션 </span>
                                 )}
@@ -336,14 +334,13 @@ const PopularOriginalsAndVideosPage = () => {
                                     !language ? "Romance" : "로맨스"
                                   );
                                 }}
-                                className={`w-full h-full ${
-                                  selectedOriginalGenre === "Romance"
-                                    ? "text-yellow-500"
-                                    : ""
-                                }`}
+                                className={`w-full h-full ${selectedOriginalGenre === "Romance"
+                                  ? "text-yellow-500"
+                                  : ""
+                                  }`}
                               >
                                 {!language ? (
-                                  <span>Romance</span>
+                                  <span> Romance </span>
                                 ) : (
                                   <span> 로맨스 </span>
                                 )}
@@ -358,14 +355,13 @@ const PopularOriginalsAndVideosPage = () => {
                                     !language ? "Fantasy" : "판타지"
                                   );
                                 }}
-                                className={`w-full h-full ${
-                                  selectedOriginalGenre === "Fantasy"
-                                    ? "text-yellow-500"
-                                    : ""
-                                }`}
+                                className={`w-full h-full ${selectedOriginalGenre === "Fantasy"
+                                  ? "text-yellow-500"
+                                  : ""
+                                  }`}
                               >
                                 {!language ? (
-                                  <span>Fantasy</span>
+                                  <span> Fantasy </span>
                                 ) : (
                                   <span> 판타지 </span>
                                 )}
@@ -380,14 +376,13 @@ const PopularOriginalsAndVideosPage = () => {
                                     !language ? "Drama" : "드라마"
                                   );
                                 }}
-                                className={`w-full h-full ${
-                                  selectedOriginalGenre === "Drama"
-                                    ? "text-yellow-500"
-                                    : ""
-                                }`}
+                                className={`w-full h-full ${selectedOriginalGenre === "Drama"
+                                  ? "text-yellow-500"
+                                  : ""
+                                  }`}
                               >
                                 {!language ? (
-                                  <span>Drama</span>
+                                  <span> Drama </span>
                                 ) : (
                                   <span> 드라마 </span>
                                 )}
@@ -398,18 +393,15 @@ const PopularOriginalsAndVideosPage = () => {
                               <span
                                 onClick={() => {
                                   setSelectedOriginalGenre("Comedy");
-                                  sethiddenSelected(
-                                    !language ? "Comedy" : "코미디"
-                                  );
+                                  sethiddenSelected(!language ? "Comedy" : "코미디");
                                 }}
-                                className={`w-full h-full ${
-                                  selectedOriginalGenre === "Comedy"
-                                    ? "text-yellow-500"
-                                    : ""
-                                }`}
+                                className={`w-full h-full ${selectedOriginalGenre === "Comedy"
+                                  ? "text-yellow-500"
+                                  : ""
+                                  }`}
                               >
                                 {!language ? (
-                                  <span>Comedy</span>
+                                  <span> Comedy </span>
                                 ) : (
                                   <span> 코미디 </span>
                                 )}
@@ -424,14 +416,13 @@ const PopularOriginalsAndVideosPage = () => {
                                     !language ? "Thriller" : "스릴러"
                                   );
                                 }}
-                                className={`w-full h-full ${
-                                  selectedOriginalGenre === "Thriller"
-                                    ? "text-yellow-500"
-                                    : ""
-                                }`}
+                                className={`w-full h-full ${selectedOriginalGenre === "Thriller"
+                                  ? "text-yellow-500"
+                                  : ""
+                                  }`}
                               >
                                 {!language ? (
-                                  <span>Thriller</span>
+                                  <span> Thriller </span>
                                 ) : (
                                   <span> 스릴러 </span>
                                 )}
@@ -446,14 +437,13 @@ const PopularOriginalsAndVideosPage = () => {
                                     !language ? "Slice of life" : "일상"
                                   );
                                 }}
-                                className={`w-full h-full ${
-                                  selectedOriginalGenre === "Slice of life"
-                                    ? "text-yellow-500"
-                                    : ""
-                                }`}
+                                className={`w-full h-full ${selectedOriginalGenre === "Slice of life"
+                                  ? "text-yellow-500"
+                                  : ""
+                                  }`}
                               >
                                 {!language ? (
-                                  <span>Slice of life</span>
+                                  <span> Slice of life </span>
                                 ) : (
                                   <span> 일상 </span>
                                 )}
@@ -468,14 +458,13 @@ const PopularOriginalsAndVideosPage = () => {
                                     !language ? "Slice of life" : "초자연적"
                                   );
                                 }}
-                                className={`w-full h-full ${
-                                  selectedOriginalGenre === "Supernatural"
-                                    ? "text-yellow-500"
-                                    : ""
-                                }`}
+                                className={`w-full h-full ${selectedOriginalGenre === "Supernatural"
+                                  ? "text-yellow-500"
+                                  : ""
+                                  }`}
                               >
                                 {!language ? (
-                                  <span>Supernatural</span>
+                                  <span> Supernatural </span>
                                 ) : (
                                   <span> 초자연적 </span>
                                 )}
@@ -490,14 +479,13 @@ const PopularOriginalsAndVideosPage = () => {
                                     !language ? "Sci-fi" : "공상 과학"
                                   );
                                 }}
-                                className={`w-full h-full ${
-                                  selectedOriginalGenre === "Sci-fi"
-                                    ? "text-yellow-500"
-                                    : ""
-                                }`}
+                                className={`w-full h-full ${selectedOriginalGenre === "Sci-fi"
+                                  ? "text-yellow-500"
+                                  : ""
+                                  }`}
                               >
                                 {!language ? (
-                                  <span>Sci-fi</span>
+                                  <span> Sci-fi </span>
                                 ) : (
                                   <span> 공상 과학 </span>
                                 )}
@@ -512,14 +500,13 @@ const PopularOriginalsAndVideosPage = () => {
                                     !language ? "Horror" : "호러"
                                   );
                                 }}
-                                className={`w-full h-full ${
-                                  selectedOriginalGenre === "Horror"
-                                    ? "text-yellow-500"
-                                    : ""
-                                }`}
+                                className={`w-full h-full ${selectedOriginalGenre === "Horror"
+                                  ? "text-yellow-500"
+                                  : ""
+                                  }`}
                               >
                                 {!language ? (
-                                  <span>Horror</span>
+                                  <span> Horror </span>
                                 ) : (
                                   <span> 호러 </span>
                                 )}
@@ -534,14 +521,13 @@ const PopularOriginalsAndVideosPage = () => {
                                     !language ? "Others" : "기타"
                                   );
                                 }}
-                                className={`w-full h-full ${
-                                  selectedOriginalGenre === "Others"
-                                    ? "text-yellow-500"
-                                    : ""
-                                }`}
+                                className={`w-full h-full ${selectedOriginalGenre === "Others"
+                                  ? "text-yellow-500"
+                                  : ""
+                                  }`}
                               >
                                 {!language ? (
-                                  <span>Others</span>
+                                  <span> Others </span>
                                 ) : (
                                   <span> 기타 </span>
                                 )}
@@ -587,28 +573,28 @@ const PopularOriginalsAndVideosPage = () => {
                               {!language
                                 ? item.genre1
                                 : dataListGenre?.filter(
-                                    (itm) =>
-                                      itm.name.toLowerCase() ===
-                                      item.genre1.toLowerCase()
-                                  )[0]?.nameKorean}
+                                  (itm) =>
+                                    itm.name.toLowerCase() ===
+                                    item.genre1.toLowerCase()
+                                )[0]?.nameKorean}
                             </span>
                           ) : (
                             <span className="text-gray-400 text-sm">
                               {!language
                                 ? item.genre1
                                 : dataListGenre?.filter(
-                                    (itm) =>
-                                      itm.name.toLowerCase() ===
-                                      item.genre1.toLowerCase()
-                                  )[0]?.nameKorean}
+                                  (itm) =>
+                                    itm.name.toLowerCase() ===
+                                    item.genre1.toLowerCase()
+                                )[0]?.nameKorean}
                               {`, `}
                               {!language
                                 ? item.genre2
                                 : dataListGenre?.filter(
-                                    (itm) =>
-                                      itm.name.toLowerCase() ===
-                                      item.genre2.toLowerCase()
-                                  )[0]?.nameKorean}
+                                  (itm) =>
+                                    itm.name.toLowerCase() ===
+                                    item.genre2.toLowerCase()
+                                )[0]?.nameKorean}
                             </span>
                           )}
 
