@@ -191,18 +191,18 @@ const GenresPage = () => {
                         </div>
 
                         <div className="w-full h-full py-5 flex items-center justify-center">
-                            <div>
+                            <div className="w-full h-full">
                                 {/* Danh mục thể loại */}
-                                <div className="h-[70px] mb-5 flex items-center justify-center">
+                                <div className="w-full h-[75px] mb-5 flex items-center justify-start overflow-x-auto">
                                     <ul
-                                        className="grid grid-cols-10 gap-2"
+                                        className="grid grid-rows-2 grid-flow-col gap-2 w-max"
                                     >
                                         {/* khung nội dung */}
                                         {dataListGenre.map(genre => (
                                             <li
                                                 key={genre.id}
                                                 onClick={() => setSelectedOriginalsByGenre(genre.name)}
-                                                className={`w-[115px] uppercase font-semibold shadow text-xs py-2 px-2 rounded hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                                className={`min-w-[112px] uppercase font-semibold shadow text-xs py-2 px-2 rounded hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
                                             >
                                                 {!language ? <span> {genre.name} </span> : <span> {genre.nameKorean} </span>}
                                             </li>
