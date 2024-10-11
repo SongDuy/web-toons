@@ -42,7 +42,7 @@ const AdminOriginalsidPage = () => {
     }, [dispatch, id.id]);
     const handlecheck = async (idchap, check) => {
         try {
-            let result = window.confirm( ` ${check ? "이 만화를 확인하시겠습니까?" : "이 만화의 체크를 풀고 싶으신가요?"}`);
+            let result = window.confirm( ` ${check ? "이 장을 확인하시겠습니까?" : "이 장의 선택을 취소하시겠습니까?"}`);
             if (result) {
                 setloading(false)
 

@@ -55,7 +55,7 @@ const AdminVideosPageid = () => {
     }
     const handlecheck = async (idchap, check) => {
         try {
-            let result = window.confirm(`${check ? "원하시나요 확인 이 비디오?" : "이 동영상을 선택 취소하시겠습니까?"} `);
+            let result = window.confirm(`${check ? "이 장을 확인하시겠습니까?" : "이 장의 선택을 취소하시겠습니까?"} `);
             if (result) {
                 setloading(false)
 
