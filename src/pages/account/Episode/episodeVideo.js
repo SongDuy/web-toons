@@ -22,19 +22,19 @@ const EpisodeVideo = () => {
 
     const id = useParams();
     const monthNames = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-    ];
+        { en: "January", kr: "1월" },
+        { en: "February", kr: "2월" },
+        { en: "March", kr: "3월" },
+        { en: "April", kr: "4월" },
+        { en: "May", kr: "5월" },
+        { en: "June", kr: "6월" },
+        { en: "July", kr: "7월" },
+        { en: "August", kr: "8월" },
+        { en: "September", kr: "9월" },
+        { en: "October", kr: "10월" },
+        { en: "November", kr: "11월" },
+        { en: "December", kr: "12월" },
+      ];
 
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
@@ -53,17 +53,20 @@ const EpisodeVideo = () => {
         }
         get()
     }, [dispatch, id]);
-    const handledelete = async (idchap) => {
+    const handledelete = async (idchap,numcount) => {
         try {
             let result = window.confirm(!language ? "Do you want to delete this chap video?" : "이 채팅 동영상을 삭제하시겠습니까?");
             if (result) {
                 setloading(false)
-
+                const checknum=numcount!== chapters?.chaps?.length
                 await VideoFireBase.Deletechap(id.id, idchap)
-                await VideoFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 1 }, id.id);
-
+                await VideoFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 0 }, id.id);
+                checknum&&  chapters?.chaps?.filter(item=>item.id!==idchap)?.map(async item=>
+                    await VideoFireBase.updateep({num:item.num-1===0?1:item.num-1},id.id,item.id)
+)
                 const chap = await dispatch(getchaptersVideo(id.id))
                 unwrapResult(chap)
+               
                 setloading(true)
             }
         } catch (error) {
@@ -144,7 +147,7 @@ const EpisodeVideo = () => {
                                                                     }
                                                                 </button>
 
-                                                                <button onClick={() => handledelete(item.id)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                                                <button onClick={() => handledelete(item.id,item.num)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                                                                     {!language ?
                                                                         "Delete"
                                                                         :
@@ -164,17 +167,22 @@ const EpisodeVideo = () => {
                                                     <div className="w-full mt-12">
 
                                                         <div className="flex gap-5">
-                                                            <span className="text-gray-500 text-sm flex gap-2">
-
-                                                                {!language ?
-                                                                    "Published "
-                                                                    :
-                                                                    "발행됨 "
-                                                                }
-                                                                {monthNames[new Date(item.createTime).getMonth()]}{" "}
-                                                                {new Date(item.createTime).getDate()},
-                                                                {new Date(item.createTime)?.getFullYear()}
-                                                            </span>
+                                                        {!language?   <span className="text-gray-500 text-sm flex gap-2">
+                                                                
+                                                                Published
+                                                              
+                                                            
+                                                            {" "+monthNames[new Date(item.createTime).getMonth()].en}{" "}
+                                                            {new Date(item.createTime).getDate()},
+                                                            {new Date(item.createTime)?.getFullYear()}
+                                                        </span>:   <span className="text-gray-500 text-sm flex gap-2">
+                                                          
+                                                                발행됨
+                                                            
+                                                            {" "+monthNames[new Date(item.createTime).getMonth()].kr}{" "}
+                                                            {new Date(item.createTime).getDate()}일,
+                                                            {new Date(item.createTime)?.getFullYear()}년
+                                                        </span>}
 
                                                             <span className="text-gray-500 text-sm">
                                                                 {!language ?

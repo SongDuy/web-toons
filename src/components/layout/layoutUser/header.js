@@ -30,7 +30,7 @@ import logo from "../../../img/logonew.png";
 import { Link, useLocation } from "react-router-dom";
 import { auth } from "../../../common/themes/firebase";
 import { useDispatch, useSelector } from 'react-redux';
-import { getlanguage, setIsLoginModal, setIsLogin19Modal, setcurrentStepOriginal, setcurrentStepVideo } from "../../../common/store/hidden";
+import { getlanguage, setIsLoginModal, setIsLogin19Modal, setcurrentStepOriginal, setcurrentStepVideo, setlanguage } from "../../../common/store/hidden";
 import { logout, setuser } from "../../../common/store/Auth.js";
 import { onAuthStateChanged } from 'firebase/auth';
 import userFireBase from "../../../common/services/User.services";
@@ -160,7 +160,9 @@ const HeaderPage = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(setuser(true));
+        localStorage.getItem("language")==="en"?dispatch(setlanguage(false)):dispatch(setlanguage(true))
       } else {
+        localStorage.getItem("language")==="en"?dispatch(setlanguage(false)):dispatch(setlanguage(true))
         // Optionally, dispatch an action to indicate the user is logged out
         // dispatch(setuser(false));
       }
@@ -583,12 +585,12 @@ const HeaderPage = () => {
             {!language ?
               <div>
                 <div className="hidden sm:block">
-                  <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => dispatch(getlanguage())}>
+                  <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => {dispatch(getlanguage()); localStorage.setItem("language","en")}}>
                     English
                   </button>
                 </div>
                 <div className="block sm:hidden">
-                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => dispatch(getlanguage())}>
+                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() =>{ dispatch(getlanguage()); localStorage.setItem("language","en")}}>
                     En
                   </button>
                 </div>
@@ -596,12 +598,12 @@ const HeaderPage = () => {
               :
               <div>
                 <div className="hidden sm:block">
-                  <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => dispatch(getlanguage())}>
+                  <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language","kr")}}>
                     한국어
                   </button>
                 </div>
                 <div className="block sm:hidden">
-                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => dispatch(getlanguage())}>
+                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() =>{ dispatch(getlanguage()); localStorage.setItem("language","kr")}}>
                     Ko
                   </button>
                 </div>

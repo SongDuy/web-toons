@@ -23,18 +23,18 @@ const Subscribed = () => {
 
   const dispatch = useDispatch();
   const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    { en: "January", kr: "1월" },
+    { en: "February", kr: "2월" },
+    { en: "March", kr: "3월" },
+    { en: "April", kr: "4월" },
+    { en: "May", kr: "5월" },
+    { en: "June", kr: "6월" },
+    { en: "July", kr: "7월" },
+    { en: "August", kr: "8월" },
+    { en: "September", kr: "9월" },
+    { en: "October", kr: "10월" },
+    { en: "November", kr: "11월" },
+    { en: "December", kr: "12월" },
   ];
   useEffect(() => {
     const get = async () => {
@@ -251,11 +251,16 @@ const Subscribed = () => {
                               "업데이트"
                             }
                           </p>
+                          {!language?
                           <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
-                            {monthNames[new Date(item.createTime).getMonth()]}{" "}
+                            {monthNames[new Date(item.createTime).getMonth()].en}{" "}
                             {new Date(item.createTime).getDate()},
                             {new Date(item.createTime)?.getFullYear()}
-                          </p>
+                          </p>:  <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
+                            {monthNames[new Date(item.createTime).getMonth()].kr}{" "}
+                            {new Date(item.createTime).getDate()}일,
+                            {new Date(item.createTime)?.getFullYear()}년
+                          </p>}
                           <p className="absolute top-[75%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
                             <CheckIcon
                               sx={
@@ -295,11 +300,17 @@ const Subscribed = () => {
                               "업데이트"
                             }
                           </p>
+                          {!language?
                           <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
-                            {monthNames[new Date(item.createTime).getMonth()]}{" "}
+                            {monthNames[new Date(item.createTime).getMonth()].en}{" "}
                             {new Date(item.createTime).getDate()},
                             {new Date(item.createTime)?.getFullYear()}
                           </p>
+                    : <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
+                    {monthNames[new Date(item.createTime).getMonth()].kr}{" "}
+                            {new Date(item.createTime).getDate()}일,
+                            {new Date(item.createTime)?.getFullYear()}년
+                  </p>}
                         </button>
                       );
                     })}

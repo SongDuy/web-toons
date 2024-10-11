@@ -58,18 +58,18 @@ const VideoSeriesPage = () => {
   const anchorRef = React.useRef(null);
   const [Subscribe, setSubscribe] = useState([[]]);
   const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    { en: "January", kr: "1월" },
+    { en: "February", kr: "2월" },
+    { en: "March", kr: "3월" },
+    { en: "April", kr: "4월" },
+    { en: "May", kr: "5월" },
+    { en: "June", kr: "6월" },
+    { en: "July", kr: "7월" },
+    { en: "August", kr: "8월" },
+    { en: "September", kr: "9월" },
+    { en: "October", kr: "10월" },
+    { en: "November", kr: "11월" },
+    { en: "December", kr: "12월" }
   ];
   useEffect(() => {
     const get = async () => {
@@ -399,7 +399,7 @@ const VideoSeriesPage = () => {
                   {/* danh sach series */}
                   <ul className="w-full h-full ">
                     {/* khung danh sách */}
-                    {chapters?.chaps?.map((item) =>
+                    {chapters?.chaps?.filter(item => item.check===true)?.sort((a, b) => b.num - a.num)?.map((item) =>
                       Videoid?.payment ? (
                         <span key={item.id} onClick={() => onpayment(item.id)}>
                           <li className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2">
@@ -419,15 +419,23 @@ const VideoSeriesPage = () => {
                               </div>
 
                               <div className="ml-auto">
-                                <span className="text-gray-400 text-md">
-                                  {
-                                    monthNames[
-                                      new Date(item.createTime).getMonth()
-                                    ]
-                                  }{" "}
-                                  {new Date(item.createTime).getDate()},
-                                  {new Date(item.createTime)?.getFullYear()}
-                                </span>
+                              {!language? <span className="text-gray-400 text-md">
+                                {
+                                  monthNames[
+                                  new Date(item.createTime).getMonth()
+                                  ].en
+                                }{" "}
+                                {new Date(item.createTime).getDate()},
+                                {new Date(item.createTime)?.getFullYear()}
+                              </span>: <span className="text-gray-400 text-md">
+                                {
+                                  monthNames[
+                                  new Date(item.createTime).getMonth()
+                                  ].kr
+                                }{" "}
+                                {new Date(item.createTime).getDate()}일,
+                                {new Date(item.createTime)?.getFullYear()}년
+                              </span>}
                               </div>
 
                               <div className="ml-auto flex gap-1">
@@ -490,15 +498,23 @@ const VideoSeriesPage = () => {
                               </div>
 
                               <div className="ml-auto">
-                                <span className="text-gray-400 text-md">
-                                  {
-                                    monthNames[
-                                      new Date(item.createTime).getMonth()
-                                    ]
-                                  }{" "}
-                                  {new Date(item.createTime).getDate()},
-                                  {new Date(item.createTime)?.getFullYear()}
-                                </span>
+                              {!language? <span className="text-gray-400 text-md">
+                                {
+                                  monthNames[
+                                  new Date(item.createTime).getMonth()
+                                  ].en
+                                }{" "}
+                                {new Date(item.createTime).getDate()},
+                                {new Date(item.createTime)?.getFullYear()}
+                              </span>: <span className="text-gray-400 text-md">
+                                {
+                                  monthNames[
+                                  new Date(item.createTime).getMonth()
+                                  ].kr
+                                }{" "}
+                                {new Date(item.createTime).getDate()}일,
+                                {new Date(item.createTime)?.getFullYear()}년
+                              </span>}
                               </div>
 
                               <div className="ml-auto flex gap-1">
