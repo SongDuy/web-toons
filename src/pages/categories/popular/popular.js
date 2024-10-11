@@ -40,64 +40,66 @@ const PopularPage = () => {
 
             {/* Hiển thị tiêu đề */}
             <div className={`w-full h-[70px] mb-[-70px] bg-white shadow flex items-center justify-start overflow-x-auto border-t ${isSticky ? 'sticky top-0 z-20' : ''}`}>
-                <ul
-                    className="h-full flex w-max"
-                >
-                    <ScrollLink to="section1" smooth={true} duration={500}>
-                        <li
-                            onClick={() => setSelectedSection("section1")}
-                            className={`min-w-[280px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
-                        >
-                            {!language ?
-                                <span>
-                                    NEW & TRENDING ORIGINALS
-                                </span>
-                                :
-                                <span>
-                                    새로운 및 인기 오리지널
-                                </span>
-                            }
+                <div className='h-full flex items-center justify-center'>
+                    <ul
+                        className="h-full flex w-max"
+                    >
+                        <ScrollLink to="section1" smooth={true} duration={500}>
+                            <li
+                                onClick={() => setSelectedSection("section1")}
+                                className={`min-w-[280px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            >
+                                {!language ?
+                                    <span>
+                                        NEW & TRENDING ORIGINALS
+                                    </span>
+                                    :
+                                    <span>
+                                        새로운 및 인기 오리지널
+                                    </span>
+                                }
 
-                        </li>
-                    </ScrollLink>
+                            </li>
+                        </ScrollLink>
 
-                    <ScrollLink to="section2" smooth={true} duration={500}>
-                        <li
-                            onClick={() => setSelectedSection("section2")}
-                            className={`min-w-[280px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
-                        >
-                            {!language ?
-                                <span>
-                                    NEW & TRENDING VIDEOS
-                                </span>
-                                :
-                                <span>
-                                    새로운 및 인기 동영상
-                                </span>
-                            }
+                        <ScrollLink to="section2" smooth={true} duration={500}>
+                            <li
+                                onClick={() => setSelectedSection("section2")}
+                                className={`min-w-[280px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            >
+                                {!language ?
+                                    <span>
+                                        NEW & TRENDING VIDEOS
+                                    </span>
+                                    :
+                                    <span>
+                                        새로운 및 인기 동영상
+                                    </span>
+                                }
 
-                        </li>
-                    </ScrollLink>
+                            </li>
+                        </ScrollLink>
 
-                    <ScrollLink to="section3" smooth={true} duration={500}>
-                        <li
-                            onClick={() => setSelectedSection("section3")}
-                            className={`min-w-[280px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section3" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
-                        >
-                            {!language ?
-                                <span>
-                                    ORIGINALS BY GENRE
-                                </span>
-                                :
-                                <span>
-                                    장르별 오리지널
-                                </span>
-                            }
+                        <ScrollLink to="section3" smooth={true} duration={500}>
+                            <li
+                                onClick={() => setSelectedSection("section3")}
+                                className={`min-w-[280px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center ${selectedSection === "section3" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                            >
+                                {!language ?
+                                    <span>
+                                        ORIGINALS BY GENRE
+                                    </span>
+                                    :
+                                    <span>
+                                        장르별 오리지널
+                                    </span>
+                                }
 
-                        </li>
-                    </ScrollLink>
+                            </li>
+                        </ScrollLink>
 
-                </ul>
+                    </ul>
+                </div>
             </div>
 
             <div className="w-full h-full ">
