@@ -412,7 +412,16 @@ const DisplayVideoPage = () => {
       console.log(error);
     }
   };
-
+  const goToPreviousChapter = () => {
+    const Previous= chapters?.chaps?.filter(item=>chapid.num-1===item.num)
+    Previous.length!==0&& navigate(`/videos/video/series/display/${id.id}/${Previous[0]?.id}`);
+   };
+ 
+   const goToNextChapter = () => {
+     const Next= chapters?.chaps?.filter(item=>chapid.num+1===item.num)
+     Next.length!==0&& navigate(`/videos/video/series/display/${id.id}/${Next[0]?.id}`);
+   };
+ 
   return (
     <div>
       {!loading ? (
@@ -454,7 +463,7 @@ const DisplayVideoPage = () => {
 
                 <li className="w-[150px] flex items-center justify-center mx-[100px]">
                   <div className="mr-auto cursor-pointer">
-                    <span className="text-white bg-gray-900 hover:bg-gray-700 pl-3 py-1 rounded-md flex items-center justify-center">
+                    <span  onClick={goToPreviousChapter} className="text-white bg-gray-900 hover:bg-gray-700 pl-3 py-1 rounded-md flex items-center justify-center">
                       <ArrowBackIosIcon />
                     </span>
                   </div>
@@ -464,7 +473,7 @@ const DisplayVideoPage = () => {
                     </span>
                   </div>
                   <div className="ml-auto cursor-pointer">
-                    <span className="text-white bg-gray-900 hover:bg-gray-700 w-[35px] py-1 rounded-md flex items-center justify-center">
+                    <span  onClick={goToNextChapter} className="text-white bg-gray-900 hover:bg-gray-700 w-[35px] py-1 rounded-md flex items-center justify-center">
                       <ArrowForwardIosIcon />
                     </span>
                   </div>

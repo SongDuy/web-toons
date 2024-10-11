@@ -44,6 +44,8 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import dataListGenre from "../../../components/layout/layoutUser/dataListGenre";
 import ReactPlayer from "react-player";
 import dataGenreSearch from "../../../common/utils/datagenresearch";
+import { useNavigate } from 'react-router-dom';
+
 const DisplayOriginalPage = () => {
   const id = useParams();
   const [getcomment, setComment] = useState("");
@@ -69,6 +71,7 @@ const DisplayOriginalPage = () => {
   const [openOriginals, setOpenOriginals] = useState(false);
   const anchorRefOriginals = React.useRef(null);
   const prevOpenOriginals = React.useRef(openOriginals);
+  const navigate = useNavigate();
 
   const filteredcomic = comic?.comic
     ?.slice()
@@ -473,6 +476,15 @@ const DisplayOriginalPage = () => {
       setOpenOriginals(false);
     }
   }
+  const goToPreviousChapter = () => {
+   const Previous= chapters?.chaps?.filter(item=>chapid.num-1===item.num)
+   Previous.length!==0&& navigate(`/originals/original/series/display/${id.id}/${Previous[0]?.id}`);
+  };
+
+  const goToNextChapter = () => {
+    const Next= chapters?.chaps?.filter(item=>chapid.num+1===item.num)
+    Next.length!==0&& navigate(`/originals/original/series/display/${id.id}/${Next[0]?.id}`);
+  };
 
   // Nhấn nút đăng ký
   const [isMusic, setIsMusic] = useState(false);
@@ -518,7 +530,7 @@ const DisplayOriginalPage = () => {
 
                 <li className="w-[150px] flex items-center justify-center mx-[100px]">
                   <div className="mr-auto cursor-pointer">
-                    <span  className="text-white bg-gray-800 hover:bg-gray-700 pl-3 py-1 rounded-md flex items-center justify-center">
+                    <span onClick={goToPreviousChapter} className="text-white bg-gray-800 hover:bg-gray-700 pl-3 py-1 rounded-md flex items-center justify-center">
                       <ArrowBackIosIcon />
                     </span>
                   </div>
@@ -528,7 +540,7 @@ const DisplayOriginalPage = () => {
                     </span>
                   </div>
                   <div className="ml-auto cursor-pointer">
-                    <span className="text-white bg-gray-800 hover:bg-gray-700 w-[35px] py-1 rounded-md flex items-center justify-center">
+                    <span onClick={goToNextChapter} className="text-white bg-gray-800 hover:bg-gray-700 w-[35px] py-1 rounded-md flex items-center justify-center">
                       <ArrowForwardIosIcon />
                     </span>
                   </div>
