@@ -130,13 +130,13 @@ const SearchPage = ({ closeModal }) => {
                     {/* Chọn loại truyện hoặc video */}
                     <div className="w-full mt-5 flex items-center justify-center gap-4">
                         <button
-                            className={`w-[120px] h-[35px] font-semibold rounded ${activeButton === 'originals' ? 'bg-black text-white' : 'bg-gray-200'}`}
+                            className={`w-1/2 h-[35px] font-semibold rounded ${activeButton === 'originals' ? 'bg-black text-white' : 'bg-gray-200'}`}
                             onClick={() => handleButtonClick('originals')}
                         >
                             Originals
                         </button>
                         <button
-                            className={`w-[120px] h-[35px] font-semibold rounded ${activeButton === 'videos' ? 'bg-black text-white' : 'bg-gray-200'}`}
+                            className={`w-1/2 h-[35px] font-semibold rounded ${activeButton === 'videos' ? 'bg-black text-white' : 'bg-gray-200'}`}
                             onClick={() => handleButtonClick('videos')}
                         >
                             Videos
