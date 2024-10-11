@@ -248,9 +248,9 @@ const SeriesVideoPage = ({ goToEposodes }) => {
 
                                 <h1 className="text-black">
                                     {!language ? (
-                                        "VIDEO SERIES"
+                                        <span>VIDEO SERIES</span>
                                     ) : (
-                                        "비디오 시리즈"
+                                        <span>비디오 시리즈</span>
                                     )}
                                 </h1>
 
@@ -269,9 +269,9 @@ const SeriesVideoPage = ({ goToEposodes }) => {
 
                                 <h1 className="text-gray-400">
                                     {!language ? (
-                                        "VIDEO EPISODES"
+                                        <span>VIDEO EPISODES</span>
                                     ) : (
-                                        "비디오 에피소드"
+                                        <span>비디오 에피소드</span>
                                     )}
                                 </h1>
                             </li>
@@ -288,9 +288,9 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                     <div className="w-full py-3">
                                         <h1 className="w-full font-semibold text-xl">
                                             {!language ? (
-                                                "Square Thumbnail"
+                                                <span>Square Thumbnail</span>
                                             ) : (
-                                                "정사각형 썸네일"
+                                                <span>정사각형 썸네일</span>
                                             )}
                                         </h1>
                                     </div>
@@ -305,7 +305,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                             />
                                         ) : (
                                             <>
-                                                <button className="w-[200px] h-[200px] relative  shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
+                                                <button className="w-[350px] h-[200px] relative  shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
                                                     <div>
                                                         <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
                                                             <NorthIcon />
