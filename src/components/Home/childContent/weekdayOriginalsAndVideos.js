@@ -112,9 +112,9 @@ const WeekdayOriginalsAndVideosPage = () => {
                     >
                         <span className='w-[120px] h-full border-l-2 pl-10 uppercase font-semibold text-md text-gray-400 hover:text-yellow-500 flex items-center justify-center'>
                             {!language ?
-                                "More"
+                                <span> More </span>
                                 :
-                                "더보기"
+                                <span> 더보기 </span>
                             }
 
                             <NavigateNextIcon />
