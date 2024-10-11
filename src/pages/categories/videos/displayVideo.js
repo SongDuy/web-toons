@@ -57,18 +57,18 @@ const DisplayVideoPage = () => {
   const navigate = useNavigate();
 
   const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    { en: "January", kr: "1월" },
+    { en: "February", kr: "2월" },
+    { en: "March", kr: "3월" },
+    { en: "April", kr: "4월" },
+    { en: "May", kr: "5월" },
+    { en: "June", kr: "6월" },
+    { en: "July", kr: "7월" },
+    { en: "August", kr: "8월" },
+    { en: "September", kr: "9월" },
+    { en: "October", kr: "10월" },
+    { en: "November", kr: "11월" },
+    { en: "December", kr: "12월" }
   ];
   // Hiện thị phản hồi của bình luận
   const [replyCommentId, setReplyCommentId] = useState(null);
@@ -634,7 +634,7 @@ const DisplayVideoPage = () => {
                       {/* Ô nhập bình luận */}
                       <div className="w-full h-full my-3">
                         <textarea
-                          placeholder="Leave a comment"
+                          placeholder={!language?"Leave a comment":"댓글 달기."}
                           className="w-full h-[160px] rounded-md px-3 py-3 border-2"
                           value={getcomment}
                           onChange={(e) => setComment(e.target.value)}
@@ -684,17 +684,31 @@ const DisplayVideoPage = () => {
                                       <span className="max-w-[500px] font-semibold line-clamp-1">
                                         {item.nameUser}
                                       </span>
+                                      {!language?
                                       <span className="text-gray-400 mx-2 line-clamp-1">
-                                        {
+                                     {
                                           monthNames[
                                             new Date(item.createTime).getMonth()
-                                          ]
+                                          ].en
                                         }{" "}
                                         {new Date(item.createTime).getDate()},
                                         {new Date(
                                           item.createTime
                                         )?.getFullYear()}
+
                                       </span>
+                                      :  <span className="text-gray-400 mx-2 line-clamp-1">
+                                      {
+                                           monthNames[
+                                             new Date(item.createTime).getMonth()
+                                           ].kr
+                                         }{" "}
+                                         {new Date(item.createTime).getDate()}일,
+                                         {new Date(
+                                           item.createTime
+                                         )?.getFullYear()}년
+ 
+                                       </span>}
                                     </div>
 
                                     {/* Hiển thị nội dung bình luận */}
@@ -754,7 +768,7 @@ const DisplayVideoPage = () => {
                                       {/* Ô nhập bình luận */}
                                       <div className="w-full h-full my-3">
                                         <textarea
-                                          placeholder="Leave a reply"
+                                          placeholder={!language?"Leave a reply" :"답장 남기기"}
                                           value={getrep}
                                           className="w-full h-[160px] rounded-md px-3 py-3 border-2"
                                           onChange={(e) =>
@@ -790,22 +804,31 @@ const DisplayVideoPage = () => {
                                                   <span className="max-w-[500px] font-semibold line-clamp-1">
                                                     {item.nameUser}
                                                   </span>
-                                                  <span className="text-gray-400 mx-2 line-clamp-1">
-                                                    {
-                                                      monthNames[
-                                                        new Date(
-                                                          item.createTime
-                                                        ).getMonth()
-                                                      ]
-                                                    }{" "}
-                                                    {new Date(
-                                                      item.createTime
-                                                    ).getDate()}
-                                                    ,
-                                                    {new Date(
-                                                      item.createTime
-                                                    )?.getFullYear()}
-                                                  </span>
+                                                  {!language?
+                                      <span className="text-gray-400 mx-2 line-clamp-1">
+                                     {
+                                          monthNames[
+                                            new Date(item.createTime).getMonth()
+                                          ].en
+                                        }{" "}
+                                        {new Date(item.createTime).getDate()},
+                                        {new Date(
+                                          item.createTime
+                                        )?.getFullYear()}
+
+                                      </span>
+                                      :  <span className="text-gray-400 mx-2 line-clamp-1">
+                                      {
+                                           monthNames[
+                                             new Date(item.createTime).getMonth()
+                                           ].kr
+                                         }{" "}
+                                         {new Date(item.createTime).getDate()}일,
+                                         {new Date(
+                                           item.createTime
+                                         )?.getFullYear()}년
+ 
+                                       </span>}
                                                 </div>
 
                                                 {/* Hiển thị nội dung bình luận */}

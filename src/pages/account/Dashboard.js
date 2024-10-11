@@ -7,10 +7,13 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import VideoFireBase from "../../common/services/Video.services";
 import comicFireBase from "../../common/services/Comic.services";
-import { useNavigate } from 'react-router-dom';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-import { setcurrentStepOriginal, setcurrentStepVideo } from "../../common/store/hidden";
+import { useNavigate } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import {
+  setcurrentStepOriginal,
+  setcurrentStepVideo,
+} from "../../common/store/hidden";
 const Dashboard = () => {
   const Account = useSelector((state) => state.Account.Account);
   const [videos, setvideos] = useState([]);
@@ -20,105 +23,109 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   //Lấy ngôn ngữ
-  const language = useSelector(state => state.hidden.language);
+  const language = useSelector((state) => state.hidden.language);
 
   const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    { en: "January", kr: "1월" },
+    { en: "February", kr: "2월" },
+    { en: "March", kr: "3월" },
+    { en: "April", kr: "4월" },
+    { en: "May", kr: "5월" },
+    { en: "June", kr: "6월" },
+    { en: "July", kr: "7월" },
+    { en: "August", kr: "8월" },
+    { en: "September", kr: "9월" },
+    { en: "October", kr: "10월" },
+    { en: "November", kr: "11월" },
+    { en: "December", kr: "12월" },
   ];
   useEffect(() => {
     const get = async () => {
       try {
-        setloading(false)
+        setloading(false);
 
         const videos = await VideoFireBase.getbyuser(Account.uid);
         const comics = await comicFireBase.getbyuser(Account.uid);
 
         setvideos(videos.success ? videos.Video : []);
         setcomics(comics.success ? comics.comic : []);
-        setloading(true)
-
-      } catch (error) { }
+        setloading(true);
+      } catch (error) {}
     };
     get();
   }, [Account]);
   const handledeletecomic = async (idcomic) => {
     try {
-      let result = window.confirm(!language ? "Do you want to delete this chap comic?" : "이 남자 만화를 삭제하시겠습니까?");
+      let result = window.confirm(
+        !language
+          ? "Do you want to delete this chap comic?"
+          : "이 남자 만화를 삭제하시겠습니까?"
+      );
       if (result) {
-        setloading(false)
-        await comicFireBase.Delete(idcomic)
+        setloading(false);
+        await comicFireBase.Delete(idcomic);
         const comics = await comicFireBase.getbyuser(Account.uid);
 
         setcomics(comics.success ? comics.comic : []);
-        setloading(true)
+        setloading(true);
       }
-    } catch (error) {
-
-    }
-  }
+    } catch (error) {}
+  };
   const handledeleteVideo = async (id) => {
     try {
-      let result = window.confirm(!language ? "Do you want to delete this Video?" : "이 동영상을 삭제하시겠습니까?");
+      let result = window.confirm(
+        !language
+          ? "Do you want to delete this Video?"
+          : "이 동영상을 삭제하시겠습니까?"
+      );
       if (result) {
-        setloading(false)
-        await VideoFireBase.Delete(id)
+        setloading(false);
+        await VideoFireBase.Delete(id);
         const videos = await VideoFireBase.getbyuser(Account.uid);
         setvideos(videos.success ? videos.Video : []);
 
-        setloading(true)
+        setloading(true);
       }
-    } catch (error) {
-
-    }
-  }
+    } catch (error) {}
+  };
 
   return (
     <>
-      {!loading ? <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5 }}>
-        <CircularProgress />
-      </Box> :
+      {!loading ? (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: 5,
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      ) : (
         <div>
-
           <Nav />
           <div className="w-full h-full border bg-gray-100 flex items-center justify-center pb-10">
             <div className="w-[1130px] min-h-[550px]">
               <div className="w-full h-full mt-4">
                 <div className="w-full h-full flex items-center">
-
                   <h1 className="font-semibold text-xl">
-                    {!language ?
-                      "Select the original series"
-                      :
-                      "오리지널 시리즈 선택"
-                    }
+                    {!language
+                      ? "Select the original series"
+                      : "오리지널 시리즈 선택"}
                   </h1>
 
                   <Link
                     to={`/publish/original`}
-
                     className="w-[150px] h-[35px] text-white font-semibold bg-black ml-auto rounded-full flex items-center justify-center"
                   >
-
-                    <button className="w-full h-full" onClick={() => dispatch(setcurrentStepOriginal(1))}>
+                    <button
+                      className="w-full h-full"
+                      onClick={() => dispatch(setcurrentStepOriginal(1))}
+                    >
                       <AddIcon />
-                      {!language ?
-                        "Create Series"
-                        :
-                        "시리즈 만들기"
-                      }
+                      {!language ? "Create Series" : "시리즈 만들기"}
                     </button>
-
                   </Link>
                 </div>
 
@@ -146,23 +153,22 @@ const Dashboard = () => {
                               </span>
 
                               <div className="flex ml-auto gap-2">
-                                <button onClick={() => { navigate(`/publish/original/${item.id}`); dispatch(setcurrentStepOriginal(1)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-
-                                  {!language ?
-                                    "Edit"
-                                    :
-                                    "편집"
-                                  }
+                                <button
+                                  onClick={() => {
+                                    navigate(`/publish/original/${item.id}`);
+                                    dispatch(setcurrentStepOriginal(1));
+                                  }}
+                                  className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow"
+                                >
+                                  {!language ? "Edit" : "편집"}
                                 </button>
 
-                                <button onClick={() => handledeletecomic(item.id)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                  {!language ?
-                                    "Delete"
-                                    :
-                                    "삭제"
-                                  }
+                                <button
+                                  onClick={() => handledeletecomic(item.id)}
+                                  className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow"
+                                >
+                                  {!language ? "Delete" : "삭제"}
                                 </button>
-
                               </div>
                             </div>
 
@@ -184,13 +190,10 @@ const Dashboard = () => {
                             ) : (
                               <div className="w-full">
                                 <span className="text-red-500 flex items-center">
-                                  {!language ?
-                                    "   Not Yet Rated"
-                                    :
-                                    "아직 평가되지 않음"
-                                  }
+                                  {!language
+                                    ? "   Not Yet Rated"
+                                    : "아직 평가되지 않음"}
                                 </span>
-
                               </div>
                             )}
                           </div>
@@ -198,66 +201,79 @@ const Dashboard = () => {
                           <div className="w-full mt-2">
                             {item.totalChapters > 0 ? (
                               <div className="flex gap-5">
-                                <span className="text-gray-500 text-sm flex gap-2">
-                                  {!language ?
-                                    " Published"
-                                    :
-                                    "발행됨"
-                                  } {" "}
-                                  {monthNames[new Date(item.createTime).getMonth()]}{" "}
-                                  {new Date(item.createTime).getDate()},
-                                  {new Date(item.createTime)?.getFullYear()}
-                                </span>
+                                {!language ? (
+                                  <span className="text-gray-500 text-sm flex gap-2">
+                                    Published
+                                    {
+                                      " "+
+                                      monthNames[
+                                        new Date(item.createTime).getMonth()
+                                      ].en
+                                    }{" "}
+                                    {new Date(item.createTime).getDate()},
+                                    {new Date(item.createTime)?.getFullYear()}
+                                  </span>
+                                ) : (
+                                  <span className="text-gray-500 text-sm flex gap-2">
+                                    발행됨
+                                    {
+                                      " "+
+                                      monthNames[
+                                        new Date(item.createTime).getMonth()
+                                      ].kr
+                                    }{" "}
+                                    {new Date(item.createTime).getDate()}일,
+                                    {new Date(item.createTime)?.getFullYear()}년
+                                  </span>
+                                )}
 
                                 <span className="text-gray-500 text-sm">
-                                  {!language ?
-                                    " Episodes"
-                                    :
-                                    "에피소드"
-                                  }
+                                  {!language ? " Episodes" : "에피소드"}
                                   {item.totalChapters}
                                 </span>
                               </div>
                             ) : (
                               <div className="flex gap-5">
                                 <span className="text-gray-500 text-sm">
-                                  {!language ?
-                                    " Add episodes to publish your title."
-                                    :
-                                    "타이틀을 게시하려면 에피소드를 추가하세요."
-                                  }
+                                  {!language
+                                    ? " Add episodes to publish your title."
+                                    : "타이틀을 게시하려면 에피소드를 추가하세요."}
                                 </span>
-
                               </div>
                             )}
 
                             <div className="mt-2 flex ml-auto gap-2">
-                              <Link to={`/dashboard/original/episode/${item.id}`}>
+                              <Link
+                                to={`/dashboard/original/episode/${item.id}`}
+                              >
                                 <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                  {!language ?
-                                    "Edit Episode"
-                                    :
-                                    "에피소드 편집"
-                                  }
+                                  {!language ? "Edit Episode" : "에피소드 편집"}
                                 </button>
                               </Link>
 
-                              {!language ?
-                                <button onClick={() => { navigate(`/publish/original/${item.id}`); dispatch(setcurrentStepOriginal(2)) }} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                              {!language ? (
+                                <button
+                                  onClick={() => {
+                                    navigate(`/publish/original/${item.id}`);
+                                    dispatch(setcurrentStepOriginal(2));
+                                  }}
+                                  className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow"
+                                >
                                   <AddIcon />
-                                  {!language ?
-                                    " Add Episode"
-                                    :
-                                    "에피소드 추가"
-                                  }
+                                  {!language ? " Add Episode" : "에피소드 추가"}
                                 </button>
-                                :
-                                <button onClick={() => { navigate(`/publish/original/${item.id}`); dispatch(setcurrentStepOriginal(2)) }} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                              ) : (
+                                <button
+                                  onClick={() => {
+                                    navigate(`/publish/original/${item.id}`);
+                                    dispatch(setcurrentStepOriginal(2));
+                                  }}
+                                  className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow"
+                                >
                                   <AddIcon />
                                   에피소드 추가
                                 </button>
-                              }
-
+                              )}
                             </div>
                           </div>
                         </div>
@@ -269,29 +285,23 @@ const Dashboard = () => {
 
               <div className="w-full h-full mt-4">
                 <div className="w-full h-full flex items-center">
-
                   <h1 className="font-semibold text-xl">
-                    {!language ?
-                      " Select the video series"
-                      :
-                      " 비디오 시리즈 선택"
-                    }
+                    {!language
+                      ? " Select the video series"
+                      : " 비디오 시리즈 선택"}
                   </h1>
 
                   <Link
                     to={`/publish/video`}
-
                     className="w-[150px] h-[35px] text-white font-semibold bg-black ml-auto rounded-full flex items-center justify-center"
                   >
-                    <button className="w-full h-full" onClick={() => dispatch(setcurrentStepVideo(1))}>
+                    <button
+                      className="w-full h-full"
+                      onClick={() => dispatch(setcurrentStepVideo(1))}
+                    >
                       <AddIcon />
-                      {!language ?
-                        "Create Series"
-                        :
-                        "시리즈 만들기"
-                      }
+                      {!language ? "Create Series" : "시리즈 만들기"}
                     </button>
-
                   </Link>
                 </div>
 
@@ -315,23 +325,22 @@ const Dashboard = () => {
                           <div className="w-[320px]">
                             <div className="flex items-center">
                               <div className="flex ml-auto gap-2">
-
-                                <button onClick={() => { navigate(`/publish/video/${item.id}`); dispatch(setcurrentStepVideo(1)) }} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                  {!language ?
-                                    "Edit"
-                                    :
-                                    "편집"
-                                  }
+                                <button
+                                  onClick={() => {
+                                    navigate(`/publish/video/${item.id}`);
+                                    dispatch(setcurrentStepVideo(1));
+                                  }}
+                                  className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow"
+                                >
+                                  {!language ? "Edit" : "편집"}
                                 </button>
 
-                                <button onClick={() => handledeleteVideo(item.id)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                  {!language ?
-                                    "Delete"
-                                    :
-                                    "삭제"
-                                  }
+                                <button
+                                  onClick={() => handledeleteVideo(item.id)}
+                                  className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow"
+                                >
+                                  {!language ? "Delete" : "삭제"}
                                 </button>
-
                               </div>
                             </div>
 
@@ -353,14 +362,10 @@ const Dashboard = () => {
                             ) : (
                               <div className="w-full">
                                 <span className="text-red-500 flex items-center">
-
-                                  {!language ?
-                                    " Not Yet Rated"
-                                    :
-                                    "아직 평가되지 않음"
-                                  }
+                                  {!language
+                                    ? " Not Yet Rated"
+                                    : "아직 평가되지 않음"}
                                 </span>
-
                               </div>
                             )}
                           </div>
@@ -368,63 +373,63 @@ const Dashboard = () => {
                           <div className="w-full mt-2">
                             {item.totalChapters > 0 ? (
                               <div className="flex gap-5">
-                                <span className="text-gray-500 text-sm flex gap-2">
-                                  {!language ?
-                                    " Published"
-                                    :
-                                    "발행됨"
-                                  }{" "}
-                                  {monthNames[new Date(item.createTime).getMonth()]}{" "}
-                                  {new Date(item.createTime).getDate()},
-                                  {new Date(item.createTime)?.getFullYear()}
-                                </span>
-
+                                 {!language ? (
+                                  <span className="text-gray-500 text-sm flex gap-2">
+                                    Published 
+                                    {" "+
+                                      monthNames[
+                                        new Date(item.createTime).getMonth()
+                                      ].en
+                                    }{" "}
+                                    {new Date(item.createTime).getDate()},
+                                    {new Date(item.createTime)?.getFullYear()}
+                                  </span>
+                                ) : (
+                                  <span className="text-gray-500 text-sm flex gap-2">
+                                    발행됨
+                                    {
+                                      " "+
+                                      monthNames[
+                                        new Date(item.createTime).getMonth()
+                                      ].kr
+                                    }{" "}
+                                    {new Date(item.createTime).getDate()}일,
+                                    {new Date(item.createTime)?.getFullYear()}년
+                                  </span>
+                                )}
+                               
                                 <span className="text-gray-500 text-sm">
-                                  {!language ?
-                                    " Episodes"
-                                    :
-                                    "에피소드"
-                                  }
+                                  {!language ? " Episodes" : "에피소드"}
                                   {item.totalChapters}
                                 </span>
                               </div>
                             ) : (
                               <div className="flex gap-5">
-
                                 <span className="text-gray-500 text-sm">
-
-                                  {!language ?
-                                    " Add episodes to publish your title."
-                                    :
-                                    "타이틀을 게시하려면 에피소드를 추가하세요."
-                                  }
+                                  {!language
+                                    ? " Add episodes to publish your title."
+                                    : "타이틀을 게시하려면 에피소드를 추가하세요."}
                                 </span>
-
                               </div>
                             )}
 
                             <div className="mt-2 flex ml-auto gap-2">
                               <Link to={`/dashboard/video/episode/${item.id}`}>
-
                                 <button className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
-                                  {!language ?
-                                    "Edit Episode"
-                                    :
-                                    "에피소드 편집"
-                                  }
+                                  {!language ? "Edit Episode" : "에피소드 편집"}
                                 </button>
-
                               </Link>
 
-                              <button onClick={() => { navigate(`/publish/video/${item.id}`); dispatch(setcurrentStepVideo(2)) }} className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                              <button
+                                onClick={() => {
+                                  navigate(`/publish/video/${item.id}`);
+                                  dispatch(setcurrentStepVideo(2));
+                                }}
+                                className="px-2 py-1 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow"
+                              >
                                 <AddIcon />
-                                {!language ?
-                                  "Add Episode"
-                                  :
-                                  "에피소드 추가"
-                                }
+                                {!language ? "Add Episode" : "에피소드 추가"}
                               </button>
-
                             </div>
                           </div>
                         </div>
@@ -436,7 +441,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-      }
+      )}
     </>
   );
 };
