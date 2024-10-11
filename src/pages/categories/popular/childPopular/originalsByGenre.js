@@ -24,16 +24,16 @@ const OriginalsByGenrePage = () => {
                 {!language ? <span> ORIGINALS BY GENRE </span> : <span> 장르별 오리지널 </span>}
             </div>
 
-            <div className="h-[70px] mb-5 bg-white flex items-center justify-center border-t border-b">
+            <div className="h-[70px] mb-5 bg-white flex items-center justify-start border-t border-b overflow-x-auto">
                 <ul
-                    className="grid grid-cols-10 gap-x-4 gap-y-2"
+                    className="grid grid-rows-2 grid-flow-col w-max gap-x-4 gap-y-2"
                 >
                     {/* khung nội dung */}
                     {dataListGenre.map(item => (
                         <li
                             key={item.id}
                             onClick={() => setSelectedOriginalsByGenre(item.name)}
-                            className={`uppercase font-semibold text-sm hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === (item.name || "Action") ? 'text-black' : 'text-gray-400'}`}
+                            className={`min-w-[114px] uppercase font-semibold text-sm hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === (item.name || "Action") ? 'text-black' : 'text-gray-400'}`}
                         >
                             {!language ? item.name : item.nameKorean}
                         </li>
@@ -42,22 +42,22 @@ const OriginalsByGenrePage = () => {
                 </ul>
             </div>
 
-            <div className="w-full flex gap-[60px]">
+            <div className="w-full grid xs:grid-cols-1 sm:grid-cols-2">
                 {/* Hien thị top 1 */}
 
                 {comicid?.id &&
                     <Link
                         to={`/originals/original/series/${comicid?.id}`}
-                        className="h-[815px] bg-white py-1"
+                        className="h-[600px] bg-white py-1"
                     >
                         <div
-                            className="w-[500px] h-full"
+                            className="w-full h-full"
                             onMouseEnter={() => setHoveredOriginalItem("choice")}
                             onMouseLeave={() => setHoveredOriginalItem(null)}
                         >
 
                             <div className="w-full h-full">
-                                <div className="w-[500px] mr-auto h-[500px] rounded-md flex items-center justify-center relative">
+                                <div className="w-full mr-auto h-auto rounded-md flex items-center justify-center relative">
                                     <div className="w-full h-full">
                                         <img
                                             src={comicid?.squareThumbnail}
@@ -124,7 +124,7 @@ const OriginalsByGenrePage = () => {
                     </Link>
                 }
                 {/* Hien thị danh sách */}
-                <div className="w-full h-[815px] bg-white">
+                <div className="w-full h-[600px] bg-white">
                     <div className="w-full h-full">
                         <ul className="w-full h-full ">
 

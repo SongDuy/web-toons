@@ -21,22 +21,22 @@ const NewTrendingVideosPage = () => {
                 {!language ? <span> NEW & TRENDING VIDEOS </span> : <span> 새로운 및 인기 동영상 </span>}
             </div>
 
-            <div className="w-full flex gap-[60px]">
+            <div className="w-full grid xs:grid-cols-1 sm:grid-cols-2">
 
                 {/* Hien thị top 1 */}
                 {Videoid?.id &&
                     <Link
                         to={`/videos/video/series/${Videoid?.id}`}
-                        className="h-[815px] bg-white py-1"
+                        className="h-[600px] bg-white py-1"
                     >
                         <div
-                            className="w-[500px] h-full"
+                            className="w-full h-full"
                             onMouseEnter={() => setHoveredVideoItem("choice")}
                             onMouseLeave={() => setHoveredVideoItem(null)}
                         >
 
                             <div className="w-full h-full">
-                                <div className="w-[500px] mr-auto h-[500px] rounded-md flex items-center justify-center relative">
+                                <div className="w-full mr-auto h-auto rounded-md flex items-center justify-center relative">
                                     <div className="w-full h-full">
                                         <img
                                             src={Videoid?.squareThumbnail}
@@ -78,7 +78,7 @@ const NewTrendingVideosPage = () => {
 
                                     <div className=" w-full h-full mt-5 overflow-hidden">
                                         <span className="w-full line-clamp-6">
-                                            {Videoid?.summary}
+                                            {Videoid?.summary} 
                                         </span>
                                     </div>
 
@@ -89,7 +89,7 @@ const NewTrendingVideosPage = () => {
                 }
                 
                 {/* Hien thị danh sách */}
-                <div className="w-full h-[815px] bg-white">
+                <div className="w-full h-[600px] bg-white">
                     <div className="w-full h-full">
                         <ul className="w-full h-full ">
 
