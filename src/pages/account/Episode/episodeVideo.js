@@ -53,17 +53,20 @@ const EpisodeVideo = () => {
         }
         get()
     }, [dispatch, id]);
-    const handledelete = async (idchap) => {
+    const handledelete = async (idchap,numcount) => {
         try {
             let result = window.confirm(!language ? "Do you want to delete this chap video?" : "이 채팅 동영상을 삭제하시겠습니까?");
             if (result) {
                 setloading(false)
-
+                const checknum=numcount!== chapters?.chaps?.length
                 await VideoFireBase.Deletechap(id.id, idchap)
-                await VideoFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 1 }, id.id);
-
+                await VideoFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 0 }, id.id);
+                checknum&&  chapters?.chaps?.filter(item=>item.id!==idchap)?.map(async item=>
+                    await VideoFireBase.updateep({num:item.num-1===0?1:item.num-1},id.id,item.id)
+)
                 const chap = await dispatch(getchaptersVideo(id.id))
                 unwrapResult(chap)
+               
                 setloading(true)
             }
         } catch (error) {
@@ -144,7 +147,7 @@ const EpisodeVideo = () => {
                                                                     }
                                                                 </button>
 
-                                                                <button onClick={() => handledelete(item.id)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                                                <button onClick={() => handledelete(item.id,item.num)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                                                                     {!language ?
                                                                         "Delete"
                                                                         :

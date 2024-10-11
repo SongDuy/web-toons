@@ -17,7 +17,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { AddComment, getidseries } from "../../../common/store/Comment";
-import { setIsLoginModal } from "../../../common/store/hidden";
+import { setIsLoginModal, setlanguage } from "../../../common/store/hidden";
 import LoginPage from "../../auth/login";
 import { auth } from "../../../common/themes/firebase";
 import { getAccount } from "../../../common/store/Account";
@@ -155,7 +155,7 @@ const DisplayOriginalPage = () => {
         const comments = await dispatch(getidseries(id.idseries));
         const comicID = await dispatch(getidComic(id.id));
         const chap = await dispatch(getchaptersComic(id.id));
-
+        localStorage.getItem("language")==="en"?dispatch(setlanguage(false)):dispatch(setlanguage(true))
         unwrapResult(comicID);
         const chapid = unwrapResult(chap);
         setchapid(

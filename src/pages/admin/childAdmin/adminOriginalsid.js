@@ -56,16 +56,21 @@ const AdminOriginalsidPage = () => {
 
         }
     }
-    const handledelete = async (idchap) => {
+    const handledelete = async (idchap,numcount) => {
         try {
             let result = window.confirm("이 챕터 만화를 삭제하시겠습니까?");
             if (result) {
                 setloading(false)
+                const checknum=numcount!== chapters?.chaps?.length
 
                 await comicFireBase.Deletechap(id.id, idchap)
+                await comicFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 0 }, id.id);
                 const chap = await dispatch(getchaptersComic(id.id))
                 const chaps = unwrapResult(chap)
                 setChapters(chaps?.success ? chaps?.chaps : [])
+                checknum&&   chapters?.chaps?.filter(item=>item.id!==idchap)?.map(async item=>
+                    await comicFireBase.updateep({num:item.num-1===0?1:item.num-1},id.id,item.id)
+)
                 setloading(true)
             }
         } catch (error) {
@@ -145,7 +150,7 @@ const AdminOriginalsidPage = () => {
                                             <CheckIcon />
                                         </button>
 
-                                        <button onClick={() => handledelete(item.id)} className="w-[35px] h-[35px] text-red-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
+                                        <button onClick={() => handledelete(item.id,item.num)} className="w-[35px] h-[35px] text-red-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
                                             <DeleteIcon />
                                         </button>
                                     </td>

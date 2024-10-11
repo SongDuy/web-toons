@@ -16,7 +16,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { AddComment, getidseriesVideo } from "../../../common/store/Comment";
-import { setIsLoginModal } from "../../../common/store/hidden";
+import { setIsLoginModal, setlanguage } from "../../../common/store/hidden";
 import LoginPage from "../../auth/login";
 import { auth } from "../../../common/themes/firebase";
 import { getAccount } from "../../../common/store/Account";
@@ -94,6 +94,7 @@ const DisplayVideoPage = () => {
     const getcomments = async () => {
       try {
         setloading(false);
+        localStorage.getItem("language")==="en"?dispatch(setlanguage(false)):dispatch(setlanguage(true))
         if (auth.currentUser) {
           const comments = await dispatch(getidseriesVideo(id.idseries));
           const VideoID = await dispatch(getidVideo(id.id));
@@ -143,6 +144,8 @@ const DisplayVideoPage = () => {
               payment.payment[0]?.status !== "success" &&
                 navigate(`/videos/video/series/${id.id}`);
             } else {
+             
+
               navigate(`/videos/video/series/${id.id}`);
             }
           }
@@ -157,7 +160,7 @@ const DisplayVideoPage = () => {
           const chap = await dispatch(getchaptersVideo(id.id));
 
           const videoid = unwrapResult(VideoID);
-          if (videoid?.payment) {
+          if (videoid?.payment && !auth.currentUser) {
             navigate(`/videos/video/series/${id.id}`);
           }
           const chapid = unwrapResult(chap);
