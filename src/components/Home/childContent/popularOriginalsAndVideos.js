@@ -298,9 +298,9 @@ const PopularOriginalsAndVideosPage = () => {
                                   }`}
                               >
                                 {!language ? (
-                                  "All"
+                                  <span> All </span>
                                 ) : (
-                                  "모두"
+                                  <span> 모두 </span>
                                 )}
                               </span>
                             </MenuItem>
@@ -319,9 +319,9 @@ const PopularOriginalsAndVideosPage = () => {
                                   }`}
                               >
                                 {!language ? (
-                                  "Action"
+                                  <span> Action </span>
                                 ) : (
-                                  "액션"
+                                  <span> 액션 </span>
                                 )}
                               </span>
                             </MenuItem>
@@ -340,9 +340,9 @@ const PopularOriginalsAndVideosPage = () => {
                                   }`}
                               >
                                 {!language ? (
-                                  "Romance"
+                                  <span> Romance </span>
                                 ) : (
-                                  "로맨스"
+                                  <span> 로맨스 </span>
                                 )}
                               </span>
                             </MenuItem>
@@ -361,9 +361,9 @@ const PopularOriginalsAndVideosPage = () => {
                                   }`}
                               >
                                 {!language ? (
-                                  "Fantasy"
+                                  <span> Fantasy </span>
                                 ) : (
-                                  "판타지"
+                                  <span> 판타지 </span>
                                 )}
                               </span>
                             </MenuItem>
@@ -382,9 +382,9 @@ const PopularOriginalsAndVideosPage = () => {
                                   }`}
                               >
                                 {!language ? (
-                                  "Drama"
+                                  <span> Drama </span>
                                 ) : (
-                                  "드라마"
+                                  <span> 드라마 </span>
                                 )}
                               </span>
                             </MenuItem>
@@ -401,9 +401,9 @@ const PopularOriginalsAndVideosPage = () => {
                                   }`}
                               >
                                 {!language ? (
-                                  "Comedy"
+                                  <span> Comedy </span>
                                 ) : (
-                                  " 코미디"
+                                  <span> 코미디 </span>
                                 )}
                               </span>
                             </MenuItem>
@@ -422,9 +422,9 @@ const PopularOriginalsAndVideosPage = () => {
                                   }`}
                               >
                                 {!language ? (
-                                  "Thriller"
+                                  <span> Thriller </span>
                                 ) : (
-                                  "스릴러"
+                                  <span> 스릴러 </span>
                                 )}
                               </span>
                             </MenuItem>
@@ -464,9 +464,9 @@ const PopularOriginalsAndVideosPage = () => {
                                   }`}
                               >
                                 {!language ? (
-                                  "Supernatural"
+                                  <span> Supernatural </span>
                                 ) : (
-                                  "초자연적"
+                                  <span> 초자연적 </span>
                                 )}
                               </span>
                             </MenuItem>
@@ -485,9 +485,9 @@ const PopularOriginalsAndVideosPage = () => {
                                   }`}
                               >
                                 {!language ? (
-                                  "Sci-fi"
+                                  <span> Sci-fi </span>
                                 ) : (
-                                  "공상 과학"
+                                  <span> 공상 과학 </span>
                                 )}
                               </span>
                             </MenuItem>
@@ -506,9 +506,9 @@ const PopularOriginalsAndVideosPage = () => {
                                   }`}
                               >
                                 {!language ? (
-                                  "Horror"
+                                  <span> Horror </span>
                                 ) : (
-                                  "호러"
+                                  <span> 호러 </span>
                                 )}
                               </span>
                             </MenuItem>
