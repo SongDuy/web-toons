@@ -15,10 +15,12 @@ const PaymentPage = ({ closeModal, price }) => {
   const [Account, setAccount] = useState(0);
   const id = useParams();
   const [payment, setpayment] = useState([]);
+  const [loading, setloading] = useState(false);
 
   useEffect(() => {
     const get = async () => {
       try {
+        setloading(false)
         if (auth.currentUser) {
           const payment = await PaymentFireBase.getbyuser(
             auth?.currentUser?.uid,
@@ -28,6 +30,7 @@ const PaymentPage = ({ closeModal, price }) => {
           const banks = await BankFireBase.getAll();
           setBank(banks.success ? banks.bank : []);
         }
+        setloading(true)
       } catch (error) {
         console.log(error);
       }
@@ -100,6 +103,8 @@ const PaymentPage = ({ closeModal, price }) => {
   }
 
   return (
+    <>
+    {loading&&
     <>
       {payment.length === 0 ? (
         <div
@@ -499,6 +504,8 @@ const PaymentPage = ({ closeModal, price }) => {
         </div>
 
       )}
+    </>
+}
     </>
   );
 };

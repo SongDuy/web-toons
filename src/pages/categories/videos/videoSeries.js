@@ -102,7 +102,7 @@ const VideoSeriesPage = () => {
           const user = unwrapResult(account);
           const age = account?.payload?.birthday
             ? new Date(Date.now())?.getFullYear() -
-            new Date(user.birthday)?.getFullYear()
+              new Date(user.birthday)?.getFullYear()
             : 15;
           videoid.success && videoid.Age > age && navigate(`/`);
 
@@ -199,7 +199,7 @@ const VideoSeriesPage = () => {
           ? setSubscribe(subscribe.subscribe)
           : setSubscribe([]);
       }
-    } catch (error) { }
+    } catch (error) {}
   };
   const handleDeleteSub = async () => {
     try {
@@ -219,7 +219,7 @@ const VideoSeriesPage = () => {
           ? setSubscribe(subscribe.subscribe)
           : setSubscribe([]);
       }
-    } catch (error) { }
+    } catch (error) {}
   };
   const handleRate = async (event, newValue) => {
     if (auth.currentUser) {
@@ -241,11 +241,11 @@ const VideoSeriesPage = () => {
           const videorate = await RateFireBase.getbyvideo(id.id);
           const averageRating = videorate.success
             ? (videorate.rate.reduce(
-              (accumulator, currentValue) => accumulator + currentValue.rate,
-              0
-            ) /
-              videorate.rate.length) *
-            2
+                (accumulator, currentValue) => accumulator + currentValue.rate,
+                0
+              ) /
+                videorate.rate.length) *
+              2
             : 0;
           await VideoFireBase.update(
             { rate: parseFloat(averageRating.toFixed(2)) },
@@ -261,11 +261,11 @@ const VideoSeriesPage = () => {
           const videorate = await RateFireBase.getbyvideo(id.id);
           const averageRating = videorate.success
             ? (videorate.rate.reduce(
-              (accumulator, currentValue) => accumulator + currentValue.rate,
-              0
-            ) /
-              videorate.rate.length) *
-            2
+                (accumulator, currentValue) => accumulator + currentValue.rate,
+                0
+              ) /
+                videorate.rate.length) *
+              2
             : 0;
           await VideoFireBase.update(
             { rate: parseFloat(averageRating.toFixed(2)) },
@@ -301,6 +301,13 @@ const VideoSeriesPage = () => {
     }
     return number;
   }
+  const onpayment = (idchap) => {
+    payment.length !== 0
+      ? payment[0].status === "success"
+        ? navigate(`/videos/video/series/display/${id.id}/${idchap}`)
+        : openPaymentModal()
+      : openPaymentModal();
+  };
   return (
     <div>
       {loading ? (
@@ -366,15 +373,18 @@ const VideoSeriesPage = () => {
           <div className="w-full h-full flex items-center justify-center">
             <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-6 pb-10 rounded-b">
               <div className="col-span-2 h-full">
-
                 <div className="w-full px-5 font-semibold text-md flex pb-2">
-                  {!language ? (<span> Episodes </span>) : (<span> 에피소드 </span>)}
+                  {!language ? (
+                    <span> Episodes </span>
+                  ) : (
+                    <span> 에피소드 </span>
+                  )}
                   {Videoid?.payment && (
                     <button
                       className="w-[80px] h-[35px] bg-red-500 ml-auto rounded-full shadow text-white flex items-center justify-center"
                       onClick={openPaymentModal}
                     >
-                      {!language ? (<span> Buy </span>) : (<span> 구입하다 </span>)}
+                      {!language ? <span> Buy </span> : <span> 구입하다 </span>}
                     </button>
                   )}
                   {isPaymentModal && (
@@ -391,16 +401,7 @@ const VideoSeriesPage = () => {
                     {/* khung danh sách */}
                     {chapters?.chaps?.map((item) =>
                       Videoid?.payment ? (
-                        <Link
-                          key={item.id}
-                          to={
-                            payment.length !== 0
-                              ? payment[0].status === "success"
-                                ? `/videos/video/series/display/${id.id}/${item.id}`
-                                : "#"
-                              : "#"
-                          }
-                        >
+                        <span key={item.id} onClick={() => onpayment(item.id)}>
                           <li className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2">
                             <div className="w-full h-full flex items-center">
                               <div className="w-[80px] h-[80px]">
@@ -421,7 +422,7 @@ const VideoSeriesPage = () => {
                                 <span className="text-gray-400 text-md">
                                   {
                                     monthNames[
-                                    new Date(item.createTime).getMonth()
+                                      new Date(item.createTime).getMonth()
                                     ]
                                   }{" "}
                                   {new Date(item.createTime).getDate()},
@@ -466,7 +467,7 @@ const VideoSeriesPage = () => {
                               )}
                             </div>
                           </li>
-                        </Link>
+                        </span>
                       ) : (
                         <Link
                           key={item.id}
@@ -492,7 +493,7 @@ const VideoSeriesPage = () => {
                                 <span className="text-gray-400 text-md">
                                   {
                                     monthNames[
-                                    new Date(item.createTime).getMonth()
+                                      new Date(item.createTime).getMonth()
                                     ]
                                   }{" "}
                                   {new Date(item.createTime).getDate()},
@@ -530,7 +531,9 @@ const VideoSeriesPage = () => {
                       <span className="mx-1 text-yellow-500">
                         <VisibilityIcon />
                       </span>
-                      <span className="mx-1">{formatNumberWithM(Videoid.views)}</span>
+                      <span className="mx-1">
+                        {formatNumberWithM(Videoid.views)}
+                      </span>
                     </li>
                     <li className="flex items-center justify-center">
                       <span className="mx-1 text-yellow-500">
@@ -556,7 +559,11 @@ const VideoSeriesPage = () => {
                         aria-haspopup="true"
                         onClick={handleToggle}
                       >
-                        {!language ? <span> RATE </span> : <span> 평가하기 </span>}
+                        {!language ? (
+                          <span> RATE </span>
+                        ) : (
+                          <span> 평가하기 </span>
+                        )}
                       </button>
                       <Popper
                         open={open}
