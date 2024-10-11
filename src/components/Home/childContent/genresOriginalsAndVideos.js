@@ -50,13 +50,16 @@ const GenresOriginalsAndVideosPage = () => {
                     {/* khung nội dung dành cho truyện */}
                     <div className="w-full h-full">
 
-                        <div className="w-full h-[75px] mb-[30px]">
-                            <ul className="grid grid-cols-10 gap-2">
-                                {dataListGenre?.map(genre => (
+                        <div className="w-full h-[75px] mb-[30px] overflow-x-auto">
+                            <ul className="grid grid-rows-2 grid-flow-col gap-2 w-max">
+                                {dataListGenre?.map((genre, index) => (
                                     <li
                                         key={genre.id}
                                         onClick={() => setSelectedOriginalsByGenre(genre.name)}
-                                        className={`w-[104px] uppercase font-semibold shadow rounded px-2 py-2 text-[11px] hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white' : 'bg-white text-black hover:text-yellow-500'}`}
+                                        className={`min-w-[104px] uppercase font-semibold shadow rounded px-2 py-2 text-[11px] hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === genre.name
+                                            ? 'bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white hover:text-white'
+                                            : 'bg-white text-black hover:text-yellow-500'
+                                            }`}
                                     >
                                         {!language ? genre.name : genre.nameKorean}
                                     </li>
