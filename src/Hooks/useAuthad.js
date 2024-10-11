@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 
 import { useDispatch } from 'react-redux';
@@ -11,7 +11,7 @@ import { unwrapResult } from '@reduxjs/toolkit';
 export const AuthadProvider = ({ children }) => {
  const   dispatch = useDispatch();
  const navigate = useNavigate();
-
+const [check, setcheck] = useState(false);
  useEffect(() => {
    const unsubscribe = onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -21,8 +21,10 @@ export const AuthadProvider = ({ children }) => {
     
         if (admin.role === "admin") {
           dispatch(setad(true));
+          setcheck(true)
         } else {
           dispatch(setad(false));
+          setcheck(false)
           navigate('/admin/login');
         }
     
@@ -38,6 +40,6 @@ export const AuthadProvider = ({ children }) => {
 
    return () => unsubscribe();
  }, [dispatch, navigate]);
-return children
+return check &&children
 
 };

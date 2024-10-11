@@ -121,12 +121,13 @@ function App() {
         <Route path="/videos/video/series/display/:id/:idseries" element={<DisplayVideoPage />} />
 
         {/* Đăng nhập Admin */}
-        <Route path="/admin/login" element={<AdminLoginPage />} />
+        <Route path="/admin/login"  element={<AdminLoginPage />} />
 
         {/* Trang hiển thị Admin */}
         <Route path="/admin" element={<AuthadProvider><AdminPage /></AuthadProvider>}>
           {/* Định tuyến mặc định cho /admin */}
-          <Route index element={<Navigate to="dashboard" replace />} />
+
+          <Route index  element={<Navigate to="dashboard" replace />} />
 
           <Route path="dashboard" element={<AdminDashboardPage />} />
           <Route path="banners" element={<AdminBannerPage />} />

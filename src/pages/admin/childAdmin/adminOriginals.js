@@ -41,7 +41,7 @@ const AdminOriginalsPage = () => {
     }, [dispatch]);
     const handlelock = async (id, lock) => {
         try {
-            let result = window.confirm(`Do you want to ${lock ? "lock" : "Unlocked"} this comic?`);
+            let result = window.confirm( ` ${lock ? "이 만화를 잠그고 싶으신가요?" : "이 만화를 풀고 싶으신가요?"}`);
             if (result) {
                 setloading(false)
 
