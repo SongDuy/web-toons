@@ -156,9 +156,9 @@ const OriginalsPage = () => {
                 }`}
             >
               {!language ?
-                "ONGOING"
+                <span> ONGOING </span>
                 :
-                "진행 중"
+                <span> 진행 중 </span>
               }
             </li>
           </ScrollLink>
@@ -172,9 +172,9 @@ const OriginalsPage = () => {
                 }`}
             >
               {!language ?
-                "COMPLETED"
+                <span> COMPLETED </span>
                 :
-                "완성된"
+                <span> 완성된 </span>
               }
             </li>
           </ScrollLink>
@@ -189,9 +189,9 @@ const OriginalsPage = () => {
               <div className="h-[70px] border-b-2 flex items-center">
                 <span className="font-semibold text-md">
                   {!language ? (
-                    "Ongoing Series"
+                    <span> Ongoing Series </span>
                   ) : (
-                    "진행 중인 시리즈"
+                    <span> 진행 중인 시리즈 </span>
                   )}
                 </span>
                 <span className="ml-auto text-md flex items-center justify-center gap-1">
@@ -315,12 +315,12 @@ const OriginalsPage = () => {
               {/* Danh mục thứ trong tuần */}
               <div className="h-[70px] mt-5 flex items-center justify-center">
 
-                <ul className="w-11/12 grid grid-cols-7 gap-2">
+                <ul className="w-11/12 flex overflow-x-auto gap-2">
                   {days?.map((item, index) => (
                     <li
                       key={index}
                       onClick={() => handleSelectDay(item.day)}
-                      className={`max-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day
+                      className={`min-w-[150px] 3xl:max-w-[220px] h-[60px] uppercase shadow rounded font-semibold text-md cursor-pointer flex items-center justify-center ${currentDay === item.day
                         ? "bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 text-white"
                         : "bg-white text-black hover:text-yellow-500"
                         }`}
