@@ -160,15 +160,13 @@ const SearchPage = ({ closeModal }) => {
                         <ul className="grid grid-cols-1">
                             {showNoResultsComicMessage ? (
                                 <div className="w-full h-full mt-10 flex items-center justify-center ">
-                                    {!language ?
-                                        <span className="text-gray-500">
-                                            No related comic results found.
-                                        </span>
-                                        :
-                                        <span className="text-gray-500">
-                                            관련된 만화 결과를 찾을 수 없습니다.
-                                        </span>
-                                    }
+                                    <span className="text-gray-500">
+                                        {!language ?
+                                            "No related comic results found."
+                                            :
+                                            "관련된 만화 결과를 찾을 수 없습니다."
+                                        }
+                                    </span>
                                 </div>
                             ) : (
                                 listComics?.map(item => (
@@ -230,15 +228,13 @@ const SearchPage = ({ closeModal }) => {
                         <ul className="grid grid-cols-1">
                             {showNoResultsVideoMessage ? (
                                 <div className="w-full h-full mt-10 flex items-center justify-center ">
-                                    {!language ?
-                                        <span className="text-gray-500">
-                                            No related video results found.
-                                        </span>
-                                        :
-                                        <span className="text-gray-500">
-                                            관련된 비디오 결과를 찾을 수 없습니다.
-                                        </span>
-                                    }
+                                    <span className="text-gray-500">
+                                        {!language ?
+                                            "No related video results found."
+                                            :
+                                            "관련된 비디오 결과를 찾을 수 없습니다."
+                                        }
+                                    </span>
                                 </div>
                             ) : (
                                 listVideos?.map(item => (

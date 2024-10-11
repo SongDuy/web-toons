@@ -33,13 +33,9 @@ const GenresOriginalsAndVideosPage = () => {
                             className="w-full h-[60px] bg-white border-b-2 uppercase font-semibold text-lg hover:text-yellow-500 cursor-pointer flex items-center justify-center"
                         >
                             {!language ?
-                                <span>
-                                    GENRES
-                                </span>
+                                "GENRES"
                                 :
-                                <span>
-                                    장르
-                                </span>
+                                "장르"
                             }
                             <NavigateNextIcon />
                         </li>
