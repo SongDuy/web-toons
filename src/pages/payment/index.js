@@ -39,6 +39,8 @@ const PaymentPage = ({ closeModal, price }) => {
       closeModal();
     }
   };
+  const [notification, setNotification] = useState(null);
+
   const handleAdd = async () => {
     try {
       if (auth?.currentUser && Accountname && Account) {
@@ -53,6 +55,13 @@ const PaymentPage = ({ closeModal, price }) => {
         });
         closeModal();
       }
+
+      setNotification('Completed successfully!');
+
+      // Ẩn thông báo sau 3 giây
+      setTimeout(() => {
+        setNotification(null);
+      }, 3000);
     } catch (error) {
       console.log(error);
     }
@@ -89,6 +98,7 @@ const PaymentPage = ({ closeModal, price }) => {
     }
 
   }
+
   return (
     <>
       {payment.length === 0 ? (
@@ -365,19 +375,21 @@ const PaymentPage = ({ closeModal, price }) => {
                   </button>
 
                   <button
-                    onClick={() => handleAdd()}
+                    onClick={handleAdd}
                     className="w-1/2 h-[50px] text-white font-semibold bg-green-500 hover:bg-green-600 shadow rounded-full flex items-center justify-center"
                   >
-                    {!language ?
-                      "Completed"
-                      :
-                      "완료됨"
-                    }
+                    {!language ? 'Completed' : '완료됨'}
                   </button>
                 </div>
               </div>
             </div>
           </div>
+          {/* Hiển thị thông báo */}
+          {notification && (
+            <div className="fixed top-4 left-1/2 transform -translate-x-1/2 p-4 bg-gray-800 text-white rounded-lg shadow-lg transition-all duration-300 ease-in-out">
+              {notification}
+            </div>
+          )}
         </div>
       ) : payment[0]?.status === "success" ? (
         <div
@@ -481,7 +493,7 @@ const PaymentPage = ({ closeModal, price }) => {
               >
                 {!language ? "Cancel" : "취소"}
               </button>
-            
+
             </div>
           </div>
         </div>
