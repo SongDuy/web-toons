@@ -355,8 +355,8 @@ const OriginalSeriesPage = () => {
           </div>
 
           <div className="w-full h-full flex items-center justify-center">
-            <div className="w-[1200px] h-full grid grid-cols-3 bg-white pt-6 pb-10 rounded-b">
-              <div className="col-span-2 h-full">
+            <div className="w-[1200px] h-full grid xs:grid-cols-1 lg:grid-cols-3 gap-y-5 bg-white pt-6 pb-10 rounded-b">
+              <div className="xs:col-span-1 lg:col-span-2 h-full">
                 <div className="w-full px-5 pb-3 font-semibold text-md">
                   {!language ? (
                     <span> Episodes </span>
@@ -364,7 +364,7 @@ const OriginalSeriesPage = () => {
                     <span> 에피소드 </span>
                   )}
                 </div>
-                <div className="w-full h-[900px] px-3 custom-scrollbar">
+                <div className="w-full max-h-[900px] px-3 custom-scrollbar">
                   {/* danh sach series */}
                   <ul className="w-full h-full ">
                     {/* khung danh sách */}
@@ -437,7 +437,7 @@ const OriginalSeriesPage = () => {
                 </div>
               </div>
 
-              <div className="h-full px-5">
+              <div className="col-span-1 h-full px-5">
                 <div className="w-full mb-auto">
                   <ul className="grid grid-cols-4 gap-5">
                     <li className="flex items-center justify-center">
