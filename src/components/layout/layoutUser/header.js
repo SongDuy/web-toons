@@ -190,7 +190,7 @@ const HeaderPage = () => {
         <div className="block sm:hidden">
           <Link
             to={`/`}
-            className="w-[50px] flex items-center justify-center cursor-pointer"
+            className="w-[65px] flex items-center justify-center cursor-pointer"
           >
             <img
               src={logo}
@@ -243,7 +243,7 @@ const HeaderPage = () => {
         <ul className="flex overflow-x-auto gap-5 whitespace-nowrap">
           <Link to={`/originals`}>
             <li
-              className={`uppercase font-semibold xs:text-md sm:text-lg cursor-pointer ${location.pathname.includes("/originals")
+              className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/originals")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
@@ -253,7 +253,7 @@ const HeaderPage = () => {
           </Link>
           <Link to={`/videos`}>
             <li
-              className={`uppercase font-semibold xs:text-md sm:text-lg cursor-pointer ${location.pathname.includes("/videos")
+              className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/videos")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
@@ -263,7 +263,7 @@ const HeaderPage = () => {
           </Link>
           <Link to={`/genres`}>
             <li
-              className={`uppercase font-semibold xs:text-md sm:text-lg cursor-pointer ${location.pathname.includes("/genres")
+              className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/genres")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
@@ -273,7 +273,7 @@ const HeaderPage = () => {
           </Link>
           <Link to={`/popular`}>
             <li
-              className={`uppercase font-semibold xs:text-md sm:text-lg cursor-pointer ${location.pathname.includes("/popular")
+              className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/popular")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}

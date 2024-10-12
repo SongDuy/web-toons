@@ -520,15 +520,6 @@ const DisplayOriginalPage = () => {
     }
   }
   const goToPreviousChapter = () => {
-<<<<<<< HEAD
-    const Previous = chapters?.chaps?.filter(item => chapid.num - 1 === item.num)
-    Previous.length !== 0 && navigate(`/originals/original/series/display/${id.id}/${Previous[0]?.id}`);
-  };
-
-  const goToNextChapter = () => {
-    const Next = chapters?.chaps?.filter(item => chapid.num + 1 === item.num)
-    Next.length !== 0 && navigate(`/originals/original/series/display/${id.id}/${Next[0]?.id}`);
-=======
    const Previous= chapters?.chaps?.filter(item=>chapid.num-1===item.num&&item.check===true)
    Previous.length!==0&& navigate(`/originals/original/series/display/${id.id}/${Previous[0]?.id}`);
   };
@@ -536,7 +527,6 @@ const DisplayOriginalPage = () => {
   const goToNextChapter = () => {
     const Next= chapters?.chaps?.filter(item=>chapid.num+1===item.num&&item.check===true)
     Next.length!==0&& navigate(`/originals/original/series/display/${id.id}/${Next[0]?.id}`);
->>>>>>> 1e2185ecceda80c924d5a6437464532e847e44dc
   };
 
   // Nhấn nút đăng ký
