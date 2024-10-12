@@ -543,9 +543,9 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 />
 
                                                 {!language ? (
-                                                    "Enable"
+                                                    <span>Enable</span>
                                                 ) : (
-                                                    "활성화"
+                                                    <span>활성화</span>
                                                 )}
                                             </label>
                                             <label className="xs:w-[130px] sm:w-auto flex items-center">
@@ -558,9 +558,9 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 />
 
                                                 {!language ? (
-                                                    "Disable"
+                                                    <span>Disable</span>
                                                 ) : (
-                                                    "비활성화"
+                                                    <span>비활성화</span>
                                                 )}
                                             </label>
                                         </div>
@@ -571,9 +571,9 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                         {/* Tiêu đề */}
                                         <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
                                             {!language ? (
-                                                "Episodes"
+                                                <span>Episodes</span>
                                             ) : (
-                                                "에피소드"
+                                                <span>에피소드</span>
                                             )}
                                         </h1>
 
@@ -588,9 +588,9 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 />
 
                                                 {!language ? (
-                                                    "Ongoing"
+                                                    <span>Ongoing</span>
                                                 ) : (
-                                                    "진행 중"
+                                                    <span>진행 중</span>
                                                 )}
                                             </label>
                                             <label className="xs:w-[130px] sm:w-auto flex items-center">
@@ -603,9 +603,9 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 />
 
                                                 {!language ? (
-                                                    "Completed"
+                                                   <span>Completed</span>
                                                 ) : (
-                                                    "완료됨"
+                                                   <span>완료됨</span>
                                                 )}
                                             </label>
                                         </div>
@@ -617,9 +617,9 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                 <div className="w-full mt-10 py-3 pl-5">
                                     <button onClick={id?.idchap ? handleedit : handleEp} className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4">
                                         {!language ? (
-                                            "Publish episode"
+                                            <span>Publish episode</span>
                                         ) : (
-                                            "에피소드 게시"
+                                            <span>에피소드 게시</span>
                                         )}
                                     </button>
                                 </div>

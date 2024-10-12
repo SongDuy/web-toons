@@ -569,7 +569,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                 <div className="w-full py-3 pl-5">
                                     {/* Khi chọn xong nội dung các ô thì sẽ trả về độ tuổi truyện */}
                                     <ul className="grid grid-cols-1 gap-4">
-                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 lg:grid-cols-3">
                                             <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
                                                     "Violent and graphic content"
@@ -578,7 +578,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="xs:col-span-1 sm:col-span-2">
+                                            <FormControl className="xs:col-span-1 lg:col-span-2">
                                                 <Select
                                                     name="violence"
                                                     value={selections.violence}
@@ -647,7 +647,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 </Select>
                                             </FormControl>
                                         </li>
-                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 lg:grid-cols-3">
 
                                             <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
@@ -657,7 +657,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="xs:col-span-1 sm:col-span-2">
+                                            <FormControl className="xs:col-span-1 lg:col-span-2">
                                                 <Select
                                                     name="nudity"
                                                     value={selections.nudity}
@@ -726,7 +726,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 </Select>
                                             </FormControl>
                                         </li>
-                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 lg:grid-cols-3">
 
                                             <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
@@ -736,7 +736,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="xs:col-span-1 sm:col-span-2">
+                                            <FormControl className="xs:col-span-1 lg:col-span-2">
                                                 <Select
                                                     name="sexualContent"
                                                     value={selections.sexualContent}
@@ -804,7 +804,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 </Select>
                                             </FormControl>
                                         </li>
-                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 lg:grid-cols-3">
 
                                             <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
@@ -814,7 +814,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="xs:col-span-1 sm:col-span-2">
+                                            <FormControl className="xs:col-span-1 lg:col-span-2">
                                                 <Select
                                                     name="profanity"
                                                     value={selections.profanity}
@@ -883,7 +883,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 </Select>
                                             </FormControl>
                                         </li>
-                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 lg:grid-cols-3">
 
                                             <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
@@ -893,7 +893,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="xs:col-span-1 sm:col-span-2">
+                                            <FormControl className="xs:col-span-1 lg:col-span-2">
                                                 <Select
                                                     name="alcohol"
                                                     value={selections.alcohol}
@@ -964,7 +964,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 </Select>
                                             </FormControl>
                                         </li>
-                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 lg:grid-cols-3">
 
                                             <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
@@ -974,7 +974,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="xs:col-span-1 sm:col-span-2">
+                                            <FormControl className="xs:col-span-1 lg:col-span-2">
                                                 <Select
                                                     name="sensitiveThemes"
                                                     value={selections.sensitiveThemes}

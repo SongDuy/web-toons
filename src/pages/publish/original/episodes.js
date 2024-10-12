@@ -355,7 +355,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
             </ul>
           </div>
 
-          <div className="w-full h-full sm:px-[200px] xs:px-[10px] sm:ml-0">
+          <div className="w-full h-full sm:px-[200px] xs:px-[10px]">
             <div className="w-full h-full py-5 grid grid-cols-1 lg:grid-cols-3">
 
               {/* Cột bên trái */}
@@ -720,7 +720,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     </h1>
 
                     <div className="flex xs:gap-x-5 sm:gap-x-10 mt-1 items-center">
-                      <label className="xs:w-[100px] sm:w-auto flex items-center">
+                      <label className="xs:w-[100px] lg:w-auto flex items-center">
                         <Radio
                           checked={selectedValue === "Enable"}
                           onChange={handleChange}
@@ -730,13 +730,13 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                         />
 
                         {!language ? (
-                          "Enable"
+                          <span>Enable</span>
                         ) : (
-                          "활성화"
+                          <span>활성화</span>
                         )}
                       </label>
 
-                      <label className="xs:w-[130px] sm:w-auto flex items-center">
+                      <label className="xs:w-[130px] lg:w-auto flex items-center">
                         <Radio
                           checked={selectedValue === "Disable"}
                           onChange={handleChange}
@@ -746,9 +746,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                         />
 
                         {!language ? (
-                          "Disable"
+                          <span>Disable</span>
                         ) : (
-                          "비활성화"
+                          <span>비활성화</span>
                         )}
                       </label>
                     </div>
@@ -757,7 +757,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                   {/* Phần hiệu chỉnh episode */}
                   <div className="w-full flex items-center gap-10">
                     {/* Tiêu đề */}
-                    <h1 className="w-[100px] border h-full font-semibold text-xl flex items-center">
+                    <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
                       {!language ? (
                         "Episodes"
                       ) : (
@@ -766,7 +766,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     </h1>
 
                     <div className="flex xs:gap-x-3 sm:gap-x-6 mt-1 items-center">
-                      <label className="xs:w-[110px] sm:w-auto flex items-center">
+                      <label className="xs:w-[110px] lg:w-auto flex items-center">
                         <Radio
                           checked={selectedEpisodesValue === "Ongoing"}
                           onChange={handleEpisodesChange}
@@ -776,12 +776,12 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                         />
 
                         {!language ? (
-                          "Ongoing"
+                          <span>Ongoing</span>
                         ) : (
-                          "진행 중"
+                          <span>진행 중</span>
                         )}
                       </label>
-                      <label className="xs:w-[130px] sm:w-auto flex items-center">
+                      <label className="xs:w-[130px] lg:w-auto flex items-center">
                         <Radio
                           checked={selectedEpisodesValue === "Completed"}
                           onChange={handleEpisodesChange}
@@ -791,9 +791,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                         />
 
                         {!language ? (
-                          "Completed"
+                          <span>Completed</span>
                         ) : (
-                          "완료됨"
+                          <span>완료됨</span>
                         )}
                       </label>
                     </div>
@@ -808,9 +808,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     className="w-[200px] h-[50px] bg-green-500 text-white rounded-full shadow font-semibold py-2 px-4"
                   >
                     {!language ? (
-                      "Publish episode"
+                      <span>Publish episode</span>
                     ) : (
-                      "에피소드 게시"
+                      <span>에피소드 게시</span>
                     )}
                   </button>
 
