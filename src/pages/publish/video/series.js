@@ -237,7 +237,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
 
                     {/* Phần tiêu đề mục */}
                     <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
-                        <ul className="flex xs:gap-2 sm:gap-10">
+                        <ul className="flex xs:gap-0 sm:gap-10">
                             <li className="min-w-[160px] uppercase font-semibold cursor-pointer flex items-center justify-center">
                                 <div className="w-[40px] h-[40px] bg-green-500 rounded-full border flex items-center justify-center mx-2">
                                     <span className="mx-3 text-2xl text-white font-bold">
@@ -246,7 +246,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                 </div>
 
 
-                                <h1 className="text-black xs:text-sm sm:text-md">
+                                <h1 className="text-black text-md">
                                     {!language ? (
                                         <span>VIDEO SERIES</span>
                                     ) : (
@@ -255,7 +255,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                 </h1>
 
                             </li>
-                            <li className="uppercase font-semibold text-md flex items-center justify-center">
+                            <li className="xs:ml-2 uppercase font-semibold text-md flex items-center justify-center">
                                 <span className="text-gray-400">
                                     <ArrowForwardIosIcon />
                                 </span>
@@ -267,7 +267,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                     </span>
                                 </div>
 
-                                <h1 className="text-gray-400 xs:text-sm sm:text-md">
+                                <h1 className="text-gray-400 text-md">
                                     {!language ? (
                                         <span>VIDEO EPISODES</span>
                                     ) : (

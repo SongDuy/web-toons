@@ -230,14 +230,13 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                 <div className="w-full h-full bg-gray-100">
                     {/* Phần tiêu đề mục */}
                     <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
-                        <ul className="w-full flex items-center justify-center xs:gap-4 sm:gap-10">
+                        <ul className="w-full flex items-center justify-center xs:gap-0 sm:gap-10">
                             <li className="min-w-[160px] uppercase font-semibold cursor-pointer flex items-center justify-center">
                                 <div className="w-[40px] h-[40px] bg-green-500 rounded-full border flex items-center justify-center mx-2">
                                     <span className="mx-3 text-2xl text-white font-bold">1</span>
                                 </div>
 
-
-                                <h1 className="w-full text-black xs:text-sm sm:text-md">
+                                <h1 className="w-full text-black text-md">
                                     {!language ? (
                                         <span> ORIGINAL SERIES</span>
                                     ) : (
@@ -245,9 +244,8 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     )}
                                 </h1>
 
-
                             </li>
-                            <li className="uppercase font-semibold text-md flex items-center justify-center">
+                            <li className="xs:ml-2 uppercase font-semibold text-md flex items-center justify-center">
                                 <span className="text-gray-400">
                                     <ArrowForwardIosIcon />
                                 </span>
@@ -256,7 +254,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                 <div className="w-[40px] h-[40px] bg-gray-500 rounded-full border flex items-center justify-center mx-2">
                                     <span className="mx-3 text-2xl text-white font-bold">2</span>
                                 </div>
-                                <h1 className="w-full text-gray-400 xs:text-sm sm:text-md">
+                                <h1 className="w-full text-gray-400 text-md">
                                     {!language ? (
                                         <span> ORIGINAL EPISODES</span>
                                     ) : (
