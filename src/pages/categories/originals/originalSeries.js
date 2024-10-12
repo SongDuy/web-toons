@@ -383,10 +383,9 @@ const OriginalSeriesPage = () => {
                               />
                             </div>
 
-
-                            <div className="max-w-[400px] mr-auto ml-3 overflow-hidden">
+                            <div className="max-w-[400px] lg:min-w-[400px] mr-auto ml-3 overflow-hidden">
                               <span className="text-black text-md leading-[1.2] line-clamp-2">
-                                {item.chapterTitle} k k k k k k k k k k k k k k k k k k k k k k k k k k  k k k k k k k k k k k k k  k k k k k k k k k k k k k
+                                {item.chapterTitle}
                               </span>
                             </div>
 
@@ -414,8 +413,8 @@ const OriginalSeriesPage = () => {
                                 <MusicNoteIcon />
                               </div>
                             }
-                            <div className="max-w-[100px] ml-auto flex gap-1 overflow-hidden">
-                              <span className="text-gray-400 line-clamp-1">
+                            <div className="w-auto ml-auto flex gap-1 overflow-hidden">
+                              <span className="text-gray-400">
                                 <FavoriteBorderSharpIcon />
                               </span>
 

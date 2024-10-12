@@ -177,19 +177,19 @@ const SearchPage = ({ closeModal }) => {
                                                 <img
                                                     src={item.squareThumbnail}
                                                     alt="img"
-                                                    className="object-fill w-full h-full rounded"
+                                                    className="object-fill min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px] rounded"
                                                 />
                                             </div>
 
                                             <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                                                <div className="w-[280px] overflow-hidden ">
+                                                <div className="w-auto overflow-hidden ">
                                                     <span className="w-full text-[15px] font-semibold line-clamp-1">
                                                         {item.title}
                                                     </span>
                                                     <div className="w-full">
                                                         {item.genre1 === item.genre2 ?
                                                             <div className="flex">
-                                                                <span className="max-w-[150px] pr-2 border-r-2 line-clamp-1">
+                                                                <span className="w-auto pr-2 border-r-2 line-clamp-1">
                                                                     {item.Author}
                                                                 </span>
                                                                 <span className="max-w-full px-2 border-l line-clamp-1">
@@ -198,7 +198,7 @@ const SearchPage = ({ closeModal }) => {
                                                             </div>
                                                             :
                                                             <div className="flex">
-                                                                <span className="max-w-[150px] pr-2 border-r-2 line-clamp-1">
+                                                                <span className="w-auto pr-2 border-r-2 line-clamp-1">
                                                                     {item.Author}
                                                                 </span>
                                                                 <span className="max-w-full px-2 border-l line-clamp-1">
@@ -245,12 +245,12 @@ const SearchPage = ({ closeModal }) => {
                                                 <img
                                                     src={item.squareThumbnail}
                                                     alt="img"
-                                                    className="object-fill w-full h-full rounded"
+                                                    className="object-fill min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px]  rounded"
                                                 />
                                             </div>
 
                                             <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                                                <div className="w-[280px] overflow-hidden ">
+                                                <div className="w-auto overflow-hidden ">
                                                     <span className="w-full text-[15px] font-semibold line-clamp-1">
                                                         {item.title}
                                                     </span>
@@ -258,9 +258,9 @@ const SearchPage = ({ closeModal }) => {
                                                         <span className="max-w-[150px] pr-2 border-r-2 line-clamp-1">
                                                             {item.Author}
                                                         </span>
-                                                        <span className="max-w-[110px] px-2 border-l line-clamp-1">
+                                                        {/* <span className="max-w-[110px] px-2 border-l line-clamp-1">
                                                             {item.genre1}
-                                                        </span>
+                                                        </span> */}
                                                     </div>
                                                     <span className="w-full text-[15px] text-yellow-500 flex items-center gap-1 font-semibold line-clamp-1">
                                                         <StarIcon />

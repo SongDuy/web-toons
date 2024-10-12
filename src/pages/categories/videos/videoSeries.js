@@ -412,9 +412,9 @@ const VideoSeriesPage = () => {
                                 />
                               </div>
 
-                              <div className="w-auto mr-auto ml-3 overflow-hidden">
+                              <div className="max-w-[400px] lg:min-w-[400px] mr-auto ml-3 overflow-hidden">
                                 <span className="text-black text-md leading-[1.2] line-clamp-2">
-                                  {item.chapterTitle} kk k k k k k k k k k k k k k k k k k
+                                  {item.chapterTitle}
                                 </span>
                               </div>
 
@@ -438,7 +438,7 @@ const VideoSeriesPage = () => {
                                 </span>}
                               </div>
 
-                              <div className="ml-auto flex gap-1">
+                              <div className="w-auto ml-auto flex gap-1">
                                 <span className="text-gray-400">
                                   <FavoriteBorderSharpIcon />
                                 </span>
@@ -491,7 +491,7 @@ const VideoSeriesPage = () => {
                                 />
                               </div>
 
-                              <div className="w-[350px] mr-auto ml-3 overflow-hidden">
+                              <div className="max-w-[400px] lg:min-w-[400px] mr-auto ml-3 overflow-hidden">
                                 <span className="text-black text-md leading-[1.2] line-clamp-2">
                                   {item.chapterTitle}
                                 </span>
@@ -517,7 +517,7 @@ const VideoSeriesPage = () => {
                                 </span>}
                               </div>
 
-                              <div className="ml-auto flex gap-1">
+                              <div className="w-auto ml-auto flex gap-1">
                                 <span className="text-gray-400">
                                   <FavoriteBorderSharpIcon />
                                 </span>
