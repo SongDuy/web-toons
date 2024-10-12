@@ -66,7 +66,8 @@ const EpisodeOriginal = () => {
                 const chap = await dispatch(getchaptersComic(id.id))
                 unwrapResult(chap)
                 checknum&&  chapters?.chaps?.filter(item=>item.id!==idchap)?.map(async item=>
-                    await comicFireBase.updateep({num:item.num-1===0?1:item.num-1},id.id,item.id)
+
+                item.num>numcount&&await comicFireBase.updateep({num:item.num-1===0?1:item.num-1},id.id,item.id)
 )
               
                 setloading(true)

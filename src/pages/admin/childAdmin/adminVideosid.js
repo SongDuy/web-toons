@@ -50,7 +50,7 @@ const AdminVideosPageid = () => {
                 const chaps=  unwrapResult(chap)
                 setChapters(chaps?.success?chaps?.chaps:[])               
                 checknum&& chapters?.chaps?.filter(item=>item.id!==idchap)?.map(async item=>
-                    await VideoFireBase.updateep({num:item.num-1===0?1:item.num-1},id.id,item.id)
+                    item.num>numcount&&   await VideoFireBase.updateep({num:item.num-1===0?1:item.num-1},id.id,item.id)
 )
                 setloading(true)
             }

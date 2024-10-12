@@ -62,7 +62,7 @@ const EpisodeVideo = () => {
                 await VideoFireBase.Deletechap(id.id, idchap)
                 await VideoFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 0 }, id.id);
                 checknum&&  chapters?.chaps?.filter(item=>item.id!==idchap)?.map(async item=>
-                    await VideoFireBase.updateep({num:item.num-1===0?1:item.num-1},id.id,item.id)
+                    item.num>numcount&&  await VideoFireBase.updateep({num:item.num-1===0?1:item.num-1},id.id,item.id)
 )
                 const chap = await dispatch(getchaptersVideo(id.id))
                 unwrapResult(chap)
