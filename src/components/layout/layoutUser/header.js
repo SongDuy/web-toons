@@ -16,10 +16,6 @@ import CommentIcon from '@mui/icons-material/Comment';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import SmartDisplayIcon from '@mui/icons-material/SmartDisplay';
-import CategoryIcon from '@mui/icons-material/Category';
-import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 import BackupIcon from '@mui/icons-material/Backup';
 import ExitToAppSharpIcon from '@mui/icons-material/ExitToAppSharp';
 import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
@@ -160,9 +156,9 @@ const HeaderPage = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(setuser(true));
-        localStorage.getItem("language")==="en"?dispatch(setlanguage(false)):dispatch(setlanguage(true))
+        localStorage.getItem("language") === "en" ? dispatch(setlanguage(false)) : dispatch(setlanguage(true))
       } else {
-        localStorage.getItem("language")==="en"?dispatch(setlanguage(false)):dispatch(setlanguage(true))
+        localStorage.getItem("language") === "en" ? dispatch(setlanguage(false)) : dispatch(setlanguage(true))
         // Optionally, dispatch an action to indicate the user is logged out
         // dispatch(setuser(false));
       }
@@ -230,7 +226,7 @@ const HeaderPage = () => {
             className="border h-[5px] bg-gray-500 w-[15px] rounded-l-full"
             onClick={() => logouts()}
           />
-          
+
           <button
             className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
             onClick={() => logouts()}
@@ -242,80 +238,52 @@ const HeaderPage = () => {
       }
 
       {/* danh mục */}
-      <div className="max-w-[400px] flex items-center xs:ml-2 sm:ml-5">
-        <ul className="flex xs:gap-1 sm:gap-5">
+      {/* danh mục */}
+      <div className="w-auto flex items-center xs:mx-2 sm:mx-5 overflow-x-auto">
+        <ul className="flex overflow-x-auto gap-5 whitespace-nowrap">
           <Link to={`/originals`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${location.pathname.includes("/originals")
+              className={`uppercase font-semibold xs:text-md sm:text-lg cursor-pointer ${location.pathname.includes("/originals")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
             >
-              <div className="hidden sm:block">
-                {!language ? <span> Originals </span> : <span> 오리지널 </span>}
-              </div>
-              <div className="block sm:hidden">
-                <button className="w-[30px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center rounded">
-                  <AutoStoriesIcon />
-                </button>
-              </div>
+              {!language ? <span> Originals </span> : <span> 오리지널 </span>}
             </li>
           </Link>
           <Link to={`/videos`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${location.pathname.includes("/videos")
+              className={`uppercase font-semibold xs:text-md sm:text-lg cursor-pointer ${location.pathname.includes("/videos")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
             >
-              <div className="hidden sm:block">
-                {!language ? <span> Videos </span> : <span> 비디오 </span>}
-              </div>
-              <div className="block sm:hidden">
-                <button className="w-[30px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center rounded">
-                  <SmartDisplayIcon />
-                </button>
-              </div>
+              {!language ? <span> Videos </span> : <span> 비디오 </span>}
             </li>
           </Link>
           <Link to={`/genres`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${location.pathname.includes("/genres")
+              className={`uppercase font-semibold xs:text-md sm:text-lg cursor-pointer ${location.pathname.includes("/genres")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
             >
-              <div className="hidden sm:block">
-                {!language ? <span> Genres </span> : <span> 장르 </span>}
-              </div>
-              <div className="block sm:hidden">
-                <button className="w-[30px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center rounded">
-                  <CategoryIcon />
-                </button>
-
-              </div>
+              {!language ? <span> Genres </span> : <span> 장르 </span>}
             </li>
           </Link>
           <Link to={`/popular`}>
             <li
-              className={`uppercase font-semibold xs:text-[8px] sm:text-[10px] md:text-lg cursor-pointer ${location.pathname.includes("/popular")
+              className={`uppercase font-semibold xs:text-md sm:text-lg cursor-pointer ${location.pathname.includes("/popular")
                 ? "text-yellow-500"
                 : "hover:text-yellow-500"
                 }`}
             >
-              <div className="hidden sm:block">
-                {!language ? <span> Popular </span> : <span> 인기 </span>}
-              </div>
-              <div className="block sm:hidden">
-                <button className="w-[30px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center rounded">
-                  <LocalActivityIcon />
-                </button>
-
-              </div>
+              {!language ? <span> Popular </span> : <span> 인기 </span>}
             </li>
           </Link>
         </ul>
       </div>
+
 
       {/* Chức năng  */}
       <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
@@ -385,13 +353,13 @@ const HeaderPage = () => {
                 aria-haspopup="true"
                 onClick={handleToggle}
               >
-                <div className="hidden sm:block">
+                <div className="hidden lg:block">
                   <span
                     className="w-[100px] h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center">
                     {!language ? <span> Publish </span> : <span> 발행 </span>}
                   </span>
                 </div>
-                <div className="block sm:hidden">
+                <div className="block lg:hidden">
                   <span
                     className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full">
                     <BackupIcon />
@@ -425,7 +393,7 @@ const HeaderPage = () => {
                           aria-labelledby="composition-button"
                           onKeyDown={handleListKeyDown}
                         >
-                          <Link to={`/publish/original`} onClick={()=>dispatch(setcurrentStepOriginal(1))}>
+                          <Link to={`/publish/original`} onClick={() => dispatch(setcurrentStepOriginal(1))}>
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <PictureAsPdfOutlinedIcon />
 
@@ -434,7 +402,7 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <Link to={`/publish/video`} onClick={()=>dispatch(setcurrentStepVideo(1))}>
+                          <Link to={`/publish/video`} onClick={() => dispatch(setcurrentStepVideo(1))}>
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <VideoCallOutlinedIcon />
 
@@ -452,7 +420,7 @@ const HeaderPage = () => {
 
             {/* Menu Account */}
 
-            <div className="flex items-center justify-center z-10">
+            <div className="w-full flex items-center justify-center z-10">
               <button
                 ref={anchorAccountRef}
                 id="composition-button"
@@ -461,12 +429,12 @@ const HeaderPage = () => {
                 aria-haspopup="true"
                 onClick={handleToggleAccount}
               >
-                <div className="hidden sm:block">
-                  <span className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 py-1 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500">
+                <div className="w-full hidden lg:block">
+                  <span className="w-full h-[35px] px-2 py-1 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500">
                     {auth?.currentUser.displayName}
                   </span>
                 </div>
-                <div className="block sm:hidden">
+                <div className="block lg:hidden">
                   <span className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black rounded-full">
                     <AccountCircleSharpIcon />
                   </span>
@@ -586,12 +554,12 @@ const HeaderPage = () => {
             {!language ?
               <div>
                 <div className="hidden sm:block">
-                  <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => {dispatch(getlanguage()); localStorage.setItem("language","en")}}>
+                  <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
                     English
                   </button>
                 </div>
                 <div className="block sm:hidden">
-                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() =>{ dispatch(getlanguage()); localStorage.setItem("language","en")}}>
+                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
                     En
                   </button>
                 </div>
@@ -599,12 +567,12 @@ const HeaderPage = () => {
               :
               <div>
                 <div className="hidden sm:block">
-                  <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language","kr")}}>
+                  <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
                     한국어
                   </button>
                 </div>
                 <div className="block sm:hidden">
-                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() =>{ dispatch(getlanguage()); localStorage.setItem("language","kr")}}>
+                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
                     Ko
                   </button>
                 </div>
