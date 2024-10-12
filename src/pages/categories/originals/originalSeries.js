@@ -375,18 +375,18 @@ const OriginalSeriesPage = () => {
                       >
                         <li className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2">
                           <div className="w-full h-full flex items-center">
-                            <div className="w-[80px] h-[80px]">
+                            <div className="w-[80px] max-h-[80px]">
                               <img
                                 src={item.horizontalThumbnail}
                                 alt="img"
-                                className="object-fill w-full h-full rounded-md"
+                                className="object-fill min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px] rounded-md"
                               />
                             </div>
 
 
-                            <div className="w-[350px] mr-auto ml-3 overflow-hidden">
+                            <div className="max-w-[400px] mr-auto ml-3 overflow-hidden">
                               <span className="text-black text-md leading-[1.2] line-clamp-2">
-                                {item.chapterTitle}
+                                {item.chapterTitle} k k k k k k k k k k k k k k k k k k k k k k k k k k  k k k k k k k k k k k k k  k k k k k k k k k k k k k
                               </span>
                             </div>
 
@@ -414,8 +414,8 @@ const OriginalSeriesPage = () => {
                                 <MusicNoteIcon />
                               </div>
                             }
-                            <div className="ml-auto flex gap-1">
-                              <span className="text-gray-400">
+                            <div className="max-w-[100px] ml-auto flex gap-1 overflow-hidden">
+                              <span className="text-gray-400 line-clamp-1">
                                 <FavoriteBorderSharpIcon />
                               </span>
 
