@@ -215,8 +215,11 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                 <div className="w-full h-full bg-gray-100 pb-10">
 
                     <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
-                        <ul className="flex gap-10">
-                            <li onClick={goToPreviousStep} className="uppercase font-semibold cursor-pointer text-md flex items-center justify-center">
+                        <ul className="w-full flex items-center justify-center xs:gap-0 sm:gap-10">
+                            <li
+                                onClick={goToPreviousStep}
+                                className="min-w-[120px] uppercase font-semibold cursor-pointer text-md flex items-center justify-center"
+                            >
                                 <div className="w-[40px] h-[40px] bg-gray-500 rounded-full border flex items-center justify-center mx-2">
                                     <span className="mx-3 text-2xl text-white font-bold">
                                         1
@@ -233,12 +236,12 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                     </h1>
                                 )}
                             </li>
-                            <li className="uppercase font-semibold text-md flex items-center justify-center">
+                            <li className="xs:ml-2 sm:ml-0 uppercase font-semibold text-md flex items-center justify-center">
                                 <span className="text-gray-400">
                                     <ArrowForwardIosIcon />
                                 </span>
                             </li>
-                            <li className="uppercase font-semibold cursor-pointer text-md flex items-center justify-center">
+                            <li className="min-w-[120px] uppercase font-semibold cursor-pointer text-md flex items-center justify-center">
                                 <div className="w-[40px] h-[40px] bg-green-500 rounded-full border flex items-center justify-center mx-2">
                                     <span className="mx-3 text-2xl text-white font-bold">
                                         2
@@ -397,7 +400,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
                                         <div className="flex mt-3">
                                             <button className="w-[90px] h-[40px] border-2 bg-white flex items-center justify-center">
-                                            {id.idchap ? num :chapters?.chaps?.length? chapters?.chaps?.length + 1:1}
+                                                {id.idchap ? num : chapters?.chaps?.length ? chapters?.chaps?.length + 1 : 1}
                                             </button>
                                             <input
                                                 className="w-full h-[40px] px-2 border-r-2 border-t-2 border-b-2 outline-none bg-white"

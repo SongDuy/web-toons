@@ -718,8 +718,8 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                       )}
                     </h1>
 
-                    <div className="flex gap-x-10 mt-1 items-center">
-                      <label className="flex items-center">
+                    <div className="flex xs:gap-x-5 sm:gap-x-10 mt-1 items-center">
+                      <label className="xs:w-[100px] sm:w-auto flex items-center">
                         <Radio
                           checked={selectedValue === "Enable"}
                           onChange={handleChange}
@@ -735,7 +735,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                         )}
                       </label>
 
-                      <label className="flex items-center">
+                      <label className="xs:w-[130px] sm:w-auto flex items-center">
                         <Radio
                           checked={selectedValue === "Disable"}
                           onChange={handleChange}
@@ -756,7 +756,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                   {/* Phần hiệu chỉnh episode */}
                   <div className="w-full flex items-center gap-10">
                     {/* Tiêu đề */}
-                    <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
+                    <h1 className="w-[100px] border h-full font-semibold text-xl flex items-center">
                       {!language ? (
                         "Episodes"
                       ) : (
@@ -764,8 +764,8 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                       )}
                     </h1>
 
-                    <div className="flex gap-6 mt-1 items-center">
-                      <label className="flex items-center">
+                    <div className="xs:gap-x-3 sm:gap-x-6 flex mt-1 items-center">
+                      <label className="xs:w-[110px] sm:w-auto flex items-center">
                         <Radio
                           checked={selectedEpisodesValue === "Ongoing"}
                           onChange={handleEpisodesChange}
@@ -780,7 +780,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                           "진행 중"
                         )}
                       </label>
-                      <label className="flex items-center">
+                      <label className="xs:w-[130px] sm:w-auto flex items-center">
                         <Radio
                           checked={selectedEpisodesValue === "Completed"}
                           onChange={handleEpisodesChange}
