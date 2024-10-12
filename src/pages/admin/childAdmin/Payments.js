@@ -4,11 +4,15 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+
+import { useNavigate } from 'react-router-dom';
 
 const AdminPaymentsPage = () => {
   const [loading, setloading] = useState(false);
   const [Payments, setPayments] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const get = async () => {
@@ -144,6 +148,9 @@ const AdminPaymentsPage = () => {
                     {new Date(item.createTime)?.getFullYear()}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
+                  <button onClick={() => navigate(`/admin/payments/${item.id}`)} className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full">
+                                            <RemoveRedEyeIcon />
+                    </button>
                     <button
                       onClick={() => handlecheck(item.id)}
                       className="w-[35px] h-[35px] text-blue-500 mx-1 bg-gray-100 hover:bg-gray-200 rounded-full"

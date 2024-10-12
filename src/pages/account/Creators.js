@@ -10,7 +10,7 @@ import CheckIcon from "@mui/icons-material/Check";
 
 const Creators = () => {
   const [Creators, setCreators] = useState([]);
-  const Account = useSelector((state) => state.Account.Account);
+  const Account = useSelector((state) => state.Account?.Account);
   const [loading, setloading] = useState(false);
   const [EditFollow, setEditFollow] = useState(false);
   const [checkFollow, setcheckFollow] = useState([]);
@@ -20,27 +20,28 @@ const Creators = () => {
     const get = async () => {
       try {
         setloading(false);
-
-        const Follow = await FollowFireBase.getbyid(Account?.uid);
-
-        if (Follow.success) {
-          const Follows = await Promise.all(
-            Follow?.follow?.map(async (item) => {
-              const comicid = await userFireBase.getbyid(item.idchannel);
-              return {
-                ...item,
-                ...comicid,
-                id: item.id,
-              };
-            })
-          );
-          setCreators(Follows);
-        } else {
-          setCreators([]);
+        if(Account?.uid){
+          const Follow = await FollowFireBase.getbyid(Account?.uid);
+          if (Follow.success) {
+            const Follows = await Promise.all(
+              Follow?.follow?.map(async (item) => {
+                const comicid = await userFireBase.getbyid(item?.idchannel);
+                console.log(comicid)
+                return {
+                  ...item,
+                  ...comicid,
+                  id: item.id,
+                };
+              })
+            );
+            setCreators(Follows);
+          } else {
+            setCreators([]);
+          }
         }
+      
         setloading(true);
       } catch (error) {
-        console.log(error);
       }
     };
     get();
@@ -60,7 +61,8 @@ const Creators = () => {
               );
               await FollowFireBase.Delete(item);
             }
-          } catch (error) { }
+          } catch (error) {
+           }
         })
       );
       setreplay(true);
@@ -177,7 +179,7 @@ const Creators = () => {
                     )}
                   </div>
                   {EditFollow ? (
-                    <div className="  grid grid-cols-5 gap-2  w-full min-h-[500px]   px-5">
+                    <div className="  grid grid-cols-5 gap-2  w-full    px-5">
                       {Creators?.map((item) => {
                         return (
                           <button
@@ -189,7 +191,9 @@ const Creators = () => {
                             onClick={() => getidSubscribed(item.id)}
                           >
                             <img
-                              src={item.image}
+                              src={item.image
+                                ? item?.image
+                                :"https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"}
                               alt=""
                               className="object-contain "
                             />
@@ -206,7 +210,7 @@ const Creators = () => {
                               }
                             </p>
 
-                            <p className="absolute top-[65%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
+                            <span  className="absolute top-[65%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
                               <CheckIcon
                                 sx={
                                   checkFollow?.includes(item.id)
@@ -214,7 +218,7 @@ const Creators = () => {
                                     : { color: "white" }
                                 }
                               />
-                            </p>
+                            </span >
                           </button>
                         );
                       })}
@@ -228,7 +232,9 @@ const Creators = () => {
                             key={item?.id}
                           >
                             <img
-                              src={item.image}
+                              src={item.image
+                                ? item?.image
+                                :"https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"}
                               alt=""
                               className="object-contain h-[50] "
                             />

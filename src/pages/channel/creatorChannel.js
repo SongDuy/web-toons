@@ -56,7 +56,6 @@ const CreatorChannelPage = () => {
                     setposts(post.success ? post?.post : []);
                     if (auth.currentUser) {
                         const Follows = await FollowFireBase.getbychannel(auth.currentUser.uid, id.id)
-                        console.log(Follows)
                         Follows.success ? setIsFollow(true) : setIsFollow(false)
                         Follows.success ? setFollow(Follows.follow) : setFollow([])
                     }

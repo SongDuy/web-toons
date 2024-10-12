@@ -112,6 +112,25 @@ const RateFireBase = {
   async Delete(id) {
     await deleteDoc(doc(fireStore, "rate", id));
   },
+  async DeleteComic(id) {
+    const Ref = collection(fireStore, "rate");
+    const q = query(Ref, where("idcomic", "==", id)); 
+  
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(async (doc) => {
+      await deleteDoc(doc.ref);
+    });
+  },
+  async DeleteVideo(id) {
+    const Ref = collection(fireStore, "rate");
+    const q = query(Ref, where("idvideo", "==", id)); 
+  
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(async (doc) => {
+      await deleteDoc(doc.ref);
+    });
+  },
+
   async deleteAccount(id) {
     const Ref = collection(fireStore, "rate");
     const q = query(Ref, where("uid", "==", id));

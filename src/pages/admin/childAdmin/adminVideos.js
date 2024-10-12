@@ -13,6 +13,10 @@ import CheckIcon from "@mui/icons-material/Check";
 import { useNavigate } from 'react-router-dom';
 import PaymentDialog from '../../../components/Admin/PaymentDialog';
 import { setIspayment } from '../../../common/store/hidden';
+import PaymentFireBase from '../../../common/services/Payment.services';
+import RateFireBase from '../../../common/services/Rate.services';
+import SubscribeFireBase from '../../../common/services/Subscribe.services';
+import CommentFireBase from '../../../common/services/Comment.services';
 
 const AdminVideosPage = () => {
     const Video = useSelector(state => state.Video.video);
@@ -24,6 +28,15 @@ const AdminVideosPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
+    const days = [
+        { day: 'Mon', daysInKorean: '월요일' },
+        { day: 'Tue', daysInKorean: '화요일' },
+        { day: 'Wed', daysInKorean: '수요일' },
+        { day: 'Thu', daysInKorean: '목요일' },
+        { day: 'Fri', daysInKorean: '금요일' },
+        { day: 'Sat', daysInKorean: '토요일' },
+        { day: 'Sun', daysInKorean: '일요일' }
+      ];
 
     useEffect(() => {
 
@@ -64,6 +77,10 @@ const AdminVideosPage = () => {
                 setloading(false)
 
                 await VideoFireBase.Delete(id)
+                await PaymentFireBase.DeleteVideo(id)
+                await RateFireBase.DeleteVideo(id)
+                await SubscribeFireBase.DeleteVideo(id)
+                await CommentFireBase.DeleteVideo(id)
                 const lg = await dispatch(getAlladVideo())
                 const getVideo = unwrapResult(lg)
                 setVideos(getVideo.success ? getVideo?.Video : [])
@@ -132,11 +149,12 @@ const AdminVideosPage = () => {
                         <thead className="bg-gray-100">
                             <tr className="w-full">
                                 <th className="w-[50px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">ID</th>
-                                <th className="w-[150px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">이미지</th>
-                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">비디오 이름</th>
+                                <th className="w-[350px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">이미지</th>
+                                <th className="w-[200px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">비디오 이름</th>
                                 <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">사용자 ID</th>
-                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">생성일</th>
-                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">생성일</th>
+                                <th className="w-[200px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">스케쥴</th>
+                                <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">생성일</th>
+                                <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">가격</th>
                                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">관리</th>
                             </tr>
                         </thead>
@@ -157,7 +175,10 @@ const AdminVideosPage = () => {
                                         {item.title}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                        {item.schedule}
+                                        {item.uid}
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
+                                        { days?.find(it => it.day === item.schedule)?.daysInKorean}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                                         {new Date(item.createTime).getDate()}/{new Date(item.createTime).getMonth() + 1}/

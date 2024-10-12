@@ -418,7 +418,7 @@ const PaymentPage = ({ closeModal, price }) => {
             </p>
 
             <div className="w-full mt-2 flex items-center justify-center gap-2">
-              <div className="w-[35px] h-[35px] text-white rounded-full bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 flex items-center justify-center">
+              <div className="w-[35px] h-[35px] text-white rounded-full bg-gradient-to-t from-yellow-200 via-yellow-400 to-yellow-500 flex items-center justify-center" >
                 <CheckIcon />
               </div>
               <h1 className="text-shadow-black text-yellow-500 text-xl">
@@ -430,6 +430,7 @@ const PaymentPage = ({ closeModal, price }) => {
               <button
                 className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
                 onClick={handleBackdropClick}
+               
               >
                 {!language ?
                   "Cancel"

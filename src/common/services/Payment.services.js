@@ -116,7 +116,15 @@ import {
     async Delete(id) {
       await deleteDoc(doc(fireStore, "payment", id));
     },
+    async DeleteVideo(id) {
+      const Ref = collection(fireStore, "payment");
+      const q = query(Ref, where("idseries", "==", id)); 
     
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+    },
   
     async deleteAccount(id) {
       const Ref = collection(fireStore, "payment");

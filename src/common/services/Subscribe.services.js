@@ -95,6 +95,24 @@ const SubscribeFireBase = {
 
     await updateDoc(update, data);
   },
+  async DeleteComic(id) {
+    const Ref = collection(fireStore, "subscribe");
+    const q = query(Ref, where("idcomic", "==", id)); 
+  
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(async (doc) => {
+      await deleteDoc(doc.ref);
+    });
+  },
+  async DeleteVideo(id) {
+    const Ref = collection(fireStore, "subscribe");
+    const q = query(Ref, where("idvideo", "==", id)); 
+  
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(async (doc) => {
+      await deleteDoc(doc.ref);
+    });
+  },
   async Delete(id) {
     await deleteDoc(doc(fireStore, "subscribe", id));
   },

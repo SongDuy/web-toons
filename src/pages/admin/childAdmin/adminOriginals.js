@@ -12,6 +12,9 @@ import Box from '@mui/material/Box';
 import comicFireBase from '../../../common/services/Comic.services';
 import { useNavigate } from 'react-router-dom';
 import CheckIcon from "@mui/icons-material/Check";
+import RateFireBase from '../../../common/services/Rate.services';
+import SubscribeFireBase from '../../../common/services/Subscribe.services';
+import CommentFireBase from '../../../common/services/Comment.services';
 
 
 const AdminOriginalsPage = () => {
@@ -22,7 +25,15 @@ const AdminOriginalsPage = () => {
     const navigate = useNavigate();
     // Hiển thị nội dung giống nội dung cần tìm
     const [searchTerm, setSearchTerm] = useState('');
-
+    const days = [
+        { day: 'Mon', daysInKorean: '월요일' },
+        { day: 'Tue', daysInKorean: '화요일' },
+        { day: 'Wed', daysInKorean: '수요일' },
+        { day: 'Thu', daysInKorean: '목요일' },
+        { day: 'Fri', daysInKorean: '금요일' },
+        { day: 'Sat', daysInKorean: '토요일' },
+        { day: 'Sun', daysInKorean: '일요일' }
+      ];
 
     useEffect(() => {
 
@@ -62,6 +73,9 @@ const AdminOriginalsPage = () => {
                 setloading(false)
 
                 await comicFireBase.Delete(id)
+                await RateFireBase.DeleteComic(id)
+                await SubscribeFireBase.DeleteComic(id)
+                await CommentFireBase.DeleteComic(id)
                 const lg = await dispatch(getAlladComic())
                 const getcomic = unwrapResult(lg)
                 setComics(getcomic.success ? getcomic?.comic : [])
@@ -121,10 +135,11 @@ const AdminOriginalsPage = () => {
                         <thead className="bg-gray-100">
                             <tr className="w-full">
                                 <th className="w-[50px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">ID</th>
-                                <th className="w-[150px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">이미지</th>
+                                <th className="w-[250px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">이미지</th>
                                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">오리지널 이름</th>
-                                <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">사용자 ID</th>
-                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">생성일</th>
+                                <th className="w-[100px] px-4 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">사용자 ID</th>
+                                <th className="w-[200px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">스케쥴</th>
+                                <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">생성일</th>
                                 <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">관리</th>
                             </tr>
                         </thead>
@@ -145,7 +160,10 @@ const AdminOriginalsPage = () => {
                                         {item.title}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                        {item.schedule}
+                                        {item.uid}
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
+                                        { days?.find(it => it.day === item.schedule)?.daysInKorean}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                                         {new Date(item.createTime).getDate()}/{new Date(item.createTime).getMonth() + 1}/
