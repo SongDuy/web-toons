@@ -302,17 +302,17 @@ const MyChannelPage = () => {
                   <div className="w-full px-1 sm:pt-8 pb-4 flex gap-y-2">
                     <div className="mr-5 xs:text-[15px] sm:text-[18px] font-semibold text-white text-shadow-black">
                       {!language ? (
-                        <span> Original: </span>
+                        <span> Originals: </span>
                       ) : (
-                        <span> 오리지널 시리즈: </span>
+                        <span> 오리지널: </span>
                       )}{" "}
                       {comic?.length}
                     </div>
                     <div className="mr-5 xs:text-[15px] sm:text-[18px] font-semibold text-white text-shadow-black">
                       {!language ? (
-                        <span> Video: </span>
+                        <span> Videos: </span>
                       ) : (
-                        <span> 비디오 시리즈: </span>
+                        <span> 비디오: </span>
                       )}{" "}
                       {Video?.length}
                     </div>

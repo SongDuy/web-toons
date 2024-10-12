@@ -165,51 +165,69 @@ const CreatorChannelPage = () => {
                             </div>
 
                             {/* Hiển thị thông tin tác giả */}
-                            <div className="w-full sm:h-[180px] xs:px-[10px] sm:px-[30px] bg-white rounded-b-lg flex">
-                                <div className="w-[185px] h-[185px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
-                                    <Avatar
-                                        alt="Remy Sharp"
-                                        src={
-                                            create?.image
-                                                ? create?.image
-                                                : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
-                                        }
-                                        sx={{ width: 180, height: 180 }}
-                                    />
-                                </div>
-
-                                <div className="py-4 px-3">
-                                    <div className="">
-                                        <span className="text-[35px] font-semibold text-yellow-500 text-shadow-black">
-                                            {create?.name}
-                                        </span>
+                            <div className="w-full sm:h-[180px] xs:px-[10px] sm:px-[30px] bg-white rounded-b-lg sm:flex">
+                                <div className="flex">
+                                    <div className="hidden sm:block">
+                                        <div className="w-[185px] h-[185px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
+                                            <Avatar
+                                                alt="Remy Sharp"
+                                                src={
+                                                    create?.image
+                                                        ? create?.image
+                                                        : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
+                                                }
+                                                sx={{ width: 180, height: 180 }}
+                                            />
+                                        </div>
                                     </div>
-                                    {/* <div className="px-1">
+                                    <div className="block sm:hidden">
+                                        <div className="w-[105px] h-[105px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
+                                            <Avatar
+                                                alt="Remy Sharp"
+                                                src={
+                                                    create?.image
+                                                        ? create?.image
+                                                        : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
+                                                }
+                                                sx={{ width: 100, height: 100 }}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="sm:py-4 px-3">
+                                        <div className="">
+                                            <span className="text-[35px] font-semibold text-yellow-500 text-shadow-black">
+                                                {create?.name}
+                                            </span>
+                                        </div>
+                                        {/* <div className="px-1">
                                         <span className="text-[18px] text-yellow-400 text-shadow-black">
                                             {!language ? (<span> Commic, video </span>) : (<span> 만화, 동영상 </span>)}
                                         </span>
                                     </div> */}
-                                    <div className="px-1 pt-8 pb-4 flex">
-                                        <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                            {!language ? <span> Original Series: </span> : <span> 오리지널 시리즈: </span>}
-                                            {' '} {comic?.length}
-                                        </div>
-                                        <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                            {!language ? <span> Video Series: </span> : <span> 비디오 시리즈: </span>}
-                                            {' '} {Video?.length}
-                                        </div>
-                                        <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
-                                            {!language ? <span> Followers: </span> : <span> 팔로워: </span>}
-                                            {' '} {create?.follow}
+
+                                        <div className="w-full px-1 sm:pt-8 pb-4 flex">
+                                            <div className="mr-5 xs:text-[15px] sm:text-[18px] font-semibold text-white text-shadow-black">
+                                                {!language ? <span> Originals: </span> : <span> 오리지널: </span>}
+                                                {' '} {comic?.length}
+                                            </div>
+                                            <div className="mr-5 xs:text-[15px] sm:text-[18px] font-semibold text-white text-shadow-black">
+                                                {!language ? <span> Videos: </span> : <span> 비디오: </span>}
+                                                {' '} {Video?.length}
+                                            </div>
+                                            <div className="mr-5 xs:text-[15px] sm:text-[18px] font-semibold text-white text-shadow-black">
+                                                {!language ? <span> Followers: </span> : <span> 팔로워: </span>}
+                                                {' '} {create?.follow}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="ml-auto flex items-center justify-center">
+                                <div className="ml-auto flex items-center pb-4 justify-center">
                                     {!isFollow ?
                                         <button
                                             onClick={handleFollow}
-                                            className="w-[150px] h-[50px] font-semibold text-white bg-green-500 hover:bg-green-600 shadow  rounded-full"
+                                            className="xs:w-full sm:w-[150px] h-[50px] font-semibold text-white bg-green-500 hover:bg-green-600 shadow  rounded-full"
                                         >
                                             {!language ? <span> Follow </span> : <span> 팔로우 </span>}
                                         </button>
