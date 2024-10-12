@@ -81,12 +81,12 @@ const DisplayOriginalPage = () => {
       selectedOriginalGenre === "All"
         ? item
         : selectedOriginalGenre === "Others"
-        ? !dataGenreSearch.some(
+          ? !dataGenreSearch.some(
             (i) =>
               i.name.toLowerCase() === item.genre2.toLowerCase() ||
               i.name.toLowerCase() === item.genre1.toLowerCase()
           )
-        : item.genre1.toLowerCase() === selectedOriginalGenre.toLowerCase() ||
+          : item.genre1.toLowerCase() === selectedOriginalGenre.toLowerCase() ||
           item.genre2.toLowerCase() === selectedOriginalGenre.toLowerCase()
     )
     .slice()
@@ -120,7 +120,7 @@ const DisplayOriginalPage = () => {
         id.id,
         id.idseries
       );
-    } catch (error) {}
+    } catch (error) { }
   }, 10000);
 
   useEffect(() => {
@@ -155,7 +155,7 @@ const DisplayOriginalPage = () => {
         const comments = await dispatch(getidseries(id.idseries));
         const comicID = await dispatch(getidComic(id.id));
         const chap = await dispatch(getchaptersComic(id.id));
-        localStorage.getItem("language")==="en"?dispatch(setlanguage(false)):dispatch(setlanguage(true))
+        localStorage.getItem("language") === "en" ? dispatch(setlanguage(false)) : dispatch(setlanguage(true))
         unwrapResult(comicID);
         const chapid = unwrapResult(chap);
         setchapid(
@@ -176,7 +176,7 @@ const DisplayOriginalPage = () => {
           if (user?.checkage) {
             const age = account?.payload?.birthday
               ? new Date(Date.now())?.getFullYear() -
-                new Date(user.birthday)?.getFullYear()
+              new Date(user.birthday)?.getFullYear()
               : 15;
             const lg = await dispatch(getAllComic(age));
             unwrapResult(lg);
@@ -204,7 +204,7 @@ const DisplayOriginalPage = () => {
           unwrapResult(lg);
         }
         setloading(true);
-      } catch (error) {}
+      } catch (error) { }
     };
     getcomments();
   }, [dispatch, id]);
@@ -255,7 +255,7 @@ const DisplayOriginalPage = () => {
       const rep = await CommentFireBase.getidrep(commentId);
       setreps(rep.success ? rep?.rep : []);
       setReplyCommentId(commentId === replyCommentId ? null : commentId);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   //new
@@ -283,7 +283,7 @@ const DisplayOriginalPage = () => {
         dispatch(setIsLoginModal(true));
         setComment("");
       }
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const handlesubscribe = async () => {
@@ -310,7 +310,7 @@ const DisplayOriginalPage = () => {
           ? setSubscribe(subscribe.subscribe)
           : setSubscribe([]);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   const handleDeleteSub = async () => {
     try {
@@ -330,7 +330,7 @@ const DisplayOriginalPage = () => {
           ? setSubscribe(subscribe.subscribe)
           : setSubscribe([]);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   const handlelike = async (idcomment, togglelike) => {
     try {
@@ -454,7 +454,7 @@ const DisplayOriginalPage = () => {
         setcountlike(
           getchapid.success
             ? getchapid?.chaps.filter((item) => item.id === id.idseries)[0]
-                .likes
+              .likes
             : 0
         );
         // const pot = await postFireBase.getlike(Account.uid);
@@ -477,17 +477,47 @@ const DisplayOriginalPage = () => {
     }
   }
   const goToPreviousChapter = () => {
-   const Previous= chapters?.chaps?.filter(item=>chapid.num-1===item.num)
-   Previous.length!==0&& navigate(`/originals/original/series/display/${id.id}/${Previous[0]?.id}`);
+    const Previous = chapters?.chaps?.filter(item => chapid.num - 1 === item.num)
+    Previous.length !== 0 && navigate(`/originals/original/series/display/${id.id}/${Previous[0]?.id}`);
   };
 
   const goToNextChapter = () => {
-    const Next= chapters?.chaps?.filter(item=>chapid.num+1===item.num)
-    Next.length!==0&& navigate(`/originals/original/series/display/${id.id}/${Next[0]?.id}`);
+    const Next = chapters?.chaps?.filter(item => chapid.num + 1 === item.num)
+    Next.length !== 0 && navigate(`/originals/original/series/display/${id.id}/${Next[0]?.id}`);
   };
 
   // Nhấn nút đăng ký
   const [isMusic, setIsMusic] = useState(false);
+
+  // Tính toán scale dựa trên kích thước màn hình
+
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // Tính toán scale dựa trên kích thước màn hình
+  const calculateScale = () => {
+    const desiredWidth = windowSize.width * 0.9; // Giảm đi 10% để có margin
+    const pdfWidth = 750; // Giả sử chiều rộng mặc định của trang PDF là 600px
+    return Math.min(desiredWidth / pdfWidth, 1.5); // Đặt giới hạn tối đa cho scale
+  };
+
+  const scale = calculateScale(); // Di chuyển dòng này sau khi windowSize được định nghĩa
 
   return (
     <>
@@ -586,7 +616,7 @@ const DisplayOriginalPage = () => {
                     loading={<CircularProgress />}
                   >
                     {Array.from(new Array(numPages), (el, index) => (
-                      <Page key={`page_${index + 1}`} pageNumber={index + 1} scale={1.5}/>
+                      <Page key={`page_${index + 1}`} pageNumber={index + 1} scale={scale} />
                     ))}
                   </Document>
                 )}
@@ -715,7 +745,7 @@ const DisplayOriginalPage = () => {
                       {/* Ô nhập bình luận */}
                       <div className="w-full h-full my-3">
                         <textarea
-                          placeholder={!language?"Leave a comment":"댓글 달기."}
+                          placeholder={!language ? "Leave a comment" : "댓글 달기."}
                           value={getcomment}
                           className="w-full h-[160px] rounded-md px-3 py-3 border-2"
                           onChange={(e) => setComment(e.target.value)}
@@ -756,31 +786,31 @@ const DisplayOriginalPage = () => {
                                       <span className="max-w-[500px] font-semibold line-clamp-1">
                                         {item.nameUser}
                                       </span>
-                                      {!language?
-                                      <span className="text-gray-400 mx-2 line-clamp-1">
-                                     {
-                                          monthNames[
-                                            new Date(item.createTime).getMonth()
-                                          ].en
-                                        }{" "}
-                                        {new Date(item.createTime).getDate()},
-                                        {new Date(
-                                          item.createTime
-                                        )?.getFullYear()}
+                                      {!language ?
+                                        <span className="text-gray-400 mx-2 line-clamp-1">
+                                          {
+                                            monthNames[
+                                              new Date(item.createTime).getMonth()
+                                            ].en
+                                          }{" "}
+                                          {new Date(item.createTime).getDate()},
+                                          {new Date(
+                                            item.createTime
+                                          )?.getFullYear()}
 
-                                      </span>
-                                      :  <span className="text-gray-400 mx-2 line-clamp-1">
-                                      {
-                                           monthNames[
-                                             new Date(item.createTime).getMonth()
-                                           ].kr
-                                         }{" "}
-                                         {new Date(item.createTime).getDate()}일,
-                                         {new Date(
-                                           item.createTime
-                                         )?.getFullYear()}년
- 
-                                       </span>} 
+                                        </span>
+                                        : <span className="text-gray-400 mx-2 line-clamp-1">
+                                          {
+                                            monthNames[
+                                              new Date(item.createTime).getMonth()
+                                            ].kr
+                                          }{" "}
+                                          {new Date(item.createTime).getDate()}일,
+                                          {new Date(
+                                            item.createTime
+                                          )?.getFullYear()}년
+
+                                        </span>}
                                     </div>
 
                                     {/* Hiển thị nội dung bình luận */}
@@ -838,7 +868,7 @@ const DisplayOriginalPage = () => {
                                       {/* Ô nhập bình luận */}
                                       <div className="w-full h-full my-3">
                                         <textarea
-                                          placeholder={!language?"Leave a reply" :"답장 남기기"}
+                                          placeholder={!language ? "Leave a reply" : "답장 남기기"}
                                           value={getrep}
                                           className="w-full h-[160px] rounded-md px-3 py-3 border-2"
                                           onChange={(e) =>
@@ -874,32 +904,32 @@ const DisplayOriginalPage = () => {
                                                 <span className="max-w-[500px] font-semibold line-clamp-1">
                                                   {item.nameUser}
                                                 </span>
-                                                {!language?
-                                      <span className="text-gray-400 mx-2 line-clamp-1">
-                                     {
-                                          monthNames[
-                                            new Date(item.createTime).getMonth()
-                                          ].en
-                                        }{" "}
-                                        {new Date(item.createTime).getDate()},
-                                        {new Date(
-                                          item.createTime
-                                        )?.getFullYear()}
+                                                {!language ?
+                                                  <span className="text-gray-400 mx-2 line-clamp-1">
+                                                    {
+                                                      monthNames[
+                                                        new Date(item.createTime).getMonth()
+                                                      ].en
+                                                    }{" "}
+                                                    {new Date(item.createTime).getDate()},
+                                                    {new Date(
+                                                      item.createTime
+                                                    )?.getFullYear()}
 
-                                      </span>
-                                      :  <span className="text-gray-400 mx-2 line-clamp-1">
-                                      {
-                                           monthNames[
-                                             new Date(item.createTime).getMonth()
-                                           ].kr
-                                         }{" "}
-                                         {new Date(item.createTime).getDate()}일,
-                                         {new Date(
-                                           item.createTime
-                                         )?.getFullYear()}년
- 
-                                       </span>}
-                                     
+                                                  </span>
+                                                  : <span className="text-gray-400 mx-2 line-clamp-1">
+                                                    {
+                                                      monthNames[
+                                                        new Date(item.createTime).getMonth()
+                                                      ].kr
+                                                    }{" "}
+                                                    {new Date(item.createTime).getDate()}일,
+                                                    {new Date(
+                                                      item.createTime
+                                                    )?.getFullYear()}년
+
+                                                  </span>}
+
                                               </div>
 
                                               {/* Hiển thị nội dung bình luận */}
@@ -998,10 +1028,10 @@ const DisplayOriginalPage = () => {
                                   {!language
                                     ? item.genre1
                                     : dataListGenre?.filter(
-                                        (itm) =>
-                                          itm.name.toLowerCase() ===
-                                          item.genre1.toLowerCase()
-                                      )[0]?.nameKorean}
+                                      (itm) =>
+                                        itm.name.toLowerCase() ===
+                                        item.genre1.toLowerCase()
+                                    )[0]?.nameKorean}
                                 </span>
                                 <span className="text-md font-semibold line-clamp-1">
                                   {item.title}
@@ -1084,11 +1114,10 @@ const DisplayOriginalPage = () => {
                                             !language ? "All" : "모두"
                                           );
                                         }}
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "All"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "All"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
                                         {!language ? (
                                           <span>All</span>
@@ -1106,11 +1135,10 @@ const DisplayOriginalPage = () => {
                                             !language ? "Action" : "액션"
                                           );
                                         }}
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Action"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Action"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
                                         {!language ? (
                                           <span>Action</span>
@@ -1128,11 +1156,10 @@ const DisplayOriginalPage = () => {
                                             !language ? "Romance" : "로맨스"
                                           );
                                         }}
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Romance"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Romance"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
                                         {!language ? (
                                           <span>Romance</span>
@@ -1150,11 +1177,10 @@ const DisplayOriginalPage = () => {
                                             !language ? "Fantasy" : "판타지"
                                           );
                                         }}
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Fantasy"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Fantasy"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
                                         {!language ? (
                                           <span>Fantasy</span>
@@ -1172,11 +1198,10 @@ const DisplayOriginalPage = () => {
                                             !language ? "Drama" : "드라마"
                                           );
                                         }}
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Drama"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Drama"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
                                         {!language ? (
                                           <span>Drama</span>
@@ -1194,11 +1219,10 @@ const DisplayOriginalPage = () => {
                                             !language ? "Comedy" : "코미디"
                                           );
                                         }}
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Comedy"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Comedy"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
                                         {!language ? (
                                           <span>Comedy</span>
@@ -1216,11 +1240,10 @@ const DisplayOriginalPage = () => {
                                             !language ? "Thriller" : "스릴러"
                                           );
                                         }}
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Thriller"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Thriller"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
                                         {!language ? (
                                           <span>Thriller</span>
@@ -1240,12 +1263,11 @@ const DisplayOriginalPage = () => {
                                             !language ? "Slice of life" : "일상"
                                           );
                                         }}
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre ===
+                                        className={`w-full h-full ${selectedOriginalGenre ===
                                           "Slice of life"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
                                         {!language ? (
                                           <span>Slice of life</span>
@@ -1267,12 +1289,11 @@ const DisplayOriginalPage = () => {
                                               : "초자연적"
                                           );
                                         }}
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre ===
+                                        className={`w-full h-full ${selectedOriginalGenre ===
                                           "Supernatural"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
                                         {!language ? (
                                           <span>Supernatural</span>
@@ -1290,11 +1311,10 @@ const DisplayOriginalPage = () => {
                                             !language ? "Sci-fi" : "공상 과학"
                                           );
                                         }}
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Sci-fi"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Sci-fi"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
                                         {!language ? (
                                           <span>Sci-fi</span>
@@ -1312,11 +1332,10 @@ const DisplayOriginalPage = () => {
                                             !language ? "Horror" : "호러"
                                           );
                                         }}
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Horror"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Horror"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
                                         {!language ? (
                                           <span>Horror</span>
@@ -1334,11 +1353,10 @@ const DisplayOriginalPage = () => {
                                             !language ? "Others" : "기타"
                                           );
                                         }}
-                                        className={`w-full h-full ${
-                                          selectedOriginalGenre === "Others"
-                                            ? "text-green-500"
-                                            : ""
-                                        }`}
+                                        className={`w-full h-full ${selectedOriginalGenre === "Others"
+                                          ? "text-green-500"
+                                          : ""
+                                          }`}
                                       >
                                         {!language ? (
                                           <span>Others</span>
@@ -1384,10 +1402,10 @@ const DisplayOriginalPage = () => {
                                   {!language
                                     ? item.genre1
                                     : dataListGenre?.filter(
-                                        (itm) =>
-                                          itm.name.toLowerCase() ===
-                                          item.genre1.toLowerCase()
-                                      )[0]?.nameKorean}
+                                      (itm) =>
+                                        itm.name.toLowerCase() ===
+                                        item.genre1.toLowerCase()
+                                    )[0]?.nameKorean}
                                 </span>
                                 <span className="text-md font-semibold line-clamp-1">
                                   {item.title}
