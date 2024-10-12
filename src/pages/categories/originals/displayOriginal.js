@@ -45,6 +45,7 @@ import dataListGenre from "../../../components/layout/layoutUser/dataListGenre";
 import ReactPlayer from "react-player";
 import dataGenreSearch from "../../../common/utils/datagenresearch";
 import { useNavigate } from 'react-router-dom';
+import FooterPage from "../../../components/layout/layoutUser/footer";
 
 const DisplayOriginalPage = () => {
   const id = useParams();
@@ -730,265 +731,268 @@ const DisplayOriginalPage = () => {
 
             {/* Hiển thị bình luận và danh sách truyện nổi bật */}
             <div className="w-full h-full flex items-center justify-center my-5">
-              <div className="w-[1200px] h-full flex bg-white pt-5 pb-10">
+              <div className="w-[1200px] h-full grid xs:grid-cols-1 lg:grid-cols-3 bg-white pt-5 pb-10">
                 {/* Bảng hiện thị bình luận */}
-                {chapid?.checkcomment === "Enable" ? (
-                  <div className="w-8/12 h-full px-2">
-                    <div className="w-full px-2 pr-5">
-                      <div className="flex items-center pb-2 font-semibold text-lg">
-                        {!language ? <span>Comments</span> : <span>댓글</span>}
-                        <span className="px-2 text-gray-400">
-                          {gcomment?.Comment ? gcomment?.Comment?.length : 0}
-                        </span>
-                      </div>
-
-                      {/* Ô nhập bình luận */}
-                      <div className="w-full h-full my-3">
-                        <textarea
-                          placeholder={!language ? "Leave a comment" : "댓글 달기."}
-                          value={getcomment}
-                          className="w-full h-[160px] rounded-md px-3 py-3 border-2"
-                          onChange={(e) => setComment(e.target.value)}
-                        />
-                        <button
-                          onClick={handleComment}
-                          className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center"
-                        >
-                          <SendRoundedIcon className="transform rotate-200" />
-                          {!language ? <span>Send</span> : <span>보내기</span>}
-                        </button>
-                      </div>
-
-                      {/* Hiển thị danh sách các bình luận truyện */}
-                      <div className="w-full h-full my-5 ">
-                        <div className="px-3">
-                          <ul className="flex gap-2">
-                            <li className="px-5 py-5 cursor-pointer hover:text-green-500 font-semibold border-b-2">
-                              {!language ? <span>TOP</span> : <span>최고</span>}
-                            </li>
-                            <li className="px-5 py-5 cursor-pointer hover:text-green-500 font-semibold">
-                              {!language ? (
-                                <span>NEWEST</span>
-                              ) : (
-                                <span>최신</span>
-                              )}
-                            </li>
-                          </ul>
+                <div className="xs:col-span-1 lg:col-span-2 h-full px-2">
+                  {chapid?.checkcomment === "Enable" ? (
+                    <div className="full h-full px-2">
+                      <div className="w-full px-2 pr-5">
+                        <div className="flex items-center pb-2 font-semibold text-lg">
+                          {!language ? <span>Comments</span> : <span>댓글</span>}
+                          <span className="px-2 text-gray-400">
+                            {gcomment?.Comment ? gcomment?.Comment?.length : 0}
+                          </span>
                         </div>
-                        <div className="w-full py-3">
-                          <ul>
-                            {gcomment?.Comment?.map((item) => (
-                              <li key={item.idcomment}>
-                                <div className="w-full h-[200px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2">
-                                  <div className="w-full h-full">
-                                    {/* Hiển thị tên user và ngày đăng bình luận */}
-                                    <div className="w-full py-1 flex overflow-hidden">
-                                      <span className="max-w-[500px] font-semibold line-clamp-1">
-                                        {item.nameUser}
-                                      </span>
-                                      {!language ?
-                                        <span className="text-gray-400 mx-2 line-clamp-1">
-                                          {
-                                            monthNames[
-                                              new Date(item.createTime).getMonth()
-                                            ].en
-                                          }{" "}
-                                          {new Date(item.createTime).getDate()},
-                                          {new Date(
-                                            item.createTime
-                                          )?.getFullYear()}
 
-                                        </span>
-                                        : <span className="text-gray-400 mx-2 line-clamp-1">
-                                          {
-                                            monthNames[
-                                              new Date(item.createTime).getMonth()
-                                            ].kr
-                                          }{" "}
-                                          {new Date(item.createTime).getDate()}일,
-                                          {new Date(
-                                            item.createTime
-                                          )?.getFullYear()}년
+                        {/* Ô nhập bình luận */}
+                        <div className="w-full h-full my-3">
+                          <textarea
+                            placeholder={!language ? "Leave a comment" : "댓글 달기."}
+                            value={getcomment}
+                            className="w-full h-[160px] rounded-md px-3 py-3 border-2"
+                            onChange={(e) => setComment(e.target.value)}
+                          />
+                          <button
+                            onClick={handleComment}
+                            className="px-3 py-2 ml-auto bg-green-500 hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center"
+                          >
+                            <SendRoundedIcon className="transform rotate-200" />
+                            {!language ? <span>Send</span> : <span>보내기</span>}
+                          </button>
+                        </div>
 
-                                        </span>}
-                                    </div>
-
-                                    {/* Hiển thị nội dung bình luận */}
-                                    <div className="h-[120px] px-2 custom-scrollbar">
-                                      <span className="">{item.comment}</span>
-                                    </div>
-
-                                    {/* Nút bình luận, thích, không thích */}
-                                    <div className="w-full flex gap-2 py-1">
-                                      <button
-                                        onClick={() =>
-                                          handleToggleReply(item.idcomment)
-                                        }
-                                        className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-200 flex gap-2 items-center justify-center"
-                                      >
-                                        {!language ? (
-                                          <span>Replies</span>
-                                        ) : (
-                                          <span>답글하다</span>
-                                        )}
-                                        {item.replies}
-                                      </button>
-
-                                      <button
-                                        className="px-2 py-1  ml-auto border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center"
-                                        onClick={() =>
-                                          handlelike(item.idcomment, item.like)
-                                        }
-                                      >
-                                        <ThumbUpIcon className="text-gray-400" />
-                                        {item.like}
-                                      </button>
-
-                                      <button
-                                        className="px-2 py-1  border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center"
-                                        onClick={() =>
-                                          handledislike(
-                                            item.idcomment,
-                                            item.dislike
-                                          )
-                                        }
-                                      >
-                                        <ThumbDownIcon className="text-gray-400" />
-                                        {item.dislike}
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                {/* Phản hồi bình luận */}
-                                {replyCommentId === item.idcomment && (
-                                  <div className="w-full px-5">
-                                    {/* Nhập bình luận phản hồi */}
+                        {/* Hiển thị danh sách các bình luận truyện */}
+                        <div className="w-full h-full my-5 ">
+                          <div className="px-3">
+                            <ul className="flex gap-2">
+                              <li className="px-5 py-5 cursor-pointer hover:text-green-500 font-semibold border-b-2">
+                                {!language ? <span>TOP</span> : <span>최고</span>}
+                              </li>
+                              <li className="px-5 py-5 cursor-pointer hover:text-green-500 font-semibold">
+                                {!language ? (
+                                  <span>NEWEST</span>
+                                ) : (
+                                  <span>최신</span>
+                                )}
+                              </li>
+                            </ul>
+                          </div>
+                          <div className="w-full py-3">
+                            <ul>
+                              {gcomment?.Comment?.map((item) => (
+                                <li key={item.idcomment}>
+                                  <div className="w-full h-[200px] rounded-md px-3 border-b bg-red-50 bg-opacity-50 my-2">
                                     <div className="w-full h-full">
-                                      {/* Ô nhập bình luận */}
-                                      <div className="w-full h-full my-3">
-                                        <textarea
-                                          placeholder={!language ? "Leave a reply" : "답장 남기기"}
-                                          value={getrep}
-                                          className="w-full h-[160px] rounded-md px-3 py-3 border-2"
-                                          onChange={(e) =>
-                                            setrep(e.target.value)
-                                          }
-                                        />
+                                      {/* Hiển thị tên user và ngày đăng bình luận */}
+                                      <div className="w-full py-1 flex overflow-hidden">
+                                        <span className="max-w-[500px] font-semibold line-clamp-1">
+                                          {item.nameUser}
+                                        </span>
+                                        {!language ?
+                                          <span className="text-gray-400 mx-2 line-clamp-1">
+                                            {
+                                              monthNames[
+                                                new Date(item.createTime).getMonth()
+                                              ].en
+                                            }{" "}
+                                            {new Date(item.createTime).getDate()},
+                                            {new Date(
+                                              item.createTime
+                                            )?.getFullYear()}
+
+                                          </span>
+                                          : <span className="text-gray-400 mx-2 line-clamp-1">
+                                            {
+                                              monthNames[
+                                                new Date(item.createTime).getMonth()
+                                              ].kr
+                                            }{" "}
+                                            {new Date(item.createTime).getDate()}일,
+                                            {new Date(
+                                              item.createTime
+                                            )?.getFullYear()}년
+
+                                          </span>}
+                                      </div>
+
+                                      {/* Hiển thị nội dung bình luận */}
+                                      <div className="h-[120px] px-2 custom-scrollbar">
+                                        <span className="">{item.comment}</span>
+                                      </div>
+
+                                      {/* Nút bình luận, thích, không thích */}
+                                      <div className="w-full flex gap-2 py-1">
                                         <button
                                           onClick={() =>
-                                            handlerep(item.idcomment)
+                                            handleToggleReply(item.idcomment)
                                           }
-                                          className="px-3 py-2 ml-auto bg-black hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center"
+                                          className="px-2 py-1 mr-auto border rounded-md hover:bg-gray-200 flex gap-2 items-center justify-center"
                                         >
-                                          <SendRoundedIcon className="transform rotate-200" />
                                           {!language ? (
-                                            <span>Reply</span>
+                                            <span>Replies</span>
                                           ) : (
-                                            <span>답장하다</span>
+                                            <span>답글하다</span>
                                           )}
+                                          {item.replies}
+                                        </button>
+
+                                        <button
+                                          className="px-2 py-1  ml-auto border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center"
+                                          onClick={() =>
+                                            handlelike(item.idcomment, item.like)
+                                          }
+                                        >
+                                          <ThumbUpIcon className="text-gray-400" />
+                                          {item.like}
+                                        </button>
+
+                                        <button
+                                          className="px-2 py-1  border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center"
+                                          onClick={() =>
+                                            handledislike(
+                                              item.idcomment,
+                                              item.dislike
+                                            )
+                                          }
+                                        >
+                                          <ThumbDownIcon className="text-gray-400" />
+                                          {item.dislike}
                                         </button>
                                       </div>
                                     </div>
-
-                                    {/* Hiển thị các phản hồi bình luận có sẳn */}
-
-                                    <div className="w-full h-full">
-                                      {/* Danh sách phản hồi */}
-                                      <ul className="w-full h-full">
-                                        {reps?.map((item) => (
-                                          <li key={item.id}>
-                                            <div className="w-full h-[200px] rounded-md px-3 border-b bg-gray-100 my-2">
-                                              {/* Hiển thị tên user và ngày đăng bình luận */}
-                                              <div className="w-full py-1 flex overflow-hidden">
-                                                <span className="max-w-[500px] font-semibold line-clamp-1">
-                                                  {item.nameUser}
-                                                </span>
-                                                {!language ?
-                                                  <span className="text-gray-400 mx-2 line-clamp-1">
-                                                    {
-                                                      monthNames[
-                                                        new Date(item.createTime).getMonth()
-                                                      ].en
-                                                    }{" "}
-                                                    {new Date(item.createTime).getDate()},
-                                                    {new Date(
-                                                      item.createTime
-                                                    )?.getFullYear()}
-
-                                                  </span>
-                                                  : <span className="text-gray-400 mx-2 line-clamp-1">
-                                                    {
-                                                      monthNames[
-                                                        new Date(item.createTime).getMonth()
-                                                      ].kr
-                                                    }{" "}
-                                                    {new Date(item.createTime).getDate()}일,
-                                                    {new Date(
-                                                      item.createTime
-                                                    )?.getFullYear()}년
-
-                                                  </span>}
-
-                                              </div>
-
-                                              {/* Hiển thị nội dung bình luận */}
-                                              <div className="h-[120px] px-2 custom-scrollbar">
-                                                <span className="">
-                                                  {item.rep}
-                                                </span>
-                                              </div>
-
-                                              {/* Nút bình luận, thích, không thích */}
-                                              <div className="w-full flex gap-2 py-1">
-                                                <button
-                                                  onClick={() =>
-                                                    replike(
-                                                      item.idcomment,
-                                                      item.id,
-                                                      item.like
-                                                    )
-                                                  }
-                                                  className="px-2 py-1  ml-auto border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center"
-                                                >
-                                                  <ThumbUpIcon className="text-gray-400" />
-                                                  {item.like}
-                                                </button>
-
-                                                <button
-                                                  onClick={() =>
-                                                    repdislike(
-                                                      item.idcomment,
-                                                      item.id,
-                                                      item.dislike
-                                                    )
-                                                  }
-                                                  className="px-2 py-1  border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center"
-                                                >
-                                                  <ThumbDownIcon className="text-gray-400" />
-                                                  {item.dislike}
-                                                </button>
-                                              </div>
-                                            </div>
-                                          </li>
-                                        ))}
-                                      </ul>
-                                    </div>
                                   </div>
-                                )}
-                              </li>
-                            ))}
-                          </ul>
+
+                                  {/* Phản hồi bình luận */}
+                                  {replyCommentId === item.idcomment && (
+                                    <div className="w-full px-5">
+                                      {/* Nhập bình luận phản hồi */}
+                                      <div className="w-full h-full">
+                                        {/* Ô nhập bình luận */}
+                                        <div className="w-full h-full my-3">
+                                          <textarea
+                                            placeholder={!language ? "Leave a reply" : "답장 남기기"}
+                                            value={getrep}
+                                            className="w-full h-[160px] rounded-md px-3 py-3 border-2"
+                                            onChange={(e) =>
+                                              setrep(e.target.value)
+                                            }
+                                          />
+                                          <button
+                                            onClick={() =>
+                                              handlerep(item.idcomment)
+                                            }
+                                            className="px-3 py-2 ml-auto bg-black hover:shadow-md text-white rounded-xl flex gap-2 items-center justify-center"
+                                          >
+                                            <SendRoundedIcon className="transform rotate-200" />
+                                            {!language ? (
+                                              <span>Reply</span>
+                                            ) : (
+                                              <span>답장하다</span>
+                                            )}
+                                          </button>
+                                        </div>
+                                      </div>
+
+                                      {/* Hiển thị các phản hồi bình luận có sẳn */}
+
+                                      <div className="w-full h-full">
+                                        {/* Danh sách phản hồi */}
+                                        <ul className="w-full h-full">
+                                          {reps?.map((item) => (
+                                            <li key={item.id}>
+                                              <div className="w-full h-[200px] rounded-md px-3 border-b bg-gray-100 my-2">
+                                                {/* Hiển thị tên user và ngày đăng bình luận */}
+                                                <div className="w-full py-1 flex overflow-hidden">
+                                                  <span className="max-w-[500px] font-semibold line-clamp-1">
+                                                    {item.nameUser}
+                                                  </span>
+                                                  {!language ?
+                                                    <span className="text-gray-400 mx-2 line-clamp-1">
+                                                      {
+                                                        monthNames[
+                                                          new Date(item.createTime).getMonth()
+                                                        ].en
+                                                      }{" "}
+                                                      {new Date(item.createTime).getDate()},
+                                                      {new Date(
+                                                        item.createTime
+                                                      )?.getFullYear()}
+
+                                                    </span>
+                                                    : <span className="text-gray-400 mx-2 line-clamp-1">
+                                                      {
+                                                        monthNames[
+                                                          new Date(item.createTime).getMonth()
+                                                        ].kr
+                                                      }{" "}
+                                                      {new Date(item.createTime).getDate()}일,
+                                                      {new Date(
+                                                        item.createTime
+                                                      )?.getFullYear()}년
+
+                                                    </span>}
+
+                                                </div>
+
+                                                {/* Hiển thị nội dung bình luận */}
+                                                <div className="h-[120px] px-2 custom-scrollbar">
+                                                  <span className="">
+                                                    {item.rep}
+                                                  </span>
+                                                </div>
+
+                                                {/* Nút bình luận, thích, không thích */}
+                                                <div className="w-full flex gap-2 py-1">
+                                                  <button
+                                                    onClick={() =>
+                                                      replike(
+                                                        item.idcomment,
+                                                        item.id,
+                                                        item.like
+                                                      )
+                                                    }
+                                                    className="px-2 py-1  ml-auto border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center"
+                                                  >
+                                                    <ThumbUpIcon className="text-gray-400" />
+                                                    {item.like}
+                                                  </button>
+
+                                                  <button
+                                                    onClick={() =>
+                                                      repdislike(
+                                                        item.idcomment,
+                                                        item.id,
+                                                        item.dislike
+                                                      )
+                                                    }
+                                                    className="px-2 py-1  border rounded-md gap-2 hover:bg-gray-200 flex items-center justify-center"
+                                                  >
+                                                    <ThumbDownIcon className="text-gray-400" />
+                                                    {item.dislike}
+                                                  </button>
+                                                </div>
+                                              </div>
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  )}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ) : (
-                  <div className="w-8/12 h-full px-2"></div>
-                )}
+                  ) : (
+                    <div className="w-full h-full px-2"></div>
+                  )}
+                </div>
+
                 {/* Bảng danh sách đề xuất */}
-                <div className="w-4/12 h-full bg-white px-2">
-                  <div className="w-full h-full mb-8">
+                <div className="col-span-1 h-full bg-white px-2">
+                  <div className="w-full mb-8">
                     <div className="flex items-center pb-2">
                       <span className="px-2 font-semibold text-lg hover:text-green-500 cursor-pointer">
                         {!language ? (
@@ -1048,7 +1052,7 @@ const DisplayOriginalPage = () => {
                   </div>
 
                   {/* Hiển thị nội dung truyện theo thể loại*/}
-                  <div className="w-full h-full mt-8">
+                  <div className="w-full mt-8">
                     <div className="flex items-center pb-2">
                       <span className="px-2 font-semibold text-lg hover:text-green-500 cursor-pointer">
                         {!language ? (
@@ -1425,6 +1429,7 @@ const DisplayOriginalPage = () => {
             </div>
           </div>
           {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+          <FooterPage />
         </div>
       )}
     </>
