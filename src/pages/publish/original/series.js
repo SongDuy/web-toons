@@ -268,14 +268,14 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                         </ul>
                     </div>
 
-                    <div className="w-full h-full sm:px-[160px] xs:ml-[-175px] sm:ml-0">
+                    <div className="w-full h-full sm:px-[160px] xs:px-[10px] sm:ml-0">
                         <div className="w-full h-full py-5 grid grid-cols-1 lg:grid-cols-3 ">
                             {/* Phần cột bên trái */}
-                            <div className="min-w-max h-full col-span-1 ">
+                            <div className="w-full h-full col-span-1 ">
 
                                 {/* Phần tải ảnh đại diện cho series */}
-                                <div className="min-w-max">
-                                    <div className="min-w-max py-3">
+                                <div className="w-full">
+                                    <div className="w-full py-3">
 
                                         <span className="w-full font-semibold text-xl">
                                             {!language ? (
@@ -288,7 +288,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
 
                                     </div>
 
-                                    <div className="min-w-max flex items-center justify-center">
+                                    <div className="w-full flex items-center justify-center">
                                         {/* Nút tải ảnh đại diện cho series truyện */}
                                         {photos ? (
                                             <img
@@ -361,8 +361,8 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                 </div>
 
                                 {/* Phần tải ảnh nền cho series */}
-                                <div className="min-w-max ">
-                                    <div className="min-w-max  py-3">
+                                <div className="w-full ">
+                                    <div className="w-full  py-3">
                                         <span className="w-full font-semibold text-xl">
                                             {!language ? (
                                                 "Horizontal Thumbnail"
@@ -372,7 +372,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                         </span>
                                     </div>
 
-                                    <div className="min-w-max shadow flex items-center justify-center">
+                                    <div className="w-full shadow flex items-center justify-center">
                                         {/* Nút tải ảnh nền */}
                                         {photos1 ? (
                                             <img
@@ -418,7 +418,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
 
                                     </div>
 
-                                    <div className="min-w-max py-3">
+                                    <div className="w-full py-3">
 
                                         <span className="block w-full font-semibold text-sm text-gray-500">
                                             {!language ? (
@@ -455,7 +455,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                             </div>
 
                             {/* Phần cột bên phải */}
-                            <div className="min-w-max h-full col-span-2">
+                            <div className="w-full h-full col-span-2">
 
                                 {/* Phần chọn thể loại */}
                                 <div className="w-full py-3 pl-5 grid xs:grid-cols-1 sm:grid-cols-2">
@@ -582,7 +582,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="xs:col-span-1 sm:col-span-2 xs:w-[300px] lg:w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2">
                                                 <Select
                                                     name="violence"
                                                     value={selections.violence}
@@ -661,7 +661,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="xs:col-span-1 sm:col-span-2 xs:w-[300px] lg:w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2">
                                                 <Select
                                                     name="nudity"
                                                     value={selections.nudity}
@@ -740,7 +740,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="xs:col-span-1 sm:col-span-2 xs:w-[300px] lg:w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2">
                                                 <Select
                                                     name="sexualContent"
                                                     value={selections.sexualContent}
@@ -818,7 +818,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="xs:col-span-1 sm:col-span-2 xs:w-[300px] lg:w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2">
                                                 <Select
                                                     name="profanity"
                                                     value={selections.profanity}
@@ -897,7 +897,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="xs:col-span-1 sm:col-span-2 xs:w-[300px] lg:w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2">
                                                 <Select
                                                     name="alcohol"
                                                     value={selections.alcohol}
@@ -978,7 +978,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="xs:col-span-1 sm:col-span-2 xs:w-[300px] lg:w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2">
                                                 <Select
                                                     name="sensitiveThemes"
                                                     value={selections.sensitiveThemes}
