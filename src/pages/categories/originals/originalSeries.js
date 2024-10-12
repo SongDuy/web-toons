@@ -309,7 +309,7 @@ const OriginalSeriesPage = () => {
                       {!language ? comicid.genre2 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid.genre2.toLowerCase())[0]?.nameKorean}
                     </span>
                   }
-                  <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.3] line-clamp-3 flex justify-center">
+                  <span className="w-full max-h-[150px] px-[25px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.4] line-clamp-2 flex justify-center">
                     {comicid.title}
                   </span>
 
@@ -368,7 +368,7 @@ const OriginalSeriesPage = () => {
                   {/* danh sach series */}
                   <ul className="w-full h-full ">
                     {/* khung danh sách */}
-                    {chapters?.chaps?.filter(item => item.check===true)?.sort((a, b) => b.num - a.num)?.map((item) => (
+                    {chapters?.chaps?.filter(item => item.check === true)?.sort((a, b) => b.num - a.num)?.map((item) => (
                       <Link
                         to={`/originals/original/series/display/${id.id}/${item.id}`}
                         key={item.id}
@@ -382,7 +382,7 @@ const OriginalSeriesPage = () => {
                                 className="object-fill w-full h-full rounded-md"
                               />
                             </div>
-                            
+
 
                             <div className="w-[350px] mr-auto ml-3 overflow-hidden">
                               <span className="text-black text-md leading-[1.2] line-clamp-2">
@@ -391,34 +391,34 @@ const OriginalSeriesPage = () => {
                             </div>
 
                             <div className="ml-auto">
-                             {!language? <span className="text-gray-400 text-md">
+                              {!language ? <span className="text-gray-400 text-md">
                                 {
                                   monthNames[
-                                  new Date(item.createTime).getMonth()
+                                    new Date(item.createTime).getMonth()
                                   ].en
                                 }{" "}
                                 {new Date(item.createTime).getDate()},
                                 {new Date(item.createTime)?.getFullYear()}
-                              </span>: <span className="text-gray-400 text-md">
+                              </span> : <span className="text-gray-400 text-md">
                                 {
                                   monthNames[
-                                  new Date(item.createTime).getMonth()
+                                    new Date(item.createTime).getMonth()
                                   ].kr
                                 }{" "}
                                 {new Date(item.createTime).getDate()}일,
                                 {new Date(item.createTime)?.getFullYear()}년
                               </span>}
                             </div>
-                            {item.audioUrl&&
-                            <div className="ml-auto">
-                            <MusicNoteIcon />
-                            </div>
-}
+                            {item.audioUrl &&
+                              <div className="ml-auto">
+                                <MusicNoteIcon />
+                              </div>
+                            }
                             <div className="ml-auto flex gap-1">
                               <span className="text-gray-400">
                                 <FavoriteBorderSharpIcon />
                               </span>
-                              
+
                               <span className="text-gray-400 text-md line-clamp-1">
                                 {item.likes}
                               </span>

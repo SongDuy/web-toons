@@ -325,7 +325,7 @@ const VideoSeriesPage = () => {
               {/* Hiện thị tiêu đề và tác giả truyện */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-[1200px] overflow-hidden">
-                  <span className="max-h-[190px] px-[100px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.3] line-clamp-3 flex justify-center">
+                  <span className="w-full max-h-[150px] px-[25px] font-semibold my-5 text-[50px] text-white text-shadow-black leading-[1.4] line-clamp-3 flex justify-center">
                     {Videoid.title}
                   </span>
 
