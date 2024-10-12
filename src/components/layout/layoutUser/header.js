@@ -230,6 +230,7 @@ const HeaderPage = () => {
             className="border h-[5px] bg-gray-500 w-[15px] rounded-l-full"
             onClick={() => logouts()}
           />
+          
           <button
             className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
             onClick={() => logouts()}
@@ -385,16 +386,16 @@ const HeaderPage = () => {
                 onClick={handleToggle}
               >
                 <div className="hidden sm:block">
-                  <button
+                  <span
                     className="w-[100px] h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center">
                     {!language ? <span> Publish </span> : <span> 발행 </span>}
-                  </button>
+                  </span>
                 </div>
                 <div className="block sm:hidden">
-                  <button
+                  <span
                     className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full">
                     <BackupIcon />
-                  </button>
+                  </span>
                 </div>
               </button>
 
@@ -424,7 +425,7 @@ const HeaderPage = () => {
                           aria-labelledby="composition-button"
                           onKeyDown={handleListKeyDown}
                         >
-                          <Link to={`/publish/original`} onclick={dispatch(setcurrentStepOriginal(1))}>
+                          <Link to={`/publish/original`} onClick={()=>dispatch(setcurrentStepOriginal(1))}>
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <PictureAsPdfOutlinedIcon />
 
@@ -433,7 +434,7 @@ const HeaderPage = () => {
                             </MenuItem>
                           </Link>
 
-                          <Link to={`/publish/video`} onclick={dispatch(setcurrentStepVideo(1))}>
+                          <Link to={`/publish/video`} onClick={()=>dispatch(setcurrentStepVideo(1))}>
                             <MenuItem onClick={handleClose} className="flex gap-x-1">
                               <VideoCallOutlinedIcon />
 
@@ -461,14 +462,14 @@ const HeaderPage = () => {
                 onClick={handleToggleAccount}
               >
                 <div className="hidden sm:block">
-                  <button className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500">
+                  <span className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500">
                     {auth?.currentUser.displayName}
-                  </button>
+                  </span>
                 </div>
                 <div className="block sm:hidden">
-                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black rounded-full">
+                  <span className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black rounded-full">
                     <AccountCircleSharpIcon />
-                  </button>
+                  </span>
                 </div>
               </button>
               {/* Chọn menu Account*/}
