@@ -462,7 +462,7 @@ const HeaderPage = () => {
                 onClick={handleToggleAccount}
               >
                 <div className="hidden sm:block">
-                  <span className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500">
+                  <span className="xs:min-w-[50px] sm:min-w-[100px] xs:h-[20px] sm:h-[35px] px-2 py-1 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500">
                     {auth?.currentUser.displayName}
                   </span>
                 </div>

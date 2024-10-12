@@ -160,7 +160,7 @@ const CreatorChannelPage = () => {
                             {/* Hiển thị ảnh nền */}
                             <div className="w-full h-[400px] bg-green-200 rounded-lg">
                                 <img src="https://wallpapers.com/images/hd/chill-anime-girl-during-winter-n65e3iefecsy01if.jpg"
-                                    className="object-cover w-[1200px] h-full rounded-t-lg" alt="img"
+                                    className="object-cover w-full h-full rounded-t-lg" alt="img"
                                 />
                             </div>
 

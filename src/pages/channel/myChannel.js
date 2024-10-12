@@ -211,7 +211,7 @@ const MyChannelPage = () => {
                       ? Account?.horizontalThumbnail
                       : "https://wallpapers.com/images/hd/chill-anime-girl-during-winter-n65e3iefecsy01if.jpg"
                   }
-                  className="object-cover w-[1200px] h-full rounded-t-lg"
+                  className="object-cover w-full h-full rounded-t-lg"
                   alt="img"
                 />
                 {/* Nút thay ảnh bìa */}
