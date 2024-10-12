@@ -160,9 +160,9 @@ const HeaderPage = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(setuser(true));
-        localStorage.getItem("language") === "en" ? dispatch(setlanguage(false)) : dispatch(setlanguage(true))
+        localStorage.getItem("language")==="en"?dispatch(setlanguage(false)):dispatch(setlanguage(true))
       } else {
-        localStorage.getItem("language") === "en" ? dispatch(setlanguage(false)) : dispatch(setlanguage(true))
+        localStorage.getItem("language")==="en"?dispatch(setlanguage(false)):dispatch(setlanguage(true))
         // Optionally, dispatch an action to indicate the user is logged out
         // dispatch(setuser(false));
       }
@@ -218,20 +218,21 @@ const HeaderPage = () => {
           </button>
           <button
             className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full"
-            onClick={openLogin19Modal}
+            onClick={closeLogin19Modal}
           >
           </button>
+          {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
         </div>
         :
         <div className="flex items-center justify-center">
 
           <button
             className="border h-[5px] bg-gray-500 w-[15px] rounded-l-full"
-            onClick={closeLogin19Modal}
+            onClick={() => logouts()}
           />
           <button
             className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
-            onClick={closeLogin19Modal}
+            onClick={() => logouts()}
           >
             19
           </button>
@@ -584,12 +585,12 @@ const HeaderPage = () => {
             {!language ?
               <div>
                 <div className="hidden sm:block">
-                  <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
+                  <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => {dispatch(getlanguage()); localStorage.setItem("language","en")}}>
                     English
                   </button>
                 </div>
                 <div className="block sm:hidden">
-                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
+                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() =>{ dispatch(getlanguage()); localStorage.setItem("language","en")}}>
                     En
                   </button>
                 </div>
@@ -597,12 +598,12 @@ const HeaderPage = () => {
               :
               <div>
                 <div className="hidden sm:block">
-                  <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
+                  <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language","kr")}}>
                     한국어
                   </button>
                 </div>
                 <div className="block sm:hidden">
-                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
+                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() =>{ dispatch(getlanguage()); localStorage.setItem("language","kr")}}>
                     Ko
                   </button>
                 </div>

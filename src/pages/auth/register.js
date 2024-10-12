@@ -71,7 +71,7 @@ const RegisterPage = () => {
               <input
                 type="text"
                 className="w-full h-[50px] px-2 border rounded shadow"
-                placeholder={!language ? "Full Name" : "전체 이름"}
+                placeholder={!language ? "Full name" : "전체 이름"}
                 value={displayName}
                 onChange={(e) => setdisplayName(e.target.value)}
               />
@@ -82,7 +82,7 @@ const RegisterPage = () => {
                 onChange={(date) => setSelectedDate(date)}
                 dateFormat="dd/MM/yyyy"  // Định dạng ngày
                 className="w-full h-[50px] px-2 border rounded shadow "  // Sử dụng Tailwind CSS để style
-                placeholderText={!language ? "Select Date" : "날짜 선택"}
+                placeholderText={!language ? "Select date of birth" : "생년월일 선택"}
                 //placeholderText="Select Date"
                 showYearDropdown  // Hiển thị danh sách năm
                 showMonthDropdown  // Hiển thị danh sách tháng
@@ -94,7 +94,7 @@ const RegisterPage = () => {
             <input
               type="email"
               className="w-full h-[50px] px-2 border rounded shadow"
-              placeholder={!language ? "Email Address" : "이메일주소"}
+              placeholder={!language ? "Email address" : "이메일주소"}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
