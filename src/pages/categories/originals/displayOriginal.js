@@ -513,7 +513,7 @@ const DisplayOriginalPage = () => {
   // Tính toán scale dựa trên kích thước màn hình
   const calculateScale = () => {
     const desiredWidth = windowSize.width * 0.9; // Giảm đi 10% để có margin
-    const pdfWidth = 750; // Giả sử chiều rộng mặc định của trang PDF là 600px
+    const pdfWidth = 750; // Giả sử chiều rộng mặc định của trang PDF là 750px
     return Math.min(desiredWidth / pdfWidth, 1.5); // Đặt giới hạn tối đa cho scale
   };
 
