@@ -193,7 +193,7 @@ const GenresPage = () => {
                         <div className="w-full h-full py-5 flex items-center justify-center">
                             <div className="w-full h-full">
                                 {/* Danh mục thể loại */}
-                                <div className="w-full h-[75px] mb-5 flex items-center justify-start overflow-x-auto">
+                                <div className="w-full h-[95px] mb-5 flex items-center justify-start overflow-x-auto">
                                     <ul
                                         className="grid grid-rows-2 grid-flow-col gap-2 w-max"
                                     >
