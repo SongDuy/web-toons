@@ -11,6 +11,7 @@ import { getchaptersadVideo } from '../../../common/store/Video';
 import CheckIcon from "@mui/icons-material/Check";
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import CommentFireBase from '../../../common/services/Comment.services';
 
 const AdminVideosPageid = () => {
     const chapters = useSelector(state => state.Video.Chapters);
@@ -44,6 +45,8 @@ const AdminVideosPageid = () => {
                 const checknum=numcount!== chapters?.chaps?.length
 
                 await VideoFireBase.Deletechap(id.id, idchap)
+                await CommentFireBase.Deletechap(idchap)
+
                 await VideoFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 0 }, id.id);
 
                 const chap = await dispatch(getchaptersadVideo(id.id))

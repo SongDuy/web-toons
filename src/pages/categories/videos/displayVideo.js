@@ -189,7 +189,7 @@ const DisplayVideoPage = () => {
     dispatch(setIsLoginModal(false));
   };
   const handleNextPage = () => {
-    const totalPages = Math.ceil(chapters?.chaps?.length / itemsPerPage);
+    const totalPages = Math.ceil(chapters?.chaps?.filter(item=>item.check===true)?.length / itemsPerPage);
     const nextPage = currentPage + 1;
     setCurrentPage(nextPage < totalPages ? nextPage : currentPage);
   };
@@ -200,9 +200,9 @@ const DisplayVideoPage = () => {
   };
 
   const startIndex = currentPage * itemsPerPage;
-  const endIndex = Math.min(startIndex + itemsPerPage, chapters?.chaps?.length);
+  const endIndex = Math.min(startIndex + itemsPerPage, chapters?.chaps?.filter(item=>item.check===true)?.length);
 
-  const currentItems = chapters?.chaps?.slice(startIndex, endIndex);
+  const currentItems = chapters?.chaps?.filter(item=>item.check===true)?.slice(startIndex, endIndex);
 
   const handleToggleReply = async (commentId) => {
     try {
@@ -416,12 +416,12 @@ const DisplayVideoPage = () => {
     }
   };
   const goToPreviousChapter = () => {
-    const Previous= chapters?.chaps?.filter(item=>chapid.num-1===item.num)
+    const Previous= chapters?.chaps?.filter(item=>chapid.num-1===item.num&&item.check===true)
     Previous.length!==0&& navigate(`/videos/video/series/display/${id.id}/${Previous[0]?.id}`);
    };
  
    const goToNextChapter = () => {
-     const Next= chapters?.chaps?.filter(item=>chapid.num+1===item.num)
+     const Next= chapters?.chaps?.filter(item=>chapid.num+1===item.num&&item.check===true)
      Next.length!==0&& navigate(`/videos/video/series/display/${id.id}/${Next[0]?.id}`);
    };
  

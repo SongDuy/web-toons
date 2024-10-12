@@ -13,6 +13,7 @@ import { getchaptersVideo } from '../../../common/store/Video';
 import VideoFireBase from '../../../common/services/Video.services';
 import { useNavigate } from 'react-router-dom';
 import { setcurrentStepVideo } from '../../../common/store/hidden';
+import CommentFireBase from '../../../common/services/Comment.services';
 
 const EpisodeVideo = () => {
     const chapters = useSelector(state => state.Video.Chapters);
@@ -60,7 +61,8 @@ const EpisodeVideo = () => {
                 setloading(false)
                 const checknum=numcount!== chapters?.chaps?.length
                 await VideoFireBase.Deletechap(id.id, idchap)
-               
+                await CommentFireBase.Deletechap(idchap)
+
                 await VideoFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 0 }, id.id);
                 checknum&&  chapters?.chaps?.filter(item=>item.id!==idchap)?.map(async item=>
                     item.num>numcount&&  await VideoFireBase.updateep({num:item.num-1===0?1:item.num-1},id.id,item.id)
