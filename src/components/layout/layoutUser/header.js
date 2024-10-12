@@ -175,7 +175,7 @@ const HeaderPage = () => {
   // Nhấn nút Chuyển ngôn ngữ
 
   return (
-    <div className=" w-full xs:h-[50px] sm:h-[100px] bg-white flex xs:px-[5px] sm:px-[30px]">
+    <div className=" w-full h-[100px] bg-white flex xs:px-[5px] sm:px-[30px]">
 
       {/* logo */}
       <div className="xs:w-[50px] sm:w-[100px] flex items-center justify-center cursor-pointer">
