@@ -454,7 +454,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                             {/* Phần cột bên phải */}
                             <div className="w-full h-full col-span-2">
                                 {/* Phần chọn thể loại */}
-                                <div className="w-full py-3 pl-5 grid xs:grid-cols-1 sm:grid-cols-2">
+                                <div className="w-full py-3 pl-5 grid xs:grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-6">
                                     {/* Phần chọn thể loại 1 */}
                                     <div className="w-full">
                                         <h1 className="w-full font-semibold text-xl">
@@ -487,7 +487,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     </div>
 
                                     {/* Phần chọn thể loại 2 */}
-                                    <div className="w-full sm:ml-5">
+                                    <div className="w-full">
                                         <h1 className="w-full font-semibold text-xl">
                                             {!language ? ("Genre 2") : ("장르 2")}
                                         </h1>
