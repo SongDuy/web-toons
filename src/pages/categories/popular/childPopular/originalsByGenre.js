@@ -33,7 +33,7 @@ const OriginalsByGenrePage = () => {
                         <li
                             key={item.id}
                             onClick={() => setSelectedOriginalsByGenre(item.name)}
-                            className={`min-w-[97px] border uppercase font-semibold text-sm hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === (item.name || "Action") ? 'text-black' : 'text-gray-400'}`}
+                            className={`min-w-[97px] uppercase font-semibold text-sm hover:text-black cursor-pointer flex items-center justify-center ${selectedOriginalsByGenre === (item.name || "Action") ? 'text-black' : 'text-gray-400'}`}
                         >
                             {!language ? item.name : item.nameKorean}
                         </li>
