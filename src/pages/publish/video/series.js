@@ -514,10 +514,10 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                 <div className="w-full py-3 pl-5">
                                     {/* Khi chọn xong nội dung các ô thì sẽ trả về độ tuổi truyện */}
                                     <ul className="grid grid-cols-1 gap-4">
-                                        <li className="w-full h-[50px] flex items-center">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
 
 
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                            <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
                                                     " Violent and graphic content"
                                                 ) : (
@@ -525,14 +525,22 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2">
                                                 <Select
                                                     name="violence"
                                                     value={selections.violence}
                                                     onChange={handleSelectChange}
                                                     displayEmpty
-                                                    className="w-full h-[50px] bg-white mt-3 rounded-md"
-                                                    MenuProps={{ PaperProps: { sx: { maxWidth: '300px', whiteSpace: 'normal', } } }}
+                                                    className="w-full h-full bg-white mt-3 rounded-md"
+                                                    MenuProps={{
+                                                        PaperProps: {
+                                                            sx: {
+                                                                maxWidth: "100%", // Đảm bảo không vượt quá kích thước màn hình
+                                                                whiteSpace: "normal", // Giúp nội dung xuống dòng
+                                                                wordBreak: "break-word", // Bẻ dòng với từ dài
+                                                            },
+                                                        }
+                                                    }}
                                                 >
                                                     <MenuItem value="">
                                                         <span className="whitespace-normal">
@@ -586,8 +594,8 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                                 </Select>
                                             </FormControl>
                                         </li>
-                                        <li className="w-full h-[50px] flex items-center">
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
+                                            <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
                                                     "Nudity"
                                                 ) : (
@@ -595,14 +603,22 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2">
                                                 <Select
                                                     name="nudity"
                                                     value={selections.nudity}
                                                     onChange={handleSelectChange}
                                                     displayEmpty
-                                                    className="w-full h-[50px] bg-white mt-3 rounded-md"
-                                                    MenuProps={{ PaperProps: { sx: { maxWidth: '300px', whiteSpace: 'normal', } } }}
+                                                    className="w-full h-full bg-white mt-3 rounded-md"
+                                                    MenuProps={{
+                                                        PaperProps: {
+                                                            sx: {
+                                                                maxWidth: "100%", // Đảm bảo không vượt quá kích thước màn hình
+                                                                whiteSpace: "normal", // Giúp nội dung xuống dòng
+                                                                wordBreak: "break-word", // Bẻ dòng với từ dài
+                                                            },
+                                                        }
+                                                    }}
                                                 >
                                                     <MenuItem value="">
                                                         <span className="whitespace-normal">
@@ -658,8 +674,8 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                                 </Select>
                                             </FormControl>
                                         </li>
-                                        <li className="w-full h-[50px] flex items-center">
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
+                                            <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
                                                     "Sexual content"
                                                 ) : (
@@ -667,14 +683,22 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2">
                                                 <Select
                                                     name="sexualContent"
                                                     value={selections.sexualContent}
                                                     onChange={handleSelectChange}
                                                     displayEmpty
-                                                    className="w-full h-[50px] bg-white mt-3 rounded-md"
-                                                    MenuProps={{ PaperProps: { sx: { maxWidth: '300px', whiteSpace: 'normal', } } }}
+                                                    className="w-full h-full bg-white mt-3 rounded-md"
+                                                    MenuProps={{
+                                                        PaperProps: {
+                                                            sx: {
+                                                                maxWidth: "100%", // Đảm bảo không vượt quá kích thước màn hình
+                                                                whiteSpace: "normal", // Giúp nội dung xuống dòng
+                                                                wordBreak: "break-word", // Bẻ dòng với từ dài
+                                                            },
+                                                        }
+                                                    }}
                                                 >
                                                     <MenuItem value="">
                                                         <span className="whitespace-normal">
@@ -729,9 +753,9 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                                 </Select>
                                             </FormControl>
                                         </li>
-                                        <li className="w-full h-[50px] flex items-center">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
 
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                            <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
                                                     "Profanity"
                                                 ) : (
@@ -739,14 +763,22 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2">
                                                 <Select
                                                     name="profanity"
                                                     value={selections.profanity}
                                                     onChange={handleSelectChange}
                                                     displayEmpty
-                                                    className="w-full h-[50px] bg-white mt-3 rounded-md"
-                                                    MenuProps={{ PaperProps: { sx: { maxWidth: '300px', whiteSpace: 'normal', } } }}
+                                                    className="w-full h-full bg-white mt-3 rounded-md"
+                                                    MenuProps={{
+                                                        PaperProps: {
+                                                            sx: {
+                                                                maxWidth: "100%", // Đảm bảo không vượt quá kích thước màn hình
+                                                                whiteSpace: "normal", // Giúp nội dung xuống dòng
+                                                                wordBreak: "break-word", // Bẻ dòng với từ dài
+                                                            },
+                                                        }
+                                                    }}
                                                 >
                                                     <MenuItem value="">
                                                         <span className="whitespace-normal">
@@ -801,9 +833,9 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                                 </Select>
                                             </FormControl>
                                         </li>
-                                        <li className="w-full h-[50px] flex items-center">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
 
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                            <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
                                                     "Alcohol, drugs or tobacco."
                                                 ) : (
@@ -811,14 +843,22 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2">
                                                 <Select
                                                     name="alcohol"
                                                     value={selections.alcohol}
                                                     onChange={handleSelectChange}
                                                     displayEmpty
-                                                    className="w-full h-[50px] bg-white mt-3 rounded-md"
-                                                    MenuProps={{ PaperProps: { sx: { maxWidth: '300px', whiteSpace: 'normal', } } }}
+                                                    className="w-full h-full bg-white mt-3 rounded-md"
+                                                    MenuProps={{
+                                                        PaperProps: {
+                                                            sx: {
+                                                                maxWidth: "100%", // Đảm bảo không vượt quá kích thước màn hình
+                                                                whiteSpace: "normal", // Giúp nội dung xuống dòng
+                                                                wordBreak: "break-word", // Bẻ dòng với từ dài
+                                                            },
+                                                        }
+                                                    }}
                                                 >
                                                     <MenuItem value="">
                                                         <span className="whitespace-normal">
@@ -874,8 +914,8 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                             </FormControl>
                                         </li>
 
-                                        <li className="w-full h-[50px] flex items-center">
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
+                                            <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
                                                     "Sensitive themes and topics"
                                                 ) : (
@@ -883,14 +923,22 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2">
                                                 <Select
                                                     name="sensitiveThemes"
                                                     value={selections.sensitiveThemes}
                                                     onChange={handleSelectChange}
                                                     displayEmpty
-                                                    className="w-full h-[50px] bg-white mt-3 rounded-md"
-                                                    MenuProps={{ PaperProps: { sx: { maxWidth: '300px', whiteSpace: 'normal', } } }}
+                                                    className="w-full h-full bg-white mt-3 rounded-md"
+                                                    MenuProps={{
+                                                        PaperProps: {
+                                                            sx: {
+                                                                maxWidth: "100%", // Đảm bảo không vượt quá kích thước màn hình
+                                                                whiteSpace: "normal", // Giúp nội dung xuống dòng
+                                                                wordBreak: "break-word", // Bẻ dòng với từ dài
+                                                            },
+                                                        }
+                                                    }}
                                                 >
                                                     <MenuItem value="">
                                                         <span className="whitespace-normal">
