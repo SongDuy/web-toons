@@ -365,9 +365,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                   <div className="w-full py-3">
                     <span className="w-full font-semibold text-xl">
                       {!language ? (
-                        "Episode Thumbnail"
+                        <span> Episode Thumbnail </span>
                       ) : (
-                        "에피소드 썸네일"
+                        <span> 에피소드 썸네일 </span>
                       )}
                     </span>
                   </div>
@@ -418,17 +418,17 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
 
                     <span className="block w-full font-semibold text-gray-600">
                       {!language ? (
-                        "Recommended size is 160x151."
+                        <span>Recommended size is 160x151.</span>
                       ) : (
-                        "추천 사이즈는 160x151입니다."
+                        <span>추천 사이즈는 160x151입니다.</span>
                       )}
                     </span>
 
                     <span className="block w-full font-semibold text-gray-600">
                       {!language ? (
-                        "Image must be less than 500KB."
+                        <span>Image must be less than 500KB.</span>
                       ) : (
-                        "이미지는 500KB 이하이어야 합니다."
+                        <span>이미지는 500KB 이하이어야 합니다.</span>
                       )}
                     </span>
 
@@ -455,13 +455,13 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
               {/* Cột bên phải */}
               <div className="w-full h-full col-span-2 py-3 pl-5 border-b-2 pb-10">
                 <div className="grid grid-cols-1 gap-5">
+                  {/* Tiêu đề của series */}
                   <div className="w-full flex items-center gap-2">
-
                     <h1 className="font-semibold text-xl flex items-center">
                       {!language ? (
-                        "Series title :"
+                        <span>Series title :</span>
                       ) : (
-                        "시리즈 제목 :"
+                        <span>시리즈 제목 :</span>
                       )}
                     </h1>
 
@@ -475,9 +475,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     {/* Tiêu đề */}
                     <h1 className="w-full font-semibold text-xl">
                       {!language ? (
-                        "Episode title"
+                        <span> Episode title </span>
                       ) : (
-                        "에피소드 제목"
+                        <span> 에피소드 제목 </span>
                       )}
                     </h1>
 
@@ -499,9 +499,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     {/* Tiêu đề */}
                     <h1 className="w-full font-semibold text-xl">
                       {!language ? (
-                        "Upload file"
+                        <span>Upload file</span>
                       ) : (
-                        "파일 업로드"
+                        <span>파일 업로드</span>
                       )}
                     </h1>
 
@@ -511,9 +511,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
 
                         <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
                           {!language ? (
-                            "Select File To Upload"
+                            <span>Select File To Upload</span>
                           ) : (
-                            "업로드할 파일 선택"
+                            <span>업로드할 파일 선택</span>
                           )}
                         </button>
 
@@ -530,9 +530,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                         className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full"
                       >
                         {!language ? (
-                          "Delete All"
+                          <span>Delete All</span>
                         ) : (
-                          "모두 삭제"
+                          <span>모두 삭제</span>
                         )}
                       </button>
 
@@ -561,15 +561,16 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                           </div>
                         </div>
                       ) : (
-                        !language ? (
-                          <span className="font-semibold text-gray-500">
-                            render files.
-                          </span>
-                        ) : (
-                          <span className="font-semibold text-gray-500">
-                            파일 렌더링
-                          </span>
-                        ))}
+
+                        <span className="font-semibold text-gray-500">
+                          {!language ? (
+                            <span>render files.</span>
+                          ) : (
+                            <span>파일 렌더링.</span>
+                          )}
+                        </span>
+
+                      )}
                     </div>
 
                     {/* Phần mô tả */}
@@ -602,16 +603,16 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                       <div className="flex gap-2">
                         <h1 className="h-full font-semibold text-xl">
                           {!language ? (
-                            "Note"
+                            <span>Note</span>
                           ) : (
-                            "노트"
+                            <span>노트</span>
                           )}
                         </h1>
                         <span className="h-full text-gray-400 font-semibold mt-1">
                           {!language ? (
-                            "(Optional)"
+                            <span>(Optional)</span>
                           ) : (
-                            "(선댁 사항)"
+                            <span>(선댁 사항)</span>
                           )}
                         </span>
                       </div>
@@ -712,9 +713,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     {/* Tiêu đề */}
                     <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
                       {!language ? (
-                        "Comments"
+                        <span>Comments</span>
                       ) : (
-                        "댓글"
+                        <span>댓글</span>
                       )}
                     </h1>
 
@@ -764,7 +765,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                       )}
                     </h1>
 
-                    <div className="xs:gap-x-3 sm:gap-x-6 flex mt-1 items-center">
+                    <div className="flex xs:gap-x-3 sm:gap-x-6 mt-1 items-center">
                       <label className="xs:w-[110px] sm:w-auto flex items-center">
                         <Radio
                           checked={selectedEpisodesValue === "Ongoing"}

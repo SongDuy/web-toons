@@ -261,124 +261,119 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                         </ul>
                     </div>
 
-                    <div className="w-full h-full px-[200px]">
-                        <div className="w-full h-full py-5 flex">
-                            <div className="w-3/12 h-full">
+                    <div className="w-full h-full sm:px-[200px] xs:px-[10px] sm:ml-0">
+                        <div className="w-full h-full py-5 grid grid-cols-1 lg:grid-cols-3">
 
+                            {/* Cột bên trái */}
+                            <div className="w-full h-full col-span-1 ">
                                 {/* Phần tải ảnh cho tập video */}
-                                <div className="w-[220px] h-full">
+                                <div className="w-full h-full">
                                     <div className="w-full py-3">
-                                        {!language ? (
-                                            <span className="w-full font-semibold text-xl">
-                                                Episode Thumbnail
-                                            </span>
+                                        <span className="w-full font-semibold text-xl">
+                                            {!language ? (
+                                                <span> Episode Thumbnail </span>
+                                            ) : (
+                                                <span> 에피소드 썸네일 </span>
+                                            )}
+                                        </span>
+                                    </div>
+
+                                    <div className="w-full flex items-center justify-center">
+                                        {photos1 ? (
+                                            <img
+                                                src={photos1}
+                                                alt="Selected"
+                                                className="w-[200px] h-[200px] object-cover rounded"
+                                            />
                                         ) : (
-                                            <span className="w-full font-semibold text-xl">
-                                                에피소드 썸네일
-                                            </span>
+                                            <>
+                                                <button className="w-[200px] h-[200px] relative shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
+                                                    <div>
+                                                        <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
+                                                            <NorthIcon />
+                                                        </span>
+                                                        {!language ? (
+                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                                Select an image to upload.
+                                                            </span>
+                                                        ) : (
+                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                                업로드할 이미지를 선택하세요.
+                                                            </span>
+                                                        )}
+
+                                                        {!language ? (
+                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                                Or drag the image file here.
+                                                            </span>
+                                                        ) : (
+                                                            <span className="block w-full font-semibold text-sm hover:text-gray-500">
+                                                                또는 이미지를 여기로 드래그하세요.
+                                                            </span>
+                                                        )}
+                                                        <input
+                                                            type="file"
+                                                            accept="image/*"
+                                                            onChange={(e) => handlePhotoChange1(e)}
+                                                            className="absolute inset-0 opacity-0 cursor-pointer "
+                                                        />
+                                                    </div>
+                                                </button>
+                                            </>
                                         )}
                                     </div>
 
-                                    {photos1 ? (
-                                        <img
-                                            src={photos1}
-                                            alt="Selected"
-                                            className="w-[200px] h-[200px] object-cover rounded"
-                                        />
-                                    ) : (
-                                        <>
-                                            <button className="w-[200px] h-[200px] relative shadow border bg-red-50 rounded hover:border-green-500 hover:text-gray-500 flex items-center justify-center group">
-                                                <div>
-                                                    <span className="w-[50px] h-[50px] ml-auto mr-auto text-white bg-gray-400 rounded-full mb-3 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
-                                                        <NorthIcon />
-                                                    </span>
-                                                    {!language ? (
-                                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                            Select an image to upload.
-                                                        </span>
-                                                    ) : (
-                                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                            업로드할 이미지를 선택하세요.
-                                                        </span>
-                                                    )}
-
-                                                    {!language ? (
-                                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                            Or drag the image file here.
-                                                        </span>
-                                                    ) : (
-                                                        <span className="block w-full font-semibold text-sm hover:text-gray-500">
-                                                            또는 이미지를 여기로 드래그하세요.
-                                                        </span>
-                                                    )}
-                                                    <input
-                                                        type="file"
-                                                        accept="image/*"
-                                                        onChange={(e) => handlePhotoChange1(e)}
-                                                        className="absolute inset-0 opacity-0 cursor-pointer "
-                                                    />
-                                                </div>
-                                            </button>
-
-
-
-                                        </>
-                                    )}
-
                                     <div className="w-full py-3">
-                                        {!language ? (
-                                            <span className="block w-full font-semibold text-[13.5px] text-gray-600">
-                                                Recommended size is 160x151.
-                                            </span>
-                                        ) : (
-                                            <span className="block w-full font-semibold text-[13.5px] text-gray-600">
-                                                추천 사이즈는 160x151입니다.
-                                            </span>
-                                        )}
+                                        <span className="block w-full font-semibold text-gray-600">
+                                            {!language ? (
+                                                <span>Recommended size is 160x151.</span>
+                                            ) : (
+                                                <span>추천 사이즈는 160x151입니다.</span>
+                                            )}
+                                        </span>
 
-                                        {!language ? (
-                                            <span className="block w-full font-semibold text-[13.5px] text-gray-600">
-                                                Image must be less than 500KB.
-                                            </span>
-                                        ) : (
-                                            <span className="block w-full font-semibold text-[13.5px] text-gray-600">
-                                                이미지는 500KB 이하이어야 합니다.
-                                            </span>
-                                        )}
+                                        <span className="block w-full font-semibold text-gray-600">
+                                            {!language ? (
+                                                <span>Image must be less than 500KB.</span>
+                                            ) : (
+                                                <span>이미지는 500KB 이하이어야 합니다.</span>
+                                            )}
+                                        </span>
 
-                                        {!language ? (
-                                            <span className="block w-full font-semibold text-[13.5px] text-gray-600">
-                                                Only JPG, JPEG, and PNG
-                                                formats are allowed. File name
-                                                can only be in English letters
-                                                and numbers.
-                                            </span>
-                                        ) : (
-                                            <span className="block w-full font-semibold text-[13.5px] text-gray-600">
-                                                JPG, JPEG, PNG 형식만 허용됩니다.
-                                                파일 이름은 영어 문자와 숫자만 사용할 수 있습니다.
-                                            </span>
-                                        )}
+                                        <span className="block w-full font-semibold text-gray-600">
+                                            {!language ? (
+                                                <span>Only JPG, JPEG, and PNG formats are allowed.</span>
+                                            ) : (
+                                                <span>JPG, JPEG, PNG 형식만 허용됩니다.</span>
+                                            )}
+                                        </span>
+                                        <span className="block w-full font-semibold text-gray-600">
+                                            {!language ? (
+                                                <span className="flex-wrap">
+                                                    <span>File name can only be in English letters and numbers.</span>
+                                                </span>
+                                            ) : (
+                                                <span>파일 이름은 영어 문자와 숫자만 사용할 수 있습니다.</span>
+                                            )}
+                                        </span>
 
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="w-9/12 h-full ">
+                            <div className="w-full h-full col-span-2 py-3 pl-5 border-b-2 pb-10">
 
-                                <div className="w-full py-3 pl-5 grid grid-cols-1 gap-5 border-b-2 pb-10">
+                                <div className="grid grid-cols-1 gap-5">
 
                                     {/* Tiêu đề của series */}
                                     <div className="w-full flex items-center gap-2">
-                                        {!language ? (
-                                            <h1 className="font-semibold text-xl flex items-center">
-                                                Series title :
-                                            </h1>
-                                        ) : (
-                                            <h1 className="font-semibold text-xl flex items-center">
-                                                시리즈 제목 :
-                                            </h1>
-                                        )}
+                                        <h1 className="font-semibold text-xl flex items-center">
+                                            {!language ? (
+                                                <span>Series title :</span>
+                                            ) : (
+                                                <span>시리즈 제목 :</span>
+                                            )}
+                                        </h1>
 
                                         <span className="font-semibold text-xl flex items-center">
                                             {videoid?.title}
@@ -388,15 +383,13 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                     {/* Tiêu để của tập truyện */}
                                     <div className="w-full">
                                         {/* Tiêu đề */}
-                                        {!language ? (
-                                            <h1 className="w-full font-semibold text-xl">
-                                                Episode title
-                                            </h1>
-                                        ) : (
-                                            <h1 className="w-full font-semibold text-xl">
-                                                에피소드 제목
-                                            </h1>
-                                        )}
+                                        <h1 className="w-full font-semibold text-xl">
+                                            {!language ? (
+                                                <span> Episode title </span>
+                                            ) : (
+                                                <span> 에피소드 제목 </span>
+                                            )}
+                                        </h1>
 
                                         <div className="flex mt-3">
                                             <button className="w-[90px] h-[40px] border-2 bg-white flex items-center justify-center">
@@ -415,28 +408,24 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                     {/* Phần tải nội dung tập truyện */}
                                     <div className="w-full grid grid-cols-1 gap-4">
                                         {/* Tiêu đề */}
-                                        {!language ? (
-                                            <h1 className="w-full font-semibold text-xl">
-                                                Upload file
-                                            </h1>
-                                        ) : (
-                                            <h1 className="w-full font-semibold text-xl">
-                                                파일 업로드
-                                            </h1>
-                                        )}
+                                        <h1 className="w-full font-semibold text-xl">
+                                            {!language ? (
+                                                <span>Upload file</span>
+                                            ) : (
+                                                <span>파일 업로드</span>
+                                            )}
+                                        </h1>
 
                                         {/* Nút tải file */}
                                         <div className="flex gap-3">
                                             <div className="relative">
-                                                {!language ? (
-                                                    <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                        Select File To Upload
-                                                    </button>
-                                                ) : (
-                                                    <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
-                                                        업로드할 파일 선택
-                                                    </button>
-                                                )}
+                                                <button className="w-[180px] h-[40px] bg-black text-white font-semibold rounded-full">
+                                                    {!language ? (
+                                                        <span>Select File To Upload</span>
+                                                    ) : (
+                                                        <span>업로드할 파일 선택</span>
+                                                    )}
+                                                </button>
 
                                                 <input
                                                     type="file"
@@ -448,15 +437,15 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
                                             <button onClick={() => handleDeleteAll()} className="w-[150px] h-[40px] bg-black text-white font-semibold rounded-full">
                                                 {!language ? (
-                                                    "Delete All"
+                                                    <span>Delete All</span>
                                                 ) : (
-                                                    "모두 삭제"
+                                                    <span>모두 삭제</span>
                                                 )}
                                             </button>
                                         </div>
 
                                         {/* Phần hiện nội dung tải lên*/}
-                                        <div className="h-[500px] bg-white flex items-center justify-center">
+                                        <div className="w-full xs:min-h-[50px] lg:min-h-[500px] max-h-[500px] bg-white flex items-center justify-center">
                                             {URLFile ? <ReactPlayer
                                                 url={
 
@@ -466,16 +455,14 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 width="80%"
                                                 height="100%"
                                             /> :
-                                                !language ? (
-                                                    <span className="font-semibold text-gray-500">
-
-                                                        render files.
-                                                    </span>
-                                                ) : (
-                                                    <span className="font-semibold text-gray-500">
-                                                        파일 렌더링
-                                                    </span>
-                                                )}
+                                                <span className="font-semibold text-gray-500">
+                                                    {!language ? (
+                                                        <span>render files.</span>
+                                                    ) : (
+                                                        <span>파일 렌더링.</span>
+                                                    )}
+                                                </span>
+                                            }
                                         </div>
 
                                         {/* Phần mô tả */}
@@ -508,16 +495,16 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                             <div className="flex gap-2">
                                                 <h1 className="h-full font-semibold text-xl">
                                                     {!language ? (
-                                                        "Note"
+                                                        <span>Note</span>
                                                     ) : (
-                                                        "노트"
+                                                        <span>노트</span>
                                                     )}
                                                 </h1>
                                                 <span className="h-full text-gray-400 font-semibold mt-1">
                                                     {!language ? (
-                                                        "(Optional)"
+                                                        <span>(Optional)</span>
                                                     ) : (
-                                                        "(선댁 사항)"
+                                                        <span>(선댁 사항)</span>
                                                     )}
                                                 </span>
                                             </div>
@@ -539,14 +526,14 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
                                         <h1 className="w-[100px] h-full font-semibold text-xl flex items-center">
                                             {!language ? (
-                                                "Comments"
+                                                <span>Comments</span>
                                             ) : (
-                                                " 댓글"
+                                                <span>댓글</span>
                                             )}
                                         </h1>
 
-                                        <div className="flex gap-10 items-center">
-                                            <label className="flex items-center">
+                                        <div className="flex xs:gap-x-5 sm:gap-x-10  items-center">
+                                            <label className="xs:w-[100px] sm:w-auto flex items-center">
                                                 <Radio
                                                     checked={selectedValue === 'Enable'}
                                                     onChange={handleChange}
@@ -561,7 +548,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                     "활성화"
                                                 )}
                                             </label>
-                                            <label className="flex items-center">
+                                            <label className="xs:w-[130px] sm:w-auto flex items-center">
                                                 <Radio
                                                     checked={selectedValue === 'Disable'}
                                                     onChange={handleChange}
@@ -590,8 +577,8 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                             )}
                                         </h1>
 
-                                        <div className="flex gap-6 mt-1 items-center">
-                                            <label className="flex items-center">
+                                        <div className="flex xs:gap-x-3 sm:gap-x-6 mt-1 items-center">
+                                            <label className="xs:w-[110px] sm:w-auto flex items-center">
                                                 <Radio
                                                     checked={selectedEpisodesValue === 'Ongoing'}
                                                     onChange={handleEpisodesChange}
@@ -606,7 +593,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                     "진행 중"
                                                 )}
                                             </label>
-                                            <label className="flex items-center">
+                                            <label className="xs:w-[130px] sm:w-auto flex items-center">
                                                 <Radio
                                                     checked={selectedEpisodesValue === 'Completed'}
                                                     onChange={handleEpisodesChange}
