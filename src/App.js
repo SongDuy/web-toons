@@ -55,6 +55,7 @@ import AdminOriginalsidPage from './pages/admin/childAdmin/adminOriginalsid';
 import AdminOriginalsidchap from './pages/admin/childAdmin/adminOriginalsidchap';
 import AdminVideosPageid from './pages/admin/childAdmin/adminVideosid';
 import AdminVideosPageidchap from './pages/admin/childAdmin/adminVideosidchap';
+import AdminPaymentsPageid from './pages/admin/childAdmin/Paymentsid';
 
 function App() {
 
@@ -140,6 +141,7 @@ function App() {
           <Route path="videos/:id" element={<AdminVideosPageid />} />
           <Route path="videos/:id/:idchap" element={<AdminVideosPageidchap />} />
           <Route path="payments" element={<AdminPaymentsPage />} />
+          <Route path="payments/:id" element={<AdminPaymentsPageid />} />
           <Route path="bank" element={<AdminBankPage />} />
         </Route>
 

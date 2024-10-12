@@ -278,6 +278,11 @@ const comicFireBase = {
     const Chapters = await getDocs(ChaptersnRef);
     Chapters.docs.map(async (item) => {
       const parentDoc = doc(ChaptersnRef, item.id);
+      const subcolleclike = collection(parentDoc, "like");
+      const querySnapshot = await getDocs(subcolleclike);
+      for (const document of querySnapshot.docs) {
+        await deleteDoc(doc(document.ref.firestore, document.ref.path));
+    }
       await deleteDoc(parentDoc);
     });
   },
@@ -289,6 +294,11 @@ const comicFireBase = {
     const parentDocRef = doc(fireStore, "Comic", id);
     const subcollec = collection(parentDocRef, id);
     const parentDoc = doc(subcollec, idchap);
+    const subcolleclike = collection(parentDoc, "like");
+    const querySnapshot = await getDocs(subcolleclike);
+    for (const document of querySnapshot.docs) {
+      await deleteDoc(doc(document.ref.firestore, document.ref.path));
+  }
     await deleteDoc(parentDoc);
   },
   async uploadToFirebase(file, name, iduser, id, key) {

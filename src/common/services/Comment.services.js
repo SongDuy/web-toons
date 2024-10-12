@@ -299,6 +299,94 @@ async  deleteSubcollection(subcollectionRef, uid) {
     await deleteDoc(doc(subDoc.ref.firestore, subDoc.ref.path));
   }
 },
+async DeleteVideo(id) {
+  const commentsRef = collection(fireStore, "comment");
+  const q = query(commentsRef, where("idVideo", "==", id));
+  const querySnapshot = await getDocs(q);
+  
+  for (const document of querySnapshot.docs) {
+    // Xóa các subcollections 'like', 'dislike', và 'comment'
+    const subcollectionRef = collection(document.ref, document.id);
+    const subcollectionLike = collection(document.ref, "like");
+    const subcollectionDislike = collection(document.ref, "dislike");
+    // const q = query(subcollectionRef, where("uid", "==", id));
+    // const querySnapshotid = await getDocs(q);
+    const querySnapshotid = await getDocs(subcollectionRef);
+
+    for (const documentid of querySnapshotid.docs) {
+      const subcollectionLike = collection(documentid.ref, "like");
+      const subcollectionDislike = collection(documentid.ref, "dislike");
+      await this.deleteSubcollection(subcollectionDislike, id);
+      await this.deleteSubcollection(subcollectionLike, id);
+    }
+    // Xóa tất cả tài liệu trong các subcollections
+    await this.deleteSubcollection(subcollectionRef, id);
+    await this.deleteSubcollection(subcollectionLike, id);
+    await this.deleteSubcollection(subcollectionDislike, id);
+  
+    // Cuối cùng, xóa tài liệu chính trong 'comments'
+    await deleteDoc(doc(document.ref.firestore, document.ref.path));
+}
+  // querySnapshot.forEach(async (docs) => {
+ 
+  //   const subcollectionRef = collection(docs.ref, docs.id);
+  //   await deleteDoc(doc(collection(docs.ref, "dislike")));
+
+  //   // Query the subcollection (for example, filtering by 'uid')
+  //   const qa = query(subcollectionRef, where("uid", "==", id));
+  //   const subcollectionSnapshot = await getDocs(qa);
+  // console.log(subcollectionSnapshot)
+  //   // Log the documents found in the subcollection
+  //   subcollectionSnapshot.forEach((subDoc) => {
+  //     console.log(subDoc.data());
+  //   });
+  //   // await deleteDoc(doc.ref);
+  // });
+},
+async DeleteComic(id) {
+  const commentsRef = collection(fireStore, "comment");
+  const q = query(commentsRef, where("idcomic", "==", id));
+  const querySnapshot = await getDocs(q);
+  
+  for (const document of querySnapshot.docs) {
+    // Xóa các subcollections 'like', 'dislike', và 'comment'
+    const subcollectionRef = collection(document.ref, document.id);
+    const subcollectionLike = collection(document.ref, "like");
+    const subcollectionDislike = collection(document.ref, "dislike");
+    // const q = query(subcollectionRef, where("uid", "==", id));
+    // const querySnapshotid = await getDocs(q);
+    const querySnapshotid = await getDocs(subcollectionRef);
+
+    for (const documentid of querySnapshotid.docs) {
+      const subcollectionLike = collection(documentid.ref, "like");
+      const subcollectionDislike = collection(documentid.ref, "dislike");
+      await this.deleteSubcollection(subcollectionDislike, id);
+      await this.deleteSubcollection(subcollectionLike, id);
+    }
+    // Xóa tất cả tài liệu trong các subcollections
+    await this.deleteSubcollection(subcollectionRef, id);
+    await this.deleteSubcollection(subcollectionLike, id);
+    await this.deleteSubcollection(subcollectionDislike, id);
+  
+    // Cuối cùng, xóa tài liệu chính trong 'comments'
+    await deleteDoc(doc(document.ref.firestore, document.ref.path));
+}
+  // querySnapshot.forEach(async (docs) => {
+ 
+  //   const subcollectionRef = collection(docs.ref, docs.id);
+  //   await deleteDoc(doc(collection(docs.ref, "dislike")));
+
+  //   // Query the subcollection (for example, filtering by 'uid')
+  //   const qa = query(subcollectionRef, where("uid", "==", id));
+  //   const subcollectionSnapshot = await getDocs(qa);
+  // console.log(subcollectionSnapshot)
+  //   // Log the documents found in the subcollection
+  //   subcollectionSnapshot.forEach((subDoc) => {
+  //     console.log(subDoc.data());
+  //   });
+  //   // await deleteDoc(doc.ref);
+  // });
+},
   async deleteAccount(id) {
     const commentsRef = collection(fireStore, "comment");
     const q = query(commentsRef, where("uid", "==", id));

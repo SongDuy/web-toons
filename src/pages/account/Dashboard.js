@@ -14,6 +14,10 @@ import {
   setcurrentStepOriginal,
   setcurrentStepVideo,
 } from "../../common/store/hidden";
+import PaymentFireBase from "../../common/services/Payment.services";
+import RateFireBase from "../../common/services/Rate.services";
+import SubscribeFireBase from "../../common/services/Subscribe.services";
+import CommentFireBase from "../../common/services/Comment.services";
 const Dashboard = () => {
   const Account = useSelector((state) => state.Account.Account);
   const [videos, setvideos] = useState([]);
@@ -64,6 +68,9 @@ const Dashboard = () => {
       if (result) {
         setloading(false);
         await comicFireBase.Delete(idcomic);
+        await RateFireBase.DeleteComic(idcomic)
+        await SubscribeFireBase.DeleteComic(idcomic)
+        await CommentFireBase.DeleteComic(idcomic)
         const comics = await comicFireBase.getbyuser(Account.uid);
 
         setcomics(comics.success ? comics.comic : []);
@@ -81,6 +88,10 @@ const Dashboard = () => {
       if (result) {
         setloading(false);
         await VideoFireBase.Delete(id);
+        await PaymentFireBase.DeleteVideo(id)
+        await RateFireBase.DeleteVideo(id)
+        await SubscribeFireBase.DeleteVideo(id)
+        await CommentFireBase.DeleteVideo(id)
         const videos = await VideoFireBase.getbyuser(Account.uid);
         setvideos(videos.success ? videos.Video : []);
 
