@@ -102,7 +102,7 @@ const VideoSeriesPage = () => {
           const user = unwrapResult(account);
           const age = account?.payload?.birthday
             ? new Date(Date.now())?.getFullYear() -
-              new Date(user.birthday)?.getFullYear()
+            new Date(user.birthday)?.getFullYear()
             : 15;
           videoid.success && videoid.Age > age && navigate(`/`);
 
@@ -199,7 +199,7 @@ const VideoSeriesPage = () => {
           ? setSubscribe(subscribe.subscribe)
           : setSubscribe([]);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   const handleDeleteSub = async () => {
     try {
@@ -219,7 +219,7 @@ const VideoSeriesPage = () => {
           ? setSubscribe(subscribe.subscribe)
           : setSubscribe([]);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   const handleRate = async (event, newValue) => {
     if (auth.currentUser) {
@@ -241,11 +241,11 @@ const VideoSeriesPage = () => {
           const videorate = await RateFireBase.getbyvideo(id.id);
           const averageRating = videorate.success
             ? (videorate.rate.reduce(
-                (accumulator, currentValue) => accumulator + currentValue.rate,
-                0
-              ) /
-                videorate.rate.length) *
-              2
+              (accumulator, currentValue) => accumulator + currentValue.rate,
+              0
+            ) /
+              videorate.rate.length) *
+            2
             : 0;
           await VideoFireBase.update(
             { rate: parseFloat(averageRating.toFixed(2)) },
@@ -261,11 +261,11 @@ const VideoSeriesPage = () => {
           const videorate = await RateFireBase.getbyvideo(id.id);
           const averageRating = videorate.success
             ? (videorate.rate.reduce(
-                (accumulator, currentValue) => accumulator + currentValue.rate,
-                0
-              ) /
-                videorate.rate.length) *
-              2
+              (accumulator, currentValue) => accumulator + currentValue.rate,
+              0
+            ) /
+              videorate.rate.length) *
+            2
             : 0;
           await VideoFireBase.update(
             { rate: parseFloat(averageRating.toFixed(2)) },
@@ -399,7 +399,7 @@ const VideoSeriesPage = () => {
                   {/* danh sach series */}
                   <ul className="w-full h-full ">
                     {/* khung danh sách */}
-                    {chapters?.chaps?.filter(item => item.check===true)?.sort((a, b) => b.num - a.num)?.map((item) =>
+                    {chapters?.chaps?.filter(item => item.check === true)?.sort((a, b) => b.num - a.num)?.map((item) =>
                       Videoid?.payment ? (
                         <span key={item.id} onClick={() => onpayment(item.id)}>
                           <li className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2">
@@ -419,23 +419,23 @@ const VideoSeriesPage = () => {
                               </div>
 
                               <div className="ml-auto">
-                              {!language? <span className="text-gray-400 text-md">
-                                {
-                                  monthNames[
-                                  new Date(item.createTime).getMonth()
-                                  ].en
-                                }{" "}
-                                {new Date(item.createTime).getDate()},
-                                {new Date(item.createTime)?.getFullYear()}
-                              </span>: <span className="text-gray-400 text-md">
-                                {
-                                  monthNames[
-                                  new Date(item.createTime).getMonth()
-                                  ].kr
-                                }{" "}
-                                {new Date(item.createTime).getDate()}일,
-                                {new Date(item.createTime)?.getFullYear()}년
-                              </span>}
+                                {!language ? <span className="text-gray-400 text-md">
+                                  {
+                                    monthNames[
+                                      new Date(item.createTime).getMonth()
+                                    ].en
+                                  }{" "}
+                                  {new Date(item.createTime).getDate()},
+                                  {new Date(item.createTime)?.getFullYear()}
+                                </span> : <span className="text-gray-400 text-md">
+                                  {
+                                    monthNames[
+                                      new Date(item.createTime).getMonth()
+                                    ].kr
+                                  }{" "}
+                                  {new Date(item.createTime).getDate()}일,
+                                  {new Date(item.createTime)?.getFullYear()}년
+                                </span>}
                               </div>
 
                               <div className="ml-auto flex gap-1">
@@ -498,23 +498,23 @@ const VideoSeriesPage = () => {
                               </div>
 
                               <div className="ml-auto">
-                              {!language? <span className="text-gray-400 text-md">
-                                {
-                                  monthNames[
-                                  new Date(item.createTime).getMonth()
-                                  ].en
-                                }{" "}
-                                {new Date(item.createTime).getDate()},
-                                {new Date(item.createTime)?.getFullYear()}
-                              </span>: <span className="text-gray-400 text-md">
-                                {
-                                  monthNames[
-                                  new Date(item.createTime).getMonth()
-                                  ].kr
-                                }{" "}
-                                {new Date(item.createTime).getDate()}일,
-                                {new Date(item.createTime)?.getFullYear()}년
-                              </span>}
+                                {!language ? <span className="text-gray-400 text-md">
+                                  {
+                                    monthNames[
+                                      new Date(item.createTime).getMonth()
+                                    ].en
+                                  }{" "}
+                                  {new Date(item.createTime).getDate()},
+                                  {new Date(item.createTime)?.getFullYear()}
+                                </span> : <span className="text-gray-400 text-md">
+                                  {
+                                    monthNames[
+                                      new Date(item.createTime).getMonth()
+                                    ].kr
+                                  }{" "}
+                                  {new Date(item.createTime).getDate()}일,
+                                  {new Date(item.createTime)?.getFullYear()}년
+                                </span>}
                               </div>
 
                               <div className="ml-auto flex gap-1">
@@ -656,12 +656,12 @@ const VideoSeriesPage = () => {
                 )}
               </div>
               <div className="w-full min-h-[160px] bg-white my-5 px-5 py-5 rounded-md">
-                <ul className="w-full h-full grid grid-cols-3 gap-3">
+                <ul className="w-full h-full grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {/* khung danh sách */}
                   {random?.Video?.map((item) => (
                     <Link key={item.id} to={`/videos/video/series/${item.id}`}>
-                      <li className="w-[375px] h-[120px] flex bg-gray-100 rounded shadow cursor-pointer hover:bg-gray-200">
-                        <div className="w-[120px] h-[120px] rounded flex items-center justify-center">
+                      <li className="w-full h-[120px] flex bg-gray-100 rounded shadow cursor-pointer hover:bg-gray-200">
+                        <div className="min-w-[120px] min-h-[120px] max-w-[120px] max-h-[120px] rounded flex items-center justify-center">
                           <img
                             src={item.squareThumbnail}
                             alt="img"
@@ -670,7 +670,7 @@ const VideoSeriesPage = () => {
                         </div>
 
                         <div className="h-full rounded-xl px-3 py-3">
-                          <div className="w-[230px] h-[75px] overflow-hidden">
+                          <div className="w-full h-[75px] overflow-hidden">
                             <span className="w-full text-lg font-semibold leading-[1.2] line-clamp-2">
                               {item.title}
                             </span>

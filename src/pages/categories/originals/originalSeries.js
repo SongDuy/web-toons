@@ -554,15 +554,15 @@ const OriginalSeriesPage = () => {
                 )}
               </div>
               <div className="w-full min-h-[160px] bg-white my-5 px-5 py-5 rounded-md">
-                <ul className="w-full h-full grid grid-cols-3 gap-3">
+                <ul className="w-full h-full grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {/* khung danh sách */}
                   {comic?.comic?.map((item) => (
                     <Link
                       to={`/originals/original/series/${item.id}`}
                       key={item.id}
                     >
-                      <li className="w-[375px] h-[120px] flex bg-gray-100 rounded shadow cursor-pointer hover:bg-gray-200">
-                        <div className="w-[120px] h-[120px] rounded flex items-center justify-center">
+                      <li className="w-full h-[120px] flex bg-gray-100 rounded shadow cursor-pointer hover:bg-gray-200">
+                        <div className="min-w-[120px] min-h-[120px] max-w-[120px] max-h-[120px] rounded flex items-center justify-center">
                           <img
                             src={item.squareThumbnail}
                             alt="img"
@@ -571,7 +571,7 @@ const OriginalSeriesPage = () => {
                         </div>
 
                         <div className="h-full rounded-xl px-3 py-3">
-                          <div className="w-[230px] h-[75px] overflow-hidden">
+                          <div className="w-full h-[75px] overflow-hidden">
                             <span className="w-full text-lg font-semibold leading-[1.2] line-clamp-2">
                               {item.title}
                             </span>
