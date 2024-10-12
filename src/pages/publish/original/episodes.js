@@ -539,7 +539,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
                     </div>
 
                     {/* Phần hiện nội dung tải lên*/}
-                    <div className="h-[500px] w-full bg-white flex items-center justify-center">
+                    <div className="w-full xs:min-h-[50px] lg:min-h-[500px] max-h-[500px] bg-white flex items-center justify-center">
                       {URLFile ? (
                         <div className="h-full w-full bg-gray-100">
                           <div className="w-full  h-full bg-white shadow-md rounded overflow-auto p-8">
