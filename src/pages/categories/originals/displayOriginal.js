@@ -690,7 +690,7 @@ const DisplayOriginalPage = () => {
             {/* Hiển thị các tập trong series */}
             <div className="w-full h-[220px] bg-gray-100 flex items-center justify-center">
               <div
-                className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center"
+                className="min-w-[35px] max-w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center"
                 onClick={handlePreviousPage}
               >
                 <span className="ml-2 hover:text-white">
@@ -698,7 +698,7 @@ const DisplayOriginalPage = () => {
                 </span>
               </div>
 
-              <ul className="grid grid-cols-9">
+              <ul className="grid xs:grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-9">
                 {currentItems?.map((item) => (
                   <Link
                     to={`/originals/original/series/display/${id.id}/${item.id}`}
@@ -720,7 +720,7 @@ const DisplayOriginalPage = () => {
               </ul>
 
               <div
-                className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center"
+                className="min-w-[35px] max-w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center"
                 onClick={handleNextPage}
               >
                 <span className="hover:text-white">

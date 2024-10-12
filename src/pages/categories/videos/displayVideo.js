@@ -40,7 +40,7 @@ import FooterPage from "../../../components/layout/layoutUser/footer";
 const DisplayVideoPage = () => {
   //Xem các tập tiếp theo trong series
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 9;
+  const itemsPerPage = 2;
   const id = useParams();
   const [getcomment, setComment] = useState("");
   const [getrep, setrep] = useState("");
@@ -81,6 +81,7 @@ const DisplayVideoPage = () => {
 
   //Lấy ngôn ngữ
   const language = useSelector((state) => state.hidden.language);
+
   const dispatch = useDispatch();
   useTimeout(async () => {
     try {
@@ -494,7 +495,7 @@ const DisplayVideoPage = () => {
             </div>
 
             {/* Hiển thị nội dung truyện */}
-            <div className="w-full h-[705px] bg-black flex items-center justify-center">
+            <div className="w-full h-auto bg-black flex items-center justify-center">
               <ReactPlayer
                 url={
                   chapid?.fileURL
@@ -575,7 +576,7 @@ const DisplayVideoPage = () => {
             {/* Hiển thị các tập trong series */}
             <div className="w-full h-[220px] bg-gray-100 flex items-center justify-center">
               <div
-                className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center"
+                className="min-w-[35px] max-w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center"
                 onClick={handlePreviousPage}
               >
                 <span className="ml-2 hover:text-white">
@@ -583,7 +584,7 @@ const DisplayVideoPage = () => {
                 </span>
               </div>
 
-              <ul className="grid grid-cols-9">
+              <ul className="grid xs:grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-9">
                 {currentItems?.map((item) => (
                   <Link
                     className="w-[120px] h-[165px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
@@ -605,7 +606,7 @@ const DisplayVideoPage = () => {
               </ul>
 
               <div
-                className="w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center"
+                className="min-w-[35px] max-w-[35px] h-[100px] cursor-pointer border bg-red-100 hover:shadow-md rounded-md mx-3 flex items-center justify-center"
                 onClick={handleNextPage}
               >
                 <span className="hover:text-white">
