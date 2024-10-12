@@ -237,8 +237,8 @@ const SeriesVideoPage = ({ goToEposodes }) => {
 
                     {/* Phần tiêu đề mục */}
                     <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
-                        <ul className="flex gap-10">
-                            <li className="uppercase font-semibold cursor-pointer text-md flex items-center justify-center">
+                        <ul className="flex xs:gap-2 sm:gap-10">
+                            <li className="min-w-[160px] uppercase font-semibold cursor-pointer flex items-center justify-center">
                                 <div className="w-[40px] h-[40px] bg-green-500 rounded-full border flex items-center justify-center mx-2">
                                     <span className="mx-3 text-2xl text-white font-bold">
                                         1
@@ -246,7 +246,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                 </div>
 
 
-                                <h1 className="text-black">
+                                <h1 className="text-black xs:text-sm sm:text-md">
                                     {!language ? (
                                         <span>VIDEO SERIES</span>
                                     ) : (
@@ -260,14 +260,14 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                     <ArrowForwardIosIcon />
                                 </span>
                             </li>
-                            <li className="uppercase font-semibold text-md flex items-center justify-center">
+                            <li className="min-w-[160px] uppercase font-semibold flex items-center justify-center">
                                 <div className="w-[40px] h-[40px] bg-gray-500 rounded-full border flex items-center justify-center mx-2">
                                     <span className="mx-3 text-2xl text-white font-bold">
                                         2
                                     </span>
                                 </div>
 
-                                <h1 className="text-gray-400">
+                                <h1 className="text-gray-400 xs:text-sm sm:text-md">
                                     {!language ? (
                                         <span>VIDEO EPISODES</span>
                                     ) : (
@@ -278,13 +278,13 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                         </ul>
                     </div>
 
-                    <div className="w-full h-full px-[160px]">
-                        <div className="w-full h-full py-5 flex">
+                    <div className="w-full h-full sm:px-[160px] xs:px-[10px] sm:ml-0">
+                        <div className="w-full h-full py-5 grid grid-cols-1 lg:grid-cols-3">
                             {/* Phần cột bên trái */}
-                            <div className="w-[380px] h-full">
+                            <div className="w-full h-full col-span-1">
 
                                 {/* Phần tải ảnh đại diện cho series video */}
-                                <div className="w-full h-full">
+                                <div className="w-full">
                                     <div className="w-full py-3">
                                         <h1 className="w-full font-semibold text-xl">
                                             {!language ? (
@@ -295,7 +295,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                         </h1>
                                     </div>
 
-                                    <div className="w-[350px] flex items-center justify-center">
+                                    <div className="w-full flex items-center justify-center">
                                         {/* Nút tải ảnh đại diện cho series truyện */}
                                         {photos ? (
                                             <img
@@ -369,7 +369,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                 </div>
 
                                 {/* Phần tải ảnh nền cho series video */}
-                                <div className="w-full h-full ">
+                                <div className="w-full">
                                     <div className="w-full py-3">
                                         <h1 className="w-full font-semibold text-xl">
                                             {!language ? (
@@ -457,8 +457,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                             </div>
 
                             {/* Phần cột bên phải */}
-                            <div className="w-[820px] h-full grid grid-cols-1">
-
+                            <div className="w-full h-full col-span-2">
                                 {/* Phần tiêu đề series video  */}
                                 <div className="w-full py-3 pl-5">
 

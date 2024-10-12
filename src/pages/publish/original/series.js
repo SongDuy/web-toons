@@ -269,14 +269,13 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                     </div>
 
                     <div className="w-full h-full sm:px-[160px] xs:px-[10px] sm:ml-0">
-                        <div className="w-full h-full py-5 grid grid-cols-1 lg:grid-cols-3 ">
+                        <div className="w-full h-full py-5 grid grid-cols-1 lg:grid-cols-3">
                             {/* Phần cột bên trái */}
                             <div className="w-full h-full col-span-1 ">
 
                                 {/* Phần tải ảnh đại diện cho series */}
                                 <div className="w-full">
                                     <div className="w-full py-3">
-
                                         <span className="w-full font-semibold text-xl">
                                             {!language ? (
                                                 <span>Square Thumbnail</span>
@@ -284,8 +283,6 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 <span>정사각형 썸네일</span>
                                             )}
                                         </span>
-
-
                                     </div>
 
                                     <div className="w-full flex items-center justify-center">
@@ -456,7 +453,6 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
 
                             {/* Phần cột bên phải */}
                             <div className="w-full h-full col-span-2">
-
                                 {/* Phần chọn thể loại */}
                                 <div className="w-full py-3 pl-5 grid xs:grid-cols-1 sm:grid-cols-2">
                                     {/* Phần chọn thể loại 1 */}
