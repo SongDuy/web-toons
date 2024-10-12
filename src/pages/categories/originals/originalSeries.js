@@ -375,7 +375,7 @@ const OriginalSeriesPage = () => {
                       >
                         <li className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2">
                           <div className="w-full h-full flex items-center">
-                            <div className="w-[80px] max-h-[80px]">
+                            <div className="w-[80px] h-[80px]">
                               <img
                                 src={item.horizontalThumbnail}
                                 alt="img"

@@ -408,13 +408,13 @@ const VideoSeriesPage = () => {
                                 <img
                                   src={item.horizontalThumbnail}
                                   alt="img"
-                                  className="object-fill w-full h-full rounded-md"
+                                  className="object-fill min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px] rounded-md"
                                 />
                               </div>
 
-                              <div className="w-[350px] mr-auto ml-3 overflow-hidden">
+                              <div className="w-auto mr-auto ml-3 overflow-hidden">
                                 <span className="text-black text-md leading-[1.2] line-clamp-2">
-                                  {item.chapterTitle}
+                                  {item.chapterTitle} kk k k k k k k k k k k k k k k k k k
                                 </span>
                               </div>
 
