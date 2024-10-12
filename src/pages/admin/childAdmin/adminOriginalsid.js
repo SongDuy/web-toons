@@ -13,6 +13,7 @@ import comicFireBase from '../../../common/services/Comic.services';
 
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import CommentFireBase from '../../../common/services/Comment.services';
 
 const AdminOriginalsidPage = () => {
     const id = useParams();
@@ -64,6 +65,8 @@ const AdminOriginalsidPage = () => {
                 const checknum=numcount!== chapters?.chaps?.length
 
                 await comicFireBase.Deletechap(id.id, idchap)
+                await CommentFireBase.Deletechap(idchap)
+
                 await comicFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 0 }, id.id);
                 const chap = await dispatch(getchaptersComic(id.id))
                 const chaps = unwrapResult(chap)

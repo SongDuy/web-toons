@@ -14,6 +14,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import comicFireBase from '../../../common/services/Comic.services';
 import { setcurrentStepOriginal } from '../../../common/store/hidden';
+import CommentFireBase from '../../../common/services/Comment.services';
 
 const EpisodeOriginal = () => {
     const id = useParams();
@@ -62,6 +63,7 @@ const EpisodeOriginal = () => {
                 const checknum=numcount!== chapters?.chaps?.length
 
                   await comicFireBase.Deletechap(id.id, idchap)
+                  await CommentFireBase.Deletechap(idchap)
                 await comicFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 0 }, id.id);
                 const chap = await dispatch(getchaptersComic(id.id))
                 unwrapResult(chap)
