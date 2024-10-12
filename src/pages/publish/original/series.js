@@ -1046,7 +1046,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     </ul>
 
                                     {/* Khi chọn xong mới nhấn được check để qua phần tải tập truyện  */}
-                                    <div className="xs:max-w-[300px] lg:min-w-full mt-[60px]">
+                                    <div className="w-full lg:min-w-full mt-[60px]">
                                         <button
                                             className={`w-[35px] h-[35px] border-2 rounded-full ${Object.values(selections).every((value) => value !== "")
                                                 ? isChecked
