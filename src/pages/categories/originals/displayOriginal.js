@@ -99,7 +99,49 @@ const DisplayOriginalPage = () => {
     !language ? "All" : "모두"
   );
 
-  const itemsPerPage = 9;
+  const [itemsPerPage, setItemsPerPage] = useState(9);
+  // hiện số lượng nội dung theo git
+  // State lưu số lượng items per page
+
+  useEffect(() => {
+    const xsQuery = window.matchMedia("(max-width: 640px)"); // Tailwind xs is 0px - 640px
+    const smQuery = window.matchMedia("(min-width: 640px) and (max-width: 768px)"); // Tailwind sm is 640px - 768px
+    const lgQuery = window.matchMedia("(min-width: 1024px) and (max-width: 1280px)"); // Tailwind lg is 1024px - 1280px
+    const xlQuery = window.matchMedia("(min-width: 1280px)"); // Tailwind xl starts from 1280px
+
+    // Hàm kiểm tra kích thước hiện tại và cập nhật itemsPerPage
+    const updateItemsPerPage = () => {
+      if (xsQuery.matches) {
+        setItemsPerPage(2); // xs:grid-cols-2
+      } else if (smQuery.matches) {
+        setItemsPerPage(4); // sm:grid-cols-4
+      } else if (lgQuery.matches) {
+        setItemsPerPage(6); // lg:grid-cols-6
+      } else if (xlQuery.matches) {
+        setItemsPerPage(9); // xl:grid-cols-9
+      } else {
+        setItemsPerPage(9); // Mặc định là xl nếu không có điều kiện nào khớp
+      }
+    };
+
+    // Lắng nghe sự thay đổi của từng media query
+    xsQuery.addEventListener("change", updateItemsPerPage);
+    smQuery.addEventListener("change", updateItemsPerPage);
+    lgQuery.addEventListener("change", updateItemsPerPage);
+    xlQuery.addEventListener("change", updateItemsPerPage);
+
+    // Chạy hàm updateItemsPerPage ban đầu để cập nhật đúng ngay từ đầu
+    updateItemsPerPage();
+
+    // Cleanup event listener khi component unmount
+    return () => {
+      xsQuery.removeEventListener("change", updateItemsPerPage);
+      smQuery.removeEventListener("change", updateItemsPerPage);
+      lgQuery.removeEventListener("change", updateItemsPerPage);
+      xlQuery.removeEventListener("change", updateItemsPerPage);
+    };
+  }, []);
+
   const monthNames = [
     { en: "January", kr: "1월" },
     { en: "February", kr: "2월" },
