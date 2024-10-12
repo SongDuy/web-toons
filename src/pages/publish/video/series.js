@@ -311,7 +311,6 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                                             <NorthIcon />
                                                         </span>
 
-
                                                         <span className="block w-full font-semibold text-sm hover:text-gray-500">
                                                             {!language ? (
                                                                 "Select an image to upload."

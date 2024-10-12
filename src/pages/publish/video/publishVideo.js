@@ -27,7 +27,7 @@ const CreateVideoPage = () => {
     };
 
     return (
-        <div className="container mx-auto my-auto">
+        <div className="min-w-full container mx-auto my-auto">
             {currentStepVideo === 1 && <SeriesPage goToEposodes={goToNextStep} />}
             {currentStepVideo === 2 && <EpisodesPage goToPreviousStep={goToPreviousStep} />}
         </div>

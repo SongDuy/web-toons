@@ -27,7 +27,7 @@ const PublishOriginalPage = () => {
     };
 
     return (
-        <div className="container mx-auto my-auto">
+        <div className="min-w-full container mx-auto my-auto">
             {currentStepOriginal === 1 && <SeriesPage goToEposodes={goToNextStep} />}
             {currentStepOriginal === 2 && <EpisodesPage goToPreviousStep={goToPreviousStep} />}
         </div>

@@ -229,19 +229,19 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                 </Box> :
                 <div className="w-full h-full bg-gray-100">
                     {/* Phần tiêu đề mục */}
-                    <div className="w-full h-[70px] border bg-white shadow flex items-center justify-center border-t">
-                        <ul className="flex gap-10">
-                            <li className="uppercase font-semibold cursor-pointer text-md flex items-center justify-center">
+                    <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
+                        <ul className="w-full flex items-center justify-center xs:gap-4 sm:gap-10">
+                            <li className="min-w-[160px] uppercase font-semibold cursor-pointer flex items-center justify-center">
                                 <div className="w-[40px] h-[40px] bg-green-500 rounded-full border flex items-center justify-center mx-2">
                                     <span className="mx-3 text-2xl text-white font-bold">1</span>
                                 </div>
 
 
-                                <h1 className="text-black">
+                                <h1 className="w-full text-black xs:text-sm sm:text-md">
                                     {!language ? (
-                                        " ORIGINAL SERIES"
+                                        <span> ORIGINAL SERIES</span>
                                     ) : (
-                                        "오리지널 시리즈"
+                                        <span>오리지널 시리즈</span>
                                     )}
                                 </h1>
 
@@ -252,15 +252,15 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     <ArrowForwardIosIcon />
                                 </span>
                             </li>
-                            <li className="uppercase font-semibold text-md flex items-center justify-center">
+                            <li className="min-w-[160px] uppercase font-semibold flex items-center justify-center">
                                 <div className="w-[40px] h-[40px] bg-gray-500 rounded-full border flex items-center justify-center mx-2">
                                     <span className="mx-3 text-2xl text-white font-bold">2</span>
                                 </div>
-                                <h1 className="text-gray-400">
+                                <h1 className="w-full text-gray-400 xs:text-sm sm:text-md">
                                     {!language ? (
-                                        " ORIGINAL EPISODES"
+                                        <span> ORIGINAL EPISODES</span>
                                     ) : (
-                                        " 원본 에피소드 "
+                                        <span> 원본 에피소드 </span>
                                     )}
 
                                 </h1>
@@ -268,25 +268,27 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                         </ul>
                     </div>
 
-                    <div className="w-full h-full px-[160px]">
-                        <div className="w-full h-full py-5 flex">
+                    <div className="w-full h-full sm:px-[160px] xs:ml-[-175px] sm:ml-0">
+                        <div className="w-full h-full py-5 grid grid-cols-1 lg:grid-cols-3 ">
                             {/* Phần cột bên trái */}
-                            <div className="w-[380px] h-full">
+                            <div className="min-w-max h-full col-span-1 ">
+
                                 {/* Phần tải ảnh đại diện cho series */}
-                                <div className="w-full h-full">
-                                    <div className="w-full py-3">
+                                <div className="min-w-max">
+                                    <div className="min-w-max py-3">
 
                                         <span className="w-full font-semibold text-xl">
                                             {!language ? (
-                                                "Square Thumbnail"
+                                                <span>Square Thumbnail</span>
                                             ) : (
-                                                "정사각형 썸네일"
+                                                <span>정사각형 썸네일</span>
                                             )}
                                         </span>
 
+
                                     </div>
 
-                                    <div className="w-[350px] flex items-center justify-center">
+                                    <div className="min-w-max flex items-center justify-center">
                                         {/* Nút tải ảnh đại diện cho series truyện */}
                                         {photos ? (
                                             <img
@@ -359,8 +361,8 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                 </div>
 
                                 {/* Phần tải ảnh nền cho series */}
-                                <div className="w-full h-full ">
-                                    <div className="w-full py-3">
+                                <div className="min-w-max ">
+                                    <div className="min-w-max  py-3">
                                         <span className="w-full font-semibold text-xl">
                                             {!language ? (
                                                 "Horizontal Thumbnail"
@@ -370,7 +372,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                         </span>
                                     </div>
 
-                                    <div className="w-[350px] shadow flex items-center justify-center">
+                                    <div className="min-w-max shadow flex items-center justify-center">
                                         {/* Nút tải ảnh nền */}
                                         {photos1 ? (
                                             <img
@@ -416,7 +418,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
 
                                     </div>
 
-                                    <div className="w-full py-3">
+                                    <div className="min-w-max py-3">
 
                                         <span className="block w-full font-semibold text-sm text-gray-500">
                                             {!language ? (
@@ -453,11 +455,12 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                             </div>
 
                             {/* Phần cột bên phải */}
-                            <div className="w-[820px] h-full grid grid-cols-1">
-                                {/* Phần chọn thể loại 1 */}
-                                <div className="w-full py-3 pl-5 flex">
-                                    <div className="w-full">
+                            <div className="min-w-max h-full col-span-2">
 
+                                {/* Phần chọn thể loại */}
+                                <div className="w-full py-3 pl-5 grid xs:grid-cols-1 sm:grid-cols-2">
+                                    {/* Phần chọn thể loại 1 */}
+                                    <div className="w-full">
                                         <h1 className="w-full font-semibold text-xl">
                                             {!language ? ("Genre 1") : ("장르 1")}
                                         </h1>
@@ -488,7 +491,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     </div>
 
                                     {/* Phần chọn thể loại 2 */}
-                                    <div className="w-full ml-5">
+                                    <div className="w-full sm:ml-5">
                                         <h1 className="w-full font-semibold text-xl">
                                             {!language ? ("Genre 2") : ("장르 2")}
                                         </h1>
@@ -529,7 +532,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     </h1>
 
                                     <input
-                                        className="w-full h-[40px] mt-3 bg-white px-3"
+                                        className="w-full h-[40px] mt-3 bg-white px-3 border-2"
                                         placeholder={!language ? "Less than 50 characters" : "50자 미만입니다"}
                                         value={valueTitle}
                                         onChange={handleTitle}
@@ -548,7 +551,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     </h1>
 
                                     <textarea
-                                        className="w-full h-[300px] mt-3 bg-white px-3 py-2"
+                                        className="w-full h-[300px] mt-3 bg-white px-3 py-2 border-2"
                                         placeholder={!language ? "Less than 500 characters" : "500자 미만입니다"}
                                         value={valueSummary}
                                         onChange={handleSummary}
@@ -570,9 +573,8 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                 <div className="w-full py-3 pl-5">
                                     {/* Khi chọn xong nội dung các ô thì sẽ trả về độ tuổi truyện */}
                                     <ul className="grid grid-cols-1 gap-4">
-                                        <li className="w-full h-[50px] flex items-center">
-
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
+                                            <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
                                                     "Violent and graphic content"
                                                 ) : (
@@ -580,16 +582,20 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2 xs:w-[300px] lg:w-full">
                                                 <Select
                                                     name="violence"
                                                     value={selections.violence}
                                                     onChange={handleSelectChange}
                                                     displayEmpty
-                                                    className="w-full h-[50px] bg-white mt-3 rounded-md"
+                                                    className="w-full h-full bg-white mt-3 rounded-md"
                                                     MenuProps={{
                                                         PaperProps: {
-                                                            sx: { maxWidth: "300px", whiteSpace: "normal" },
+                                                            sx: {
+                                                                maxWidth: "100%", // Đảm bảo không vượt quá kích thước màn hình
+                                                                whiteSpace: "normal", // Giúp nội dung xuống dòng
+                                                                wordBreak: "break-word", // Bẻ dòng với từ dài
+                                                            },
                                                         },
                                                     }}
                                                 >
@@ -645,9 +651,9 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 </Select>
                                             </FormControl>
                                         </li>
-                                        <li className="w-full h-[50px] flex items-center">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
 
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                            <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
                                                     "Nudity"
                                                 ) : (
@@ -655,16 +661,20 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2 xs:w-[300px] lg:w-full">
                                                 <Select
                                                     name="nudity"
                                                     value={selections.nudity}
                                                     onChange={handleSelectChange}
                                                     displayEmpty
-                                                    className="w-full h-[50px] bg-white mt-3 rounded-md"
+                                                    className="w-full h-full bg-white mt-3 rounded-md"
                                                     MenuProps={{
                                                         PaperProps: {
-                                                            sx: { maxWidth: "300px", whiteSpace: "normal" },
+                                                            sx: {
+                                                                maxWidth: "100%", // Đảm bảo không vượt quá kích thước màn hình
+                                                                whiteSpace: "normal", // Giúp nội dung xuống dòng
+                                                                wordBreak: "break-word", // Bẻ dòng với từ dài
+                                                            },
                                                         },
                                                     }}
                                                 >
@@ -720,9 +730,9 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 </Select>
                                             </FormControl>
                                         </li>
-                                        <li className="w-full h-[50px] flex items-center">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
 
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                            <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
                                                     "Sexual content"
                                                 ) : (
@@ -730,16 +740,20 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2 xs:w-[300px] lg:w-full">
                                                 <Select
                                                     name="sexualContent"
                                                     value={selections.sexualContent}
                                                     onChange={handleSelectChange}
                                                     displayEmpty
-                                                    className="w-full h-[50px] bg-white mt-3 rounded-md"
+                                                    className="w-full h-full bg-white mt-3 rounded-md"
                                                     MenuProps={{
                                                         PaperProps: {
-                                                            sx: { maxWidth: "300px", whiteSpace: "normal" },
+                                                            sx: {
+                                                                maxWidth: "100%", // Đảm bảo không vượt quá kích thước màn hình
+                                                                whiteSpace: "normal", // Giúp nội dung xuống dòng
+                                                                wordBreak: "break-word", // Bẻ dòng với từ dài
+                                                            },
                                                         },
                                                     }}
                                                 >
@@ -794,9 +808,9 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 </Select>
                                             </FormControl>
                                         </li>
-                                        <li className="w-full h-[50px] flex items-center">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
 
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                            <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
                                                     "Profanity"
                                                 ) : (
@@ -804,16 +818,20 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2 xs:w-[300px] lg:w-full">
                                                 <Select
                                                     name="profanity"
                                                     value={selections.profanity}
                                                     onChange={handleSelectChange}
                                                     displayEmpty
-                                                    className="w-full h-[50px] bg-white mt-3 rounded-md"
+                                                    className="w-full h-full bg-white mt-3 rounded-md"
                                                     MenuProps={{
                                                         PaperProps: {
-                                                            sx: { maxWidth: "300px", whiteSpace: "normal" },
+                                                            sx: {
+                                                                maxWidth: "100%", // Đảm bảo không vượt quá kích thước màn hình
+                                                                whiteSpace: "normal", // Giúp nội dung xuống dòng
+                                                                wordBreak: "break-word", // Bẻ dòng với từ dài
+                                                            },
                                                         },
                                                     }}
                                                 >
@@ -869,9 +887,9 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 </Select>
                                             </FormControl>
                                         </li>
-                                        <li className="w-full h-[50px] flex items-center">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
 
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                            <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
                                                     "Alcohol, drugs or tobacco."
                                                 ) : (
@@ -879,16 +897,22 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2 xs:w-[300px] lg:w-full">
                                                 <Select
                                                     name="alcohol"
                                                     value={selections.alcohol}
                                                     onChange={handleSelectChange}
                                                     displayEmpty
-                                                    className="w-full h-[50px] bg-white mt-3 rounded-md"
+                                                    className="w-full h-full bg-white mt-3 rounded-md"
                                                     MenuProps={{
                                                         PaperProps: {
-                                                            sx: { maxWidth: "300px", whiteSpace: "normal" },
+                                                            sx: {
+                                                                sx: {
+                                                                    maxWidth: "100%", // Đảm bảo không vượt quá kích thước màn hình
+                                                                    whiteSpace: "normal", // Giúp nội dung xuống dòng
+                                                                    wordBreak: "break-word", // Bẻ dòng với từ dài
+                                                                },
+                                                            },
                                                         },
                                                     }}
                                                 >
@@ -944,9 +968,9 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 </Select>
                                             </FormControl>
                                         </li>
-                                        <li className="w-full h-[50px] flex items-center">
+                                        <li className="w-full h-auto grid xs:grid-cols-1 sm:grid-cols-3">
 
-                                            <h1 className="min-w-[250px] h-full flex items-center font-semibold">
+                                            <h1 className="col-span-1 min-w-[200px] h-full flex items-center font-semibold">
                                                 {!language ? (
                                                     "Sensitive themes and topics"
                                                 ) : (
@@ -954,16 +978,20 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 )}
                                             </h1>
 
-                                            <FormControl className="w-full">
+                                            <FormControl className="xs:col-span-1 sm:col-span-2 xs:w-[300px] lg:w-full">
                                                 <Select
                                                     name="sensitiveThemes"
                                                     value={selections.sensitiveThemes}
                                                     onChange={handleSelectChange}
                                                     displayEmpty
-                                                    className="w-full h-[50px] bg-white mt-3 rounded-md"
+                                                    className="w-full h-full bg-white mt-3 rounded-md"
                                                     MenuProps={{
                                                         PaperProps: {
-                                                            sx: { maxWidth: "300px", whiteSpace: "normal" },
+                                                            sx: {
+                                                                maxWidth: "100%", // Đảm bảo không vượt quá kích thước màn hình
+                                                                whiteSpace: "normal", // Giúp nội dung xuống dòng
+                                                                wordBreak: "break-word", // Bẻ dòng với từ dài
+                                                            },
                                                         },
                                                     }}
                                                 >
@@ -1022,7 +1050,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     </ul>
 
                                     {/* Khi chọn xong mới nhấn được check để qua phần tải tập truyện  */}
-                                    <div className="mt-[60px]">
+                                    <div className="xs:max-w-[300px] lg:min-w-full mt-[60px]">
                                         <button
                                             className={`w-[35px] h-[35px] border-2 rounded-full ${Object.values(selections).every((value) => value !== "")
                                                 ? isChecked
