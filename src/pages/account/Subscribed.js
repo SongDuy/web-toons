@@ -150,7 +150,7 @@ const Subscribed = () => {
               titlepage={!language ? "You haven’t subscribed to any series." : "구독한 콘텐츠가 없습니다."}
             />
           ) : (
-            <div className="w-full h-full bg-gray-100">
+            <div className="w-full h-full xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100">
               <div className="py-[10px] flex-row justify-center items-center container mx-auto my-auto">
                 <div className="  m-2 flex justify-between ">
                   {!language ?

@@ -77,7 +77,7 @@ const Suggestsubscribed = () => {
     }
   }
   return (
-    <div className="grid grid-cols-2     container  mx-auto">
+    <div className="grid grid-cols-2 container xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
       <div className=" flex-row  justify-center items-center container">
         <div className="  m-2 ">
           <span className="font-semibold text-lg text-black">
@@ -86,7 +86,7 @@ const Suggestsubscribed = () => {
           </span>
         </div>
 
-        <div className=" flex    p-5">
+        <div className=" flex p-5">
           <div className="w-full h-full     ">
             {filteredcomic?.length === 0 ? (
               <div></div>
