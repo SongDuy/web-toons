@@ -12,7 +12,7 @@ const Login19AgePage = ({ closeModal, check }) => {
     // Mở và đóng modal login 19 tuổi
     const dispatch = useDispatch();
 
-    const handleBackdropClick = async (event) => {
+    const handleAgreeClick = async (event) => {
         try {
             if (event.target === event.currentTarget && auth?.currentUser) {
                 if (check) {
@@ -34,7 +34,13 @@ const Login19AgePage = ({ closeModal, check }) => {
 
         }
     };
+    const handleBackdropClick =  (event) => {
+            if (event.target === event.currentTarget) {
+                closeModal();
+            }
 
+    
+    };
     const language = useSelector(state => state.hidden.language);
     return (
         <>
@@ -62,7 +68,7 @@ const Login19AgePage = ({ closeModal, check }) => {
                     <div className="w-full mt-10 flex items-center justify-center">
                         <button
                             className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
-                            onClick={handleBackdropClick}
+                            onClick={handleAgreeClick}
                         >
                             {!language ? "Agree" : "동의하다"}
                         </button>
@@ -74,12 +80,12 @@ const Login19AgePage = ({ closeModal, check }) => {
             >
                 <div className="w-[350px] bg-white rounded-lg shadow-lg pt-10 pb-10 text-center transform transition-all duration-300">
                     <h2 className="text-2xl font-bold mb-2">
-                        {!language ? "Login Successful!" : "로그인 성공!"}
+                        {!language ? "Logout Successful!" : "로그아웃 성공!"}
                     </h2>
                     <p className="text-gray-600">
                         {!language
-                            ? "You have successfully logged in to access 19+ content."
-                            : "19+ 콘텐츠에 대한 로그인에 성공했습니다."}
+                            ? "You have successfully logout in to access 19+ content."
+                            : "19개 이상의 콘텐츠에 액세스하기 위해 성공적으로 로그인했습니다."}
                     </p>
 
                     <div className="w-full mt-2 flex items-center justify-center gap-2">
@@ -92,7 +98,7 @@ const Login19AgePage = ({ closeModal, check }) => {
                     <div className="w-full mt-10 flex items-center justify-center">
                         <button
                             className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
-                            onClick={handleBackdropClick}
+                            onClick={handleAgreeClick}
                         >
                             {!language ? "Agree" : "동의하다"}
                         </button>
