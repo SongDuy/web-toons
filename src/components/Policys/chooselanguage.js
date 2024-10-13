@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
 const ChooseLanguage = (prop) => {
-  const [Choose, setChoose] = useState("English");
+  // const [Choose, setChoose] = useState("English");
 
   return (
     <div>
       <div>
         <p className="text-xl">{prop.title}</p>
       </div>
-      <div className="flex  my-[30px]">
+      {/* <div className="flex  my-[30px]">
         <button
           className={`text-xl border border-gray-300 ${
             Choose === "English" ? "bg-gray-200" : "bg-white-100"
@@ -49,7 +49,7 @@ const ChooseLanguage = (prop) => {
         >
           ภาษาไทย
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

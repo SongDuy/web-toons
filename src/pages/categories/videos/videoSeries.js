@@ -46,6 +46,7 @@ const VideoSeriesPage = () => {
   const [Rate, setRate] = useState(0);
   const [payment, setpayment] = useState([]);
   const User = useSelector((state) => state.AuthJs.User);
+  const check19Modal = useSelector(state => state.hidden.check19Modal);
 
   const dispatch = useDispatch();
   const [loading, setloading] = useState(false);
@@ -143,7 +144,7 @@ const VideoSeriesPage = () => {
       }
     };
     get();
-  }, [dispatch, User, navigate, id]);
+  }, [dispatch, User, navigate, id,check19Modal]);
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };

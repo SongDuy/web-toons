@@ -14,14 +14,15 @@ const NavRViewd = () => {
   const comic = useSelector((state) => state.comic.random);
   const User = useSelector((state) => state.AuthJs.User);
   const language = useSelector(state => state.hidden.language);
+  const check19Modal = useSelector(state => state.hidden.check19Modal);
 
   useEffect(() => {
     const getRandom = async () => {
-      if (!comic.comic) {
         try {
           if (User) {
             const account = await dispatch(getAccount(auth?.currentUser?.uid));
             const user = unwrapResult(account);
+            console.log(user)
             if (user?.checkage) {
               const age = account?.payload?.birthday
                 ? new Date(Date.now())?.getFullYear() -
@@ -43,10 +44,10 @@ const NavRViewd = () => {
         } catch (error) {
           // console.log(error)
         }
-      }
+     
     };
     getRandom();
-  }, [dispatch, comic, User]);
+  }, [dispatch, User,check19Modal]);
 
   const OpenRView = () => {
     setOpennavRVivew(true);
@@ -88,8 +89,8 @@ const NavRViewd = () => {
             >
               <div className="flex justify-center items-center ">
                 <div>
-                  <p className="text-center">최근 </p>
-                  <p className="text-center"> 본 항목</p>
+                  <p className="text-center">{!language?"Recently": "최근"} </p>
+                  <p className="text-center"> {!language?"viewed":"본 것"}</p>
                 </div>
               </div>
               <div className="w-full h-full  mt-5 ">

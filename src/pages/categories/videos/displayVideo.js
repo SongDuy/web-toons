@@ -55,6 +55,8 @@ const DisplayVideoPage = () => {
   const chapters = useSelector((state) => state.Video.Chapters);
   const Video = useSelector((state) => state.Video.video);
   const Account = useSelector((state) => state.Account.Account);
+  const check19Modal = useSelector(state => state.hidden.check19Modal);
+
   const navigate = useNavigate();
 
   const monthNames = [
@@ -228,7 +230,7 @@ const DisplayVideoPage = () => {
       } catch (error) { }
     };
     getcomments();
-  }, [dispatch, navigate, id]);
+  }, [dispatch, navigate, id,check19Modal]);
 
   const closeLoginModal = () => {
     dispatch(setIsLoginModal(false));
