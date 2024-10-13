@@ -48,12 +48,12 @@ const SeriesVideoPage = ({ goToEposodes }) => {
 
     // Tiêu đề video
     const [valueTitle, setValueTile] = useState('');
-    const [valueDay, setValueDay] = useState("");
+    const [valueDay, setValueDay] = useState("Mon");
     const [photos, setPhotos] = useState(""); // Lưu các ảnh đã chọn
     const [photos1, setPhotos1] = useState(""); // Lưu các ảnh đã chọn
     const [squareThumbnail, setsquareThumbnail] = useState();
     const [horizontalThumbnail, sethorizontalThumbnail] = useState();
-    //const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const days = [
         { day: 'Mon', daysInKorean: '월요일' },
         { day: 'Tue', daysInKorean: '화요일' },
@@ -216,7 +216,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                     uid: Account.uid,
                     rate: Videoid?.rate,
                     views: Videoid?.views,
-                    schedule: valueDay
+                    schedule: valueDay? valueDay:dayNames[new Date(Date.now()).getDay()]
                     //schedule: dayNames[new Date(Date.now()).getDay()]
                 };
                 await VideoFireBase.update(data, id.id)
@@ -238,7 +238,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                     uid: Account.uid,
                     rate: 0,
                     views: 0,
-                    schedule: valueDay
+                    schedule: valueDay? valueDay:dayNames[new Date(Date.now()).getDay()]
                     //schedule: dayNames[new Date(Date.now()).getDay()]
                 };
                 const idvideo = await VideoFireBase.Add(data)

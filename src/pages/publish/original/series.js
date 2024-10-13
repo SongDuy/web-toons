@@ -30,9 +30,9 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
     const [genre2, setGenre2] = useState("");
     const [valueTitle, setValueTile] = useState("");
     const [valueSummary, setValueSummary] = useState("");
-    const [valueDay, setValueDay] = useState("");
+    const [valueDay, setValueDay] = useState("Mon");
     const comicid = useSelector(state => state.comic.comicid);
-    //const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const days = [
         { day: 'Mon', daysInKorean: '월요일' },
         { day: 'Tue', daysInKorean: '화요일' },
@@ -205,7 +205,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                     uid: Account.uid,
                     rate: comicid?.rate,
                     views: comicid?.views,
-                    schedule: valueDay
+                    schedule:valueDay? valueDay:dayNames[new Date(Date.now()).getDay()]
                     // schedule: dayNames[new Date(Date.now()).getDay()]
                 };
                 await comicFireBase.update(data, id.id)
@@ -229,7 +229,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                     uid: Account.uid,
                     rate: 0,
                     views: 0,
-                    schedule: valueDay
+                    schedule:valueDay? valueDay:dayNames[new Date(Date.now()).getDay()]
                     // schedule: dayNames[new Date(Date.now()).getDay()]
                 };
                 const idcom = await comicFireBase.Add(data)
