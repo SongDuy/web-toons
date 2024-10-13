@@ -30,8 +30,31 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
     const [genre2, setGenre2] = useState("");
     const [valueTitle, setValueTile] = useState("");
     const [valueSummary, setValueSummary] = useState("");
+    const [valueDay, setValueDay] = useState("");
     const comicid = useSelector(state => state.comic.comicid);
-    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    //const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const days = [
+        { day: 'Mon', daysInKorean: '월요일' },
+        { day: 'Tue', daysInKorean: '화요일' },
+        { day: 'Wed', daysInKorean: '수요일' },
+        { day: 'Thu', daysInKorean: '목요일' },
+        { day: 'Fri', daysInKorean: '금요일' },
+        { day: 'Sat', daysInKorean: '토요일' },
+        { day: 'Sun', daysInKorean: '일요일' }
+    ];
+    const dayMapping = {
+        'Mon': 'Monday',
+        'Tue': 'Tuesday',
+        'Wed': 'Wednesday',
+        'Thu': 'Thursday',
+        'Fri': 'Friday',
+        'Sat': 'Saturday',
+        'Sun': 'Sunday'
+    };
+
+    const handleSelectDay = (event) => {
+        setValueDay(event.target.value); // Cập nhật trạng thái khi chọn
+    };
     const [loading, setloading] = useState(true);
     const dispatch = useDispatch();
 
@@ -181,7 +204,8 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                     uid: Account.uid,
                     rate: comicid?.rate,
                     views: comicid?.views,
-                    schedule: dayNames[new Date(Date.now()).getDay()]
+                    schedule: valueDay
+                    // schedule: dayNames[new Date(Date.now()).getDay()]
                 };
                 await comicFireBase.update(data, id.id)
                 navigate(`/publish/original/${id.id}`)
@@ -203,7 +227,8 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                     uid: Account.uid,
                     rate: 0,
                     views: 0,
-                    schedule: dayNames[new Date(Date.now()).getDay()]
+                    schedule: valueDay
+                    // schedule: dayNames[new Date(Date.now()).getDay()]
                 };
                 const idcom = await comicFireBase.Add(data)
                 await comicFireBase.uploadToFirebase(squareThumbnail, squareThumbnail.name, Account.id, idcom, 'squareThumbnail')
@@ -407,7 +432,6 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                         />
                                                     </div>
                                                 </button>
-
                                             </>
                                         )}
 
@@ -514,25 +538,56 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     </div>
                                 </div>
 
-                                {/* Phần tiêu đề series truyện  */}
-                                <div className="w-full py-3 pl-5">
+                                <div className="w-full py-3 pl-5 grid xs:grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-6">
+                                    {/* Phần tiêu đề series truyện  */}
+                                    <div className="w-full">
+                                        <h1 className="w-full font-semibold text-xl">
+                                            {!language ? (
+                                                "Series Title"
+                                            ) : (
+                                                "시리즈 제목"
+                                            )}
+                                        </h1>
 
-                                    <h1 className="w-full font-semibold text-xl">
-                                        {!language ? (
-                                            "Series Title"
-                                        ) : (
-                                            "시리즈 제목"
-                                        )}
-                                    </h1>
+                                        <input
+                                            className="w-full h-[40px] mt-3 bg-white px-3 border-2"
+                                            placeholder={!language ? "Less than 50 characters" : "50자 미만입니다"}
+                                            value={valueTitle}
+                                            onChange={handleTitle}
+                                        />
+                                    </div>
 
-                                    <input
-                                        className="w-full h-[40px] mt-3 bg-white px-3 border-2"
-                                        placeholder={!language ? "Less than 50 characters" : "50자 미만입니다"}
-                                        value={valueTitle}
-                                        onChange={handleTitle}
-                                    />
+                                    {/* Phần chọn lịch đăng truyện */}
+                                    <div className="w-full">
+                                        <h1 className="min-w-[250px] font-semibold text-xl">
+                                            {!language ? "Release Schedule" : "연재 일정"}
+                                        </h1>
+
+                                        <FormControl className="w-full xs:col-span-1 lg:col-span-2">
+                                            <Select
+                                                name="day"
+                                                value={valueDay} // Sử dụng biến trạng thái cho giá trị
+                                                onChange={handleSelectDay} // Cập nhật khi chọn ngày
+                                                displayEmpty
+                                                className="w-full h-[40px] bg-white mt-3 rounded-md"
+                                            >
+                                                <MenuItem value="">
+                                                    <span className="whitespace-normal">
+                                                        {!language ? "Please select day" : "날짜를 선택하세요"}
+                                                    </span>
+                                                </MenuItem>
+                                                {days?.map((item, index) => (
+                                                    <MenuItem key={index} value={item.day}> {/* Dùng item.day (viết tắt) làm giá trị */}
+                                                        <span className="whitespace-normal text-red-500">
+                                                            {item && (!language ? dayMapping[item.day] : item.daysInKorean)} {/* Hiển thị tên đầy đủ hoặc tiếng Hàn */}
+                                                        </span>
+                                                    </MenuItem>
+                                                ))}
+                                            </Select>
+                                        </FormControl>
+                                    </div>
                                 </div>
-
+                                
                                 {/* Phần mô tả series truyện  */}
                                 <div className="w-full py-3 pl-5">
 

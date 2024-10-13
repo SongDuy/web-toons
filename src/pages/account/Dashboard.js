@@ -141,7 +141,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="w-full h-full mt-4">
-                  <ul className="grid grid-cols-2 gap-4">
+                  <ul className="grid xs:grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* khung nội dung */}
                     {comics?.map((item) => (
                       <li
@@ -317,14 +317,14 @@ const Dashboard = () => {
                 </div>
 
                 <div className="w-full h-full mt-4">
-                  <ul className="grid grid-cols-2 gap-4">
+                  <ul className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
                     {/* khung nội dung */}
                     {videos?.map((item) => (
                       <li
                         className="w-full h-[210px] bg-white rounded flex shadow"
                         key={item.id}
                       >
-                        <div className="w-[210px] h-[210px] bg-red-200 rounded">
+                        <div className="w-[210px] h-[210px] bg-red-200 rounded flex items-center justify-center">
                           <img
                             src={item.squareThumbnail}
                             alt="img"
