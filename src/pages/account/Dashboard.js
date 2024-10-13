@@ -116,8 +116,8 @@ const Dashboard = () => {
       ) : (
         <div>
           <Nav />
-          <div className="w-full h-full border bg-gray-100 flex items-center justify-center pb-10">
-            <div className="w-[1130px] min-h-[550px]">
+          <div className="w-full h-full xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100 flex items-center justify-center pb-10">
+            <div className="w-full min-h-[550px]">
               <div className="w-full h-full mt-4">
                 <div className="w-full h-full flex items-center">
                   <h1 className="font-semibold text-xl">
@@ -141,7 +141,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="w-full h-full mt-4">
-                  <ul className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
+                  <ul className="grid xs:grid-cols-1 xl:grid-cols-2 gap-4">
                     {/* khung nội dung */}
                     {comics?.map((item) => (
                       <li
@@ -317,7 +317,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="w-full h-full mt-4">
-                  <ul className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
+                  <ul className="grid xs:grid-cols-1 xl:grid-cols-2 gap-4">
                     {/* khung nội dung */}
                     {videos?.map((item) => (
                       <li

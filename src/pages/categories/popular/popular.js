@@ -100,8 +100,8 @@ const PopularPage = () => {
 
 
 
-            <div className="w-full h-full ">
-                <div className="max-w-[1120px] h-full ml-auto mr-auto">
+            <div className="w-full h-full xs:px-[30px] sm:px-[60px] md:px-[80px] lg:px-[100px] xl:px-[130px] 2xl:px-[160px] 3xl:px-[180px]">
+                <div className="w-full h-full ml-auto mr-auto">
 
                     {/* Hiển thị NEW & TRENDING ORIGINALS*/}
                     <ScrollElement name="section1" className="element">
