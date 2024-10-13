@@ -171,7 +171,7 @@ const SearchPage = ({ closeModal }) => {
                                 </div>
                             ) : (
                                 listComics?.map(item => (
-                                    <Link to={`/originals/original/series/${item.id}`} key={item.id} onClick={closeModal()}>
+                                    <Link to={`/originals/original/series/${item.id}`} key={item.id} onClick={() => { handleBackdropClick(); closeModal(); }}>
                                         <li
                                             className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer">
 
@@ -240,7 +240,7 @@ const SearchPage = ({ closeModal }) => {
                                 </div>
                             ) : (
                                 listVideos?.map(item => (
-                                    <Link to={`/videos/video/series/${item.id}`} key={item.id} onClick={handleBackdropClick}>
+                                    <Link to={`/videos/video/series/${item.id}`} key={item.id} onClick={() => { handleBackdropClick(); closeModal(); }}>
                                         <li className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer">
 
                                             <div className="w-[80px] h-[80px] rounded">
