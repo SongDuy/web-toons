@@ -72,6 +72,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                     setGenre1(getcomic?.genre1)
                     setGenre2(getcomic?.genre2)
                     setValueSummary(getcomic?.summary)
+                    setValueDay(getcomic?.schedule)
                     setloading(true)
                 }
 
@@ -211,6 +212,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                 navigate(`/publish/original/${id.id}`)
                 goToEposodes()
             } else {
+               if(horizontalThumbnail?.name && squareThumbnail?.name){
                 const data = {
                     title: valueTitle,
                     summary: valueSummary,
@@ -235,6 +237,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                 await comicFireBase.uploadToFirebase(horizontalThumbnail, horizontalThumbnail.name, Account.uid, idcom, 'horizontalThumbnail')
                 navigate(`/publish/original/${idcom}`)
                 goToEposodes()
+               }
             }
             setloading(true)
 

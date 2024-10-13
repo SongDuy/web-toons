@@ -95,6 +95,8 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                     setIsAge(getvideo?.Age)
 
                     setValueSummary(getvideo?.summary)
+                    setValueDay(getvideo?.schedule)
+
                     setloading(true)
                 }
 
@@ -221,6 +223,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                 navigate(`/publish/video/${id.id}`)
                 goToEposodes()
             } else {
+                if(horizontalThumbnail?.name && squareThumbnail?.name){
                 const data = {
                     title: valueTitle,
                     summary: valueSummary,
@@ -243,6 +246,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                 await VideoFireBase.uploadToFirebase(horizontalThumbnail, horizontalThumbnail.name, Account.uid, idvideo, 'horizontalThumbnail')
                 navigate(`/publish/video/${idvideo}`)
                 goToEposodes()
+            }
             }
             setloading(true)
 
