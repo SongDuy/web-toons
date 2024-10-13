@@ -410,7 +410,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                         </h1>
                                     </div>
 
-                                    <div className="w-[350px] shadow flex items-center justify-center">
+                                    <div className="w-full flex items-center justify-center">
                                         {/* Nút tải ảnh nền cho serise video*/}
                                         {photos1 ? (
                                             <img

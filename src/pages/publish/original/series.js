@@ -396,7 +396,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                         </span>
                                     </div>
 
-                                    <div className="w-full shadow flex items-center justify-center">
+                                    <div className="w-full flex items-center justify-center">
                                         {/* Nút tải ảnh nền */}
                                         {photos1 ? (
                                             <img
