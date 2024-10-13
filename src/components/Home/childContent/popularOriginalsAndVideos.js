@@ -195,7 +195,7 @@ const PopularOriginalsAndVideosPage = () => {
             <div className="w-full h-full">
               <ul className="w-full h-full ">
                 {/* khung nội dung */}
-                {Video?.Video?.slice()
+                {Video?.Video?.slice(0, 5)
                   ?.sort((a, b) => b.views - a.views)
                   ?.map((item, index) => (
                     <Link key={item.id} to={`/videos/video/series/${item.id}`}>
