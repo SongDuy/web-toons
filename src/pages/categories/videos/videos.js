@@ -265,7 +265,7 @@ const VideosPage = () => {
                             </div>
 
                             <div className="w-full min-h-[500px] py-5 flex justify-center">
-                                <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
+                                <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                     {/* khung nội dung */}
                                     {Videos?.map(item => (

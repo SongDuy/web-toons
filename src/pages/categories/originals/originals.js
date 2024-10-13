@@ -313,7 +313,7 @@ const OriginalsPage = () => {
               </div>
 
               {/* Danh mục thứ trong tuần */}
-              <div className="h-[70px] mt-5 flex items-center justify-center">
+              <div className="h-[75px] mt-5 flex items-center justify-center">
 
                 <ul className="w-11/12 flex overflow-x-auto gap-2">
                   {days?.map((item, index) => (
