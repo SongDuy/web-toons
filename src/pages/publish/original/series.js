@@ -55,6 +55,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
     const handleSelectDay = (event) => {
         setValueDay(event.target.value); // Cập nhật trạng thái khi chọn
     };
+
     const [loading, setloading] = useState(true);
     const dispatch = useDispatch();
 
@@ -501,7 +502,9 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 {/* khung nội dung */}
                                                 {dataListGenre.map((item) => (
                                                     <MenuItem key={item.id} value={item.name}>
-                                                        {!language ? item.name : item.nameKorean}
+                                                        <span className="whitespace-normal text-red-500">
+                                                            {!language ? item.name : item.nameKorean}
+                                                        </span>
                                                     </MenuItem>
                                                 ))}
                                             </Select>
@@ -530,7 +533,9 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                                 </MenuItem>
                                                 {dataListGenre.map((item) => (
                                                     <MenuItem key={item.id} value={item.name}>
-                                                        {!language ? item.name : item.nameKorean}
+                                                        <span className="whitespace-normal text-red-500">
+                                                            {!language ? item.name : item.nameKorean}
+                                                        </span>
                                                     </MenuItem>
                                                 ))}
                                             </Select>
@@ -587,7 +592,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                         </FormControl>
                                     </div>
                                 </div>
-                                
+
                                 {/* Phần mô tả series truyện  */}
                                 <div className="w-full py-3 pl-5">
 
