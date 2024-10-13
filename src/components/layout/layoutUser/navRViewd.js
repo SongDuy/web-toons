@@ -22,7 +22,6 @@ const NavRViewd = () => {
           if (User) {
             const account = await dispatch(getAccount(auth?.currentUser?.uid));
             const user = unwrapResult(account);
-            console.log(user)
             if (user?.checkage) {
               const age = account?.payload?.birthday
                 ? new Date(Date.now())?.getFullYear() -
