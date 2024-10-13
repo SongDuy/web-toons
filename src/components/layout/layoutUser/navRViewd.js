@@ -13,7 +13,7 @@ const NavRViewd = () => {
   const dispatch = useDispatch();
   const comic = useSelector((state) => state.comic.random);
   const User = useSelector((state) => state.AuthJs.User);
-    const language = useSelector(state => state.hidden.language);
+  const language = useSelector(state => state.hidden.language);
 
   useEffect(() => {
     const getRandom = async () => {
@@ -25,7 +25,7 @@ const NavRViewd = () => {
             if (user?.checkage) {
               const age = account?.payload?.birthday
                 ? new Date(Date.now())?.getFullYear() -
-                  new Date(user.birthday)?.getFullYear()
+                new Date(user.birthday)?.getFullYear()
                 : 15;
               const random = await dispatch(getrandomComic({ limit: 5, age }));
 
@@ -54,73 +54,78 @@ const NavRViewd = () => {
   };
   return (
     <div>
-      <button
-        className="fixed top-[50%] right-[-4%] transform rotate-90  bg-white   p-3 rounded-br-lg rounded-bl-lg flex"
-        onClick={() => OpenRView()}
-      >
-     {!language?  "Recently viewed":"최근 본 항목"}
-        <div className="transform rotate-90 ml-3">
-          {" "}
-          <ArrowForwardIosIcon sx={{ fontSize: 12 }} />
-        </div>
-      </button>
-      {OpenoAnimation && (
-        <div>
-          <button
-            className={`fixed top-[50%] right-[3%]     ${
-              !OpennavRVivew ? " animate-slideLeft " : "animate-slideRight "
-            } `}
-            onClick={() => setOpennavRVivew(false)}
-          >
-            <div className="transform rotate-90 bg-white   p-3 rounded-br-lg rounded-bl-lg flex text-white">
-              Recently
-              <div className="  rotate-90 mx-auto py-auto">
-                {" "}
-                <ArrowBackIosNewIcon sx={{ fontSize: 23, color: "black" }} />
-              </div>{" "}
-              viewed
-            </div>
-          </button>
+      <div className="hidden sm:block">
+        <button
+          className="fixed top-[50%] right-[-4%] transform rotate-90 bg-white p-5 rounded-br-lg rounded-bl-lg flex"
+          onClick={() => OpenRView()}
+        >
+          {!language ? "Recently viewed" : "최근 본 항목"}
+          <div className="transform rotate-90 ml-3">
+            {" "}
+            <ArrowForwardIosIcon sx={{ fontSize: 12 }} />
+          </div>
+        </button>
+        {OpenoAnimation && (
+          <div>
+            <button
+              className={`fixed top-[50%] right-[3%]     ${!OpennavRVivew ? " animate-slideLeft " : "animate-slideRight "
+                } `}
+              onClick={() => setOpennavRVivew(false)}
+            >
+              <div className="transform rotate-90 bg-white   p-3 rounded-br-lg rounded-bl-lg flex text-white">
+                Recently
+                <div className="  rotate-90 mx-auto py-auto">
+                  {" "}
+                  <ArrowBackIosNewIcon sx={{ fontSize: 23, color: "black" }} />
+                </div>{" "}
+                viewed
+              </div>
+            </button>
 
-          <div
-            className={`fixed top-0 h-screen right-[-2%]  w-[9%] bg-white p-8 ${
-              !OpennavRVivew ? " animate-slideLeft " : "animate-slideRight "
-            }`}
-          >
-            <div className="flex justify-center items-center ">
-              <div>
-                <p className="text-center">최근 </p>
-                <p className="text-center"> 본 항목</p>
+            <div
+              className={`fixed top-0 h-screen right-[-2%]  w-[9%] bg-white p-8 ${!OpennavRVivew ? " animate-slideLeft " : "animate-slideRight "
+                }`}
+            >
+              <div className="flex justify-center items-center ">
+                <div>
+                  <p className="text-center">최근 </p>
+                  <p className="text-center"> 본 항목</p>
+                </div>
+              </div>
+              <div className="w-full h-full  mt-5 ">
+                {comic.comic?.length === 0 ? (
+                  <div></div>
+                ) : (
+                  <div className="grid grid-rows-3 gap-2 w-full mx-auto py-auto  ">
+                    {comic.comic?.map((item) => {
+                      return (
+                        <div className="grid grid-row-5 gap-1 " key={item.id}>
+                          <div className="w-full col-row-4 ">
+                            <img
+                              src={item.squareThumbnail}
+                              alt=""
+                              className="object-contain w-full "
+                            />
+                          </div>
+                          <p className="truncate  transition-all text-sm ">
+                            {item.title}{" "}
+                          </p>
+                          <p className="text-gray-400 text-sm">#{item.rate}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </div>
-            <div className="w-full h-full  mt-5 ">
-              {comic.comic?.length === 0 ? (
-                <div></div>
-              ) : (
-                <div className="grid grid-rows-3 gap-2 w-full mx-auto py-auto  ">
-                  {comic.comic?.map((item) => {
-                    return (
-                      <div className="grid grid-row-5 gap-1 " key={item.id}>
-                        <div className="w-full col-row-4 ">
-                          <img
-                            src={item.squareThumbnail}
-                            alt=""
-                            className="object-contain w-full "
-                          />
-                        </div>
-                        <p className="truncate  transition-all text-sm ">
-                          {item.title}{" "}
-                        </p>
-                        <p className="text-gray-400 text-sm">#{item.rate}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
+
+      <div className="block sm:hidden">
+       
+      </div>
+
     </div>
   );
 };
