@@ -26,9 +26,9 @@ const NewToOriginalsPage = () => {
                         className="w-full h-[60px] uppercase font-semibold text-lg hover:text-yellow-500 cursor-pointer flex items-center justify-center"
                     >
                         {!language ?
-                                <span> New to Originals </span>
+                            <span> New to Originals </span>
                             :
-                                <span> 새로운 오리지널 </span>
+                            <span> 새로운 오리지널 </span>
                         }
 
                     </li>
@@ -69,11 +69,9 @@ const NewToOriginalsPage = () => {
                                         <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                                             {item.title}
                                         </span>
-                                        {/*
-                                            <span className="text-black text-md text-shadow-white leading-[1.4] line-clamp-1">
-                                                {item.Author}
-                                            </span> 
-                                        */}
+                                        <span className="h-[20px] text-black text-md text-shadow-white leading-[0.8] line-clamp-1">
+                                            {item.Author}
+                                        </span>
                                     </div>
 
                                     <div className="w-full mb-[20px]">

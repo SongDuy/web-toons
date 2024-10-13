@@ -364,7 +364,9 @@ const OriginalsPage = () => {
                             <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                               {item.title}
                             </span>
-
+                            <span className="h-[20px] text-black text-md text-shadow-white leading-[0.8] line-clamp-1">
+                              {item.Author}
+                            </span>
                           </div>
 
                           <div className="w-full mb-[40px]">
@@ -446,11 +448,9 @@ const OriginalsPage = () => {
                               <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                                 {item.title}
                               </span>
-                              {/*
-                                                            <span className="text-black text-md text-shadow-white leading-[1.4] line-clamp-1">
-                                                                {item.Author}
-                                                            </span> 
-                                                        */}
+                              <span className="h-[20px] text-black text-md text-shadow-white leading-[0.8] line-clamp-1">
+                                {item.Author}
+                              </span>
                             </div>
 
                             <div className="w-full mb-[40px] mr-auto">
