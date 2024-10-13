@@ -83,7 +83,7 @@ const Comment = () => {
             titlepage={!language ? "You haven't posted any comments yet." : "아직 댓글을 작성하지 않았습니다."}
           />
         ) : (
-          <div className="w-full h-full bg-gray-100">
+          <div className="w-full h-full xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100">
             <div className="py-[30px] flex-row justify-center items-center container mx-auto my-auto">
               <div className="w-full h-full flex-row   bg-white border border-white p-5">
                 {gcomment.Comment?.map((item) => {

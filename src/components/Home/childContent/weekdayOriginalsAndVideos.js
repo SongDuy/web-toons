@@ -84,7 +84,7 @@ const WeekdayOriginalsAndVideosPage = () => {
     return (
         <div className="w-full min-h-[560px]">
             {/* Phần hiển thị nội dung theo thứ trong tuần */}
-            <div className="w-full xs:min-h-[60px] sm:h-[60px] bg-white shadow flex items-center justify-center ">
+            <div className="w-full h-[60px] bg-white shadow flex items-center justify-center ">
 
                 <ul
                     className="flex overflow-x-auto"
@@ -177,12 +177,12 @@ const WeekdayOriginalsAndVideosPage = () => {
 
                 </div>
             </div>
-            <div className="w-full min-h-[500px] py-[30px] flex justify-center">
+            <div className="w-full min-h-[500px] py-[30px] xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
                 <div className="grid grid-cols-1 gap-y-4 ">
 
                     {/* khung nội dung dành cho truyện */}
-                    <div className="w-full h-full">
-                        <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
+                    <div className="w-full h-full flex items-center justify-center">
+                        <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-5 gap-4">
                             {/* khung nội dung */}
                             {filteredOriginals?.slice(0, 5)?.map((item) => (
                                 <Link
@@ -215,9 +215,9 @@ const WeekdayOriginalsAndVideosPage = () => {
                                                 <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                                                     {item.title}
                                                 </span>
-                                                {/* <span className="text-black text-md text-shadow-white leading-[1.4] line-clamp-1">
+                                                <span className="h-[20px] text-black text-md text-shadow-white leading-[0.8] line-clamp-1">
                                                     {item.Author}
-                                                </span> */}
+                                                </span>
                                             </div>
 
                                             <div className="w-full mb-[20px]">
@@ -246,8 +246,8 @@ const WeekdayOriginalsAndVideosPage = () => {
                     </div>
 
                     {/* khung nội dung dành cho videos */}
-                    <div className="w-full h-full">
-                        <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-4">
+                    <div className="w-full h-full flex justify-center">
+                        <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-5 gap-4">
                             {/* khung nội dung */}
                             {filteredVideos?.slice(0, 5)?.map((item) => (
                                 <Link

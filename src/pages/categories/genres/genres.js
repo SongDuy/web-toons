@@ -86,8 +86,8 @@ const GenresPage = () => {
         <div className="w-full h-full pb-10 bg-gray-100">
 
 
-            <div className="w-full h-full ">
-                <div className="max-w-[1200px] h-full ml-auto mr-auto">
+            <div className="w-full h-full xs:px-[30px] sm:px-[60px] md:px-[80px] lg:px-[100px] xl:px-[130px] 2xl:px-[160px] 3xl:px-[180px]">
+                <div className="w-full h-full ml-auto mr-auto">
 
                     <div className="max-w-full h-full">
 
@@ -213,7 +213,7 @@ const GenresPage = () => {
 
                                 {/* Danh mục nội dung originals theo thể loại */}
                                 <div className="w-full min-h-[500px]">
-                                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
+                                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                         {/* khung nội dung */}
                                         {Comic?.map(item => (

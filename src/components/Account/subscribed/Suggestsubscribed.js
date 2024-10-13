@@ -77,16 +77,16 @@ const Suggestsubscribed = () => {
     }
   }
   return (
-    <div className="grid grid-cols-2     container  mx-auto">
+    <div className="grid xs:grid-cols-1 lg:grid-cols-2 container xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
       <div className=" flex-row  justify-center items-center container">
-        <div className="  m-2 ">
+        <div className="min-w-max m-2 ">
           <span className="font-semibold text-lg text-black">
             {!language ? "New & Trending" : "새로운 및 인기 오리지널"}{" "}
             <NavigateNextIcon />
           </span>
         </div>
 
-        <div className=" flex    p-5">
+        <div className=" flex p-5">
           <div className="w-full h-full     ">
             {filteredcomic?.length === 0 ? (
               <div></div>
@@ -114,7 +114,7 @@ const Suggestsubscribed = () => {
                             </span>
                           </div>
 
-                          <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                          <div className="w-auto mt-auto mb-auto overflow-hidden">
                             <span className="text-gray-400 text-sm">
                               {item.genre1}
                             </span>
@@ -135,9 +135,10 @@ const Suggestsubscribed = () => {
           </div>
         </div>
       </div>
-      <div className="flex-row justify-center items-center container mx-auto my-auto">
-        <div className="  m-2 flex justify-between ">
-          <span className="font-semibold text-lg text-black">
+
+      <div className="w-full flex-row justify-center items-center container mx-auto my-auto">
+        <div className="min-w-max m-2 flex justify-between ">
+          <span className="w-[200px] font-semibold text-lg text-black">
             {!language ? "ORIGINALS by Genre" : "장르별 오리지널"}{" "}
             <NavigateNextIcon />
           </span>
@@ -439,7 +440,7 @@ const Suggestsubscribed = () => {
           </div>
         </div>
 
-        <div className=" flex    p-5">
+        <div className=" flex p-5">
           <div className="w-full h-full     ">
             {searchedcomic?.length === 0 ? (
               <div></div>
@@ -467,7 +468,7 @@ const Suggestsubscribed = () => {
                             </span>
                           </div>
 
-                          <div className="w-[230px] mt-auto mb-auto overflow-hidden">
+                          <div className="w-auto mt-auto mb-auto overflow-hidden">
                             <span className="text-gray-400 text-sm">
                               {item.genre1}
                             </span>

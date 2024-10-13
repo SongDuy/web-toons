@@ -41,7 +41,7 @@ const Delete = () => {
   const handleClickOpen = () => {
     setOpen(true);
     const user = auth.currentUser;
-    console.log( user.providerData)
+    console.log(user.providerData)
     const isGoogleProvider = user.providerData.some(
       (provider) => provider.providerId === "password"
     );
@@ -71,13 +71,13 @@ const Delete = () => {
         await VideoFireBase.deleteAccount(auth.currentUser.uid);
         await FollowFireBase.deleteAccount(auth.currentUser.uid);
         await PaymentFireBase.deleteAccount(auth.currentUser.uid)
-       await  user.delete()
+        await user.delete()
         dispatch(logout());
         setOpen(false);
 
         // Thực hiện các hành động cần thiết sau khi xóa tài khoản, ví dụ: chuyển hướng người dùng, xóa dữ liệu liên quan, ...
       } catch (error) {
-        seterror(   !language ?'Incorrect  password.':"잘못된 비밀번호입니다.");
+        seterror(!language ? 'Incorrect  password.' : "잘못된 비밀번호입니다.");
         console.error("Lỗi khi xóa tài khoản:", error);
         // Xử lý lỗi, ví dụ: hiển thị thông báo lỗi cho người dùng
       }
@@ -91,8 +91,8 @@ const Delete = () => {
   const language = useSelector((state) => state.hidden.language);
 
   return (
-    <div className="w-full h-full bg-gray-100 py-[40px] flex justify-center items-center">
-      <div className="w-[1112px] h-full">
+    <div className="w-full h-full xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100 py-[40px] flex justify-center items-center">
+      <div className="w-full border h-full">
         {/* Tiêu đề */}
         <h1 className="text-[22px] font-semibold">
 
@@ -104,7 +104,7 @@ const Delete = () => {
         </h1>
 
         {/* Nội dung */}
-        <div className="w-full h-full mt-[15px] px-[155px] py-[80px] bg-white">
+        <div className="w-auto border h-full mt-[15px] xs:px-[30px] sm:px-[60px] md:px-[80px] lg:px-[100px] xl:px-[130px] 2xl:px-[160px] 3xl:px-[180px] py-[80px] bg-white">
           <div className="w-full grid grid-cols-1 gap-2">
             <h1 className="text-[18px] font-semibold">
               {!language ?
@@ -262,21 +262,13 @@ const Delete = () => {
 
             </div>
 
-            <div className="w-full mt-[60px] flex gap-3 items-center justify-center">
-              <Link to={`/`}>
-                <button className="w-[240px] h-[50px] bg-green-500 rounded-full shadow text-white font-semibold">
-
-                  {!language ?
-                    (<span className="ml-2"> Keep My Account </span>)
-                    :
-                    (<span className="ml-2"> 내 계정을 유지합니다 </span>)
-                  }
-                </button>
+            <div className="w-full mt-[60px] flex gap-3">
+              <Link to={`/`} className="w-1/2 h-[50px] bg-green-500 rounded-full shadow text-white font-semibold flex items-center justify-center">
+                {!language ? "Keep My Account" : "내 계정을 유지합니다"}
               </Link>
 
               <button
-                className={`w-[240px] h-[50px] ${isChecked ? "bg-black" : "bg-gray-200 cursor-not-allowed"
-                  } rounded-full shadow text-white font-semibold`}
+                className={`w-1/2 h-[50px] ${isChecked ? "bg-black" : "bg-gray-200 cursor-not-allowed"} rounded-full shadow text-white font-semibold`}
                 disabled={!isChecked}
                 onClick={handleClickOpen}
               >
@@ -298,7 +290,7 @@ const Delete = () => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-        {!language ?"Re-enter password?": "암호를 다시 입력하다"} 
+          {!language ? "Re-enter password?" : "암호를 다시 입력하다"}
         </DialogTitle>
         {checkgoogle &&
           <DialogContent>

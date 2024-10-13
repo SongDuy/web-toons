@@ -128,7 +128,7 @@ const AdminVideosPage = () => {
     return (
         <>
             {loading ?
-                <div className="w-full h-[600px] pb-5 bg-white custom-scrollbar">
+                <div className="w-full h-[650px] pb-5 bg-white custom-scrollbar">
 
                     {/* Ô tìm kiếm */}
                     <div className="w-full flex justify-end">
@@ -148,14 +148,14 @@ const AdminVideosPage = () => {
                     <table className="w-full">
                         <thead className="bg-gray-100">
                             <tr className="w-full">
-                                <th className="w-[50px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">ID</th>
-                                <th className="w-[350px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">이미지</th>
-                                <th className="w-[200px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">비디오 이름</th>
-                                <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">사용자 ID</th>
-                                <th className="w-[200px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">스케쥴</th>
-                                <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">생성일</th>
-                                <th className="w-[100px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">가격</th>
-                                <th className="w-[300px] px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">관리</th>
+                                <th className="w-auto px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">ID</th>
+                                <th className="w-auto px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">이미지</th>
+                                <th className="w-auto px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">비디오 이름</th>
+                                <th className="w-auto px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">사용자 ID</th>
+                                <th className="w-auto px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">스케쥴</th>
+                                <th className="w-auto px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">생성일</th>
+                                <th className="w-auto px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">가격</th>
+                                <th className="w-auto px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider">관리</th>
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
@@ -168,7 +168,7 @@ const AdminVideosPage = () => {
                                         <img
                                             src={item.squareThumbnail}
                                             alt="img"
-                                            className="object-fill w-[100px] h-[100px] rounded-md"
+                                            className="object-fill min-w-[100px] max-w-[100px] min-h-[100px] max-h-[100px] rounded-md"
                                         />
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">

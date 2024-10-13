@@ -86,7 +86,7 @@ const EpisodeVideo = () => {
             </Box> :
                 <div>
                     <Nav />
-                    <div className="w-full h-full border bg-gray-100 flex items-center justify-center pb-10">
+                    <div className="w-full h-full xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100 flex items-center justify-center pb-10">
                         <div className="w-[1130px]  min-h-[550px]">
                             <div className="w-full h-full mt-4">
                                 <div className="w-full h-full flex items-center">
@@ -124,7 +124,7 @@ const EpisodeVideo = () => {
                                 </div>
 
                                 <div className="w-full h-full mt-4">
-                                    <ul className="grid grid-cols-2 gap-4">
+                                    <ul className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
 
                                         {/* khung nội dung */}
                                         {chapters?.chaps?.map((item) => (
@@ -137,8 +137,8 @@ const EpisodeVideo = () => {
                                                     />
                                                 </div>
 
-                                                <div className="h-full px-3 py-3">
-                                                    <div className="w-[320px]">
+                                                <div className="w-full h-full px-3 py-3 flex flex-col">
+                                                    <div className="w-auto">
                                                         <div className="flex items-center">
 
                                                             <div className="flex ml-auto gap-2">
@@ -167,7 +167,7 @@ const EpisodeVideo = () => {
                                                         </div>
                                                     </div>
 
-                                                    <div className="w-full mt-12">
+                                                    <div className="w-full flex mt-auto">
 
                                                         <div className="flex gap-5">
                                                         {!language?   <span className="text-gray-500 text-sm flex gap-2">

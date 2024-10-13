@@ -116,8 +116,8 @@ const Dashboard = () => {
       ) : (
         <div>
           <Nav />
-          <div className="w-full h-full border bg-gray-100 flex items-center justify-center pb-10">
-            <div className="w-[1130px] min-h-[550px]">
+          <div className="w-full h-full xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100 flex items-center justify-center pb-10">
+            <div className="w-full min-h-[550px]">
               <div className="w-full h-full mt-4">
                 <div className="w-full h-full flex items-center">
                   <h1 className="font-semibold text-xl">
@@ -141,14 +141,14 @@ const Dashboard = () => {
                 </div>
 
                 <div className="w-full h-full mt-4">
-                  <ul className="grid xs:grid-cols-1 sm:grid-cols-2 gap-4">
+                  <ul className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
                     {/* khung nội dung */}
                     {comics?.map((item) => (
                       <li
-                        className="w-full h-[210px] bg-white rounded flex shadow"
+                        className="w-full min-h-[210px] bg-white rounded flex shadow"
                         key={item.id}
                       >
-                        <div className="w-[210px] h-[210px] bg-red-200 rounded">
+                        <div className="w-[210px] max-h-[210px] bg-red-200 rounded">
                           <img
                             src={item.squareThumbnail}
                             alt="img"
@@ -156,8 +156,8 @@ const Dashboard = () => {
                           />
                         </div>
 
-                        <div className="h-full px-3 py-3">
-                          <div className="w-[320px]">
+                        <div className="w-full h-full px-3 py-3">
+                          <div className="w-auto">
                             <div className="flex items-center">
                               <span className="text-gray-500 text-sm">
                                 {item.genre1}, {item.genre2}
@@ -321,10 +321,10 @@ const Dashboard = () => {
                     {/* khung nội dung */}
                     {videos?.map((item) => (
                       <li
-                        className="w-full h-[210px] bg-white rounded flex shadow"
+                        className="w-full min-h-[210px] bg-white rounded flex shadow"
                         key={item.id}
                       >
-                        <div className="w-[210px] h-[210px] bg-red-200 rounded flex items-center justify-center">
+                        <div className="w-[210px] max-h-[210px] border bg-red-200 rounded flex items-center justify-center">
                           <img
                             src={item.squareThumbnail}
                             alt="img"
@@ -332,8 +332,8 @@ const Dashboard = () => {
                           />
                         </div>
 
-                        <div className="h-full px-3 py-3">
-                          <div className="w-[320px]">
+                        <div className="w-full h-full px-3 py-3">
+                          <div className="w-auto">
                             <div className="flex items-center">
                               <div className="flex ml-auto gap-2">
                                 <button

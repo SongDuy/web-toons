@@ -181,8 +181,8 @@ const OriginalsPage = () => {
         </ul>
       </div>
 
-      <div className="w-full h-full ">
-        <div className="max-w-[1200px] h-full ml-auto mr-auto">
+      <div className="w-full h-full xs:px-[30px] sm:px-[60px] md:px-[80px] lg:px-[100px] xl:px-[130px] 2xl:px-[160px] 3xl:px-[180px]">
+        <div className="w-full h-full ml-auto mr-auto">
           {/* Truyện Ongoing Series */}
           <ScrollElement name="section1">
             <div className="max-w-full h-full pt-[70px]">
@@ -313,7 +313,7 @@ const OriginalsPage = () => {
               </div>
 
               {/* Danh mục thứ trong tuần */}
-              <div className="h-[70px] mt-5 flex items-center justify-center">
+              <div className="h-[75px] mt-5 flex items-center justify-center">
 
                 <ul className="w-11/12 flex overflow-x-auto gap-2">
                   {days?.map((item, index) => (
@@ -329,11 +329,10 @@ const OriginalsPage = () => {
                     </li>
                   ))}
                 </ul>
-
               </div>
 
               <div className="w-full min-h-[500px] py-5 flex justify-center">
-                <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
+                <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
                   {/* khung nội dung */}
                   {Comics?.map((item) => (
                     <Link
@@ -364,7 +363,9 @@ const OriginalsPage = () => {
                             <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                               {item.title}
                             </span>
-
+                            <span className="h-[20px] text-black text-md text-shadow-white leading-[0.8] line-clamp-1">
+                              {item.Author}
+                            </span>
                           </div>
 
                           <div className="w-full mb-[40px]">
@@ -413,7 +414,7 @@ const OriginalsPage = () => {
               </div>
 
               <div className="w-full min-h-[500px] mt-[25px] flex justify-center">
-                <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
+                <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
                   {/* khung nội dung */}
                   {comic.comic
                     ?.filter((item) => item?.Completed === true)
@@ -446,11 +447,9 @@ const OriginalsPage = () => {
                               <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                                 {item.title}
                               </span>
-                              {/*
-                                                            <span className="text-black text-md text-shadow-white leading-[1.4] line-clamp-1">
-                                                                {item.Author}
-                                                            </span> 
-                                                        */}
+                              <span className="h-[20px] text-black text-md text-shadow-white leading-[0.8] line-clamp-1">
+                                {item.Author}
+                              </span>
                             </div>
 
                             <div className="w-full mb-[40px] mr-auto">
