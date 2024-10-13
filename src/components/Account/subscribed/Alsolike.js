@@ -8,7 +8,7 @@ const Alsolike = () => {
 
   return (
     <div className=" flex-row justify-center items-center container xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
-      <div className="  m-2">
+      <div className="min-w-max m-2">
         <span className="font-semibold text-lg text-black">
        {!language?  "You may also like": "이것도 좋아할 수 있습니다.(추천 드립니다)"}
         </span>
@@ -16,7 +16,7 @@ const Alsolike = () => {
 
       <div className="w-full h-full flex    p-5">
         {random?.comic?.length === 0 ? <div></div> :
-          <div className="grid grid-cols-3 gap-2 w-full">
+          <div className="grid xs:grid-cols-1 lg:grid-cols-3 gap-2 w-full">
             {random?.comic?.map(item => {
               return (
 
