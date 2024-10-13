@@ -244,7 +244,6 @@ const HeaderPage = () => {
         </div>
       )}
 
-
       {/* danh mục */}
       <div className="w-auto flex items-center xs:mx-2 sm:mx-5 overflow-x-auto">
         <ul className="flex overflow-x-auto gap-5 whitespace-nowrap">
