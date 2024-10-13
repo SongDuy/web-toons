@@ -214,8 +214,8 @@ const HeaderPage = () => {
             </div>
 
             <div className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full" />
-
           </button>
+          
           {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
         </div>
         :
