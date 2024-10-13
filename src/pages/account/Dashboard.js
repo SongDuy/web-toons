@@ -141,7 +141,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="w-full h-full mt-4">
-                  <ul className="grid xs:grid-cols-1 sm:grid-cols-2 gap-4">
+                  <ul className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
                     {/* khung nội dung */}
                     {comics?.map((item) => (
                       <li
