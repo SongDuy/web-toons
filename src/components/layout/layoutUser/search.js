@@ -70,7 +70,7 @@ const SearchPage = ({ closeModal }) => {
             }
         };
         getComicsAndVideos();
-    }, [dispatch, User,check19Modal]);
+    }, [dispatch, User, check19Modal]);
 
 
     // Hiển thị nội dung giống nội dung cần tìm
@@ -171,8 +171,9 @@ const SearchPage = ({ closeModal }) => {
                                 </div>
                             ) : (
                                 listComics?.map(item => (
-                                    <Link to={`/originals/original/series/${item.id}`} key={item.id} onClick={handleBackdropClick}>
-                                        <li className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer">
+                                    <Link to={`/originals/original/series/${item.id}`} key={item.id} onClick={closeModal()}>
+                                        <li
+                                            className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer">
 
                                             <div className="w-[80px] h-[80px] rounded">
                                                 <img

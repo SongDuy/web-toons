@@ -34,7 +34,7 @@ const NewToVideosPage = () => {
 
                 </ul>
             </div>
-            <div className="w-full min-h-[500px] py-[30px] xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
+            <div className="w-full min-h-[500px] py-[30px] xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
                 <div className="w-full h-full flex justify-center">
                     <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-5 gap-4">
                         {/* khung nội dung */}

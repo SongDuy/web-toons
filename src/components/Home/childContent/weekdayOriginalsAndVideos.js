@@ -177,7 +177,7 @@ const WeekdayOriginalsAndVideosPage = () => {
 
                 </div>
             </div>
-            <div className="w-full min-h-[500px] py-[30px] xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
+            <div className="w-full min-h-[500px] py-[30px] xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
                 <div className="grid grid-cols-1 gap-y-4 ">
 
                     {/* khung nội dung dành cho truyện */}

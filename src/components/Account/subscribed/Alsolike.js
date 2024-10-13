@@ -7,7 +7,7 @@ const Alsolike = () => {
   const language = useSelector(state => state.hidden.language);
 
   return (
-    <div className=" flex-row justify-center items-center container xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
+    <div className=" flex-row justify-center items-center container xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
       <div className="min-w-max m-2">
         <span className="font-semibold text-lg text-black">
        {!language?  "You may also like": "이것도 좋아할 수 있습니다.(추천 드립니다)"}

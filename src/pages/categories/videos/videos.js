@@ -148,7 +148,7 @@ const VideosPage = () => {
                 </ul>
             </div>
 
-            <div className="w-full h-full xs:px-[30px] sm:px-[60px] md:px-[80px] lg:px-[100px] xl:px-[130px] 2xl:px-[160px] 3xl:px-[180px]">
+            <div className="w-full h-full xs:px-[16px] sm:px-[32px] md:px-[64px] lg:px-[96px] xl:px-[128px] 2xl:px-[160px] 3xl:px-[192px]">
                 <div className="w-full h-full ml-auto mr-auto">
 
                     {/* Videos Ongoing Series */}

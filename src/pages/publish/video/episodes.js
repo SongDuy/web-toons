@@ -261,7 +261,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                         </ul>
                     </div>
 
-                    <div className="w-full h-full sm:px-[200px] xs:px-[10px] sm:ml-0">
+                    <div className="w-full h-full xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
                         <div className="w-full h-full py-5 grid grid-cols-1 lg:grid-cols-3">
 
                             {/* Cột bên trái */}

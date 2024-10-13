@@ -44,7 +44,7 @@ const GenresOriginalsAndVideosPage = () => {
             </div>
 
             {/* Hiển thị nội dung thể loại */}
-            <div className="w-full min-h-[600px] py-[30px] xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
+            <div className="w-full min-h-[600px] py-[30px] xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
                 <div className="grid grid-cols-1 gap-y-[30px]">
 
                     {/* khung nội dung dành cho truyện */}
