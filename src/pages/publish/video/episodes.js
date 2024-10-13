@@ -577,7 +577,7 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                             )}
                                         </h1>
 
-                                        <div className="flex xs:gap-x-3 sm:gap-x-6 mt-1 items-center">
+                                        <div className="flex xs:gap-x-3 sm:gap-x-9 mt-1 items-center">
                                             <label className="xs:w-[110px] sm:w-auto flex items-center">
                                                 <Radio
                                                     checked={selectedEpisodesValue === 'Ongoing'}
