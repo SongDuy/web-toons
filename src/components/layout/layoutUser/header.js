@@ -35,6 +35,7 @@ const HeaderPage = () => {
 
   const dispatch = useDispatch();
   const isLoginModal = useSelector(state => state.hidden.isLoginModal);
+  const isLogin19Modal = useSelector(state => state.hidden.isLogin19Modal);
   const User = useSelector(state => state.AuthJs.User);
   const language = useSelector(state => state.hidden.language);
 
@@ -203,7 +204,7 @@ const HeaderPage = () => {
       </div>
 
       {/* Đăng nhập 19 tuổi*/}
-      {!User ?
+      {!User ? (
         <div className="w-auto h-full flex justify-center">
           <button
             className="flex items-center justify-center"
@@ -212,24 +213,37 @@ const HeaderPage = () => {
             <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
               19
             </div>
-
             <div className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full" />
           </button>
-          
           {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
         </div>
-        :
+      ) : !isLogin19Modal ? (
+        <div className="w-auto h-full flex justify-center">
+          <button
+            className="flex items-center justify-center"
+            onClick={openLogin19Modal}
+          >
+            <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
+              19
+            </div>
+            <div className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full" />
+          </button>
+          {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+        </div>
+      ) : (
         <div className="w-auto h-full flex justify-center">
           <button
             className="flex items-center justify-center"
             onClick={closeLogin19Modal}
           >
             <div className="border h-[5px] bg-gray-500 w-[15px] rounded-l-full" />
-
-            <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"> 19 </div>
+            <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
+              19
+            </div>
           </button>
         </div>
-      }
+      )}
+
 
       {/* danh mục */}
       <div className="w-auto flex items-center xs:mx-2 sm:mx-5 overflow-x-auto">
