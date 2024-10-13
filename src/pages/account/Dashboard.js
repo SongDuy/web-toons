@@ -148,7 +148,7 @@ const Dashboard = () => {
                         className="w-full min-h-[210px] bg-white rounded flex shadow"
                         key={item.id}
                       >
-                        <div className="w-[210px] h-[210px] bg-red-200 rounded">
+                        <div className="w-[210px] max-h-[210px] bg-red-200 rounded">
                           <img
                             src={item.squareThumbnail}
                             alt="img"
@@ -324,7 +324,7 @@ const Dashboard = () => {
                         className="w-full min-h-[210px] bg-white rounded flex shadow"
                         key={item.id}
                       >
-                        <div className="w-[210px] h-[210px] bg-red-200 rounded flex items-center justify-center">
+                        <div className="w-[210px] max-h-[210px] border bg-red-200 rounded flex items-center justify-center">
                           <img
                             src={item.squareThumbnail}
                             alt="img"
