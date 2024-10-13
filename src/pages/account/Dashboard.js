@@ -145,7 +145,7 @@ const Dashboard = () => {
                     {/* khung nội dung */}
                     {comics?.map((item) => (
                       <li
-                        className="w-full h-[210px] bg-white rounded flex shadow"
+                        className="w-full min-h-[210px] bg-white rounded flex shadow"
                         key={item.id}
                       >
                         <div className="w-[210px] h-[210px] bg-red-200 rounded">
@@ -156,8 +156,8 @@ const Dashboard = () => {
                           />
                         </div>
 
-                        <div className="h-full px-3 py-3">
-                          <div className="w-[320px]">
+                        <div className="w-full h-full px-3 py-3">
+                          <div className="w-auto">
                             <div className="flex items-center">
                               <span className="text-gray-500 text-sm">
                                 {item.genre1}, {item.genre2}
@@ -321,7 +321,7 @@ const Dashboard = () => {
                     {/* khung nội dung */}
                     {videos?.map((item) => (
                       <li
-                        className="w-full h-[210px] bg-white rounded flex shadow"
+                        className="w-full min-h-[210px] bg-white rounded flex shadow"
                         key={item.id}
                       >
                         <div className="w-[210px] h-[210px] bg-red-200 rounded flex items-center justify-center">
@@ -332,8 +332,8 @@ const Dashboard = () => {
                           />
                         </div>
 
-                        <div className="h-full px-3 py-3">
-                          <div className="w-[320px]">
+                        <div className="w-full h-full px-3 py-3">
+                          <div className="w-auto">
                             <div className="flex items-center">
                               <div className="flex ml-auto gap-2">
                                 <button
