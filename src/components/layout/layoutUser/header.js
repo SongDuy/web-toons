@@ -202,38 +202,32 @@ const HeaderPage = () => {
 
       </div>
 
-      {/* Đăng nhập */}
+      {/* Đăng nhập 19 tuổi*/}
       {!User ?
-        <div className="flex items-center justify-center">
-
+        <div className="w-auto h-full flex justify-center">
           <button
-            className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
+            className="flex items-center justify-center"
             onClick={openLogin19Modal}
           >
-            19
-          </button>
-          <button
-            className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full"
-            onClick={closeLogin19Modal}
-          >
+            <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
+              19
+            </div>
+
+            <div className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full" />
+
           </button>
           {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
         </div>
         :
-        <div className="flex items-center justify-center">
-
+        <div className="w-auto h-full flex justify-center">
           <button
-            className="border h-[5px] bg-gray-500 w-[15px] rounded-l-full"
-            onClick={() => logouts()}
-          />
-
-          <button
-            className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"
-            onClick={() => logouts()}
+            className="flex items-center justify-center"
+            onClick={closeLogin19Modal}
           >
-            19
-          </button>
+            <div className="border h-[5px] bg-gray-500 w-[15px] rounded-l-full" />
 
+            <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center"> 19 </div>
+          </button>
         </div>
       }
 
@@ -292,11 +286,11 @@ const HeaderPage = () => {
         {!User ?
 
           // Chưa đăng nhập tài khoản
-          <div className="flex gap-3">
+          <div className="flex xs:gap-1 sm:gap-3">
 
             {/* Chức năng Publish */}
-            {/* < div className="flex items-center justify-center z-10">
-              <div className="hidden sm:block">
+            < div className="flex items-center justify-center z-10">
+              <div className="hidden lg:block">
                 <button
                   className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
                   onClick={() => { openLoginModal(); handleCloseAccount(); }}
@@ -305,20 +299,20 @@ const HeaderPage = () => {
                 </button>
 
               </div>
-              <div className="block sm:hidden">
+              <div className="block lg:hidden">
                 <button
-                  className="w-[40px] h-[40px] rounded-full font-semibold bg-gray-50 hover:bg-gray-100 text-black flex items-center justify-center"
+                  className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
                   onClick={() => { openLoginModal(); handleCloseAccount(); }}
                 >
                   <BackupIcon />
                 </button>
               </div>
               {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
-            </div> */}
+            </div>
 
             {/* Đăng nhập */}
             <div className="flex items-center justify-center">
-              <div className="hidden sm:block">
+              <div className="hidden lg:block">
                 <button
                   className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
                   onClick={() => { openLoginModal(); handleCloseAccount(); }}
@@ -327,7 +321,7 @@ const HeaderPage = () => {
                 </button>
 
               </div>
-              <div className="block sm:hidden">
+              <div className="block lg:hidden">
                 <button
                   className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
                   onClick={() => { openLoginModal(); handleCloseAccount(); }}
@@ -361,7 +355,7 @@ const HeaderPage = () => {
                 </div>
                 <div className="block lg:hidden">
                   <span
-                    className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full">
+                    className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full">
                     <BackupIcon />
                   </span>
                 </div>
@@ -435,7 +429,7 @@ const HeaderPage = () => {
                   </span>
                 </div>
                 <div className="block lg:hidden">
-                  <span className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black rounded-full">
+                  <span className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black rounded-full">
                     <AccountCircleSharpIcon />
                   </span>
                 </div>
@@ -525,7 +519,7 @@ const HeaderPage = () => {
         }
 
         {/* Chức năng tìm kiếm và chuyển ngữ */}
-        <div className="flex items-center xs:gap-1 sm:gap-3">
+        <div className="flex items-center xs:gap-2 sm:gap-3">
 
           {/* Chức năng tìm kiếm */}
           <div className="w-full h-full">
@@ -539,7 +533,7 @@ const HeaderPage = () => {
             </div>
             <div className="block sm:hidden">
               <button
-                className="w-[30px] h-[30px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
+                className="w-[35px] h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
                 onClick={openSearchModal}
               >
                 <SearchIcon sx={{ fontSize: 18 }} />
@@ -559,7 +553,7 @@ const HeaderPage = () => {
                   </button>
                 </div>
                 <div className="block sm:hidden">
-                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
+                  <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
                     En
                   </button>
                 </div>
