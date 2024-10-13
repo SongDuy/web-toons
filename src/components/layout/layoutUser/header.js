@@ -597,7 +597,7 @@ const HeaderPage = () => {
                   </button>
                 </div>
                 <div className="block sm:hidden">
-                  <button className="w-[30px] h-[30px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
+                  <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
                     Ko
                   </button>
                 </div>
