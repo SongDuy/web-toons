@@ -153,7 +153,7 @@ const AdminOriginalsPage = () => {
                                         <img
                                             src={item.squareThumbnail}
                                             alt="img"
-                                            className="object-fill w-[100px] h-[100px] rounded-md"
+                                            className="object-fill min-w-[100px] max-w-[100px] min-h-[100px] max-h-[100px] rounded-md"
                                         />
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
