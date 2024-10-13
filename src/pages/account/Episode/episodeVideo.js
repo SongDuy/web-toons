@@ -124,7 +124,7 @@ const EpisodeVideo = () => {
                                 </div>
 
                                 <div className="w-full h-full mt-4">
-                                    <ul className="grid grid-cols-2 gap-4">
+                                    <ul className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
 
                                         {/* khung nội dung */}
                                         {chapters?.chaps?.map((item) => (
@@ -137,8 +137,8 @@ const EpisodeVideo = () => {
                                                     />
                                                 </div>
 
-                                                <div className="h-full px-3 py-3">
-                                                    <div className="w-[320px]">
+                                                <div className="w-full h-full px-3 py-3">
+                                                    <div className="w-auto">
                                                         <div className="flex items-center">
 
                                                             <div className="flex ml-auto gap-2">

@@ -125,7 +125,7 @@ const EpisodeOriginal = () => {
                                 </div>
 
                                 <div className="w-full h-full mt-4">
-                                    <ul className="grid grid-cols-2 gap-4">
+                                    <ul className="grid xs:grid-cols-1 lg:grid-cols-2 gap-4">
 
                                         {/* khung nội dung */}
                                         {chapters?.chaps?.map((item) => (
@@ -138,8 +138,8 @@ const EpisodeOriginal = () => {
                                                     />
                                                 </div>
 
-                                                <div className="h-full px-3 py-3">
-                                                    <div className="w-[320px]">
+                                                <div className="w-full h-full px-3 py-3">
+                                                    <div className="w-auto">
                                                         <div className="flex items-center">
                                                             <span className="text-gray-500">
                                                                 {item.genre1}, {item.genre2}
@@ -171,10 +171,7 @@ const EpisodeOriginal = () => {
                                                         </div>
                                                     </div>
 
-
-
-                                                    <div className="w-full mt-12">
-
+                                                    <div className="w-full flex">
                                                         <div className="flex gap-5">
                                                             {!language?   <span className="text-gray-500 text-sm flex gap-2">
                                                                 
