@@ -355,7 +355,7 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
             </ul>
           </div>
 
-          <div className="w-full h-full sm:px-[200px] xs:px-[10px]">
+          <div className="w-full h-full xs:px-[10px] sm:px-[200px]">
             <div className="w-full h-full py-5 grid grid-cols-1 lg:grid-cols-3">
 
               {/* Cột bên trái */}
