@@ -649,7 +649,7 @@ const VideoSeriesPage = () => {
 
           <div className="w-full h-full  py-10 flex items-center justify-center">
             <div className="w-[1200px] h-full ">
-              <div className="text-xl font-semibold">
+              <div className="xs:ml-[15px] sm:ml-0 text-xl font-semibold">
                 {!language ? (
                   <span> You may also like </span>
                 ) : (
