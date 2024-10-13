@@ -8,7 +8,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { useDispatch, useSelector } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 
-import { setIsLoginModal, setIsLogin19Modal } from '../../common/store/hidden';
+import { setIsLoginModal, setIsLogin19Modal, setcheck19Modal } from '../../common/store/hidden';
 import { handleLogin, handleGoogle, seterr, handleLogin19, handleGoogle19 } from '../../common/store/Auth.js';
 import useTimeout from '../../Hooks/useTimeout';
 
@@ -37,6 +37,8 @@ const LoginPage = ({ closeModal }) => {
                 if (err === null) {
                     dispatch(setIsLoginModal(false))
                     dispatch(setIsLogin19Modal(false));
+                    dispatch(setcheck19Modal(true))
+
                 }
 
             } else {
@@ -44,6 +46,7 @@ const LoginPage = ({ closeModal }) => {
                 unwrapResult(lg)
                 if (err === null) {
                     dispatch(setIsLoginModal(false))
+                    dispatch(setcheck19Modal(false))
 
                 }
             }
@@ -56,13 +59,16 @@ const LoginPage = ({ closeModal }) => {
             if (isLogin19Modal) {
                 const lg = await dispatch(handleGoogle19());
                 unwrapResult(lg)
-                console.log(lg)
+                dispatch(setcheck19Modal(true))
+
                 dispatch(setIsLoginModal(false))
                 dispatch(setIsLogin19Modal(false));
 
             } else {
                 dispatch(handleGoogle());
                 dispatch(setIsLoginModal(false))
+                dispatch(setcheck19Modal(false))
+
             }
         } catch (error) {
         }

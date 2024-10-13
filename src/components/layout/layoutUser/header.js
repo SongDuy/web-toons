@@ -27,7 +27,7 @@ import logo from "../../../img/logonew.png";
 import { Link, useLocation } from "react-router-dom";
 import { auth } from "../../../common/themes/firebase";
 import { useDispatch, useSelector } from 'react-redux';
-import { getlanguage, setIsLoginModal, setIsLogin19Modal, setcurrentStepOriginal, setcurrentStepVideo, setlanguage } from "../../../common/store/hidden";
+import { getlanguage, setIsLoginModal, setIsLogin19Modal, setcurrentStepOriginal, setcurrentStepVideo, setlanguage, setcheck19Modal } from "../../../common/store/hidden";
 import { logout, setuser } from "../../../common/store/Auth.js";
 import { onAuthStateChanged } from 'firebase/auth';
 import userFireBase from "../../../common/services/User.services";
@@ -37,6 +37,8 @@ const HeaderPage = () => {
   const dispatch = useDispatch();
   const isLoginModal = useSelector(state => state.hidden.isLoginModal);
   const isLogin19Modal = useSelector(state => state.hidden.isLogin19Modal);
+  const check19Modal = useSelector(state => state.hidden.check19Modal);
+
   const User = useSelector(state => state.AuthJs.User);
   const language = useSelector(state => state.hidden.language);
 
@@ -158,6 +160,8 @@ const HeaderPage = () => {
         auth?.currentUser?.uid && await userFireBase.update({ checkage: false }, auth?.currentUser?.uid)
         await dispatch(logout())
         dispatch(setIsLogin19Modal(false));
+        dispatch(setcheck19Modal(false))
+
       }
 
     } catch (error) {
@@ -220,6 +224,7 @@ const HeaderPage = () => {
       {!User ? (
         <div className="w-auto h-full flex justify-center">
           <button
+             onClick={openLogin19Modal}
             className="flex items-center justify-center"
           >
             <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
@@ -227,33 +232,34 @@ const HeaderPage = () => {
             </div>
             <div className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full" />
           </button>
-          {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+          {isLogin19Modal && <LoginPage closeModal={closeLogin19Modal} />}
         </div>
-      ) : !isLogin19Modal ? (
+      ) : !check19Modal ? (
         <div className="w-auto h-full flex justify-center">
           <button
             className="flex items-center justify-center"
-            onClick={openLogin19Modal}
+            onClick={() => {open19AgeModal(); }}
           >
             <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
               19
             </div>
             <div className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full" />
           </button>
-
+          {is19AgeModal && <Login19AgePage closeModal={close19AgeModal} check={true}/>}
         </div>
       ) : (
         <div className="w-auto h-full flex justify-center">
           <button
             className="flex items-center justify-center"
-            onClick={() => { closeLogin19Modal(); open19AgeModal(); }}
+            onClick={() => {open19AgeModal(); }}
           >
             <div className="border h-[5px] bg-gray-500 w-[15px] rounded-l-full" />
             <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
               19
             </div>
           </button>
-          {is19AgeModal && <Login19AgePage closeModal={close19AgeModal} />}
+          
+          {is19AgeModal && <Login19AgePage closeModal={close19AgeModal} check={false}/>}
         </div>
       )}
 

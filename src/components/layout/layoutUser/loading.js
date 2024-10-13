@@ -13,6 +13,7 @@ const Loading = ({ children }) => {
   const dispatch = useDispatch();
   const [loading, setloading] = useState(false);
   const User = useSelector((state) => state.AuthJs.User);
+  const check19Modal = useSelector(state => state.hidden.check19Modal);
 
   useEffect(() => {
     const get = async () => {
@@ -20,7 +21,6 @@ const Loading = ({ children }) => {
         setloading(false);
         if (User) {
           const account = await dispatch(getAccount(auth?.currentUser?.uid));
-
           const user = unwrapResult(account);
           if (user?.checkage) {
             const age = account?.payload?.birthday
@@ -50,7 +50,7 @@ const Loading = ({ children }) => {
       }
     };
     get();
-  }, [dispatch, User]);
+  }, [dispatch, User,check19Modal]);
   return (
     <div>
       {loading ? (

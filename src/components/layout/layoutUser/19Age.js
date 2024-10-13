@@ -1,13 +1,37 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import CheckIcon from '@mui/icons-material/Check';
+import userFireBase from '../../../common/services/User.services';
+import { auth } from '../../../common/themes/firebase';
+import { useDispatch } from 'react-redux';
+import { setcheck19Modal } from '../../../common/store/hidden';
+import { getAccount } from '../../../common/store/Account';
+import { unwrapResult } from '@reduxjs/toolkit';
 
-const Login19AgePage = ({ closeModal }) => {
+const Login19AgePage = ({ closeModal,check }) => {
     // Mở và đóng modal login 19 tuổi
+    const dispatch = useDispatch();
 
-    const handleBackdropClick = (event) => {
-        if (event.target === event.currentTarget) {
-            closeModal();
+    const handleBackdropClick =async (event) => {
+        try {
+            if (event.target === event.currentTarget && auth?.currentUser) {
+                if(check){
+                    await userFireBase.update({checkage:true},auth?.currentUser?.uid)
+                    dispatch(setcheck19Modal(true))
+                    const account = await dispatch(getAccount(auth?.currentUser?.uid));
+                    unwrapResult(account);
+                    closeModal();
+                }else{
+                    await userFireBase.update({checkage:false},auth?.currentUser?.uid)
+                    dispatch(setcheck19Modal(false))
+                    const account = await dispatch(getAccount(auth?.currentUser?.uid));
+                     unwrapResult(account); 
+                    closeModal();
+                }
+              
+            }
+        } catch (error) {
+            
         }
     };
 

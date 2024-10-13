@@ -45,6 +45,8 @@ const OriginalSeriesPage = () => {
   const [Subscribe, setSubscribe] = useState([[]]);
   const language = useSelector((state) => state.hidden.language);
   const User = useSelector((state) => state.AuthJs.User);
+  const check19Modal = useSelector(state => state.hidden.check19Modal);
+
   const navigate = useNavigate();
 
   const [Rate, setRate] = useState(0);
@@ -130,7 +132,7 @@ const OriginalSeriesPage = () => {
       } catch (error) { }
     };
     get();
-  }, [dispatch, User, navigate, id]);
+  }, [dispatch, User, navigate, id,check19Modal]);
 
   //Mở modal menu để chọn
   const [open, setOpen] = React.useState(false);

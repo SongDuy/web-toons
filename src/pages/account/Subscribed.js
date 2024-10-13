@@ -20,6 +20,7 @@ const Subscribed = () => {
   const [ALLSubcribed, setALLSubcribed] = useState(false);
   const [loading, setloading] = useState(false);
   const Account = useSelector((state) => state.Account.Account);
+  const check19Modal = useSelector(state => state.hidden.check19Modal);
 
   const dispatch = useDispatch();
   const monthNames = [
@@ -43,6 +44,7 @@ const Subscribed = () => {
 
         const subscribe = await SubscribeFireBase.getbyid(Account?.uid);
         if (Account?.checkage) {
+
           const age = Account?.birthday
             ? new Date(Date.now())?.getFullYear() -
             new Date(Account.birthday)?.getFullYear()
@@ -79,7 +81,7 @@ const Subscribed = () => {
       }
     };
     get();
-  }, [dispatch, Account]);
+  }, [dispatch, Account,check19Modal]);
   const HandleDelete = async () => {
     try {
       setloading(false);

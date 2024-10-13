@@ -21,6 +21,7 @@ const SearchPage = ({ closeModal }) => {
     const comic = useSelector(state => state.comic.comic);
     const Video = useSelector(state => state.Video.video);
     const User = useSelector((state) => state.AuthJs.User);
+    const check19Modal = useSelector(state => state.hidden.check19Modal);
 
     const dispatch = useDispatch();
 
@@ -69,7 +70,7 @@ const SearchPage = ({ closeModal }) => {
             }
         };
         getComicsAndVideos();
-    }, [dispatch, User]);
+    }, [dispatch, User,check19Modal]);
 
 
     // Hiển thị nội dung giống nội dung cần tìm

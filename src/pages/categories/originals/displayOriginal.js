@@ -66,6 +66,8 @@ const DisplayOriginalPage = () => {
   const language = useSelector((state) => state.hidden.language);
   const chapters = useSelector((state) => state.comic.Chapters);
   const comic = useSelector((state) => state.comic.comic);
+  const check19Modal = useSelector(state => state.hidden.check19Modal);
+
   const [selectedOriginalGenre, setSelectedOriginalGenre] = useState("All");
   const Account = useSelector((state) => state.Account.Account);
   //Mở modal menu original by genre để chọn
@@ -250,7 +252,7 @@ const DisplayOriginalPage = () => {
       } catch (error) { }
     };
     getcomments();
-  }, [dispatch, id]);
+  }, [dispatch, id,check19Modal]);
 
   const options = useMemo(
     () => ({
