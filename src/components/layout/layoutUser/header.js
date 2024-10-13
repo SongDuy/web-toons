@@ -238,7 +238,7 @@ const HeaderPage = () => {
         <div className="w-auto h-full flex justify-center">
           <button
             className="flex items-center justify-center"
-            onClick={() => {open19AgeModal(); }}
+            onClick={() => {open19AgeModal();}}
           >
             <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
               19
