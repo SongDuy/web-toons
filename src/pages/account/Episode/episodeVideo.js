@@ -137,7 +137,7 @@ const EpisodeVideo = () => {
                                                     />
                                                 </div>
 
-                                                <div className="w-full h-full px-3 py-3">
+                                                <div className="w-full h-full px-3 py-3 flex flex-col">
                                                     <div className="w-auto">
                                                         <div className="flex items-center">
 
@@ -167,7 +167,7 @@ const EpisodeVideo = () => {
                                                         </div>
                                                     </div>
 
-                                                    <div className="w-full mt-12">
+                                                    <div className="w-full flex mt-auto">
 
                                                         <div className="flex gap-5">
                                                         {!language?   <span className="text-gray-500 text-sm flex gap-2">
