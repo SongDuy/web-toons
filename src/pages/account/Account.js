@@ -83,11 +83,10 @@ const Account = () => {
 
   return (
     <div>
-      <div className="w-full h-full bg-gray-100">
-        <Nav />
-        <div className="py-[30px] px-[200px] flex-row justify-center items-center container mx-auto my-auto">
+      <Nav />
+      <div className="w-full h-full xs:px-[10px] sm:px-[200px] bg-gray-100">
+        <div className="py-[30px] w-full flex-row justify-center items-center container mx-auto my-auto">
           <div className="mb-5">
-
             <h1 className="font-semibold text-2xl text-black">
               {!language ?
                 "Login information"
@@ -95,10 +94,9 @@ const Account = () => {
                 "로그인 정보"
               }
             </h1>
-
           </div>
 
-          <div className="w-full h-full flex   bg-white border border-white p-5">
+          <div className="w-full h-full flex bg-white border border-white p-5">
             <div className="rounded-full  bg-gray-200 flex justify-center items-center p-2 w-[8%] ml-5">
               {auth?.currentUser?.providerData[0].providerId ? <GoogleIcon sx={{ fontSize: 40 }} /> : ""}
             </div>
@@ -117,7 +115,7 @@ const Account = () => {
             </div>
           </div>
         </div>
-        <div className="py-[30px] px-[200px] flex-row justify-center items-center container mx-auto">
+        <div className="py-[30px] w-full flex-row justify-center items-center container mx-auto">
           <div className="mb-5">
 
             <h1 className="font-semibold text-2xl text-black">
@@ -214,7 +212,7 @@ const Account = () => {
             </div>
           )}
         </div>
-        <div className="py-[30px] px-[200px] flex-row justify-center items-center container mx-auto">
+        <div className="py-[30px] w-full flex-row justify-center items-center container mx-auto">
           <div className="mb-5">
 
             <h1 className="font-semibold text-2xl text-black">
@@ -310,7 +308,7 @@ const Account = () => {
             </div>
           )}
         </div>
-        <div className="py-[30px] px-[200px] flex-row justify-center items-center container mx-auto">
+        <div className="py-[30px] w-full flex-row justify-center items-center container mx-auto">
           <div className="mb-5">
 
             <h1 className="font-semibold text-2xl text-black">
@@ -533,7 +531,6 @@ const Account = () => {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

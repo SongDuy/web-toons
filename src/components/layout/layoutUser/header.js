@@ -196,7 +196,7 @@ const HeaderPage = () => {
           >
             <img
               src={logo}
-              alt="Logo của website"
+              alt="Logo"
               className="w-full h-auto"
             />
           </Link>
@@ -208,7 +208,7 @@ const HeaderPage = () => {
           >
             <img
               src={logo}
-              alt="Logo của website"
+              alt="Logo"
               className="w-full h-auto"
             />
           </Link>
