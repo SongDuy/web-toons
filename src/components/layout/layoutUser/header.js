@@ -21,6 +21,7 @@ import ExitToAppSharpIcon from '@mui/icons-material/ExitToAppSharp';
 import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
 
 import SearchPage from "./search";
+import Login19AgePage from "./19Age.js";
 import LoginPage from "../../../../src/pages/auth/login";
 import logo from "../../../img/logonew.png";
 import { Link, useLocation } from "react-router-dom";
@@ -120,6 +121,17 @@ const HeaderPage = () => {
     setIsSearchModal(false);
   };
 
+  // Mở đóng modal login 19
+  const [is19AgeModal, setIs19AgeModal] = useState(false);
+
+  const open19AgeModal = () => {
+    setIs19AgeModal(true);
+  };
+
+  const close19AgeModal = () => {
+    setIs19AgeModal(false);
+  };
+
   // Mở đóng modal login
 
   const openLoginModal = () => {
@@ -152,6 +164,7 @@ const HeaderPage = () => {
 
     }
   }
+
   //new
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -208,7 +221,6 @@ const HeaderPage = () => {
         <div className="w-auto h-full flex justify-center">
           <button
             className="flex items-center justify-center"
-            onClick={openLogin19Modal}
           >
             <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
               19
@@ -228,19 +240,20 @@ const HeaderPage = () => {
             </div>
             <div className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full" />
           </button>
-          {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+
         </div>
       ) : (
         <div className="w-auto h-full flex justify-center">
           <button
             className="flex items-center justify-center"
-            onClick={closeLogin19Modal}
+            onClick={() => { closeLogin19Modal(); open19AgeModal(); }}
           >
             <div className="border h-[5px] bg-gray-500 w-[15px] rounded-l-full" />
             <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
               19
             </div>
           </button>
+          {is19AgeModal && <Login19AgePage closeModal={close19AgeModal} />}
         </div>
       )}
 
