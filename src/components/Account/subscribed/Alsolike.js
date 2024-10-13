@@ -16,7 +16,7 @@ const Alsolike = () => {
 
       <div className="w-full h-full flex    p-5">
         {random?.comic?.length === 0 ? <div></div> :
-          <div className="grid xs:grid-cols-1 lg:grid-cols-3 gap-2 w-full">
+          <div className="grid xs:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
             {random?.comic?.map(item => {
               return (
 
