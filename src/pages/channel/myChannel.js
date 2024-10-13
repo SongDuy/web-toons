@@ -351,7 +351,7 @@ const MyChannelPage = () => {
                 </div> */}
 
                   {/* Khung hiển thị các Series truyện của tác giả */}
-                  <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
+                  <div className="w-full max-h-[550px] px-5 py-3 bg-white rounded-lg">
                     <div className="font-semibold text-[20px] text-black">
                       {!language ? (
                         <span>Original Series </span>
@@ -360,7 +360,7 @@ const MyChannelPage = () => {
                       )}
                     </div>
 
-                    <div className="mt-5 h-[450px] custom-scrollbar">
+                    <div className="mt-5 max-h-[450px] custom-scrollbar">
                       <ul className="w-full">
                         {comic?.slice(0, 5)?.map((item) => (
                           <Link
@@ -401,7 +401,7 @@ const MyChannelPage = () => {
                   </div>
 
                   {/* Khung hiển thị các Series Video của tác giả */}
-                  <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
+                  <div className="w-full max-h-[550px] px-5 py-3 bg-white rounded-lg">
                     <div className="font-semibold text-[20px] text-black">
                       {!language ? (
                         <span>Video Series </span>
@@ -410,7 +410,7 @@ const MyChannelPage = () => {
                       )}
                     </div>
 
-                    <div className="mt-5 h-[450px] custom-scrollbar">
+                    <div className="mt-5 max-h-[450px] custom-scrollbar">
                       <ul className="w-full">
                         {Video?.slice(0, 5)?.map((item) => (
                           <Link
