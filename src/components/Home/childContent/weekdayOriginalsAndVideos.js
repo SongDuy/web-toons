@@ -193,7 +193,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                     <li
                                         onMouseEnter={() => setHoveredOriginalItem(item.id)}
                                         onMouseLeave={() => setHoveredOriginalItem(null)}
-                                        className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                                        className="max-w-[210px] w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                     >
 
                                         <div className="w-full h-full" >
@@ -258,14 +258,14 @@ const WeekdayOriginalsAndVideosPage = () => {
                                     <li
                                         onMouseEnter={() => setHoveredVideoItem(item.id)}
                                         onMouseLeave={() => setHoveredVideoItem(null)}
-                                        className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white cursor-pointer transition-shadow duration-300 hover:shadow"
+                                        className="max-w-[210px] h-[210px] rounded-md bg-white cursor-pointer transition-shadow duration-300 hover:shadow"
                                     >
 
                                         <div className="w-full h-[120px] relative" >
                                             <img
                                                 src={item.squareThumbnail}
                                                 alt="img"
-                                                className="object-fill w-full h-full rounded-md"
+                                                className="object-cover w-full h-full rounded-md"
                                             />
 
                                             {hoveredVideoItem === item.id && (

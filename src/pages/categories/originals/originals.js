@@ -342,7 +342,7 @@ const OriginalsPage = () => {
                       <li
                         onMouseEnter={() => setHoveredOngoingItem(item.id)}
                         onMouseLeave={() => setHoveredOngoingItem(null)}
-                        className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                        className="max-w-[230px] w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                       >
                         <div className="w-full h-full">
                           <img
@@ -426,7 +426,7 @@ const OriginalsPage = () => {
                         <li
                           onMouseEnter={() => setHoveredCompletedItem(item.id)}
                           onMouseLeave={() => setHoveredCompletedItem(null)}
-                          className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                          className="max-w-[230px] w-[230px] h-[230px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                         >
                           <div className="w-full h-full">
                             <img
