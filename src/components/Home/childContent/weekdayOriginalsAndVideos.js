@@ -193,7 +193,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                     <li
                                         onMouseEnter={() => setHoveredOriginalItem(item.id)}
                                         onMouseLeave={() => setHoveredOriginalItem(null)}
-                                        className="max-w-[210px] w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                                        className="max-w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                     >
 
                                         <div className="w-full h-full" >
@@ -210,7 +210,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                             )}
                                         </div>
 
-                                        <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                        <div className="w-[210px] absolute inset-0 flex flex-wrap items-center px-3 py-3">
                                             <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                 <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                                                     {item.title}
@@ -265,7 +265,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                             <img
                                                 src={item.squareThumbnail}
                                                 alt="img"
-                                                className="object-cover w-full h-full rounded-md"
+                                                className="object-fill w-full h-full rounded-md"
                                             />
 
                                             {hoveredVideoItem === item.id && (
@@ -275,7 +275,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                             )}
                                         </div>
 
-                                        <div className="w-full flex flex-wrap items-center px-3 py-3">
+                                        <div className="w-[210px] flex flex-wrap items-center px-3 py-3">
                                             <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                 <span className="text-black text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
                                                     {item.title}

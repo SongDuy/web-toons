@@ -47,7 +47,7 @@ const NewToVideosPage = () => {
                                 <li
                                     onMouseEnter={() => setHoveredVideoItem(item.id)}
                                     onMouseLeave={() => setHoveredVideoItem(null)}
-                                    className="max-w-[210px] w-[210px] h-[210px] rounded-md bg-white  cursor-pointer transition-shadow duration-300 hover:shadow"
+                                    className="max-w-[210px] h-[210px] rounded-md bg-white  cursor-pointer transition-shadow duration-300 hover:shadow"
                                 >
 
                                     <div className="w-full h-[120px] relative" >
@@ -64,7 +64,7 @@ const NewToVideosPage = () => {
                                         )}
                                     </div>
 
-                                    <div className="w-full flex flex-wrap items-center px-3 py-3">
+                                    <div className="w-[210px] flex flex-wrap items-center px-3 py-3">
                                         <div className="w-full h-[65px] mb-auto overflow-hidden">
                                             <span className="text-black text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
                                                 {item.title}
