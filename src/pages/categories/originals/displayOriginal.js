@@ -563,7 +563,7 @@ const DisplayOriginalPage = () => {
   };
 
   const scale = calculateScale(); // Di chuyển dòng này sau khi windowSize được định nghĩa
-
+  console.log(id)
   return (
     <>
       {!loading ? (
@@ -622,7 +622,7 @@ const DisplayOriginalPage = () => {
                     </button>
                     <div className="w-full ml-auto mr-auto">
                       <span className="w-full rounded-md py-1 flex items-center justify-center text-white">
-                        #{chapid?.num}1237
+                        #{chapid?.num}
                       </span>
                     </div>
                     <button className="ml-auto cursor-pointer">
@@ -762,7 +762,8 @@ const DisplayOriginalPage = () => {
                   <Link
                     to={`/originals/original/series/display/${id.id}/${item.id}`}
                     key={item.id}
-                    className="w-[120px] h-[165px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
+                    className={`w-[120px] h-[165px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden 
+                      ${id.idseries ? "bg-gray-200" : " "}`}
                   >
                     <div className="w-[100px] h-[100px] mb-auto">
                       <img
