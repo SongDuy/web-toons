@@ -308,7 +308,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                         </ul>
                     </div>
 
-                    <div className="w-full h-full sm:px-[160px] xs:px-[10px] sm:ml-0">
+                    <div className="w-full h-full xs:px-[16px] sm:px-[32px] md:px-[64px] lg:px-[96px] xl:px-[128px] 2xl:px-[160px] 3xl:px-[192px]">
                         <div className="w-full h-full py-5 grid grid-cols-1 lg:grid-cols-3">
                             {/* Phần cột bên trái */}
                             <div className="w-full h-full col-span-1">

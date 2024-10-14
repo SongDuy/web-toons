@@ -44,7 +44,7 @@ const GenresOriginalsAndVideosPage = () => {
             </div>
 
             {/* Hiển thị nội dung thể loại */}
-            <div className="w-full min-h-[600px] py-[30px] xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
+            <div className="w-full min-h-[600px] py-[30px] xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
                 <div className="grid grid-cols-1 gap-y-[30px]">
 
                     {/* khung nội dung dành cho truyện */}
@@ -67,7 +67,7 @@ const GenresOriginalsAndVideosPage = () => {
                             </ul>
                         </div>
                         
-                        <div className="w-full h-full flex justify-center">
+                        <div className="w-full flex items-center justify-center">
                             <ul className=" grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-5 gap-4">
                                 {/* khung nội dung */}
                                 {filteredOriginalsByGenre?.slice(0, 10)?.map((item) => (
@@ -79,7 +79,7 @@ const GenresOriginalsAndVideosPage = () => {
                                         <li
                                             onMouseEnter={() => setHoveredOriginalItem(item.id)}
                                             onMouseLeave={() => setHoveredOriginalItem(null)}
-                                            className="max-w-[210px] 2xl:w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                                            className="max-w-[210px] h-[210px] bg-white rounded-md relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                         >
 
                                             <div className="w-full h-full" >
@@ -96,7 +96,7 @@ const GenresOriginalsAndVideosPage = () => {
                                                 )}
                                             </div>
 
-                                            <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                            <div className="w-[210px] absolute inset-0 flex flex-wrap items-center px-3 py-3">
                                                 <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                     <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                                                         {item.title}

@@ -91,7 +91,7 @@ const Delete = () => {
   const language = useSelector((state) => state.hidden.language);
 
   return (
-    <div className="w-full h-full xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100 py-[40px] flex justify-center items-center">
+    <div className="w-full h-full xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100 py-[40px] flex justify-center items-center">
       <div className="w-full border h-full">
         {/* Tiêu đề */}
         <h1 className="text-[22px] font-semibold">
@@ -104,7 +104,7 @@ const Delete = () => {
         </h1>
 
         {/* Nội dung */}
-        <div className="w-auto border h-full mt-[15px] xs:px-[30px] sm:px-[60px] md:px-[80px] lg:px-[100px] xl:px-[130px] 2xl:px-[160px] 3xl:px-[180px] py-[80px] bg-white">
+        <div className="w-auto border h-full mt-[15px] xs:px-[16px] sm:px-[32px] md:px-[64px] lg:px-[96px] xl:px-[128px] 2xl:px-[160px] 3xl:px-[192px] py-[80px] bg-white">
           <div className="w-full grid grid-cols-1 gap-2">
             <h1 className="text-[18px] font-semibold">
               {!language ?

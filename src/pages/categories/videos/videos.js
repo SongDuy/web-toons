@@ -148,7 +148,7 @@ const VideosPage = () => {
                 </ul>
             </div>
 
-            <div className="w-full h-full xs:px-[30px] sm:px-[60px] md:px-[80px] lg:px-[100px] xl:px-[130px] 2xl:px-[160px] 3xl:px-[180px]">
+            <div className="w-full h-full xs:px-[16px] sm:px-[32px] md:px-[64px] lg:px-[96px] xl:px-[128px] 2xl:px-[160px] 3xl:px-[192px]">
                 <div className="w-full h-full ml-auto mr-auto">
 
                     {/* Videos Ongoing Series */}
@@ -276,7 +276,7 @@ const VideosPage = () => {
                                             <li
                                                 onMouseEnter={() => setHoveredOngoingItem(item.id)}
                                                 onMouseLeave={() => setHoveredOngoingItem(null)}
-                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md  cursor-pointer transition-shadow duration-300 hover:shadow"
+                                                className="max-w-[230px] h-[230px] bg-white rounded-md  cursor-pointer transition-shadow duration-300 hover:shadow"
                                             >
                                                 <div className="w-full h-[130px] relative" >
                                                     <img
@@ -292,7 +292,7 @@ const VideosPage = () => {
                                                     )}
                                                 </div>
 
-                                                <div className=" flex flex-wrap items-center px-3 py-3">
+                                                <div className="w-[230px] flex flex-wrap items-center px-3 py-3">
 
                                                     <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                         <span className="text-lg font-semibold text-black text-shadow-white leading-[1.2] line-clamp-2">
@@ -339,7 +339,7 @@ const VideosPage = () => {
                                             <li
                                                 onMouseEnter={() => setHoveredCompletedItem(item.id)}
                                                 onMouseLeave={() => setHoveredCompletedItem(null)}
-                                                className="max-w-[230px] 2xl:w-[230px] h-[230px] bg-white rounded-md cursor-pointer transition-shadow duration-300 hover:shadow"
+                                                className="max-w-[230px] h-[230px] bg-white rounded-md cursor-pointer transition-shadow duration-300 hover:shadow"
                                             >
 
                                                 <div className="w-full h-[130px] relative" >
@@ -356,7 +356,7 @@ const VideosPage = () => {
                                                     )}
                                                 </div>
 
-                                                <div className="flex flex-wrap items-center px-3 py-3">
+                                                <div className="w-[230px] flex flex-wrap items-center px-3 py-3">
 
                                                     <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                         <span className="text-lg font-semibold text-black text-shadow-white leading-[1.2] line-clamp-2">

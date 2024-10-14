@@ -177,7 +177,7 @@ const WeekdayOriginalsAndVideosPage = () => {
 
                 </div>
             </div>
-            <div className="w-full min-h-[500px] py-[30px] xs:px-[40px] sm:px-[80px] md:px-[100px] lg:px-[130px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
+            <div className="w-full min-h-[500px] py-[30px] xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
                 <div className="grid grid-cols-1 gap-y-4 ">
 
                     {/* khung nội dung dành cho truyện */}
@@ -193,7 +193,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                     <li
                                         onMouseEnter={() => setHoveredOriginalItem(item.id)}
                                         onMouseLeave={() => setHoveredOriginalItem(null)}
-                                        className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                                        className="max-w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
                                     >
 
                                         <div className="w-full h-full" >
@@ -210,7 +210,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                             )}
                                         </div>
 
-                                        <div className="w-full absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                        <div className="w-[210px] absolute inset-0 flex flex-wrap items-center px-3 py-3">
                                             <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                 <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                                                     {item.title}
@@ -258,7 +258,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                     <li
                                         onMouseEnter={() => setHoveredVideoItem(item.id)}
                                         onMouseLeave={() => setHoveredVideoItem(null)}
-                                        className="max-w-[210px] 2xl:w-[210px] h-[210px] rounded-md bg-white cursor-pointer transition-shadow duration-300 hover:shadow"
+                                        className="max-w-[210px] h-[210px] rounded-md bg-white cursor-pointer transition-shadow duration-300 hover:shadow"
                                     >
 
                                         <div className="w-full h-[120px] relative" >
@@ -275,7 +275,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                             )}
                                         </div>
 
-                                        <div className="w-full flex flex-wrap items-center px-3 py-3">
+                                        <div className="w-[210px] flex flex-wrap items-center px-3 py-3">
                                             <div className="w-full h-[65px] mb-auto overflow-hidden">
                                                 <span className="text-black text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
                                                     {item.title}

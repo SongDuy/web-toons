@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import GoogleIcon from '@mui/icons-material/Google';
+import CloseIcon from '@mui/icons-material/Close';
+
 // import { auth } from "../../common/themes/firebase";
 // import { onIdTokenChanged  } from "firebase/auth";
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,7 +34,7 @@ const LoginPage = ({ closeModal }) => {
     const GetLogin = async () => {
         try {
             if (isLogin19Modal) {
-                const lg = await dispatch(handleLogin19({ email, password,language }));
+                const lg = await dispatch(handleLogin19({ email, password, language }));
                 unwrapResult(lg)
                 if (err === null) {
                     dispatch(setIsLoginModal(false))
@@ -42,7 +44,7 @@ const LoginPage = ({ closeModal }) => {
                 }
 
             } else {
-                const lg = await dispatch(handleLogin({ email, password,language }));
+                const lg = await dispatch(handleLogin({ email, password, language }));
                 unwrapResult(lg)
                 if (err === null) {
                     dispatch(setIsLoginModal(false))
@@ -96,9 +98,23 @@ const LoginPage = ({ closeModal }) => {
     return (
         <div className="w-screen h-screen bg-black bg-opacity-30 flex items-center justify-center fixed inset-0 z-50" onClick={handleBackdropClick}> {/* backdrop-blur-sm */}
 
-            <div className="w-[400px] h-auto px-5 pt-5 pb-8 bg-white shadow rounded-lg">
-                <div>
+            <div className="w-[400px] h-auto px-5 pt-5 pb-10 bg-white shadow rounded-lg">
 
+                {/* nút tắt login */}
+                <button
+                    className="w-[35px] h-[35px] z-50 bg-red-200 flex ml-auto hover:text-white rounded-md"
+                    onClick={handleBackdropClick}
+                >
+                    <span
+                        className="w-full h-full z-10 flex items-center justify-center"
+                        onClick={handleBackdropClick}
+                    >
+                        <CloseIcon onClick={handleBackdropClick} sx={{ fontSize: 25 }} />
+                    </span>
+
+                </button>
+
+                <div>
                     {!language ?
                         <h1 className="text-[25px] flex justify-center font-semibold">
                             Log In

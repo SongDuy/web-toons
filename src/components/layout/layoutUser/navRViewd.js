@@ -54,7 +54,7 @@ const NavRViewd = () => {
   };
   return (
     <div>
-      <div className="hidden sm:block">
+      <div className="hidden lg:block">
         <button
           className="fixed top-[50%] right-[-4%] transform rotate-90 bg-white p-5 rounded-br-lg rounded-bl-lg flex"
           onClick={() => OpenRView()}
@@ -68,7 +68,7 @@ const NavRViewd = () => {
         {OpenoAnimation && (
           <div>
             <button
-              className={`fixed top-[50%] right-[3%]     ${!OpennavRVivew ? " animate-slideLeft " : "animate-slideRight "
+              className={`fixed top-[50%] right-[3%]  ${!OpennavRVivew ? " animate-slideLeft " : "animate-slideRight "
                 } `}
               onClick={() => setOpennavRVivew(false)}
             >
@@ -122,7 +122,7 @@ const NavRViewd = () => {
         )}
       </div>
 
-      <div className="block sm:hidden">
+      <div className="block lg:hidden">
        
       </div>
 

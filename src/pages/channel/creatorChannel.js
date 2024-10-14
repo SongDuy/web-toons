@@ -263,13 +263,13 @@ const CreatorChannelPage = () => {
                                 </div> */}
 
                                     {/* Khung hiển thị các Series truyện của tác giả */}
-                                    <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
+                                    <div className="w-full max-h-[550px] px-5 py-3 bg-white rounded-lg">
                                         <div className="font-semibold text-[20px] text-black">
                                             {!language ? <span> Original Series </span> : <span> 오리지널 시리즈 </span>}
                                         </div>
 
-                                        <div className="mt-5 h-[450px] custom-scrollbar">
-                                            <ul className="w-full">
+                                        <div className="mt-5 max-h-[450px] custom-scrollbar">
+                                            <ul className="w-full h-full">
                                                 {comic?.slice(0, 5)?.map(item => (
                                                     <Link
                                                         className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer"
@@ -315,12 +315,12 @@ const CreatorChannelPage = () => {
                                     </div>
 
                                     {/* Khung hiển thị các Series Video của tác giả */}
-                                    <div className="w-full h-[550px] px-5 py-3 bg-white rounded-lg">
+                                    <div className="w-full max-h-[550px] px-5 py-3 bg-white rounded-lg">
                                         <div className="font-semibold text-[20px] text-black">
                                             {!language ? <span> Video Series </span> : <span> 비디오 시리즈 </span>}
                                         </div>
 
-                                        <div className="mt-5 h-[450px] custom-scrollbar">
+                                        <div className="mt-5 max-h-[450px] custom-scrollbar">
                                             <ul className="w-full">
                                                 {Video?.slice(0, 5)?.map(item => (
                                                     <Link
