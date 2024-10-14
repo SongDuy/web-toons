@@ -50,7 +50,7 @@ const GenresOriginalsAndVideosPage = () => {
                     {/* khung nội dung dành cho truyện */}
                     <div className="w-full h-full">
 
-                        <div className="w-full border h-[95px] mb-[30px] overflow-x-auto">
+                        <div className="w-full h-[95px] mb-[30px] overflow-x-auto">
                             <ul className="grid grid-rows-2 grid-flow-col gap-2 w-max">
                                 {dataListGenre?.map((genre, index) => (
                                     <li
@@ -67,7 +67,7 @@ const GenresOriginalsAndVideosPage = () => {
                             </ul>
                         </div>
                         
-                        <div className="w-full flex border items-center justify-center">
+                        <div className="w-full flex items-center justify-center">
                             <ul className=" grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-5 gap-4">
                                 {/* khung nội dung */}
                                 {filteredOriginalsByGenre?.slice(0, 10)?.map((item) => (
