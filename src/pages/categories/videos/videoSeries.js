@@ -488,7 +488,7 @@ const VideoSeriesPage = () => {
                                 <img
                                   src={item.horizontalThumbnail}
                                   alt="img"
-                                  className="object-fill w-full h-full rounded-md"
+                                  className="object-cover w-full h-full rounded-md"
                                 />
                               </div>
 
@@ -666,7 +666,7 @@ const VideoSeriesPage = () => {
                           <img
                             src={item.squareThumbnail}
                             alt="img"
-                            className="object-fill w-[100px] h-[100px] rounded"
+                            className="object-cover w-[100px] h-[100px] rounded"
                           />
                         </div>
 

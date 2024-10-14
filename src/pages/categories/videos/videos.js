@@ -282,7 +282,7 @@ const VideosPage = () => {
                                                     <img
                                                         src={item.squareThumbnail}
                                                         alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
+                                                        className="object-cover w-full h-full rounded-md"
                                                     />
 
                                                     {hoveredOngoingItem === item.id && (
@@ -346,7 +346,7 @@ const VideosPage = () => {
                                                     <img
                                                         src={item.squareThumbnail}
                                                         alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
+                                                        className="object-cover w-full h-full rounded-md"
                                                     />
 
                                                     {hoveredCompletedItem === item.id && (

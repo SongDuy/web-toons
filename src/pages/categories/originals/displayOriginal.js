@@ -753,7 +753,7 @@ const DisplayOriginalPage = () => {
                       <img
                         src={item.horizontalThumbnail}
                         alt="img"
-                        className="object-fill w-full h-full rounded"
+                        className="object-cover w-full h-full rounded"
                       />
                       <span className="h-[50px] leading-[1.3] line-clamp-2 py-1">
                         {item.chapterTitle}
@@ -1061,7 +1061,7 @@ const DisplayOriginalPage = () => {
                                 <img
                                   src={item.squareThumbnail}
                                   alt="img"
-                                  className="object-fill w-full h-full rounded-md"
+                                  className="object-cover w-full h-full rounded-md"
                                 />
                               </div>
 
@@ -1435,7 +1435,7 @@ const DisplayOriginalPage = () => {
                                 <img
                                   src={item.squareThumbnail}
                                   alt="img"
-                                  className="object-fill w-full h-full rounded-md"
+                                  className="object-cover w-full h-full rounded-md"
                                 />
                               </div>
 

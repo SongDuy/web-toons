@@ -282,7 +282,7 @@ const CreatorChannelPage = () => {
                                                             <img
                                                                 src={item.squareThumbnail}
                                                                 alt="img"
-                                                                className="object-fill w-full h-full rounded"
+                                                                className="object-cover w-full h-full rounded"
                                                             />
                                                         </div>
 
@@ -334,7 +334,7 @@ const CreatorChannelPage = () => {
                                                             <img
                                                                 src={item.squareThumbnail}
                                                                 alt="img"
-                                                                className="object-fill w-full h-full rounded"
+                                                                className="object-cover w-full h-full rounded"
                                                             />
                                                         </div>
 

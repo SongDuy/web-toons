@@ -232,7 +232,7 @@ const GenresPage = () => {
                                                         <img
                                                             src={item.squareThumbnail}
                                                             alt="img"
-                                                            className="object-fill w-full h-full rounded-md"
+                                                            className="object-cover w-full h-full rounded-md"
                                                         />
 
                                                         {hoveredOriginalItem === item.id && (
