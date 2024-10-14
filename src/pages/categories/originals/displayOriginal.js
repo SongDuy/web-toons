@@ -252,7 +252,7 @@ const DisplayOriginalPage = () => {
       } catch (error) { }
     };
     getcomments();
-  }, [dispatch, id,check19Modal]);
+  }, [dispatch, id, check19Modal]);
 
   const options = useMemo(
     () => ({
@@ -274,7 +274,7 @@ const DisplayOriginalPage = () => {
     [chapid]
   );
   const handleNextPage = () => {
-    const totalPages = Math.ceil(chapters?.chaps?.filter(item=>item.check===true)?.length / itemsPerPage);
+    const totalPages = Math.ceil(chapters?.chaps?.filter(item => item.check === true)?.length / itemsPerPage);
     const nextPage = currentPage + 1;
     setCurrentPage(nextPage < totalPages ? nextPage : currentPage);
   };
@@ -285,9 +285,9 @@ const DisplayOriginalPage = () => {
   };
 
   const startIndex = currentPage * itemsPerPage;
-  const endIndex = Math.min(startIndex + itemsPerPage, chapters?.chaps?.filter(item=>item.check===true)?.length);
+  const endIndex = Math.min(startIndex + itemsPerPage, chapters?.chaps?.filter(item => item.check === true)?.length);
 
-  const currentItems = chapters?.chaps?.filter(item=>item.check===true)?.slice(startIndex, endIndex);
+  const currentItems = chapters?.chaps?.filter(item => item.check === true)?.slice(startIndex, endIndex);
   const closeLoginModal = () => {
     dispatch(setIsLoginModal(false));
   };
@@ -522,13 +522,13 @@ const DisplayOriginalPage = () => {
     }
   }
   const goToPreviousChapter = () => {
-   const Previous= chapters?.chaps?.filter(item=>chapid.num-1===item.num&&item.check===true)
-   Previous.length!==0&& navigate(`/originals/original/series/display/${id.id}/${Previous[0]?.id}`);
+    const Previous = chapters?.chaps?.filter(item => chapid.num - 1 === item.num && item.check === true)
+    Previous.length !== 0 && navigate(`/originals/original/series/display/${id.id}/${Previous[0]?.id}`);
   };
 
   const goToNextChapter = () => {
-    const Next= chapters?.chaps?.filter(item=>chapid.num+1===item.num&&item.check===true)
-    Next.length!==0&& navigate(`/originals/original/series/display/${id.id}/${Next[0]?.id}`);
+    const Next = chapters?.chaps?.filter(item => chapid.num + 1 === item.num && item.check === true)
+    Next.length !== 0 && navigate(`/originals/original/series/display/${id.id}/${Next[0]?.id}`);
   };
 
   // Nhấn nút đăng ký
@@ -582,46 +582,61 @@ const DisplayOriginalPage = () => {
           <div className="w-full h-full bg-white">
             {/* Thanh công cụ */}
             <div className="w-full h-[50px] px-5 bg-black flex items-center">
-              <ul className="w-full h-[30px] flex">
-                <li className="w-[550px] flex gap-2 items-center overflow-hidden">
-                  <div>
+              <ul className="w-full h-full grid xs:grid-cols-3">
+
+                {/* logo và tên series */}
+                <li className="h-full flex items-center gap-2 overflow-hidden">
+                  <div className="w-[50px] h-auto flex items-center">
                     <Link to={`/`}>
                       <img
                         src={logo}
                         alt="Logo của website"
-                        className="w-[40px] h-auto rounded-md bg-white"
+                        className="min-w-[50px] max-w-[50px] h-auto rounded-md bg-white"
                       />
                     </Link>
                   </div>
 
-                  <div className="">
-                    <span className="text-white line-clamp-1">
+                  <div className="w-auto h-auto text-white flex items-center overflow-hidden">
+                    <Link
+                      to={`/originals/original/series/${id.id}`}
+                      className="text-white hover:text-yellow-500 line-clamp-1"
+                    >
                       {comicid?.title}
-                      <NavigateNextIcon />
+                    </Link>
+
+                    <NavigateNextIcon />
+
+                    <span className="text-white line-clamp-1">
                       {chapid?.chapterTitle}
                     </span>
                   </div>
                 </li>
 
-                <li className="w-[150px] flex items-center justify-center mx-[100px]">
-                  <div className="mr-auto cursor-pointer">
-                    <span onClick={goToPreviousChapter} className="text-white bg-gray-800 hover:bg-gray-700 pl-3 py-1 rounded-md flex items-center justify-center">
-                      <ArrowBackIosIcon />
-                    </span>
+                {/* Chuyển tập */}
+                <li className="w-full flex items-center justify-center">
+                  <div className="min-w-[150px] max-w-[150px] flex ">
+                    <button className="mr-auto cursor-pointer">
+                      <span onClick={goToPreviousChapter} className="text-white bg-gray-800 hover:bg-gray-700 pl-3 py-1 rounded-md flex items-center justify-center">
+                        <ArrowBackIosIcon />
+                      </span>
+                    </button>
+                    <div className="w-full ml-auto mr-auto">
+                      <span className="w-full rounded-md py-1 flex items-center justify-center text-white">
+                        #{chapid?.num}1237
+                      </span>
+                    </div>
+                    <button className="ml-auto cursor-pointer">
+                      <span onClick={goToNextChapter} className="text-white bg-gray-800 hover:bg-gray-700 w-[35px] py-1 rounded-md flex items-center justify-center">
+                        <ArrowForwardIosIcon />
+                      </span>
+                    </button>
                   </div>
-                  <div className="w-full ml-auto mr-auto">
-                    <span className="w-full rounded-md py-1 flex items-center justify-center text-white">
-                      #{chapid?.num}
-                    </span>
-                  </div>
-                  <div className="ml-auto cursor-pointer">
-                    <span onClick={goToNextChapter} className="text-white bg-gray-800 hover:bg-gray-700 w-[35px] py-1 rounded-md flex items-center justify-center">
-                      <ArrowForwardIosIcon />
-                    </span>
-                  </div>
+
                 </li>
+
+                {/* Bật tắt âm thanh */}
                 {chapid?.audioUrl && (
-                  <li className="ml-auto">
+                  <li className="ml-auto flex items-center">
                     {!isMusic ? (
                       <button
                         className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
