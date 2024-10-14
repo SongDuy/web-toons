@@ -536,36 +536,6 @@ const DisplayOriginalPage = () => {
   // Nhấn nút đăng ký
   const [isMusic, setIsMusic] = useState(false);
 
-  // Tính toán scale dựa trên kích thước màn hình
-
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  // Tính toán scale dựa trên kích thước màn hình
-  const calculateScale = () => {
-    const desiredWidth = windowSize.width * 0.9; // Giảm đi 10% để có margin
-    const pdfWidth = 750; // Giả sử chiều rộng mặc định của trang PDF là 750px
-    return Math.min(desiredWidth / pdfWidth, 1.5); // Đặt giới hạn tối đa cho scale
-  };
-
-  const scale = calculateScale(); // Di chuyển dòng này sau khi windowSize được định nghĩa
-
   // lướt xuống mất thanh công cụ lướt lên thì hiện
   const [showToolbar, setShowToolbar] = useState(true); // Trạng thái hiển thị thanh công cụ
   const [lastScrollY, setLastScrollY] = useState(0);    // Lưu trữ vị trí cuộn cuối cùng
@@ -602,6 +572,26 @@ const DisplayOriginalPage = () => {
       smooth: true,  // Cuộn mượt
     });
   };
+
+  // chỉnh kích thước file pdf với màn hình
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <>
@@ -713,8 +703,8 @@ const DisplayOriginalPage = () => {
             </div>
 
             {/* Hiển thị nội dung truyện */}
-            <div className="w-full h-full pt-[50px] bg-white flex items-center justify-center">
-              <div>
+            <div className="w-full h-full pt-[50px] xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] flex items-center justify-center">
+              <div className="w-full h-full overflow-hidden flex justify-center items-center">
                 {file && (
                   <Document
                     options={options}
@@ -723,7 +713,11 @@ const DisplayOriginalPage = () => {
                     loading={<CircularProgress />}
                   >
                     {Array.from(new Array(numPages), (el, index) => (
-                      <Page key={`page_${index + 1}`} pageNumber={index + 1} scale={scale} />
+                      <Page
+                        key={`page_${index + 1}`}
+                        pageNumber={index + 1}
+                        width={windowSize.width * 0.98} // Chiếm 98% chiều rộng màn hình
+                      />
                     ))}
                   </Document>
                 )}
