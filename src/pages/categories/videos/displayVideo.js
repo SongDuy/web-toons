@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { animateScroll as scroll } from 'react-scroll';
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
 import logo from "../../../img/logonew.png";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import AddIcon from "@mui/icons-material/Add";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -230,13 +232,13 @@ const DisplayVideoPage = () => {
       } catch (error) { }
     };
     getcomments();
-  }, [dispatch, navigate, id,check19Modal]);
+  }, [dispatch, navigate, id, check19Modal]);
 
   const closeLoginModal = () => {
     dispatch(setIsLoginModal(false));
   };
   const handleNextPage = () => {
-    const totalPages = Math.ceil(chapters?.chaps?.filter(item=>item.check===true)?.length / itemsPerPage);
+    const totalPages = Math.ceil(chapters?.chaps?.filter(item => item.check === true)?.length / itemsPerPage);
     const nextPage = currentPage + 1;
     setCurrentPage(nextPage < totalPages ? nextPage : currentPage);
   };
@@ -247,9 +249,9 @@ const DisplayVideoPage = () => {
   };
 
   const startIndex = currentPage * itemsPerPage;
-  const endIndex = Math.min(startIndex + itemsPerPage, chapters?.chaps?.filter(item=>item.check===true)?.length);
+  const endIndex = Math.min(startIndex + itemsPerPage, chapters?.chaps?.filter(item => item.check === true)?.length);
 
-  const currentItems = chapters?.chaps?.filter(item=>item.check===true)?.slice(startIndex, endIndex);
+  const currentItems = chapters?.chaps?.filter(item => item.check === true)?.slice(startIndex, endIndex);
 
   const handleToggleReply = async (commentId) => {
     try {
@@ -463,15 +465,52 @@ const DisplayVideoPage = () => {
     }
   };
   const goToPreviousChapter = () => {
-    const Previous= chapters?.chaps?.filter(item=>chapid.num-1===item.num&&item.check===true)
-    Previous.length!==0&& navigate(`/videos/video/series/display/${id.id}/${Previous[0]?.id}`);
-   };
- 
-   const goToNextChapter = () => {
-     const Next= chapters?.chaps?.filter(item=>chapid.num+1===item.num&&item.check===true)
-     Next.length!==0&& navigate(`/videos/video/series/display/${id.id}/${Next[0]?.id}`);
-   };
- 
+    const Previous = chapters?.chaps?.filter(item => chapid.num - 1 === item.num && item.check === true)
+    Previous.length !== 0 && navigate(`/videos/video/series/display/${id.id}/${Previous[0]?.id}`);
+  };
+
+  const goToNextChapter = () => {
+    const Next = chapters?.chaps?.filter(item => chapid.num + 1 === item.num && item.check === true)
+    Next.length !== 0 && navigate(`/videos/video/series/display/${id.id}/${Next[0]?.id}`);
+  };
+
+  // lướt xuống mất thanh công cụ lướt lên thì hiện
+  const [showToolbar, setShowToolbar] = useState(true); // Trạng thái hiển thị thanh công cụ
+  const [lastScrollY, setLastScrollY] = useState(0);    // Lưu trữ vị trí cuộn cuối cùng
+
+  const controlNavbar = useCallback(() => {
+    const scrollY = window.scrollY; // Lấy vị trí cuộn hiện tại
+
+    // Nếu cuộn xuống hơn 10px và hiện tại đang hiển thị thanh công cụ
+    if (scrollY > lastScrollY + 10 && showToolbar) {
+      setShowToolbar(false); // Ẩn thanh công cụ
+    }
+    // Nếu cuộn lên hơn 10px và hiện tại không hiển thị thanh công cụ
+    else if (scrollY < lastScrollY - 10 && !showToolbar) {
+      setShowToolbar(true); // Hiển thị thanh công cụ
+    }
+
+    // Cập nhật vị trí cuộn mới
+    setLastScrollY(scrollY);
+  }, [lastScrollY, showToolbar]); // Thêm showToolbar vào dependency
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNavbar);
+
+    // Cleanup sự kiện khi component bị unmount
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    };
+  }, [controlNavbar]); // Thêm controlNavbar vào dependency
+
+  // Hàm cuộn lên đầu trang
+  const scrollToTop = () => {
+    scroll.scrollToTop({
+      duration: 500, // Thời gian cuộn (ms)
+      smooth: true,  // Cuộn mượt
+    });
+  };
+
   return (
     <div>
       {!loading ? (
@@ -489,58 +528,76 @@ const DisplayVideoPage = () => {
         <>
           <div className="w-full h-full bg-white">
             {/* Thanh công cụ */}
-            <div className="w-full h-[50px] px-5 bg-black flex items-center">
-              <ul className="w-full h-[30px] flex">
-                <li className="w-[550px] flex gap-2 items-center overflow-hidden">
-                  <div>
+            <div className={`fixed w-full h-[50px] bg-black flex items-center px-5 z-50 transition-transform duration-300 ${showToolbar ? 'translate-y-0' : '-translate-y-full'}`}>
+              <ul className="w-full h-full grid xs:grid-cols-3">
+
+                {/* logo và tên series */}
+                <li className="h-full flex items-center gap-2 overflow-hidden">
+                  <div className="w-[50px] h-auto flex items-center">
                     <Link to={`/`}>
                       <img
                         src={logo}
-                        alt="Logo của website"
-                        className="w-[40px] h-auto rounded-md bg-white"
+                        alt="Logo"
+                        className="min-w-[50px] max-w-[50px] h-auto rounded-md bg-white"
                       />
                     </Link>
                   </div>
 
-                  <div className="">
-                    <span className="text-white line-clamp-1">
+                  <div className="w-auto h-auto text-white flex items-center overflow-hidden">
+                    <Link
+                      to={`/videos/video/series/${id.id}`}
+                      className="text-white hover:text-yellow-500 line-clamp-1"
+                    >
                       {Videoid.title}
-                      <NavigateNextIcon />
+                    </Link>
+
+                    <NavigateNextIcon />
+
+                    <span className="text-white line-clamp-1">
                       {chapid?.chapterTitle}
                     </span>
                   </div>
                 </li>
 
-                <li className="w-[150px] flex items-center justify-center mx-[100px]">
-                  <div className="mr-auto cursor-pointer">
-                    <span onClick={goToPreviousChapter} className="text-white bg-gray-900 hover:bg-gray-700 pl-3 py-1 rounded-md flex items-center justify-center">
-                      <ArrowBackIosIcon />
-                    </span>
-                  </div>
-                  <div className="w-full ml-auto mr-auto">
-                    <span className="w-full rounded-md py-1 flex items-center justify-center text-white">
-                      #{chapid?.num}
-                    </span>
-                  </div>
-                  <div className="ml-auto cursor-pointer">
-                    <span onClick={goToNextChapter} className="text-white bg-gray-900 hover:bg-gray-700 w-[35px] py-1 rounded-md flex items-center justify-center">
-                      <ArrowForwardIosIcon />
-                    </span>
+                {/* Chuyển tập */}
+                <li className="w-full flex items-center justify-center">
+                  <div className="min-w-[150px] max-w-[150px] flex ">
+                    <button className="mr-auto cursor-pointer">
+                      <span onClick={goToPreviousChapter} className="text-white bg-gray-800 hover:bg-gray-700 pl-3 py-1 rounded-md flex items-center justify-center">
+                        <ArrowBackIosIcon />
+                      </span>
+                    </button>
+                    <div className="w-full ml-auto mr-auto">
+                      <span className="w-full rounded-md py-1 flex items-center justify-center text-white">
+                        #{chapid?.num}
+                      </span>
+                    </div>
+                    <button className="ml-auto cursor-pointer">
+                      <span onClick={goToNextChapter} className="text-white bg-gray-800 hover:bg-gray-700 w-[35px] py-1 rounded-md flex items-center justify-center">
+                        <ArrowForwardIosIcon />
+                      </span>
+                    </button>
                   </div>
                 </li>
 
-                <li className="ml-auto">
-                  <div className="w-[30px] h-[30px] rounded-full bg-gray-800 flex items-center justify-center">
-                    <span className=" text-white">
-                      <AddIcon />
-                    </span>
-                  </div>
+                {/* nút thêm */}
+                <li className="flex items-center pl-7">
+                  <button
+                    onClick={scrollToTop}
+                    className="w-[40px] h-[35px] mr-auto bg-gray-800 hover:bg-gray-700 shadow  rounded-md text-white flex items-center justify-center"
+                  >
+                    <ArrowUpwardIcon />
+                  </button>
+
+                  <button className="w-[30px] h-[30px] ml-auto text-white rounded-full bg-gray-800 flex items-center justify-center">
+                    <AddIcon />
+                  </button>
                 </li>
               </ul>
             </div>
 
             {/* Hiển thị nội dung truyện */}
-            <div className="w-full h-auto bg-black flex items-center justify-center">
+            <div className="w-full h-auto pt-[50px] bg-black flex items-center justify-center">
               <ReactPlayer
                 url={
                   chapid?.fileURL
@@ -632,15 +689,16 @@ const DisplayVideoPage = () => {
               <ul className="grid xs:grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-9">
                 {currentItems?.map((item) => (
                   <Link
-                    className="w-[120px] h-[165px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
-                    key={item.id}
                     to={`/videos/video/series/display/${id.id}/${item.id}`}
+                    key={item.id}
+                    className={`w-[120px] h-[165px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden
+                      ${id.idseries === item.id ? "bg-gray-200" : " "}`}
                   >
                     <div className="w-[100px] h-[100px] mb-auto">
                       <img
                         src={item.horizontalThumbnail}
                         alt="img"
-                        className="object-fill w-full h-full rounded"
+                        className="object-cover w-full h-full rounded"
                       />
                       <span className="h-[50px] leading-[1.3] line-clamp-2 py-1">
                         {item.chapterTitle}
@@ -968,7 +1026,7 @@ const DisplayVideoPage = () => {
                                   <img
                                     src={item.squareThumbnail}
                                     alt="img"
-                                    className="object-fill w-full h-full rounded-md"
+                                    className="object-cover w-full h-full rounded-md"
                                   />
                                 </div>
 
@@ -999,8 +1057,9 @@ const DisplayVideoPage = () => {
             <FooterPage />
           </div>
         </>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 };
 

@@ -55,7 +55,7 @@ const NewToOriginalsPage = () => {
                                         <img
                                             src={item.squareThumbnail}
                                             alt="img"
-                                            className="object-fill w-full h-full rounded-md"
+                                            className="object-cover w-full h-full rounded-md"
                                         />
 
                                         {hoveredItem === item.id && (
@@ -65,8 +65,8 @@ const NewToOriginalsPage = () => {
                                         )}
                                     </div>
 
-                                    <div className="w-[210px] absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                        <div className="w-full h-[65px] mb-auto overflow-hidden">
+                                    <div className="max-w-[210px] absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                        <div className="w-[210px] h-[65px] mb-auto overflow-hidden">
                                             <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                                                 {item.title}
                                             </span>

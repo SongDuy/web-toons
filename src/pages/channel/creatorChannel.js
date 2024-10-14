@@ -282,7 +282,7 @@ const CreatorChannelPage = () => {
                                                             <img
                                                                 src={item.squareThumbnail}
                                                                 alt="img"
-                                                                className="object-fill w-full h-full rounded"
+                                                                className="object-cover w-full h-full rounded"
                                                             />
                                                         </div>
 
@@ -334,7 +334,7 @@ const CreatorChannelPage = () => {
                                                             <img
                                                                 src={item.squareThumbnail}
                                                                 alt="img"
-                                                                className="object-fill w-full h-full rounded"
+                                                                className="object-cover w-full h-full rounded"
                                                             />
                                                         </div>
 
@@ -369,7 +369,7 @@ const CreatorChannelPage = () => {
 
                                         {/* Khung nội dung chính bài Post */}
                                         {posts?.map(item => (
-                                            <li key={item.idpost} className="w-full min-h-[300px] py-5 border-b-2">
+                                            <li key={item.idpost} className="w-full min-h-[300px] py-5 border-b-2 flex flex-col">
                                                 {/* Hiển Avatar creator */}
                                                 <div className="w-full">
                                                     <div className="flex items-center justify-center">
@@ -401,40 +401,50 @@ const CreatorChannelPage = () => {
                                                 </div>
 
                                                 {/* Hiển nội dung bài viết */}
-                                                <div className="py-3">
+                                                <div className="py-3 px-3">
                                                     <p>{item.post}</p>
                                                 </div>
 
                                                 {/* Hiện hình ảnh bài viết */}
                                                 <div className="relative w-full flex items-center justify-center p-4">
-                                                    <button
-                                                        onClick={() => handlePrev(item.idpost)}
-                                                        disabled={(currentIndices[item.idpost] || 0) === 0}
-                                                        className="absolute left-0 bg-gray-500 text-white p-2 rounded-full disabled:opacity-50"
-                                                    >
-                                                        <NavigateBeforeIcon />
-                                                    </button>
-                                                    <div className="flex gap-3 overflow-hidden w-full">
-                                                        {item.image?.slice(currentIndices[item.idpost] || 0, (currentIndices[item.idpost] || 0) + 2)?.map((img, index) => (
-                                                            <img
-                                                                key={index}
-                                                                src={img}
-                                                                alt={`Slide ${index}`}
-                                                                className="object-cover w-[300px] h-[300px] transition-transform duration-300 ease-in-out"
-                                                            />
-                                                        ))}
-                                                    </div>
-                                                    <button
-                                                        onClick={() => handleNext(item.idpost, item.image?.length)}
-                                                        disabled={(currentIndices[item.idpost] || 0) >= item.image?.length - 2}
-                                                        className="absolute right-0 bg-gray-500 text-white p-2 rounded-full disabled:opacity-50"
-                                                    >
-                                                        <NavigateNextIcon />
-                                                    </button>
+                                                    {item.image?.length > 0 ? (
+                                                        <>
+                                                        {/* Nút Prev */}
+                                                            <button
+                                                                onClick={() => handlePrev(item.idpost)}
+                                                                disabled={(currentIndices[item.idpost] || 0) === 0}
+                                                                className="absolute left-0 bg-gray-500 text-white p-2 rounded-full disabled:opacity-50"
+                                                            >
+                                                                <NavigateBeforeIcon />
+                                                            </button>
+
+                                                             {/* Hiển thị hình ảnh */}
+                                                            <div className="w-full grid xs:grid-cols-1 sm:grid-cols-2 gap-5 overflow-hidden">
+                                                                {item.image?.slice(currentIndices[item.idpost] || 0, (currentIndices[item.idpost] || 0) + 2)?.map((img, index) => (
+                                                                    <img
+                                                                        key={index}
+                                                                        src={img}
+                                                                        alt={`Slide ${index}`}
+                                                                        className="object-cover w-full h-[300px] transition-transform duration-300 ease-in-out"
+                                                                    />
+                                                                ))}
+                                                            </div>
+
+                                                            {/* Nút Next */}
+                                                            <button
+                                                                onClick={() => handleNext(item.idpost, item.image?.length)}
+                                                                disabled={(currentIndices[item.idpost] || 0) >= item.image?.length - 2}
+                                                                className="absolute right-0 bg-gray-500 text-white p-2 rounded-full disabled:opacity-50"
+                                                            >
+                                                                <NavigateNextIcon />
+                                                            </button>
+                                                        </>
+                                                    ) : null
+                                                    }
                                                 </div>
 
                                                 {/* Hiện yêu thích bình luận */}
-                                                <div className="w-full pt-5 ">
+                                                <div className="w-full pt-5 mt-auto">
                                                     <div className="mr-auto flex gap-2">
                                                         {/* Nhấn nút thả tim */}
                                                         {!iLike?.filter(like => like[item.idpost])?.length > 0 ?

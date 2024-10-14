@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useMemo, memo } from "react";
+import React, { useState, useEffect, useMemo, memo, useCallback } from "react";
+import { animateScroll as scroll } from 'react-scroll';
 import { Link } from "react-router-dom";
 import logo from "../../../img/logonew.png";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import AddIcon from "@mui/icons-material/Add";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import MusicOffIcon from "@mui/icons-material/MusicOff";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -252,7 +254,7 @@ const DisplayOriginalPage = () => {
       } catch (error) { }
     };
     getcomments();
-  }, [dispatch, id,check19Modal]);
+  }, [dispatch, id, check19Modal]);
 
   const options = useMemo(
     () => ({
@@ -274,7 +276,7 @@ const DisplayOriginalPage = () => {
     [chapid]
   );
   const handleNextPage = () => {
-    const totalPages = Math.ceil(chapters?.chaps?.filter(item=>item.check===true)?.length / itemsPerPage);
+    const totalPages = Math.ceil(chapters?.chaps?.filter(item => item.check === true)?.length / itemsPerPage);
     const nextPage = currentPage + 1;
     setCurrentPage(nextPage < totalPages ? nextPage : currentPage);
   };
@@ -285,9 +287,9 @@ const DisplayOriginalPage = () => {
   };
 
   const startIndex = currentPage * itemsPerPage;
-  const endIndex = Math.min(startIndex + itemsPerPage, chapters?.chaps?.filter(item=>item.check===true)?.length);
+  const endIndex = Math.min(startIndex + itemsPerPage, chapters?.chaps?.filter(item => item.check === true)?.length);
 
-  const currentItems = chapters?.chaps?.filter(item=>item.check===true)?.slice(startIndex, endIndex);
+  const currentItems = chapters?.chaps?.filter(item => item.check === true)?.slice(startIndex, endIndex);
   const closeLoginModal = () => {
     dispatch(setIsLoginModal(false));
   };
@@ -522,20 +524,56 @@ const DisplayOriginalPage = () => {
     }
   }
   const goToPreviousChapter = () => {
-   const Previous= chapters?.chaps?.filter(item=>chapid.num-1===item.num&&item.check===true)
-   Previous.length!==0&& navigate(`/originals/original/series/display/${id.id}/${Previous[0]?.id}`);
+    const Previous = chapters?.chaps?.filter(item => chapid.num - 1 === item.num && item.check === true)
+    Previous.length !== 0 && navigate(`/originals/original/series/display/${id.id}/${Previous[0]?.id}`);
   };
 
   const goToNextChapter = () => {
-    const Next= chapters?.chaps?.filter(item=>chapid.num+1===item.num&&item.check===true)
-    Next.length!==0&& navigate(`/originals/original/series/display/${id.id}/${Next[0]?.id}`);
+    const Next = chapters?.chaps?.filter(item => chapid.num + 1 === item.num && item.check === true)
+    Next.length !== 0 && navigate(`/originals/original/series/display/${id.id}/${Next[0]?.id}`);
   };
 
   // Nhấn nút đăng ký
   const [isMusic, setIsMusic] = useState(false);
 
-  // Tính toán scale dựa trên kích thước màn hình
+  // lướt xuống mất thanh công cụ lướt lên thì hiện
+  const [showToolbar, setShowToolbar] = useState(true); // Trạng thái hiển thị thanh công cụ
+  const [lastScrollY, setLastScrollY] = useState(0);    // Lưu trữ vị trí cuộn cuối cùng
 
+  const controlNavbar = useCallback(() => {
+    const scrollY = window.scrollY; // Lấy vị trí cuộn hiện tại
+
+    // Nếu cuộn xuống hơn 10px và hiện tại đang hiển thị thanh công cụ
+    if (scrollY > lastScrollY + 10 && showToolbar) {
+      setShowToolbar(false); // Ẩn thanh công cụ
+    }
+    // Nếu cuộn lên hơn 10px và hiện tại không hiển thị thanh công cụ
+    else if (scrollY < lastScrollY - 10 && !showToolbar) {
+      setShowToolbar(true); // Hiển thị thanh công cụ
+    }
+
+    // Cập nhật vị trí cuộn mới
+    setLastScrollY(scrollY);
+  }, [lastScrollY, showToolbar]); // Thêm showToolbar vào dependency
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNavbar);
+
+    // Cleanup sự kiện khi component bị unmount
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    };
+  }, [controlNavbar]); // Thêm controlNavbar vào dependency
+
+  // Hàm cuộn lên đầu trang
+  const scrollToTop = () => {
+    scroll.scrollToTop({
+      duration: 500, // Thời gian cuộn (ms)
+      smooth: true,  // Cuộn mượt
+    });
+  };
+
+  // chỉnh kích thước file pdf với màn hình
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -555,14 +593,24 @@ const DisplayOriginalPage = () => {
     };
   }, []);
 
-  // Tính toán scale dựa trên kích thước màn hình
-  const calculateScale = () => {
-    const desiredWidth = windowSize.width * 0.9; // Giảm đi 10% để có margin
-    const pdfWidth = 750; // Giả sử chiều rộng mặc định của trang PDF là 750px
-    return Math.min(desiredWidth / pdfWidth, 1.5); // Đặt giới hạn tối đa cho scale
+  const calculateWidth = () => {
+    const baseWidth = windowSize.width; // Chiều rộng của màn hình
+    if (windowSize.width < 640) {
+      return baseWidth * 0.95; // Đối với màn hình nhỏ (xs), chiếm 95% chiều rộng
+    } else if (windowSize.width < 768) {
+      return baseWidth * 0.90; // Đối với màn hình vừa (sm), chiếm 90% chiều rộng
+    } else if (windowSize.width < 1024) {
+      return baseWidth * 0.85; // Đối với màn hình lớn (md), chiếm 85% chiều rộng
+    } else if (windowSize.width < 1280) {
+      return baseWidth * 0.80; // Đối với màn hình rất lớn (lg), chiếm 80% chiều rộng
+    } else if (windowSize.width < 1536) {
+      return baseWidth * 0.75; // Đối với màn hình cực lớn (xl), chiếm 75% chiều rộng
+    } else if (windowSize.width < 1920) {
+      return baseWidth * 0.70; // Đối với màn hình siêu lớn (2xl), chiếm 70% chiều rộng
+    } else {
+      return baseWidth * 0.65; // Đối với màn hình cực kỳ lớn (3xl), chiếm 65% chiều rộng
+    }
   };
-
-  const scale = calculateScale(); // Di chuyển dòng này sau khi windowSize được định nghĩa
 
   return (
     <>
@@ -581,78 +629,101 @@ const DisplayOriginalPage = () => {
         <div>
           <div className="w-full h-full bg-white">
             {/* Thanh công cụ */}
-            <div className="w-full h-[50px] px-5 bg-black flex items-center">
-              <ul className="w-full h-[30px] flex">
-                <li className="w-[550px] flex gap-2 items-center overflow-hidden">
-                  <div>
+            <div className={`fixed w-full h-[50px] bg-black flex items-center px-5 z-50 transition-transform duration-300 ${showToolbar ? 'translate-y-0' : '-translate-y-full'}`}>
+              <ul className="w-full h-full grid grid-cols-3">
+
+                {/* logo và tên series */}
+                <li className="h-full flex items-center gap-2 overflow-hidden">
+                  <div className="w-[50px] h-auto flex items-center">
                     <Link to={`/`}>
                       <img
                         src={logo}
-                        alt="Logo của website"
-                        className="w-[40px] h-auto rounded-md bg-white"
+                        alt="Logo"
+                        className="min-w-[50px] max-w-[50px] h-auto rounded-md bg-white"
                       />
                     </Link>
                   </div>
 
-                  <div className="">
-                    <span className="text-white line-clamp-1">
+                  <div className="w-auto h-auto text-white flex items-center overflow-hidden">
+                    <Link
+                      to={`/originals/original/series/${id.id}`}
+                      className="text-white hover:text-yellow-500 line-clamp-1"
+                    >
                       {comicid?.title}
-                      <NavigateNextIcon />
+                    </Link>
+
+                    <NavigateNextIcon />
+
+                    <span className="text-white line-clamp-1">
                       {chapid?.chapterTitle}
                     </span>
                   </div>
                 </li>
 
-                <li className="w-[150px] flex items-center justify-center mx-[100px]">
-                  <div className="mr-auto cursor-pointer">
-                    <span onClick={goToPreviousChapter} className="text-white bg-gray-800 hover:bg-gray-700 pl-3 py-1 rounded-md flex items-center justify-center">
-                      <ArrowBackIosIcon />
-                    </span>
+                {/* Chuyển tập */}
+                <li className="w-full flex items-center justify-center">
+                  <div className="min-w-[150px] max-w-[150px] flex ">
+                    <button className="mr-auto cursor-pointer">
+                      <span onClick={goToPreviousChapter} className="text-white bg-gray-800 hover:bg-gray-700 pl-3 py-1 rounded-md flex items-center justify-center">
+                        <ArrowBackIosIcon />
+                      </span>
+                    </button>
+                    <div className="w-full ml-auto mr-auto">
+                      <span className="w-full rounded-md py-1 flex items-center justify-center text-white">
+                        #{chapid?.num}
+                      </span>
+                    </div>
+                    <button className="ml-auto cursor-pointer">
+                      <span onClick={goToNextChapter} className="text-white bg-gray-800 hover:bg-gray-700 w-[35px] py-1 rounded-md flex items-center justify-center">
+                        <ArrowForwardIosIcon />
+                      </span>
+                    </button>
                   </div>
-                  <div className="w-full ml-auto mr-auto">
-                    <span className="w-full rounded-md py-1 flex items-center justify-center text-white">
-                      #{chapid?.num}
-                    </span>
-                  </div>
-                  <div className="ml-auto cursor-pointer">
-                    <span onClick={goToNextChapter} className="text-white bg-gray-800 hover:bg-gray-700 w-[35px] py-1 rounded-md flex items-center justify-center">
-                      <ArrowForwardIosIcon />
-                    </span>
-                  </div>
+
                 </li>
+
+                {/* Bật tắt âm thanh */}
                 {chapid?.audioUrl && (
-                  <li className="ml-auto">
-                    {!isMusic ? (
-                      <button
-                        className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
-                        onClick={() => setIsMusic(true)}
-                      >
-                        <MusicNoteIcon />
-                      </button>
-                    ) : (
-                      <button
-                        className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
-                        onClick={() => setIsMusic(false)}
-                      >
-                        <MusicOffIcon />
-                      </button>
-                    )}
-                    <ReactPlayer
-                      url={chapid?.audioUrl}
-                      controls={true}
-                      width="0%"
-                      height="0%"
-                      playing={!isMusic}
-                      loop={true}
-                    />
+                  <li className="flex items-center pl-7">
+                    <button
+                      onClick={scrollToTop}
+                      className="w-[40px] h-[35px] bg-gray-800 hover:bg-gray-700 shadow mr-auto rounded-md text-white flex items-center justify-center"
+                    >
+                      <ArrowUpwardIcon />
+                    </button>
+                    <button className="ml-auto text-white">
+                      {!isMusic ? (
+                        <button
+                          className="w-[30px] h-[30px] rounded-full bg-gray-800 flex items-center justify-center"
+                          onClick={() => setIsMusic(true)}
+                        >
+                          <MusicNoteIcon />
+                        </button>
+                      ) : (
+                        <button
+                          className="w-[30px] h-[30px] rounded-full bg-gray-800 flex items-center justify-center"
+                          onClick={() => setIsMusic(false)}
+                        >
+                          <MusicOffIcon />
+                        </button>
+                      )}
+                      <ReactPlayer
+                        url={chapid?.audioUrl}
+                        controls={true}
+                        width="0%"
+                        height="0%"
+                        playing={!isMusic}
+                        loop={true}
+                      />
+                    </button>
                   </li>
                 )}
               </ul>
             </div>
 
             {/* Hiển thị nội dung truyện */}
-            <div className="w-full h-full bg-white flex items-center justify-center">
-              <div>
+            <div className="w-full h-full pt-[50px] flex items-center justify-center">
+              <div className="w-full h-full overflow-hidden flex justify-center items-center">
                 {file && (
                   <Document
                     options={options}
@@ -661,7 +732,11 @@ const DisplayOriginalPage = () => {
                     loading={<CircularProgress />}
                   >
                     {Array.from(new Array(numPages), (el, index) => (
-                      <Page key={`page_${index + 1}`} pageNumber={index + 1} scale={scale} />
+                      <Page
+                        key={`page_${index + 1}`}
+                        pageNumber={index + 1}
+                        width={calculateWidth()} // Tính toán chiều rộng dựa trên kích thước màn hình
+                      />
                     ))}
                   </Document>
                 )}
@@ -747,13 +822,14 @@ const DisplayOriginalPage = () => {
                   <Link
                     to={`/originals/original/series/display/${id.id}/${item.id}`}
                     key={item.id}
-                    className="w-[120px] h-[165px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden"
+                    className={`w-[120px] h-[165px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden 
+                      ${id.idseries === item.id ? "bg-gray-200" : " "}`}
                   >
                     <div className="w-[100px] h-[100px] mb-auto">
                       <img
                         src={item.horizontalThumbnail}
                         alt="img"
-                        className="object-fill w-full h-full rounded"
+                        className="object-cover w-full h-full rounded"
                       />
                       <span className="h-[50px] leading-[1.3] line-clamp-2 py-1">
                         {item.chapterTitle}
@@ -1061,7 +1137,7 @@ const DisplayOriginalPage = () => {
                                 <img
                                   src={item.squareThumbnail}
                                   alt="img"
-                                  className="object-fill w-full h-full rounded-md"
+                                  className="object-cover w-full h-full rounded-md"
                                 />
                               </div>
 
@@ -1435,7 +1511,7 @@ const DisplayOriginalPage = () => {
                                 <img
                                   src={item.squareThumbnail}
                                   alt="img"
-                                  className="object-fill w-full h-full rounded-md"
+                                  className="object-cover w-full h-full rounded-md"
                                 />
                               </div>
 

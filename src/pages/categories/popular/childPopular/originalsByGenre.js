@@ -42,94 +42,96 @@ const OriginalsByGenrePage = () => {
                 </ul>
             </div>
 
-            <div className="w-full grid xs:grid-cols-1 sm:grid-cols-2">
+            <div className="w-full grid xs:grid-cols-1 lg:grid-cols-2 gap-5">
                 {/* Hien thị top 1 */}
-
-                {comicid?.id &&
-                    <Link
-                        to={`/originals/original/series/${comicid?.id}`}
-                        className="h-[600px] bg-white py-1"
-                    >
-                        <div
-                            className="w-full h-full"
-                            onMouseEnter={() => setHoveredOriginalItem("choice")}
-                            onMouseLeave={() => setHoveredOriginalItem(null)}
+                <div className="w-full full bg-white">
+                    {comicid?.id &&
+                        <Link
+                            to={`/originals/original/series/${comicid?.id}`}
+                            className="h-full bg-white py-1"
                         >
+                            <div
+                                className="w-full h-full"
+                                onMouseEnter={() => setHoveredOriginalItem("choice")}
+                                onMouseLeave={() => setHoveredOriginalItem(null)}
+                            >
 
-                            <div className="w-full h-full">
-                                <div className="w-full mr-auto h-auto rounded-md flex items-center justify-center relative">
-                                    <div className="w-full h-full">
-                                        <img
-                                            src={comicid?.squareThumbnail}
-                                            alt="img"
-                                            className="object-fill w-full h-full rounded-md"
-                                        />
+                                <div className="w-full h-full">
+                                    <div className="w-full mr-auto h-auto rounded-md flex items-center justify-center relative">
+                                        <div className="w-full h-[500px]">
+                                            <img
+                                                src={comicid?.squareThumbnail}
+                                                alt="img"
+                                                className="object-cover w-full min-h-[500px] max-h-[500px] rounded-md"
+                                            />
 
-                                        {hoveredOriginalItem === "choice" && (
-                                            <div className="absolute inset-0 rounded-md flex items-center justify-center text-yellow-500 z-10">
-                                                <AutoStoriesIcon sx={{ fontSize: 60 }} />
-                                            </div>
-                                        )}
-                                    </div>
+                                            {hoveredOriginalItem === "choice" && (
+                                                <div className="absolute inset-0 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                                    <AutoStoriesIcon sx={{ fontSize: 60 }} />
+                                                </div>
+                                            )}
+                                        </div>
 
-                                    <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                                        <div className="w-full h-[120px] mb-auto overflow-hidden">
-                                            <div className="w-[80px] h-[80px] flex items-center justify-center mx-2">
-                                                <span className="mx-3 text-[60px] text-white text-shadow-black font-bold">
-                                                    1
-                                                </span>
+                                        <div className="absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                                            <div className="w-full h-[120px] mb-auto overflow-hidden">
+                                                <div className="w-[80px] h-[80px] flex items-center justify-center mx-2">
+                                                    <span className="mx-3 text-[60px] text-white text-shadow-black font-bold">
+                                                        1
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div className="w-full h-[150px] mt-3">
-                                    <div className="w-full">
-                                        {(comicid?.genre1 === comicid?.genre2) ?
-                                            <span className="text-gray-400">
-                                                {!language ? comicid?.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid?.genre1.toLowerCase())[0]?.nameKorean}
+                                    <div className="w-full min-h-[200px] mt-3">
+                                        <div className="w-full">
+                                            {(comicid?.genre1 === comicid?.genre2) ?
+                                                <span className="text-gray-400">
+                                                    {!language ? comicid?.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid?.genre1.toLowerCase())[0]?.nameKorean}
+                                                </span>
+                                                :
+                                                <span className="text-gray-400 text-sm">
+                                                    {!language ? comicid?.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid?.genre1.toLowerCase())[0]?.nameKorean}
+                                                    {`, `}
+                                                    {!language ? comicid?.genre2 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid?.genre2.toLowerCase())[0]?.nameKorean}
+                                                </span>
+                                            }
+                                        </div>
+
+
+                                        <div className="w-full h-[75px] overflow-hidden">
+                                            <span className="text-[30px] font-semibold leading-[1.2] line-clamp-2">
+                                                {comicid?.title}
+
                                             </span>
-                                            :
-                                            <span className="text-gray-400 text-sm">
-                                                {!language ? comicid?.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid?.genre1.toLowerCase())[0]?.nameKorean}
-                                                {`, `}
-                                                {!language ? comicid?.genre2 : dataListGenre?.filter(itm => itm.name.toLowerCase() === comicid?.genre2.toLowerCase())[0]?.nameKorean}
+                                        </div>
+
+                                        <div>
+                                            <span className="block">
+                                                {comicid?.Author}
                                             </span>
-                                        }
+                                        </div>
+
+                                        <div className=" w-full h-full mt-5 overflow-hidden">
+                                            <span className="w-full line-clamp-6">
+                                                {comicid?.summary}
+                                            </span>
+                                        </div>
+
                                     </div>
-
-
-                                    <div className="w-full h-[75px] overflow-hidden">
-                                        <span className="text-[30px] font-semibold leading-[1.2] line-clamp-2">
-                                            {comicid?.title}
-
-                                        </span>
-                                    </div>
-
-                                    <div>
-                                        <span className="block">
-                                            {comicid?.Author}
-                                        </span>
-                                    </div>
-
-                                    <div className=" w-full h-full mt-5 overflow-hidden">
-                                        <span className="w-full line-clamp-6">
-                                            {comicid?.summary}
-                                        </span>
-                                    </div>
-
                                 </div>
                             </div>
-                        </div>
-                    </Link>
-                }
+                        </Link>
+                    }
+                </div>
+
                 {/* Hien thị danh sách */}
-                <div className="w-full h-[600px] bg-white">
+                <div className="w-full h-full bg-white">
                     <div className="w-full h-full">
                         <ul className="w-full h-full ">
 
                             {/* khung nội dung */}
-                            {comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase())?.slice(1, 9).sort((a, b) => b?.views - a?.views).map((item, index) => (
+                            {comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase())?.slice(1, 10).sort((a, b) => b?.views - a?.views).map((item, index) => (
                                 <Link
                                     key={item.id}
                                     to={`/originals/original/series/${item.id}`}
@@ -142,7 +144,7 @@ const OriginalsByGenrePage = () => {
                                                 <img
                                                     src={item.squareThumbnail}
                                                     alt="img"
-                                                    className="object-fill w-full h-full rounded-md"
+                                                    className="object-cover min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px] rounded-md"
                                                 />
                                             </div>
                                             <div className="w-[30px] h-[30px] mx-3 flex items-center justify-center">

@@ -152,7 +152,7 @@ const Dashboard = () => {
                           <img
                             src={item.squareThumbnail}
                             alt="img"
-                            className="w-full h-full object-fill rounded"
+                            className="w-full h-full object-cover rounded"
                           />
                         </div>
 
@@ -328,7 +328,7 @@ const Dashboard = () => {
                           <img
                             src={item.squareThumbnail}
                             alt="img"
-                            className="w-full h-full object-fill rounded"
+                            className="w-full h-full object-cover rounded"
                           />
                         </div>
 

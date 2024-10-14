@@ -381,7 +381,7 @@ const OriginalSeriesPage = () => {
                               <img
                                 src={item.horizontalThumbnail}
                                 alt="img"
-                                className="object-fill min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px] rounded-md"
+                                className="object-cover min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px] rounded-md"
                               />
                             </div>
 
@@ -567,7 +567,7 @@ const OriginalSeriesPage = () => {
                           <img
                             src={item.squareThumbnail}
                             alt="img"
-                            className="object-fill w-[100px] h-[100px] rounded"
+                            className="object-cover w-[100px] h-[100px] rounded"
                           />
                         </div>
 

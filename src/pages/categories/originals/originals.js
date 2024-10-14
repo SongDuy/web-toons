@@ -348,7 +348,7 @@ const OriginalsPage = () => {
                           <img
                             src={item.squareThumbnail}
                             alt="img"
-                            className="object-fill w-full h-full rounded-md"
+                            className="object-cover w-full h-full rounded-md"
                           />
 
                           {hoveredOngoingItem === item.id && (
@@ -358,8 +358,8 @@ const OriginalsPage = () => {
                           )}
                         </div>
 
-                        <div className="w-[230px] absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                          <div className="w-full h-[65px] mb-auto overflow-hidden">
+                        <div className="max-w-[230px] absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                          <div className="w-[230px] h-[65px] mb-auto overflow-hidden">
                             <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                               {item.title}
                             </span>
@@ -432,7 +432,7 @@ const OriginalsPage = () => {
                             <img
                               src={item.squareThumbnail}
                               alt="img"
-                              className="object-fill w-full h-full rounded-md"
+                              className="object-cover w-full h-full rounded-md"
                             />
 
                             {hoveredCompletedItem === item.id && (
@@ -442,8 +442,8 @@ const OriginalsPage = () => {
                             )}
                           </div>
 
-                          <div className="w-[230px] absolute inset-0 flex flex-wrap items-center px-3 py-3">
-                            <div className="w-full h-[65px] mb-auto overflow-hidden">
+                          <div className="max-w-[230px] absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                            <div className="w-[230px] h-[65px] mb-auto overflow-hidden">
                               <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
                                 {item.title}
                               </span>

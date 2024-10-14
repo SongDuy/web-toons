@@ -282,7 +282,7 @@ const VideosPage = () => {
                                                     <img
                                                         src={item.squareThumbnail}
                                                         alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
+                                                        className="object-cover w-full h-full rounded-md"
                                                     />
 
                                                     {hoveredOngoingItem === item.id && (
@@ -292,9 +292,9 @@ const VideosPage = () => {
                                                     )}
                                                 </div>
 
-                                                <div className="w-[230px] flex flex-wrap items-center px-3 py-3">
+                                                <div className="max-w-[230px] lg:w-[230px] flex flex-wrap items-center px-3 py-3">
 
-                                                    <div className="w-full h-[65px] mb-auto overflow-hidden">
+                                                    <div className="w-[230px] h-[65px] mb-auto overflow-hidden">
                                                         <span className="text-lg font-semibold text-black text-shadow-white leading-[1.2] line-clamp-2">
                                                             {item.title}
                                                         </span>
@@ -346,7 +346,7 @@ const VideosPage = () => {
                                                     <img
                                                         src={item.squareThumbnail}
                                                         alt="img"
-                                                        className="object-fill w-full h-full rounded-md"
+                                                        className="object-cover w-full h-full rounded-md"
                                                     />
 
                                                     {hoveredCompletedItem === item.id && (
@@ -356,9 +356,9 @@ const VideosPage = () => {
                                                     )}
                                                 </div>
 
-                                                <div className="w-[230px] flex flex-wrap items-center px-3 py-3">
+                                                <div className="max-w-[230px] lg:w-[230px] flex flex-wrap items-center px-3 py-3">
 
-                                                    <div className="w-full h-[65px] mb-auto overflow-hidden">
+                                                    <div className="w-[230px] h-[65px] mb-auto overflow-hidden">
                                                         <span className="text-lg font-semibold text-black text-shadow-white leading-[1.2] line-clamp-2">
                                                             {item.title}
                                                         </span>

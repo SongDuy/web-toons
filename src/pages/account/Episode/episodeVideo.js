@@ -133,7 +133,7 @@ const EpisodeVideo = () => {
                                                     <img
                                                         src={item.horizontalThumbnail}
                                                         alt="img"
-                                                        className="w-full h-full object-fill rounded"
+                                                        className="w-full h-full object-cover rounded"
                                                     />
                                                 </div>
 
