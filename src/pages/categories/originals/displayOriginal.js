@@ -587,11 +587,30 @@ const DisplayOriginalPage = () => {
       });
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const calculateWidth = () => {
+    const baseWidth = windowSize.width; // Chiều rộng của màn hình
+    if (windowSize.width < 640) {
+      return baseWidth * 0.95; // Đối với màn hình nhỏ (xs), chiếm 95% chiều rộng
+    } else if (windowSize.width < 768) {
+      return baseWidth * 0.90; // Đối với màn hình vừa (sm), chiếm 90% chiều rộng
+    } else if (windowSize.width < 1024) {
+      return baseWidth * 0.85; // Đối với màn hình lớn (md), chiếm 85% chiều rộng
+    } else if (windowSize.width < 1280) {
+      return baseWidth * 0.80; // Đối với màn hình rất lớn (lg), chiếm 80% chiều rộng
+    } else if (windowSize.width < 1536) {
+      return baseWidth * 0.75; // Đối với màn hình cực lớn (xl), chiếm 75% chiều rộng
+    } else if (windowSize.width < 1920) {
+      return baseWidth * 0.70; // Đối với màn hình siêu lớn (2xl), chiếm 70% chiều rộng
+    } else {
+      return baseWidth * 0.65; // Đối với màn hình cực kỳ lớn (3xl), chiếm 65% chiều rộng
+    }
+  };
 
   return (
     <>
@@ -703,7 +722,7 @@ const DisplayOriginalPage = () => {
             </div>
 
             {/* Hiển thị nội dung truyện */}
-            <div className="w-full h-full pt-[50px] xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] flex items-center justify-center">
+            <div className="w-full h-full pt-[50px] flex items-center justify-center">
               <div className="w-full h-full overflow-hidden flex justify-center items-center">
                 {file && (
                   <Document
@@ -716,7 +735,7 @@ const DisplayOriginalPage = () => {
                       <Page
                         key={`page_${index + 1}`}
                         pageNumber={index + 1}
-                        width={windowSize.width * 0.98} // Chiếm 98% chiều rộng màn hình
+                        width={calculateWidth()} // Tính toán chiều rộng dựa trên kích thước màn hình
                       />
                     ))}
                   </Document>
