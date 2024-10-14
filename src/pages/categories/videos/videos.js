@@ -294,7 +294,7 @@ const VideosPage = () => {
 
                                                 <div className="max-w-[230px] lg:w-[230px] flex flex-wrap items-center px-3 py-3">
 
-                                                    <div className="w-full h-[65px] mb-auto overflow-hidden">
+                                                    <div className="w-[230px] h-[65px] mb-auto overflow-hidden">
                                                         <span className="text-lg font-semibold text-black text-shadow-white leading-[1.2] line-clamp-2">
                                                             {item.title}
                                                         </span>
@@ -358,7 +358,7 @@ const VideosPage = () => {
 
                                                 <div className="max-w-[230px] lg:w-[230px] flex flex-wrap items-center px-3 py-3">
 
-                                                    <div className="w-full h-[65px] mb-auto overflow-hidden">
+                                                    <div className="w-[230px] h-[65px] mb-auto overflow-hidden">
                                                         <span className="text-lg font-semibold text-black text-shadow-white leading-[1.2] line-clamp-2">
                                                             {item.title}
                                                         </span>
