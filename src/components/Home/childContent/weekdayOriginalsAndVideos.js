@@ -278,7 +278,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                                         <div className="max-w-[210px] sm:w-[210px] flex flex-wrap items-center px-3 py-3">
                                             <div className="w-auto h-[65px] mb-auto overflow-hidden">
                                                 <span className="text-black text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
-                                                    {item.title} k kk  kk k  kk k k k 
+                                                    {item.title}
                                                 </span>
                                                 <span className="text-black text-md text-shadow-white leading-[1.2] line-clamp-1">
                                                     {item.Author}
