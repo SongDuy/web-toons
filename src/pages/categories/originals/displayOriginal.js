@@ -582,7 +582,7 @@ const DisplayOriginalPage = () => {
           <div className="w-full h-full bg-white">
             {/* Thanh công cụ */}
             <div className="w-full h-[50px] px-5 bg-black flex items-center">
-              <ul className="w-full h-full grid xs:grid-cols-3">
+              <ul className="w-full h-full grid grid-cols-3">
 
                 {/* logo và tên series */}
                 <li className="h-full flex items-center gap-2 overflow-hidden">
@@ -590,7 +590,7 @@ const DisplayOriginalPage = () => {
                     <Link to={`/`}>
                       <img
                         src={logo}
-                        alt="Logo của website"
+                        alt="Logo"
                         className="min-w-[50px] max-w-[50px] h-auto rounded-md bg-white"
                       />
                     </Link>
@@ -763,7 +763,7 @@ const DisplayOriginalPage = () => {
                     to={`/originals/original/series/display/${id.id}/${item.id}`}
                     key={item.id}
                     className={`w-[120px] h-[165px] py-2 cursor-pointer rounded-md hover:bg-gray-200 flex items-center justify-center overflow-hidden 
-                      ${id.idseries ? "bg-gray-200" : " "}`}
+                      ${id.idseries === item.id ? "bg-gray-200" : " "}`}
                   >
                     <div className="w-[100px] h-[100px] mb-auto">
                       <img
