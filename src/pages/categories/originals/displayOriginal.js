@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, memo } from "react";
+import React, { useState, useEffect, useMemo, memo, useCallback } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../img/logonew.png";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -563,7 +563,36 @@ const DisplayOriginalPage = () => {
   };
 
   const scale = calculateScale(); // Di chuyển dòng này sau khi windowSize được định nghĩa
-  console.log(id)
+
+  // lướt xuống mất thanh công cụ lướt lên thì hiện
+  const [showToolbar, setShowToolbar] = useState(true); // Trạng thái hiển thị thanh công cụ
+  const [lastScrollY, setLastScrollY] = useState(0);    // Lưu trữ vị trí cuộn cuối cùng
+
+  const controlNavbar = useCallback(() => {
+    const scrollY = window.scrollY; // Lấy vị trí cuộn hiện tại
+
+    // Nếu cuộn xuống hơn 10px và hiện tại đang hiển thị thanh công cụ
+    if (scrollY > lastScrollY + 10 && showToolbar) {
+      setShowToolbar(false); // Ẩn thanh công cụ
+    }
+    // Nếu cuộn lên hơn 10px và hiện tại không hiển thị thanh công cụ
+    else if (scrollY < lastScrollY - 10 && !showToolbar) {
+      setShowToolbar(true); // Hiển thị thanh công cụ
+    }
+
+    // Cập nhật vị trí cuộn mới
+    setLastScrollY(scrollY);
+  }, [lastScrollY, showToolbar]); // Thêm showToolbar vào dependency
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNavbar);
+
+    // Cleanup sự kiện khi component bị unmount
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    };
+  }, [controlNavbar]); // Thêm controlNavbar vào dependency
+
   return (
     <>
       {!loading ? (
@@ -581,7 +610,7 @@ const DisplayOriginalPage = () => {
         <div>
           <div className="w-full h-full bg-white">
             {/* Thanh công cụ */}
-            <div className="w-full h-[50px] px-5 bg-black flex items-center">
+            <div className={`fixed w-full h-[50px] bg-black flex items-center px-5 z-50 transition-transform duration-300 ${showToolbar ? 'translate-y-0' : '-translate-y-full'}`}>
               <ul className="w-full h-full grid grid-cols-3">
 
                 {/* logo và tên series */}
@@ -666,7 +695,7 @@ const DisplayOriginalPage = () => {
             </div>
 
             {/* Hiển thị nội dung truyện */}
-            <div className="w-full h-full bg-white flex items-center justify-center">
+            <div className="w-full h-full pt-[50px] bg-white flex items-center justify-center">
               <div>
                 {file && (
                   <Document
