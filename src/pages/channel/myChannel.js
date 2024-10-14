@@ -615,7 +615,7 @@ const MyChannelPage = () => {
                           </div>
 
                           {/* Hiển nội dung bài viết */}
-                          <div className="py-3">
+                          <div className="py-3 px-3">
                             <p>{item.post}</p>
                           </div>
 
