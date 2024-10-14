@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { animateScroll as scroll } from 'react-scroll';
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
 import logo from "../../../img/logonew.png";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import AddIcon from "@mui/icons-material/Add";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -501,6 +503,14 @@ const DisplayVideoPage = () => {
     };
   }, [controlNavbar]); // Thêm controlNavbar vào dependency
 
+  // Hàm cuộn lên đầu trang
+  const scrollToTop = () => {
+    scroll.scrollToTop({
+      duration: 500, // Thời gian cuộn (ms)
+      smooth: true,  // Cuộn mượt
+    });
+  };
+
   return (
     <div>
       {!loading ? (
@@ -571,12 +581,17 @@ const DisplayVideoPage = () => {
                 </li>
 
                 {/* nút thêm */}
-                <li className="ml-auto flex items-center">
-                  <div className="w-[30px] h-[30px] rounded-full bg-gray-800 flex items-center justify-center">
-                    <span className=" text-white">
-                      <AddIcon />
-                    </span>
-                  </div>
+                <li className="flex items-center pl-7">
+                  <button
+                    onClick={scrollToTop}
+                    className="w-[40px] h-[35px] mr-auto bg-gray-800 hover:bg-gray-700 shadow  rounded-md text-white flex items-center justify-center"
+                  >
+                    <ArrowUpwardIcon />
+                  </button>
+
+                  <button className="w-[30px] h-[30px] ml-auto text-white rounded-full bg-gray-800 flex items-center justify-center">
+                    <AddIcon />
+                  </button>
                 </li>
               </ul>
             </div>

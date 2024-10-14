@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useMemo, memo, useCallback } from "react";
+import { animateScroll as scroll } from 'react-scroll';
 import { Link } from "react-router-dom";
 import logo from "../../../img/logonew.png";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import AddIcon from "@mui/icons-material/Add";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import MusicOffIcon from "@mui/icons-material/MusicOff";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -593,6 +595,14 @@ const DisplayOriginalPage = () => {
     };
   }, [controlNavbar]); // Thêm controlNavbar vào dependency
 
+  // Hàm cuộn lên đầu trang
+  const scrollToTop = () => {
+    scroll.scrollToTop({
+      duration: 500, // Thời gian cuộn (ms)
+      smooth: true,  // Cuộn mượt
+    });
+  };
+
   return (
     <>
       {!loading ? (
@@ -665,30 +675,38 @@ const DisplayOriginalPage = () => {
 
                 {/* Bật tắt âm thanh */}
                 {chapid?.audioUrl && (
-                  <li className="ml-auto flex items-center">
-                    {!isMusic ? (
-                      <button
-                        className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
-                        onClick={() => setIsMusic(true)}
-                      >
-                        <MusicNoteIcon />
-                      </button>
-                    ) : (
-                      <button
-                        className="w-[30px] h-[30px] rounded-full text-white bg-gray-800 flex items-center justify-center"
-                        onClick={() => setIsMusic(false)}
-                      >
-                        <MusicOffIcon />
-                      </button>
-                    )}
-                    <ReactPlayer
-                      url={chapid?.audioUrl}
-                      controls={true}
-                      width="0%"
-                      height="0%"
-                      playing={!isMusic}
-                      loop={true}
-                    />
+                  <li className="flex items-center pl-7">
+                    <button
+                      onClick={scrollToTop}
+                      className="w-[40px] h-[35px] bg-gray-800 hover:bg-gray-700 shadow mr-auto rounded-md text-white flex items-center justify-center"
+                    >
+                      <ArrowUpwardIcon />
+                    </button>
+                    <button className="ml-auto text-white">
+                      {!isMusic ? (
+                        <button
+                          className="w-[30px] h-[30px] rounded-full bg-gray-800 flex items-center justify-center"
+                          onClick={() => setIsMusic(true)}
+                        >
+                          <MusicNoteIcon />
+                        </button>
+                      ) : (
+                        <button
+                          className="w-[30px] h-[30px] rounded-full bg-gray-800 flex items-center justify-center"
+                          onClick={() => setIsMusic(false)}
+                        >
+                          <MusicOffIcon />
+                        </button>
+                      )}
+                      <ReactPlayer
+                        url={chapid?.audioUrl}
+                        controls={true}
+                        width="0%"
+                        height="0%"
+                        playing={!isMusic}
+                        loop={true}
+                      />
+                    </button>
                   </li>
                 )}
               </ul>
