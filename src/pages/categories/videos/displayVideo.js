@@ -589,7 +589,7 @@ const DisplayVideoPage = () => {
                     <ArrowUpwardIcon />
                   </button>
 
-                  <button className="w-[30px] h-[30px] ml-auto text-white rounded-full bg-gray-800 flex items-center justify-center">
+                  <button className="w-[35px] h-[35px] ml-auto text-white rounded-full bg-gray-800 flex items-center justify-center">
                     <AddIcon />
                   </button>
                 </li>
