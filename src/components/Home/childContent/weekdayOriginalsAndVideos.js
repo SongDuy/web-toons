@@ -182,7 +182,7 @@ const WeekdayOriginalsAndVideosPage = () => {
 
                     {/* khung nội dung dành cho truyện */}
                     <div className="w-full h-full flex items-center justify-center">
-                        <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-5 gap-4">
+                        <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4">
                             {/* khung nội dung */}
                             {filteredOriginals?.slice(0, 5)?.map((item) => (
                                 <Link
@@ -247,7 +247,7 @@ const WeekdayOriginalsAndVideosPage = () => {
 
                     {/* khung nội dung dành cho videos */}
                     <div className="w-full h-full flex justify-center">
-                        <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-5 gap-4">
+                        <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4">
                             {/* khung nội dung */}
                             {filteredVideos?.slice(0, 5)?.map((item) => (
                                 <Link
