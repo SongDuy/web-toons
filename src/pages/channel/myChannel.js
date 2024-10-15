@@ -334,7 +334,7 @@ const MyChannelPage = () => {
             <div className="w-full h-full grid xs:grid-cols-1 lg:grid-cols-3 gap-3 mt-3">
               <div className="col-span-1 h-full">
                 {/* Khung hiển thị các Series truyện và video của tác giả */}
-                <div className="w-full h-full grid xs:grid-cols-1 gap-3">
+                <div className="w-full max-h-[1100px] grid xs:grid-cols-1 gap-3">
                   {/* Khung hiển thị các liên kết của tác giả */}
                   {/* <div className="w-full h-[340px] px-5 py-3 bg-white rounded-lg">
                   <div className="font-semibold text-[20px] text-black">
@@ -372,12 +372,12 @@ const MyChannelPage = () => {
                               <img
                                 src={item.squareThumbnail}
                                 alt="img"
-                                className="object-cover w-full h-full rounded"
+                                className="object-cover min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px] rounded"
                               />
                             </div>
 
                             <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                              <div className="w-auto overflow-hidden ">
+                              <div className="max-w-[250px] overflow-hidden ">
                                 <span className="w-full text-lg font-semibold line-clamp-1">
                                   {item.title}
                                 </span>
@@ -422,12 +422,12 @@ const MyChannelPage = () => {
                               <img
                                 src={item.squareThumbnail}
                                 alt="img"
-                                className="object-cover w-full h-full rounded"
+                                className="object-cover min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px] rounded"
                               />
                             </div>
 
                             <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                              <div className="w-auto overflow-hidden ">
+                              <div className="max-w-[250px] overflow-hidden ">
                                 <span className="w-full text-lg font-semibold line-clamp-1">
                                   {item.title}
                                 </span>
