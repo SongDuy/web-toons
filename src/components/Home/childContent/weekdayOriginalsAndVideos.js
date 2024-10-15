@@ -100,7 +100,7 @@ const WeekdayOriginalsAndVideosPage = () => {
                     ))}
                 </ul>
 
-                <div className="w-[150px] h-full flex items-center justify-center z-10">
+                <div className="w-[150px] h-full flex items-center justify-center">
 
                     <button
                         ref={anchorRef}
