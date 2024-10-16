@@ -224,7 +224,7 @@ const Subscribed = () => {
                   )}
                 </div>
                 {EditSubscribed ? (
-                  <div className="grid grid-cols-5 gap-2 w-full h-full px-5">
+                  <div className="w-full h-full grid grid-cols-5 gap-2 px-5">
                     {Subscribed?.map((item) => {
                       return (
                         <div
@@ -246,15 +246,14 @@ const Subscribed = () => {
                             </span>
                           </div>
 
-                          <span className="absolute top-[70%] left-2 text-shadow-white line-clamp-1 text-base  text-gray-500">
-                            {!language ?
-                              "Update"
-                              :
-                              "업데이트"
-                            }
-                          </span>
-
-                          <div className="absolute top-[80%] px-3">
+                          <div className="absolute top-[70%] px-3">
+                            <span className="w-full text-shadow-white line-clamp-1 text-base text-gray-500">
+                              {!language ?
+                                "Update"
+                                :
+                                "업데이트"
+                              }
+                            </span>
                             {!language ?
                               <span className="text-shadow-white line-clamp-1 text-base text-gray-500">
                                 {monthNames[new Date(item.createTime).getMonth()].en}{" "}
@@ -284,7 +283,7 @@ const Subscribed = () => {
                     })}
                   </div>
                 ) : (
-                  <div className="w-full h-full flex-row grid grid-cols-5 gap-4 px-5">
+                  <div className="w-full h-full grid grid-cols-5 gap-2 px-5">
                     {Subscribed.map((item) => {
                       return (
                         <div
@@ -304,15 +303,16 @@ const Subscribed = () => {
                               {item?.Author}
                             </span>
                           </div>
-                          <span className="absolute top-[70%] left-2 text-shadow-white truncate line-clamp-1  text-base  text-gray-500">
-                            {!language ?
-                              "Update"
-                              :
-                              "업데이트"
-                            }
-                          </span>
 
-                          <div className="absolute top-[80%] px-3">
+                          <div className="absolute top-[70%] px-3">
+                            <span className="w-full text-shadow-white line-clamp-1 text-base text-gray-500">
+                              {!language ?
+                                "Update"
+                                :
+                                "업데이트"
+                              }
+                            </span>
+
                             {!language ?
                               <span className="text-shadow-white line-clamp-1 text-base text-gray-500">
                                 {monthNames[new Date(item.createTime).getMonth()].en}{" "}

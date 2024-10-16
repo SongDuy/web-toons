@@ -34,12 +34,12 @@ const Suggestsubscribed = () => {
       selectedOriginalGenre === "All" || selectedOriginalGenre === "모두"
         ? item
         : selectedOriginalGenre === "Others"
-        ? !dataGenreSearch.some(
+          ? !dataGenreSearch.some(
             (i) =>
               i.name.toLowerCase() === item.genre2.toLowerCase() ||
               i.name.toLowerCase() === item.genre1.toLowerCase()
           )
-        : item.genre1.toLowerCase() === selectedOriginalGenre.toLowerCase() ||
+          : item.genre1.toLowerCase() === selectedOriginalGenre.toLowerCase() ||
           item.genre2.toLowerCase() === selectedOriginalGenre.toLowerCase()
     )
     .slice(0, 3)
@@ -91,14 +91,14 @@ const Suggestsubscribed = () => {
             {filteredcomic?.length === 0 ? (
               <div></div>
             ) : (
-              <div className="grid grid-rows-3 gap-2 w-full">
+              <ul className="grid grid-rows-3 gap-2 w-full">
                 {filteredcomic?.map((item, index) => {
                   return (
                     <Link
                       key={item.id}
                       to={`/originals/original/series/${item.id}`}
                     >
-                      <div className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100">
+                      <li className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-200">
                         <div className="w-full h-full flex items-center">
                           <div className="w-[80px] h-[80px] flex">
                             <img
@@ -126,11 +126,11 @@ const Suggestsubscribed = () => {
                             </span>
                           </div>
                         </div>
-                      </div>
+                      </li>
                     </Link>
                   );
                 })}
-              </div>
+              </ul>
             )}
           </div>
         </div>
@@ -188,11 +188,10 @@ const Suggestsubscribed = () => {
                               setSelectedOriginalGenre("All");
                               sethiddenSelected(!language ? "All" : "모두");
                             }}
-                            className={`w-full h-full ${
-                              selectedOriginalGenre === "All"
-                                ? "text-green-500"
-                                : ""
-                            }`}
+                            className={`w-full h-full ${selectedOriginalGenre === "All"
+                              ? "text-green-500"
+                              : ""
+                              }`}
                           >
                             {!language ? <span>All</span> : <span> 모두 </span>}
                           </span>
@@ -204,11 +203,10 @@ const Suggestsubscribed = () => {
                               setSelectedOriginalGenre("Action");
                               sethiddenSelected(!language ? "Action" : "액션");
                             }}
-                            className={`w-full h-full ${
-                              selectedOriginalGenre === "Action"
-                                ? "text-green-500"
-                                : ""
-                            }`}
+                            className={`w-full h-full ${selectedOriginalGenre === "Action"
+                              ? "text-green-500"
+                              : ""
+                              }`}
                           >
                             {!language ? (
                               <span>Action</span>
@@ -226,11 +224,10 @@ const Suggestsubscribed = () => {
                                 !language ? "Romance" : "로맨스"
                               );
                             }}
-                            className={`w-full h-full ${
-                              selectedOriginalGenre === "Romance"
-                                ? "text-green-500"
-                                : ""
-                            }`}
+                            className={`w-full h-full ${selectedOriginalGenre === "Romance"
+                              ? "text-green-500"
+                              : ""
+                              }`}
                           >
                             {!language ? (
                               <span>Romance</span>
@@ -248,11 +245,10 @@ const Suggestsubscribed = () => {
                                 !language ? "Fantasy" : "판타지"
                               );
                             }}
-                            className={`w-full h-full ${
-                              selectedOriginalGenre === "Fantasy"
-                                ? "text-green-500"
-                                : ""
-                            }`}
+                            className={`w-full h-full ${selectedOriginalGenre === "Fantasy"
+                              ? "text-green-500"
+                              : ""
+                              }`}
                           >
                             {!language ? (
                               <span>Fantasy</span>
@@ -268,11 +264,10 @@ const Suggestsubscribed = () => {
                               setSelectedOriginalGenre("Drama");
                               sethiddenSelected(!language ? "Drama" : "드라마");
                             }}
-                            className={`w-full h-full ${
-                              selectedOriginalGenre === "Drama"
-                                ? "text-green-500"
-                                : ""
-                            }`}
+                            className={`w-full h-full ${selectedOriginalGenre === "Drama"
+                              ? "text-green-500"
+                              : ""
+                              }`}
                           >
                             {!language ? (
                               <span>Drama</span>
@@ -290,11 +285,10 @@ const Suggestsubscribed = () => {
                                 !language ? "Comedy" : "코미디"
                               );
                             }}
-                            className={`w-full h-full ${
-                              selectedOriginalGenre === "Comedy"
-                                ? "text-green-500"
-                                : ""
-                            }`}
+                            className={`w-full h-full ${selectedOriginalGenre === "Comedy"
+                              ? "text-green-500"
+                              : ""
+                              }`}
                           >
                             {!language ? (
                               <span>Comedy</span>
@@ -312,11 +306,10 @@ const Suggestsubscribed = () => {
                                 !language ? "Thriller" : "스릴러"
                               );
                             }}
-                            className={`w-full h-full ${
-                              selectedOriginalGenre === "Thriller"
-                                ? "text-green-500"
-                                : ""
-                            }`}
+                            className={`w-full h-full ${selectedOriginalGenre === "Thriller"
+                              ? "text-green-500"
+                              : ""
+                              }`}
                           >
                             {!language ? (
                               <span>Thriller</span>
@@ -334,11 +327,10 @@ const Suggestsubscribed = () => {
                                 !language ? "Slice of life" : "일상"
                               );
                             }}
-                            className={`w-full h-full ${
-                              selectedOriginalGenre === "Slice of life"
-                                ? "text-green-500"
-                                : ""
-                            }`}
+                            className={`w-full h-full ${selectedOriginalGenre === "Slice of life"
+                              ? "text-green-500"
+                              : ""
+                              }`}
                           >
                             {!language ? (
                               <span>Slice of life</span>
@@ -356,11 +348,10 @@ const Suggestsubscribed = () => {
                                 !language ? "Slice of life" : "초자연적"
                               );
                             }}
-                            className={`w-full h-full ${
-                              selectedOriginalGenre === "Supernatural"
-                                ? "text-green-500"
-                                : ""
-                            }`}
+                            className={`w-full h-full ${selectedOriginalGenre === "Supernatural"
+                              ? "text-green-500"
+                              : ""
+                              }`}
                           >
                             {!language ? (
                               <span>Supernatural</span>
@@ -378,11 +369,10 @@ const Suggestsubscribed = () => {
                                 !language ? "Sci-fi" : "공상 과학"
                               );
                             }}
-                            className={`w-full h-full ${
-                              selectedOriginalGenre === "Sci-fi"
-                                ? "text-green-500"
-                                : ""
-                            }`}
+                            className={`w-full h-full ${selectedOriginalGenre === "Sci-fi"
+                              ? "text-green-500"
+                              : ""
+                              }`}
                           >
                             {!language ? (
                               <span>Sci-fi</span>
@@ -398,11 +388,10 @@ const Suggestsubscribed = () => {
                               setSelectedOriginalGenre("Horror");
                               sethiddenSelected(!language ? "Horror" : "호러");
                             }}
-                            className={`w-full h-full ${
-                              selectedOriginalGenre === "Horror"
-                                ? "text-green-500"
-                                : ""
-                            }`}
+                            className={`w-full h-full ${selectedOriginalGenre === "Horror"
+                              ? "text-green-500"
+                              : ""
+                              }`}
                           >
                             {!language ? (
                               <span>Horror</span>
@@ -418,11 +407,10 @@ const Suggestsubscribed = () => {
                               setSelectedOriginalGenre("Others");
                               sethiddenSelected(!language ? "Others" : "기타");
                             }}
-                            className={`w-full h-full ${
-                              selectedOriginalGenre === "Others"
-                                ? "text-green-500"
-                                : ""
-                            }`}
+                            className={`w-full h-full ${selectedOriginalGenre === "Others"
+                              ? "text-green-500"
+                              : ""
+                              }`}
                           >
                             {!language ? (
                               <span>Others</span>
@@ -445,14 +433,14 @@ const Suggestsubscribed = () => {
             {searchedcomic?.length === 0 ? (
               <div></div>
             ) : (
-              <div className="grid grid-rows-3 gap-2 w-full">
+              <ul className="grid grid-rows-3 gap-2 w-full">
                 {searchedcomic?.map((item, index) => {
                   return (
                     <Link
                       key={item.id}
                       to={`/originals/original/series/${item.id}`}
                     >
-                      <div className="w-full h-[95px] px-2 rounded-md border-b cursor-pointer hover:bg-gray-100">
+                      <li className="w-full h-[95px] px-2 rounded-md border-b hover:bg-gray-200">
                         <div className="w-full h-full flex items-center">
                           <div className="w-[80px] h-[80px] flex">
                             <img
@@ -480,11 +468,11 @@ const Suggestsubscribed = () => {
                             </span>
                           </div>
                         </div>
-                      </div>
+                      </li>
                     </Link>
                   );
                 })}
-              </div>
+              </ul>
             )}
           </div>
         </div>
