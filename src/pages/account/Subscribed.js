@@ -227,8 +227,8 @@ const Subscribed = () => {
                   <div className="grid grid-cols-5 gap-2 w-full h-full px-5">
                     {Subscribed?.map((item) => {
                       return (
-                        <button
-                          className={` w-full h-full border-2 ${checkSubcribed?.includes(item.id)
+                        <div
+                          className={`w-full h-full ${checkSubcribed?.includes(item.id)
                             ? "border-emerald-400"
                             : ""
                             }  relative`}
@@ -240,10 +240,10 @@ const Subscribed = () => {
                             alt=""
                             className="object-contain "
                           />
-                          <span className="absolute top-2 text-shadow-white line-clamp-2 text-lg w-full font-bold">
+                          <span className="absolute top-2 left-2 text-shadow-white line-clamp-2 text-lg w-full font-bold">
                             {item?.title}
                           </span>
-                          <span className="absolute top-7 left-2 text-shadow-white line-clamp-1 text-lg w-full">
+                          <span className="absolute top-7 left-2 text-shadow-white truncate line-clamp-1 text-lg w-full">
                             {item?.Author} k kkk kk kkk kk kkk kk kkk kk kkk k
                           </span>
                           <span className="absolute top-[70%] left-2 text-shadow-white line-clamp-1 text-base  text-gray-500">
@@ -265,7 +265,7 @@ const Subscribed = () => {
                               {new Date(item.createTime).getDate()}일,
                               {new Date(item.createTime)?.getFullYear()}년
                             </span>}
-                          <span className="absolute top-[75%] left-[80%] truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
+                          <button className="absolute top-[75%] left-[80%] truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
                             <CheckIcon
                               sx={
                                 checkSubcribed?.includes(item.id)
@@ -273,8 +273,8 @@ const Subscribed = () => {
                                   : { color: "white" }
                               }
                             />
-                          </span>
-                        </button>
+                          </button>
+                        </div>
                       );
                     })}
                   </div>

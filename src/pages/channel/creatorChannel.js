@@ -466,7 +466,6 @@ const CreatorChannelPage = () => {
                                                             </button>
                                                         }
                                                     </div>
-
                                                 </div>
                                             </li>
                                         ))}
@@ -485,9 +484,7 @@ const CreatorChannelPage = () => {
                             margin: 5,
                         }}
                     >
-                        <div className="h-[580px] flex items-center justify-center">
-                            <CircularProgress />
-                        </div>
+                        <CircularProgress />
                     </Box>
                 )}
         </>
