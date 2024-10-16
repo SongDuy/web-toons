@@ -64,7 +64,7 @@ const OriginalsPage = () => {
     const filteredOriginalsByDate = comic.comic
       ?.filter((data) => data.schedule === currentDay)
       .sort((a, b) => new Date(b.createTime) - new Date(a.createTime));
-    setComics( setSelectedMenuOriginalList === "by Popularity" ? filteredOriginalsByGenre : setSelectedMenuOriginalList === "by Likes" ? filteredOriginalsByLikes : filteredOriginalsByDate);
+    setComics(setSelectedMenuOriginalList === "by Popularity" ? filteredOriginalsByGenre : setSelectedMenuOriginalList === "by Likes" ? filteredOriginalsByLikes : filteredOriginalsByDate);
 
     // Tắt loading sau một khoảng thời gian nhất định
     const loadingTimeout = setTimeout(() => {
