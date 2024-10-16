@@ -467,7 +467,6 @@ const HeaderPage = () => {
               </button>
               {/* Chọn menu Account*/}
               <Popper
-                className="w-[180px] rounded-lg flex items-center justify-center"
                 open={openAccount}
                 anchorEl={anchorAccountRef.current}
                 role={undefined}

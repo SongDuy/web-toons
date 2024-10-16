@@ -58,11 +58,12 @@ const OriginalsByGenrePage = () => {
 
                                 <div className="w-full h-full">
                                     <div className="w-full mr-auto h-auto rounded-md flex items-center justify-center relative">
-                                        <div className="w-full h-[500px]">
+                                        <div className="w-full relative">
                                             <img
                                                 src={comicid?.squareThumbnail}
                                                 alt="img"
-                                                className="object-cover w-full min-h-[500px] max-h-[500px] rounded-md"
+                                                className="object-cover w-full rounded-md"
+                                                style={{ aspectRatio: "1 / 1" }} // Đảm bảo tỷ lệ 1:1
                                             />
 
                                             {hoveredOriginalItem === "choice" && (
@@ -99,21 +100,17 @@ const OriginalsByGenrePage = () => {
                                         </div>
 
 
-                                        <div className="w-full h-[75px] overflow-hidden">
+                                        <div className="w-full h-[95px] overflow-hidden">
                                             <span className="text-[30px] font-semibold leading-[1.2] line-clamp-2">
                                                 {comicid?.title}
-
-                                            </span>
-                                        </div>
-
-                                        <div>
-                                            <span className="block">
+                                            </span> 
+                                            <span className="block font-semibold">
                                                 {comicid?.Author}
                                             </span>
                                         </div>
 
-                                        <div className=" w-full h-full mt-5 overflow-hidden">
-                                            <span className="w-full line-clamp-6">
+                                        <div className="w-full h-full mt-2 overflow-hidden">
+                                            <span className="w-full line-clamp-5">
                                                 {comicid?.summary}
                                             </span>
                                         </div>
