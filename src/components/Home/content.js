@@ -63,7 +63,7 @@ const ContentPage = () => {
         >
           <div className="h-[580px] flex items-center justify-center">
             <CircularProgress />
-            </div>
+          </div>
         </Box>
       ) :
         <div className="w-full h-full bg-gray-100 pb-10">
