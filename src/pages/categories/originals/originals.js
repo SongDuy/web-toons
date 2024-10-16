@@ -315,7 +315,7 @@ const OriginalsPage = () => {
               {/* Danh mục thứ trong tuần */}
               <div className="h-[75px] mt-5 flex items-center justify-center">
 
-                <ul className="w-11/12 flex overflow-x-auto gap-2">
+                <ul className="grid grid-rows-1 grid-flow-col gap-2 w-max overflow-x-auto scroll-snap-x scroll-snap-mandatory">
                   {days?.map((item, index) => (
                     <li
                       key={index}

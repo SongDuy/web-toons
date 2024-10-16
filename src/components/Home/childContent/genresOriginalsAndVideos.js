@@ -50,8 +50,8 @@ const GenresOriginalsAndVideosPage = () => {
                     {/* khung nội dung dành cho truyện */}
                     <div className="w-full h-full">
 
-                        <div className="w-full h-[95px] mb-[30px] overflow-x-auto flex items-center justify-center">
-                            <ul className="grid grid-rows-2 grid-flow-col gap-2 w-max">
+                        <div className="w-full h-[95px] mb-[30px] flex items-center justify-center">
+                            <ul className="grid grid-rows-2 grid-flow-col gap-2 w-max overflow-x-auto scroll-snap-x scroll-snap-mandatory">
                                 {dataListGenre?.map((genre, index) => (
                                     <li
                                         key={genre.id}
