@@ -313,7 +313,7 @@ const OriginalsPage = () => {
               </div>
 
               {/* Danh mục thứ trong tuần */}
-              <div className="h-[75px] border mt-5 flex items-center justify-center">
+              <div className="h-[75px] mt-5 flex items-center justify-center">
 
                 <ul className="grid grid-rows-1 grid-flow-col gap-2 w-max overflow-x-auto scroll-snap-x scroll-snap-mandatory">
                   {days?.map((item, index) => (

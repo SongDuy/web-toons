@@ -193,7 +193,7 @@ const GenresPage = () => {
                         <div className="w-full h-full py-5 flex items-center justify-center">
                             <div className="w-full h-full">
                                 {/* Danh mục thể loại */}
-                                <div className="w-full h-[95px] mb-5 flex items-center justify-center px-4">
+                                <div className="w-full h-[95px] mb-5 flex items-center justify-center">
                                     <ul className="grid grid-rows-2 grid-flow-col gap-2 w-max overflow-x-auto scroll-snap-x scroll-snap-mandatory">
                                         {dataListGenre.map(genre => (
                                             <li
