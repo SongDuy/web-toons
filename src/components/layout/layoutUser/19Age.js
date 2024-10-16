@@ -34,12 +34,12 @@ const Login19AgePage = ({ closeModal, check }) => {
 
         }
     };
-    const handleBackdropClick =  (event) => {
-            if (event.target === event.currentTarget) {
-                closeModal();
-            }
+    const handleBackdropClick = (event) => {
+        if (event.target === event.currentTarget) {
+            closeModal();
+        }
 
-    
+
     };
     const language = useSelector(state => state.hidden.language);
     return (
@@ -48,7 +48,7 @@ const Login19AgePage = ({ closeModal, check }) => {
                 className="w-screen h-screen bg-black bg-opacity-30 flex items-center justify-center fixed inset-0 z-50"
                 onClick={handleBackdropClick}
             >
-                <div className="w-[350px] bg-white rounded-lg shadow-lg pt-10 pb-10 text-center transform transition-all duration-300">
+                <div className="w-[350px] px-5 bg-white rounded-lg shadow-lg pt-10 pb-10 text-center transform transition-all duration-300">
                     <h2 className="text-2xl font-bold mb-2">
                         {!language ? "Login Successful!" : "로그인 성공!"}
                     </h2>
@@ -65,9 +65,15 @@ const Login19AgePage = ({ closeModal, check }) => {
                         <h1 className="text-shadow-black text-yellow-500 text-xl">19+</h1>
                     </div>
 
-                    <div className="w-full mt-10 flex items-center justify-center">
+                    <div className="w-full mt-10 flex gap-5 items-center justify-center">
                         <button
                             className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
+                            onClick={handleBackdropClick}
+                        >
+                            {!language ? "Disagree " : "반대하다"}
+                        </button>
+                        <button
+                            className="w-1/2 h-[50px] text-white font-semibold bg-green-500 hover:bg-green-600 shadow rounded-full flex items-center justify-center"
                             onClick={handleAgreeClick}
                         >
                             {!language ? "Agree" : "동의하다"}
@@ -78,7 +84,7 @@ const Login19AgePage = ({ closeModal, check }) => {
                 className="w-screen h-screen bg-black bg-opacity-30 flex items-center justify-center fixed inset-0 z-50"
                 onClick={handleBackdropClick}
             >
-                <div className="w-[350px] bg-white rounded-lg shadow-lg pt-10 pb-10 text-center transform transition-all duration-300">
+                <div className="w-[350px] px-5 bg-white rounded-lg shadow-lg pt-10 pb-10 text-center transform transition-all duration-300">
                     <h2 className="text-2xl font-bold mb-2">
                         {!language ? "Logout Successful!" : "로그아웃 성공!"}
                     </h2>
@@ -95,9 +101,15 @@ const Login19AgePage = ({ closeModal, check }) => {
                         <h1 className="text-shadow-black text-yellow-500 text-xl">19+</h1>
                     </div>
 
-                    <div className="w-full mt-10 flex items-center justify-center">
+                    <div className="w-full mt-10 flex gap-5 items-center justify-center">
                         <button
                             className="w-1/2 h-[50px] text-white font-semibold bg-red-500 hover:bg-red-600 shadow rounded-full flex items-center justify-center"
+                            onClick={handleBackdropClick}
+                        >
+                            {!language ? "Disagree " : "반대하다"}
+                        </button>
+                        <button
+                            className="w-1/2 h-[50px] text-white font-semibold bg-green-500 hover:bg-green-600 shadow rounded-full flex items-center justify-center"
                             onClick={handleAgreeClick}
                         >
                             {!language ? "Agree" : "동의하다"}
