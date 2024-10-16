@@ -153,7 +153,7 @@ const CreatorChannelPage = () => {
     }
 
     console.log(create)
-    
+
     return (
         <>
             {loading ?
@@ -162,8 +162,14 @@ const CreatorChannelPage = () => {
                         <div className="w-full h-full bg-white rounded-lg">
                             {/* Hiển thị ảnh nền */}
                             <div className="w-full max-h-[400px] bg-green-200 rounded-lg">
-                                <img src="https://wallpapers.com/images/hd/chill-anime-girl-during-winter-n65e3iefecsy01if.jpg"
-                                    className="object-cover w-full max-h-[400px] rounded-t-lg" alt="img"
+                                <img
+                                    src={
+                                        create?.horizontalThumbnail
+                                            ? create?.horizontalThumbnail
+                                            : "https://wallpapers.com/images/hd/chill-anime-girl-during-winter-n65e3iefecsy01if.jpg"
+                                    }
+                                    className="object-cover w-full max-h-[400px] rounded-t-lg"
+                                    alt="img"
                                 />
                             </div>
 
@@ -174,7 +180,7 @@ const CreatorChannelPage = () => {
                                         <div className="w-[185px] h-[185px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
                                             <Avatar
                                                 alt="Remy Sharp"
-                                                src={ create?.image }
+                                                src={create?.image}
                                                 sx={{ width: 180, height: 180 }}
                                             />
                                         </div>
@@ -183,7 +189,7 @@ const CreatorChannelPage = () => {
                                         <div className="w-[105px] h-[105px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
                                             <Avatar
                                                 alt="Remy Sharp"
-                                                src={ create?.image }
+                                                src={create?.image}
                                                 sx={{ width: 100, height: 100 }}
                                             />
                                         </div>
@@ -404,7 +410,7 @@ const CreatorChannelPage = () => {
                                                 <div className="relative w-full flex items-center justify-center p-4">
                                                     {item.image?.length > 0 ? (
                                                         <>
-                                                        {/* Nút Prev */}
+                                                            {/* Nút Prev */}
                                                             <button
                                                                 onClick={() => handlePrev(item.idpost)}
                                                                 disabled={(currentIndices[item.idpost] || 0) === 0}
@@ -413,7 +419,7 @@ const CreatorChannelPage = () => {
                                                                 <NavigateBeforeIcon />
                                                             </button>
 
-                                                             {/* Hiển thị hình ảnh */}
+                                                            {/* Hiển thị hình ảnh */}
                                                             <div className="w-full grid xs:grid-cols-1 sm:grid-cols-2 gap-5 overflow-hidden">
                                                                 {item.image?.slice(currentIndices[item.idpost] || 0, (currentIndices[item.idpost] || 0) + 2)?.map((img, index) => (
                                                                     <img

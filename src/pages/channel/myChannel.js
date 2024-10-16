@@ -204,14 +204,14 @@ const MyChannelPage = () => {
           <div className="w-[1120px] h-full">
             <div className="w-full h-full bg-white rounded-lg">
               {/* Hiển thị ảnh nền */}
-              <div className="w-full xs:max-h-[400px] sm:h-[400px] bg-green-200 rounded-lg relative">
+              <div className="w-full max-h-[400px] bg-green-200 rounded-lg relative">
                 <img
                   src={
                     Account?.horizontalThumbnail
                       ? Account?.horizontalThumbnail
                       : "https://wallpapers.com/images/hd/chill-anime-girl-during-winter-n65e3iefecsy01if.jpg"
                   }
-                  className="object-cover w-full h-full rounded-t-lg"
+                  className="object-cover w-full max-h-[400px] rounded-t-lg"
                   alt="img"
                 />
                 {/* Nút thay ảnh bìa */}
