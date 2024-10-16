@@ -193,11 +193,8 @@ const GenresPage = () => {
                         <div className="w-full h-full py-5 flex items-center justify-center">
                             <div className="w-full h-full">
                                 {/* Danh mục thể loại */}
-                                <div className="w-full h-[95px] mb-5 flex items-center justify-start overflow-x-auto">
-                                    <ul
-                                        className="grid grid-rows-2 grid-flow-col gap-2 w-max"
-                                    >
-                                        {/* khung nội dung */}
+                                <div className="w-full h-[95px] mb-5 flex items-center justify-center px-4">
+                                    <ul className="grid grid-rows-2 grid-flow-col gap-2 w-max overflow-x-auto scroll-snap-x scroll-snap-mandatory">
                                         {dataListGenre.map(genre => (
                                             <li
                                                 key={genre.id}
@@ -207,7 +204,6 @@ const GenresPage = () => {
                                                 {!language ? <span> {genre.name} </span> : <span> {genre.nameKorean} </span>}
                                             </li>
                                         ))}
-
                                     </ul>
                                 </div>
 
