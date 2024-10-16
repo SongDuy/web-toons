@@ -151,6 +151,9 @@ const CreatorChannelPage = () => {
 
         }
     }
+
+    console.log(create)
+    
     return (
         <>
             {loading ?
@@ -158,9 +161,9 @@ const CreatorChannelPage = () => {
                     <div className="w-[1120px] h-full">
                         <div className="w-full h-full bg-white rounded-lg">
                             {/* Hiển thị ảnh nền */}
-                            <div className="w-full xs:max-h-[400px] sm:h-[400px] bg-green-200 rounded-lg">
+                            <div className="w-full max-h-[400px] bg-green-200 rounded-lg">
                                 <img src="https://wallpapers.com/images/hd/chill-anime-girl-during-winter-n65e3iefecsy01if.jpg"
-                                    className="object-cover w-full h-full rounded-t-lg" alt="img"
+                                    className="object-cover w-full max-h-[400px] rounded-t-lg" alt="img"
                                 />
                             </div>
 
@@ -171,11 +174,7 @@ const CreatorChannelPage = () => {
                                         <div className="w-[185px] h-[185px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
                                             <Avatar
                                                 alt="Remy Sharp"
-                                                src={
-                                                    create?.image
-                                                        ? create?.image
-                                                        : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
-                                                }
+                                                src={ create?.image }
                                                 sx={{ width: 180, height: 180 }}
                                             />
                                         </div>
@@ -184,11 +183,7 @@ const CreatorChannelPage = () => {
                                         <div className="w-[105px] h-[105px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
                                             <Avatar
                                                 alt="Remy Sharp"
-                                                src={
-                                                    create?.image
-                                                        ? create?.image
-                                                        : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
-                                                }
+                                                src={ create?.image }
                                                 sx={{ width: 100, height: 100 }}
                                             />
                                         </div>

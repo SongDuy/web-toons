@@ -61,7 +61,9 @@ const ContentPage = () => {
             margin: 5,
           }}
         >
+          <div className="h-[580px] flex items-center justify-center">
             <CircularProgress />
+            </div>
         </Box>
       ) :
         <div className="w-full h-full bg-gray-100 pb-10">

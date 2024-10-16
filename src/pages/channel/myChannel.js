@@ -241,8 +241,6 @@ const MyChannelPage = () => {
                       alt="Remy Sharp"
                       src={
                         Account?.image
-                          ? Account?.image
-                          : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
                       }
                       sx={{ width: 180, height: 180 }}
                     />
@@ -265,11 +263,7 @@ const MyChannelPage = () => {
                   <div className="max-w-[105px] max-h-[105px] rounded-full border-4 mt-[-30px] flex items-center justify-center relative">
                     <Avatar
                       alt="Remy Sharp"
-                      src={
-                        Account?.image
-                          ? Account?.image
-                          : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
-                      }
+                      src={Account?.image}
                       sx={{ width: 100, height: 100 }}
                     />
 

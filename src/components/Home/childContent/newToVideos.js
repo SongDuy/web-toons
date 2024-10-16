@@ -31,7 +31,6 @@ const NewToVideosPage = () => {
                         }
 
                     </li>
-
                 </ul>
             </div>
             <div className="w-full min-h-[500px] py-[30px] xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
