@@ -81,7 +81,7 @@ const Subscribed = () => {
       }
     };
     get();
-  }, [dispatch, Account,check19Modal]);
+  }, [dispatch, Account, check19Modal]);
   const HandleDelete = async () => {
     try {
       setloading(false);
@@ -240,11 +240,11 @@ const Subscribed = () => {
                             alt=""
                             className="object-contain "
                           />
-                          <p className="absolute top-2 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
+                          <p className="absolute top-2 left-2 text-shadow-white truncate line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
                             {item?.title}
                           </p>
-                          <p className="absolute top-7 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3">
-                            {item?.Author}
+                          <p className="absolute top-7 left-2 truncate line-clamp-5 text-lg w-full">
+                            {item?.Author} k kkk k
                           </p>
                           <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
                             {!language ?
@@ -253,16 +253,16 @@ const Subscribed = () => {
                               "업데이트"
                             }
                           </p>
-                          {!language?
-                          <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
-                            {monthNames[new Date(item.createTime).getMonth()].en}{" "}
-                            {new Date(item.createTime).getDate()},
-                            {new Date(item.createTime)?.getFullYear()}
-                          </p>:  <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
-                            {monthNames[new Date(item.createTime).getMonth()].kr}{" "}
-                            {new Date(item.createTime).getDate()}일,
-                            {new Date(item.createTime)?.getFullYear()}년
-                          </p>}
+                          {!language ?
+                            <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
+                              {monthNames[new Date(item.createTime).getMonth()].en}{" "}
+                              {new Date(item.createTime).getDate()},
+                              {new Date(item.createTime)?.getFullYear()}
+                            </p> : <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
+                              {monthNames[new Date(item.createTime).getMonth()].kr}{" "}
+                              {new Date(item.createTime).getDate()}일,
+                              {new Date(item.createTime)?.getFullYear()}년
+                            </p>}
                           <p className="absolute top-[75%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
                             <CheckIcon
                               sx={
@@ -280,8 +280,8 @@ const Subscribed = () => {
                   <div className="w-full h-full flex-row grid grid-cols-5 gap-4 px-5">
                     {Subscribed.map((item) => {
                       return (
-                        <button
-                          className="flex-row w-full h-full   relative"
+                        <div
+                          className="flex-row w-full h-full relative"
                           key={item?.id}
                         >
                           <img
@@ -289,31 +289,31 @@ const Subscribed = () => {
                             alt=""
                             className="object-contain "
                           />
-                          <p className="absolute top-2 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
+                          <span className="absolute top-2 text-shadow-white left-2 truncate line-clamp-2 text-lg w-2/3 font-bold">
                             {item?.title}
-                          </p>
-                          <p className="absolute top-7 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3">
-                            {item?.Author}
-                          </p>
-                          <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
+                          </span>
+                          <span className="absolute top-7 text-shadow-white left-2 truncate line-clamp-1 text-lg w-full">
+                            {item?.Author} k k k k k k k k k k k k k k k k k k k k
+                          </span>
+                          <span className="absolute top-[70%] left-2 text-shadow-white truncate line-clamp-5  text-base  text-gray-500">
                             {!language ?
                               "Update"
                               :
                               "업데이트"
                             }
-                          </p>
-                          {!language?
-                          <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
-                            {monthNames[new Date(item.createTime).getMonth()].en}{" "}
-                            {new Date(item.createTime).getDate()},
-                            {new Date(item.createTime)?.getFullYear()}
-                          </p>
-                    : <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
-                    {monthNames[new Date(item.createTime).getMonth()].kr}{" "}
-                            {new Date(item.createTime).getDate()}일,
-                            {new Date(item.createTime)?.getFullYear()}년
-                  </p>}
-                        </button>
+                          </span>
+                          {!language ?
+                            <span className="absolute top-[80%] left-2 text-shadow-white truncate line-clamp-5 text-base  text-gray-500">
+                              {monthNames[new Date(item.createTime).getMonth()].en}{" "}
+                              {new Date(item.createTime).getDate()},
+                              {new Date(item.createTime)?.getFullYear()}
+                            </span>
+                            : <span className="absolute top-[80%] left-2 text-shadow-white truncate line-clamp-5 text-base  text-gray-500">
+                              {monthNames[new Date(item.createTime).getMonth()].kr}{" "}
+                              {new Date(item.createTime).getDate()}일,
+                              {new Date(item.createTime)?.getFullYear()}년
+                            </span>}
+                        </div>
                       );
                     })}
                   </div>

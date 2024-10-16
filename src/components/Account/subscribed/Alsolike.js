@@ -30,7 +30,7 @@ const Alsolike = () => {
                     />
                   </div>
                   <div className="col-span-3">
-                    <p className="truncate line-clamp-2 transition-all after:content-['...']  w-3/4">
+                    <p className="truncate line-clamp-2 text-shadow-white transition-all after:content-['...']  w-3/4">
                       {item.title}
                     </p>
                     <p className=" text-[12px]">{item.Author}</p>
