@@ -294,7 +294,7 @@ const VideosPage = () => {
                                                     <li
                                                         onMouseEnter={() => setHoveredOngoingItem(item.id)}
                                                         onMouseLeave={() => setHoveredOngoingItem(null)}
-                                                        className="max-w-[230px] h-[230px] bg-white rounded-md  cursor-pointer transition-shadow duration-300 hover:shadow"
+                                                        className="max-w-[230px] h-[230px] bg-white rounded-md cursor-pointer transition-shadow duration-300 hover:shadow"
                                                     >
                                                         <div className="w-full h-[130px] relative" >
                                                             <img

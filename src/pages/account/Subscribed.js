@@ -230,13 +230,13 @@ const Subscribed = () => {
                       return (
                         <div
                           key={item?.id}
-                          className={`w-full h-full ${checkSubcribed?.includes(item.id) ? "border-emerald-400" : ""}  relative`}
+                          className={`w-full h-full rounded-md ${checkSubcribed?.includes(item.id) ? "border-emerald-400" : ""}  relative`}
                           onClick={() => getidSubscribed(item.id)}
                         >
                           <img
                             src={item.squareThumbnail}
                             alt="img"
-                            className="object-cover w-full h-full"
+                            className="object-cover w-full h-full rounded-md"
                           />
                           <div className="absolute top-2 px-3">
                             <span className=" text-shadow-white line-clamp-2 text-lg w-full font-bold">
@@ -289,12 +289,12 @@ const Subscribed = () => {
                       return (
                         <div
                           key={item?.id}
-                          className="flex-row w-full h-full relative overflow-hidden"
+                          className="flex-row w-full h-full rounded-md relative overflow-hidden"
                         >
                           <img
                             src={item.squareThumbnail}
                             alt="img"
-                            className="object-cover w-full h-full"
+                            className="object-cover w-full h-full rounded-md"
                           />
                           <div className="absolute top-2 px-3">
                             <span className="w-full text-shadow-white line-clamp-2 text-lg font-bold">
