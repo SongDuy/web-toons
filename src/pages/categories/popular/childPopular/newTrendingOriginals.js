@@ -23,7 +23,7 @@ const NewTrendingOriginalsPage = () => {
         )}
       </div>
 
-      <div className="w-full grid xs:grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="w-full grid xs:grid-cols-1 sm:grid-cols-2 gap-5">
         {/* Hien thị top 1 */}
         <div className="w-full full bg-white">
           {comicid?.id &&

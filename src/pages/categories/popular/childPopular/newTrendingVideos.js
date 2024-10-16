@@ -21,7 +21,7 @@ const NewTrendingVideosPage = () => {
                 {!language ? <span> NEW & TRENDING VIDEOS </span> : <span> 새로운 및 인기 동영상 </span>}
             </div>
 
-            <div className="w-full grid xs:grid-cols-1 lg:grid-cols-2 gap-5">
+            <div className="w-full grid xs:grid-cols-1 sm:grid-cols-2 gap-5">
 
                 {/* Hien thị top 1 */}
                 <div className="w-full full bg-white">

@@ -24,10 +24,8 @@ const OriginalsByGenrePage = () => {
                 {!language ? <span> ORIGINALS BY GENRE </span> : <span> 장르별 오리지널 </span>}
             </div>
 
-            <div className="h-[70px] mb-5 bg-white flex items-center justify-start border-t border-b overflow-x-auto">
-                <ul
-                    className="grid grid-rows-2 grid-flow-col w-max gap-x-4 gap-y-2"
-                >
+            <div className="h-[70px] mb-5 bg-white flex items-center justify-center border-t border-b">
+                <ul className="grid grid-rows-2 grid-flow-col w-max overflow-x-auto scroll-snap-x scroll-snap-mandatory gap-x-4 gap-y-2">
                     {/* khung nội dung */}
                     {dataListGenre.map(item => (
                         <li
@@ -42,7 +40,7 @@ const OriginalsByGenrePage = () => {
                 </ul>
             </div>
 
-            <div className="w-full grid xs:grid-cols-1 lg:grid-cols-2 gap-5">
+            <div className="w-full grid xs:grid-cols-1 sm:grid-cols-2 gap-5">
                 {/* Hien thị top 1 */}
                 <div className="w-full full bg-white">
                     {comicid?.id &&
