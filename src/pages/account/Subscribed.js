@@ -240,13 +240,13 @@ const Subscribed = () => {
                             alt=""
                             className="object-contain "
                           />
-                          <p className="absolute top-2 left-2 text-shadow-white truncate line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
+                          <p className="absolute top-2 left-2 text-shadow-white truncate line-clamp-2 text-lg w-full font-bold">
                             {item?.title}
                           </p>
-                          <p className="absolute top-7 left-2 truncate line-clamp-5 text-lg w-full">
+                          <p className="absolute top-7 left-2 truncate text-shadow-white line-clamp-1 text-lg w-full">
                             {item?.Author} k kkk k
                           </p>
-                          <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
+                          <p className="absolute top-[70%] left-2 text-shadow-white truncate line-clamp-1  text-base  text-gray-500">
                             {!language ?
                               "Update"
                               :
@@ -254,16 +254,16 @@ const Subscribed = () => {
                             }
                           </p>
                           {!language ?
-                            <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
+                            <p className="absolute top-[80%] left-2 text-shadow-white truncate line-clamp-5 text-base  text-gray-500">
                               {monthNames[new Date(item.createTime).getMonth()].en}{" "}
                               {new Date(item.createTime).getDate()},
                               {new Date(item.createTime)?.getFullYear()}
-                            </p> : <p className="absolute top-[80%] left-2  truncate line-clamp-5 text-base  text-gray-500">
+                            </p> : <p className="absolute top-[80%] left-2 text-shadow-white truncate line-clamp-5 text-base  text-gray-500">
                               {monthNames[new Date(item.createTime).getMonth()].kr}{" "}
                               {new Date(item.createTime).getDate()}일,
                               {new Date(item.createTime)?.getFullYear()}년
                             </p>}
-                          <p className="absolute top-[75%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
+                          <p className="absolute top-[75%] left-[80%] truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
                             <CheckIcon
                               sx={
                                 checkSubcribed?.includes(item.id)
@@ -295,7 +295,7 @@ const Subscribed = () => {
                           <span className="absolute top-7 text-shadow-white left-2 truncate line-clamp-1 text-lg w-full">
                             {item?.Author} k k k k k k k k k k k k k k k k k k k k
                           </span>
-                          <span className="absolute top-[70%] left-2 text-shadow-white truncate line-clamp-5  text-base  text-gray-500">
+                          <span className="absolute top-[70%] left-2 text-shadow-white truncate line-clamp-1  text-base  text-gray-500">
                             {!language ?
                               "Update"
                               :
