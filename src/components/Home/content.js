@@ -52,20 +52,7 @@ const ContentPage = () => {
 
   return (
     <>
-      {!loading ? (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: 5,
-          }}
-        >
-          <div className="h-[580px] flex items-center justify-center">
-            <CircularProgress />
-          </div>
-        </Box>
-      ) :
+      {loading ? (
         <div className="w-full h-full bg-gray-100 pb-10">
 
           {/* Phần hiển thị hình quảng cáo */}
@@ -105,7 +92,18 @@ const ContentPage = () => {
           <PopularOriginalsAndVideosPage />
 
         </div >
-      }
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: 5,
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      )}
     </>
   );
 }

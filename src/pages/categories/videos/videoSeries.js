@@ -144,7 +144,7 @@ const VideoSeriesPage = () => {
       }
     };
     get();
-  }, [dispatch, User, navigate, id,check19Modal]);
+  }, [dispatch, User, navigate, id, check19Modal]);
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -704,7 +704,7 @@ const VideoSeriesPage = () => {
             margin: 5,
           }}
         >
-          <CircularProgress />
+            <CircularProgress />
         </Box>
       )}
     </div>

@@ -132,7 +132,7 @@ const OriginalSeriesPage = () => {
       } catch (error) { }
     };
     get();
-  }, [dispatch, User, navigate, id,check19Modal]);
+  }, [dispatch, User, navigate, id, check19Modal]);
 
   //Mở modal menu để chọn
   const [open, setOpen] = React.useState(false);
