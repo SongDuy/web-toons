@@ -225,7 +225,7 @@ const Subscribed = () => {
                 </div>
 
                 {EditSubscribed ? (
-                  <div className="w-full h-full grid grid-cols-5 gap-2 px-5">
+                  <div className="w-full h-full grid grid-cols-5 gap-3 px-5">
                     {Subscribed?.map((item) => {
                       return (
                         <div
@@ -284,7 +284,7 @@ const Subscribed = () => {
                     })}
                   </div>
                 ) : (
-                  <div className="w-full h-full grid grid-cols-5 gap-2 px-5">
+                  <div className="w-full h-full grid grid-cols-5 gap-3 px-5">
                     {Subscribed.map((item) => {
                       return (
                         <div

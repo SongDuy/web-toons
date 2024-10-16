@@ -25,8 +25,8 @@ const Alsolike = () => {
                   <div>
                     <img
                       src={item.squareThumbnail}
-                      alt=""
-                      className="object-contain"
+                      alt="img"
+                      className="object-cover min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px] rounded-md"
                     />
                   </div>
                   <div className="col-span-3">

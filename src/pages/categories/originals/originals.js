@@ -51,30 +51,20 @@ const OriginalsPage = () => {
     sethiddenMenuOriginalList(() => (!language ? "by Popularity" : "인기순"));
     setSelectedMenuOriginalList("by Popularity");
   }, [language]);
+
+  useEffect(() => {
+
+    const filteredOriginalsByGenre = comic.comic?.filter((data) => data.schedule === currentDay);
+    const filteredOriginalsByLikes = comic.comic?.filter((data) => data.schedule === currentDay).sort((a, b) => b.views - a.views);
+    const filteredOriginalsByDate = comic.comic?.filter((data) => data.schedule === currentDay).sort((a, b) => new Date(b.createTime) - new Date(a.createTime));
+    setComics(setSelectedMenuOriginalList === "by Popularity" ? filteredOriginalsByGenre : setSelectedMenuOriginalList === "by Likes" ? filteredOriginalsByLikes : filteredOriginalsByDate);
+
+  }, [currentDay, comic.comic, setSelectedMenuOriginalList]);
+
   useEffect(() => {
     // Bắt đầu quá trình tải lại dữ liệu
     setloading(false);
 
-    const filteredOriginalsByGenre = comic.comic?.filter(
-      (data) => data.schedule === currentDay
-    );
-    const filteredOriginalsByLikes = comic.comic
-      ?.filter((data) => data.schedule === currentDay)
-      .sort((a, b) => b.views - a.views);
-    const filteredOriginalsByDate = comic.comic
-      ?.filter((data) => data.schedule === currentDay)
-      .sort((a, b) => new Date(b.createTime) - new Date(a.createTime));
-    setComics(setSelectedMenuOriginalList === "by Popularity" ? filteredOriginalsByGenre : setSelectedMenuOriginalList === "by Likes" ? filteredOriginalsByLikes : filteredOriginalsByDate);
-
-    // Tắt loading sau một khoảng thời gian nhất định
-    const loadingTimeout = setTimeout(() => {
-      setloading(true); // Tắt loading sau khoảng thời gian 1000ms (1 giây)
-    }, 1000); // Thay đổi thời gian tại đây nếu cần
-
-    // Clean up the timeout if the component unmounts or if the dependencies change
-    return () => clearTimeout(loadingTimeout);
-  }, [currentDay, comic.comic, setSelectedMenuOriginalList]);
-  useEffect(() => {
     const threshold = 100; // Ngưỡng để kích hoạt dính vào trên cùng
 
     const handleScroll = () => {
@@ -87,9 +77,16 @@ const OriginalsPage = () => {
 
     window.addEventListener("scroll", handleScroll);
 
+    // Tắt loading sau một khoảng thời gian nhất định
+    const loadingTimeout = setTimeout(() => {
+      setloading(true); // Tắt loading sau khoảng thời gian 1000ms (1 giây)
+    }, 1000); // Thay đổi thời gian tại đây nếu cần
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll); // Clean up sự kiện cuộn
+      clearTimeout(loadingTimeout); // Clean up timeout
     };
+
   }, []);
 
   useEffect(() => {

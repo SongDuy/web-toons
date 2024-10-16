@@ -43,24 +43,15 @@ const VideosPage = () => {
     }, [language]);
 
     useEffect(() => {
-        // Bắt đầu quá trình tải lại dữ liệu
-        setloading(false);
-
         const filteredVideosByGenre = Video.Video?.filter(data => data.schedule === currentDay);
         const filteredVideolsByLikes = Video.Video?.filter(data => data.schedule === currentDay).sort((a, b) => b.views - a.views);
         const filteredVideosByDate = Video.Video?.filter(data => data.schedule === currentDay).sort((a, b) => new Date(b.createTime) - new Date(a.createTime));
         setVideos(selectedMenuVideoList === "by Popularity" ? filteredVideosByGenre : selectedMenuVideoList === "by Likes" ? filteredVideolsByLikes : filteredVideosByDate)
-
-        // Tắt loading sau một khoảng thời gian nhất định
-        const loadingTimeout = setTimeout(() => {
-            setloading(true); // Tắt loading sau khoảng thời gian 1000ms (1 giây)
-        }, 1000); // Thay đổi thời gian tại đây nếu cần
-
-        // Clean up the timeout if the component unmounts or if the dependencies change
-        return () => clearTimeout(loadingTimeout);
     }, [currentDay, Video.Video, selectedMenuVideoList]);
-  //  console.log(loading);
+
     useEffect(() => {
+        setloading(true);
+
         const threshold = 100; // Ngưỡng để kích hoạt dính vào trên cùng
 
         const handleScroll = () => {
@@ -73,12 +64,16 @@ const VideosPage = () => {
 
         window.addEventListener('scroll', handleScroll);
 
+        // Tắt loading sau một khoảng thời gian nhất định
+        const loadingTimeout = setTimeout(() => {
+            setloading(false); // Tắt loading sau khoảng thời gian 1000ms (1 giây)
+        }, 1000); // Thay đổi thời gian tại đây nếu cần
+
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleScroll); // Clean up sự kiện cuộn
+            clearTimeout(loadingTimeout); // Clean up timeout
         };
     }, []);
-
-
 
     useEffect(() => {
         const today = new Date();
@@ -133,7 +128,7 @@ const VideosPage = () => {
 
     return (
         <>
-            {loading ? (
+            {!loading ? (
                 <div className="w-full h-full pb-10 bg-gray-100">
 
                     <div className={`w-full h-[70px] mb-[-70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-20' : ''}`}>
