@@ -152,21 +152,21 @@ const Subscribed = () => {
           ) : (
             <div className="w-full h-full xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100">
               <div className="py-[10px] flex-row justify-center items-center container mx-auto my-auto">
-                <div className="  m-2 flex justify-between ">
-                  {!language ?
-                    <h1 className="font-semibold text-lg text-black">
-                      ORIGINALS
-                    </h1>
-                    :
-                    <h1 className="font-semibold text-lg text-black">
-                      오리지널
-                    </h1>
-                  }
+
+                <div className="m-2 flex justify-between mb-[30px]">
+
+                  <h1 className="flex items-center justify-center font-semibold text-lg text-black">
+                    {!language ?
+                      "ORIGINALS"
+                      :
+                      "오리지널"
+                    }
+                  </h1>
 
                   {EditSubscribed ? (
                     <div className="flex">
                       <button
-                        className="font-semibold text-base text-black     ml-3 p-2 rounded-full bg-[#dfdbdbec]"
+                        className="w-[35px] max-h-[35px] font-semibold text-base text-black ml-3 px-2 rounded-full bg-[#dfdbdbec]"
                         onClick={getALLSubscribed}
                       >
                         <CheckIcon
@@ -179,7 +179,7 @@ const Subscribed = () => {
                       </button>
 
                       <button
-                        className="font-semibold text-base     mr-2 ml-1 p-1 rounded-full text-gray-400"
+                        className="max-h-[35px] font-semibold text-base mr-2 ml-1 p-1 rounded-full text-gray-400"
                         onClick={getALLSubscribed}
                       >
                         {!language ?
@@ -190,7 +190,7 @@ const Subscribed = () => {
                       </button>
 
                       <button
-                        className="font-semibold text-basg text-black border-gray-400 border py-2 px-7 rounded-full mr-5 ml-3"
+                        className="h-[35px] flex items-center justify-center font-semibold text-basg text-black border-gray-400 border py-2 px-7 rounded-full mr-5 ml-3"
                         onClick={() => HandleDelete()}
                       >
                         {!language ?
@@ -200,7 +200,7 @@ const Subscribed = () => {
                         }
                       </button>
                       <button
-                        className="font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
+                        className="h-[35px] flex items-center justify-center font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
                         onClick={() => setEditSubscribed(!EditSubscribed)}
                       >
                         {!language ?
@@ -212,7 +212,7 @@ const Subscribed = () => {
                     </div>
                   ) : (
                     <button
-                      className="font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
+                      className="h-[35px] flex items-center justify-center font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
                       onClick={() => setEditSubscribed(!EditSubscribed)}
                     >
                       {!language ?
@@ -223,6 +223,7 @@ const Subscribed = () => {
                     </button>
                   )}
                 </div>
+
                 {EditSubscribed ? (
                   <div className="w-full h-full grid grid-cols-5 gap-2 px-5">
                     {Subscribed?.map((item) => {
