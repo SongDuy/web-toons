@@ -210,47 +210,49 @@ const Account = () => {
 
           <div className="w-full h-[150px] flex items-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
             {openName ? (
-
-              <div className="flex my-5">
-                <div className="flex-row my-8">
-                  <div>
+              <div>
+                <div className="w-full grid grid-cols-12">
+                  <div className="w-full h-[40px] col-span-9 px-2 flex items-center border">
                     <input
                       value={name}
                       className={` outline-none text-lg ${isValid && "text-red-500"}`}
                       onChange={(e) => setName(e.target.value)}
                     />
-                  </div>
-                  {isValid && <div className="my-2">
-                    <span className="font-semibold text-base text-gray-400 ">
-                      {!language ?
-                        "Nickname already exists."
-                        :
-                        "별명이 이미 있습니다."
-                      }
-                    </span>
 
-                  </div>}
+                    {isValid &&
+                      <div className="my-2">
+                        <span className="font-semibold text-base text-gray-400 ">
+                          {!language ?
+                            "Nickname already exists."
+                            :
+                            "별명이 이미 있습니다."
+                          }
+                        </span>
+                      </div>
+                    }
+                  </div>
+
+                  <button
+                    onClick={handleName}
+                    className="w-full h-[40px] col-span-3 px-2 flex items-center justify-center font-semibold bg-green-500 text-white leading-tight"
+                  >
+                    {!language ?
+                      "Check now"
+                      :
+                      "지금 확인"
+                    }
+                  </button>
                 </div>
 
-                <button
-                  onClick={handleName}
-                  className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200 h-[35px]  text-gray-400"
-                >
-                  {!language ?
-                    " Check for availability"
-                    :
-                    "가용성 확인"
-                  }
-                </button>
-
-                <p className=" text-sm ml-5  text-gray-400 w-1/3 my-5">
-                  {!language ?
-                    "Create your nickname. - You may enter a maximum of 20 characters containing alphabets, numbers, and symbols."
-                    :
-                    "별명을 만듭니다. - 최대 다음 항목을 입력할 수 있습니다 알파벳, 숫자 및 기호가 포함된 20글자입니다."
-                  }
-                </p>
-
+                <div className="w-full mt-3 px-2 flex items-center">
+                  <p className=" text-sm text-gray-400">
+                    {!language ?
+                      "Create your nickname. - You may enter a maximum of 20 characters containing alphabets, numbers, and symbols."
+                      :
+                      "별명을 만듭니다. - 최대 다음 항목을 입력할 수 있습니다 알파벳, 숫자 및 기호가 포함된 20글자입니다."
+                    }
+                  </p>
+                </div>
               </div>
             ) : (
               <div className="w-full grid grid-cols-12 border">
