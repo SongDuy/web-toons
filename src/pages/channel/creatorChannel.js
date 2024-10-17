@@ -176,7 +176,7 @@ const CreatorChannelPage = () => {
                             <div className="w-full border bg-white rounded-b-lg sm:h-[180px] sm:flex xs:px-[10px] sm:px-[30px]">
                                 <div className="flex">
                                     {/* Avatar Container */}
-                                    <div className="w-[20vw] h-[20vw] max-w-[185px] max-h-[185px] xs:w-[150px] xs:h-[150px] rounded-full border-4 mt-[-30px] flex items-center justify-center overflow-hidden">
+                                    <div className="sm:w-[185px] sm:h-[185px] xs:w-[150px] xs:h-full rounded-full border-4 mt-[-30px] flex items-center justify-center overflow-hidden">
                                         <Avatar
                                             alt="Remy Sharp"
                                             src={create?.image}
@@ -187,6 +187,7 @@ const CreatorChannelPage = () => {
                                             }}
                                         />
                                     </div>
+
 
                                     {/* Information Section */}
                                     <div className="sm:py-4 px-3">
@@ -215,7 +216,7 @@ const CreatorChannelPage = () => {
                                 </div>
 
                                 {/* Follow Button Section */}
-                                <div className="ml-auto flex items-center pb-4 justify-center">
+                                <div className="ml-auto xs:pt-3 sm:pt-0 flex items-center pb-4 justify-center">
                                     {!isFollow ? (
                                         <button
                                             onClick={handleFollow}
