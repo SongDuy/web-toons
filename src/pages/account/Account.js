@@ -84,8 +84,8 @@ const Account = () => {
   return (
     <div>
       <Nav />
-      <div className="w-full h-full xs:px-[10px] sm:px-[200px] bg-gray-100">
-        <div className="py-[30px] w-full flex-row justify-center items-center container mx-auto my-auto">
+      <div className="w-full h-full xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100">
+        <div className="py-[30px] w-full flex-row justify-center items-center">
           <div className="mb-5">
             <h1 className="font-semibold text-2xl text-black">
               {!language ?
@@ -114,7 +114,7 @@ const Account = () => {
             </div>
           </div>
         </div>
-        <div className="py-[30px] w-full flex-row justify-center items-center container mx-auto">
+        <div className="py-[30px] w-full flex-row justify-center items-center">
           <div className="mb-5">
 
             <h1 className="font-semibold text-2xl text-black">
@@ -211,7 +211,7 @@ const Account = () => {
             </div>
           )}
         </div>
-        <div className="py-[30px] w-full flex-row justify-center items-center container mx-auto">
+        <div className="py-[30px] w-full flex-row justify-center items-center">
           <div className="mb-5">
 
             <h1 className="font-semibold text-2xl text-black">
@@ -255,7 +255,7 @@ const Account = () => {
 
                 <button
                   onClick={handleName}
-                  className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[35px]  text-gray-400"
+                  className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200 h-[35px]  text-gray-400"
                 >
                   {!language ?
                     " Check for availability"
@@ -307,7 +307,7 @@ const Account = () => {
             </div>
           )}
         </div>
-        <div className="py-[30px] w-full flex-row justify-center items-center container mx-auto">
+        <div className="py-[30px] w-full flex-row justify-center items-center">
           <div className="mb-5">
 
             <h1 className="font-semibold text-2xl text-black">
@@ -515,7 +515,7 @@ const Account = () => {
               </div> */}
             </div>
           </div>
-          <div className="py-[30px] flex-row justify-center items-center container mx-auto">
+          <div className="py-[30px] flex-row justify-center items-center">
             <div className="">
               <Link to={`/account/delete`}>
                 <h1 className="font-semibold text-2xl text-gray-400 hover:text-black">
