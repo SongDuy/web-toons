@@ -93,7 +93,7 @@ const Creators = () => {
   return (
     <div>
       {loading ? (
-        <div className="w-full h-full bg-gray-100">
+        <div className="w-full min-h-[500px] bg-gray-100">
           <Nav />
 
           {Creators.length === 0 ? (

@@ -74,7 +74,7 @@ const Comment = () => {
 
   return (
     <div>
-      <div className="w-full h-full bg-gray-100">
+      <div className="w-full min-h-[500px] bg-gray-100">
         <Nav />
 
         {gcomment?.Comment?.length === 0 ? (
