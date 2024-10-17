@@ -97,7 +97,8 @@ const Dashboard = () => {
 
         setloading(true);
       }
-    } catch (error) { }
+    } catch (error) {
+     }
   };
 
   return (

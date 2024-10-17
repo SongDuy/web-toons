@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { fireStore, storage } from "../themes/firebase";
+import deleteFolder from "../utils/DeleteFolder";
 
 const VideoFireBase = {
   async get(age) {
@@ -304,14 +305,20 @@ const VideoFireBase = {
     }
       await deleteDoc(parentDoc);
     });
+
   },
   async Delete(id) {
+    const docRef = doc(fireStore, "Video", id);
+
+    const docSnap = await getDoc(docRef);
     await deleteDoc(doc(fireStore, "Video", id));
     await this.deletechaps(id)
-
+    docSnap.exists && await deleteFolder(`cms_uploads/Video/episodes/${docSnap?.data().uid}/${id}`)
+    docSnap.exists && await deleteFolder(`cms_uploads/Video/${docSnap?.data().uid}/${id}`)
   },
   async Deletechap(id,idchap) {
     const parentDocRef = doc(fireStore, "Video", id);
+    const docSnap = await getDoc(parentDocRef);
     const subcollec = collection(parentDocRef, id);
     const parentDoc = doc(subcollec, idchap);
     const subcolleclike = collection(parentDoc, "like");
@@ -320,9 +327,13 @@ const VideoFireBase = {
       await deleteDoc(doc(document.ref.firestore, document.ref.path));
   }
     await deleteDoc(parentDoc);
+  docSnap.exists && await deleteFolder(`cms_uploads/Video/episodes/${docSnap.data().uid}/${id}/chap/${idchap}/`)
+  docSnap.exists && await deleteFolder(`cms_uploads/Video/episodes/${docSnap.data().uid}/${id}/`)
+
+
   },
   async uploadToFirebase(file, name, iduser, id, key) {
-    const storageRef =ref(storage, `cms_uploads/Video/${iduser}/${name}`);
+    const storageRef =ref(storage, `cms_uploads/Video/${iduser}/${id}/${name}`);
 
     const uploadTask = uploadBytesResumable(storageRef, file);
     new Promise((resolve, reject) => {
@@ -359,7 +370,7 @@ const VideoFireBase = {
     return uploadTask;
   },
   async uploadToFirebaseep(file, name, iduser, id, idchap,key) {
-    const storageRef = key==="fileURL"?ref(storage, `cms_uploads/Video/episodes/${iduser}/${id}/chap/${idchap}/${name}`):ref(storage, `cms_uploads/Video/${iduser}/${name}`);
+    const storageRef = key==="fileURL"?ref(storage, `cms_uploads/Video/episodes/${iduser}/${id}/chap/${idchap}/${name}`):ref(storage, `cms_uploads/Video/episodes/${iduser}/${id}/${idchap}/${name}`);
 
     const uploadTask = uploadBytesResumable(storageRef, file);
     new Promise((resolve, reject) => {
@@ -405,6 +416,7 @@ const VideoFireBase = {
       await deleteDoc(doc(subDoc.ref.firestore, subDoc.ref.path));
     }
   },
+ 
   async deleteAccount(id) {
     const commentsRef = collection(fireStore, "Video");
     const q = query(commentsRef, where("uid", "==", id));
@@ -420,6 +432,9 @@ const VideoFireBase = {
       // Cuối cùng, xóa tài liệu chính trong 'comments'
       await deleteDoc(doc(document.ref.firestore, document.ref.path));
   }
+ await deleteFolder(`cms_uploads/Video/episodes/${id}`)
+ await deleteFolder(`cms_uploads/Video/${id}`)
+
   }
 };
 

@@ -2,10 +2,10 @@ import { doc, getDoc, addDoc,collection, updateDoc,getDocs,where,query,deleteDoc
 import {
   ref,
   uploadBytesResumable,
-  getDownloadURL,
-  listAll, deleteObject
+  getDownloadURL
 } from 'firebase/storage';
 import { fireStore, storage } from '../themes/firebase';
+import deleteFolder from '../utils/DeleteFolder';
 
 const postFireBase = {
   async getAll() {
@@ -161,24 +161,7 @@ const postFireBase = {
       await deleteDoc(doc(subDoc.ref.firestore, subDoc.ref.path));
     }
   },
-async deleteFolder (folderPath)  {
-    // Tạo tham chiếu tới "thư mục" cần xóa
-    const folderRef = ref(storage, folderPath);
-  
-    try {
-      // Liệt kê tất cả các tệp trong thư mục
-      const result = await listAll(folderRef);
-  
-      // Xóa từng tệp trong thư mục
-      const deletePromises = result.items.map((fileRef) => deleteObject(fileRef));
-  
-      // Chờ tất cả các tệp được xóa
-      await Promise.all(deletePromises);
-  
-    } catch (error) {
-      console.error("Error deleting folder:", error);
-    }
-  },
+
   async Delete(id) {
     const docRef = doc(fireStore, "post", id);
     const subcollectionRef = collection(docRef, id);
@@ -215,6 +198,7 @@ async deleteFolder (folderPath)  {
       // Cuối cùng, xóa tài liệu chính trong 'comments'
       await deleteDoc(doc(document.ref.firestore, document.ref.path));
   }
+  await deleteFolder(`cms_uploads/post/${id}/`)
   }
 };
 export default postFireBase;
