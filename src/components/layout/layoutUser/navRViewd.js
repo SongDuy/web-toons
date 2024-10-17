@@ -97,7 +97,7 @@ const NavRViewd = () => {
                   <div></div>
                 ) : (
                   <div className="grid grid-rows-3 gap-2 w-full mx-auto py-auto  ">
-                    {comic.comic?.map((item) => {
+                    {comic.comic?.slice()?.sort((a, b) => b.views - a.views)?.map((item,index) => {
                       return (
                         <div className="grid grid-row-5 gap-1 " key={item.id}>
                           <div className="w-full col-row-4 ">
@@ -110,7 +110,7 @@ const NavRViewd = () => {
                           <p className="truncate  transition-all text-sm ">
                             {item.title}{" "}
                           </p>
-                          <p className="text-gray-400 text-sm">#{item.rate}</p>
+                          <p className="text-gray-400 text-sm">#{index+1}</p>
                         </div>
                       );
                     })}

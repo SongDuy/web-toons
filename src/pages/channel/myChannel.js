@@ -80,12 +80,16 @@ const MyChannelPage = () => {
   }, [Account, dispatch]);
   const handleimageChange = async (e) => {
     try {
+    
+
       const file = e.target.files[0];
       if (file) {
-
+        setloading(false);
         await userFireBase.uploadToFirebase(file, file.name, Account.uid, "image")
         const account = await dispatch(getAccount(Account.uid));
         unwrapResult(account)
+        setloading(true);
+
       }
     } catch (error) {
 
@@ -93,13 +97,18 @@ const MyChannelPage = () => {
   };
   const handlehorizontalThumbnailChange = async (e) => {
     try {
+
       const file = e.target.files[0];
       if (file) {
+        setloading(false);
 
         await userFireBase.uploadToFirebase(file, file.name, Account.uid, "horizontalThumbnail")
         const account = await dispatch(getAccount(Account.uid));
         unwrapResult(account)
+        setloading(true);
+
       }
+
     } catch (error) {
 
     }
@@ -144,6 +153,8 @@ const MyChannelPage = () => {
   };
   const handlepost = async () => {
     try {
+      setloading(false);
+
       if (auth.currentUser.uid) {
         console.log(getphotos);
         const res = await postFireBase.Add({
@@ -175,6 +186,8 @@ const MyChannelPage = () => {
         setPhotos([]);
         setgetPhotos([]);
       }
+      setloading(true);
+
     } catch (error) {
       console.log(error);
     }
@@ -248,7 +261,21 @@ const MyChannelPage = () => {
       prevOpen.current[idpost] = openMenus[idpost];
     });
   }, [openMenus]);
+const handleDelete=async (id)=>{
+  try {
+    setloading(false);
+    await postFireBase.Delete(id)
+    await postFireBase.deleteFolder(`cms_uploads/post/${Account.uid}/${id}`)
+    const post = await postFireBase.getAllid(Account.uid);
+    setposts(post.success ? post?.post : []);
 
+    handleClose()
+    setloading(true);
+
+  } catch (error) {
+    
+  }
+}
   return (
     <>
       {loading ? (
@@ -672,7 +699,7 @@ const MyChannelPage = () => {
                                 <Popper
                                   className="w-auto rounded-lg flex items-center justify-center"
                                   open={openMenus[item.idpost] || false}
-                                  anchorEl={anchorRefs.current[item.idpost]}
+                                  anchorEl={anchorRefs?.current[item.idpost]}
                                   role={undefined}
                                   placement="bottom-start"
                                   transition
@@ -694,7 +721,7 @@ const MyChannelPage = () => {
                                             aria-labelledby={`composition-button-${item.idpost}`}
                                             onKeyDown={(event) => handleListKeyDown(event, item.idpost)} // KeyDown xử lý theo idpost
                                           >
-                                            <MenuItem onClick={handleClose}>
+                                            <MenuItem onClick={()=>handleDelete(item.idpost)}>
                                               <div className="flex gap-2">
                                                 <DeleteIcon />
                                                 {!language ?

@@ -17,6 +17,9 @@ const Subscribed = () => {
   const [Subscribed, setSubscribed] = useState([]);
   const [checkSubcribed, setcheckSubcribed] = useState([]);
   const [ALLSubcribed, setALLSubcribed] = useState(false);
+  const [EditSubscribedVideo, setEditSubscribedVideo] = useState(false);
+  const [checkSubcribedVideo, setcheckSubcribedVideo] = useState([]);
+  const [ALLSubcribedVideo, setALLSubcribedVideo] = useState(false);
   const [loading, setloading] = useState(false);
   const Account = useSelector((state) => state.Account.Account);
   const check19Modal = useSelector(state => state.hidden.check19Modal);
@@ -81,6 +84,46 @@ const Subscribed = () => {
     };
     get();
   }, [dispatch, Account, check19Modal]);
+  const get = async () => {
+    try {
+
+      const subscribe = await SubscribeFireBase.getbyid(Account?.uid);
+      if (Account?.checkage) {
+
+        const age = Account?.birthday
+          ? new Date(Date.now())?.getFullYear() -
+          new Date(Account.birthday)?.getFullYear()
+          : 15;
+
+        const lg = await dispatch(getAllComic(age));
+        unwrapResult(lg);
+      } else {
+        const lg = await dispatch(getAllComic());
+        unwrapResult(lg);
+      }
+
+      if (subscribe.success) {
+        const sub = await Promise.all(
+          subscribe.subscribe?.map(async (item) => {
+            const comicid = item.idcomic
+              ? await comicFireBase.getbyid(item.idcomic)
+              : await VideoFireBase.getbyid(item.idvideo);
+            return {
+              ...item,
+              ...comicid,
+              id: item.id,
+              createTime: new Date(comicid?.createTime).toISOString(),
+            };
+          })
+        );
+        setSubscribed(sub);
+      } else {
+        setSubscribed([]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const HandleDelete = async () => {
     try {
       setloading(false);
@@ -103,12 +146,51 @@ const Subscribed = () => {
                   sub.idvideo
                 );
               await SubscribeFireBase.Delete(item);
-              setSubscribed(Subscribed?.filter(item => item?.idcomic ? item.idcomic !== sub.idcomic : item.idvideo !== sub.idvideo))
+              // setSubscribed(Subscribed?.filter(item => item?.idcomic ? item.idcomic !== sub.idcomic : item.idvideo !== sub.idvideo))
+
+            }
+          } catch (error) {
+          }
+        })
+        
+      );
+      await get()
+      setALLSubcribed(false);
+
+      setloading(true);
+    } catch (error) { }
+  };
+  const HandleDeleteVideo = async () => {
+    try {
+      setloading(false);
+      await Promise.all(
+        checkSubcribedVideo?.map(async (item) => {
+          try {
+            const sub = await SubscribeFireBase.getbysub(item);
+            if (sub.success) {
+              const comicid = sub?.idcomic
+                ? await comicFireBase.getbyid(sub.idcomic)
+                : await VideoFireBase.getbyid(sub.idvideo);
+
+              sub?.idcomic
+                ? await comicFireBase.update(
+                  { totalSubscribed: comicid.totalSubscribed - 1 },
+                  sub.idcomic
+                )
+                : await VideoFireBase.update(
+                  { totalSubscribed: comicid.totalSubscribed - 1 },
+                  sub.idvideo
+                );
+              await SubscribeFireBase.Delete(item);
+              // setSubscribed(Subscribed?.filter(item => item?.idcomic ? item.idcomic !== sub.idcomic : item.idvideo !== sub.idvideo))
             }
           } catch (error) {
           }
         })
       );
+     await get()
+
+      setALLSubcribedVideo(false);
 
       setloading(true);
     } catch (error) { }
@@ -122,18 +204,54 @@ const Subscribed = () => {
       );
       setcheckSubcribed(updatedCheckSubcribed);
     }
-  };
-  const getALLSubscribed = () => {
-    if (checkSubcribed.length === 0) {
-      setcheckSubcribed(Subscribed?.map((item) => item.id));
-
-      setALLSubcribed(!ALLSubcribed);
+    const totalSubscribedVideos = Subscribed?.filter(item => item.idcomic)?.length;
+    const updatedCount = checkSubcribed.length + (checkSubcribed.includes(id) ? 0 : 1);
+    
+    if (updatedCount === totalSubscribedVideos ) {
+      setALLSubcribed(true);
     } else {
-      setcheckSubcribed([]);
-      setALLSubcribed(!ALLSubcribed);
+      setALLSubcribed(false);
     }
   };
+  const getALLSubscribed = () => {
+    if (checkSubcribed.length === 0 || checkSubcribed.length<= Subscribed?.filter(item=>item.idcomic)?.length-1 ) {
+      setcheckSubcribed(Subscribed?.filter(item=>item.idcomic)?.map((item) => item.id));
 
+      setALLSubcribed(true);
+    } else {
+      setcheckSubcribed([]);
+      setALLSubcribed(false);
+    }
+  };
+  const getALLSubscribedVideo = () => {
+    if (checkSubcribedVideo.length === 0 || checkSubcribedVideo.length<= Subscribed?.filter(item=>item.idvideo)?.length-1  ) {
+      setcheckSubcribedVideo(Subscribed?.filter(item=>item.idvideo)?.map((item) => item.id));
+
+      setALLSubcribedVideo(true);
+    } else {
+      setcheckSubcribedVideo([]);
+      setALLSubcribedVideo(false);
+    }
+  };
+  const getidSubscribedVideo = (id) => {
+   
+    if (!checkSubcribedVideo.includes(id)) {
+      setcheckSubcribedVideo([...checkSubcribedVideo, id]);
+    } else {
+      const updatedCheckSubcribed = checkSubcribedVideo.filter(
+        (item) => item !== id
+      );
+      setcheckSubcribedVideo(updatedCheckSubcribed);
+    }
+    const totalSubscribedVideos = Subscribed?.filter(item => item.idvideo)?.length;
+  const updatedCount = checkSubcribedVideo.length + (checkSubcribedVideo.includes(id) ? 0 : 1);
+  
+  if (updatedCount === totalSubscribedVideos ) {
+    setALLSubcribedVideo(true);
+  } else {
+    setALLSubcribedVideo(false);
+  }
+  };
   //Lấy ngôn ngữ
   const language = useSelector(state => state.hidden.language);
 
@@ -227,7 +345,7 @@ const Subscribed = () => {
 
                 {EditSubscribed ? (
                   <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
-                    {Subscribed?.map((item) => {
+                    {Subscribed?.filter(item=>item.idcomic)?.map((item) => {
                       return (
                         <li
                           key={item?.id}
@@ -286,7 +404,7 @@ const Subscribed = () => {
                   </ul>
                 ) : (
                   <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
-                    {Subscribed.map((item) => {
+                    {Subscribed?.filter(item=>item.idcomic).map((item) => {
                       return (
                         <li
                           key={item?.id}
@@ -349,15 +467,15 @@ const Subscribed = () => {
                     }
                   </h1>
 
-                  {EditSubscribed ? (
+                  {EditSubscribedVideo ? (
                     <div className="flex">
                       <button
                         className="w-[35px] max-h-[35px] font-semibold text-base text-black ml-3 px-2 rounded-full bg-[#dfdbdbec]"
-                        onClick={getALLSubscribed}
+                        onClick={getALLSubscribedVideo}
                       >
                         <CheckIcon
                           sx={
-                            ALLSubcribed
+                            ALLSubcribedVideo
                               ? { color: "#31C48D" }
                               : { color: "white" }
                           }
@@ -366,7 +484,7 @@ const Subscribed = () => {
 
                       <button
                         className="max-h-[35px] font-semibold text-base mr-2 ml-1 p-1 rounded-full text-gray-400"
-                        onClick={getALLSubscribed}
+                        onClick={getALLSubscribedVideo}
                       >
                         {!language ?
                           "Select All"
@@ -377,7 +495,7 @@ const Subscribed = () => {
 
                       <button
                         className="h-[35px] flex items-center justify-center font-semibold text-basg text-black border-gray-400 border py-2 px-7 rounded-full mr-5 ml-3"
-                        onClick={() => HandleDelete()}
+                        onClick={() => HandleDeleteVideo()}
                       >
                         {!language ?
                           "Delete"
@@ -387,7 +505,7 @@ const Subscribed = () => {
                       </button>
                       <button
                         className="h-[35px] flex items-center justify-center font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
-                        onClick={() => setEditSubscribed(!EditSubscribed)}
+                        onClick={() => setEditSubscribedVideo(!EditSubscribedVideo)}
                       >
                         {!language ?
                           "Cancel"
@@ -399,7 +517,7 @@ const Subscribed = () => {
                   ) : (
                     <button
                       className="h-[35px] flex items-center justify-center font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
-                      onClick={() => setEditSubscribed(!EditSubscribed)}
+                      onClick={() => setEditSubscribedVideo(!EditSubscribedVideo)}
                     >
                       {!language ?
                         "Edit"
@@ -410,14 +528,14 @@ const Subscribed = () => {
                   )}
                 </div>
 
-                {EditSubscribed ? (
+                {EditSubscribedVideo ? (
                   <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
-                    {Subscribed?.map((item) => {
+                    {Subscribed?.filter(item=>item.idvideo)?.map((item) => {
                       return (
                         <li
                           key={item?.id}
-                          className={`w-full h-full rounded-md ${checkSubcribed?.includes(item.id) ? "border-emerald-400" : ""}  relative`}
-                          onClick={() => getidSubscribed(item.id)}
+                          className={`w-full h-full rounded-md ${checkSubcribedVideo?.includes(item.id) ? "border-emerald-400" : ""}  relative`}
+                          onClick={() => getidSubscribedVideo(item.id)}
                         >
                           <img
                             src={item.squareThumbnail}
@@ -459,7 +577,7 @@ const Subscribed = () => {
                           <button className="absolute top-[75%] left-[75%] truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
                             <CheckIcon
                               sx={
-                                checkSubcribed?.includes(item.id)
+                                checkSubcribedVideo?.includes(item.id)
                                   ? { color: "#31C48D" }
                                   : { color: "white" }
                               }
@@ -471,7 +589,7 @@ const Subscribed = () => {
                   </ul>
                 ) : (
                   <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
-                    {Subscribed.map((item) => {
+                    {Subscribed?.filter(item=>item.idvideo)?.map((item) => {
                       return (
                         <li
                           key={item?.id}
