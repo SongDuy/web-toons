@@ -193,6 +193,7 @@ const Account = () => {
           </div>
         </div>
 
+        {/* Tên gọi */}
         <div className="py-[30px] w-full flex-row justify-center items-center">
           <div className="mb-5">
 
@@ -206,8 +207,10 @@ const Account = () => {
 
           </div>
 
-          {openName ? (
-            <div className="w-full h-full flex bg-white border border-white">
+
+          <div className="w-full h-[150px] flex items-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
+            {openName ? (
+
               <div className="flex my-5">
                 <div className="flex-row my-8">
                   <div>
@@ -249,35 +252,28 @@ const Account = () => {
                 </p>
 
               </div>
-            </div>
-          ) : (
-            <div className="w-full h-full flex-row justify-center items-center  bg-white border border-white">
-
-              <div className="w-full h-full bg-white border border-white">
-
-                <div className="grid grid-cols-8 gap-4 my-5 border-b border-gray-300">
-                  <div className="my-2 col-span-7">
-                    <p className="font-semibold text-lg text-black">
-                      {name}
-                    </p>
-
-                  </div>
-
-                  <button
-                    onClick={() => setopenName(!openName)}
-                    className="font-semibold bg-gray-200 w-[90px] h-[35px] text-base text-gray-400"
-                  >
-                    {!language ?
-                      "Edit"
-                      :
-                      "편집"
-                    }
-                  </button>
-
+            ) : (
+              <div className="w-full grid grid-cols-12 border">
+                <div className="w-full col-span-9 px-2 flex items-center">
+                  <p className="font-semibold text-lg text-black">
+                    {name}
+                  </p>
                 </div>
+
+                <button
+                  onClick={() => setopenName(!openName)}
+                  className="w-full h-[40px] col-span-3 font-semibold bg-black text-white"
+                >
+                  {!language ?
+                    "Edit"
+                    :
+                    "편집"
+                  }
+                </button>
+
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
 
         {/* Phần email */}
