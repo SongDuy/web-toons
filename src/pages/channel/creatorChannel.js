@@ -173,40 +173,31 @@ const CreatorChannelPage = () => {
                             </div>
 
                             {/* Hiển thị thông tin tác giả */}
-                            <div className="w-full sm:h-[180px] xs:px-[10px] sm:px-[30px] bg-white rounded-b-lg sm:flex">
+                            <div className="w-full border bg-white rounded-b-lg sm:h-[180px] sm:flex xs:px-[10px] sm:px-[30px]">
                                 <div className="flex">
-                                    <div className="hidden sm:block">
-                                        <div className="w-[185px] h-[185px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
-                                            <Avatar
-                                                alt="Remy Sharp"
-                                                src={create?.image}
-                                                sx={{ width: 180, height: 180 }}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="block sm:hidden">
-                                        <div className="w-[105px] h-[105px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
-                                            <Avatar
-                                                alt="Remy Sharp"
-                                                src={create?.image}
-                                                sx={{ width: 100, height: 100 }}
-                                            />
-                                        </div>
+                                    {/* Avatar Container */}
+                                    <div className="w-[20vw] h-[20vw] max-w-[185px] max-h-[185px] xs:w-[150px] xs:h-[150px] rounded-full border-4 mt-[-30px] flex items-center justify-center overflow-hidden">
+                                        <Avatar
+                                            alt="Remy Sharp"
+                                            src={create?.image}
+                                            sx={{
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'cover', // Đảm bảo ảnh không bị méo
+                                            }}
+                                        />
                                     </div>
 
+                                    {/* Information Section */}
                                     <div className="sm:py-4 px-3">
-                                        <div className="">
+                                        <div>
                                             <span className="text-[35px] font-semibold text-yellow-500 text-shadow-black">
                                                 {create?.name}
                                             </span>
                                         </div>
-                                        {/* <div className="px-1">
-                                        <span className="text-[18px] text-yellow-400 text-shadow-black">
-                                            {!language ? (<span> Commic, video </span>) : (<span> 만화, 동영상 </span>)}
-                                        </span>
-                                    </div> */}
 
-                                        <div className="w-full px-1 sm:pt-8 pb-4 flex">
+                                        <div className="w-full px-1 sm:pt-8 pb-4 flex flex-wrap">
+                                            {/* Stats */}
                                             <div className="mr-5 xs:text-[15px] sm:text-[18px] font-semibold text-white text-shadow-black">
                                                 {!language ? <span> Originals: </span> : <span> 오리지널: </span>}
                                                 {' '} {comic?.length}
@@ -223,24 +214,27 @@ const CreatorChannelPage = () => {
                                     </div>
                                 </div>
 
+                                {/* Follow Button Section */}
                                 <div className="ml-auto flex items-center pb-4 justify-center">
-                                    {!isFollow ?
+                                    {!isFollow ? (
                                         <button
                                             onClick={handleFollow}
-                                            className="xs:w-full sm:w-[150px] h-[50px] font-semibold text-white bg-green-500 hover:bg-green-600 shadow  rounded-full"
+                                            className="xs:w-full sm:w-[150px] h-[50px] font-semibold text-white bg-green-500 hover:bg-green-600 shadow rounded-full transition duration-200"
                                         >
                                             {!language ? <span> Follow </span> : <span> 팔로우 </span>}
                                         </button>
-                                        :
+                                    ) : (
                                         <button
                                             onClick={handleDeleteFollow}
-                                            className="w-[150px] h-[50px] font-semibold text-black bg-gray-50 hover:bg-gray-100 shadow border rounded-full"
+                                            className="w-[150px] h-[50px] font-semibold text-black bg-gray-50 hover:bg-gray-100 shadow border rounded-full transition duration-200"
                                         >
                                             {!language ? <span> Following </span> : <span> 팔로잉 </span>}
                                         </button>
-                                    }
+                                    )}
                                 </div>
                             </div>
+
+
                         </div>
 
                         <div className="w-full h-full grid xs:grid-cols-1 lg:grid-cols-3 gap-3 mt-3">
