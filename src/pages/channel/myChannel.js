@@ -79,12 +79,16 @@ const MyChannelPage = () => {
   }, [Account, dispatch]);
   const handleimageChange = async (e) => {
     try {
+    
+
       const file = e.target.files[0];
       if (file) {
-
+        setloading(false);
         await userFireBase.uploadToFirebase(file, file.name, Account.uid, "image")
         const account = await dispatch(getAccount(Account.uid));
         unwrapResult(account)
+        setloading(true);
+
       }
     } catch (error) {
 
@@ -92,13 +96,18 @@ const MyChannelPage = () => {
   };
   const handlehorizontalThumbnailChange = async (e) => {
     try {
+
       const file = e.target.files[0];
       if (file) {
+        setloading(false);
 
         await userFireBase.uploadToFirebase(file, file.name, Account.uid, "horizontalThumbnail")
         const account = await dispatch(getAccount(Account.uid));
         unwrapResult(account)
+        setloading(true);
+
       }
+
     } catch (error) {
 
     }
@@ -143,6 +152,8 @@ const MyChannelPage = () => {
   };
   const handlepost = async () => {
     try {
+      setloading(false);
+
       if (auth.currentUser.uid) {
         console.log(getphotos);
         const res = await postFireBase.Add({
@@ -174,6 +185,8 @@ const MyChannelPage = () => {
         setPhotos([]);
         setgetPhotos([]);
       }
+      setloading(true);
+
     } catch (error) {
       console.log(error);
     }

@@ -103,7 +103,7 @@ const VideoFireBase = {
    
   },
   async getrandom(setlimit,age) {
-    const randomValue = Math.random();
+    const randomValue = Math.random().toFixed(2);
     const q =age? query(
       collection(fireStore, "Video"),
       where("lock", "==", true), 
