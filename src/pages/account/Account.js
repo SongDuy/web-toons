@@ -126,35 +126,28 @@ const Account = () => {
                 " 생일"
               }
             </h1>
-
           </div>
 
-          {openDate ? (
-            <div className="w-full h-full flex bg-white border border-white">
-              <div className=" flex justify-center items-center p-2 w-[10%]">
-                <span className="font-semibold  text-black"></span>
-              </div>
 
-              <div className="flex ml-5 my-5">
-                <div className="flex-row my-8">
-                  <div>
-                    <DatePicker
-                      selected={selectedDate}
-                      onChange={(date) => setSelectedDate(date)}
-                      dateFormat="dd/MM/yyyy"  // Định dạng ngày
-                      className="w-full h-[50px] px-2 border rounded shadow "  // Sử dụng Tailwind CSS để style
-                      placeholderText="Select Date"
-                      showYearDropdown  // Hiển thị danh sách năm
-                      showMonthDropdown  // Hiển thị danh sách tháng
-                      dropdownMode="select"  // Chuyển dropdown sang chế độ select để dễ chọn
-                    />
-                  </div>
-
+          <div className="w-full h-[150px] flex items-center bg-white">
+            {openDate ? (
+              <div className="flex items-center">
+                <div>
+                  <DatePicker
+                    selected={selectedDate}
+                    onChange={(date) => setSelectedDate(date)}
+                    dateFormat="dd/MM/yyyy"  // Định dạng ngày
+                    className="w-[350px] h-[50px] px-2 border rounded shadow "  // Sử dụng Tailwind CSS để style
+                    placeholderText="Select Date"
+                    showYearDropdown  // Hiển thị danh sách năm
+                    showMonthDropdown  // Hiển thị danh sách tháng
+                    dropdownMode="select"  // Chuyển dropdown sang chế độ select để dễ chọn
+                  />
                 </div>
 
                 <button
                   onClick={handleBirthday}
-                  className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[50px]  text-gray-400"
+                  className="w-[150px] h-[50px] font-semibold bg-black text-white"
                 >
                   {!language ?
                     "Add"
@@ -162,12 +155,9 @@ const Account = () => {
                     "추가"
                   }
                 </button>
-
               </div>
-            </div>
-          ) : (
-            <div className="w-full h-full flex-row justify-center items-center  bg-white border border-white">
-              <div className="grid grid-cols-2 gap-4 border-b border-gray-300">
+            ) : (
+              <div className="flex ml-5 my-5">
                 <div className="my-2 border">
                   {selectedDate ?
                     <p className="font-semibold text-lg text-black">
@@ -196,8 +186,8 @@ const Account = () => {
                   }
                 </button>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
 
         <div className="py-[30px] w-full flex-row justify-center items-center">
