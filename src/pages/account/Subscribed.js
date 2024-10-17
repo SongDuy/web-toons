@@ -226,10 +226,10 @@ const Subscribed = () => {
                 </div>
 
                 {EditSubscribed ? (
-                  <div className="w-full h-full grid grid-cols-5 gap-3 px-5">
+                  <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
                     {Subscribed?.map((item) => {
                       return (
-                        <div
+                        <li
                           key={item?.id}
                           className={`w-full h-full rounded-md ${checkSubcribed?.includes(item.id) ? "border-emerald-400" : ""}  relative`}
                           onClick={() => getidSubscribed(item.id)}
@@ -280,15 +280,15 @@ const Subscribed = () => {
                               }
                             />
                           </button>
-                        </div>
+                        </li>
                       );
                     })}
-                  </div>
+                  </ul>
                 ) : (
-                  <div className="w-full h-full grid grid-cols-5 gap-3 px-5">
+                  <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
                     {Subscribed.map((item) => {
                       return (
-                        <div
+                        <li
                           key={item?.id}
                           className="flex-row w-full h-full rounded-md relative overflow-hidden"
                         >
@@ -329,10 +329,10 @@ const Subscribed = () => {
                               </span>}
                           </div>
 
-                        </div>
+                        </li>
                       );
                     })}
-                  </div>
+                  </ul>
                 )}
               </div>
 
@@ -411,10 +411,10 @@ const Subscribed = () => {
                 </div>
 
                 {EditSubscribed ? (
-                  <div className="w-full h-full grid grid-cols-5 gap-3 px-5">
+                  <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
                     {Subscribed?.map((item) => {
                       return (
-                        <div
+                        <li
                           key={item?.id}
                           className={`w-full h-full rounded-md ${checkSubcribed?.includes(item.id) ? "border-emerald-400" : ""}  relative`}
                           onClick={() => getidSubscribed(item.id)}
@@ -465,15 +465,15 @@ const Subscribed = () => {
                               }
                             />
                           </button>
-                        </div>
+                        </li>
                       );
                     })}
-                  </div>
+                  </ul>
                 ) : (
-                  <div className="w-full h-full grid grid-cols-5 gap-3 px-5">
+                  <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
                     {Subscribed.map((item) => {
                       return (
-                        <div
+                        <li
                           key={item?.id}
                           className="flex-row w-full h-full rounded-md relative overflow-hidden"
                         >
@@ -514,10 +514,10 @@ const Subscribed = () => {
                               </span>}
                           </div>
 
-                        </div>
+                        </li>
                       );
                     })}
-                  </div>
+                  </ul>
                 )}
               </div>
             </div>
