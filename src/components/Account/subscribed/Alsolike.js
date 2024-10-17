@@ -7,7 +7,7 @@ const Alsolike = () => {
   const language = useSelector(state => state.hidden.language);
 
   return (
-    <div className=" flex-row justify-center items-center container xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
+    <div className="mt-[30px] flex-row justify-center items-center container xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
       <div className="min-w-max m-2">
         <span className="font-semibold text-lg text-black">
        {!language?  "You may also like": "이것도 좋아할 수 있습니다.(추천 드립니다)"}
@@ -25,12 +25,12 @@ const Alsolike = () => {
                   <div>
                     <img
                       src={item.squareThumbnail}
-                      alt=""
-                      className="object-contain"
+                      alt="img"
+                      className="object-cover min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px] rounded-md"
                     />
                   </div>
                   <div className="col-span-3">
-                    <p className="truncate line-clamp-2 transition-all after:content-['...']  w-3/4">
+                    <p className="truncate line-clamp-2 text-shadow-white transition-all after:content-['...']  w-3/4">
                       {item.title}
                     </p>
                     <p className=" text-[12px]">{item.Author}</p>

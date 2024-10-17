@@ -31,7 +31,7 @@ const GenresPage = () => {
         const filteredOriginalsByGenre = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase());
         const filteredOriginalsByLikes = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).sort((a, b) => b.views - a.views);
         const filteredOriginalsByDate = comic.comic?.filter(data => data.genre1.toLowerCase() === selectedOriginalsByGenre.toLowerCase() || data.genre2.toLowerCase() === selectedOriginalsByGenre.toLowerCase()).sort((a, b) => new Date(b.createTime) - new Date(a.createTime));
-        console.log(selectedMenuOriginalList === "by Popularity" ? filteredOriginalsByGenre : selectedMenuOriginalList === "by Likes" ? filteredOriginalsByLikes : filteredOriginalsByDate)
+        // console.log(selectedMenuOriginalList === "by Popularity" ? filteredOriginalsByGenre : selectedMenuOriginalList === "by Likes" ? filteredOriginalsByLikes : filteredOriginalsByDate)
         setComic(selectedMenuOriginalList === "by Popularity" ? filteredOriginalsByGenre : selectedMenuOriginalList === "by Likes" ? filteredOriginalsByLikes : filteredOriginalsByDate)
     }, [selectedOriginalsByGenre, comic.comic, selectedMenuOriginalList]);
     // Khi lia chuột hiên icon khi lia vào truyện hoặc video
@@ -80,12 +80,8 @@ const GenresPage = () => {
         prevOpenOriginals.current = openOriginals;
     }, [openOriginals]);
 
-
-
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
-
-
             <div className="w-full h-full xs:px-[16px] sm:px-[32px] md:px-[64px] lg:px-[96px] xl:px-[128px] 2xl:px-[160px] 3xl:px-[192px]">
                 <div className="w-full h-full ml-auto mr-auto">
 
@@ -193,11 +189,8 @@ const GenresPage = () => {
                         <div className="w-full h-full py-5 flex items-center justify-center">
                             <div className="w-full h-full">
                                 {/* Danh mục thể loại */}
-                                <div className="w-full h-[95px] mb-5 flex items-center justify-start overflow-x-auto">
-                                    <ul
-                                        className="grid grid-rows-2 grid-flow-col gap-2 w-max"
-                                    >
-                                        {/* khung nội dung */}
+                                <div className="w-full h-[95px] mb-5 flex items-center justify-center">
+                                    <ul className="grid grid-rows-2 grid-flow-col gap-2 w-max overflow-x-auto scroll-snap-x scroll-snap-mandatory">
                                         {dataListGenre.map(genre => (
                                             <li
                                                 key={genre.id}
@@ -207,13 +200,12 @@ const GenresPage = () => {
                                                 {!language ? <span> {genre.name} </span> : <span> {genre.nameKorean} </span>}
                                             </li>
                                         ))}
-
                                     </ul>
                                 </div>
 
                                 {/* Danh mục nội dung originals theo thể loại */}
                                 <div className="w-full min-h-[500px]">
-                                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
+                                    <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-7 gap-3">
 
                                         {/* khung nội dung */}
                                         {Comic?.map(item => (

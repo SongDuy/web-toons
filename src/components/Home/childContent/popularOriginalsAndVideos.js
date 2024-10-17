@@ -91,17 +91,20 @@ const PopularOriginalsAndVideosPage = () => {
         <div className="w-full h-full grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-2 3xl:grid-cols-3 gap-x-10 gap-y-5 pb-[70px]">
           {/* Phần hiển thị nội dung new & trending originals */}
           <div className="w-full flex flex-wrap ">
+
             {/* Phần tiêu đề */}
             <div className="w-full px-2 py-5 flex items-center border-b">
               <div className="mr-auto">
-                <span className="font-semibold text-lg hover:text-yellow-500 cursor-pointer">
-                  {!language ? (
-                    <span> New & Trending Originals </span>
-                  ) : (
-                    <span> 새로운 및 인기 오리지널 </span>
-                  )}
-                  <NavigateNextIcon />
-                </span>
+                <Link to={`/popular`}>
+                  <span className="font-semibold text-lg hover:text-yellow-500 cursor-pointer">
+                    {!language ? (
+                      <span> New & Trending Originals </span>
+                    ) : (
+                      <span> 새로운 및 인기 오리지널 </span>
+                    )}
+                    <NavigateNextIcon />
+                  </span>
+                </Link>
               </div>
             </div>
 
@@ -180,14 +183,16 @@ const PopularOriginalsAndVideosPage = () => {
             {/* Phần tiêu đề */}
             <div className="w-full px-2 py-5 flex items-center border-b">
               <div className="mr-auto">
-                <span className="font-semibold text-lg hover:text-yellow-500 cursor-pointer">
-                  {!language ? (
-                    <span> New & Trending Videos </span>
-                  ) : (
-                    <span> 새로운 및 인기 동영상 </span>
-                  )}
-                  <NavigateNextIcon />
-                </span>
+                <Link to={`/popular`}>
+                  <span className="font-semibold text-lg hover:text-yellow-500 cursor-pointer">
+                    {!language ? (
+                      <span> New & Trending Videos </span>
+                    ) : (
+                      <span> 새로운 및 인기 동영상 </span>
+                    )}
+                    <NavigateNextIcon />
+                  </span>
+                </Link>
               </div>
             </div>
 
@@ -235,14 +240,16 @@ const PopularOriginalsAndVideosPage = () => {
           <div className="w-full flex flex-wrap ">
             {/* Phần tiêu đề */}
             <div className="w-full px-2 py-5 flex items-center border-b">
-              <span className="mr-auto font-semibold text-lg hover:text-yellow-500 cursor-pointer">
-                {!language ? (
-                  <span> ORIGINALS by Genre </span>
-                ) : (
-                  <span> 장르별 오리지널 </span>
-                )}
-                <NavigateNextIcon />
-              </span>
+              <Link to={`/popular`}>
+                <span className="mr-auto font-semibold text-lg hover:text-yellow-500 cursor-pointer">
+                  {!language ? (
+                    <span> ORIGINALS by Genre </span>
+                  ) : (
+                    <span> 장르별 오리지널 </span>
+                  )}
+                  <NavigateNextIcon />
+                </span>
+              </Link>
 
               {/* Chọn menu thể loại originals*/}
               <div className="ml-auto flex gap-1 text-yellow-500 cursor-pointer">

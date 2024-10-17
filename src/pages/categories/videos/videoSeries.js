@@ -144,7 +144,7 @@ const VideoSeriesPage = () => {
       }
     };
     get();
-  }, [dispatch, User, navigate, id,check19Modal]);
+  }, [dispatch, User, navigate, id, check19Modal]);
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -316,10 +316,10 @@ const VideoSeriesPage = () => {
           {/* Hiển thị ảnh nền */}
 
           <div className="w-full flex items-center justify-center">
-            <div className="w-[1200px] h-[320px] relative ">
+            <div className="w-[1200px] max-h-[320px] relative ">
               <img
                 src={Videoid?.horizontalThumbnail}
-                className="object-cover w-full h-full rounded-t"
+                className="object-cover w-full max-h-[320px] rounded-t"
                 alt="img"
               />
 
@@ -704,7 +704,7 @@ const VideoSeriesPage = () => {
             margin: 5,
           }}
         >
-          <CircularProgress />
+            <CircularProgress />
         </Box>
       )}
     </div>

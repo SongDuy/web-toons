@@ -17,7 +17,6 @@ import { Link } from "react-router-dom";
 import userFireBase from '../../common/services/User.services';
 import FollowFireBase from '../../common/services/Follow.services';
 import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
 import dataListGenre from '../../components/layout/layoutUser/dataListGenre';
 const CreatorChannelPage = () => {
 
@@ -151,6 +150,9 @@ const CreatorChannelPage = () => {
 
         }
     }
+
+    console.log(create)
+
     return (
         <>
             {loading ?
@@ -158,9 +160,15 @@ const CreatorChannelPage = () => {
                     <div className="w-[1120px] h-full">
                         <div className="w-full h-full bg-white rounded-lg">
                             {/* Hiển thị ảnh nền */}
-                            <div className="w-full xs:max-h-[400px] sm:h-[400px] bg-green-200 rounded-lg">
-                                <img src="https://wallpapers.com/images/hd/chill-anime-girl-during-winter-n65e3iefecsy01if.jpg"
-                                    className="object-cover w-full h-full rounded-t-lg" alt="img"
+                            <div className="w-full max-h-[400px] bg-green-200 rounded-lg">
+                                <img
+                                    src={
+                                        create?.horizontalThumbnail
+                                            ? create?.horizontalThumbnail
+                                            : "https://wallpapers.com/images/hd/chill-anime-girl-during-winter-n65e3iefecsy01if.jpg"
+                                    }
+                                    className="object-cover w-full max-h-[400px] rounded-t-lg"
+                                    alt="img"
                                 />
                             </div>
 
@@ -171,11 +179,7 @@ const CreatorChannelPage = () => {
                                         <div className="w-[185px] h-[185px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
                                             <Avatar
                                                 alt="Remy Sharp"
-                                                src={
-                                                    create?.image
-                                                        ? create?.image
-                                                        : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
-                                                }
+                                                src={create?.image}
                                                 sx={{ width: 180, height: 180 }}
                                             />
                                         </div>
@@ -184,11 +188,7 @@ const CreatorChannelPage = () => {
                                         <div className="w-[105px] h-[105px] rounded-full border-4 mt-[-30px] flex items-center justify-center">
                                             <Avatar
                                                 alt="Remy Sharp"
-                                                src={
-                                                    create?.image
-                                                        ? create?.image
-                                                        : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
-                                                }
+                                                src={create?.image}
                                                 sx={{ width: 100, height: 100 }}
                                             />
                                         </div>
@@ -245,7 +245,7 @@ const CreatorChannelPage = () => {
 
                         <div className="w-full h-full grid xs:grid-cols-1 lg:grid-cols-3 gap-3 mt-3">
                             <div className="col-span-1 h-full">
-                                <div className="w-full h-full grid grid-cols-1 gap-3">
+                                <div className="w-full max-h-[1100px] grid grid-cols-1 gap-3">
 
                                     {/* Khung hiển thị các liên kết của tác giả */}
                                     {/* <div className="w-full h-[340px] px-5 py-3 bg-white rounded-lg">
@@ -282,12 +282,12 @@ const CreatorChannelPage = () => {
                                                             <img
                                                                 src={item.squareThumbnail}
                                                                 alt="img"
-                                                                className="object-cover w-full h-full rounded"
+                                                                className="object-cover min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px] rounded"
                                                             />
                                                         </div>
 
                                                         <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                                                            <div className="w-[250px] overflow-hidden ">
+                                                            <div className="max-w-[250px] overflow-hidden ">
                                                                 <span className="w-full text-lg font-semibold line-clamp-1">
                                                                     {item.title}
                                                                 </span>
@@ -334,12 +334,12 @@ const CreatorChannelPage = () => {
                                                             <img
                                                                 src={item.squareThumbnail}
                                                                 alt="img"
-                                                                className="object-cover w-full h-full rounded"
+                                                                className="object-cover min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px] rounded"
                                                             />
                                                         </div>
 
                                                         <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                                                            <div className="w-[200px] overflow-hidden ">
+                                                            <div className="max-w-[250px] overflow-hidden ">
                                                                 <span className="w-full text-lg font-semibold line-clamp-1">
                                                                     {item.title}
                                                                 </span>
@@ -409,7 +409,7 @@ const CreatorChannelPage = () => {
                                                 <div className="relative w-full flex items-center justify-center p-4">
                                                     {item.image?.length > 0 ? (
                                                         <>
-                                                        {/* Nút Prev */}
+                                                            {/* Nút Prev */}
                                                             <button
                                                                 onClick={() => handlePrev(item.idpost)}
                                                                 disabled={(currentIndices[item.idpost] || 0) === 0}
@@ -418,7 +418,7 @@ const CreatorChannelPage = () => {
                                                                 <NavigateBeforeIcon />
                                                             </button>
 
-                                                             {/* Hiển thị hình ảnh */}
+                                                            {/* Hiển thị hình ảnh */}
                                                             <div className="w-full grid xs:grid-cols-1 sm:grid-cols-2 gap-5 overflow-hidden">
                                                                 {item.image?.slice(currentIndices[item.idpost] || 0, (currentIndices[item.idpost] || 0) + 2)?.map((img, index) => (
                                                                     <img
@@ -465,7 +465,6 @@ const CreatorChannelPage = () => {
                                                             </button>
                                                         }
                                                     </div>
-
                                                 </div>
                                             </li>
                                         ))}
@@ -476,16 +475,9 @@ const CreatorChannelPage = () => {
                     </div>
                 </div>
                 : (
-                    <Box
-                        sx={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            margin: 5,
-                        }}
-                    >
+                    <div className="w-full h-[370px] flex items-center justify-center">
                         <CircularProgress />
-                    </Box>
+                    </div>
                 )}
         </>
     );

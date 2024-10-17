@@ -4,6 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import Avatar from "@mui/material/Avatar";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
@@ -17,7 +23,6 @@ import comicFireBase from "../../common/services/Comic.services";
 import { Link } from "react-router-dom";
 import dataListGenre from "../../components/layout/layoutUser/dataListGenre";
 import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
 import userFireBase from "../../common/services/User.services";
 import { getAccount } from "../../common/store/Account";
 import { unwrapResult } from "@reduxjs/toolkit";
@@ -197,6 +202,52 @@ const MyChannelPage = () => {
     }
   };
 
+  // Mở modal menu để chọn Điều hướng đến trang truyện và videos
+  const [openMenus, setOpenMenus] = React.useState({});
+  const anchorRefs = React.useRef({});  // Sử dụng object để lưu trữ ref cho từng idpost
+
+  // Chuyển đổi trạng thái mở/đóng cho từng menu dựa trên idpost
+  const handleToggle = (idpost) => {
+    setOpenMenus((prev) => ({
+      ...prev,
+      [idpost]: !prev[idpost],
+    }));
+  };
+
+  // Đóng menu cho idpost cụ thể
+  const handleClose = (event, idpost) => {
+    if (anchorRefs.current[idpost] && anchorRefs.current[idpost].contains(event.target)) {
+      return;
+    }
+    setOpenMenus((prev) => ({
+      ...prev,
+      [idpost]: false,
+    }));
+  };
+
+  // Xử lý khi nhấn phím Tab hoặc Escape để đóng menu
+  const handleListKeyDown = (event, idpost) => {
+    if (event.key === 'Tab' || event.key === 'Escape') {
+      event.preventDefault();
+      setOpenMenus((prev) => ({
+        ...prev,
+        [idpost]: false,
+      }));
+    }
+  };
+
+  const prevOpen = React.useRef({});
+
+  // Khi menu đóng, focus lại vào nút đã mở menu
+  React.useEffect(() => {
+    Object.keys(openMenus).forEach((idpost) => {
+      if (prevOpen.current[idpost] && !openMenus[idpost]) {
+        anchorRefs.current[idpost]?.focus();
+      }
+      prevOpen.current[idpost] = openMenus[idpost];
+    });
+  }, [openMenus]);
+
   return (
     <>
       {loading ? (
@@ -204,14 +255,14 @@ const MyChannelPage = () => {
           <div className="w-[1120px] h-full">
             <div className="w-full h-full bg-white rounded-lg">
               {/* Hiển thị ảnh nền */}
-              <div className="w-full xs:max-h-[400px] sm:h-[400px] bg-green-200 rounded-lg relative">
+              <div className="w-full max-h-[400px] bg-green-200 rounded-lg relative">
                 <img
                   src={
                     Account?.horizontalThumbnail
                       ? Account?.horizontalThumbnail
                       : "https://wallpapers.com/images/hd/chill-anime-girl-during-winter-n65e3iefecsy01if.jpg"
                   }
-                  className="object-cover w-full h-full rounded-t-lg"
+                  className="object-cover w-full max-h-[400px] rounded-t-lg"
                   alt="img"
                 />
                 {/* Nút thay ảnh bìa */}
@@ -241,8 +292,6 @@ const MyChannelPage = () => {
                       alt="Remy Sharp"
                       src={
                         Account?.image
-                          ? Account?.image
-                          : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
                       }
                       sx={{ width: 180, height: 180 }}
                     />
@@ -265,11 +314,7 @@ const MyChannelPage = () => {
                   <div className="max-w-[105px] max-h-[105px] rounded-full border-4 mt-[-30px] flex items-center justify-center relative">
                     <Avatar
                       alt="Remy Sharp"
-                      src={
-                        Account?.image
-                          ? Account?.image
-                          : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"
-                      }
+                      src={Account?.image}
                       sx={{ width: 100, height: 100 }}
                     />
 
@@ -334,7 +379,7 @@ const MyChannelPage = () => {
             <div className="w-full h-full grid xs:grid-cols-1 lg:grid-cols-3 gap-3 mt-3">
               <div className="col-span-1 h-full">
                 {/* Khung hiển thị các Series truyện và video của tác giả */}
-                <div className="w-full h-full grid xs:grid-cols-1 gap-3">
+                <div className="w-full max-h-[1100px] grid xs:grid-cols-1 gap-3">
                   {/* Khung hiển thị các liên kết của tác giả */}
                   {/* <div className="w-full h-[340px] px-5 py-3 bg-white rounded-lg">
                   <div className="font-semibold text-[20px] text-black">
@@ -372,12 +417,12 @@ const MyChannelPage = () => {
                               <img
                                 src={item.squareThumbnail}
                                 alt="img"
-                                className="object-cover w-full h-full rounded"
+                                className="object-cover min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px] rounded"
                               />
                             </div>
 
                             <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                              <div className="w-auto overflow-hidden ">
+                              <div className="max-w-[250px] overflow-hidden ">
                                 <span className="w-full text-lg font-semibold line-clamp-1">
                                   {item.title}
                                 </span>
@@ -422,12 +467,12 @@ const MyChannelPage = () => {
                               <img
                                 src={item.squareThumbnail}
                                 alt="img"
-                                className="object-cover w-full h-full rounded"
+                                className="object-cover min-w-[80px] min-h-[80px] max-w-[80px] max-h-[80px] rounded"
                               />
                             </div>
 
                             <div className="h-full rounded-xl px-3 py-3 flex items-center">
-                              <div className="w-auto overflow-hidden ">
+                              <div className="max-w-[250px] overflow-hidden ">
                                 <span className="w-full text-lg font-semibold line-clamp-1">
                                   {item.title}
                                 </span>
@@ -470,7 +515,9 @@ const MyChannelPage = () => {
                         </div>
                         <div className="px-2 mr-auto">
                           <div className="w-full">
-                            <span className="font-semibold">{Account?.name}</span>
+                            <span className="font-semibold">
+                              {Account?.name}
+                            </span>
                           </div>
                           <div className="w-full">
                             <span className="text-gray-400">
@@ -608,9 +655,73 @@ const MyChannelPage = () => {
                                   </span>
                                 </div>
                               </div>
-                              <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
-                                <MoreVertIcon />
-                              </button>
+                              <div className="z-10 w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto flex items-center justify-center">
+                                <button
+                                  ref={(el) => (anchorRefs.current[item.idpost] = el)}  // Gán ref cho từng idpost
+                                  id={`composition-button-${item.idpost}`}
+                                  aria-controls={openMenus[item.idpost] ? 'composition-menu' : undefined}
+                                  aria-expanded={openMenus[item.idpost] ? 'true' : undefined}
+                                  aria-haspopup="true"
+                                  onClick={() => handleToggle(item.idpost)}  // Toggle theo idpost
+                                >
+                                  <MoreVertIcon />
+                                </button>
+
+                                {/* Chọn menu */}
+                                <Popper
+                                  className="w-[150px] rounded-lg flex items-center justify-center"
+                                  open={openMenus[item.idpost] || false}
+                                  anchorEl={anchorRefs.current[item.idpost]}
+                                  role={undefined}
+                                  placement="bottom-start"
+                                  transition
+                                  disablePortal
+                                >
+                                  {({ TransitionProps, placement }) => (
+                                    <Grow
+                                      {...TransitionProps}
+                                      style={{
+                                        transformOrigin:
+                                          placement === 'bottom-start' ? 'left top' : 'left bottom',
+                                      }}
+                                    >
+                                      <Paper>
+                                        <ClickAwayListener onClickAway={(event) => handleClose(event, item.idpost)}>
+                                          <MenuList
+                                            autoFocusItem={openMenus[item.idpost] || false}
+                                            id={`composition-menu-${item.idpost}`}
+                                            aria-labelledby={`composition-button-${item.idpost}`}
+                                            onKeyDown={(event) => handleListKeyDown(event, item.idpost)} // KeyDown xử lý theo idpost
+                                          >
+                                            <Link to={`/originals`}>
+                                              <MenuItem onClick={handleClose}>
+
+                                                {!language ?
+                                                  <span> Originals </span>
+                                                  :
+                                                  <span> 오리지널 </span>
+                                                }
+                                              </MenuItem>
+                                            </Link>
+
+                                            <Link to={`/videos`}>
+                                              <MenuItem onClick={handleClose}>
+
+                                                {!language ?
+                                                  <span> Videos </span>
+                                                  :
+                                                  <span> 비디오 </span>
+                                                }
+                                              </MenuItem>
+                                            </Link>
+                                          </MenuList>
+                                        </ClickAwayListener>
+                                      </Paper>
+                                    </Grow>
+                                  )}
+                                </Popper>
+
+                              </div>
                             </div>
                           </div>
 
@@ -703,16 +814,9 @@ const MyChannelPage = () => {
           </div >
         </div >
       ) : (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: 5,
-          }}
-        >
+        <div className="w-full h-[370px] flex items-center justify-center">
           <CircularProgress />
-        </Box>
+        </div>
       )}
     </>
   );

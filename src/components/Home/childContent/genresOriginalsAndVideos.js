@@ -21,7 +21,7 @@ const GenresOriginalsAndVideosPage = () => {
     const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
 
     return (
-        <div className="w-full min-h-[560px]">
+        <div className="w-full min-h-[680px]">
 
             {/* Hiển thị tiêu đề */}
             <div className="w-full h-[60px]">
@@ -44,14 +44,14 @@ const GenresOriginalsAndVideosPage = () => {
             </div>
 
             {/* Hiển thị nội dung thể loại */}
-            <div className="w-full min-h-[600px] py-[30px] xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
+            <div className="w-full min-h-[620px] py-[30px] xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
                 <div className="grid grid-cols-1 gap-y-[30px]">
 
                     {/* khung nội dung dành cho truyện */}
                     <div className="w-full h-full">
 
-                        <div className="w-full h-[95px] mb-[30px] overflow-x-auto">
-                            <ul className="grid grid-rows-2 grid-flow-col gap-2 w-max">
+                        <div className="w-full h-[95px] mb-5 flex items-center justify-center">
+                            <ul className="grid grid-rows-2 grid-flow-col gap-2 w-max overflow-x-auto scroll-snap-x scroll-snap-mandatory">
                                 {dataListGenre?.map((genre, index) => (
                                     <li
                                         key={genre.id}
@@ -68,7 +68,7 @@ const GenresOriginalsAndVideosPage = () => {
                         </div>
                         
                         <div className="w-full flex items-center justify-center">
-                            <ul className=" grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-5 gap-4">
+                            <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4">
                                 {/* khung nội dung */}
                                 {filteredOriginalsByGenre?.slice(0, 10)?.map((item) => (
                                     <Link

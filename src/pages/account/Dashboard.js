@@ -9,7 +9,7 @@ import VideoFireBase from "../../common/services/Video.services";
 import comicFireBase from "../../common/services/Comic.services";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
+
 import {
   setcurrentStepOriginal,
   setcurrentStepVideo,
@@ -54,7 +54,7 @@ const Dashboard = () => {
         setvideos(videos.success ? videos.Video : []);
         setcomics(comics.success ? comics.comic : []);
         setloading(true);
-      } catch (error) {}
+      } catch (error) { }
     };
     get();
   }, [Account]);
@@ -76,7 +76,7 @@ const Dashboard = () => {
         setcomics(comics.success ? comics.comic : []);
         setloading(true);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   const handledeleteVideo = async (id) => {
     try {
@@ -97,22 +97,15 @@ const Dashboard = () => {
 
         setloading(true);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
 
   return (
     <>
       {!loading ? (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: 5,
-          }}
-        >
+        <div className="w-full h-[370px] flex items-center justify-center">
           <CircularProgress />
-        </Box>
+        </div>
       ) : (
         <div>
           <Nav />
@@ -216,7 +209,7 @@ const Dashboard = () => {
                                   <span className="text-gray-500 text-sm flex gap-2">
                                     Published
                                     {
-                                      " "+
+                                      " " +
                                       monthNames[
                                         new Date(item.createTime).getMonth()
                                       ].en
@@ -228,7 +221,7 @@ const Dashboard = () => {
                                   <span className="text-gray-500 text-sm flex gap-2">
                                     발행됨
                                     {
-                                      " "+
+                                      " " +
                                       monthNames[
                                         new Date(item.createTime).getMonth()
                                       ].kr
@@ -384,10 +377,10 @@ const Dashboard = () => {
                           <div className="w-full mt-2">
                             {item.totalChapters > 0 ? (
                               <div className="flex gap-5">
-                                 {!language ? (
+                                {!language ? (
                                   <span className="text-gray-500 text-sm flex gap-2">
-                                    Published 
-                                    {" "+
+                                    Published
+                                    {" " +
                                       monthNames[
                                         new Date(item.createTime).getMonth()
                                       ].en
@@ -399,7 +392,7 @@ const Dashboard = () => {
                                   <span className="text-gray-500 text-sm flex gap-2">
                                     발행됨
                                     {
-                                      " "+
+                                      " " +
                                       monthNames[
                                         new Date(item.createTime).getMonth()
                                       ].kr
@@ -408,7 +401,7 @@ const Dashboard = () => {
                                     {new Date(item.createTime)?.getFullYear()}년
                                   </span>
                                 )}
-                               
+
                                 <span className="text-gray-500 text-sm">
                                   {!language ? " Episodes" : "에피소드"}
                                   {item.totalChapters}

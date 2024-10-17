@@ -694,14 +694,14 @@ const DisplayOriginalPage = () => {
                     <button className="ml-auto text-white">
                       {!isMusic ? (
                         <button
-                          className="w-[30px] h-[30px] rounded-full bg-gray-800 flex items-center justify-center"
+                          className="w-[35px] h-[35px] rounded-full bg-gray-800 flex items-center justify-center"
                           onClick={() => setIsMusic(true)}
                         >
                           <MusicNoteIcon />
                         </button>
                       ) : (
                         <button
-                          className="w-[30px] h-[30px] rounded-full bg-gray-800 flex items-center justify-center"
+                          className="w-[35px] h-[35px] rounded-full bg-gray-800 flex items-center justify-center"
                           onClick={() => setIsMusic(false)}
                         >
                           <MusicOffIcon />

@@ -48,9 +48,9 @@ const FooterPage = () => {
 
                 {/* Thông tin điều khoản chính sách */}
                 <div className="flex justify-center mt-10">
-                    <ul className="grid xs:grid-cols-4 sm:grid-cols-5 gap-x-5 gap-y-3 mt-auto">
+                    <ul className="grid xs:grid-cols-3 sm:grid-cols-5 gap-y-3 mt-auto">
                         <Link to={`#`}>
-                            <li className="h-full hover:text-yellow-500 flex items-center justify-center">
+                            <li className="h-full px-3 border-l border-r hover:text-yellow-500 flex items-center justify-center">
                                 {!language ? (
                                     <span>About</span>
 
@@ -62,7 +62,7 @@ const FooterPage = () => {
                         </Link>
 
                         <Link to={`#`}>
-                            <li className="h-full hover:text-yellow-500 flex items-center justify-center">
+                            <li className="h-full px-3 border-l border-r hover:text-yellow-500 flex items-center justify-center">
                                 {!language ? (
                                     <span>Terms</span>
 
@@ -73,18 +73,18 @@ const FooterPage = () => {
                         </Link>
 
                         <Link to={`#`}>
-                            <li className="h-full hover:text-yellow-500 flex items-center justify-center">
+                            <li className="h-full px-3 border-l border-r hover:text-yellow-500 flex items-center justify-center">
                                 {!language ? (
                                     <span>Privacy</span>
 
                                 ) : (
-                                    <span>개인정보 보호</span>
+                                    <span>사생활</span>
                                 )}
                             </li>
                         </Link>
 
                         <Link to={`#`}>
-                            <li className="h-full hover:text-yellow-500 flex items-center justify-center">
+                            <li className="h-full px-3 border-l border-r hover:text-yellow-500 flex items-center justify-center">
                                 {!language ? (
                                     <span>Advertise</span>
 
@@ -95,7 +95,7 @@ const FooterPage = () => {
                         </Link>
 
                         <Link to={`#`}>
-                            <li className="h-full hover:text-yellow-500 flex items-center justify-center">
+                            <li className="h-full px-3 border-l border-r hover:text-yellow-500 flex items-center justify-center">
                                 {!language ? (
                                     <span>Contact</span>
 
