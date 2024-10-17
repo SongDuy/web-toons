@@ -98,7 +98,7 @@ const Account = () => {
             </h1>
           </div>
 
-          <div className="w-full h-[150px] flex items-center bg-white border border-white xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
+          <div className="w-full min-h-[150px] flex items-center bg-white border border-white xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
             <div className="w-[80px] h-[80px] bg-gray-200 flex justify-center items-center rounded-full">
               {auth?.currentUser?.providerData[0].providerId ?
                 <GoogleIcon sx={{ fontSize: 60 }} /> : ""}
@@ -131,7 +131,7 @@ const Account = () => {
             </h1>
           </div>
 
-          <div className="w-full h-[150px] flex items-center justify-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
+          <div className="w-full min-h-[150px] flex items-center justify-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
             {openDate ? (
               <div className="w-full flex items-center justify-center">
 
@@ -205,7 +205,7 @@ const Account = () => {
 
           </div>
 
-          <div className="w-full h-[150px] flex items-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
+          <div className="w-full min-h-[150px] flex items-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
             {openName ? (
               <div className="w-full">
                 <div className="w-full grid grid-cols-12 mb-3">
@@ -286,7 +286,7 @@ const Account = () => {
             </h1>
           </div>
 
-          <div className="w-full h-[150px] flex items-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
+          <div className="w-full min-h-[150px] flex items-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
 
             {openEmail ?
               <div className="w-full">
@@ -327,7 +327,7 @@ const Account = () => {
                 <div className="w-full grid grid-cols-12">
 
                   <div className="w-full h-[40px] col-span-9 px-2 flex items-center border">
-                    <p className="font-semibold text-lg text-black">
+                    <p className="font-semibold text-lg text-black truncate">
                       {email}
                     </p>
                   </div>
