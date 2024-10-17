@@ -4,6 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import Avatar from "@mui/material/Avatar";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
@@ -195,6 +201,52 @@ const MyChannelPage = () => {
       console.log(error);
     }
   };
+
+  // Mở modal menu để chọn Điều hướng đến trang truyện và videos
+  const [openMenus, setOpenMenus] = React.useState({});
+  const anchorRefs = React.useRef({});  // Sử dụng object để lưu trữ ref cho từng idpost
+
+  // Chuyển đổi trạng thái mở/đóng cho từng menu dựa trên idpost
+  const handleToggle = (idpost) => {
+    setOpenMenus((prev) => ({
+      ...prev,
+      [idpost]: !prev[idpost],
+    }));
+  };
+
+  // Đóng menu cho idpost cụ thể
+  const handleClose = (event, idpost) => {
+    if (anchorRefs.current[idpost] && anchorRefs.current[idpost].contains(event.target)) {
+      return;
+    }
+    setOpenMenus((prev) => ({
+      ...prev,
+      [idpost]: false,
+    }));
+  };
+
+  // Xử lý khi nhấn phím Tab hoặc Escape để đóng menu
+  const handleListKeyDown = (event, idpost) => {
+    if (event.key === 'Tab' || event.key === 'Escape') {
+      event.preventDefault();
+      setOpenMenus((prev) => ({
+        ...prev,
+        [idpost]: false,
+      }));
+    }
+  };
+
+  const prevOpen = React.useRef({});
+
+  // Khi menu đóng, focus lại vào nút đã mở menu
+  React.useEffect(() => {
+    Object.keys(openMenus).forEach((idpost) => {
+      if (prevOpen.current[idpost] && !openMenus[idpost]) {
+        anchorRefs.current[idpost]?.focus();
+      }
+      prevOpen.current[idpost] = openMenus[idpost];
+    });
+  }, [openMenus]);
 
   return (
     <>
@@ -463,7 +515,9 @@ const MyChannelPage = () => {
                         </div>
                         <div className="px-2 mr-auto">
                           <div className="w-full">
-                            <span className="font-semibold">{Account?.name}</span>
+                            <span className="font-semibold">
+                              {Account?.name}
+                            </span>
                           </div>
                           <div className="w-full">
                             <span className="text-gray-400">
@@ -601,9 +655,73 @@ const MyChannelPage = () => {
                                   </span>
                                 </div>
                               </div>
-                              <button className="w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto">
-                                <MoreVertIcon />
-                              </button>
+                              <div className="z-10 w-[35px] h-[35px] bg-gray-100 hover:bg-gray-200 rounded-full ml-auto flex items-center justify-center">
+                                <button
+                                  ref={(el) => (anchorRefs.current[item.idpost] = el)}  // Gán ref cho từng idpost
+                                  id={`composition-button-${item.idpost}`}
+                                  aria-controls={openMenus[item.idpost] ? 'composition-menu' : undefined}
+                                  aria-expanded={openMenus[item.idpost] ? 'true' : undefined}
+                                  aria-haspopup="true"
+                                  onClick={() => handleToggle(item.idpost)}  // Toggle theo idpost
+                                >
+                                  <MoreVertIcon />
+                                </button>
+
+                                {/* Chọn menu */}
+                                <Popper
+                                  className="w-[150px] rounded-lg flex items-center justify-center"
+                                  open={openMenus[item.idpost] || false}
+                                  anchorEl={anchorRefs.current[item.idpost]}
+                                  role={undefined}
+                                  placement="bottom-start"
+                                  transition
+                                  disablePortal
+                                >
+                                  {({ TransitionProps, placement }) => (
+                                    <Grow
+                                      {...TransitionProps}
+                                      style={{
+                                        transformOrigin:
+                                          placement === 'bottom-start' ? 'left top' : 'left bottom',
+                                      }}
+                                    >
+                                      <Paper>
+                                        <ClickAwayListener onClickAway={(event) => handleClose(event, item.idpost)}>
+                                          <MenuList
+                                            autoFocusItem={openMenus[item.idpost] || false}
+                                            id={`composition-menu-${item.idpost}`}
+                                            aria-labelledby={`composition-button-${item.idpost}`}
+                                            onKeyDown={(event) => handleListKeyDown(event, item.idpost)} // KeyDown xử lý theo idpost
+                                          >
+                                            <Link to={`/originals`}>
+                                              <MenuItem onClick={handleClose}>
+
+                                                {!language ?
+                                                  <span> Originals </span>
+                                                  :
+                                                  <span> 오리지널 </span>
+                                                }
+                                              </MenuItem>
+                                            </Link>
+
+                                            <Link to={`/videos`}>
+                                              <MenuItem onClick={handleClose}>
+
+                                                {!language ?
+                                                  <span> Videos </span>
+                                                  :
+                                                  <span> 비디오 </span>
+                                                }
+                                              </MenuItem>
+                                            </Link>
+                                          </MenuList>
+                                        </ClickAwayListener>
+                                      </Paper>
+                                    </Grow>
+                                  )}
+                                </Popper>
+
+                              </div>
                             </div>
                           </div>
 
