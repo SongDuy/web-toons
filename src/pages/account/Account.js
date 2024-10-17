@@ -281,7 +281,6 @@ const Account = () => {
         {/* Phần email */}
         <div className="py-[30px] w-full flex-row justify-center items-center">
           <div className="mb-5">
-
             <h1 className="font-semibold text-2xl text-black">
               {!language ?
                 "Email"
@@ -291,11 +290,10 @@ const Account = () => {
             </h1>
           </div>
 
-          <div className="w-full h-full flex-row justify-center items-center  bg-white border border-white">
+          <div className="w-full h-[150px] flex items-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
 
-            <div className="w-full h-full bg-white border border-white">
-
-              {openEmail ?
+            {openEmail ?
+              <div className="">
                 <div className="flex my-5">
                   <div className="flex-row my-8">
                     <div>
@@ -305,45 +303,38 @@ const Account = () => {
                         onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
-                    <div className="my-2">
-                      <span className="font-semibold text-base text-gray-400 ">
-                        {!language ?
-                          " Enter your email address for new updates and latest news."
-                          :
-                          "최신 업데이트 및 뉴스 수신을 위한 이메일 주소 입력하세요."
-                        }
-                      </span>
 
-                    </div>
+                    <button
+                      onClick={handleEmail}
+                      className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200 h-[35px] text-gray-400"
+                    >
+                      {!language ?
+                        "Verify"
+                        :
+                        "확인"
+                      }
+                    </button>
                   </div>
+                </div>
 
-                  <button
-                    onClick={handleEmail}
-                    className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200 h-[35px] text-gray-400"
-                  >
+                <div className="my-2">
+                  <p className="font-semibold text-base text-gray-400 ">
                     {!language ?
-                      "Verify"
+                      " Enter your email address for new updates and latest news."
                       :
-                      "확인"
+                      "최신 업데이트 및 뉴스 수신을 위한 이메일 주소 입력하세요."
                     }
-                  </button>
+                  </p>
+                </div>
+              </div>
+              :
+              <div className="">
+                <div className="w-full grid grid-cols-12 border">
 
-                </div> :
-                <div className="grid grid-cols-8 gap-4 my-5 border-b border-gray-300">
-                  <div className="my-2 col-span-7">
+                  <div className="">
                     <p className="font-semibold  text-lg text-black">
                       {email}
                     </p>
-
-                    <span className="font-semibold text-base text-gray-400 ">
-                      {!language ?
-                        "Enter your email address for new updates and latest news."
-                        :
-                        "새로운 업데이트 및 최신 소식을 받기 위해 이메일 주소를 입력하세요."
-                      }
-
-                    </span>
-
                   </div>
 
                   <button
@@ -356,11 +347,21 @@ const Account = () => {
                       "편집"
                     }
                   </button>
-
                 </div>
-              }
 
-              {/* <div className="  ml-5 my-5 border-b border-gray-300 ">
+                <div>
+                  <p className="font-semibold text-base text-gray-400 ">
+                    {!language ?
+                      "Enter your email address for new updates and latest news."
+                      :
+                      "새로운 업데이트 및 최신 소식을 받기 위해 이메일 주소를 입력하세요."
+                    }
+                  </p>
+                </div>
+              </div>
+            }
+
+            {/* <div className="  ml-5 my-5 border-b border-gray-300 ">
                 <div className="grid grid-cols-8 gap-4  ml-5 my-5">
                   <div className="my-2 col-span-7">
                     <p className="font-semibold  text-lg text-gray-700">
@@ -449,7 +450,7 @@ const Account = () => {
                   </div>
                 </div>
               </div> */}
-              {/* <div className=" ml-5 my-5">
+            {/* <div className=" ml-5 my-5">
                 <div className="grid grid-cols-8 gap-4  ml-5 my-5  ">
                   <div className="my-2 col-span-7">
                     <p className="font-semibold  text-lg text-gray-700">
@@ -480,10 +481,7 @@ const Account = () => {
                   </div>
                 </div>
               </div> */}
-            </div>
           </div>
-
-
         </div>
 
         {/* Phần xóa tài khoản */}
