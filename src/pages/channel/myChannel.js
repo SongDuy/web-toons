@@ -326,13 +326,13 @@ const handleDelete=async (id)=>{
 
                     {/* Nút thay ảnh Avatar */}
                     <div className="absolute bottom-0 right-0 ">
-                      <button className="w-[40px] h-[40px] relative    border-2 rounded-full shadow bg-white hover:bg-gray-100 flex items-center justify-center">
+                      <button className="w-[40px] h-[40px] relative  border-2 rounded-full shadow bg-white hover:bg-gray-100 flex items-center justify-center">
                         <PhotoCameraIcon />
                         <input
                           type="file"
                           accept="image/*"
                           onChange={(e) => handleimageChange(e)}
-                          className="absolute inset-0 opacity-0  cursor-pointer "
+                          className="absolute inset-0 opacity-0 cursor-pointer "
                         />
                       </button>
                     </div>
@@ -354,7 +354,7 @@ const handleDelete=async (id)=>{
                           type="file"
                           accept="image/*"
                           onChange={(e) => handleimageChange(e)}
-                          className="absolute inset-0 opacity-0  cursor-pointer "
+                          className="absolute inset-0 opacity-0 cursor-pointer "
                         />
                       </button>
                     </div>
