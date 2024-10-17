@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import FollowFireBase from "../../common/services/Follow.services";
 import userFireBase from "../../common/services/User.services";
 import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
 import CheckIcon from "@mui/icons-material/Check";
 
 const Creators = () => {
@@ -20,7 +19,7 @@ const Creators = () => {
     const get = async () => {
       try {
         setloading(false);
-        if(Account?.uid){
+        if (Account?.uid) {
           const Follow = await FollowFireBase.getbyid(Account?.uid);
           if (Follow.success) {
             const Follows = await Promise.all(
@@ -39,7 +38,7 @@ const Creators = () => {
             setCreators([]);
           }
         }
-      
+
         setloading(true);
       } catch (error) {
       }
@@ -62,7 +61,7 @@ const Creators = () => {
               await FollowFireBase.Delete(item);
             }
           } catch (error) {
-           }
+          }
         })
       );
       setreplay(true);
@@ -193,7 +192,7 @@ const Creators = () => {
                             <img
                               src={item.image
                                 ? item?.image
-                                :"https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"}
+                                : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"}
                               alt=""
                               className="object-contain "
                             />
@@ -210,7 +209,7 @@ const Creators = () => {
                               }
                             </p>
 
-                            <span  className="absolute top-[65%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
+                            <span className="absolute top-[65%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
                               <CheckIcon
                                 sx={
                                   checkFollow?.includes(item.id)
@@ -234,7 +233,7 @@ const Creators = () => {
                             <img
                               src={item.image
                                 ? item?.image
-                                :"https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"}
+                                : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"}
                               alt=""
                               className="object-contain h-[50] "
                             />
@@ -263,16 +262,9 @@ const Creators = () => {
           )}
         </div>
       ) : (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: 5,
-          }}
-        >
+        <div className="w-full h-[370px] flex items-center justify-center">
           <CircularProgress />
-        </Box>
+        </div>
       )}
     </div>
   );

@@ -10,7 +10,6 @@ import comicFireBase from "../../common/services/Comic.services";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { getAllComic } from "../../common/store/comic";
 import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
 import VideoFireBase from "../../common/services/Video.services";
 
 const Subscribed = () => {
@@ -342,16 +341,9 @@ const Subscribed = () => {
           </div>
         </div>
       ) : (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: 5,
-          }}
-        >
+        <div className="w-full h-[370px] flex items-center justify-center">
           <CircularProgress />
-        </Box>
+        </div>
       )}
     </>
   );
