@@ -123,7 +123,6 @@ const Account = () => {
           <div className="mb-5">
 
             <h1 className="font-semibold text-2xl text-black">
-
               {!language ?
                 "Birthday"
                 :
@@ -132,25 +131,25 @@ const Account = () => {
             </h1>
           </div>
 
-          <div className="w-full h-[150px] flex items-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
+          <div className="w-full h-[150px] flex items-center justify-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
             {openDate ? (
-              <div className="w-full grid grid-cols-12 border">
-                <div className="w-full col-span-9 px-2">
-                  <DatePicker
-                    selected={selectedDate}
-                    onChange={(date) => setSelectedDate(date)}
-                    dateFormat="dd/MM/yyyy"  // Định dạng ngày
-                    className="min-w-max h-[40px] font-semibold rounded"  // Sử dụng Tailwind CSS để style
-                    placeholderText="Select Date"
-                    showYearDropdown  // Hiển thị danh sách năm
-                    showMonthDropdown  // Hiển thị danh sách tháng
-                    dropdownMode="select"  // Chuyển dropdown sang chế độ select để dễ chọn
-                  />
-                </div>
+              <div className="w-full flex items-center justify-center">
+
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={(date) => setSelectedDate(date)}
+                  dateFormat="dd/MM/yyyy"  // Định dạng ngày
+                  className="w-full h-[40px] px-2 border rounded shadow "  // Sử dụng Tailwind CSS để style
+                  placeholderText={!language ? "Select date of birth" : "생년월일 선택"}
+                  //placeholderText="Select Date"
+                  showYearDropdown  // Hiển thị danh sách năm
+                  showMonthDropdown  // Hiển thị danh sách tháng
+                  dropdownMode="select"  // Chuyển dropdown sang chế độ select để dễ chọn
+                />
 
                 <button
                   onClick={handleBirthday}
-                  className="w-full h-[40px] col-span-3 font-semibold bg-green-500 text-white"
+                  className="w-[150px] h-[40px] font-semibold bg-green-500 text-white"
                 >
                   {!language ?
                     "Add"
@@ -207,7 +206,6 @@ const Account = () => {
 
           </div>
 
-
           <div className="w-full h-[150px] flex items-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
             {openName ? (
               <div>
@@ -215,7 +213,7 @@ const Account = () => {
                   <div className="w-full h-[40px] col-span-9 px-2 flex items-center border">
                     <input
                       value={name}
-                      className={` outline-none text-lg ${isValid && "text-red-500"}`}
+                      className={`w-full outline-none text-lg ${isValid && "text-red-500"}`}
                       onChange={(e) => setName(e.target.value)}
                     />
 
@@ -272,7 +270,6 @@ const Account = () => {
                     "편집"
                   }
                 </button>
-
               </div>
             )}
           </div>
@@ -293,32 +290,31 @@ const Account = () => {
           <div className="w-full h-[150px] flex items-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
 
             {openEmail ?
-              <div className="">
-                <div className="flex my-5">
-                  <div className="flex-row my-8">
-                    <div>
-                      <input
-                        value={email}
-                        className=" outline-none text-lg"
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </div>
+              <div className="w-full">
 
-                    <button
-                      onClick={handleEmail}
-                      className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200 h-[35px] text-gray-400"
-                    >
-                      {!language ?
-                        "Verify"
-                        :
-                        "확인"
-                      }
-                    </button>
+                <div className="w-full grid grid-cols-12">
+                  <div className="w-full h-[40px] col-span-9 px-2 flex items-center border">
+                    <input
+                      value={email}
+                      className="w-full outline-none text-lg"
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </div>
+
+                  <button
+                    onClick={handleEmail}
+                    className="w-full h-[40px] col-span-3 font-semibold bg-green-500 text-white"
+                  >
+                    {!language ?
+                      "Verify"
+                      :
+                      "확인"
+                    }
+                  </button>
                 </div>
 
-                <div className="my-2">
-                  <p className="font-semibold text-base text-gray-400 ">
+                <div>
+                  <p className="font-semibold px-2 mt-3 text-base text-gray-400 ">
                     {!language ?
                       " Enter your email address for new updates and latest news."
                       :
@@ -328,18 +324,18 @@ const Account = () => {
                 </div>
               </div>
               :
-              <div className="">
-                <div className="w-full grid grid-cols-12 border">
+              <div className="w-full">
+                <div className="w-full grid grid-cols-12">
 
-                  <div className="">
-                    <p className="font-semibold  text-lg text-black">
+                  <div className="w-full h-[40px] col-span-9 px-2 flex items-center border">
+                    <p className="font-semibold text-lg text-black">
                       {email}
                     </p>
                   </div>
 
                   <button
                     onClick={() => setopenEmail(!openEmail)}
-                    className="font-semibold bg-gray-200 w-[90px] h-[35px] text-base text-gray-400"
+                    className="w-full h-[40px] col-span-3 font-semibold bg-black text-white"
                   >
                     {!language ?
                       "Edit"
@@ -350,7 +346,7 @@ const Account = () => {
                 </div>
 
                 <div>
-                  <p className="font-semibold text-base text-gray-400 ">
+                  <p className="font-semibold px-2 mt-3 text-base text-gray-400 ">
                     {!language ?
                       "Enter your email address for new updates and latest news."
                       :
