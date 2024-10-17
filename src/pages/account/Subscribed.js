@@ -150,7 +150,7 @@ const Subscribed = () => {
             />
           ) : (
             <div className="w-full h-full xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100">
-              
+
               {/* phần truyện series theo dõi */}
               <div className="py-[10px] flex-row justify-center items-center container mx-auto my-auto">
 
@@ -343,9 +343,9 @@ const Subscribed = () => {
 
                   <h1 className="flex items-center justify-center font-semibold text-lg text-black">
                     {!language ?
-                      "ORIGINALS"
+                      "VIDEOS"
                       :
-                      "오리지널"
+                      "비디오"
                     }
                   </h1>
 
