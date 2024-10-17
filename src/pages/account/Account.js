@@ -84,7 +84,7 @@ const Account = () => {
   return (
     <div>
       <Nav />
-      <div className="w-full h-full xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100">
+      <div className="w-full h-full xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100 pb-10">
 
         {/* Tài khoản đăng nhập */}
         <div className="py-[30px] w-full flex-row justify-center items-center">
@@ -141,7 +141,6 @@ const Account = () => {
                   dateFormat="dd/MM/yyyy"  // Định dạng ngày
                   className="w-full h-[40px] px-2 border rounded shadow "  // Sử dụng Tailwind CSS để style
                   placeholderText={!language ? "Select date of birth" : "생년월일 선택"}
-                  //placeholderText="Select Date"
                   showYearDropdown  // Hiển thị danh sách năm
                   showMonthDropdown  // Hiển thị danh sách tháng
                   dropdownMode="select"  // Chuyển dropdown sang chế độ select để dễ chọn
@@ -208,12 +207,12 @@ const Account = () => {
 
           <div className="w-full h-[150px] flex items-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
             {openName ? (
-              <div>
-                <div className="w-full grid grid-cols-12">
+              <div className="w-full">
+                <div className="w-full grid grid-cols-12 mb-3">
                   <div className="w-full h-[40px] col-span-9 px-2 flex items-center border">
                     <input
                       value={name}
-                      className={`w-full outline-none text-lg ${isValid && "text-red-500"}`}
+                      className={`w-full outline-none font-semibold text-lg ${isValid && "text-red-500"}`}
                       onChange={(e) => setName(e.target.value)}
                     />
 
@@ -242,7 +241,7 @@ const Account = () => {
                   </button>
                 </div>
 
-                <div className="w-full mt-3 px-2 flex items-center">
+                <div className="w-full px-2 flex items-center">
                   <p className=" text-sm text-gray-400">
                     {!language ?
                       "Create your nickname. - You may enter a maximum of 20 characters containing alphabets, numbers, and symbols."
@@ -253,7 +252,7 @@ const Account = () => {
                 </div>
               </div>
             ) : (
-              <div className="w-full grid grid-cols-12 border">
+              <div className="w-full grid grid-cols-12 border mb-8">
                 <div className="w-full col-span-9 px-2 flex items-center">
                   <p className="font-semibold text-lg text-black">
                     {name}
