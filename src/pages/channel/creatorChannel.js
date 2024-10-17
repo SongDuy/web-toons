@@ -176,7 +176,7 @@ const CreatorChannelPage = () => {
                             <div className="w-full border bg-white rounded-b-lg sm:h-[180px] sm:flex xs:px-[10px] sm:px-[30px]">
                                 <div className="flex">
                                     {/* Avatar Container */}
-                                    <div className="sm:w-[185px] sm:h-[185px] xs:w-[150px] xs:h-full rounded-full border-4 mt-[-30px] flex items-center justify-center overflow-hidden">
+                                    <div className="sm:min-w-[185px] sm:min-h-[185px] sm:max-w-[185px] sm:max-h-[185px] xs:min-w-[155px] xs:min-h-[155px] xs:max-w-[155px] xs:max-h-[155px] rounded-full border-4 mt-[-30px] flex items-center justify-center overflow-hidden aspect-square">
                                         <Avatar
                                             alt="Remy Sharp"
                                             src={create?.image}
