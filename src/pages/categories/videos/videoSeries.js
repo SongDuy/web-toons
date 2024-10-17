@@ -26,7 +26,6 @@ import { unwrapResult } from "@reduxjs/toolkit";
 import PaymentPage from "../../payment/index";
 import { useParams } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
 import { auth } from "../../../common/themes/firebase";
 import RateFireBase from "../../../common/services/Rate.services";
 import VideoFireBase from "../../../common/services/Video.services";
@@ -696,16 +695,9 @@ const VideoSeriesPage = () => {
           </div>
         </div>
       ) : (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: 5,
-          }}
-        >
-            <CircularProgress />
-        </Box>
+        <div className="w-full h-[370px] flex items-center justify-center">
+          <CircularProgress />
+        </div>
       )}
     </div>
   );
