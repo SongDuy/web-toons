@@ -129,15 +129,15 @@ const Account = () => {
           </div>
 
 
-          <div className="w-full h-[150px] flex items-center bg-white">
+          <div className="w-full h-[150px] flex items-center px-5 bg-white">
             {openDate ? (
-              <div className="flex items-center">
-                <div>
+              <div className="w-full grid grid-cols-12 border">
+                <div className="w-full col-span-10 px-2">
                   <DatePicker
                     selected={selectedDate}
                     onChange={(date) => setSelectedDate(date)}
                     dateFormat="dd/MM/yyyy"  // Định dạng ngày
-                    className="w-[350px] h-[50px] px-2 border rounded shadow "  // Sử dụng Tailwind CSS để style
+                    className="min-w-max h-[40px] font-semibold rounded"  // Sử dụng Tailwind CSS để style
                     placeholderText="Select Date"
                     showYearDropdown  // Hiển thị danh sách năm
                     showMonthDropdown  // Hiển thị danh sách tháng
@@ -147,7 +147,7 @@ const Account = () => {
 
                 <button
                   onClick={handleBirthday}
-                  className="w-[150px] h-[50px] font-semibold bg-black text-white"
+                  className="w-full h-[40px] col-span-2 font-semibold bg-green-500 text-white"
                 >
                   {!language ?
                     "Add"
@@ -157,8 +157,8 @@ const Account = () => {
                 </button>
               </div>
             ) : (
-              <div className="flex ml-5 my-5">
-                <div className="my-2 border">
+              <div className="w-full grid grid-cols-12 border">
+                <div className="w-full col-span-10 px-2 flex items-center">
                   {selectedDate ?
                     <p className="font-semibold text-lg text-black">
                       {new Date(selectedDate).getDate()}/{new Date(selectedDate).getMonth() + 1}/
@@ -177,7 +177,7 @@ const Account = () => {
 
                 <button
                   onClick={() => setopenDate(!openDate)}
-                  className="font-semibold bg-gray-200 w-[90px] h-[35px] text-base text-gray-400"
+                  className="w-full h-[40px] col-span-2 font-semibold bg-black text-white"
                 >
                   {!language ?
                     "Edit"
