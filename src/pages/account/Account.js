@@ -96,9 +96,10 @@ const Account = () => {
             </h1>
           </div>
 
-          <div className="w-full h-full flex bg-white border border-white p-5">
-            <div className="rounded-full  bg-gray-200 flex justify-center items-center p-2 w-[8%] ml-5">
-              {auth?.currentUser?.providerData[0].providerId ? <GoogleIcon sx={{ fontSize: 40 }} /> : ""}
+          <div className="w-full h-full flex items-center bg-white border border-white p-5 ">
+            <div className="w-[60px] h-[60px] bg-gray-200 flex justify-center items-center rounded-full">
+              {auth?.currentUser?.providerData[0].providerId ?
+                <GoogleIcon sx={{ fontSize: 40 }} /> : ""}
             </div>
             <div className="flex-row ml-5 my-5">
               <div>
@@ -129,13 +130,13 @@ const Account = () => {
           </div>
 
           {openDate ? (
-            <div className="w-full h-full flex   bg-white border border-white p-5">
+            <div className="w-full h-full flex bg-white border border-white">
               <div className=" flex justify-center items-center p-2 w-[10%]">
                 <span className="font-semibold  text-black"></span>
               </div>
 
-              <div className="flex  ml-5 my-5">
-                <div className="flex-row ml-5 my-8">
+              <div className="flex ml-5 my-5">
+                <div className="flex-row my-8">
                   <div>
                     <DatePicker
                       selected={selectedDate}
@@ -165,52 +166,40 @@ const Account = () => {
               </div>
             </div>
           ) : (
-            <div className="w-full h-full flex-row justify-center items-center  bg-white border border-white p-5">
-              <div className=" flex justify-center items-center p-2 w-[10%] ">
-                <span className="font-semibold  text-black"></span>
-              </div>
-              <div className="w-[80%] h-full mx-auto my-auto   bg-white border border-white p-2">
-                <div className=" flex justify-center items-center p-2 w-[10%]">
-                  <span className="font-semibold  text-black"></span>
+            <div className="w-full h-full flex-row justify-center items-center  bg-white border border-white">
+              <div className="grid grid-cols-2 gap-4 border-b border-gray-300">
+                <div className="my-2 border">
+                  {selectedDate ?
+                    <p className="font-semibold text-lg text-black">
+                      {new Date(selectedDate).getDate()}/{new Date(selectedDate).getMonth() + 1}/
+                      {new Date(selectedDate)?.getFullYear()}
+                    </p>
+                    :
+                    <p className="font-semibold text-lg text-black">
+                      {!language ?
+                        "Not Birthday"
+                        :
+                        "생일 아님"
+                      }
+                    </p>
+                  }
                 </div>
-                <div className="grid grid-cols-8 gap-4   ml-5 my-5 p-5 border-b border-gray-300">
-                  <div className="my-2 col-span-7">
-                    {selectedDate ?
-                      <p className="font-semibold  text-lg text-black">
-                        {new Date(selectedDate).getDate()}/{new Date(selectedDate).getMonth() + 1}/
-                        {new Date(selectedDate)?.getFullYear()}
-                      </p>
-                      :
 
-                      <p className="font-semibold  text-lg text-black">
-
-                        {!language ?
-                          "Not Birthday"
-                          :
-                          "생일 아님"
-                        }
-
-                      </p>
-                    }
-                  </div>
-
-                  <button
-                    onClick={() => setopenDate(!openDate)}
-                    className="font-semibold bg-gray-200 w-[90px] h-[35px]  text-base text-gray-400"
-                  >
-
-                    {!language ?
-                      "Edit"
-                      :
-                      "편집"
-                    }
-                  </button>
-
-                </div>
+                <button
+                  onClick={() => setopenDate(!openDate)}
+                  className="font-semibold bg-gray-200 w-[90px] h-[35px] text-base text-gray-400"
+                >
+                  {!language ?
+                    "Edit"
+                    :
+                    "편집"
+                  }
+                </button>
               </div>
             </div>
           )}
         </div>
+
         <div className="py-[30px] w-full flex-row justify-center items-center">
           <div className="mb-5">
 
@@ -225,15 +214,15 @@ const Account = () => {
           </div>
 
           {openName ? (
-            <div className="w-full h-full flex   bg-white border border-white p-5">
-              <div className=" flex justify-center items-center p-2 w-[10%]">
-                <h1 className="font-semibold  text-black">
+            <div className="w-full h-full flex bg-white border border-white">
+              <div className=" flex justify-center items-center">
+                <h1 className="font-semibold text-black">
 
                 </h1>
               </div>
 
-              <div className="flex  ml-5 my-5">
-                <div className="flex-row ml-5 my-8">
+              <div className="flex my-5">
+                <div className="flex-row my-8">
                   <div>
                     <input
                       value={name}
@@ -275,17 +264,17 @@ const Account = () => {
               </div>
             </div>
           ) : (
-            <div className="w-full h-full flex-row justify-center items-center  bg-white border border-white p-5">
-              <div className=" flex justify-center items-center p-2 w-[10%] ">
+            <div className="w-full h-full flex-row justify-center items-center  bg-white border border-white">
+              <div className=" flex justify-center items-center ">
                 <span className="font-semibold  text-black"></span>
               </div>
-              <div className="w-[80%] h-full mx-auto my-auto   bg-white border border-white p-2">
-                <div className=" flex justify-center items-center p-2 w-[10%]">
-                  <span className="font-semibold  text-black"></span>
+              <div className="w-full h-full bg-white border border-white">
+                <div className=" flex justify-center items-center">
+                  <span className="font-semibold text-black"></span>
                 </div>
-                <div className="grid grid-cols-8 gap-4   ml-5 my-5 p-5 border-b border-gray-300">
+                <div className="grid grid-cols-8 gap-4 my-5 border-b border-gray-300">
                   <div className="my-2 col-span-7">
-                    <p className="font-semibold  text-lg text-black">
+                    <p className="font-semibold text-lg text-black">
                       {name}
                     </p>
 
@@ -293,7 +282,7 @@ const Account = () => {
 
                   <button
                     onClick={() => setopenName(!openName)}
-                    className="font-semibold bg-gray-200 w-[90px] h-[35px]  text-base text-gray-400"
+                    className="font-semibold bg-gray-200 w-[90px] h-[35px] text-base text-gray-400"
                   >
                     {!language ?
                       "Edit"
@@ -307,6 +296,7 @@ const Account = () => {
             </div>
           )}
         </div>
+
         <div className="py-[30px] w-full flex-row justify-center items-center">
           <div className="mb-5">
 
@@ -319,18 +309,18 @@ const Account = () => {
             </h1>
           </div>
 
-          <div className="w-full h-full flex-row justify-center items-center  bg-white border border-white p-5">
-            <div className=" flex justify-center items-center p-2 w-[10%] ">
+          <div className="w-full h-full flex-row justify-center items-center  bg-white border border-white">
+            <div className="flex justify-center items-center">
               <span className="font-semibold  text-black"></span>
             </div>
 
-            <div className="w-[80%] h-full mx-auto my-auto   bg-white border border-white p-2">
-              <div className=" flex justify-center items-center p-2 w-[10%]">
-                <span className="font-semibold  text-black"></span>
+            <div className="w-full h-full bg-white border border-white">
+              <div className=" flex justify-center items-center">
+                <span className="font-semibold text-black"></span>
               </div>
               {openEmail ?
-                <div className="flex  ml-5 my-5">
-                  <div className="flex-row ml-5 my-8">
+                <div className="flex my-5">
+                  <div className="flex-row my-8">
                     <div>
                       <input
                         value={email}
@@ -352,7 +342,7 @@ const Account = () => {
 
                   <button
                     onClick={handleEmail}
-                    className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200   h-[35px]  text-gray-400"
+                    className="font-semibold sm:w-1/2 md:w-1/3 lg:w-1/6 my-8  bg-gray-200 h-[35px] text-gray-400"
                   >
                     {!language ?
                       "Verify"
@@ -362,7 +352,7 @@ const Account = () => {
                   </button>
 
                 </div> :
-                <div className="grid grid-cols-8 gap-4   ml-5 my-5 p-5 border-b border-gray-300">
+                <div className="grid grid-cols-8 gap-4 my-5 border-b border-gray-300">
                   <div className="my-2 col-span-7">
                     <p className="font-semibold  text-lg text-black">
                       {email}
@@ -381,7 +371,7 @@ const Account = () => {
 
                   <button
                     onClick={() => setopenEmail(!openEmail)}
-                    className="font-semibold bg-gray-200 w-[90px] h-[35px]  text-base text-gray-400"
+                    className="font-semibold bg-gray-200 w-[90px] h-[35px] text-base text-gray-400"
                   >
                     {!language ?
                       "Edit"
