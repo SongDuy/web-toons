@@ -102,7 +102,7 @@ const Creators = () => {
               titlepage={!language ? "Start following your favorite creators now." : "지금 좋아하는 창작자를 팔로우하세요."}
             />
           ) : (
-            <div className="w-full h-full bg-gray-100">
+            <div className="w-full h-full bg-gray-100 xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
               <div className="w-full h-full bg-gray-100">
                 <div className="py-[10px] flex-row justify-center items-center container mx-auto my-auto">
                   <div className="  m-2 flex justify-between ">
