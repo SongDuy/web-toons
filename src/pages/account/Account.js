@@ -85,6 +85,8 @@ const Account = () => {
     <div>
       <Nav />
       <div className="w-full h-full xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100">
+
+        {/* Tài khoản đăng nhập */}
         <div className="py-[30px] w-full flex-row justify-center items-center">
           <div className="mb-5">
             <h1 className="font-semibold text-2xl text-black">
@@ -96,10 +98,10 @@ const Account = () => {
             </h1>
           </div>
 
-          <div className="w-full h-full flex items-center bg-white border border-white p-5 ">
-            <div className="w-[60px] h-[60px] bg-gray-200 flex justify-center items-center rounded-full">
+          <div className="w-full h-[150px] flex items-center bg-white border border-white xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px]">
+            <div className="w-[80px] h-[80px] bg-gray-200 flex justify-center items-center rounded-full">
               {auth?.currentUser?.providerData[0].providerId ?
-                <GoogleIcon sx={{ fontSize: 40 }} /> : ""}
+                <GoogleIcon sx={{ fontSize: 60 }} /> : ""}
             </div>
             <div className="flex-row ml-5 my-5">
               <div>
@@ -115,6 +117,8 @@ const Account = () => {
             </div>
           </div>
         </div>
+
+        {/* Ngày sinh */}
         <div className="py-[30px] w-full flex-row justify-center items-center">
           <div className="mb-5">
 
@@ -128,11 +132,10 @@ const Account = () => {
             </h1>
           </div>
 
-
-          <div className="w-full h-[150px] flex items-center px-5 bg-white">
+          <div className="w-full h-[150px] flex items-center xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-white">
             {openDate ? (
               <div className="w-full grid grid-cols-12 border">
-                <div className="w-full col-span-10 px-2">
+                <div className="w-full col-span-9 px-2">
                   <DatePicker
                     selected={selectedDate}
                     onChange={(date) => setSelectedDate(date)}
@@ -147,7 +150,7 @@ const Account = () => {
 
                 <button
                   onClick={handleBirthday}
-                  className="w-full h-[40px] col-span-2 font-semibold bg-green-500 text-white"
+                  className="w-full h-[40px] col-span-3 font-semibold bg-green-500 text-white"
                 >
                   {!language ?
                     "Add"
@@ -158,7 +161,7 @@ const Account = () => {
               </div>
             ) : (
               <div className="w-full grid grid-cols-12 border">
-                <div className="w-full col-span-10 px-2 flex items-center">
+                <div className="w-full col-span-9 px-2 flex items-center">
                   {selectedDate ?
                     <p className="font-semibold text-lg text-black">
                       {new Date(selectedDate).getDate()}/{new Date(selectedDate).getMonth() + 1}/
@@ -177,7 +180,7 @@ const Account = () => {
 
                 <button
                   onClick={() => setopenDate(!openDate)}
-                  className="w-full h-[40px] col-span-2 font-semibold bg-black text-white"
+                  className="w-full h-[40px] col-span-3 font-semibold bg-black text-white"
                 >
                   {!language ?
                     "Edit"
@@ -205,12 +208,6 @@ const Account = () => {
 
           {openName ? (
             <div className="w-full h-full flex bg-white border border-white">
-              <div className=" flex justify-center items-center">
-                <h1 className="font-semibold text-black">
-
-                </h1>
-              </div>
-
               <div className="flex my-5">
                 <div className="flex-row my-8">
                   <div>
@@ -255,13 +252,9 @@ const Account = () => {
             </div>
           ) : (
             <div className="w-full h-full flex-row justify-center items-center  bg-white border border-white">
-              <div className=" flex justify-center items-center ">
-                <span className="font-semibold  text-black"></span>
-              </div>
+
               <div className="w-full h-full bg-white border border-white">
-                <div className=" flex justify-center items-center">
-                  <span className="font-semibold text-black"></span>
-                </div>
+
                 <div className="grid grid-cols-8 gap-4 my-5 border-b border-gray-300">
                   <div className="my-2 col-span-7">
                     <p className="font-semibold text-lg text-black">
@@ -287,6 +280,7 @@ const Account = () => {
           )}
         </div>
 
+        {/* Phần email */}
         <div className="py-[30px] w-full flex-row justify-center items-center">
           <div className="mb-5">
 
@@ -300,14 +294,9 @@ const Account = () => {
           </div>
 
           <div className="w-full h-full flex-row justify-center items-center  bg-white border border-white">
-            <div className="flex justify-center items-center">
-              <span className="font-semibold  text-black"></span>
-            </div>
 
             <div className="w-full h-full bg-white border border-white">
-              <div className=" flex justify-center items-center">
-                <span className="font-semibold text-black"></span>
-              </div>
+
               {openEmail ?
                 <div className="flex my-5">
                   <div className="flex-row my-8">
@@ -495,19 +484,23 @@ const Account = () => {
               </div> */}
             </div>
           </div>
-          <div className="py-[30px] flex-row justify-center items-center">
-            <div className="">
-              <Link to={`/account/delete`}>
-                <h1 className="font-semibold text-2xl text-gray-400 hover:text-black">
-                  {!language ?
-                    "Do you want to delete your account?"
-                    :
-                    "계정을 삭제하시겠습니까?"
-                  }
-                </h1>
 
-              </Link>
-            </div>
+
+        </div>
+
+        {/* Phần xóa tài khoản */}
+        <div className="py-[30px] flex-row justify-center items-center">
+          <div className="">
+            <Link to={`/account/delete`}>
+              <h1 className="font-semibold text-2xl text-gray-400 hover:text-black">
+                {!language ?
+                  "Do you want to delete your account?"
+                  :
+                  "계정을 삭제하시겠습니까?"
+                }
+              </h1>
+
+            </Link>
           </div>
         </div>
       </div>
