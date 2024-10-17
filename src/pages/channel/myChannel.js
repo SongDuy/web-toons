@@ -27,6 +27,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import userFireBase from "../../common/services/User.services";
 import { getAccount } from "../../common/store/Account";
 import { unwrapResult } from "@reduxjs/toolkit";
+import deleteFolder from "../../common/utils/DeleteFolder";
 
 //https://www.ausp.edu.vn/uploads/blog/2024/05/16/1ecf77502b3bc514b2f535533d7b01f03a772174-1715817458.jpg
 const MyChannelPage = () => {
@@ -265,7 +266,7 @@ const handleDelete=async (id)=>{
   try {
     setloading(false);
     await postFireBase.Delete(id)
-    await postFireBase.deleteFolder(`cms_uploads/post/${Account.uid}/${id}`)
+    await deleteFolder(`cms_uploads/post/${Account.uid}/${id}`)
     const post = await postFireBase.getAllid(Account.uid);
     setposts(post.success ? post?.post : []);
 

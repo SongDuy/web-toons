@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { fireStore, storage } from "../themes/firebase";
+import deleteFolder from "../utils/DeleteFolder";
 const userFireBase = {
   async getALL() {
     const docSnap = await getDocs(
@@ -121,6 +122,7 @@ const userFireBase = {
     });
     return uploadTask;
   },
+  
   async deleteAccount(id) {
     const Ref = collection(fireStore, "Users");
     const q = query(Ref, where("uid", "==", id));
@@ -129,6 +131,8 @@ const userFireBase = {
     querySnapshot.forEach(async (doc) => {
       await deleteDoc(doc.ref);
     });
+    await deleteFolder(`cms_uploads/image/${id}`)
+
   },
 };
 export default userFireBase;

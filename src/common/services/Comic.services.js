@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { fireStore, storage } from "../themes/firebase";
+import deleteFolder from "../utils/DeleteFolder";
 
 const comicFireBase = {
   async get(age) {
@@ -287,11 +288,17 @@ const comicFireBase = {
     });
   },
   async Delete(id) {
+    const docRef = doc(fireStore, "Comic", id);
+
+    const docSnap = await getDoc(docRef);
     await deleteDoc(doc(fireStore, "Comic", id));
     await this.deletechaps(id)
+    docSnap.exists && await deleteFolder(`cms_uploads/comic/episodes/${docSnap?.data().uid}/${id}`)
+    docSnap.exists && await deleteFolder(`cms_uploads/comic/${docSnap?.data().uid}/${id}`)
   },
   async Deletechap(id, idchap) {
     const parentDocRef = doc(fireStore, "Comic", id);
+    const docSnap = await getDoc(parentDocRef);
     const subcollec = collection(parentDocRef, id);
     const parentDoc = doc(subcollec, idchap);
     const subcolleclike = collection(parentDoc, "like");
@@ -300,9 +307,11 @@ const comicFireBase = {
       await deleteDoc(doc(document.ref.firestore, document.ref.path));
   }
     await deleteDoc(parentDoc);
+    docSnap.exists && await deleteFolder(`cms_uploads/comic/episodes/${docSnap.data().uid}/${id}/chap/${idchap}/`)
+  docSnap.exists && await deleteFolder(`cms_uploads/comic/episodes/${docSnap.data().uid}/${id}/`)
   },
   async uploadToFirebase(file, name, iduser, id, key) {
-    const storageRef = ref(storage, `cms_uploads/comic/${iduser}/${name}`);
+    const storageRef = ref(storage, `cms_uploads/comic/${iduser}/${id}/${name}`);
 
     const uploadTask = uploadBytesResumable(storageRef, file);
     new Promise((resolve, reject) => {
@@ -401,6 +410,9 @@ const comicFireBase = {
       // Cuối cùng, xóa tài liệu chính trong 'comments'
       await deleteDoc(doc(document.ref.firestore, document.ref.path));
   }
+  await deleteFolder(`cms_uploads/comic/episodes/${id}`)
+  await deleteFolder(`cms_uploads/comic/${id}`)
+
   }
 };
 
