@@ -261,7 +261,21 @@ const MyChannelPage = () => {
       prevOpen.current[idpost] = openMenus[idpost];
     });
   }, [openMenus]);
+const handleDelete=async (id)=>{
+  try {
+    setloading(false);
+    await postFireBase.Delete(id)
+    await postFireBase.deleteFolder(`cms_uploads/post/${Account.uid}/${id}`)
+    const post = await postFireBase.getAllid(Account.uid);
+    setposts(post.success ? post?.post : []);
 
+    handleClose()
+    setloading(true);
+
+  } catch (error) {
+    
+  }
+}
   return (
     <>
       {loading ? (
@@ -685,7 +699,7 @@ const MyChannelPage = () => {
                                 <Popper
                                   className="w-auto rounded-lg flex items-center justify-center"
                                   open={openMenus[item.idpost] || false}
-                                  anchorEl={anchorRefs.current[item.idpost]}
+                                  anchorEl={anchorRefs?.current[item.idpost]}
                                   role={undefined}
                                   placement="bottom-start"
                                   transition
@@ -707,7 +721,7 @@ const MyChannelPage = () => {
                                             aria-labelledby={`composition-button-${item.idpost}`}
                                             onKeyDown={(event) => handleListKeyDown(event, item.idpost)} // KeyDown xử lý theo idpost
                                           >
-                                            <MenuItem onClick={handleClose}>
+                                            <MenuItem onClick={()=>handleDelete(item.idpost)}>
                                               <div className="flex gap-2">
                                                 <DeleteIcon />
                                                 {!language ?

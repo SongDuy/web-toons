@@ -3,6 +3,7 @@ import {
   ref,
   uploadBytesResumable,
   getDownloadURL,
+  listAll, deleteObject
 } from 'firebase/storage';
 import { fireStore, storage } from '../themes/firebase';
 
@@ -120,7 +121,7 @@ const postFireBase = {
   },
   async uploadToFirebase(file, name, iduser,id) {
 
-    const storageRef = ref(storage, `cms_uploads/post/${iduser}/${name}`);
+    const storageRef = ref(storage, `cms_uploads/post/${iduser}/${id}/${name}`);
 
     const uploadTask = uploadBytesResumable(storageRef, file);
     new Promise((resolve, reject)=>{
@@ -152,6 +153,45 @@ const postFireBase = {
     }) 
     return uploadTask;
   },
+  async  deleteSubcollectionALL(subcollectionRef) {
+  
+    const querySnapshot = await getDocs(subcollectionRef);
+  
+    for (const subDoc of querySnapshot.docs) {
+      await deleteDoc(doc(subDoc.ref.firestore, subDoc.ref.path));
+    }
+  },
+async deleteFolder (folderPath)  {
+    // Tạo tham chiếu tới "thư mục" cần xóa
+    const folderRef = ref(storage, folderPath);
+  
+    try {
+      // Liệt kê tất cả các tệp trong thư mục
+      const result = await listAll(folderRef);
+  
+      // Xóa từng tệp trong thư mục
+      const deletePromises = result.items.map((fileRef) => deleteObject(fileRef));
+  
+      // Chờ tất cả các tệp được xóa
+      await Promise.all(deletePromises);
+  
+    } catch (error) {
+      console.error("Error deleting folder:", error);
+    }
+  },
+  async Delete(id) {
+    const docRef = doc(fireStore, "post", id);
+    const subcollectionRef = collection(docRef, id);
+    const subcollectionLike = collection(docRef, "like");
+       await this.deleteSubcollectionALL(subcollectionRef);
+    await this.deleteSubcollectionALL(subcollectionLike);
+  
+    // // Cuối cùng, xóa tài liệu chính trong 'comments'
+    // await deleteDoc(doc(document.ref.firestore, document.ref.path));
+
+    await deleteDoc(doc(fireStore, "post", id));
+  },
+
   async  deleteSubcollection(subcollectionRef, uid) {
     const q = query(subcollectionRef, where("uid", "==", uid));
     const querySnapshot = await getDocs(q);
