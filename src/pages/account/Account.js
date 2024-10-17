@@ -109,7 +109,6 @@ const Account = () => {
               <div>
                 <span className="font-semibold text-base text-gray-400">
                   {auth?.currentUser?.displayName}
-
                 </span>
               </div>
             </div>
