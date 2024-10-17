@@ -9,7 +9,6 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
 
 import CheckIcon from "@mui/icons-material/Check";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -494,16 +493,9 @@ const OriginalsPage = () => {
           </div>
         </div>
       ) : (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: 5,
-          }}
-        >
+        <div className="w-full h-[370px] flex items-center justify-center">
           <CircularProgress />
-        </Box>
+        </div>
       )}
     </>
   );

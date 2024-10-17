@@ -7,9 +7,8 @@ import GenresOriginalsAndVideosPage from './childContent/genresOriginalsAndVideo
 import PopularOriginalsAndVideosPage from './childContent/popularOriginalsAndVideos';
 import bannerFireBase from '../../common/services/Banner.services';
 import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
-const ContentPage = () => {
 
+const ContentPage = () => {
 
   // Đổi hình quảng cáo sau 5 giây khi chọn ảnh thì 10 giây chuyển tiếp
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -93,16 +92,9 @@ const ContentPage = () => {
 
         </div >
       ) : (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: 5,
-          }}
-        >
+        <div className="w-full h-[370px] flex items-center justify-center">
           <CircularProgress />
-        </Box>
+        </div>
       )}
     </>
   );

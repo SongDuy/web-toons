@@ -17,7 +17,6 @@ import { Link } from "react-router-dom";
 import userFireBase from '../../common/services/User.services';
 import FollowFireBase from '../../common/services/Follow.services';
 import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
 import dataListGenre from '../../components/layout/layoutUser/dataListGenre';
 const CreatorChannelPage = () => {
 
@@ -476,16 +475,9 @@ const CreatorChannelPage = () => {
                     </div>
                 </div>
                 : (
-                    <Box
-                        sx={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            margin: 5,
-                        }}
-                    >
+                    <div className="w-full h-[370px] flex items-center justify-center">
                         <CircularProgress />
-                    </Box>
+                    </div>
                 )}
         </>
     );

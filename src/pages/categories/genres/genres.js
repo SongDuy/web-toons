@@ -80,8 +80,6 @@ const GenresPage = () => {
         prevOpenOriginals.current = openOriginals;
     }, [openOriginals]);
 
-
-
     return (
         <div className="w-full h-full pb-10 bg-gray-100">
             <div className="w-full h-full xs:px-[16px] sm:px-[32px] md:px-[64px] lg:px-[96px] xl:px-[128px] 2xl:px-[160px] 3xl:px-[192px]">

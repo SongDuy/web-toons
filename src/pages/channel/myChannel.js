@@ -17,7 +17,6 @@ import comicFireBase from "../../common/services/Comic.services";
 import { Link } from "react-router-dom";
 import dataListGenre from "../../components/layout/layoutUser/dataListGenre";
 import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
 import userFireBase from "../../common/services/User.services";
 import { getAccount } from "../../common/store/Account";
 import { unwrapResult } from "@reduxjs/toolkit";
@@ -697,16 +696,9 @@ const MyChannelPage = () => {
           </div >
         </div >
       ) : (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: 5,
-          }}
-        >
+        <div className="w-full h-[370px] flex items-center justify-center">
           <CircularProgress />
-        </Box>
+        </div>
       )}
     </>
   );

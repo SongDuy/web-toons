@@ -8,7 +8,6 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
-import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import CheckIcon from '@mui/icons-material/Check';
@@ -395,16 +394,9 @@ const VideosPage = () => {
                     </div>
                 </div>
             ) : (
-                <Box
-                    sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        margin: 5,
-                    }}
-                >
+                <div className="w-full h-[370px] flex items-center justify-center">
                     <CircularProgress />
-                </Box>
+                </div>
             )}
         </>
     );

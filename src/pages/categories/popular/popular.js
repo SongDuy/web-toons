@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import NewTrendingOriginalsPage from './childPopular/newTrendingOriginals';
 import NewTrendingVideosPage from './childPopular/newTrendingVideos';
 import OriginalsByGenrePage from './childPopular/originalsByGenre';
-import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const PopularPage = () => {
@@ -135,16 +134,9 @@ const PopularPage = () => {
 
                 </div>
             ) : (
-                <Box
-                    sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        margin: 5,
-                    }}
-                >
+                <div className="w-full h-[370px] flex items-center justify-center">
                     <CircularProgress />
-                </Box>
+                </div>
             )}
         </>
     );
