@@ -17,6 +17,7 @@ import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import CancelIcon from "@mui/icons-material/Cancel";
 import postFireBase from "../../common/services/post.services";
+import DeleteIcon from '@mui/icons-material/Delete';
 import { auth } from "../../common/themes/firebase";
 import VideoFireBase from "../../common/services/Video.services";
 import comicFireBase from "../../common/services/Comic.services";
@@ -682,7 +683,7 @@ const MyChannelPage = () => {
 
                                 {/* Chọn menu */}
                                 <Popper
-                                  className="w-[150px] rounded-lg flex items-center justify-center"
+                                  className="w-auto rounded-lg flex items-center justify-center"
                                   open={openMenus[item.idpost] || false}
                                   anchorEl={anchorRefs.current[item.idpost]}
                                   role={undefined}
@@ -706,27 +707,24 @@ const MyChannelPage = () => {
                                             aria-labelledby={`composition-button-${item.idpost}`}
                                             onKeyDown={(event) => handleListKeyDown(event, item.idpost)} // KeyDown xử lý theo idpost
                                           >
-                                            <Link to={`/originals`}>
-                                              <MenuItem onClick={handleClose}>
-
+                                            <MenuItem onClick={handleClose}>
+                                              <div className="flex gap-2">
+                                                <DeleteIcon />
                                                 {!language ?
-                                                  <span> Originals </span>
+                                                  <span> Delete </span>
                                                   :
-                                                  <span> 오리지널 </span>
+                                                  <span> 삭제 </span>
                                                 }
-                                              </MenuItem>
-                                            </Link>
+                                              </div>
+                                            </MenuItem>
 
-                                            <Link to={`/videos`}>
-                                              <MenuItem onClick={handleClose}>
-
+                                            {/* <MenuItem onClick={handleClose}>
                                                 {!language ?
-                                                  <span> Videos </span>
+                                                  <span> Edit post </span>
                                                   :
-                                                  <span> 비디오 </span>
+                                                  <span> 게시물 수정 </span>
                                                 }
-                                              </MenuItem>
-                                            </Link>
+                                              </MenuItem> */}
                                           </MenuList>
                                         </ClickAwayListener>
                                       </Paper>
