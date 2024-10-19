@@ -106,18 +106,19 @@ const Creators = () => {
               <div className="w-full h-full bg-gray-100">
                 <div className="py-[10px] flex-row justify-center items-center container mx-auto my-auto">
                   <div className="  m-2 flex justify-between ">
-                    <span className="font-semibold text-lg text-black">
+                    <h1 className="font-semibold text-lg text-black">
 
                       {!language ?
                         "CREATORS"
                         :
                         "창작자"
                       }
-                    </span>
+                    </h1>
+
                     {EditFollow ? (
                       <div className="flex">
                         <button
-                          className="font-semibold text-base text-black     ml-3 p-2 rounded-full bg-[#dfdbdbec]"
+                          className="w-[35px] max-h-[35px] font-semibold text-base text-black ml-3 px-2 rounded-full bg-[#dfdbdbec]"
                           onClick={getALLSubscribed}
                         >
                           <CheckIcon
@@ -130,22 +131,20 @@ const Creators = () => {
                         </button>
 
                         <button
-                          className="font-semibold text-base     mr-2 ml-1 p-1 rounded-full text-gray-400"
+                          className="max-h-[35px] font-semibold text-base mr-2 ml-1 p-1 rounded-full text-gray-400"
                           onClick={getALLSubscribed}
                         >
                           {!language ?
-                            "  Select All"
+                            "Select All"
                             :
                             "모두 선택"
                           }
-
                         </button>
 
                         <button
-                          className="font-semibold text-basg text-black border-gray-400 border py-2 px-7 rounded-full mr-5 ml-3"
+                          className="h-[35px] flex items-center justify-center font-semibold text-basg text-black border-gray-400 border py-2 px-7 rounded-full mr-5 ml-3"
                           onClick={() => HandleDelete()}
                         >
-
                           {!language ?
                             "Delete"
                             :
@@ -153,10 +152,9 @@ const Creators = () => {
                           }
                         </button>
                         <button
-                          className="font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
+                          className="h-[35px] flex items-center justify-center font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
                           onClick={() => setEditFollow(!EditFollow)}
                         >
-
                           {!language ?
                             "Cancel"
                             :
@@ -166,7 +164,7 @@ const Creators = () => {
                       </div>
                     ) : (
                       <button
-                        className="font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
+                        className="h-[35px] flex items-center justify-center font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
                         onClick={() => setEditFollow(!EditFollow)}
                       >
                         {!language ?
@@ -177,11 +175,12 @@ const Creators = () => {
                       </button>
                     )}
                   </div>
+
                   {EditFollow ? (
-                    <div className="  grid grid-cols-5 gap-2  w-full    px-5">
+                    <ul className="  grid grid-cols-5 gap-2  w-full    px-5">
                       {Creators?.map((item) => {
                         return (
-                          <button
+                          <li
                             className={` w-full h-full border-2 ${checkFollow?.includes(item.id)
                               ? "border-emerald-400"
                               : ""
@@ -218,15 +217,15 @@ const Creators = () => {
                                 }
                               />
                             </span >
-                          </button>
+                          </li>
                         );
                       })}
-                    </div>
+                    </ul>
                   ) : (
-                    <div className="w-full h-full flex-row grid grid-cols-5 gap-4 px-5">
+                    <ul className="w-full h-full flex-row grid grid-cols-5 gap-4 px-5">
                       {Creators.map((item) => {
                         return (
-                          <button
+                          <li
                             className="flex-row w-full h-full   relative"
                             key={item?.id}
                           >
@@ -249,10 +248,10 @@ const Creators = () => {
                               }
                             </p>
 
-                          </button>
+                          </li>
                         );
                       })}
-                    </div>
+                    </ul>
                   )}
                 </div>
               </div>
