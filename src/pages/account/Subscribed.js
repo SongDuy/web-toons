@@ -278,8 +278,7 @@ const Subscribed = () => {
             <div className="w-full h-full xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100">
 
               {/* phần truyện series theo dõi */}
-              <div className="py-[10px] flex-row justify-center items-center container mx-auto my-auto">
-
+              <div className="w-full py-[10px] flex-row justify-center items-center">
                 <div className="m-2 flex justify-between mb-[30px]">
                   <h1 className="flex items-center justify-center font-semibold text-lg text-black">
                     {!language ?
@@ -498,6 +497,7 @@ const Subscribed = () => {
                                   )}
                                 </span>
                               </div> */}
+
                               {/*Trong component React của bạn */}
                               <div className="w-full h-[30px] mt-auto">
                                 <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
@@ -515,8 +515,7 @@ const Subscribed = () => {
               </div>
 
               {/* phần video series theo dõi */}
-              <div className="py-[10px] flex-row justify-center items-center container mx-auto my-auto">
-
+              <div className="py-[10px] flex-row justify-center items-center">
                 <div className="m-2 flex justify-between mb-[30px]">
                   <h1 className="flex items-center justify-center font-semibold text-lg text-black">
                     {!language ?
