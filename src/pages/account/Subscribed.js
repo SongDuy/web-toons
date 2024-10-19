@@ -712,17 +712,6 @@ const Subscribed = () => {
                                 {item.Author}
                               </span>
                             </div>
-
-                            {/* <div className="w-full mb-[20px]">
-                                            <span className="w-[75px] text-rose-300 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
-                                                <FavoriteIcon />
-                                                {item.like}
-                                            </span>
-                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                Up
-                                            </span>
-                                        </div> */}
-
                           </div>
 
                         </li>
@@ -767,19 +756,7 @@ const Subscribed = () => {
                                   {item.Author}
                                 </span>
                               </div>
-
-                              {/* <div className="w-full mb-[20px]">
-                                                <span className="w-[75px] text-rose-300 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
-                                                    <FavoriteIcon />
-                                                    {item.like}
-                                                </span>
-                                                <span className="w-[35px] h-[35px] mt-2 uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                                                    Up
-                                                </span>
-                                            </div> */}
-
                             </div>
-
                           </li>
                         </Link>
                       );
