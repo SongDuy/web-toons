@@ -227,7 +227,7 @@ const CreatorChannelPage = () => {
                                     ) : (
                                         <button
                                             onClick={handleDeleteFollow}
-                                            className="w-[150px] h-[50px] font-semibold text-black bg-gray-50 hover:bg-gray-100 shadow border rounded-full transition duration-200"
+                                            className="xs:w-full sm:w-[150px] h-[50px] font-semibold text-black bg-gray-50 hover:bg-gray-100 shadow border rounded-full transition duration-200"
                                         >
                                             {!language ? <span> Following </span> : <span> 팔로잉 </span>}
                                         </button>
