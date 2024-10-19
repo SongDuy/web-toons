@@ -13,6 +13,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import VideoFireBase from "../../common/services/Video.services";
 import { Link } from "react-router-dom";
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 const Subscribed = () => {
   const [EditSubscribed, setEditSubscribed] = useState(false);
@@ -259,7 +260,7 @@ const Subscribed = () => {
 
   // Khi lia chuột hiên icon khi lia vào truyện hoặc video
   const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
-  //const [hoveredVideoItem, setHoveredVideoItem] = useState(null);
+  const [hoveredVideoItem, setHoveredVideoItem] = useState(null);
 
   return (
     <>
@@ -347,118 +348,6 @@ const Subscribed = () => {
                     </button>
                   )}
                 </div>
-
-                {/* {EditSubscribed ? (
-
-                  <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
-                    {Subscribed?.filter(item=>item.idcomic)?.map((item) => {
-                      return (
-                        <li
-                          key={item?.id}
-                          className={`w-full h-full rounded-md ${checkSubcribed?.includes(item.id) ? "border-emerald-400" : ""}  relative`}
-                          onClick={() => getidSubscribed(item.id)}
-                        >
-                          <img
-                            src={item.squareThumbnail}
-                            alt="img"
-                            className="object-cover w-full h-full rounded-md"
-                          />
-                          <div className="absolute top-2 px-3">
-                            <span className=" text-shadow-white line-clamp-2 text-lg w-full font-bold">
-                              {item?.title}
-                            </span>
-                            <span className="w-full text-shadow-white line-clamp-1 text-md">
-                              {item?.Author}
-                            </span>
-                          </div>
-
-                          <div className="absolute top-[70%] px-3">
-                            <span className="w-full text-shadow-white line-clamp-1 text-base text-gray-500">
-                              {!language ?
-                                "Update"
-                                :
-                                "업데이트"
-                              }
-                            </span>
-                            {!language ?
-                              <span className="text-shadow-white line-clamp-1 text-base text-gray-500">
-                                {monthNames[new Date(item.createTime).getMonth()].en}{" "}
-                                {new Date(item.createTime).getDate()},
-                                {new Date(item.createTime)?.getFullYear()}
-                              </span>
-                              :
-                              <span className="text-shadow-white line-clamp-1 text-base text-gray-500">
-                                {monthNames[new Date(item.createTime).getMonth()].kr}{" "}
-                                {new Date(item.createTime).getDate()}일,
-                                {new Date(item.createTime)?.getFullYear()}년
-                              </span>
-                            }
-                          </div>
-
-                          <button className="absolute top-[75%] left-[75%] truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
-                            <CheckIcon
-                              sx={
-                                checkSubcribed?.includes(item.id)
-                                  ? { color: "#31C48D" }
-                                  : { color: "white" }
-                              }
-                            />
-                          </button>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  
-                ) : (
-                  <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
-                    {Subscribed?.filter(item=>item.idcomic).map((item) => {
-                      return (
-                        <li
-                          key={item?.id}
-                          className="flex-row w-full h-full rounded-md relative overflow-hidden"
-                        >
-                          <img
-                            src={item.squareThumbnail}
-                            alt="img"
-                            className="object-cover w-full h-full rounded-md"
-                          />
-                          <div className="absolute top-2 px-3">
-                            <span className="w-full text-shadow-white line-clamp-2 text-lg font-bold">
-                              {item?.title}
-                            </span>
-                            <span className="w-full text-shadow-white line-clamp-1 text-md">
-                              {item?.Author}
-                            </span>
-                          </div>
-
-                          <div className="absolute top-[70%] px-3">
-                            <span className="w-full text-shadow-white line-clamp-1 text-base text-gray-500">
-                              {!language ?
-                                "Update"
-                                :
-                                "업데이트"
-                              }
-                            </span>
-
-                            {!language ?
-                              <span className="text-shadow-white line-clamp-1 text-base text-gray-500">
-                                {monthNames[new Date(item.createTime).getMonth()].en}{" "}
-                                {new Date(item.createTime).getDate()},
-                                {new Date(item.createTime)?.getFullYear()}
-                              </span>
-                              :
-                              <span className="text-shadow-white line-clamp-1 text-base text-gray-500">
-                                {monthNames[new Date(item.createTime).getMonth()].kr}{" "}
-                                {new Date(item.createTime).getDate()}일,
-                                {new Date(item.createTime)?.getFullYear()}년
-                              </span>}
-                          </div>
-
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )} */}
 
                 {EditSubscribed ? (
                   <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4">
@@ -677,7 +566,7 @@ const Subscribed = () => {
                   )}
                 </div>
 
-                {EditSubscribedVideo ? (
+                {/* {EditSubscribedVideo ? (
                   <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
                     {Subscribed?.filter(item => item.idvideo)?.map((item) => {
                       return (
@@ -782,6 +671,114 @@ const Subscribed = () => {
                           </div>
 
                         </li>
+                      );
+                    })}
+                  </ul>
+                )} */}
+
+                {EditSubscribedVideo ? (
+                  <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4">
+                    {Subscribed?.filter(item => item.idvideo)?.map((item) => {
+                      return (
+                        <li
+                          key={item.id}
+                          className="max-w-[210px] h-[210px] rounded-md bg-white cursor-pointer transition-shadow duration-300 hover:shadow"
+                          onClick={() => getidSubscribedVideo(item.id)}
+                        >
+
+                          <div className="w-full h-[120px] relative" >
+                            <img
+                              src={item.squareThumbnail}
+                              alt="img"
+                              className="object-cover w-full h-full rounded-md"
+                            />
+
+                            {hoveredVideoItem === item.id && (
+                              <div className="absolute inset-0 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                <PlayArrowIcon sx={{ fontSize: 60 }} />
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="max-w-[210px] flex flex-wrap items-center px-3 py-3">
+                            <div className="w-[210px] h-[65px] mb-auto overflow-hidden">
+                              <span className="text-black text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
+                                {item.title}
+                              </span>
+                              <span className="text-black text-md text-shadow-white leading-[1.2] line-clamp-1">
+                                {item.Author}
+                              </span>
+                            </div>
+
+                            {/* <div className="w-full mb-[20px]">
+                                            <span className="w-[75px] text-rose-300 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
+                                                <FavoriteIcon />
+                                                {item.like}
+                                            </span>
+                                            <span className="w-[35px] h-[35px] mt-2 uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                Up
+                                            </span>
+                                        </div> */}
+
+                          </div>
+
+                        </li>
+                      );
+                    })}
+                  </ul>
+                ) : (
+                  <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4">
+                    {Subscribed?.filter(item => item.idvideo)?.map((item) => {
+                      return (
+                        <Link
+                          key={item.id}
+                          to={`/videos/video/series/${item.idvideo}`}
+                          className="max-w-[210px] h-[210px]"
+                        >
+                          <li
+                            onMouseEnter={() => setHoveredVideoItem(item.id)}
+                            onMouseLeave={() => setHoveredVideoItem(null)}
+                            className="max-w-[210px] h-[210px] rounded-md bg-white cursor-pointer transition-shadow duration-300 hover:shadow"
+                          >
+
+                            <div className="w-full h-[120px] relative" >
+                              <img
+                                src={item.squareThumbnail}
+                                alt="img"
+                                className="object-cover w-full h-full rounded-md"
+                              />
+
+                              {hoveredVideoItem === item.id && (
+                                <div className="absolute inset-0 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                  <PlayArrowIcon sx={{ fontSize: 60 }} />
+                                </div>
+                              )}
+                            </div>
+
+                            <div className="max-w-[210px] flex flex-wrap items-center px-3 py-3">
+                              <div className="w-[210px] h-[65px] mb-auto overflow-hidden">
+                                <span className="text-black text-lg font-semibold text-shadow-white leading-[1.2] line-clamp-2">
+                                  {item.title}
+                                </span>
+                                <span className="text-black text-md text-shadow-white leading-[1.2] line-clamp-1">
+                                  {item.Author}
+                                </span>
+                              </div>
+
+                              {/* <div className="w-full mb-[20px]">
+                                                <span className="w-[75px] text-rose-300 rounded-full px-1 text-sm font-semibold flex items-center gap-1">
+                                                    <FavoriteIcon />
+                                                    {item.like}
+                                                </span>
+                                                <span className="w-[35px] h-[35px] mt-2 uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                                                    Up
+                                                </span>
+                                            </div> */}
+
+                            </div>
+
+                          </li>
+                        </Link>
                       );
                     })}
                   </ul>
