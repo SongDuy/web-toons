@@ -639,7 +639,7 @@ const DisplayOriginalPage = () => {
                       <img
                         src={logo}
                         alt="Logo"
-                        className="min-w-[50px] max-w-[50px] h-auto rounded-md bg-white"
+                        className="min-w-[50px] max-w-[50px] h-auto bg-black"
                       />
                     </Link>
                   </div>
