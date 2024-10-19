@@ -11,6 +11,8 @@ import { unwrapResult } from "@reduxjs/toolkit";
 import { getAllComic } from "../../common/store/comic";
 import CircularProgress from "@mui/material/CircularProgress";
 import VideoFireBase from "../../common/services/Video.services";
+import { Link } from "react-router-dom";
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 
 const Subscribed = () => {
   const [EditSubscribed, setEditSubscribed] = useState(false);
@@ -152,7 +154,7 @@ const Subscribed = () => {
           } catch (error) {
           }
         })
-        
+
       );
       await get()
       setALLSubcribed(false);
@@ -188,7 +190,7 @@ const Subscribed = () => {
           }
         })
       );
-     await get()
+      await get()
 
       setALLSubcribedVideo(false);
 
@@ -206,16 +208,16 @@ const Subscribed = () => {
     }
     const totalSubscribedVideos = Subscribed?.filter(item => item.idcomic)?.length;
     const updatedCount = checkSubcribed.length + (checkSubcribed.includes(id) ? 0 : 1);
-    
-    if (updatedCount === totalSubscribedVideos ) {
+
+    if (updatedCount === totalSubscribedVideos) {
       setALLSubcribed(true);
     } else {
       setALLSubcribed(false);
     }
   };
   const getALLSubscribed = () => {
-    if (checkSubcribed.length === 0 || checkSubcribed.length<= Subscribed?.filter(item=>item.idcomic)?.length-1 ) {
-      setcheckSubcribed(Subscribed?.filter(item=>item.idcomic)?.map((item) => item.id));
+    if (checkSubcribed.length === 0 || checkSubcribed.length <= Subscribed?.filter(item => item.idcomic)?.length - 1) {
+      setcheckSubcribed(Subscribed?.filter(item => item.idcomic)?.map((item) => item.id));
 
       setALLSubcribed(true);
     } else {
@@ -224,8 +226,8 @@ const Subscribed = () => {
     }
   };
   const getALLSubscribedVideo = () => {
-    if (checkSubcribedVideo.length === 0 || checkSubcribedVideo.length<= Subscribed?.filter(item=>item.idvideo)?.length-1  ) {
-      setcheckSubcribedVideo(Subscribed?.filter(item=>item.idvideo)?.map((item) => item.id));
+    if (checkSubcribedVideo.length === 0 || checkSubcribedVideo.length <= Subscribed?.filter(item => item.idvideo)?.length - 1) {
+      setcheckSubcribedVideo(Subscribed?.filter(item => item.idvideo)?.map((item) => item.id));
 
       setALLSubcribedVideo(true);
     } else {
@@ -234,7 +236,7 @@ const Subscribed = () => {
     }
   };
   const getidSubscribedVideo = (id) => {
-   
+
     if (!checkSubcribedVideo.includes(id)) {
       setcheckSubcribedVideo([...checkSubcribedVideo, id]);
     } else {
@@ -244,16 +246,20 @@ const Subscribed = () => {
       setcheckSubcribedVideo(updatedCheckSubcribed);
     }
     const totalSubscribedVideos = Subscribed?.filter(item => item.idvideo)?.length;
-  const updatedCount = checkSubcribedVideo.length + (checkSubcribedVideo.includes(id) ? 0 : 1);
-  
-  if (updatedCount === totalSubscribedVideos ) {
-    setALLSubcribedVideo(true);
-  } else {
-    setALLSubcribedVideo(false);
-  }
+    const updatedCount = checkSubcribedVideo.length + (checkSubcribedVideo.includes(id) ? 0 : 1);
+
+    if (updatedCount === totalSubscribedVideos) {
+      setALLSubcribedVideo(true);
+    } else {
+      setALLSubcribedVideo(false);
+    }
   };
   //Lấy ngôn ngữ
   const language = useSelector(state => state.hidden.language);
+
+  // Khi lia chuột hiên icon khi lia vào truyện hoặc video
+  const [hoveredOriginalItem, setHoveredOriginalItem] = useState(null);
+  //const [hoveredVideoItem, setHoveredVideoItem] = useState(null);
 
   return (
     <>
@@ -273,7 +279,6 @@ const Subscribed = () => {
               <div className="py-[10px] flex-row justify-center items-center container mx-auto my-auto">
 
                 <div className="m-2 flex justify-between mb-[30px]">
-
                   <h1 className="flex items-center justify-center font-semibold text-lg text-black">
                     {!language ?
                       "ORIGINALS"
@@ -343,7 +348,8 @@ const Subscribed = () => {
                   )}
                 </div>
 
-                {EditSubscribed ? (
+                {/* {EditSubscribed ? (
+
                   <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
                     {Subscribed?.filter(item=>item.idcomic)?.map((item) => {
                       return (
@@ -402,6 +408,7 @@ const Subscribed = () => {
                       );
                     })}
                   </ul>
+                  
                 ) : (
                   <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
                     {Subscribed?.filter(item=>item.idcomic).map((item) => {
@@ -451,14 +458,156 @@ const Subscribed = () => {
                       );
                     })}
                   </ul>
+                )} */}
+
+                {EditSubscribed ? (
+                  <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4">
+                    {Subscribed?.filter(item => item.idcomic)?.map((item) => {
+                      return (
+                        <li
+                          key={item.id}
+                          onClick={() => getidSubscribed(item.id)}
+                          className="max-w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                        >
+                          <div className="w-full h-full" >
+                            <img
+                              src={item.squareThumbnail}
+                              alt="img"
+                              className="object-cover w-full h-full rounded-md"
+                            />
+                          </div>
+
+                          <div className="max-w-[210px] absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                            <div className="w-[210px] h-[65px] mb-auto overflow-hidden">
+                              <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
+                                {item.title}
+                              </span>
+                              <span className="h-[20px] text-black text-md text-shadow-white leading-[0.8] line-clamp-1">
+                                {item.Author}
+                              </span>
+                            </div>
+
+                            {/*Trong component React của bạn */}
+                            <div className="w-full h-[50px] mt-auto">
+                              <span className="w-full text-shadow-white line-clamp-1 text-base text-gray-500">
+                                {!language ?
+                                  "Update"
+                                  :
+                                  "업데이트"
+                                }
+                              </span>
+
+
+                              <span className="text-shadow-white line-clamp-1 text-base text-gray-500">
+                                {!language ? (
+                                  <span>
+                                    {monthNames[new Date(item.createTime).getMonth()].en}{" "}
+                                    {new Date(item.createTime).getDate()},
+                                    {new Date(item.createTime)?.getFullYear()}
+                                  </span>
+                                ) : (
+                                  <span>
+                                    {monthNames[new Date(item.createTime).getMonth()].kr}{" "}
+                                    {new Date(item.createTime).getDate()}일,
+                                    {new Date(item.createTime)?.getFullYear()}년
+                                  </span>
+                                )}
+                              </span>
+
+                              <button className="absolute top-[75%] left-[75%] truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
+                                <CheckIcon
+                                  sx={
+                                    checkSubcribed?.includes(item.id)
+                                      ? { color: "#31C48D" }
+                                      : { color: "white" }
+                                  }
+                                />
+                              </button>
+                            </div>
+
+                          </div>
+
+                        </li>
+                      );
+                    })}
+                  </ul>
+                ) : (
+                  <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4">
+                    {Subscribed?.filter(item => item.idcomic)?.map((item) => {
+                      return (
+                        <Link
+                          key={item.id}
+                          to={`/originals/original/series/${item.idcomic}`}
+                        >
+                          <li
+                            onMouseEnter={() => setHoveredOriginalItem(item.id)}
+                            onMouseLeave={() => setHoveredOriginalItem(null)}
+                            className="max-w-[210px] h-[210px] rounded-md bg-white relative cursor-pointer transition-shadow duration-300 hover:shadow"
+                          >
+                            <div className="w-full h-full" >
+                              <img
+                                src={item.squareThumbnail}
+                                alt="img"
+                                className="object-cover w-full h-full rounded-md"
+                              />
+
+                              {hoveredOriginalItem === item.id && (
+                                <div className="absolute inset-0 rounded-md flex items-center justify-center text-yellow-500 z-10">
+                                  <AutoStoriesIcon sx={{ fontSize: 40 }} />
+                                </div>
+                              )}
+                            </div>
+
+                            <div className="max-w-[210px] absolute inset-0 flex flex-wrap items-center px-3 py-3">
+                              <div className="w-[210px] h-[65px] mb-auto overflow-hidden">
+                                <span className="text-black text-lg font-semibold text-shadow-white leading-[1.3] line-clamp-2">
+                                  {item.title}
+                                </span>
+                                <span className="h-[20px] text-black text-md text-shadow-white leading-[0.8] line-clamp-1">
+                                  {item.Author}
+                                </span>
+                              </div>
+
+                              {/*Trong component React của bạn */}
+                              <div className="w-full h-[50px] mt-auto">
+                                <span className="w-full text-shadow-white line-clamp-1 text-base text-gray-500">
+                                  {!language ?
+                                    "Update"
+                                    :
+                                    "업데이트"
+                                  }
+                                </span>
+
+                                <span className="text-shadow-white line-clamp-1 text-base text-gray-500">
+                                  {!language ? (
+                                    <span>
+                                      {monthNames[new Date(item.createTime).getMonth()].en}{" "}
+                                      {new Date(item.createTime).getDate()},
+                                      {new Date(item.createTime)?.getFullYear()}
+                                    </span>
+                                  ) : (
+                                    <span>
+                                      {monthNames[new Date(item.createTime).getMonth()].kr}{" "}
+                                      {new Date(item.createTime).getDate()}일,
+                                      {new Date(item.createTime)?.getFullYear()}년
+                                    </span>
+                                  )}
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+                        </Link>
+                      );
+                    })}
+                  </ul>
                 )}
+
               </div>
 
               {/* phần video series theo dõi */}
               <div className="py-[10px] flex-row justify-center items-center container mx-auto my-auto">
 
                 <div className="m-2 flex justify-between mb-[30px]">
-
                   <h1 className="flex items-center justify-center font-semibold text-lg text-black">
                     {!language ?
                       "VIDEOS"
@@ -530,7 +679,7 @@ const Subscribed = () => {
 
                 {EditSubscribedVideo ? (
                   <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
-                    {Subscribed?.filter(item=>item.idvideo)?.map((item) => {
+                    {Subscribed?.filter(item => item.idvideo)?.map((item) => {
                       return (
                         <li
                           key={item?.id}
@@ -589,7 +738,7 @@ const Subscribed = () => {
                   </ul>
                 ) : (
                   <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
-                    {Subscribed?.filter(item=>item.idvideo)?.map((item) => {
+                    {Subscribed?.filter(item => item.idvideo)?.map((item) => {
                       return (
                         <li
                           key={item?.id}
