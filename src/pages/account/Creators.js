@@ -196,7 +196,7 @@ const Creators = () => {
                               alt=""
                               className="object-contain "
                             />
-                            <p className="absolute top-2 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
+                            <p className="absolute top-2 left-2 truncate text-shadow-white line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
                               {item?.name}
                             </p>
 
@@ -237,10 +237,9 @@ const Creators = () => {
                               alt=""
                               className="object-contain h-[50] "
                             />
-                            <p className="absolute top-2 left-2 truncate line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
+                            <p className="absolute top-2 left-2 text-shadow-white truncate line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
                               {item?.name}
                             </p>
-
 
                             <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
                               {!language ?
@@ -249,7 +248,6 @@ const Creators = () => {
                                 "업데이트"
                               }
                             </p>
-
 
                           </button>
                         );
