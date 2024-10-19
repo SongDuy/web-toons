@@ -685,7 +685,6 @@ const Subscribed = () => {
                           className="max-w-[210px] h-[210px] rounded-md bg-white cursor-pointer transition-shadow duration-300 hover:shadow"
                           onClick={() => getidSubscribedVideo(item.id)}
                         >
-
                           <div className="w-full h-[120px] relative" >
                             <img
                               src={item.squareThumbnail}
@@ -693,11 +692,15 @@ const Subscribed = () => {
                               className="object-cover w-full h-full rounded-md"
                             />
 
-                            {hoveredVideoItem === item.id && (
-                              <div className="absolute inset-0 rounded-md flex items-center justify-center text-yellow-500 z-10">
-                                <PlayArrowIcon sx={{ fontSize: 60 }} />
-                              </div>
-                            )}
+                            <button className="absolute top-[55%] left-[75%] truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
+                              <CheckIcon
+                                sx={
+                                  checkSubcribedVideo?.includes(item.id)
+                                    ? { color: "#31C48D" }
+                                    : { color: "white" }
+                                }
+                              />
+                            </button>
                           </div>
 
                           <div className="max-w-[210px] flex flex-wrap items-center px-3 py-3">
