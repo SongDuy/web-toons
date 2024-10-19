@@ -14,6 +14,7 @@ import VideoFireBase from "../../common/services/Video.services";
 import { Link } from "react-router-dom";
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import dataListGenre from "../../components/layout/layoutUser/dataListGenre";
 
 const Subscribed = () => {
   const [EditSubscribed, setEditSubscribed] = useState(false);
@@ -28,20 +29,20 @@ const Subscribed = () => {
   const check19Modal = useSelector(state => state.hidden.check19Modal);
 
   const dispatch = useDispatch();
-  const monthNames = [
-    { en: "January", kr: "1월" },
-    { en: "February", kr: "2월" },
-    { en: "March", kr: "3월" },
-    { en: "April", kr: "4월" },
-    { en: "May", kr: "5월" },
-    { en: "June", kr: "6월" },
-    { en: "July", kr: "7월" },
-    { en: "August", kr: "8월" },
-    { en: "September", kr: "9월" },
-    { en: "October", kr: "10월" },
-    { en: "November", kr: "11월" },
-    { en: "December", kr: "12월" },
-  ];
+  // const monthNames = [
+  //   { en: "January", kr: "1월" },
+  //   { en: "February", kr: "2월" },
+  //   { en: "March", kr: "3월" },
+  //   { en: "April", kr: "4월" },
+  //   { en: "May", kr: "5월" },
+  //   { en: "June", kr: "6월" },
+  //   { en: "July", kr: "7월" },
+  //   { en: "August", kr: "8월" },
+  //   { en: "September", kr: "9월" },
+  //   { en: "October", kr: "10월" },
+  //   { en: "November", kr: "11월" },
+  //   { en: "December", kr: "12월" },
+  // ];
   useEffect(() => {
     const get = async () => {
       try {
@@ -377,7 +378,7 @@ const Subscribed = () => {
                             </div>
 
                             {/*Trong component React của bạn */}
-                            <div className="w-full h-[50px] mt-auto">
+                            {/* <div className="w-full h-[50px] mt-auto">
                               <span className="w-full text-shadow-white line-clamp-1 text-base text-gray-500">
                                 {!language ?
                                   "Update"
@@ -412,8 +413,22 @@ const Subscribed = () => {
                                   }
                                 />
                               </button>
+                            </div> */}
+                            {/*Trong component React của bạn */}
+                            <div className="w-full h-[30px] mt-auto">
+                              <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
+                                {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
+                              </span>
+                              <button className="absolute top-[75%] left-[75%] truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
+                                <CheckIcon
+                                  sx={
+                                    checkSubcribed?.includes(item.id)
+                                      ? { color: "#31C48D" }
+                                      : { color: "white" }
+                                  }
+                                />
+                              </button>
                             </div>
-
                           </div>
 
                         </li>
@@ -458,7 +473,7 @@ const Subscribed = () => {
                               </div>
 
                               {/*Trong component React của bạn */}
-                              <div className="w-full h-[50px] mt-auto">
+                              {/* <div className="w-full h-[50px] mt-auto">
                                 <span className="w-full text-shadow-white line-clamp-1 text-base text-gray-500">
                                   {!language ?
                                     "Update"
@@ -481,6 +496,12 @@ const Subscribed = () => {
                                       {new Date(item.createTime)?.getFullYear()}년
                                     </span>
                                   )}
+                                </span>
+                              </div> */}
+                              {/*Trong component React của bạn */}
+                              <div className="w-full h-[30px] mt-auto">
+                                <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
+                                  {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
                                 </span>
                               </div>
                             </div>
@@ -565,116 +586,6 @@ const Subscribed = () => {
                     </button>
                   )}
                 </div>
-
-                {/* {EditSubscribedVideo ? (
-                  <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
-                    {Subscribed?.filter(item => item.idvideo)?.map((item) => {
-                      return (
-                        <li
-                          key={item?.id}
-                          className={`w-full h-full rounded-md ${checkSubcribedVideo?.includes(item.id) ? "border-emerald-400" : ""}  relative`}
-                          onClick={() => getidSubscribedVideo(item.id)}
-                        >
-                          <img
-                            src={item.squareThumbnail}
-                            alt="img"
-                            className="object-cover w-full h-full rounded-md"
-                          />
-                          <div className="absolute top-2 px-3">
-                            <span className=" text-shadow-white line-clamp-2 text-lg w-full font-bold">
-                              {item?.title}
-                            </span>
-                            <span className="w-full text-shadow-white line-clamp-1 text-md">
-                              {item?.Author}
-                            </span>
-                          </div>
-
-                          <div className="absolute top-[70%] px-3">
-                            <span className="w-full text-shadow-white line-clamp-1 text-base text-gray-500">
-                              {!language ?
-                                "Update"
-                                :
-                                "업데이트"
-                              }
-                            </span>
-                            {!language ?
-                              <span className="text-shadow-white line-clamp-1 text-base text-gray-500">
-                                {monthNames[new Date(item.createTime).getMonth()].en}{" "}
-                                {new Date(item.createTime).getDate()},
-                                {new Date(item.createTime)?.getFullYear()}
-                              </span>
-                              :
-                              <span className="text-shadow-white line-clamp-1 text-base text-gray-500">
-                                {monthNames[new Date(item.createTime).getMonth()].kr}{" "}
-                                {new Date(item.createTime).getDate()}일,
-                                {new Date(item.createTime)?.getFullYear()}년
-                              </span>
-                            }
-                          </div>
-
-                          <button className="absolute top-[75%] left-[75%] truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
-                            <CheckIcon
-                              sx={
-                                checkSubcribedVideo?.includes(item.id)
-                                  ? { color: "#31C48D" }
-                                  : { color: "white" }
-                              }
-                            />
-                          </button>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                ) : (
-                  <ul className="w-full h-full grid grid-cols-5 gap-3 px-5">
-                    {Subscribed?.filter(item => item.idvideo)?.map((item) => {
-                      return (
-                        <li
-                          key={item?.id}
-                          className="flex-row w-full h-full rounded-md relative overflow-hidden"
-                        >
-                          <img
-                            src={item.squareThumbnail}
-                            alt="img"
-                            className="object-cover w-full h-full rounded-md"
-                          />
-                          <div className="absolute top-2 px-3">
-                            <span className="w-full text-shadow-white line-clamp-2 text-lg font-bold">
-                              {item?.title}
-                            </span>
-                            <span className="w-full text-shadow-white line-clamp-1 text-md">
-                              {item?.Author}
-                            </span>
-                          </div>
-
-                          <div className="absolute top-[70%] px-3">
-                            <span className="w-full text-shadow-white line-clamp-1 text-base text-gray-500">
-                              {!language ?
-                                "Update"
-                                :
-                                "업데이트"
-                              }
-                            </span>
-
-                            {!language ?
-                              <span className="text-shadow-white line-clamp-1 text-base text-gray-500">
-                                {monthNames[new Date(item.createTime).getMonth()].en}{" "}
-                                {new Date(item.createTime).getDate()},
-                                {new Date(item.createTime)?.getFullYear()}
-                              </span>
-                              :
-                              <span className="text-shadow-white line-clamp-1 text-base text-gray-500">
-                                {monthNames[new Date(item.createTime).getMonth()].kr}{" "}
-                                {new Date(item.createTime).getDate()}일,
-                                {new Date(item.createTime)?.getFullYear()}년
-                              </span>}
-                          </div>
-
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )} */}
 
                 {EditSubscribedVideo ? (
                   <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4">
