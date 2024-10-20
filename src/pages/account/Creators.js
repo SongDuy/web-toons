@@ -207,17 +207,19 @@ const Creators = () => {
                               </button>
                             </div>
 
-                            <div className="w-full h-auto overflow-hidden">
-                              <span className="w-full text-xl font-semibold line-clamp-1">
-                                {item.name}
-                              </span>
-                            </div>
+                            <div className="w-full h-full rounded-xl">
+                              <div className="w-full flex items-center justify-center overflow-hidden">
+                                <span className="w-full text-xl font-semibold line-clamp-1 text-yellow-500 text-shadow-black">
+                                  {item.name}
+                                </span>
+                              </div>
 
-                            <div className="w-full h-full">
-                              <span className="w-full flex gap-1 text-yellow-500">
-                                {/* <VisibilityIcon /> */}
-                                {/* {comic?.length} */}
-                              </span>
+                              <div className="w-full flex justify-end text-right">
+                                <span className="text-md font-semibold text-white text-shadow-black">
+                                  {!language ? <span> Followers: </span> : <span> 팔로워: </span>}
+                                  {' '} {item?.follow}
+                                </span>
+                              </div>
                             </div>
                           </div>
                         </li>
@@ -244,17 +246,17 @@ const Creators = () => {
                               />
                             </div>
 
-                            <div className="h-full rounded-xl px-3 py-3">
+                            <div className="w-full h-full rounded-xl px-3 py-3">
                               <div className="w-full mt-[35px] flex items-center justify-center overflow-hidden">
-                                <span className="w-full text-xl font-semibold line-clamp-1">
+                                <span className="w-full text-xl font-semibold line-clamp-1 text-yellow-500 text-shadow-black">
                                   {item.name}
                                 </span>
                               </div>
 
-                              <div className="w-full">
-                                <span className=" flex gap-1 text-yellow-500">
-                                  {/* <VisibilityIcon /> */}
-                                  {/* {comic?.length} */}
+                              <div className="w-full flex justify-end text-right">
+                                <span className="text-md font-semibold text-white text-shadow-black">
+                                  {!language ? <span> Followers: </span> : <span> 팔로워: </span>}
+                                  {' '} {item?.follow}
                                 </span>
                               </div>
                             </div>
