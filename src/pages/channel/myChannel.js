@@ -374,7 +374,7 @@ const handleDelete=async (id)=>{
                     </span>
                   </div> */}
                   <div className="w-full px-1 sm:pt-8 pb-4 flex gap-y-2">
-                    <div className="mr-5 xs:text-[15px] sm:text-[18px] font-semibold text-white text-shadow-black">
+                    <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
                       {!language ? (
                         <span> Originals: </span>
                       ) : (
@@ -382,7 +382,7 @@ const handleDelete=async (id)=>{
                       )}{" "}
                       {comic?.length}
                     </div>
-                    <div className="mr-5 xs:text-[15px] sm:text-[18px] font-semibold text-white text-shadow-black">
+                    <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
                       {!language ? (
                         <span> Videos: </span>
                       ) : (
@@ -390,7 +390,7 @@ const handleDelete=async (id)=>{
                       )}{" "}
                       {Video?.length}
                     </div>
-                    <div className="mr-5 xs:text-[15px] sm:text-[18px] font-semibold text-white text-shadow-black col-span-2">
+                    <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black col-span-2">
                       {!language ? (
                         <span> Followers: </span>
                       ) : (

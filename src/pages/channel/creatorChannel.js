@@ -199,15 +199,15 @@ const CreatorChannelPage = () => {
 
                                         <div className="w-full px-1 sm:pt-8 pb-4 flex flex-wrap">
                                             {/* Stats */}
-                                            <div className="mr-5 xs:text-[15px] sm:text-[18px] font-semibold text-white text-shadow-black">
+                                            <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
                                                 {!language ? <span> Originals: </span> : <span> 오리지널: </span>}
                                                 {' '} {comic?.length}
                                             </div>
-                                            <div className="mr-5 xs:text-[15px] sm:text-[18px] font-semibold text-white text-shadow-black">
+                                            <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
                                                 {!language ? <span> Videos: </span> : <span> 비디오: </span>}
                                                 {' '} {Video?.length}
                                             </div>
-                                            <div className="mr-5 xs:text-[15px] sm:text-[18px] font-semibold text-white text-shadow-black">
+                                            <div className="mr-5 text-[18px] font-semibold text-white text-shadow-black">
                                                 {!language ? <span> Followers: </span> : <span> 팔로워: </span>}
                                                 {' '} {create?.follow}
                                             </div>
