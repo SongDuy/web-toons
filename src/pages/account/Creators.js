@@ -6,6 +6,7 @@ import FollowFireBase from "../../common/services/Follow.services";
 import userFireBase from "../../common/services/User.services";
 import CircularProgress from "@mui/material/CircularProgress";
 import CheckIcon from "@mui/icons-material/Check";
+import { Link } from 'react-router-dom';
 
 const Creators = () => {
   const [Creators, setCreators] = useState([]);
@@ -105,7 +106,7 @@ const Creators = () => {
             <div className="w-full h-full xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100">
               <div className="w-full py-[10px] flex-row justify-center items-center">
                 <div className="m-2 flex justify-between mb-[30px]">
-                <h1 className="flex items-center justify-center font-semibold text-lg text-black">
+                  <h1 className="flex items-center justify-center font-semibold text-lg text-black">
 
                     {!language ?
                       "CREATORS"
@@ -176,44 +177,83 @@ const Creators = () => {
                 </div>
 
                 {EditFollow ? (
-                  <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4">
+                  // <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4">
+                  //   {Creators?.map((item) => {
+                  //     return (
+                  //       <li
+                  //         className={` w-full h-full ${checkFollow?.includes(item.id) ? "border-emerald-400" : ""}  relative`}
+                  //         key={item?.id}
+                  //         onClick={() => getidSubscribed(item.id)}
+                  //       >
+                  //         <img
+                  //           src={item.image
+                  //             ? item?.image
+                  //             : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"}
+                  //           alt=""
+                  //           className="object-contain "
+                  //         />
+                  //         <p className="absolute top-2 left-2 truncate text-shadow-white line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
+                  //           {item?.name}
+                  //         </p>
+
+                  //         <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
+
+                  //           {!language ?
+                  //             "Update"
+                  //             :
+                  //             "업데이트"
+                  //           }
+                  //         </p>
+
+                  //         <span className="absolute top-[65%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
+                  //           <CheckIcon
+                  //             sx={
+                  //               checkFollow?.includes(item.id)
+                  //                 ? { color: "#31C48D" }
+                  //                 : { color: "white" }
+                  //             }
+                  //           />
+                  //         </span >
+                  //       </li>
+                  //     );
+                  //   })}
+                  // </ul>
+                  <ul className="w-full h-full grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {/* khung danh sách */}
                     {Creators?.map((item) => {
                       return (
-                        <li
-                          className={` w-full h-full ${checkFollow?.includes(item.id) ? "border-emerald-400" : ""}  relative`}
-                          key={item?.id}
-                          onClick={() => getidSubscribed(item.id)}
+                        <Link
+                          key={item.id}
+                          to={`/channel/creator/${item.idchannel}`}
                         >
-                          <img
-                            src={item.image
-                              ? item?.image
-                              : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"}
-                            alt=""
-                            className="object-contain "
-                          />
-                          <p className="absolute top-2 left-2 truncate text-shadow-white line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
-                            {item?.name}
-                          </p>
+                          <li
+                            onClick={() => getidSubscribed(item.id)}
+                            className="w-full h-[120px] flex rounded shadow border hover:bg-red-50 bg-white"
+                          >
+                            <div className="min-w-[120px] min-h-[120px] max-w-[120px] max-h-[120px] rounded-full flex items-center justify-center">
+                              <img
+                                src={item.image}
+                                alt="img"
+                                className="object-cover w-[100px] h-[100px] rounded-full"
+                              />
+                            </div>
 
-                          <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
+                            <div className="h-full rounded-xl px-3 py-3">
+                              <div className="w-full h-[75px] flex items-center justify-center overflow-hidden">
+                                <span className="w-full text-xl font-semibold leading-[1.2] line-clamp-2">
+                                  {item.name}
+                                </span>
+                              </div>
 
-                            {!language ?
-                              "Update"
-                              :
-                              "업데이트"
-                            }
-                          </p>
-
-                          <span className="absolute top-[65%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
-                            <CheckIcon
-                              sx={
-                                checkFollow?.includes(item.id)
-                                  ? { color: "#31C48D" }
-                                  : { color: "white" }
-                              }
-                            />
-                          </span >
-                        </li>
+                              <div className="w-full">
+                                <span className=" flex gap-1 text-yellow-500">
+                                  {/* <VisibilityIcon /> */}
+                                  {/* {comic?.length} */}
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+                        </Link>
                       );
                     })}
                   </ul>
