@@ -145,8 +145,9 @@ const DisplayOriginalPage = () => {
       xlQuery.removeEventListener("change", updateItemsPerPage);
     };
   }, []);
-  
+
   const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
+  const koreanDay = days.find(d => d.day === comicid.schedule)?.daysInKorean || '';
 
   const monthNames = [
     { en: "January", kr: "1월" },
@@ -747,14 +748,20 @@ const DisplayOriginalPage = () => {
 
             {/* Hiển thị yêu thích, theo dõi */}
             <div className="w-full h-[200px] bg-white flex items-center justify-center">
-              <div>
-                <div className="flex gap-3 pb-3">
-                  <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                    Up
-                  </span>
-                  <span className="text-xl font-semibold flex items-center">
-                    {/* EVERY MONDAY */}
-                  </span>
+              <div className="w-full">
+                <div className="flex items-center justify-center">
+                  <div className="w-auto flex gap-3 pb-3">
+                    <span className="w-[35px] h-[35px] uppercase bg-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                      Up
+                    </span>
+                    <span className="text-xl uppercase font-semibold flex items-center">
+                      {!language ? (
+                        <span> EVERY {comicid.schedule}DAY </span>
+                      ) : (
+                        <span> 매주 {koreanDay} </span>
+                      )}
+                    </span>
+                  </div>
                 </div>
 
                 <div className="flex-auto mb-3">
@@ -765,45 +772,46 @@ const DisplayOriginalPage = () => {
                     {comicid?.Author}
                   </span>
                 </div>
-
-                <div className="flex gap-3">
-                  {!isLike ? (
-                    <button
-                      onClick={handlelikechap}
-                      className="w-[100px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2"
-                    >
-                      <FavoriteBorderIcon />
-                      {countlike}
-                    </button>
-                  ) : (
-                    <button
-                      onClick={handlelikechap}
-                      className="w-[100px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2"
-                    >
-                      <FavoriteIcon className="text-red-500" />
-                      {countlike}
-                    </button>
-                  )}
-                  {!isSubscribe ? (
-                    <button
-                      onClick={handlesubscribe}
-                      className="w-[120px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2"
-                    >
-                      <AddIcon />
-                      {!language ? (
-                        <span>Subscribe</span>
-                      ) : (
-                        <span>구독하기</span>
-                      )}
-                    </button>
-                  ) : (
-                    <button
-                      onClick={handleDeleteSub}
-                      className="w-[35px] h-[35px] text-black hover:text-yellow-500 bg-gray-100 hover:bg-gray-200 py-2 px-2 rounded-full flex gap-1 items-center justify-center"
-                    >
-                      <CheckIcon />
-                    </button>
-                  )}
+                <div className="flex items-center justify-center">
+                  <div className="flex gap-3">
+                    {!isLike ? (
+                      <button
+                        onClick={handlelikechap}
+                        className="w-[100px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2"
+                      >
+                        <FavoriteBorderIcon />
+                        {countlike}
+                      </button>
+                    ) : (
+                      <button
+                        onClick={handlelikechap}
+                        className="w-[100px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2"
+                      >
+                        <FavoriteIcon className="text-red-500" />
+                        {countlike}
+                      </button>
+                    )}
+                    {!isSubscribe ? (
+                      <button
+                        onClick={handlesubscribe}
+                        className="w-[120px] h-[35px] rounded-full bg-gray-100 hover:bg-gray-200 flex gap-1 items-center justify-center px-2 py-2"
+                      >
+                        <AddIcon />
+                        {!language ? (
+                          <span>Subscribe</span>
+                        ) : (
+                          <span>구독하기</span>
+                        )}
+                      </button>
+                    ) : (
+                      <button
+                        onClick={handleDeleteSub}
+                        className="w-[35px] h-[35px] text-black hover:text-yellow-500 bg-gray-100 hover:bg-gray-200 py-2 px-2 rounded-full flex gap-1 items-center justify-center"
+                      >
+                        <CheckIcon />
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
