@@ -50,6 +50,10 @@ const OriginalSeriesPage = () => {
 
   const [Rate, setRate] = useState(0);
   const dispatch = useDispatch();
+
+  const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
+  const koreanDay = days.find(d => d.day === comicid.schedule)?.daysInKorean || '';
+
   const monthNames = [
     { en: "January", kr: "1월" },
     { en: "February", kr: "2월" },
@@ -530,10 +534,13 @@ const OriginalSeriesPage = () => {
                       Up
                     </span>
 
-                    {/* <span className="text-xl font-semibold flex items-center">
-                      EVERY MONDAY
-                      매주 월요일
-                    </span> */}
+                    <span className="text-xl uppercase font-semibold flex items-center">
+                      {!language ? (
+                        <span> EVERY {comicid.schedule}DAY </span>
+                      ) : (
+                        <span> 매주 {koreanDay} </span>
+                      )}
+                    </span>
                   </div>
                   <div className="w-full">
                     <span className="">{comicid.summary}</span>

@@ -145,6 +145,8 @@ const DisplayOriginalPage = () => {
       xlQuery.removeEventListener("change", updateItemsPerPage);
     };
   }, []);
+  
+  const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
 
   const monthNames = [
     { en: "January", kr: "1월" },
@@ -639,7 +641,7 @@ const DisplayOriginalPage = () => {
                       <img
                         src={logo}
                         alt="Logo"
-                        className="min-w-[50px] max-w-[50px] h-auto bg-black"
+                        className="min-w-[50px] max-w-[50px] h-auto rounded-md bg-black"
                       />
                     </Link>
                   </div>

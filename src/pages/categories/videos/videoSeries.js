@@ -57,6 +57,10 @@ const VideoSeriesPage = () => {
   const language = useSelector((state) => state.hidden.language);
   const anchorRef = React.useRef(null);
   const [Subscribe, setSubscribe] = useState([[]]);
+
+  const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
+  const koreanDay = days.find(d => d.day === Videoid.schedule)?.daysInKorean || '';
+
   const monthNames = [
     { en: "January", kr: "1월" },
     { en: "February", kr: "2월" },
@@ -634,8 +638,12 @@ const VideoSeriesPage = () => {
                     <span className="w-[35px] h-[35px] uppercase bg-gradient-to-t from-green-300 via-green-400 to-green-500 text-white text-xs font-semibold rounded-full flex items-center justify-center">
                       Up
                     </span>
-                    <span className="text-xl font-semibold flex items-center">
-                      {/* EVERY MONDAY */}
+                    <span className="text-xl uppercase font-semibold flex items-center">
+                      {!language ? (
+                        <span> EVERY {Videoid.schedule}DAY </span>
+                      ) : (
+                        <span> 매주 {koreanDay} </span>
+                      )}
                     </span>
                   </div>
                   <div className="w-full">
