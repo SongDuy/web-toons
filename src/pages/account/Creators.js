@@ -118,7 +118,7 @@ const Creators = () => {
                   {EditFollow ? (
                     <div className="flex">
                       <button
-                        className="w-[35px] max-h-[35px] font-semibold text-base text-black ml-3 px-2 rounded-full bg-[#dfdbdbec]"
+                        className="w-[35px] max-h-[35px] text-black rounded-full bg-[#dfdbdbec]"
                         onClick={getALLSubscribed}
                       >
                         <CheckIcon
@@ -177,50 +177,56 @@ const Creators = () => {
                 </div>
 
                 {EditFollow ? (
-                  // <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4">
-                  //   {Creators?.map((item) => {
-                  //     return (
-                  //       <li
-                  //         className={` w-full h-full ${checkFollow?.includes(item.id) ? "border-emerald-400" : ""}  relative`}
-                  //         key={item?.id}
-                  //         onClick={() => getidSubscribed(item.id)}
-                  //       >
-                  //         <img
-                  //           src={item.image
-                  //             ? item?.image
-                  //             : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"}
-                  //           alt=""
-                  //           className="object-contain "
-                  //         />
-                  //         <p className="absolute top-2 left-2 truncate text-shadow-white line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
-                  //           {item?.name}
-                  //         </p>
-
-                  //         <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
-
-                  //           {!language ?
-                  //             "Update"
-                  //             :
-                  //             "업데이트"
-                  //           }
-                  //         </p>
-
-                  //         <span className="absolute top-[65%] left-[80%]  truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
-                  //           <CheckIcon
-                  //             sx={
-                  //               checkFollow?.includes(item.id)
-                  //                 ? { color: "#31C48D" }
-                  //                 : { color: "white" }
-                  //             }
-                  //           />
-                  //         </span >
-                  //       </li>
-                  //     );
-                  //   })}
-                  // </ul>
                   <ul className="w-full h-full grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {/* khung danh sách */}
                     {Creators?.map((item) => {
+                      return (
+                        <li
+                          key={item.id}
+                          onClick={() => getidSubscribed(item.id)}
+                          className="w-full h-[120px] flex rounded shadow border hover:bg-red-50 bg-white"
+                        >
+                          <div className="min-w-[120px] min-h-[120px] max-w-[120px] max-h-[120px] rounded-full flex items-center justify-center">
+                            <img
+                              src={item.image}
+                              alt="img"
+                              className="object-cover w-[100px] h-[100px] rounded-full"
+                            />
+                          </div>
+
+                          <div className="w-full h-full rounded-xl px-3 py-3">
+                            <div className="flex w-full justify-end">
+                              <button className="w-[35px] h-[35px] rounded-full bg-[#dfdbdbec]">
+                                <CheckIcon
+                                  sx={
+                                    checkFollow?.includes(item.id)
+                                      ? { color: "#31C48D" }
+                                      : { color: "white" }
+                                  }
+                                />
+                              </button>
+                            </div>
+
+                            <div className="w-full h-auto overflow-hidden">
+                              <span className="w-full text-xl font-semibold line-clamp-1">
+                                {item.name}
+                              </span>
+                            </div>
+
+                            <div className="w-full h-full">
+                              <span className="w-full flex gap-1 text-yellow-500">
+                                {/* <VisibilityIcon /> */}
+                                {/* {comic?.length} */}
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                ) : (
+                  <ul className="w-full h-full grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {Creators.map((item) => {
                       return (
                         <Link
                           key={item.id}
@@ -239,8 +245,8 @@ const Creators = () => {
                             </div>
 
                             <div className="h-full rounded-xl px-3 py-3">
-                              <div className="w-full h-[75px] flex items-center justify-center overflow-hidden">
-                                <span className="w-full text-xl font-semibold leading-[1.2] line-clamp-2">
+                              <div className="w-full mt-[35px] flex items-center justify-center overflow-hidden">
+                                <span className="w-full text-xl font-semibold line-clamp-1">
                                   {item.name}
                                 </span>
                               </div>
@@ -254,37 +260,6 @@ const Creators = () => {
                             </div>
                           </li>
                         </Link>
-                      );
-                    })}
-                  </ul>
-                ) : (
-                  <ul className="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4">
-                    {Creators.map((item) => {
-                      return (
-                        <li
-                          className="flex-row w-full h-full   relative"
-                          key={item?.id}
-                        >
-                          <img
-                            src={item.image
-                              ? item?.image
-                              : "https://i.pinimg.com/736x/c6/e5/65/c6e56503cfdd87da299f72dc416023d4.jpg"}
-                            alt=""
-                            className="object-contain h-[50] "
-                          />
-                          <p className="absolute top-2 left-2 text-shadow-white truncate line-clamp-5  after:content-['...'] text-lg w-2/3 font-bold">
-                            {item?.name}
-                          </p>
-
-                          <p className="absolute top-[70%] left-2 truncate line-clamp-5  text-base  text-gray-500">
-                            {!language ?
-                              "Update"
-                              :
-                              "업데이트"
-                            }
-                          </p>
-
-                        </li>
                       );
                     })}
                   </ul>

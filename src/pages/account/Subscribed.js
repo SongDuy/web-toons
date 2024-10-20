@@ -291,7 +291,7 @@ const Subscribed = () => {
                   {EditSubscribed ? (
                     <div className="flex">
                       <button
-                        className="w-[35px] max-h-[35px] font-semibold text-base text-black ml-3 px-2 rounded-full bg-[#dfdbdbec]"
+                        className="w-[35px] h-[35px] font-semibold text-base text-black ml-3 px-2 rounded-full bg-[#dfdbdbec]"
                         onClick={getALLSubscribed}
                       >
                         <CheckIcon
@@ -418,7 +418,7 @@ const Subscribed = () => {
                               <span className="w-full px-2 py-1 text-yellow-300 text-shadow-black text-sm font-semibold flex items-center justify-center">
                                 {!language ? item.genre1 : dataListGenre?.filter(itm => itm.name.toLowerCase() === item.genre1.toLowerCase())[0]?.nameKorean}
                               </span>
-                              <button className="absolute top-[75%] left-[75%] truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
+                              <button className="absolute w-[35px] h-[35px] top-[80%] left-[80%] flex items-center justify-center rounded-full bg-[#dfdbdbec]">
                                 <CheckIcon
                                   sx={
                                     checkSubcribed?.includes(item.id)
@@ -602,7 +602,7 @@ const Subscribed = () => {
                               className="object-cover w-full h-full rounded-md"
                             />
 
-                            <button className="absolute top-[55%] left-[75%] truncate line-clamp-5 text-base font-bold p-2 rounded-full bg-[#dfdbdbec]">
+                            <button className="absolute w-[35px] h-[35px] top-[65%] left-[80%] flex items-center justify-center rounded-full bg-[#dfdbdbec]">
                               <CheckIcon
                                 sx={
                                   checkSubcribedVideo?.includes(item.id)
