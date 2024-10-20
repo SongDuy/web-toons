@@ -55,16 +55,29 @@ const ContentPage = () => {
         <div className="w-full h-full bg-gray-100 pb-10">
 
           {/* Phần hiển thị hình quảng cáo */}
-          <div className="w-full h-auto bg-gradient-to-b from-white via-yellow-100 to-green-200 overflow-hidden flex items-center justify-center">
-            <div className="max-w-[1120px] max-h-[500px] relative cursor-pointer">
+          <div className="w-full h-auto overflow-hidden flex items-center justify-center">
+            {/* Ảnh nền là ảnh tiếp theo */}
+            {banner.length > 0 && (
               <img
-                src={banner[currentImageIndex]?.image}
-                alt="Ad Banner"
-                className="object-cover w-[1120px] max-h-[500px]"
+                src={banner[(currentImageIndex + 1) % banner.length]?.image} // Lấy ảnh tiếp theo
+                alt="Ad Banner0"
+                className="absolute object-cover w-full max-h-[500px] opacity-50 z-0" // Đảm bảo ảnh nền có độ mờ
               />
+            )}
 
-              <div className="absolute bottom-3 left-5 right-0 flex items-center">
-                {banner?.map((image, index) => (
+            <div className="relative max-w-[1120px] max-h-[500px] cursor-pointer z-10">
+              {/* Ảnh chính */}
+              {banner.length > 0 && (
+                <img
+                  src={banner[currentImageIndex]?.image}
+                  alt="Ad Banner1"
+                  className="object-cover w-[1120px] max-h-[500px]"
+                />
+              )}
+
+              {/* Nút chuyển ảnh */}
+              <div className="absolute bottom-3 left-5 right-0 flex items-center z-20">
+                {banner.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => handleImageChange(index)}
