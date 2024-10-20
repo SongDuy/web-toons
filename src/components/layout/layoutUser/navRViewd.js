@@ -54,7 +54,7 @@ const NavRViewd = () => {
   };
   return (
     <div>
-      <div className="hidden lg:block">
+      <div className="hidden 3xl:block">
         <button
           className="fixed top-[50%] right-[-4%] transform rotate-90 bg-white p-5 rounded-br-lg rounded-bl-lg flex"
           onClick={() => OpenRView()}
@@ -122,7 +122,7 @@ const NavRViewd = () => {
         )}
       </div>
 
-      <div className="block lg:hidden">
+      <div className="block 3xl:hidden">
        
       </div>
 
