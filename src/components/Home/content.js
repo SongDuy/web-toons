@@ -61,7 +61,7 @@ const ContentPage = () => {
               <img
                 src={banner[(currentImageIndex + 1) % banner.length]?.image} // Lấy ảnh tiếp theo
                 alt="Ad Banner0"
-                className="absolute object-cover w-full max-h-[500px] opacity-50 z-0" // Đảm bảo ảnh nền có độ mờ
+                className="w-full max-h-[500px] absolute object-cover opacity-50 z-0" // Đảm bảo ảnh nền có độ mờ
               />
             )}
 
@@ -71,7 +71,7 @@ const ContentPage = () => {
                 <img
                   src={banner[currentImageIndex]?.image}
                   alt="Ad Banner1"
-                  className="object-cover w-[1120px] max-h-[500px]"
+                  className="w-[1120px] max-h-[500px] object-cover "
                 />
               )}
 
