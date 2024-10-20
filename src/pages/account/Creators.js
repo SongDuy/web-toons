@@ -184,7 +184,7 @@ const Creators = () => {
                         <li
                           key={item.id}
                           onClick={() => getidSubscribed(item.id)}
-                          className="w-full h-[120px] flex rounded shadow border hover:bg-red-50 bg-white"
+                          className="w-full h-[120px] flex rounded shadow border hover:shadow-md bg-white"
                         >
                           <div className="min-w-[120px] min-h-[120px] max-w-[120px] max-h-[120px] rounded-full flex items-center justify-center">
                             <img
@@ -234,7 +234,7 @@ const Creators = () => {
                         >
                           <li
                             onClick={() => getidSubscribed(item.id)}
-                            className="w-full h-[120px] flex rounded shadow border hover:bg-red-50 bg-white"
+                            className="w-full h-[120px] flex rounded shadow border hover:shadow-md bg-white"
                           >
                             <div className="min-w-[120px] min-h-[120px] max-w-[120px] max-h-[120px] rounded-full flex items-center justify-center">
                               <img
