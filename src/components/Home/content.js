@@ -71,7 +71,7 @@ const ContentPage = () => {
                 <img
                   src={banner[currentImageIndex]?.image}
                   alt="Ad Banner1"
-                  className="w-[1120px] max-h-[500px] object-cover "
+                  className="w-[1120px] max-h-[500px] object-cover"
                 />
               )}
 
