@@ -265,7 +265,7 @@ const CreatorChannelPage = () => {
 
                                         <div className="mt-5 max-h-[450px] custom-scrollbar">
                                             <ul className="w-full h-full">
-                                                {comic?.slice(0, 5)?.map(item => (
+                                                {comic?.map(item => (
                                                     <Link
                                                         className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer"
                                                         key={item.id}
@@ -317,7 +317,7 @@ const CreatorChannelPage = () => {
 
                                         <div className="mt-5 max-h-[450px] custom-scrollbar">
                                             <ul className="w-full">
-                                                {Video?.slice(0, 5)?.map(item => (
+                                                {Video?.map(item => (
                                                     <Link
                                                         className="w-full h-[90px] hover:bg-gray-100 flex items-center border-t border-b cursor-pointer"
                                                         key={item.id}

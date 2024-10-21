@@ -7,6 +7,7 @@ import userFireBase from "../../common/services/User.services";
 import CircularProgress from "@mui/material/CircularProgress";
 import CheckIcon from "@mui/icons-material/Check";
 import { Link } from 'react-router-dom';
+import Avatar from '@mui/material/Avatar';
 
 const Creators = () => {
   const [Creators, setCreators] = useState([]);
@@ -187,10 +188,10 @@ const Creators = () => {
                           className="w-full h-[120px] flex rounded shadow border hover:shadow-md bg-white"
                         >
                           <div className="min-w-[120px] min-h-[120px] max-w-[120px] max-h-[120px] rounded-full flex items-center justify-center">
-                            <img
+                            <Avatar
+                              alt="Remy Sharp"
                               src={item.image}
-                              alt="img"
-                              className="object-cover w-[100px] h-[100px] rounded-full"
+                              sx={{ width: 100, height: 100 }}
                             />
                           </div>
 
@@ -239,10 +240,10 @@ const Creators = () => {
                             className="w-full h-[120px] flex rounded shadow border hover:shadow-md bg-white"
                           >
                             <div className="min-w-[120px] min-h-[120px] max-w-[120px] max-h-[120px] rounded-full flex items-center justify-center">
-                              <img
+                              <Avatar
+                                alt="Remy Sharp"
                                 src={item.image}
-                                alt="img"
-                                className="object-cover w-[100px] h-[100px] rounded-full"
+                                sx={{ width: 100, height: 100 }}
                               />
                             </div>
 
