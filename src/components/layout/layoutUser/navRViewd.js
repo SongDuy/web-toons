@@ -55,16 +55,20 @@ const NavRViewd = () => {
   return (
     <div className="bg-white z-50">
       <div className="hidden lg:block">
-        <button
-          className="fixed top-[50%] right-[-4%] transform rotate-90 bg-white p-5 rounded-br-lg rounded-bl-lg flex z-50" // Thêm z-index cao
+        <div
           onClick={() => OpenRView()}
         >
-          {!language ? "Recently viewed" : "최근 본 항목"}
-          <div className="transform rotate-90 ml-3">
-            {" "}
-            <ArrowForwardIosIcon sx={{ fontSize: 12 }} />
-          </div>
-        </button>
+          <button
+            className="fixed top-[50%] border right-[-4%] transform rotate-90 bg-white p-5 rounded-br-lg rounded-bl-lg flex z-50" // Thêm z-index cao
+          >
+            {!language ? "Recently viewed" : "최근 본 항목"}
+            <div className="transform rotate-90 ml-3">
+              {" "}
+              <ArrowForwardIosIcon sx={{ fontSize: 12 }} />
+            </div>
+          </button>
+        </div>
+
         {OpenoAnimation && (
           <div>
             <button

@@ -61,11 +61,11 @@ const ContentPage = () => {
               <img
                 src={banner[(currentImageIndex + 1) % banner.length]?.image} // Lấy ảnh tiếp theo
                 alt="Ad Banner0"
-                className="w-full max-h-[500px] absolute object-cover opacity-50" // Đảm bảo ảnh nền có độ mờ
+                className="w-full max-h-[500px] absolute object-cover opacity-80" // Đảm bảo ảnh nền có độ mờ
               />
             )}
 
-            <div className="relative max-w-[1120px] max-h-[500px] cursor-pointer">
+            <div className="relative max-w-[1120px] max-h-[500px]">
               {/* Ảnh chính */}
               {banner.length > 0 && (
                 <img
