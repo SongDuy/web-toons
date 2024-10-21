@@ -291,7 +291,7 @@ const Subscribed = () => {
                   {EditSubscribed ? (
                     <div className="flex">
                       <button
-                        className="w-[35px] h-[35px] font-semibold text-base text-black ml-3 px-2 rounded-full bg-[#dfdbdbec]"
+                        className="w-[35px] h-[35px] font-semibold text-base text-black flex items-center justify-center rounded-full bg-[#dfdbdbec]"
                         onClick={getALLSubscribed}
                       >
                         <CheckIcon
@@ -528,7 +528,7 @@ const Subscribed = () => {
                   {EditSubscribedVideo ? (
                     <div className="flex">
                       <button
-                        className="w-[35px] max-h-[35px] font-semibold text-base text-black ml-3 px-2 rounded-full bg-[#dfdbdbec]"
+                        className="w-[35px] max-h-[35px] font-semibold text-base text-black flex items-center justify-center rounded-full bg-[#dfdbdbec]"
                         onClick={getALLSubscribedVideo}
                       >
                         <CheckIcon
