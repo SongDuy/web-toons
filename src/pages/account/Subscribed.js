@@ -15,6 +15,8 @@ import { Link } from "react-router-dom";
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import dataListGenre from "../../components/layout/layoutUser/dataListGenre";
+import CancelIcon from '@mui/icons-material/Cancel';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const Subscribed = () => {
   const [EditSubscribed, setEditSubscribed] = useState(false);
@@ -289,7 +291,7 @@ const Subscribed = () => {
                   </h1>
 
                   {EditSubscribed ? (
-                    <div className="flex">
+                    <div className="flex gap-2">
                       <button
                         className="w-[35px] h-[35px] font-semibold text-base text-black flex items-center justify-center rounded-full bg-[#dfdbdbec]"
                         onClick={getALLSubscribed}
@@ -304,7 +306,7 @@ const Subscribed = () => {
                       </button>
 
                       <button
-                        className="max-h-[35px] font-semibold text-base mr-2 ml-1 p-1 rounded-full text-gray-400"
+                        className="min-w-max max-h-[35px] font-semibold text-base rounded-full text-gray-400"
                         onClick={getALLSubscribed}
                       >
                         {!language ?
@@ -315,24 +317,16 @@ const Subscribed = () => {
                       </button>
 
                       <button
-                        className="h-[35px] flex items-center justify-center font-semibold text-basg text-black border-gray-400 border py-2 px-7 rounded-full mr-5 ml-3"
+                        className="w-[35px] h-[35px] flex items-center justify-center font-semibold text-basg text-black border-gray-400 border rounded-full"
                         onClick={() => HandleDelete()}
                       >
-                        {!language ?
-                          "Delete"
-                          :
-                          "삭제"
-                        }
+                        <DeleteIcon/>
                       </button>
                       <button
-                        className="h-[35px] flex items-center justify-center font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
+                        className="w-[35px] h-[35px] flex items-center justify-center font-semibold text-basg text-white bg-gray-400 rounded-full"
                         onClick={() => setEditSubscribed(!EditSubscribed)}
                       >
-                        {!language ?
-                          "Cancel"
-                          :
-                          "취소"
-                        }
+                        <CancelIcon/>
                       </button>
                     </div>
                   ) : (
@@ -526,7 +520,7 @@ const Subscribed = () => {
                   </h1>
 
                   {EditSubscribedVideo ? (
-                    <div className="flex">
+                    <div className="flex gap-2">
                       <button
                         className="w-[35px] max-h-[35px] font-semibold text-base text-black flex items-center justify-center rounded-full bg-[#dfdbdbec]"
                         onClick={getALLSubscribedVideo}
@@ -541,7 +535,7 @@ const Subscribed = () => {
                       </button>
 
                       <button
-                        className="max-h-[35px] font-semibold text-base mr-2 ml-1 p-1 rounded-full text-gray-400"
+                        className="min-w-max max-h-[35px] font-semibold text-base p-1 rounded-full text-gray-400"
                         onClick={getALLSubscribedVideo}
                       >
                         {!language ?
@@ -552,24 +546,16 @@ const Subscribed = () => {
                       </button>
 
                       <button
-                        className="h-[35px] flex items-center justify-center font-semibold text-basg text-black border-gray-400 border py-2 px-7 rounded-full mr-5 ml-3"
+                        className="w-[35px] h-[35px] flex items-center justify-center font-semibold text-basg text-black border-gray-400 border rounded-full"
                         onClick={() => HandleDeleteVideo()}
                       >
-                        {!language ?
-                          "Delete"
-                          :
-                          "삭제"
-                        }
+                        <DeleteIcon/>
                       </button>
                       <button
-                        className="h-[35px] flex items-center justify-center font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
+                        className="w-[35px] h-[35px] flex items-center justify-center font-semibold text-basg text-white bg-gray-400 rounded-full"
                         onClick={() => setEditSubscribedVideo(!EditSubscribedVideo)}
                       >
-                        {!language ?
-                          "Cancel"
-                          :
-                          "취소"
-                        }
+                       <CancelIcon/>
                       </button>
                     </div>
                   ) : (

@@ -8,6 +8,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 import CheckIcon from "@mui/icons-material/Check";
 import { Link } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
+import CancelIcon from '@mui/icons-material/Cancel';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const Creators = () => {
   const [Creators, setCreators] = useState([]);
@@ -117,7 +119,7 @@ const Creators = () => {
                   </h1>
 
                   {EditFollow ? (
-                    <div className="flex">
+                    <div className="flex gap-2">
                       <button
                         className="w-[35px] max-h-[35px] text-black rounded-full bg-[#dfdbdbec]"
                         onClick={getALLSubscribed}
@@ -132,7 +134,7 @@ const Creators = () => {
                       </button>
 
                       <button
-                        className="max-h-[35px] font-semibold text-base mr-2 ml-1 p-1 rounded-full text-gray-400"
+                        className="min-w-max max-h-[35px] font-semibold text-base p-1 rounded-full text-gray-400"
                         onClick={getALLSubscribed}
                       >
                         {!language ?
@@ -143,24 +145,16 @@ const Creators = () => {
                       </button>
 
                       <button
-                        className="h-[35px] flex items-center justify-center font-semibold text-basg text-black border-gray-400 border py-2 px-7 rounded-full mr-5 ml-3"
+                        className="w-[35px] h-[35px] flex items-center justify-center font-semibold text-basg text-black border-gray-400 border rounded-full"
                         onClick={() => HandleDelete()}
                       >
-                        {!language ?
-                          "Delete"
-                          :
-                          "삭제"
-                        }
+                        <DeleteIcon />
                       </button>
                       <button
-                        className="h-[35px] flex items-center justify-center font-semibold text-basg text-white bg-gray-400 py-2 px-7 rounded-full"
+                        className="w-[35px] h-[35px] flex items-center justify-center font-semibold text-basg text-white bg-gray-400 rounded-full"
                         onClick={() => setEditFollow(!EditFollow)}
                       >
-                        {!language ?
-                          "Cancel"
-                          :
-                          "취소"
-                        }
+                        <CancelIcon />
                       </button>
                     </div>
                   ) : (
