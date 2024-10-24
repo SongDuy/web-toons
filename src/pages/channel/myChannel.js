@@ -81,7 +81,7 @@ const MyChannelPage = () => {
   }, [Account, dispatch]);
   const handleimageChange = async (e) => {
     try {
-    
+
 
       const file = e.target.files[0];
       if (file) {
@@ -262,21 +262,21 @@ const MyChannelPage = () => {
       prevOpen.current[idpost] = openMenus[idpost];
     });
   }, [openMenus]);
-const handleDelete=async (id)=>{
-  try {
-    setloading(false);
-    await postFireBase.Delete(id)
-    await deleteFolder(`cms_uploads/post/${Account.uid}/${id}`)
-    const post = await postFireBase.getAllid(Account.uid);
-    setposts(post.success ? post?.post : []);
+  const handleDelete = async (id) => {
+    try {
+      setloading(false);
+      await postFireBase.Delete(id)
+      await deleteFolder(`cms_uploads/post/${Account.uid}/${id}`)
+      const post = await postFireBase.getAllid(Account.uid);
+      setposts(post.success ? post?.post : []);
 
-    handleClose()
-    setloading(true);
+      handleClose()
+      setloading(true);
 
-  } catch (error) {
-    
+    } catch (error) {
+
+    }
   }
-}
   return (
     <>
       {loading ? (
@@ -583,7 +583,7 @@ const handleDelete=async (id)=>{
                                   className="w-full h-full object-cover rounded"
                                 />
                               ) : (
-                                <>
+                                <div className="w-full h-full flex items-center justify-center">
                                   <AddPhotoAlternateIcon sx={{ fontSize: 40 }} />
                                   <input
                                     type="file"
@@ -591,7 +591,7 @@ const handleDelete=async (id)=>{
                                     onChange={(e) => handlePhotoChange(e, index)}
                                     className="absolute inset-0 opacity-0 cursor-pointer"
                                   />
-                                </>
+                                </div>
                               )}
 
                               {/* Nút xóa */}
@@ -608,8 +608,9 @@ const handleDelete=async (id)=>{
                         <div className="flex justify-end px-2">
                           <button
                             onClick={handleAddPhoto}
-                            className="w-[120px] px-2 py-2 border font-semibold rounded-full bg-gray-50 hover:bg-gray-100 shadow"
+                            className="w-auto px-2 py-2 border text-white font-semibold rounded-full bg-green-500 hover:bg-green-600 shadow flex items-center justify-center"
                           >
+                            <AddPhotoAlternateIcon />
                             {!language ? (
                               <span> Add Image</span>
                             ) : (
@@ -722,7 +723,7 @@ const handleDelete=async (id)=>{
                                             aria-labelledby={`composition-button-${item.idpost}`}
                                             onKeyDown={(event) => handleListKeyDown(event, item.idpost)} // KeyDown xử lý theo idpost
                                           >
-                                            <MenuItem onClick={()=>handleDelete(item.idpost)}>
+                                            <MenuItem onClick={() => handleDelete(item.idpost)}>
                                               <div className="flex gap-2">
                                                 <DeleteIcon />
                                                 {!language ?
