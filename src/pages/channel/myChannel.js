@@ -840,7 +840,7 @@ const handleDelete=async (id)=>{
           </div >
         </div >
       ) : (
-        <div className="w-full h-[370px] flex items-center justify-center">
+        <div className="w-full h-[45vh] flex items-center justify-center">
           <CircularProgress />
         </div>
       )}

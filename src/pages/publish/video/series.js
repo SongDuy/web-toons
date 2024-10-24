@@ -14,7 +14,7 @@ import { getidVideo } from '../../../common/store/Video';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useParams } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+
 const dataListGenre = [
     { id: 1, name: "DRAMA", translatedName: "(드라마)" },
     { id: 2, name: "FANTASY", translatedName: "(판타지)" },
@@ -216,37 +216,37 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                     uid: Account.uid,
                     rate: Videoid?.rate,
                     views: Videoid?.views,
-                    schedule: valueDay? valueDay:dayNames[new Date(Date.now()).getDay()]
+                    schedule: valueDay ? valueDay : dayNames[new Date(Date.now()).getDay()]
                     //schedule: dayNames[new Date(Date.now()).getDay()]
                 };
                 await VideoFireBase.update(data, id.id)
                 navigate(`/publish/video/${id.id}`)
                 goToEposodes()
             } else {
-                if(horizontalThumbnail?.name && squareThumbnail?.name){
-                const data = {
-                    title: valueTitle,
-                    summary: valueSummary,
-                    totalChapters: 0,
-                    totalSubscribed: 0,
-                    createTime: new Date(Date.now()),
-                    lock: true,
-                    check: false,
-                    random: Math.random().toFixed(2),
-                    Age: isAge,
-                    Author: Account.name,
-                    uid: Account.uid,
-                    rate: 0,
-                    views: 0,
-                    schedule: valueDay? valueDay:dayNames[new Date(Date.now()).getDay()]
-                    //schedule: dayNames[new Date(Date.now()).getDay()]
-                };
-                const idvideo = await VideoFireBase.Add(data)
-                await VideoFireBase.uploadToFirebase(squareThumbnail, squareThumbnail.name, Account.id, idvideo, 'squareThumbnail')
-                await VideoFireBase.uploadToFirebase(horizontalThumbnail, horizontalThumbnail.name, Account.uid, idvideo, 'horizontalThumbnail')
-                navigate(`/publish/video/${idvideo}`)
-                goToEposodes()
-            }
+                if (horizontalThumbnail?.name && squareThumbnail?.name) {
+                    const data = {
+                        title: valueTitle,
+                        summary: valueSummary,
+                        totalChapters: 0,
+                        totalSubscribed: 0,
+                        createTime: new Date(Date.now()),
+                        lock: true,
+                        check: false,
+                        random: Math.random().toFixed(2),
+                        Age: isAge,
+                        Author: Account.name,
+                        uid: Account.uid,
+                        rate: 0,
+                        views: 0,
+                        schedule: valueDay ? valueDay : dayNames[new Date(Date.now()).getDay()]
+                        //schedule: dayNames[new Date(Date.now()).getDay()]
+                    };
+                    const idvideo = await VideoFireBase.Add(data)
+                    await VideoFireBase.uploadToFirebase(squareThumbnail, squareThumbnail.name, Account.id, idvideo, 'squareThumbnail')
+                    await VideoFireBase.uploadToFirebase(horizontalThumbnail, horizontalThumbnail.name, Account.uid, idvideo, 'horizontalThumbnail')
+                    navigate(`/publish/video/${idvideo}`)
+                    goToEposodes()
+                }
             }
             setloading(true)
 
@@ -260,9 +260,11 @@ const SeriesVideoPage = ({ goToEposodes }) => {
 
     return (
         <div>
-            {!loading ? <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5 }}>
-                <CircularProgress />
-            </Box> :
+            {!loading ?
+                <div className="w-full h-[45vh] flex items-center justify-center">
+                    <CircularProgress />
+                </div>
+                :
                 <div className="w-full h-full bg-gray-100">
 
                     {/* Phần tiêu đề mục */}
@@ -491,7 +493,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
 
                                 {/* Phần tiêu đề series video  và lịch đăng*/}
                                 <div className="w-full py-3 pl-5 grid xs:grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-6">
-                                   
+
                                     {/* Phần tiêu đề series video  */}
                                     <div className="w-full">
 

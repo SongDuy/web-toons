@@ -320,13 +320,13 @@ const Subscribed = () => {
                         className="w-[35px] h-[35px] flex items-center justify-center font-semibold text-basg text-black border-gray-400 border rounded-full"
                         onClick={() => HandleDelete()}
                       >
-                        <DeleteIcon/>
+                        <DeleteIcon />
                       </button>
                       <button
                         className="w-[35px] h-[35px] flex items-center justify-center font-semibold text-basg text-white bg-gray-400 rounded-full"
                         onClick={() => setEditSubscribed(!EditSubscribed)}
                       >
-                        <CancelIcon/>
+                        <CancelIcon />
                       </button>
                     </div>
                   ) : (
@@ -549,13 +549,13 @@ const Subscribed = () => {
                         className="w-[35px] h-[35px] flex items-center justify-center font-semibold text-basg text-black border-gray-400 border rounded-full"
                         onClick={() => HandleDeleteVideo()}
                       >
-                        <DeleteIcon/>
+                        <DeleteIcon />
                       </button>
                       <button
                         className="w-[35px] h-[35px] flex items-center justify-center font-semibold text-basg text-white bg-gray-400 rounded-full"
                         onClick={() => setEditSubscribedVideo(!EditSubscribedVideo)}
                       >
-                       <CancelIcon/>
+                        <CancelIcon />
                       </button>
                     </div>
                   ) : (
@@ -668,7 +668,7 @@ const Subscribed = () => {
           </div>
         </div>
       ) : (
-        <div className="w-full h-[370px] flex items-center justify-center">
+        <div className="w-full h-[45vh] flex items-center justify-center">
           <CircularProgress />
         </div>
       )}

@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { getchaptersComic, getidComic } from "../../../common/store/comic";
 import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/TextLayer.css"; // Import the text layer CSS
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
@@ -302,16 +301,9 @@ const EpisodesOriginalPage = ({ goToPreviousStep }) => {
   return (
     <div>
       {!loading ? (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: 5,
-          }}
-        >
+        <div className="w-full h-[45vh] flex items-center justify-center">
           <CircularProgress />
-        </Box>
+        </div>
       ) : (
         <div className="w-full h-full bg-gray-100 pb-10">
           <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">

@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { getchaptersComic } from '../../../common/store/comic';
 import { unwrapResult } from '@reduxjs/toolkit';
 import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { useParams } from 'react-router-dom';
@@ -35,7 +34,7 @@ const EpisodeOriginal = () => {
         { en: "October", kr: "10월" },
         { en: "November", kr: "11월" },
         { en: "December", kr: "12월" },
-      ];
+    ];
 
     //Lấy ngôn ngữ
     const language = useSelector(state => state.hidden.language);
@@ -55,23 +54,23 @@ const EpisodeOriginal = () => {
         }
         get()
     }, [dispatch, id.id]);
-    const handledelete = async (idchap,numcount) => {
+    const handledelete = async (idchap, numcount) => {
         try {
             let result = window.confirm(!language ? "Do you want to delete this chap comic?" : "이 채프 코믹을 삭제하시겠습니까?");
             if (result) {
                 setloading(false)
-                const checknum=numcount!== chapters?.chaps?.length
+                const checknum = numcount !== chapters?.chaps?.length
 
-                  await comicFireBase.Deletechap(id.id, idchap)
-                  await CommentFireBase.Deletechap(idchap)
+                await comicFireBase.Deletechap(id.id, idchap)
+                await CommentFireBase.Deletechap(idchap)
                 await comicFireBase.update({ totalChapters: chapters?.success ? chapters?.chaps?.length - 1 : 0 }, id.id);
                 const chap = await dispatch(getchaptersComic(id.id))
                 unwrapResult(chap)
-                checknum&&  chapters?.chaps?.filter(item=>item.id!==idchap)?.map(async item=>
+                checknum && chapters?.chaps?.filter(item => item.id !== idchap)?.map(async item =>
 
-                item.num>numcount&&await comicFireBase.updateep({num:item.num-1===0?1:item.num-1},id.id,item.id)
-)
-              
+                    item.num > numcount && await comicFireBase.updateep({ num: item.num - 1 === 0 ? 1 : item.num - 1 }, id.id, item.id)
+                )
+
                 setloading(true)
             }
         } catch (error) {
@@ -83,9 +82,11 @@ const EpisodeOriginal = () => {
 
     return (
         <>
-            {!loading ? <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5 }}>
-                <CircularProgress />
-            </Box> :
+            {!loading ?
+                <div className="w-full h-[45vh] flex items-center justify-center">
+                    <CircularProgress />
+                </div>
+                :
                 <div>
                     <Nav />
                     <div className="w-full h-full xs:px-[20px] sm:px-[40px] md:px-[80px] lg:px-[120px] xl:px-[160px] 2xl:px-[200px] 3xl:px-[240px] bg-gray-100 flex items-center justify-center pb-10">
@@ -154,7 +155,7 @@ const EpisodeOriginal = () => {
                                                                     }
                                                                 </button>
 
-                                                                <button onClick={() => handledelete(item.id,item.num)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
+                                                                <button onClick={() => handledelete(item.id, item.num)} className="px-2 flex items-center bg-gray-200 hover:bg-gray-300 rounded shadow">
                                                                     {!language ?
                                                                         "Delete"
                                                                         :
@@ -173,23 +174,23 @@ const EpisodeOriginal = () => {
 
                                                     <div className="w-full flex mt-auto">
                                                         <div className="flex gap-5">
-                                                            {!language?   <span className="text-gray-500 text-sm flex gap-2">
-                                                                
-                                                                    Published
-                                                                  
-                                                                
-                                                                {" "+monthNames[new Date(item.createTime).getMonth()].en}{" "}
+                                                            {!language ? <span className="text-gray-500 text-sm flex gap-2">
+
+                                                                Published
+
+
+                                                                {" " + monthNames[new Date(item.createTime).getMonth()].en}{" "}
                                                                 {new Date(item.createTime).getDate()},
                                                                 {new Date(item.createTime)?.getFullYear()}
-                                                            </span>:   <span className="text-gray-500 text-sm flex gap-2">
-                                                              
-                                                                    발행됨
-                                                                
-                                                                {" "+monthNames[new Date(item.createTime).getMonth()].kr}{" "}
+                                                            </span> : <span className="text-gray-500 text-sm flex gap-2">
+
+                                                                발행됨
+
+                                                                {" " + monthNames[new Date(item.createTime).getMonth()].kr}{" "}
                                                                 {new Date(item.createTime).getDate()}일,
                                                                 {new Date(item.createTime)?.getFullYear()}년
                                                             </span>}
-                                                            
+
 
                                                             <span className="text-gray-500 text-sm">
                                                                 {!language ?

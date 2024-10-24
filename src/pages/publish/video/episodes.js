@@ -9,7 +9,6 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { unwrapResult } from '@reduxjs/toolkit';
 import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import VideoFireBase from '../../../common/services/Video.services';
 import { getchaptersVideo, getidVideo } from '../../../common/store/Video';
 import ReactPlayer from "react-player";
@@ -209,9 +208,11 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
 
     return (
         <div>
-            {!loading ? <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5 }}>
-                <CircularProgress />
-            </Box> :
+            {!loading ?
+                <div className="w-full h-[45vh] flex items-center justify-center">
+                    <CircularProgress />
+                </div>
+                :
                 <div className="w-full h-full bg-gray-100 pb-10">
 
                     <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">
@@ -603,9 +604,9 @@ const EpisodesVideoPage = ({ goToPreviousStep }) => {
                                                 />
 
                                                 {!language ? (
-                                                   <span>Completed</span>
+                                                    <span>Completed</span>
                                                 ) : (
-                                                   <span>완료됨</span>
+                                                    <span>완료됨</span>
                                                 )}
                                             </label>
                                         </div>

@@ -14,7 +14,6 @@ import { useParams } from 'react-router-dom';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { getidComic } from "../../../common/store/comic";
 import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import dataListGenre from "../../../components/layout/layoutUser/dataListGenre";
 
 const SeriesOriginalPage = ({ goToEposodes }) => {
@@ -206,39 +205,39 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                     uid: Account.uid,
                     rate: comicid?.rate,
                     views: comicid?.views,
-                    schedule:valueDay? valueDay:dayNames[new Date(Date.now()).getDay()]
+                    schedule: valueDay ? valueDay : dayNames[new Date(Date.now()).getDay()]
                     // schedule: dayNames[new Date(Date.now()).getDay()]
                 };
                 await comicFireBase.update(data, id.id)
                 navigate(`/publish/original/${id.id}`)
                 goToEposodes()
             } else {
-               if(horizontalThumbnail?.name && squareThumbnail?.name){
-                const data = {
-                    title: valueTitle,
-                    summary: valueSummary,
-                    genre2,
-                    genre1,
-                    totalChapters: 0,
-                    totalSubscribed: 0,
-                    createTime: new Date(Date.now()),
-                    lock: true,
-                    check: false,
-                    random: Math.random().toFixed(2),
-                    Age: isAge,
-                    Author: Account.name,
-                    uid: Account.uid,
-                    rate: 0,
-                    views: 0,
-                    schedule:valueDay? valueDay:dayNames[new Date(Date.now()).getDay()]
-                    // schedule: dayNames[new Date(Date.now()).getDay()]
-                };
-                const idcom = await comicFireBase.Add(data)
-                await comicFireBase.uploadToFirebase(squareThumbnail, squareThumbnail.name, Account.id, idcom, 'squareThumbnail')
-                await comicFireBase.uploadToFirebase(horizontalThumbnail, horizontalThumbnail.name, Account.uid, idcom, 'horizontalThumbnail')
-                navigate(`/publish/original/${idcom}`)
-                goToEposodes()
-               }
+                if (horizontalThumbnail?.name && squareThumbnail?.name) {
+                    const data = {
+                        title: valueTitle,
+                        summary: valueSummary,
+                        genre2,
+                        genre1,
+                        totalChapters: 0,
+                        totalSubscribed: 0,
+                        createTime: new Date(Date.now()),
+                        lock: true,
+                        check: false,
+                        random: Math.random().toFixed(2),
+                        Age: isAge,
+                        Author: Account.name,
+                        uid: Account.uid,
+                        rate: 0,
+                        views: 0,
+                        schedule: valueDay ? valueDay : dayNames[new Date(Date.now()).getDay()]
+                        // schedule: dayNames[new Date(Date.now()).getDay()]
+                    };
+                    const idcom = await comicFireBase.Add(data)
+                    await comicFireBase.uploadToFirebase(squareThumbnail, squareThumbnail.name, Account.id, idcom, 'squareThumbnail')
+                    await comicFireBase.uploadToFirebase(horizontalThumbnail, horizontalThumbnail.name, Account.uid, idcom, 'horizontalThumbnail')
+                    navigate(`/publish/original/${idcom}`)
+                    goToEposodes()
+                }
             }
             setloading(true)
 
@@ -253,9 +252,10 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
     return (
         <div>
             {!loading ?
-                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5 }}>
+                <div className="w-full h-[45vh] flex items-center justify-center">
                     <CircularProgress />
-                </Box> :
+                </div>
+                :
                 <div className="w-full h-full bg-gray-100">
                     {/* Phần tiêu đề mục */}
                     <div className="w-full h-[70px] bg-white shadow flex items-center justify-center border-t">

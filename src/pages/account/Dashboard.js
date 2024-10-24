@@ -104,7 +104,7 @@ const Dashboard = () => {
   return (
     <>
       {!loading ? (
-        <div className="w-full h-[370px] flex items-center justify-center">
+        <div className="w-full h-[45vh] flex items-center justify-center">
           <CircularProgress />
         </div>
       ) : (
@@ -142,13 +142,13 @@ const Dashboard = () => {
                         className="w-full min-h-[210px] bg-white rounded flex shadow"
                         key={item.id}
                       >
-                          <div className="w-[210px] max-h-[210px] bg-red-200 rounded">
-                            <img
-                              src={item.squareThumbnail}
-                              alt="img"
-                              className="w-full h-full object-cover rounded"
-                            />
-                          </div>
+                        <div className="w-[210px] max-h-[210px] bg-red-200 rounded">
+                          <img
+                            src={item.squareThumbnail}
+                            alt="img"
+                            className="w-full h-full object-cover rounded"
+                          />
+                        </div>
 
                         <div className="w-full h-full px-3 py-3">
                           <div className="w-auto">
