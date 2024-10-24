@@ -147,7 +147,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
     };
 
     // lưu độ tuổi truyện
-    const [isAge, setIsAge] = useState(0);
+    const [isAge, setIsAge] = useState(-1);
 
     // Sử dụng useEffect để cập nhật isAge mỗi khi selections thay đổi
     useEffect(() => {
@@ -1070,15 +1070,15 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                                     {/* Khi chọn xong mới nhấn được check để qua phần tải tập video  */}
                                     <div className="mt-[60px]">
                                         <button
-                                            className={`w-[35px] h-[35px] border-2 rounded-full ${Object.values(selections).every((value) => value !== "")
-                                                ? isChecked
+                                            className={`w-[35px] h-[35px] border-2 rounded-full ${(Object.values(selections).every((value) => value !== "") || (typeof id.id === "string" && id.id))
+                                                ? (isChecked || (typeof id.id === "string" && id.id))
                                                     ? "bg-green-500 text-white"
                                                     : "bg-gray-300"
                                                 : "bg-gray-300"
                                                 }`}
                                             onClick={handleCheckboxClick}
                                             disabled={
-                                                !Object.values(selections).every((value) => value !== "")
+                                                (!Object.values(selections).every((value) => value !== "") || (typeof id.id === "string" && id.id))
                                             }
                                         >
                                             <CheckIcon />
