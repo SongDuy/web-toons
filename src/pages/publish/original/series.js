@@ -252,7 +252,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
     return (
         <div>
             {!loading ?
-                <div className="w-full h-[45vh] flex items-center justify-center">
+                <div className="w-full h-[48vh] flex items-center justify-center">
                     <CircularProgress />
                 </div>
                 :
