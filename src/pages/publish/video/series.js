@@ -147,7 +147,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
     };
 
     // lưu độ tuổi truyện
-    const [isAge, setIsAge] = useState(-1);
+    const [isAge, setIsAge] = useState(0);
 
     // Sử dụng useEffect để cập nhật isAge mỗi khi selections thay đổi
     useEffect(() => {

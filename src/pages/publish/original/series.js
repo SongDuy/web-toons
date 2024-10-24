@@ -1109,15 +1109,15 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     {/* Khi chọn xong mới nhấn được check để qua phần tải tập truyện  */}
                                     <div className="w-full lg:min-w-full mt-[60px]">
                                         <button
-                                            className={`w-[35px] h-[35px] border-2 rounded-full ${Object.values(selections).every((value) => value !== "")
-                                                ? isChecked
+                                            className={`w-[35px] h-[35px] border-2 rounded-full ${(Object.values(selections).every((value) => value !== "") || (typeof id.id === "string" && id.id))
+                                                ? (isChecked || (typeof id.id === "string" && id.id))
                                                     ? "bg-green-500 text-white"
                                                     : "bg-gray-300"
                                                 : "bg-gray-300"
                                                 }`}
                                             onClick={handleCheckboxClick}
                                             disabled={
-                                                !Object.values(selections).every((value) => value !== "")
+                                                (!Object.values(selections).every((value) => value !== "") || (typeof id.id === "string" && id.id))
                                             }
                                         >
                                             <CheckIcon />
