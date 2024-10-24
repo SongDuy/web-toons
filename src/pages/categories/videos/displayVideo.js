@@ -575,7 +575,7 @@ const DisplayVideoPage = () => {
                 {/* Chuyển tập */}
                 <li className="w-full flex items-center justify-center">
                   <div className="min-w-[150px] max-w-[150px] flex ">
-                    <button className="h-[35px] mr-auto cursor-pointer">
+                    <button className="h-[35px] mr-auto">
                       <span onClick={goToPreviousChapter} className="text-white bg-gray-800 hover:bg-gray-700 pl-3 py-1 rounded-md flex items-center justify-center">
                         <ArrowBackIosIcon />
                       </span>
@@ -585,7 +585,7 @@ const DisplayVideoPage = () => {
                         #{chapid?.num}
                       </span>
                     </div>
-                    <button className="h-[35px] ml-auto cursor-pointer">
+                    <button className="h-[35px] ml-auto">
                       <span onClick={goToNextChapter} className="text-white bg-gray-800 hover:bg-gray-700 w-[35px] py-1 rounded-md flex items-center justify-center">
                         <ArrowForwardIosIcon />
                       </span>
@@ -597,7 +597,7 @@ const DisplayVideoPage = () => {
                 <li className="flex items-center pl-7">
                   <button
                     onClick={scrollToTop}
-                    className="w-[35px] h-[35px] mr-auto bg-gray-800 hover:bg-gray-700 shadow  rounded-md text-white flex items-center justify-center"
+                    className="w-[40px] h-[35px] mr-auto bg-gray-800 hover:bg-gray-700 shadow  rounded-md text-white flex items-center justify-center"
                   >
                     <ArrowUpwardIcon />
                   </button>
