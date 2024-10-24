@@ -10,43 +10,58 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 const ContentPage = () => {
 
-  // Đổi hình quảng cáo sau 5 giây khi chọn ảnh thì 10 giây chuyển tiếp
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [backgroundImageIndex, setBackgroundImageIndex] = useState(1); // Ảnh nền ban đầu
   const [resetTimer, setResetTimer] = useState(false);
 
-  var timeInterval = 5000; // 5 giây
-  const [loading, setloading] = useState(true);
-  const [banner, setbanner] = useState([]);
+  let timeInterval = resetTimer ? 10000 : 5000; // 10 giây nếu chọn ảnh, 5 giây cho chuyển ảnh tự động
+  const [loading, setLoading] = useState(true);
+  const [banner, setBanner] = useState([]);
+
+  // Lấy dữ liệu banner từ Firebase
   useEffect(() => {
     const get = async () => {
       try {
-        setloading(false);
+        setLoading(false);
         const banners = await bannerFireBase.getAll();
-        setbanner(banners.success ? banners.banner : []);
-        setloading(true);
-      } catch (error) { }
+        setBanner(banners.success ? banners.banner : []);
+        setLoading(true);
+      } catch (error) {
+        console.error(error);
+      }
     };
     get();
   }, []);
+
+  // Tự động chuyển ảnh chính mỗi 5 hoặc 10 giây
   useEffect(() => {
     const interval = setInterval(() => {
       if (!resetTimer) {
-        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % banner?.length);
+        setCurrentImageIndex((prevIndex) => {
+          const newIndex = (prevIndex + 1) % banner?.length;
+
+          // Khi quay lại ảnh đầu tiên, cập nhật ảnh nền
+          if (newIndex === 0) {
+            setBackgroundImageIndex((prevBackgroundIndex) => (prevBackgroundIndex + 1) % banner.length);
+          }
+
+          return newIndex;
+        });
       }
     }, timeInterval);
 
     return () => clearInterval(interval);
   }, [timeInterval, resetTimer, banner]);
 
+  // Chọn ảnh và thiết lập lại thời gian chờ
   const handleImageChange = (index) => {
-    // Reset the timer
     setResetTimer(true);
     setCurrentImageIndex(index);
 
-    // Start the interval again after 5 seconds
+    // Đặt lại resetTimer sau 10 giây
     setTimeout(() => {
       setResetTimer(false);
-    }, timeInterval);
+    }, 10000);
   };
 
   return (
@@ -59,9 +74,9 @@ const ContentPage = () => {
             {/* Ảnh nền là ảnh tiếp theo */}
             {banner.length > 0 && (
               <img
-                src={banner[(currentImageIndex + 1) % banner.length]?.image} // Lấy ảnh tiếp theo
+                src={banner[backgroundImageIndex]?.image} // Ảnh nền chỉ thay đổi sau khi toàn bộ ảnh chính được hiển thị
                 alt="Ad Banner0"
-                className="w-full max-h-[500px] absolute object-cover opacity-80" // Đảm bảo ảnh nền có độ mờ
+                className="w-full max-h-[500px] absolute object-cover opacity-50"
               />
             )}
 
@@ -87,6 +102,7 @@ const ContentPage = () => {
               </div>
             </div>
           </div>
+
 
           {/* Phần hiển thị nội dung theo thứ trong tuần */}
           <WeekdayOriginalsAndVideosPage />
