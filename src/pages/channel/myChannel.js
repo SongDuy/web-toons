@@ -584,7 +584,7 @@ const MyChannelPage = () => {
                                 />
                               ) : (
                                 <div className="w-full h-full flex items-center justify-center">
-                                  <AddPhotoAlternateIcon sx={{ fontSize: 40 }} />
+                                  <AddPhotoAlternateIcon sx={{ fontSize: 50 }} />
                                   <input
                                     type="file"
                                     accept="image/*"
