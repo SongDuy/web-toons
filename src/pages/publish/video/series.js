@@ -82,6 +82,8 @@ const SeriesVideoPage = ({ goToEposodes }) => {
     const [loading, setloading] = useState(true);
     const dispatch = useDispatch();
 
+    //console.log(id.id, VideoID)
+
     useEffect(() => {
         const get = async () => {
             try {
@@ -181,6 +183,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
                 setIsAge(99);
         }
     }, [selections]);
+
     const handlePhotoChange = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -189,6 +192,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
             setsquareThumbnail(file)
         }
     };
+
     const handlePhotoChange1 = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -197,6 +201,7 @@ const SeriesVideoPage = ({ goToEposodes }) => {
             sethorizontalThumbnail(file)
         }
     };
+    
     const handleAdd = async () => {
         try {
             setloading(false)
@@ -1113,20 +1118,33 @@ const SeriesVideoPage = ({ goToEposodes }) => {
 
                                 {/* Nút để qua tập video */}
                                 <div className="w-full pl-5 mt-[50px]">
-                                    <button
-                                        onClick={handleAdd}
-                                        className={`w-[200px] h-[50px] ${isChecked ? 'bg-green-500' : 'bg-gray-200 cursor-not-allowed'} pl-2 rounded-full shadow text-white font-semibold flex items-center justify-center gap-5`}
-                                        disabled={!isChecked}
+                                    {typeof id.id === "string" && id.id ? (
+                                        <button
+                                            onClick={handleAdd}
+                                            className="w-[200px] h-[50px] bg-black rounded-full text-white font-semibold flex items-center justify-center"
+                                        >
+                                            {!language ? (
+                                                "Save Series"
+                                            ) : (
+                                                "시리즈 저장"
+                                            )}
+                                            <NavigateNextIcon className="ml-1" />
+                                        </button>
+                                    ) : (
+                                        <button
+                                            onClick={handleAdd}
+                                            className={`w-[200px] h-[50px] ${isChecked ? 'bg-green-500' : 'bg-gray-200 cursor-not-allowed'} pl-2 rounded-full shadow text-white font-semibold flex items-center justify-center gap-5`}
+                                            disabled={!isChecked}
+                                        >
+                                            {!language ? (
+                                                "Create Series"
+                                            ) : (
+                                                "시리즈 만들기"
+                                            )}
 
-                                    >
-                                        {!language ? (
-                                            "Create Series"
-                                        ) : (
-                                            "시리즈 만들기"
-                                        )}
-
-                                        <NavigateNextIcon className="mt-1" />
-                                    </button>
+                                            <NavigateNextIcon className="mt-1" />
+                                        </button>
+                                    )}
                                 </div>
 
                             </div>

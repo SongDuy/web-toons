@@ -1155,6 +1155,19 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
 
                                 {/* Nút để qua tập truyện */}
                                 <div className="w-full pl-5 mt-[50px]">
+                                    {typeof id.id === "string" && id.id ? (
+                                        <button
+                                            onClick={handleAdd}
+                                            className="w-[200px] h-[50px] bg-black rounded-full text-white font-semibold flex items-center justify-center"
+                                        >
+                                            {!language ? (
+                                                "Save Series"
+                                            ) : (
+                                                "시리즈 저장"
+                                            )}
+                                            <NavigateNextIcon className="ml-1" />
+                                        </button>
+                                    ) : (
                                     <button
                                         onClick={handleAdd}
                                         className={`w-[200px] h-[50px] ${isChecked
@@ -1171,6 +1184,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
 
                                         <NavigateNextIcon />
                                     </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
