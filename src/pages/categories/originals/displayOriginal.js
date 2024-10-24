@@ -146,8 +146,18 @@ const DisplayOriginalPage = () => {
     };
   }, []);
 
-  const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
+  const days = [
+    { 'day': 'Mon', 'daysInKorean': '월요일', 'daysInEnglish': 'Monday' },
+    { 'day': 'Tue', 'daysInKorean': '화요일', 'daysInEnglish': 'Tuesday' },
+    { 'day': 'Wed', 'daysInKorean': '수요일', 'daysInEnglish': 'Wednesday' },
+    { 'day': 'Thu', 'daysInKorean': '목요일', 'daysInEnglish': 'Thursday' },
+    { 'day': 'Fri', 'daysInKorean': '금요일', 'daysInEnglish': 'Friday' },
+    { 'day': 'Sat', 'daysInKorean': '토요일', 'daysInEnglish': 'Saturday' },
+    { 'day': 'Sun', 'daysInKorean': '일요일', 'daysInEnglish': 'Sunday' }
+  ]
+
   const koreanDay = days.find(d => d.day === comicid.schedule)?.daysInKorean || '';
+  const englishDay = days.find(d => d.day === comicid.schedule)?.daysInEnglish || '';
 
   const monthNames = [
     { en: "January", kr: "1월" },
@@ -666,7 +676,7 @@ const DisplayOriginalPage = () => {
                 {/* Chuyển tập */}
                 <li className="w-full flex items-center justify-center">
                   <div className="min-w-[150px] max-w-[150px] flex ">
-                    <button className="mr-auto cursor-pointer">
+                    <button className="h-[35px] mr-auto cursor-pointer">
                       <span onClick={goToPreviousChapter} className="text-white bg-gray-800 hover:bg-gray-700 pl-3 py-1 rounded-md flex items-center justify-center">
                         <ArrowBackIosIcon />
                       </span>
@@ -676,7 +686,7 @@ const DisplayOriginalPage = () => {
                         #{chapid?.num}
                       </span>
                     </div>
-                    <button className="ml-auto cursor-pointer">
+                    <button className="h-[35px] ml-auto cursor-pointer">
                       <span onClick={goToNextChapter} className="text-white bg-gray-800 hover:bg-gray-700 w-[35px] py-1 rounded-md flex items-center justify-center">
                         <ArrowForwardIosIcon />
                       </span>
@@ -690,7 +700,7 @@ const DisplayOriginalPage = () => {
                   <li className="flex items-center pl-7">
                     <button
                       onClick={scrollToTop}
-                      className="w-[40px] h-[35px] bg-gray-800 hover:bg-gray-700 shadow mr-auto rounded-md text-white flex items-center justify-center"
+                      className="w-[35px] h-[35px] bg-gray-800 hover:bg-gray-700 shadow mr-auto rounded-md text-white flex items-center justify-center"
                     >
                       <ArrowUpwardIcon />
                     </button>
@@ -756,7 +766,7 @@ const DisplayOriginalPage = () => {
                     </span>
                     <span className="text-xl uppercase font-semibold flex items-center">
                       {!language ? (
-                        <span> EVERY {comicid.schedule}DAY </span>
+                        <span> EVERY {englishDay} </span>
                       ) : (
                         <span> 매주 {koreanDay} </span>
                       )}

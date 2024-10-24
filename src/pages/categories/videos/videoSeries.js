@@ -58,8 +58,18 @@ const VideoSeriesPage = () => {
   const anchorRef = React.useRef(null);
   const [Subscribe, setSubscribe] = useState([[]]);
 
-  const days = [{ 'day': 'Mon', 'daysInKorean': '월요일' }, { 'day': 'Tue', 'daysInKorean': '화요일' }, { 'day': 'Wed', 'daysInKorean': '수요일' }, { 'day': 'Thu', 'daysInKorean': '목요일' }, { 'day': 'Fri', 'daysInKorean': '금요일' }, { 'day': 'Sat', 'daysInKorean': '토요일' }, { 'day': 'Sun', 'daysInKorean': '일요일' }]
+  const days = [
+    { 'day': 'Mon', 'daysInKorean': '월요일', 'daysInEnglish': 'Monday' },
+    { 'day': 'Tue', 'daysInKorean': '화요일', 'daysInEnglish': 'Tuesday' },
+    { 'day': 'Wed', 'daysInKorean': '수요일', 'daysInEnglish': 'Wednesday' },
+    { 'day': 'Thu', 'daysInKorean': '목요일', 'daysInEnglish': 'Thursday' },
+    { 'day': 'Fri', 'daysInKorean': '금요일', 'daysInEnglish': 'Friday' },
+    { 'day': 'Sat', 'daysInKorean': '토요일', 'daysInEnglish': 'Saturday' },
+    { 'day': 'Sun', 'daysInKorean': '일요일', 'daysInEnglish': 'Sunday' }
+  ]
+
   const koreanDay = days.find(d => d.day === Videoid.schedule)?.daysInKorean || '';
+  const englishDay = days.find(d => d.day === Videoid.schedule)?.daysInEnglish || '';
 
   const monthNames = [
     { en: "January", kr: "1월" },
@@ -640,7 +650,7 @@ const VideoSeriesPage = () => {
                     </span>
                     <span className="text-xl uppercase font-semibold flex items-center">
                       {!language ? (
-                        <span> EVERY {Videoid.schedule}DAY </span>
+                        <span> EVERY {englishDay} </span>
                       ) : (
                         <span> 매주 {koreanDay} </span>
                       )}
