@@ -1158,7 +1158,7 @@ const SeriesOriginalPage = ({ goToEposodes }) => {
                                     {typeof id.id === "string" && id.id ? (
                                         <button
                                             onClick={handleAdd}
-                                            className="w-[200px] h-[50px] bg-black rounded-full text-white font-semibold flex items-center justify-center"
+                                            className="w-[200px] h-[50px] bg-green-500 rounded-full shadow text-white font-semibold flex items-center justify-center"
                                         >
                                             {!language ? (
                                                 "Save Series"
