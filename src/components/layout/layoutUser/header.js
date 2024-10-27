@@ -195,30 +195,16 @@ const HeaderPage = () => {
         <div className=" w-full h-[100px] bg-white flex xs:px-[5px] sm:px-[30px]">
           {/* logo */}
           <div className="xs:w-[50px] sm:w-[100px] flex items-center justify-center cursor-pointer">
-            <div className="hidden sm:block">
-              <Link
-                to={`/`}
-                className="w-[100px] flex items-center justify-center cursor-pointer"
-              >
-                <img
-                  src={logo}
-                  alt="Logo"
-                  className="w-full h-auto"
-                />
-              </Link>
-            </div>
-            <div className="block sm:hidden">
-              <Link
-                to={`/`}
-                className="w-[65px] flex items-center justify-center cursor-pointer"
-              >
-                <img
-                  src={logo}
-                  alt="Logo"
-                  className="w-full h-auto"
-                />
-              </Link>
-            </div>
+            <Link
+              to={`/`}
+              className="w-[100px] flex items-center justify-center cursor-pointer"
+            >
+              <img
+                src={logo}
+                alt="Logo"
+                className="w-full h-auto"
+              />
+            </Link>
           </div>
 
           {/* Đăng nhập 19 tuổi*/}
@@ -265,7 +251,7 @@ const HeaderPage = () => {
           )}
 
           {/* danh mục */}
-          <div className="w-auto flex items-center xs:mx-2 sm:mx-5 overflow-x-auto">
+          <div className="w-auto flex items-center mx-5 overflow-x-auto">
             <ul className="flex overflow-x-auto gap-5 whitespace-nowrap">
               <Link to={`/originals`}>
                 <li
@@ -322,52 +308,31 @@ const HeaderPage = () => {
 
                 {/* Chức năng Publish */}
                 < div className="flex items-center justify-center z-10">
-                  <div className="hidden lg:block">
-                    <button
-                      className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
-                      onClick={() => { openLoginModal(); handleCloseAccount(); }}
-                    >
-                      {!language ? <span> Publish </span> : <span> 발행</span>}
-                    </button>
+                  <button
+                    className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
+                    onClick={() => { openLoginModal(); handleCloseAccount(); }}
+                  >
+                    {!language ? <span> Publish </span> : <span> 발행</span>}
+                  </button>
 
-                  </div>
-                  <div className="block lg:hidden">
-                    <button
-                      className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
-                      onClick={() => { openLoginModal(); handleCloseAccount(); }}
-                    >
-                      <BackupIcon />
-                    </button>
-                  </div>
                   {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
                 </div>
 
                 {/* Đăng nhập */}
                 <div className="flex items-center justify-center">
-                  <div className="hidden lg:block">
-                    <button
-                      className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
-                      onClick={() => { openLoginModal(); handleCloseAccount(); }}
-                    >
-                      {!language ? <span> Log In </span> : <span> 로그인 </span>}
-                    </button>
-
-                  </div>
-                  <div className="block lg:hidden">
-                    <button
-                      className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
-                      onClick={() => { openLoginModal(); handleCloseAccount(); }}
-                    >
-                      <ExitToAppSharpIcon />
-                    </button>
-                  </div>
+                  <button
+                    className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
+                    onClick={() => { openLoginModal(); handleCloseAccount(); }}
+                  >
+                    {!language ? <span> Log In </span> : <span> 로그인 </span>}
+                  </button>
 
                   {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
                 </div>
               </div>
               :
               // Đã đăng nhập tài khoản
-              <div className="flex xs:gap-1 sm:gap-3">
+              <div className="flex gap-3">
 
                 {/* Menu Publish */}
                 <div className="flex items-center justify-center z-10">
@@ -379,18 +344,10 @@ const HeaderPage = () => {
                     aria-haspopup="true"
                     onClick={handleToggle}
                   >
-                    <div className="hidden lg:block">
-                      <span
-                        className="w-[100px] h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center">
-                        {!language ? <span> Publish </span> : <span> 발행 </span>}
-                      </span>
-                    </div>
-                    <div className="block lg:hidden">
-                      <span
-                        className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full">
-                        <BackupIcon />
-                      </span>
-                    </div>
+                    <span
+                      className="w-[100px] h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center">
+                      {!language ? <span> Publish </span> : <span> 발행 </span>}
+                    </span>
                   </button>
 
                   {/* Chọn menu */}
@@ -455,17 +412,11 @@ const HeaderPage = () => {
                     aria-haspopup="true"
                     onClick={handleToggleAccount}
                   >
-                    <div className="w-full hidden lg:block">
-                      <span className="w-full h-[35px] px-2 py-1 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500">
-                        {auth?.currentUser.displayName}
-                      </span>
-                    </div>
-                    <div className="block lg:hidden">
-                      <span className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black rounded-full">
-                        <AccountCircleSharpIcon />
-                      </span>
-                    </div>
+                    <span className="w-full h-[35px] px-2 py-1 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500">
+                      {auth?.currentUser.displayName}
+                    </span>
                   </button>
+
                   {/* Chọn menu Account*/}
                   <Popper
                     open={openAccount}
@@ -554,22 +505,12 @@ const HeaderPage = () => {
 
               {/* Chức năng tìm kiếm */}
               <div className="w-full h-full">
-                <div className="hidden sm:block">
-                  <button
-                    className="w-[35px] h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
-                    onClick={openSearchModal}
-                  >
-                    <SearchIcon sx={{ fontSize: 18 }} />
-                  </button>
-                </div>
-                <div className="block sm:hidden">
-                  <button
-                    className="w-[35px] h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
-                    onClick={openSearchModal}
-                  >
-                    <SearchIcon sx={{ fontSize: 18 }} />
-                  </button>
-                </div>
+                <button
+                  className="w-[35px] h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
+                  onClick={openSearchModal}
+                >
+                  <SearchIcon sx={{ fontSize: 18 }} />
+                </button>
 
                 {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
               </div>
@@ -578,35 +519,20 @@ const HeaderPage = () => {
               <div className="w-full h-full">
                 {!language ?
                   <div>
-                    <div className="hidden sm:block">
-                      <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
-                        English
-                      </button>
-                    </div>
-                    <div className="block sm:hidden">
-                      <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
-                        En
-                      </button>
-                    </div>
+                    <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
+                      English
+                    </button>
                   </div>
                   :
                   <div>
-                    <div className="hidden sm:block">
-                      <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
-                        한국어
-                      </button>
-                    </div>
-                    <div className="block sm:hidden">
-                      <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
-                        Ko
-                      </button>
-                    </div>
+                    <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
+                      한국어
+                    </button>
                   </div>
 
                 }
               </div>
             </div>
-
           </div >
         </div >
       </div>
