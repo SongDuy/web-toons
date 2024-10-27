@@ -857,7 +857,7 @@ const HeaderPage = () => {
           </div>
 
           {/* Phần phía dưới */}
-          <div className={`w-full h-[50px] bg-white flex items-center justify-center ${isSticky ? "fixed top-0 z-50" : ""}`}>
+          <div className={`w-full h-[50px] bg-white flex items-center justify-center ${isSticky ? "fixed top-0 z-30" : ""}`}>
             {/* danh mục */}
             <div className="w-auto flex items-center mx-2 overflow-x-auto">
               <ul className="flex overflow-x-auto gap-5 whitespace-nowrap">
