@@ -186,7 +186,22 @@ const HeaderPage = () => {
     return () => unsubscribe();
   }, [dispatch]);
 
-  // Nhấn nút Chuyển ngôn ngữ
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const threshold = 50; // Threshold to activate sticky behavior
+
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > threshold);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup function to remove event listener
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -539,17 +554,17 @@ const HeaderPage = () => {
 
       {/* Giao diện Header trên điện thoại  */}
       <div className="block sm:hidden">
-        <div className=" w-full h-[100px] bg-white px-[5px]">
+        <div className=" w-full h-[100px] bg-white">
           {/* Phần phía trên */}
-          <div className="w-full h-[50px] flex">
+          <div className="w-full h-[50px] flex items-center justify-center px-[10px]">
 
             {/* Logo và xác thực 19 tuổi */}
-            <div className="w-full h-full flex">
+            <div className="w-full h-full flex items-center">
               {/* logo */}
-              <div className="w-[50px] flex items-center justify-center cursor-pointer">
+              <div className="w-[65px] pt-2">
                 <Link
                   to={`/`}
-                  className="w-[65px] flex items-center justify-center cursor-pointer"
+                  className="w-[65px]"
                 >
                   <img
                     src={logo}
@@ -844,7 +859,7 @@ const HeaderPage = () => {
           </div>
 
           {/* Phần phía dưới */}
-          <div className="w-full h-[50px]">
+          <div className={`w-full h-[50px] bg-white flex items-center justify-center ${isSticky ? "fixed top-0 z-50" : ""}`}>
             {/* danh mục */}
             <div className="w-auto flex items-center mx-2 overflow-x-auto">
               <ul className="flex overflow-x-auto gap-5 whitespace-nowrap">
