@@ -52,7 +52,7 @@ const PopularPage = () => {
             {!loading ? (
                 <div className="w-full h-full bg-white pb-10">
                     {/* Hiển thị tiêu đề */}
-                    <div className={`w-full xs:h-[50px] sm:h-[70px] mb-[-70px] bg-white shadow overflow-x-auto border-t ${isSticky ? 'sticky top-0 z-30' : ''}`}>
+                    <div className={`w-full h-[70px] mb-[-70px] bg-white shadow overflow-x-auto border-t ${isSticky ? 'sticky top-0 z-30' : ''}`}>
                         <div className="w-full h-full flex items-center justify-center">
                             <ul
                                 className="h-full flex w-max overflow-x-auto scroll-snap-x scroll-snap-mandatory"
