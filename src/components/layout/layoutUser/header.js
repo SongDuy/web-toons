@@ -192,9 +192,9 @@ const HeaderPage = () => {
     <>
       {/* Giao diện Header trên máy tính bảng và laptop*/}
       <div className="hidden sm:block">
-        <div className=" w-full h-[100px] bg-white flex xs:px-[5px] sm:px-[30px]">
+        <div className=" w-full h-[100px] bg-white flex px-[30px]">
           {/* logo */}
-          <div className="xs:w-[50px] sm:w-[100px] flex items-center justify-center cursor-pointer">
+          <div className="w-[100px] flex items-center justify-center cursor-pointer">
             <Link
               to={`/`}
               className="w-[100px] flex items-center justify-center cursor-pointer"
@@ -298,18 +298,18 @@ const HeaderPage = () => {
 
 
           {/* Chức năng  */}
-          <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
+          <div className="flex items-center justify-center ml-auto gap-3">
 
             {/* chức năng nút Publish và Login*/}
             {!User ?
 
               // Chưa đăng nhập tài khoản
-              <div className="flex xs:gap-1 sm:gap-3">
+              <div className="flex gap-3">
 
                 {/* Chức năng Publish */}
                 < div className="flex items-center justify-center z-10">
                   <button
-                    className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
+                    className="w-[100px] h-[35px] bg-black rounded-full font-semibold text-[10px] md:text-lg text-white flex items-center justify-center"
                     onClick={() => { openLoginModal(); handleCloseAccount(); }}
                   >
                     {!language ? <span> Publish </span> : <span> 발행</span>}
@@ -321,7 +321,7 @@ const HeaderPage = () => {
                 {/* Đăng nhập */}
                 <div className="flex items-center justify-center">
                   <button
-                    className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
+                    className="w-[100px] h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold text-[10px] md:text-lg text-gray-500"
                     onClick={() => { openLoginModal(); handleCloseAccount(); }}
                   >
                     {!language ? <span> Log In </span> : <span> 로그인 </span>}
@@ -345,7 +345,7 @@ const HeaderPage = () => {
                     onClick={handleToggle}
                   >
                     <span
-                      className="w-[100px] h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center">
+                      className="w-[100px] h-[35px] bg-black rounded-full font-semibold text-[10px] md:text-lg text-white flex items-center justify-center">
                       {!language ? <span> Publish </span> : <span> 발행 </span>}
                     </span>
                   </button>
@@ -412,7 +412,7 @@ const HeaderPage = () => {
                     aria-haspopup="true"
                     onClick={handleToggleAccount}
                   >
-                    <span className="w-full h-[35px] px-2 py-1 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500">
+                    <span className="w-full h-[35px] px-2 py-1 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold text-[10px] md:text-lg text-gray-500">
                       {auth?.currentUser.displayName}
                     </span>
                   </button>
@@ -501,7 +501,7 @@ const HeaderPage = () => {
             }
 
             {/* Chức năng tìm kiếm và chuyển ngữ */}
-            <div className="flex items-center xs:gap-2 sm:gap-3">
+            <div className="flex items-center gap-3">
 
               {/* Chức năng tìm kiếm */}
               <div className="w-full h-full">
@@ -598,7 +598,7 @@ const HeaderPage = () => {
           )}
 
           {/* danh mục */}
-          <div className="w-auto flex items-center xs:mx-2 sm:mx-5 overflow-x-auto">
+          <div className="w-auto flex items-center mx-2 overflow-x-auto">
             <ul className="flex overflow-x-auto gap-5 whitespace-nowrap">
               <Link to={`/originals`}>
                 <li
@@ -645,13 +645,13 @@ const HeaderPage = () => {
 
 
           {/* Chức năng  */}
-          <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
+          <div className="flex items-center justify-center ml-auto gap-1">
 
             {/* chức năng nút Publish và Login*/}
             {!User ?
 
               // Chưa đăng nhập tài khoản
-              <div className="flex xs:gap-1 sm:gap-3">
+              <div className="flex gap-1">
 
                 {/* Chức năng Publish */}
                 < div className="flex items-center justify-center z-10">
@@ -678,7 +678,7 @@ const HeaderPage = () => {
               </div>
               :
               // Đã đăng nhập tài khoản
-              <div className="flex xs:gap-1 sm:gap-3">
+              <div className="flex gap-1">
 
                 {/* Menu Publish */}
                 <div className="flex items-center justify-center z-10">
@@ -846,7 +846,7 @@ const HeaderPage = () => {
             }
 
             {/* Chức năng tìm kiếm và chuyển ngữ */}
-            <div className="flex items-center xs:gap-2 sm:gap-3">
+            <div className="flex items-center gap-2">
 
               {/* Chức năng tìm kiếm */}
               <div className="w-full h-full">
