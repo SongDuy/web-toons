@@ -619,242 +619,240 @@ const HeaderPage = () => {
             </div>
 
             {/* Các phím chức năng */}
-            <div>
-              {/* Chức năng  */}
-              <div className="flex items-center justify-center ml-auto gap-1">
 
-                {/* chức năng nút Publish và Login*/}
-                {!User ?
+            <div className="flex items-center justify-center ml-auto gap-1">
 
-                  // Chưa đăng nhập tài khoản
-                  <div className="flex gap-1">
+              {/* chức năng nút Publish và Login*/}
+              {!User ?
 
-                    {/* Chức năng Publish */}
-                    < div className="flex items-center justify-center z-10">
-                      <button
-                        className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
-                        onClick={() => { openLoginModal(); handleCloseAccount(); }}
-                      >
-                        <BackupIcon />
-                      </button>
-                      {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
-                    </div>
+                // Chưa đăng nhập tài khoản
+                <div className="flex gap-1">
 
-                    {/* Đăng nhập */}
-                    <div className="flex items-center justify-center">
-                      <button
-                        className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
-                        onClick={() => { openLoginModal(); handleCloseAccount(); }}
-                      >
-                        <ExitToAppSharpIcon />
-                      </button>
-
-                      {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
-                    </div>
-                  </div>
-                  :
-                  // Đã đăng nhập tài khoản
-                  <div className="flex gap-1">
-
-                    {/* Menu Publish */}
-                    <div className="flex items-center justify-center z-10">
-                      <button
-                        ref={anchorRef}
-                        id="composition-button"
-                        aria-controls={open ? 'composition-menu' : undefined}
-                        aria-expanded={open ? 'true' : undefined}
-                        aria-haspopup="true"
-                        onClick={handleToggle}
-                      >
-                        <div
-                          className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full">
-                          <BackupIcon />
-                        </div>
-                      </button>
-
-                      {/* Chọn menu */}
-                      <Popper
-                        open={open}
-                        anchorEl={anchorRef.current}
-                        role={undefined}
-                        placement="bottom-start"
-                        transition
-                        disablePortal
-                      >
-                        {({ TransitionProps, placement }) => (
-                          <Grow
-                            {...TransitionProps}
-                            style={{
-                              transformOrigin:
-                                placement === 'bottom-start' ? 'left top' : 'left bottom',
-                            }}
-                          >
-                            <Paper>
-                              <ClickAwayListener onClickAway={handleClose}>
-                                <MenuList
-                                  className="bg-gray-100 rounded-lg text-black font-semibold "
-                                  autoFocusItem={open}
-                                  id="composition-menu"
-                                  aria-labelledby="composition-button"
-                                  onKeyDown={handleListKeyDown}
-                                >
-                                  <Link to={`/publish/original`} onClick={() => dispatch(setcurrentStepOriginal(1))}>
-                                    <MenuItem onClick={handleClose} className="flex gap-x-1">
-                                      <PictureAsPdfOutlinedIcon />
-
-                                      {!language ? <span> Original </span> : <span> 원본 </span>}
-
-                                    </MenuItem>
-                                  </Link>
-
-                                  <Link to={`/publish/video`} onClick={() => dispatch(setcurrentStepVideo(1))}>
-                                    <MenuItem onClick={handleClose} className="flex gap-x-1">
-                                      <VideoCallOutlinedIcon />
-
-                                      {!language ? <span> Video </span> : <span> 동영상 </span>}
-
-                                    </MenuItem>
-                                  </Link>
-                                </MenuList>
-                              </ClickAwayListener>
-                            </Paper>
-                          </Grow>
-                        )}
-                      </Popper>
-                    </div>
-
-                    {/* Menu Account */}
-
-                    <div className="w-full flex items-center justify-center z-10">
-                      <button
-                        ref={anchorAccountRef}
-                        id="composition-button"
-                        aria-controls={openAccount ? 'composition-menu' : undefined}
-                        aria-expanded={openAccount ? 'true' : undefined}
-                        aria-haspopup="true"
-                        onClick={handleToggleAccount}
-                      >
-                        <div className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black rounded-full">
-                          <AccountCircleSharpIcon />
-                        </div>
-                      </button>
-                      {/* Chọn menu Account*/}
-                      <Popper
-                        open={openAccount}
-                        anchorEl={anchorAccountRef.current}
-                        role={undefined}
-                        placement="bottom-start"
-                        transition
-                        disablePortal
-                      >
-                        {({ TransitionProps, placement }) => (
-                          <Grow
-                            {...TransitionProps}
-                            style={{
-                              transformOrigin:
-                                placement === 'bottom-start' ? 'left top' : 'left bottom',
-                            }}
-                          >
-                            <Paper>
-                              <ClickAwayListener onClickAway={handleCloseAccount}>
-                                <MenuList className="bg-gray-100 rounded-lg text-black font-semibold "
-                                  autoFocusItem={openAccount}
-                                  id="composition-menu"
-                                  aria-labelledby="composition-button"
-                                  onKeyDown={handleListAccountKeyDown}
-                                >
-                                  <Link to={`/subscribed`}>
-                                    <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                      <GroupAddIcon />
-                                      {!language ? <span> Subscribed </span> : <span> 구독 중 </span>}
-                                    </MenuItem>
-                                  </Link>
-
-                                  <Link to={`/dashboard`}>
-                                    <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                      <PieChartIcon />
-                                      {!language ? <span> Dashboard </span> : <span> 대시보드 </span>}
-                                    </MenuItem>
-                                  </Link>
-
-                                  <Link to={`/mycomment`}>
-                                    <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                      <CommentIcon />
-                                      {!language ? <span> Comments </span> : <span> 댓글 </span>}
-                                    </MenuItem>
-                                  </Link>
-
-                                  <Link to={`/creators`}>
-                                    <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                      <EditNoteIcon />
-                                      {!language ? <span> Creators </span> : <span> 창작자 </span>}
-                                    </MenuItem>
-                                  </Link>
-
-                                  <Link to={`/channel/my`}>
-                                    <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                      <AssignmentIndIcon />
-                                      {!language ? <span> My Channel Page</span> : <span> 내 채널 페이지 </span>}
-                                    </MenuItem>
-                                  </Link>
-
-                                  <Link to={`/account`}>
-                                    <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                                      <AccountCircleIcon />
-                                      {!language ? <span> Account </span> : <span> 계정 </span>}
-                                    </MenuItem>
-                                  </Link>
-
-                                  <MenuItem onClick={() => logouts()} className="flex gap-x-3">
-                                    <LogoutIcon />
-                                    {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
-                                  </MenuItem>
-                                </MenuList>
-
-                              </ClickAwayListener>
-                            </Paper>
-                          </Grow>
-                        )}
-                      </Popper>
-                    </div>
-
-                  </div>
-                }
-
-                {/* Chức năng tìm kiếm và chuyển ngữ */}
-                <div className="flex items-center gap-2">
-
-                  {/* Chức năng tìm kiếm */}
-                  <div className="w-full h-full">
+                  {/* Chức năng Publish */}
+                  < div className="flex items-center justify-center z-10">
                     <button
-                      className="w-[35px] h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
-                      onClick={openSearchModal}
+                      className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
+                      onClick={() => { openLoginModal(); handleCloseAccount(); }}
                     >
-                      <SearchIcon sx={{ fontSize: 18 }} />
+                      <BackupIcon />
+                    </button>
+                    {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+                  </div>
+
+                  {/* Đăng nhập */}
+                  <div className="flex items-center justify-center">
+                    <button
+                      className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
+                      onClick={() => { openLoginModal(); handleCloseAccount(); }}
+                    >
+                      <ExitToAppSharpIcon />
                     </button>
 
-                    {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
-                  </div>
-
-                  {/* Nút chuyển ngữ */}
-                  <div className="w-full h-full">
-                    {!language ?
-                      <div>
-                        <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
-                          En
-                        </button>
-                      </div>
-                      :
-                      <div>
-                        <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
-                          Ko
-                        </button>
-                      </div>
-                    }
+                    {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
                   </div>
                 </div>
+                :
+                // Đã đăng nhập tài khoản
+                <div className="flex gap-1">
 
-              </div >
+                  {/* Menu Publish */}
+                  <div className="flex items-center justify-center z-10">
+                    <button
+                      ref={anchorRef}
+                      id="composition-button"
+                      aria-controls={open ? 'composition-menu' : undefined}
+                      aria-expanded={open ? 'true' : undefined}
+                      aria-haspopup="true"
+                      onClick={handleToggle}
+                    >
+                      <div
+                        className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full">
+                        <BackupIcon />
+                      </div>
+                    </button>
+
+                    {/* Chọn menu */}
+                    <Popper
+                      open={open}
+                      anchorEl={anchorRef.current}
+                      role={undefined}
+                      placement="bottom-start"
+                      transition
+                      disablePortal
+                    >
+                      {({ TransitionProps, placement }) => (
+                        <Grow
+                          {...TransitionProps}
+                          style={{
+                            transformOrigin:
+                              placement === 'bottom-start' ? 'left top' : 'left bottom',
+                          }}
+                        >
+                          <Paper>
+                            <ClickAwayListener onClickAway={handleClose}>
+                              <MenuList
+                                className="bg-gray-100 rounded-lg text-black font-semibold "
+                                autoFocusItem={open}
+                                id="composition-menu"
+                                aria-labelledby="composition-button"
+                                onKeyDown={handleListKeyDown}
+                              >
+                                <Link to={`/publish/original`} onClick={() => dispatch(setcurrentStepOriginal(1))}>
+                                  <MenuItem onClick={handleClose} className="flex gap-x-1">
+                                    <PictureAsPdfOutlinedIcon />
+
+                                    {!language ? <span> Original </span> : <span> 원본 </span>}
+
+                                  </MenuItem>
+                                </Link>
+
+                                <Link to={`/publish/video`} onClick={() => dispatch(setcurrentStepVideo(1))}>
+                                  <MenuItem onClick={handleClose} className="flex gap-x-1">
+                                    <VideoCallOutlinedIcon />
+
+                                    {!language ? <span> Video </span> : <span> 동영상 </span>}
+
+                                  </MenuItem>
+                                </Link>
+                              </MenuList>
+                            </ClickAwayListener>
+                          </Paper>
+                        </Grow>
+                      )}
+                    </Popper>
+                  </div>
+
+                  {/* Menu Account */}
+
+                  <div className="w-full flex items-center justify-center z-10">
+                    <button
+                      ref={anchorAccountRef}
+                      id="composition-button"
+                      aria-controls={openAccount ? 'composition-menu' : undefined}
+                      aria-expanded={openAccount ? 'true' : undefined}
+                      aria-haspopup="true"
+                      onClick={handleToggleAccount}
+                    >
+                      <div className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black rounded-full">
+                        <AccountCircleSharpIcon />
+                      </div>
+                    </button>
+                    {/* Chọn menu Account*/}
+                    <Popper
+                      open={openAccount}
+                      anchorEl={anchorAccountRef.current}
+                      role={undefined}
+                      placement="bottom-start"
+                      transition
+                      disablePortal
+                    >
+                      {({ TransitionProps, placement }) => (
+                        <Grow
+                          {...TransitionProps}
+                          style={{
+                            transformOrigin:
+                              placement === 'bottom-start' ? 'left top' : 'left bottom',
+                          }}
+                        >
+                          <Paper>
+                            <ClickAwayListener onClickAway={handleCloseAccount}>
+                              <MenuList className="bg-gray-100 rounded-lg text-black font-semibold "
+                                autoFocusItem={openAccount}
+                                id="composition-menu"
+                                aria-labelledby="composition-button"
+                                onKeyDown={handleListAccountKeyDown}
+                              >
+                                <Link to={`/subscribed`}>
+                                  <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                    <GroupAddIcon />
+                                    {!language ? <span> Subscribed </span> : <span> 구독 중 </span>}
+                                  </MenuItem>
+                                </Link>
+
+                                <Link to={`/dashboard`}>
+                                  <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                    <PieChartIcon />
+                                    {!language ? <span> Dashboard </span> : <span> 대시보드 </span>}
+                                  </MenuItem>
+                                </Link>
+
+                                <Link to={`/mycomment`}>
+                                  <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                    <CommentIcon />
+                                    {!language ? <span> Comments </span> : <span> 댓글 </span>}
+                                  </MenuItem>
+                                </Link>
+
+                                <Link to={`/creators`}>
+                                  <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                    <EditNoteIcon />
+                                    {!language ? <span> Creators </span> : <span> 창작자 </span>}
+                                  </MenuItem>
+                                </Link>
+
+                                <Link to={`/channel/my`}>
+                                  <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                    <AssignmentIndIcon />
+                                    {!language ? <span> My Channel Page</span> : <span> 내 채널 페이지 </span>}
+                                  </MenuItem>
+                                </Link>
+
+                                <Link to={`/account`}>
+                                  <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                    <AccountCircleIcon />
+                                    {!language ? <span> Account </span> : <span> 계정 </span>}
+                                  </MenuItem>
+                                </Link>
+
+                                <MenuItem onClick={() => logouts()} className="flex gap-x-3">
+                                  <LogoutIcon />
+                                  {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
+                                </MenuItem>
+                              </MenuList>
+
+                            </ClickAwayListener>
+                          </Paper>
+                        </Grow>
+                      )}
+                    </Popper>
+                  </div>
+
+                </div>
+              }
+
+              {/* Chức năng tìm kiếm và chuyển ngữ */}
+              <div className="flex items-center gap-2">
+
+                {/* Chức năng tìm kiếm */}
+                <div className="w-full h-full">
+                  <button
+                    className="w-[35px] h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
+                    onClick={openSearchModal}
+                  >
+                    <SearchIcon sx={{ fontSize: 18 }} />
+                  </button>
+
+                  {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
+                </div>
+
+                {/* Nút chuyển ngữ */}
+                <div className="w-full h-full">
+                  {!language ?
+                    <div>
+                      <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
+                        En
+                      </button>
+                    </div>
+                    :
+                    <div>
+                      <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
+                        Ko
+                      </button>
+                    </div>
+                  }
+                </div>
+              </div>
+
             </div>
           </div>
 
