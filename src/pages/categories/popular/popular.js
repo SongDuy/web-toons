@@ -60,7 +60,7 @@ const PopularPage = () => {
                                 <ScrollLink to="section1" smooth={true} duration={500}>
                                     <li
                                         onClick={() => setSelectedSection("section1")}
-                                        className={`w-[200px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center scroll-snap-start ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                                        className={`w-[250px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center scroll-snap-start ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                                     >
                                         {!language ?
                                             <span>
@@ -77,7 +77,7 @@ const PopularPage = () => {
                                 <ScrollLink to="section2" smooth={true} duration={500}>
                                     <li
                                         onClick={() => setSelectedSection("section2")}
-                                        className={`w-[200px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center scroll-snap-start ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                                        className={`w-[250px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center scroll-snap-start ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                                     >
                                         {!language ?
                                             <span>
@@ -94,7 +94,7 @@ const PopularPage = () => {
                                 <ScrollLink to="section3" smooth={true} duration={500}>
                                     <li
                                         onClick={() => setSelectedSection("section3")}
-                                        className={`w-[200px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center scroll-snap-start ${selectedSection === "section3" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                                        className={`w-[250px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center scroll-snap-start ${selectedSection === "section3" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                                     >
                                         {!language ?
                                             <span>
