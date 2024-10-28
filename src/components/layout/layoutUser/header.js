@@ -23,7 +23,7 @@ import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
 import SearchPage from "./search";
 import Login19AgePage from "./19Age.js";
 import LoginPage from "../../../../src/pages/auth/login";
-import logo from "../../../img/logonew.png";
+import logo from "../../../img/logonew1.png";
 import { Link, useLocation } from "react-router-dom";
 import { auth } from "../../../common/themes/firebase";
 import { useDispatch, useSelector } from 'react-redux';
