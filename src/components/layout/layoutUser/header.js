@@ -186,428 +186,793 @@ const HeaderPage = () => {
     return () => unsubscribe();
   }, [dispatch]);
 
-  // Nhấn nút Chuyển ngôn ngữ
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const threshold = 50; // Threshold to activate sticky behavior
+
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > threshold);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup function to remove event listener
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // kiểm tra kích thước màn hình
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+  useEffect(() => {
+    // Hàm cập nhật khi thay đổi kích thước màn hình
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    // Thêm sự kiện resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup sự kiện khi component bị unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
-    <div className=" w-full h-[100px] bg-white flex xs:px-[5px] sm:px-[30px]">
+    <div>
+      {isMobile  ? (
+        <div className=" w-full h-[100px] bg-white">
+          {/* Giao diện Header trên điện thoại  */}
+          {/* Phần phía trên */}
+          <div className="w-full h-[50px] flex items-center justify-center px-[10px]">
 
-      {/* logo */}
-      <div className="xs:w-[50px] sm:w-[100px] flex items-center justify-center cursor-pointer">
-        <div className="hidden sm:block">
-          <Link
-            to={`/`}
-            className="w-[100px] flex items-center justify-center cursor-pointer"
-          >
-            <img
-              src={logo}
-              alt="Logo"
-              className="w-full h-auto"
-            />
-          </Link>
-        </div>
-        <div className="block sm:hidden">
-          <Link
-            to={`/`}
-            className="w-[65px] flex items-center justify-center cursor-pointer"
-          >
-            <img
-              src={logo}
-              alt="Logo"
-              className="w-full h-auto"
-            />
-          </Link>
-        </div>
+            {/* Logo và xác thực 19 tuổi */}
+            <div className="w-full h-full flex items-center">
+              {/* logo */}
+              <div className="w-[65px] pt-2">
+                <Link
+                  to={`/`}
+                  className="w-[65px]"
+                >
+                  <img
+                    src={logo}
+                    alt="Logo"
+                    className="w-full h-auto"
+                  />
+                </Link>
+              </div>
 
-      </div>
+              {/* Đăng nhập 19 tuổi*/}
+              {!User ? (
+                <div className="w-auto h-full flex justify-center">
+                  <button
+                    onClick={openLogin19Modal}
+                    className="flex items-center justify-center"
+                  >
+                    <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
+                      19
+                    </div>
+                    <div className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full" />
+                  </button>
+                  {isLogin19Modal && <LoginPage closeModal={closeLogin19Modal} />}
+                </div>
+              ) : !check19Modal ? (
+                <div className="w-auto h-full flex justify-center">
+                  <button
+                    className="flex items-center justify-center"
+                    onClick={() => { open19AgeModal(); }}
+                  >
+                    <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
+                      19
+                    </div>
+                    <div className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full" />
+                  </button>
+                  {is19AgeModal && <Login19AgePage closeModal={close19AgeModal} check={true} />}
+                </div>
+              ) : (
+                <div className="w-auto h-full flex justify-center">
+                  <button
+                    className="flex items-center justify-center"
+                    onClick={() => { open19AgeModal(); }}
+                  >
+                    <div className="border h-[5px] bg-gray-500 w-[15px] rounded-l-full" />
+                    <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
+                      19
+                    </div>
+                  </button>
 
-      {/* Đăng nhập 19 tuổi*/}
-      {!User ? (
-        <div className="w-auto h-full flex justify-center">
-          <button
-             onClick={openLogin19Modal}
-            className="flex items-center justify-center"
-          >
-            <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
-              19
+                  {is19AgeModal && <Login19AgePage closeModal={close19AgeModal} check={false} />}
+                </div>
+              )}
             </div>
-            <div className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full" />
-          </button>
-          {isLogin19Modal && <LoginPage closeModal={closeLogin19Modal} />}
-        </div>
-      ) : !check19Modal ? (
-        <div className="w-auto h-full flex justify-center">
-          <button
-            className="flex items-center justify-center"
-            onClick={() => {open19AgeModal();}}
-          >
-            <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
-              19
+
+            {/* Các phím chức năng */}
+
+            <div className="flex items-center justify-center ml-auto gap-1">
+
+              {/* chức năng nút Publish và Login*/}
+              {!User ?
+
+                // Chưa đăng nhập tài khoản
+                <div className="flex gap-1">
+
+                  {/* Chức năng Publish */}
+                  < div className="flex items-center justify-center z-10">
+                    <button
+                      className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
+                      onClick={() => { openLoginModal(); handleCloseAccount(); }}
+                    >
+                      <BackupIcon />
+                    </button>
+                    {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+                  </div>
+
+                  {/* Đăng nhập */}
+                  <div className="flex items-center justify-center">
+                    <button
+                      className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
+                      onClick={() => { openLoginModal(); handleCloseAccount(); }}
+                    >
+                      <ExitToAppSharpIcon />
+                    </button>
+
+                    {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+                  </div>
+                </div>
+                :
+                // Đã đăng nhập tài khoản
+                <div className="flex gap-1">
+
+                  {/* Menu Publish */}
+                  <div className="flex items-center justify-center z-10">
+                    <button
+                      ref={anchorRef}
+                      id="composition-button"
+                      aria-controls={open ? 'composition-menu' : undefined}
+                      aria-expanded={open ? 'true' : undefined}
+                      aria-haspopup="true"
+                      onClick={handleToggle}
+                    >
+                      <div
+                        className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full">
+                        <BackupIcon />
+                      </div>
+                    </button>
+
+                    {/* Chọn menu */}
+                    <Popper
+                      open={open}
+                      anchorEl={anchorRef.current}
+                      role={undefined}
+                      placement="bottom-start"
+                      transition
+                      disablePortal
+                    >
+                      {({ TransitionProps, placement }) => (
+                        <Grow
+                          {...TransitionProps}
+                          style={{
+                            transformOrigin:
+                              placement === 'bottom-start' ? 'left top' : 'left bottom',
+                          }}
+                        >
+                          <Paper>
+                            <ClickAwayListener onClickAway={handleClose}>
+                              <MenuList
+                                className="bg-gray-100 rounded-lg text-black font-semibold "
+                                autoFocusItem={open}
+                                id="composition-menu"
+                                aria-labelledby="composition-button"
+                                onKeyDown={handleListKeyDown}
+                              >
+                                <Link to={`/publish/original`} onClick={() => dispatch(setcurrentStepOriginal(1))}>
+                                  <MenuItem onClick={handleClose} className="flex gap-x-1">
+                                    <PictureAsPdfOutlinedIcon />
+
+                                    {!language ? <span> Original </span> : <span> 원본 </span>}
+
+                                  </MenuItem>
+                                </Link>
+
+                                <Link to={`/publish/video`} onClick={() => dispatch(setcurrentStepVideo(1))}>
+                                  <MenuItem onClick={handleClose} className="flex gap-x-1">
+                                    <VideoCallOutlinedIcon />
+
+                                    {!language ? <span> Video </span> : <span> 동영상 </span>}
+
+                                  </MenuItem>
+                                </Link>
+                              </MenuList>
+                            </ClickAwayListener>
+                          </Paper>
+                        </Grow>
+                      )}
+                    </Popper>
+                  </div>
+
+                  {/* Menu Account */}
+
+                  <div className="w-full flex items-center justify-center z-10">
+                    <button
+                      ref={anchorAccountRef}
+                      id="composition-button"
+                      aria-controls={openAccount ? 'composition-menu' : undefined}
+                      aria-expanded={openAccount ? 'true' : undefined}
+                      aria-haspopup="true"
+                      onClick={handleToggleAccount}
+                    >
+                      <div className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black rounded-full">
+                        <AccountCircleSharpIcon />
+                      </div>
+                    </button>
+                    {/* Chọn menu Account*/}
+                    <Popper
+                      open={openAccount}
+                      anchorEl={anchorAccountRef.current}
+                      role={undefined}
+                      placement="bottom-start"
+                      transition
+                      disablePortal
+                    >
+                      {({ TransitionProps, placement }) => (
+                        <Grow
+                          {...TransitionProps}
+                          style={{
+                            transformOrigin:
+                              placement === 'bottom-start' ? 'left top' : 'left bottom',
+                          }}
+                        >
+                          <Paper>
+                            <ClickAwayListener onClickAway={handleCloseAccount}>
+                              <MenuList className="bg-gray-100 rounded-lg text-black font-semibold "
+                                autoFocusItem={openAccount}
+                                id="composition-menu"
+                                aria-labelledby="composition-button"
+                                onKeyDown={handleListAccountKeyDown}
+                              >
+                                <Link to={`/subscribed`}>
+                                  <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                    <GroupAddIcon />
+                                    {!language ? <span> Subscribed </span> : <span> 구독 중 </span>}
+                                  </MenuItem>
+                                </Link>
+
+                                <Link to={`/dashboard`}>
+                                  <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                    <PieChartIcon />
+                                    {!language ? <span> Dashboard </span> : <span> 대시보드 </span>}
+                                  </MenuItem>
+                                </Link>
+
+                                <Link to={`/mycomment`}>
+                                  <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                    <CommentIcon />
+                                    {!language ? <span> Comments </span> : <span> 댓글 </span>}
+                                  </MenuItem>
+                                </Link>
+
+                                <Link to={`/creators`}>
+                                  <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                    <EditNoteIcon />
+                                    {!language ? <span> Creators </span> : <span> 창작자 </span>}
+                                  </MenuItem>
+                                </Link>
+
+                                <Link to={`/channel/my`}>
+                                  <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                    <AssignmentIndIcon />
+                                    {!language ? <span> My Channel Page</span> : <span> 내 채널 페이지 </span>}
+                                  </MenuItem>
+                                </Link>
+
+                                <Link to={`/account`}>
+                                  <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                    <AccountCircleIcon />
+                                    {!language ? <span> Account </span> : <span> 계정 </span>}
+                                  </MenuItem>
+                                </Link>
+
+                                <MenuItem onClick={() => logouts()} className="flex gap-x-3">
+                                  <LogoutIcon />
+                                  {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
+                                </MenuItem>
+                              </MenuList>
+
+                            </ClickAwayListener>
+                          </Paper>
+                        </Grow>
+                      )}
+                    </Popper>
+                  </div>
+
+                </div>
+              }
+
+              {/* Chức năng tìm kiếm và chuyển ngữ */}
+              <div className="flex items-center gap-2">
+
+                {/* Chức năng tìm kiếm */}
+                <div className="w-full h-full">
+                  <button
+                    className="w-[35px] h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
+                    onClick={openSearchModal}
+                  >
+                    <SearchIcon sx={{ fontSize: 18 }} />
+                  </button>
+
+                  {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
+                </div>
+
+                {/* Nút chuyển ngữ */}
+                <div className="w-full h-full">
+                  {!language ?
+                    <div>
+                      <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
+                        En
+                      </button>
+                    </div>
+                    :
+                    <div>
+                      <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
+                        Ko
+                      </button>
+                    </div>
+                  }
+                </div>
+              </div>
+
             </div>
-            <div className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full" />
-          </button>
-          {is19AgeModal && <Login19AgePage closeModal={close19AgeModal} check={true}/>}
-        </div>
+          </div>
+
+          {/* Phần phía dưới */}
+          <div className={`w-full h-[50px] bg-white flex items-center justify-center ${isSticky ? "fixed top-0 z-30" : ""}`}>
+            {/* danh mục */}
+            <div className="w-auto flex items-center mx-2 overflow-x-auto">
+              <ul className="flex overflow-x-auto gap-5 whitespace-nowrap">
+                <Link to={`/originals`}>
+                  <li
+                    className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/originals")
+                      ? "text-yellow-500"
+                      : "hover:text-yellow-500"
+                      }`}
+                  >
+                    {!language ? <span> Originals </span> : <span> 오리지널 </span>}
+                  </li>
+                </Link>
+                <Link to={`/videos`}>
+                  <li
+                    className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/videos")
+                      ? "text-yellow-500"
+                      : "hover:text-yellow-500"
+                      }`}
+                  >
+                    {!language ? <span> Videos </span> : <span> 비디오 </span>}
+                  </li>
+                </Link>
+                <Link to={`/genres`}>
+                  <li
+                    className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/genres")
+                      ? "text-yellow-500"
+                      : "hover:text-yellow-500"
+                      }`}
+                  >
+                    {!language ? <span> Genres </span> : <span> 장르 </span>}
+                  </li>
+                </Link>
+                <Link to={`/popular`}>
+                  <li
+                    className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/popular")
+                      ? "text-yellow-500"
+                      : "hover:text-yellow-500"
+                      }`}
+                  >
+                    {!language ? <span> Popular </span> : <span> 인기 </span>}
+                  </li>
+                </Link>
+              </ul>
+            </div>
+
+          </div>
+
+        </div >
       ) : (
-        <div className="w-auto h-full flex justify-center">
-          <button
-            className="flex items-center justify-center"
-            onClick={() => {open19AgeModal(); }}
-          >
-            <div className="border h-[5px] bg-gray-500 w-[15px] rounded-l-full" />
-            <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
-              19
-            </div>
-          </button>
-          
-          {is19AgeModal && <Login19AgePage closeModal={close19AgeModal} check={false}/>}
-        </div>
-      )}
-
-      {/* danh mục */}
-      <div className="w-auto flex items-center xs:mx-2 sm:mx-5 overflow-x-auto">
-        <ul className="flex overflow-x-auto gap-5 whitespace-nowrap">
-          <Link to={`/originals`}>
-            <li
-              className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/originals")
-                ? "text-yellow-500"
-                : "hover:text-yellow-500"
-                }`}
+        <div className="w-full h-[100px] bg-white flex items-center justify-center px-[30px]">
+          {/* Giao diện Header trên máy tính bảng và laptop*/}
+          {/* logo */}
+          <div className="w-[100px] flex items-center justify-center cursor-pointer">
+            <Link
+              to={`/`}
+              className="w-[100px] flex items-center justify-center cursor-pointer"
             >
-              {!language ? <span> Originals </span> : <span> 오리지널 </span>}
-            </li>
-          </Link>
-          <Link to={`/videos`}>
-            <li
-              className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/videos")
-                ? "text-yellow-500"
-                : "hover:text-yellow-500"
-                }`}
-            >
-              {!language ? <span> Videos </span> : <span> 비디오 </span>}
-            </li>
-          </Link>
-          <Link to={`/genres`}>
-            <li
-              className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/genres")
-                ? "text-yellow-500"
-                : "hover:text-yellow-500"
-                }`}
-            >
-              {!language ? <span> Genres </span> : <span> 장르 </span>}
-            </li>
-          </Link>
-          <Link to={`/popular`}>
-            <li
-              className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/popular")
-                ? "text-yellow-500"
-                : "hover:text-yellow-500"
-                }`}
-            >
-              {!language ? <span> Popular </span> : <span> 인기 </span>}
-            </li>
-          </Link>
-        </ul>
-      </div>
-
-
-      {/* Chức năng  */}
-      <div className="flex items-center justify-center ml-auto xs:gap-1 sm:gap-3">
-
-        {/* chức năng nút Publish và Login*/}
-        {!User ?
-
-          // Chưa đăng nhập tài khoản
-          <div className="flex xs:gap-1 sm:gap-3">
-
-            {/* Chức năng Publish */}
-            < div className="flex items-center justify-center z-10">
-              <div className="hidden lg:block">
-                <button
-                  className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center"
-                  onClick={() => { openLoginModal(); handleCloseAccount(); }}
-                >
-                  {!language ? <span> Publish </span> : <span> 발행</span>}
-                </button>
-
-              </div>
-              <div className="block lg:hidden">
-                <button
-                  className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
-                  onClick={() => { openLoginModal(); handleCloseAccount(); }}
-                >
-                  <BackupIcon />
-                </button>
-              </div>
-              {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
-            </div>
-
-            {/* Đăng nhập */}
-            <div className="flex items-center justify-center">
-              <div className="hidden lg:block">
-                <button
-                  className="xs:w-[50px] sm:w-[100px] xs:h-[20px] sm:h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500"
-                  onClick={() => { openLoginModal(); handleCloseAccount(); }}
-                >
-                  {!language ? <span> Log In </span> : <span> 로그인 </span>}
-                </button>
-
-              </div>
-              <div className="block lg:hidden">
-                <button
-                  className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
-                  onClick={() => { openLoginModal(); handleCloseAccount(); }}
-                >
-                  <ExitToAppSharpIcon />
-                </button>
-              </div>
-
-              {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
-            </div>
-          </div>
-          :
-          // Đã đăng nhập tài khoản
-          <div className="flex xs:gap-1 sm:gap-3">
-
-            {/* Menu Publish */}
-            <div className="flex items-center justify-center z-10">
-              <button
-                ref={anchorRef}
-                id="composition-button"
-                aria-controls={open ? 'composition-menu' : undefined}
-                aria-expanded={open ? 'true' : undefined}
-                aria-haspopup="true"
-                onClick={handleToggle}
-              >
-                <div className="hidden lg:block">
-                  <span
-                    className="w-[100px] h-[35px] bg-black rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-white flex items-center justify-center">
-                    {!language ? <span> Publish </span> : <span> 발행 </span>}
-                  </span>
-                </div>
-                <div className="block lg:hidden">
-                  <span
-                    className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full">
-                    <BackupIcon />
-                  </span>
-                </div>
-              </button>
-
-              {/* Chọn menu */}
-              <Popper
-                open={open}
-                anchorEl={anchorRef.current}
-                role={undefined}
-                placement="bottom-start"
-                transition
-                disablePortal
-              >
-                {({ TransitionProps, placement }) => (
-                  <Grow
-                    {...TransitionProps}
-                    style={{
-                      transformOrigin:
-                        placement === 'bottom-start' ? 'left top' : 'left bottom',
-                    }}
-                  >
-                    <Paper>
-                      <ClickAwayListener onClickAway={handleClose}>
-                        <MenuList
-                          className="bg-gray-100 rounded-lg text-black font-semibold "
-                          autoFocusItem={open}
-                          id="composition-menu"
-                          aria-labelledby="composition-button"
-                          onKeyDown={handleListKeyDown}
-                        >
-                          <Link to={`/publish/original`} onClick={() => dispatch(setcurrentStepOriginal(1))}>
-                            <MenuItem onClick={handleClose} className="flex gap-x-1">
-                              <PictureAsPdfOutlinedIcon />
-
-                              {!language ? <span> Original </span> : <span> 원본 </span>}
-
-                            </MenuItem>
-                          </Link>
-
-                          <Link to={`/publish/video`} onClick={() => dispatch(setcurrentStepVideo(1))}>
-                            <MenuItem onClick={handleClose} className="flex gap-x-1">
-                              <VideoCallOutlinedIcon />
-
-                              {!language ? <span> Video </span> : <span> 동영상 </span>}
-
-                            </MenuItem>
-                          </Link>
-                        </MenuList>
-                      </ClickAwayListener>
-                    </Paper>
-                  </Grow>
-                )}
-              </Popper>
-            </div>
-
-            {/* Menu Account */}
-
-            <div className="w-full flex items-center justify-center z-10">
-              <button
-                ref={anchorAccountRef}
-                id="composition-button"
-                aria-controls={openAccount ? 'composition-menu' : undefined}
-                aria-expanded={openAccount ? 'true' : undefined}
-                aria-haspopup="true"
-                onClick={handleToggleAccount}
-              >
-                <div className="w-full hidden lg:block">
-                  <span className="w-full h-[35px] px-2 py-1 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold xs:text-[10px] sm:text-[10px] md:text-lg text-gray-500">
-                    {auth?.currentUser.displayName}
-                  </span>
-                </div>
-                <div className="block lg:hidden">
-                  <span className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black rounded-full">
-                    <AccountCircleSharpIcon />
-                  </span>
-                </div>
-              </button>
-              {/* Chọn menu Account*/}
-              <Popper
-                open={openAccount}
-                anchorEl={anchorAccountRef.current}
-                role={undefined}
-                placement="bottom-start"
-                transition
-                disablePortal
-              >
-                {({ TransitionProps, placement }) => (
-                  <Grow
-                    {...TransitionProps}
-                    style={{
-                      transformOrigin:
-                        placement === 'bottom-start' ? 'left top' : 'left bottom',
-                    }}
-                  >
-                    <Paper>
-                      <ClickAwayListener onClickAway={handleCloseAccount}>
-                        <MenuList className="bg-gray-100 rounded-lg text-black font-semibold "
-                          autoFocusItem={openAccount}
-                          id="composition-menu"
-                          aria-labelledby="composition-button"
-                          onKeyDown={handleListAccountKeyDown}
-                        >
-                          <Link to={`/subscribed`}>
-                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                              <GroupAddIcon />
-                              {!language ? <span> Subscribed </span> : <span> 구독 중 </span>}
-                            </MenuItem>
-                          </Link>
-
-                          <Link to={`/dashboard`}>
-                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                              <PieChartIcon />
-                              {!language ? <span> Dashboard </span> : <span> 대시보드 </span>}
-                            </MenuItem>
-                          </Link>
-
-                          <Link to={`/mycomment`}>
-                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                              <CommentIcon />
-                              {!language ? <span> Comments </span> : <span> 댓글 </span>}
-                            </MenuItem>
-                          </Link>
-
-                          <Link to={`/creators`}>
-                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                              <EditNoteIcon />
-                              {!language ? <span> Creators </span> : <span> 창작자 </span>}
-                            </MenuItem>
-                          </Link>
-
-                          <Link to={`/channel/my`}>
-                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                              <AssignmentIndIcon />
-                              {!language ? <span> My Channel Page</span> : <span> 내 채널 페이지 </span>}
-                            </MenuItem>
-                          </Link>
-
-                          <Link to={`/account`}>
-                            <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
-                              <AccountCircleIcon />
-                              {!language ? <span> Account </span> : <span> 계정 </span>}
-                            </MenuItem>
-                          </Link>
-
-                          <MenuItem onClick={() => logouts()} className="flex gap-x-3">
-                            <LogoutIcon />
-                            {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
-                          </MenuItem>
-                        </MenuList>
-
-                      </ClickAwayListener>
-                    </Paper>
-                  </Grow>
-                )}
-              </Popper>
-            </div>
-
-          </div>
-        }
-
-        {/* Chức năng tìm kiếm và chuyển ngữ */}
-        <div className="flex items-center xs:gap-2 sm:gap-3">
-
-          {/* Chức năng tìm kiếm */}
-          <div className="w-full h-full">
-            <div className="hidden sm:block">
-              <button
-                className="w-[35px] h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
-                onClick={openSearchModal}
-              >
-                <SearchIcon sx={{ fontSize: 18 }} />
-              </button>
-            </div>
-            <div className="block sm:hidden">
-              <button
-                className="w-[35px] h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
-                onClick={openSearchModal}
-              >
-                <SearchIcon sx={{ fontSize: 18 }} />
-              </button>
-            </div>
-
-            {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
+              <img
+                src={logo}
+                alt="Logo"
+                className="w-[100px] h-auto"
+              />
+            </Link>
           </div>
 
-          {/* Nút chuyển ngữ */}
-          <div className="w-full h-full">
-            {!language ?
-              <div>
-                <div className="hidden sm:block">
-                  <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
-                    English
-                  </button>
+          {/* Đăng nhập 19 tuổi*/}
+          {!User ? (
+            <div className="w-auto h-full flex justify-center">
+              <button
+                onClick={openLogin19Modal}
+                className="flex items-center justify-center"
+              >
+                <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
+                  19
                 </div>
-                <div className="block sm:hidden">
-                  <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
-                    En
-                  </button>
+                <div className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full" />
+              </button>
+              {isLogin19Modal && <LoginPage closeModal={closeLogin19Modal} />}
+            </div>
+          ) : !check19Modal ? (
+            <div className="w-auto h-full flex justify-center">
+              <button
+                className="flex items-center justify-center"
+                onClick={() => { open19AgeModal(); }}
+              >
+                <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
+                  19
+                </div>
+                <div className="border h-[5px] bg-gray-500 w-[15px] rounded-r-full" />
+              </button>
+              {is19AgeModal && <Login19AgePage closeModal={close19AgeModal} check={true} />}
+            </div>
+          ) : (
+            <div className="w-auto h-full flex justify-center">
+              <button
+                className="flex items-center justify-center"
+                onClick={() => { open19AgeModal(); }}
+              >
+                <div className="border h-[5px] bg-gray-500 w-[15px] rounded-l-full" />
+                <div className="w-[20px] h-[20px] rounded-full border-2 text-[12px] font-semibold hover:shadow-md flex items-center justify-center">
+                  19
+                </div>
+              </button>
+
+              {is19AgeModal && <Login19AgePage closeModal={close19AgeModal} check={false} />}
+            </div>
+          )}
+
+          {/* danh mục */}
+          <div className="w-auto flex items-center mx-5 overflow-x-auto">
+            <ul className="flex overflow-x-auto gap-5 whitespace-nowrap">
+              <Link to={`/originals`}>
+                <li
+                  className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/originals")
+                    ? "text-yellow-500"
+                    : "hover:text-yellow-500"
+                    }`}
+                >
+                  {!language ? <span> Originals </span> : <span> 오리지널 </span>}
+                </li>
+              </Link>
+              <Link to={`/videos`}>
+                <li
+                  className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/videos")
+                    ? "text-yellow-500"
+                    : "hover:text-yellow-500"
+                    }`}
+                >
+                  {!language ? <span> Videos </span> : <span> 비디오 </span>}
+                </li>
+              </Link>
+              <Link to={`/genres`}>
+                <li
+                  className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/genres")
+                    ? "text-yellow-500"
+                    : "hover:text-yellow-500"
+                    }`}
+                >
+                  {!language ? <span> Genres </span> : <span> 장르 </span>}
+                </li>
+              </Link>
+              <Link to={`/popular`}>
+                <li
+                  className={`uppercase font-semibold text-lg cursor-pointer ${location.pathname.includes("/popular")
+                    ? "text-yellow-500"
+                    : "hover:text-yellow-500"
+                    }`}
+                >
+                  {!language ? <span> Popular </span> : <span> 인기 </span>}
+                </li>
+              </Link>
+            </ul>
+          </div>
+
+          {/* Chức năng  */}
+          <div className="flex items-center justify-center ml-auto gap-3">
+
+            {/* chức năng nút Publish và Login*/}
+            {!User ?
+
+              // Chưa đăng nhập tài khoản
+              <div className="flex gap-3">
+
+                {/* Chức năng Publish */}
+                <div className="flex items-center justify-center z-10">
+                  <div className="hidden lg:block">
+                    <button
+                      className="w-[100px] h-[35px] bg-black rounded-full font-semibold text-[10px] md:text-lg text-white flex items-center justify-center"
+                      onClick={() => { openLoginModal(); handleCloseAccount(); }}
+                    >
+                      {!language ? <span> Publish </span> : <span> 발행</span>}
+                    </button>
+                  </div>
+                  <div className="block lg:hidden">
+                    <button
+                      className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full"
+                      onClick={() => { openLoginModal(); handleCloseAccount(); }}
+                    >
+                      <BackupIcon />
+                    </button>
+                  </div>
+                  {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
+                </div>
+
+                {/* Đăng nhập */}
+                <div className="flex items-center justify-center">
+                  <div className="hidden lg:block">
+                    <button
+                      className="w-[100px] h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold text-[10px] md:text-lg text-gray-500"
+                      onClick={() => { openLoginModal(); handleCloseAccount(); }}
+                    >
+                      {!language ? <span> Log In </span> : <span> 로그인 </span>}
+                    </button>
+                  </div>
+                  <div className="block lg:hidden">
+                    <button
+                      className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black rounded-full"
+                      onClick={() => { openLoginModal(); handleCloseAccount(); }}
+                    >
+                      <AccountCircleSharpIcon />
+                    </button>
+                  </div>
+
+                  {isLoginModal && <LoginPage closeModal={closeLoginModal} />}
                 </div>
               </div>
               :
-              <div>
-                <div className="hidden sm:block">
-                  <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
-                    한국어
+              // Đã đăng nhập tài khoản
+              <div className="flex gap-3">
+
+                {/* Menu Publish */}
+                <div className="flex items-center justify-center z-10">
+                  <button
+                    ref={anchorRef}
+                    id="composition-button"
+                    aria-controls={open ? 'composition-menu' : undefined}
+                    aria-expanded={open ? 'true' : undefined}
+                    aria-haspopup="true"
+                    onClick={handleToggle}
+                  >
+                    <div className="hidden lg:block">
+                      <span
+                        className="w-[100px] h-[35px] bg-black rounded-full font-semibold text-lg text-white flex items-center justify-center">
+                        {!language ? <span> Publish </span> : <span> 발행 </span>}
+                      </span>
+                    </div>
+                    <div className="block lg:hidden">
+                      <span
+                        className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full">
+                        <BackupIcon />
+                      </span>
+                    </div>
                   </button>
+
+                  {/* Chọn menu */}
+                  <Popper
+                    open={open}
+                    anchorEl={anchorRef.current}
+                    role={undefined}
+                    placement="bottom-start"
+                    transition
+                    disablePortal
+                  >
+                    {({ TransitionProps, placement }) => (
+                      <Grow
+                        {...TransitionProps}
+                        style={{
+                          transformOrigin:
+                            placement === 'bottom-start' ? 'left top' : 'left bottom',
+                        }}
+                      >
+                        <Paper>
+                          <ClickAwayListener onClickAway={handleClose}>
+                            <MenuList
+                              className="bg-gray-100 rounded-lg text-black font-semibold "
+                              autoFocusItem={open}
+                              id="composition-menu"
+                              aria-labelledby="composition-button"
+                              onKeyDown={handleListKeyDown}
+                            >
+                              <Link to={`/publish/original`} onClick={() => dispatch(setcurrentStepOriginal(1))}>
+                                <MenuItem onClick={handleClose} className="flex gap-x-1">
+                                  <PictureAsPdfOutlinedIcon />
+
+                                  {!language ? <span> Original </span> : <span> 원본 </span>}
+
+                                </MenuItem>
+                              </Link>
+
+                              <Link to={`/publish/video`} onClick={() => dispatch(setcurrentStepVideo(1))}>
+                                <MenuItem onClick={handleClose} className="flex gap-x-1">
+                                  <VideoCallOutlinedIcon />
+
+                                  {!language ? <span> Video </span> : <span> 동영상 </span>}
+
+                                </MenuItem>
+                              </Link>
+                            </MenuList>
+                          </ClickAwayListener>
+                        </Paper>
+                      </Grow>
+                    )}
+                  </Popper>
                 </div>
-                <div className="block sm:hidden">
-                  <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
-                    Ko
+
+                {/* Menu Account */}
+
+                <div className="flex items-center justify-center z-10">
+                  <button
+                    ref={anchorAccountRef}
+                    id="composition-button"
+                    aria-controls={openAccount ? 'composition-menu' : undefined}
+                    aria-expanded={openAccount ? 'true' : undefined}
+                    aria-haspopup="true"
+                    onClick={handleToggleAccount}
+                  >
+                    <div className="w-full hidden lg:block">
+                      <span className="w-full h-[35px] px-2 py-1 bg-gray-50 hover:bg-gray-100 border rounded-full font-semibold text-[10px] md:text-lg text-gray-500">
+                        {auth?.currentUser.displayName}
+                      </span>
+                    </div>
+                    <div className="block lg:hidden">
+                      <span className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black rounded-full">
+                        <AccountCircleSharpIcon />
+                      </span>
+                    </div>
                   </button>
+
+                  {/* Chọn menu Account*/}
+                  <Popper
+                    open={openAccount}
+                    anchorEl={anchorAccountRef.current}
+                    role={undefined}
+                    placement="bottom-start"
+                    transition
+                    disablePortal
+                  >
+                    {({ TransitionProps, placement }) => (
+                      <Grow
+                        {...TransitionProps}
+                        style={{
+                          transformOrigin:
+                            placement === 'bottom-start' ? 'left top' : 'left bottom',
+                        }}
+                      >
+                        <Paper>
+                          <ClickAwayListener onClickAway={handleCloseAccount}>
+                            <MenuList className="bg-gray-100 rounded-lg text-black font-semibold "
+                              autoFocusItem={openAccount}
+                              id="composition-menu"
+                              aria-labelledby="composition-button"
+                              onKeyDown={handleListAccountKeyDown}
+                            >
+                              <Link to={`/subscribed`}>
+                                <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                  <GroupAddIcon />
+                                  {!language ? <span> Subscribed </span> : <span> 구독 중 </span>}
+                                </MenuItem>
+                              </Link>
+
+                              <Link to={`/dashboard`}>
+                                <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                  <PieChartIcon />
+                                  {!language ? <span> Dashboard </span> : <span> 대시보드 </span>}
+                                </MenuItem>
+                              </Link>
+
+                              <Link to={`/mycomment`}>
+                                <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                  <CommentIcon />
+                                  {!language ? <span> Comments </span> : <span> 댓글 </span>}
+                                </MenuItem>
+                              </Link>
+
+                              <Link to={`/creators`}>
+                                <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                  <EditNoteIcon />
+                                  {!language ? <span> Creators </span> : <span> 창작자 </span>}
+                                </MenuItem>
+                              </Link>
+
+                              <Link to={`/channel/my`}>
+                                <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                  <AssignmentIndIcon />
+                                  {!language ? <span> My Channel Page</span> : <span> 내 채널 페이지 </span>}
+                                </MenuItem>
+                              </Link>
+
+                              <Link to={`/account`}>
+                                <MenuItem onClick={handleCloseAccount} className="flex gap-x-3">
+                                  <AccountCircleIcon />
+                                  {!language ? <span> Account </span> : <span> 계정 </span>}
+                                </MenuItem>
+                              </Link>
+
+                              <MenuItem onClick={() => logouts()} className="flex gap-x-3">
+                                <LogoutIcon />
+                                {!language ? <span> Log out </span> : <span> 로그아웃 </span>}
+                              </MenuItem>
+                            </MenuList>
+
+                          </ClickAwayListener>
+                        </Paper>
+                      </Grow>
+                    )}
+                  </Popper>
                 </div>
+
+              </div>
+            }
+
+            {/* Chức năng tìm kiếm và chuyển ngữ */}
+            <div className="flex items-center gap-3">
+
+              {/* Chức năng tìm kiếm */}
+              <div className="w-full h-full">
+                <button
+                  className="w-[35px] h-[35px] bg-gray-50 hover:bg-gray-100 border rounded-full text-gray-500 flex items-center justify-center"
+                  onClick={openSearchModal}
+                >
+                  <SearchIcon sx={{ fontSize: 18 }} />
+                </button>
+
+                {isSearchModal && <SearchPage closeModal={closeSearchModal} />}
               </div>
 
-            }
-          </div>
-        </div>
+              {/* Nút chuyển ngữ */}
+              <div className="w-full h-full">
+                {!language ?
+                  <div>
+                    <div className="hidden lg:block">
+                      <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
+                        English
+                      </button>
+                    </div>
+                    <div className="block lg:hidden">
+                      <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "en") }}>
+                        En
+                      </button>
+                    </div>
 
-      </div >
-    </div >
+                  </div>
+                  :
+                  <div>
+                    <div className="hidden lg:block">
+                      <button className="w-[80px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
+                        한국어
+                      </button>
+                    </div>
+                    <div className="block lg:hidden">
+                      <button className="w-[35px] h-[35px] px-2 bg-gray-50 hover:bg-gray-100 border flex items-center justify-center text-black font-semibold rounded-full" onClick={() => { dispatch(getlanguage()); localStorage.setItem("language", "kr") }}>
+                        Ko
+                      </button>
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          </div >
+        </div>
+      )}
+    </div>
+
   );
 };
 

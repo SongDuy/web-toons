@@ -17,7 +17,7 @@ const PopularPage = () => {
         // Bắt đầu quá trình tải lại dữ liệu
         setloading(true);
 
-        const threshold = 100; // Ngưỡng để kích hoạt dính vào trên cùng
+        const threshold = window.innerWidth < 640 ? 50 : 100; // Ngưỡng để kích hoạt dính vào trên cùng
 
         const handleScroll = () => {
             if (window.scrollY > threshold) {
@@ -52,7 +52,7 @@ const PopularPage = () => {
             {!loading ? (
                 <div className="w-full h-full bg-white pb-10">
                     {/* Hiển thị tiêu đề */}
-                    <div className={`w-full h-[70px] mb-[-70px] bg-white shadow overflow-x-auto border-t ${isSticky ? 'sticky top-0 z-20' : ''}`}>
+                    <div className={`w-full xs:h-[50px] sm:h-[70px] mb-[-70px] bg-white shadow overflow-x-auto border-t ${isSticky ? 'sticky top-0 z-30' : ''}`}>
                         <div className="w-full h-full flex items-center justify-center">
                             <ul
                                 className="h-full flex w-max overflow-x-auto scroll-snap-x scroll-snap-mandatory"
@@ -60,7 +60,7 @@ const PopularPage = () => {
                                 <ScrollLink to="section1" smooth={true} duration={500}>
                                     <li
                                         onClick={() => setSelectedSection("section1")}
-                                        className={`w-[280px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center scroll-snap-start ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                                        className={`w-[250px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center scroll-snap-start ${selectedSection === "section1" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                                     >
                                         {!language ?
                                             <span>
@@ -77,7 +77,7 @@ const PopularPage = () => {
                                 <ScrollLink to="section2" smooth={true} duration={500}>
                                     <li
                                         onClick={() => setSelectedSection("section2")}
-                                        className={`w-[280px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center scroll-snap-start ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                                        className={`w-[250px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center scroll-snap-start ${selectedSection === "section2" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                                     >
                                         {!language ?
                                             <span>
@@ -94,7 +94,7 @@ const PopularPage = () => {
                                 <ScrollLink to="section3" smooth={true} duration={500}>
                                     <li
                                         onClick={() => setSelectedSection("section3")}
-                                        className={`w-[280px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center scroll-snap-start ${selectedSection === "section3" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+                                        className={`w-[250px] h-full uppercase font-semibold text-md hover:text-black cursor-pointer flex items-center justify-center scroll-snap-start ${selectedSection === "section3" ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
                                     >
                                         {!language ?
                                             <span>
