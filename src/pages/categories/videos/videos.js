@@ -130,7 +130,7 @@ const VideosPage = () => {
             {!loading ? (
                 <div className="w-full h-full pb-10 bg-gray-100">
 
-                    <div className={`w-full h-[70px] mb-[-70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-30' : ''}`}>
+                    <div className={`w-full xs:h-[50px] sm:h-[70px] mb-[-70px] bg-white shadow flex items-center justify-center border-t ${isSticky ? 'sticky top-0 z-30' : ''}`}>
                         <ul className="h-full flex gap-10">
                             <ScrollLink to="section1" smooth={true} duration={500}>
                                 <li
