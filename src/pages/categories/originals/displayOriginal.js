@@ -303,6 +303,7 @@ const DisplayOriginalPage = () => {
   const endIndex = Math.min(startIndex + itemsPerPage, chapters?.chaps?.filter(item => item.check === true)?.length);
 
   const currentItems = chapters?.chaps?.filter(item => item.check === true)?.slice(startIndex, endIndex);
+
   const closeLoginModal = () => {
     dispatch(setIsLoginModal(false));
   };
