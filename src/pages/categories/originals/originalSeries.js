@@ -383,7 +383,7 @@ const OriginalSeriesPage = () => {
                   {/* danh sach series */}
                   <ul className="w-full h-full ">
                     {/* khung danh sách */}
-                    {chapters?.chaps?.filter(item => item.check === true)?.sort((a, b) => b.num - a.num)?.map((item) => (
+                    {chapters?.chaps?.filter(item => item.check === true)?.sort((a, b) => b.num - a.num)?.reverse()?.map((item) => (
                       <Link
                         to={`/originals/original/series/display/${id.id}/${item.id}`}
                         key={item.id}

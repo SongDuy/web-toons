@@ -413,7 +413,7 @@ const VideoSeriesPage = () => {
                   {/* danh sach series */}
                   <ul className="w-full h-full ">
                     {/* khung danh sách */}
-                    {chapters?.chaps?.filter(item => item.check === true)?.sort((a, b) => b.num - a.num)?.map((item) =>
+                    {chapters?.chaps?.filter(item => item.check === true)?.sort((a, b) => b.num - a.num)?.reverse()?.map((item) =>
                       Videoid?.payment ? (
                         <span key={item.id} onClick={() => onpayment(item.id)}>
                           <li className="w-full h-[90px] border-b rounded-lg cursor-pointer hover:bg-gray-100 px-2">
