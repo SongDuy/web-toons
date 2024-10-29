@@ -411,7 +411,7 @@ const VideoSeriesPage = () => {
 
                 <div className="w-full max-h-[900px] px-3 custom-scrollbar">
                   {/* danh sach series */}
-                  <ul className="w-full h-full ">
+                  <ul className="w-full h-full flex flex-col-reverse">
                     {/* khung danh sách */}
                     {chapters?.chaps?.filter(item => item.check === true)?.sort((a, b) => b.num - a.num)?.reverse()?.map((item) =>
                       Videoid?.payment ? (
