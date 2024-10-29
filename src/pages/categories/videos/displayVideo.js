@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { animateScroll as scroll } from 'react-scroll';
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
-import logo from "../../../img/logonew.png";
+import logo from "../../../img/logonew1.png";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import AddIcon from "@mui/icons-material/Add";

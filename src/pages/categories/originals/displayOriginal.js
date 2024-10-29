@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, memo, useCallback } from "react";
 import { animateScroll as scroll } from 'react-scroll';
 import { Link } from "react-router-dom";
-import logo from "../../../img/logonew.png";
+import logo from "../../../img/logonew1.png";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import AddIcon from "@mui/icons-material/Add";
