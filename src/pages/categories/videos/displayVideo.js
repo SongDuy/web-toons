@@ -551,7 +551,7 @@ const DisplayVideoPage = () => {
                       <img
                         src={logo}
                         alt="Logo"
-                        className="min-w-[50px] max-w-[50px] h-auto rounded-md bg-black"
+                        className="min-w-[50px] max-w-[50px] h-[40px] rounded-md bg-white"
                       />
                     </Link>
                   </div>

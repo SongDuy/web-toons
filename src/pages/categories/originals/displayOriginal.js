@@ -643,7 +643,7 @@ const DisplayOriginalPage = () => {
           <div className="w-full h-full bg-white">
             {/* Thanh công cụ */}
             <div className={`fixed w-full h-[50px] bg-black flex items-center px-5 z-50 transition-transform duration-300 ${showToolbar ? 'translate-y-0' : '-translate-y-full'}`}>
-              <ul className="w-full h-full grid grid-cols-3">
+              <ul className="w-full h-full grid grid-cols-3 gap-3">
 
                 {/* logo và tên series */}
                 <li className="h-full flex items-center gap-2 overflow-hidden">
@@ -652,7 +652,7 @@ const DisplayOriginalPage = () => {
                       <img
                         src={logo}
                         alt="Logo"
-                        className="min-w-[50px] max-w-[50px] h-auto rounded-md bg-black"
+                        className="min-w-[50px] max-w-[50px] h-[40px] rounded-md bg-white"
                       />
                     </Link>
                   </div>
@@ -695,42 +695,50 @@ const DisplayOriginalPage = () => {
 
                 </li>
 
-                {/* Bật tắt âm thanh */}
-                {chapid?.audioUrl && (
-                  <li className="flex items-center pl-7">
+
+                <li className="flex items-center gap-3 pl-5">
+                  {/* Nút chuyển lên trên */}
+                  <div className="flex items-center">
                     <button
                       onClick={scrollToTop}
                       className="w-[40px] h-[35px] bg-gray-800 hover:bg-gray-700 shadow mr-auto rounded-md text-white flex items-center justify-center"
                     >
                       <ArrowUpwardIcon />
                     </button>
-                    <button className="ml-auto text-white">
-                      {!isMusic ? (
-                        <button
-                          className="w-[35px] h-[35px] rounded-full bg-gray-800 flex items-center justify-center"
-                          onClick={() => setIsMusic(true)}
-                        >
-                          <MusicNoteIcon />
-                        </button>
-                      ) : (
-                        <button
-                          className="w-[35px] h-[35px] rounded-full bg-gray-800 flex items-center justify-center"
-                          onClick={() => setIsMusic(false)}
-                        >
-                          <MusicOffIcon />
-                        </button>
-                      )}
-                      <ReactPlayer
-                        url={chapid?.audioUrl}
-                        controls={true}
-                        width="0%"
-                        height="0%"
-                        playing={!isMusic}
-                        loop={true}
-                      />
-                    </button>
-                  </li>
-                )}
+                  </div>
+
+                  {/* Bật tắt âm thanh */}
+                  {chapid?.audioUrl && (
+                    <div className="flex items-center">
+
+                      <button className="ml-auto text-white">
+                        {!isMusic ? (
+                          <button
+                            className="w-[35px] h-[35px] rounded-full bg-gray-800 flex items-center justify-center"
+                            onClick={() => setIsMusic(true)}
+                          >
+                            <MusicNoteIcon />
+                          </button>
+                        ) : (
+                          <button
+                            className="w-[35px] h-[35px] rounded-full bg-gray-800 flex items-center justify-center"
+                            onClick={() => setIsMusic(false)}
+                          >
+                            <MusicOffIcon />
+                          </button>
+                        )}
+                        <ReactPlayer
+                          url={chapid?.audioUrl}
+                          controls={true}
+                          width="0%"
+                          height="0%"
+                          playing={!isMusic}
+                          loop={true}
+                        />
+                      </button>
+                    </div>
+                  )}
+                </li>
               </ul>
             </div>
 
