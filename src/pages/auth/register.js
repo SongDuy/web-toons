@@ -15,28 +15,44 @@ const RegisterPage = () => {
   const [password, setPassword] = useState("");
   const [displayName, setdisplayName] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
-
+ //Lấy ngôn ngữ
+ const language = useSelector(state => state.hidden.language);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const err = useSelector(state => state.AuthJs.errorregister);
   useTimeout(() => {
     dispatch(seterregister(null));
   }, err ? 3000 : null);
-
+  const validateAndDispatch = (condition, englishMsg, koreanMsg) => {
+    const messageByLanguage = (englishMsg, koreanMsg) => (!language ? englishMsg : koreanMsg);
+    if (condition) {
+      dispatch(seterregister({ message: messageByLanguage(englishMsg, koreanMsg) }));
+      return true;
+    }
+    return false;
+  };
+  
   const getRegister = async () => {
     try {
-      const rg = await dispatch(handleRegister({ email, password, displayName, birthday: selectedDate,language }));
-      unwrapResult(rg)
-
-      navigate('/')
+      if (
+        validateAndDispatch(password.length < 8, "Password must be at least 8 characters long", "비밀번호는 최소 8자 이상이어야 합니다.") ||
+        validateAndDispatch(!selectedDate, "Birth date must be selected", "생년월일을 선택해야 합니다.") ||
+        validateAndDispatch(!displayName, "Display name is required", "이름이 필요합니다.") ||
+        validateAndDispatch(!email, "Email is required", "이메일이 필요합니다.")
+      ) return;
+      
+      const rg = await dispatch(handleRegister({ email, password, displayName, birthday: selectedDate, language }));
+      unwrapResult(rg);
+      navigate('/');
+      
+    
 
     } catch (error) {
       console.log(error)
     }
   }
 
-  //Lấy ngôn ngữ
-  const language = useSelector(state => state.hidden.language);
+ 
 
   return (
     <div className="w-full h-full bg-gray-100 flex items-center justify-center">
@@ -134,7 +150,7 @@ const RegisterPage = () => {
                 비밀번호를 재설정하시겠습니까?
               </Link>
             }
-            {err && <p>{err.message}</p>}
+            {err && <p className="text-red-500 ">{err.message}</p>}
 
             <button
               className="w-full h-[50px] bg-black text-white rounded font-semibold"

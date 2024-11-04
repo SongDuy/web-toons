@@ -254,7 +254,6 @@ const authRedux = createSlice({
       
     },
     seterregister:(state,action)=>{
-      console.log(action.payload)
       state.errorregister=action.payload
     
   }

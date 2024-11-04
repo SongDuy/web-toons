@@ -183,7 +183,7 @@ const LoginPage = ({ closeModal }) => {
 
 
 
-                        {err && <p>{err.message}</p>}
+                        {err && <p className="text-red-500 text-center">{err.message}</p>}
                         <button
                             className="w-full h-[50px] bg-black text-white rounded font-semibold"
                             onClick={GetLogin}
