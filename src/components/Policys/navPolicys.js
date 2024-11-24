@@ -1,8 +1,10 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const NavPolicys = () => {
   const location = useLocation();
+  const language = useSelector(state => state.hidden.language);
 
   return (
     <div className="w-full h-[60px] bg-white shadow  flex items-center justify-center border-t  ">
@@ -15,60 +17,46 @@ const NavPolicys = () => {
           }  border-b-black hover:text-black cursor-pointer flex items-center justify-center`}
           to="/terms"
         >
-          TERMS OF USE
+          {!language ? (
+                                    <span>Terms</span>
+
+                                ) : (
+                                    <span>약관</span>
+                                )}
         </Link>
         <Link
           className={`h-[60px] uppercase font-semibold text-base ${
-            location.pathname === "/terms/privacyPolicy"
+            location.pathname === "/Privacy"
               ? "text-black border-b-2"
               : "text-gray-300 "
           }  border-b-black hover:text-black cursor-pointer flex items-center justify-center`}
-          to="/terms/privacyPolicy"
+          to="/Privacy"
         >
-          PRIVACY POLICY
+          {!language ? (
+                                    <span>Privacy</span>
+
+                                ) : (
+                                    <span>사생활</span>
+                                )}
         </Link>
 
         <Link
           className={`h-[60px] uppercase font-semibold text-base ${
-            location.pathname === "/terms/canvasPolicy"
+            location.pathname === "/Advertise"
               ? "text-black border-b-2"
               : "text-gray-300 "
           }  border-b-black hover:text-black cursor-pointer flex items-center justify-center`}
-          to="/terms/canvasPolicy"
+          to="/Advertise"
         >
-          COMMUNITY POLICY
+          {!language ? (
+                                    <span>Advertise</span>
+
+                                ) : (
+                                    <span>광고하다</span>
+                                )}
         </Link>
 
-        <Link
-          className={`h-[60px] uppercase font-semibold text-base ${
-            location.pathname === "/terms/canvasTermsOfUsePolicy"
-              ? "text-black border-b-2"
-              : "text-gray-300 "
-          }  border-b-black hover:text-black cursor-pointer flex items-center justify-center`}
-          to="/terms/canvasTermsOfUsePolicy"
-        >
-          CANVAS TERMS OF USE
-        </Link>
-        <Link
-          className={`h-[60px] uppercase font-semibold text-base ${
-            location.pathname === "/terms/adRevenueSharingPolicy"
-              ? "text-black border-b-2"
-              : "text-gray-300 "
-          }  border-b-black hover:text-black cursor-pointer flex items-center justify-center`}
-          to="/terms/adRevenueSharingPolicy"
-        >
-          AD REVENUE SHARING TERMS
-        </Link>
-        <Link
-          className={`h-[60px] uppercase font-semibold text-base ${
-            location.pathname === "/terms/superLikePolicy"
-              ? "text-black border-b-2"
-              : "text-gray-300 "
-          }  border-b-black hover:text-black cursor-pointer flex items-center justify-center`}
-          to="/terms/superLikePolicy"
-        >
-          SUPER LIKE TERMS
-        </Link>
+      
       </ul>
     </div>
   );

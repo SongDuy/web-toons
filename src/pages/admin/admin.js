@@ -18,6 +18,11 @@ import { auth } from '../../common/themes/firebase';
 import { logout } from '../../common/store/Auth.js';
 import URLadmin from '../../common/utils/URLadmin';
 
+import InfoIcon from '@mui/icons-material/Info';
+import GavelIcon from '@mui/icons-material/Gavel';
+import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
+import FeaturedVideoIcon from '@mui/icons-material/FeaturedVideo';
+import ContactsIcon from '@mui/icons-material/Contacts';
 const AdminPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -88,7 +93,71 @@ const AdminPage = () => {
                                         배너
                                     </span>
                                 </li>
+                                <li
+                                    onClick={() => handleNavigation('about', '/admin/About')}
+                                    className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "about" ? 'text-yellow-500 bg-red-50 border-t' : 'hover:text-yellow-500 bg-white'}`}
+                                >
+                                    <span className="mr-auto">
+                                        <InfoIcon />
+                                    </span>
 
+                                    {/*  About */}
+                                    <span className="mr-auto font-semibold">
+                                    정보
+                                    </span>
+                                </li>
+                                <li
+                                    onClick={() => handleNavigation('terms', '/admin/Terms')}
+                                    className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "terms" ? 'text-yellow-500 bg-red-50 border-t' : 'hover:text-yellow-500 bg-white'}`}
+                                >
+                                    <span className="mr-auto">
+                                        <GavelIcon />
+                                    </span>
+
+                                    {/*  terms */}
+                                    <span className="mr-auto font-semibold">
+                                    약관
+                                    </span>
+                                </li>
+                                <li
+                                    onClick={() => handleNavigation('privacy', '/admin/Privacy')}
+                                    className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "privacy" ? 'text-yellow-500 bg-red-50 border-t' : 'hover:text-yellow-500 bg-white'}`}
+                                >
+                                    <span className="mr-auto">
+                                        <PrivacyTipIcon />
+                                    </span>
+
+                                    {/*  privacy */}
+                                    <span className="mr-auto font-semibold">
+                                    사생활
+                                    </span>
+                                </li>
+                                <li
+                                    onClick={() => handleNavigation('advertise', '/admin/Advertise')}
+                                    className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "advertise" ? 'text-yellow-500 bg-red-50 border-t' : 'hover:text-yellow-500 bg-white'}`}
+                                >
+                                    <span className="mr-auto">
+                                        <FeaturedVideoIcon />
+                                    </span>
+
+                                    {/*  advertise */}
+                                    <span className="mr-auto font-semibold">
+                                    광고하다
+                                    </span>
+                                </li>
+                                <li
+                                    onClick={() => handleNavigation('contact', '/admin/Contact')}
+                                    className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "contact" ? 'text-yellow-500 bg-red-50 border-t' : 'hover:text-yellow-500 bg-white'}`}
+                                >
+                                    <span className="mr-auto">
+                                        <ContactsIcon />
+                                    </span>
+
+                                    {/*  contact */}
+                                    <span className="mr-auto font-semibold">
+                                    연락처
+                                    </span>
+                                </li>
                                 <li
                                     onClick={() => handleNavigation('users', '/admin/users')}
                                     className={`w-full h-[50px] cursor-pointer px-5 py-2 shadow flex items-center justify-center rounded ${isTitle === "users" ? 'text-yellow-500 bg-red-50 border-t' : 'hover:text-yellow-500 bg-white'}`}

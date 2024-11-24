@@ -49,7 +49,7 @@ const FooterPage = () => {
                 {/* Thông tin điều khoản chính sách */}
                 <div className="flex justify-center mt-10">
                     <ul className="grid xs:grid-cols-3 sm:grid-cols-5 gap-y-3 mt-auto">
-                        <Link to={`#`}>
+                        <Link to={`/About`}>
                             <li className="h-full px-3 border-l border-r hover:text-yellow-500 flex items-center justify-center">
                                 {!language ? (
                                     <span>About</span>
@@ -61,7 +61,7 @@ const FooterPage = () => {
                             </li>
                         </Link>
 
-                        <Link to={`#`}>
+                        <Link to={`/terms`}>
                             <li className="h-full px-3 border-l border-r hover:text-yellow-500 flex items-center justify-center">
                                 {!language ? (
                                     <span>Terms</span>
@@ -72,7 +72,7 @@ const FooterPage = () => {
                             </li>
                         </Link>
 
-                        <Link to={`#`}>
+                        <Link to={`/Privacy`}>
                             <li className="h-full px-3 border-l border-r hover:text-yellow-500 flex items-center justify-center">
                                 {!language ? (
                                     <span>Privacy</span>
@@ -83,7 +83,7 @@ const FooterPage = () => {
                             </li>
                         </Link>
 
-                        <Link to={`#`}>
+                        <Link to={`/Advertise`}>
                             <li className="h-full px-3 border-l border-r hover:text-yellow-500 flex items-center justify-center">
                                 {!language ? (
                                     <span>Advertise</span>
@@ -94,7 +94,7 @@ const FooterPage = () => {
                             </li>
                         </Link>
 
-                        <Link to={`#`}>
+                        <Link to={`/Contact`}>
                             <li className="h-full px-3 border-l border-r hover:text-yellow-500 flex items-center justify-center">
                                 {!language ? (
                                     <span>Contact</span>

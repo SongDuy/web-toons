@@ -1,16 +1,17 @@
 import React from 'react';
-import NavPolicys from '../../components/Policys/navPolicys';
-const CanvasTermsOfUse = () => {
+const About = () => {
     return (
         <div  className="w-full h-full  ">
-                <NavPolicys/>
+              
 
             <div  className="w-screen h-full py-[30px]   container mx-auto my-auto " >
-               
+            <div>
+        <p className="text-xl">adasddddddddddddddddd</p>
+      </div>
             </div>
 
         </div>
     );
 }
 
-export default CanvasTermsOfUse;
+export default About;
