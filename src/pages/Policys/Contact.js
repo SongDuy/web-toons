@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import contactFireBase from '../../common/services/Contact.services';
+import ResponsiveText from '../../Hooks/ResponsiveText';
 const Contact = () => {
     const [loading, setloading] = useState(false);
     const [contact, setcontact] = useState([]);
@@ -36,12 +37,14 @@ const Contact = () => {
               
 
             <div  className="w-screen h-full py-[30px]   container mx-auto my-auto " >
-            <p className="text-2xl font-bold text-center mb-5">   
-                                    <span>연락처</span>
-                                </p>
-            <div>
-        <p className="text-xl">{contact.length>0 && contact[0]?.Note}</p>
+            <div className="flex justify-center items-center font-bold mb-5">
+              <ResponsiveText text="연락처" />
+              </div>
+              <div className="container flex justify-center items-center">
+            <ResponsiveText text={contact.length>0 && contact[0]?.Note} />
+      
       </div>
+          
             </div>
 
         </div>
