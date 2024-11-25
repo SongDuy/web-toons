@@ -147,9 +147,9 @@ const AdminAbout = () => {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-center font-medium text-gray-900">
                     {item.id}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-center font-medium text-gray-900">
-                    {item.Note}
-                  </td>
+                  <td  className="px-6 py-4 w-[1500px] whitespace-normal break-words text-sm text-center font-medium text-gray-900">
+  {item.Note}
+</td>
 
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                     {new Date(item.createTime).getDate()}/

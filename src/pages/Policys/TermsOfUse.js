@@ -4,15 +4,32 @@ import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/TextLayer.css"; // Import the text layer CSS
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import CircularProgress from "@mui/material/CircularProgress";
-
+import termsFireBase from '../../common/services/Terms.services';
+import Box from "@mui/material/Box";
 const TermsOfUse = () => {
     const [numPages, setNumPages] = useState();
     const [windowSize, setWindowSize] = useState({
         width: window.innerWidth,
         height: window.innerHeight,
       });
-    
+      const [loading, setloading] = useState(false);
+
+      const [Terms, setTerms] = useState([]);
+
     pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+    useEffect(() => {
+      const get = async () => {
+          try {
+            setloading(false);
+            const terms = await termsFireBase.getAll();
+            setTerms(terms.success ? terms.terms : []);
+            setloading(true);
+          } catch (error) { 
+            console.log(error)
+          }
+        };
+        get();
+  }, []);
     useEffect(() => {
         const handleResize = () => {
           setWindowSize({
@@ -29,9 +46,9 @@ const TermsOfUse = () => {
    
     const file = useMemo(
         () => ({
-          url:"https://firebasestorage.googleapis.com/v0/b/webtoons-2ae20.appspot.com/o/cms_uploads%2Fcomic%2Fepisodes%2FIAsCigDN5La3LV2GtFOl0YnL9kG3%2Fp21CPp0sVnIMjq2zgX0o%2Fchap%2F9fNgdUbNDG7mV5bi7dkf%2Fnhasachmienphi-truyen-tranh-doremon.pdf?alt=media&token=7543361b-cddf-4e4f-9aaa-9bfe8a91ce14",
+          url:Terms.length>0?Terms[0]?.File:"https://firebasestorage.googleapis.com/v0/b/webtoons-2ae20.appspot.com/o/cms_uploads%2Fcomic%2Fepisodes%2FIAsCigDN5La3LV2GtFOl0YnL9kG3%2Fp21CPp0sVnIMjq2zgX0o%2Fchap%2F9fNgdUbNDG7mV5bi7dkf%2Fnhasachmienphi-truyen-tranh-doremon.pdf?alt=media&token=7543361b-cddf-4e4f-9aaa-9bfe8a91ce14",
         }),
-        []
+        [Terms]
       );
       const options = useMemo(
         () => ({
@@ -66,6 +83,19 @@ const TermsOfUse = () => {
         }
       };
     return (
+      <>
+      {!loading ? (
+     <Box
+       sx={{
+         display: "flex",
+         justifyContent: "center",
+         alignItems: "center",
+         margin: 5,
+       }}
+     >
+       <CircularProgress />
+     </Box>
+   ) : (
         <div  className="w-full h-full  ">
                 <NavPolicys/>
 
@@ -91,6 +121,8 @@ const TermsOfUse = () => {
             </div>
 
         </div>
+          )}
+          </>
     );
 }
 

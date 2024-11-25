@@ -31,16 +31,31 @@ const userFireBase = {
         ? {
             id: item.id,
             ...item.data(),
-            birthday: new Date(item.data()?.birthday?.toDate()).toISOString(),
-            EmailVerification: new Date(
-              docSnap.data()?.EmailVerification?.toDate()
-            ).toISOString(),
-            createTime: new Date(
-              docSnap.data()?.EmailVerification?.toDate()
-            ).toISOString(),
+            birthday: docSnap.data()?.birthday
+              ? new Date(item.data()?.birthday?.toDate()).toISOString()
+              : null,
+            EmailVerification: docSnap.data()?.EmailVerification
+              ? new Date(
+                  docSnap.data()?.EmailVerification?.toDate()
+                ).toISOString()
+              : null,
+            createTime: docSnap.data()?.createTime
+              ? new Date(docSnap.data()?.createTime?.toDate()).toISOString()
+              : null,
             success: true,
           }
-        : { ...item.data(), success: true };
+        : {
+            ...item.data(),
+            EmailVerification: item.data()?.EmailVerification
+              ? new Date(
+                item.data()?.EmailVerification?.toDate()
+                ).toISOString()
+              : null,
+            createTime: item.data()?.createTime
+              ? new Date(item.data()?.createTime?.toDate()).toISOString()
+              : null,
+            success: true,
+          };
     });
     if (Users.length !== 0) {
       return { Users, success: true };
@@ -61,18 +76,31 @@ const userFireBase = {
       return docSnap.data()?.birthday
         ? {
             ...docSnap.data(),
-            birthday: new Date(
-              docSnap.data()?.birthday?.toDate()
-            ).toISOString(),
-            EmailVerification: new Date(
-              docSnap.data()?.EmailVerification?.toDate()
-            ).toISOString(),
-            createTime: new Date(
-              docSnap.data()?.EmailVerification?.toDate()
-            ).toISOString(),
+            birthday: docSnap.data()?.birthday
+              ? new Date(docSnap.data()?.birthday?.toDate()).toISOString()
+              : null,
+            EmailVerification: docSnap.data()?.EmailVerification
+              ? new Date(
+                  docSnap.data()?.EmailVerification?.toDate()
+                ).toISOString()
+              : null,
+            createTime: docSnap.data()?.createTime
+              ? new Date(docSnap.data()?.createTime?.toDate()).toISOString()
+              : null,
             success: true,
           }
-        : { ...docSnap.data(), success: true };
+        : {
+            ...docSnap.data(),
+            EmailVerification: docSnap.data()?.EmailVerification
+              ? new Date(
+                  docSnap.data()?.EmailVerification?.toDate()
+                ).toISOString()
+              : null,
+            createTime: docSnap.data()?.createTime
+              ? new Date(docSnap.data()?.createTime?.toDate()).toISOString()
+              : null,
+            success: true,
+          };
     } else {
       return { message: "No such document!", success: false };
     }
@@ -122,7 +150,7 @@ const userFireBase = {
     });
     return uploadTask;
   },
-  
+
   async deleteAccount(id) {
     const Ref = collection(fireStore, "Users");
     const q = query(Ref, where("uid", "==", id));
@@ -131,8 +159,7 @@ const userFireBase = {
     querySnapshot.forEach(async (doc) => {
       await deleteDoc(doc.ref);
     });
-    await deleteFolder(`cms_uploads/image/${id}`)
-
+    await deleteFolder(`cms_uploads/image/${id}`);
   },
 };
 export default userFireBase;

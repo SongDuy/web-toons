@@ -17,25 +17,25 @@ const FooterPage = () => {
                 {/* Liên kết mạng xã hội */}
                 <div className="flex justify-center">
                     <ul className="flex gap-5">
-                        <Link to={`#`}>
+                        <Link to={`https://www.facebook.com/`}>
                             <li className="w-[50px] h-[50px] rounded-full border shadow flex items-center justify-center hover:bg-gray-200">
                                 <FacebookIcon sx={{ fontSize: 30 }} />
                             </li>
                         </Link>
 
-                        <Link to={`#`}>
+                        <Link to={`https://www.instagram.com/`}>
                             <li className="w-[50px] h-[50px] rounded-full border shadow flex items-center justify-center hover:bg-gray-200">
                                 <InstagramIcon sx={{ fontSize: 30 }} />
                             </li>
                         </Link>
 
-                        <Link to={`#`}>
+                        <Link to={`https://x.com/`}>
                             <li className="w-[50px] h-[50px] rounded-full border shadow flex items-center justify-center hover:bg-gray-200">
                                 <TwitterIcon sx={{ fontSize: 30 }} />
                             </li>
                         </Link>
 
-                        <Link to={`#`}>
+                        <Link to={`https://www.youtube.com/`}>
                             <li className="w-[50px] h-[50px] rounded-full border shadow flex items-center justify-center hover:bg-gray-200">
                                 <YouTubeIcon sx={{ fontSize: 30 }} />
                             </li>
