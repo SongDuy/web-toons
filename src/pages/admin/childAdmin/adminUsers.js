@@ -14,7 +14,6 @@ const AdminUsersPage = () => {
             try {
                 setloading(false)
                 const lg = await userFireBase.getALL()
-                console.log(lg)
                 setUsers(lg.success ? lg?.Users : [])
                 setloading(true)
             } catch (error) {

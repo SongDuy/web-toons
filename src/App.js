@@ -45,9 +45,8 @@ import DeletePage from './pages/account/Delete';
 import TermsOfUse from './pages/Policys/TermsOfUse';
 import PrivacyPolicy from './pages/Policys/PrivacyPolicy';
 import CommunityPolicy from './pages/Policys/CommunityPolicy';
-import CanvasTermsOfUse from './pages/Policys/CanvasTermsOfUse';
-import AdRevenueSharingTerms from './pages/Policys/AdRevenueSharingTerms';
-import SuperLikeTerms from './pages/Policys/SuperLikeTerms';
+import Contact from './pages/Policys/Contact';
+import About from './pages/Policys/About';
 import { AuthProvider } from './Hooks/useAuth';
 import Loading from './components/layout/layoutUser/loading';
 import { AuthadProvider } from './Hooks/useAuthad';
@@ -56,6 +55,11 @@ import AdminOriginalsidchap from './pages/admin/childAdmin/adminOriginalsidchap'
 import AdminVideosPageid from './pages/admin/childAdmin/adminVideosid';
 import AdminVideosPageidchap from './pages/admin/childAdmin/adminVideosidchap';
 import AdminPaymentsPageid from './pages/admin/childAdmin/Paymentsid';
+import AdminAbout from './pages/admin/childAdmin/adminAbout';
+import AdminTerms from './pages/admin/childAdmin/adminTerms';
+import AdminPrivacy from './pages/admin/childAdmin/adminPrivacy';
+import AdminAdvertise from './pages/admin/childAdmin/adminAdvertise';
+import AdminContact from './pages/admin/childAdmin/adminContact';
 
 function App() {
 
@@ -88,11 +92,10 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
           <Route path="/terms" element={<TermsOfUse />} />
-          <Route path="/terms/privacyPolicy" element={<PrivacyPolicy />} />
-          <Route path="/terms/canvasPolicy" element={<CommunityPolicy />} />
-          <Route path="/terms/canvasTermsOfUsePolicy" element={<CanvasTermsOfUse />} />
-          <Route path="/terms/adRevenueSharingPolicy" element={<AdRevenueSharingTerms />} />
-          <Route path="/terms/superLikePolicy" element={<SuperLikeTerms />} />
+          <Route path="/Privacy" element={<PrivacyPolicy />} />
+          <Route path="/Advertise" element={<CommunityPolicy />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/About" element={<About />} />
 
         </Route>
         {/* Trang chỉ đăng nhập mới sử dụng được của user*/}
@@ -132,6 +135,11 @@ function App() {
 
           <Route path="dashboard" element={<AdminDashboardPage />} />
           <Route path="banners" element={<AdminBannerPage />} />
+          <Route path="About" element={<AdminAbout />} />
+          <Route path="Terms" element={<AdminTerms />} />
+          <Route path="Privacy" element={<AdminPrivacy/>} />
+          <Route path="Advertise" element={<AdminAdvertise/>} />
+          <Route path="Contact" element={<AdminContact/>} />
           <Route path="users" element={<AdminUsersPage />} />
           <Route path="originals" element={<AdminOriginalsPage />} />
           <Route path="originals/:id" element={<AdminOriginalsidPage />} />
